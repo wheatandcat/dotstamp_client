@@ -1,0 +1,13 @@
+{
+  "rules": {
+    "color-hex-length": "short",
+    "color-no-invalid-hex": true,
+    "custom-property-no-outside-root": true,
+    "indentation": 4,
+    "length-zero-no-unit": true,
+    "media-feature-name-no-vendor-prefix": true,
+    "number-leading-zero": "never",
+    "selector-root-no-composition": true,
+    "string-quotes": "double"
+  }
+}

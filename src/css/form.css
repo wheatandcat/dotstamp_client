@@ -1,0 +1,37 @@
+.FormIcon {
+    width: 40px;
+}
+
+.Preview {
+    padding: 10px;
+    overflow: auto;
+}
+
+.Group {
+    margin-bottom: 0;
+}
+
+.GroupList {
+    position: relative;
+    display: block;
+    padding: 5px 15px;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+.GroupSlider {
+    margin-bottom: 5px;
+}
+
+.Edit {
+    background: rgba(153, 210, 255, .36);
+}
+
+.Footer {
+    position: absolute;
+    bottom: 0;
+    height: 280px;
+    bottom: 0;
+    background-color: #f5f5f5;
+}
