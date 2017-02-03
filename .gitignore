@@ -13,6 +13,8 @@
 /doc/*
 /log/*
 !/log/.keep
+/dist/bundle.js
+/dist/inde.html
 /dist/js/*
 !/dist/js/.gitkeep
 /node_modules/*
