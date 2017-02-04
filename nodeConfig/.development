@@ -1,8 +1,8 @@
 #開発環境
 
 #ベースURL
-BASE_URL=http://local.org:8080/
+BASE_URL=http://192.168.33.10:8080/
 
 #画像ファイルパス
-IMAGE_PATH=http://local.org:8080/static/img/
-UPLOAD_PATH=http://local.org:8080/static/files/
+IMAGE_PATH=hhttp://192.168.33.10:8080/static/img/
+UPLOAD_PATH=http://192.168.33.10:8080/static/files/

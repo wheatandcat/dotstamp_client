@@ -77,6 +77,10 @@ module.exports = [
                 precss,
                 sorting,
             ]
+        },
+        watchOptions: {
+            aggregateTimeout: 300,
+            poll: 1000,
         }
     },
 ]
