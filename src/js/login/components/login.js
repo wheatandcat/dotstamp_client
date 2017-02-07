@@ -5,7 +5,9 @@ import {Link} from "react-router"
 import { FormGroup, Col, Button, Grid, Row, Jumbotron, Form } from "react-bootstrap"
 
 export default class Login extends Component {
-
+    /**
+     * ログインする
+     */
     login() {
         let email = this.refs.email.value
         let password = this.refs.password.value
@@ -14,10 +16,8 @@ export default class Login extends Component {
             email: email,
             password: password
         }
-        console.log(action)
 
-        Http.postApi("login/check/", action).then((response) => {
-            console.log(response)
+        Http.postApi("login/check/", action).then(() => {
             console.log("ログインしました")
             location.href = "/"
         }).catch((err) => {
@@ -44,11 +44,11 @@ export default class Login extends Component {
                     </Col>
                     <Col md={6}>
                         <FormGroup controlId="formHorizontalEmail">
-                            <input type="text" className="form-control" placeholder="メールアドレス" ref="email" />
+                            <input type="text" id="user" name="user" className="form-control" placeholder="メールアドレス" ref="email" />
                         </FormGroup>
                         <Form componentClass="fieldset" inline>
                             <FormGroup controlId="formHorizontalPassword">
-                                <input type="text" className="form-control" placeholder="パスワード" ref="password" size="45"/>&nbsp;&nbsp;
+                                <input type="text" className="form-control" id="password" name="password" placeholder="パスワード" ref="password" size="45"/>&nbsp;&nbsp;
                                 <Button bsStyle="success" onClick={() => this.login()}>
                                     ログイン
                                 </Button>

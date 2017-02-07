@@ -44,10 +44,10 @@ export default class New extends Component {
                     </Col>
                     <Col md={6}>
                         <FormGroup controlId="formHorizontalEmail">
-                            <input type="text" className="form-control" placeholder="メールアドレス" ref="email" />
+                            <input type="text" className="form-control" id="user" name="user" placeholder="メールアドレス" ref="email" />
                         </FormGroup>
                         <FormGroup controlId="formHorizontalPassword">
-                            <input type="text" className="form-control" placeholder="パスワード" ref="password"/>
+                            <input type="text" className="form-control" id="password" name="password" placeholder="パスワード" ref="password"/>
                         </FormGroup>
                         <FormGroup>
                             <Col smOffset={4}>

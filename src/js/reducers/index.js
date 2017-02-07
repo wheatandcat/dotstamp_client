@@ -8,6 +8,7 @@ import contributionForm from "../contribution/reducers/form"
 import errorShow from "../error/reducers/show"
 
 import userContributionList from "../user/reducers/contributionList"
+import userMypage from "../user/reducers/mypage"
 
 import characterList from "../character/reducers/list"
 
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
     contributionForm: contributionForm,
     errorShow: errorShow,
     userContributionList: userContributionList,
+    userMypage: userMypage,
     loginNew: loginNew,
     loginAuth: loginAuth,
     characterList: characterList

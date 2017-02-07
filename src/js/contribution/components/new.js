@@ -12,6 +12,7 @@ export default class New extends Component {
      */
     getList () {
         Http.postApi("characterImage/list/").then((response) => {
+            console.log (response.body)
             this.props.setCharacterImageList(response.body)
 
             if (response.body.Image.length > 0) {
