@@ -10,6 +10,7 @@ import ContributionShow from "./contribution/containers/show"
 
 import UserContributionList from "./user/containers/contributionList"
 import loginNew from "./login/containers/new"
+import loginLogin from "./login/containers/login"
 
 import CharacterList from "./character/containers/list"
 
@@ -53,6 +54,7 @@ class App extends Component {
                         <Route path="/user/contributionList" component={UserContributionList} />
                         <Route path="/character/list" component={CharacterList} />
                         <Route path="/login/new" component={loginNew} />
+                        <Route path="/login/login" component={loginLogin} />
                     </Route>
                 </Router>
             </Provider>

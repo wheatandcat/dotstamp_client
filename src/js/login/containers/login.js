@@ -1,7 +1,7 @@
 import { connect } from "react-redux"
 
-import Auth from "../components/auth"
-import Actions from "../actions/auth"
+import Login from "../components/login"
+import Actions from "../actions/new"
 import ActionsErrorShow from "../../error/actions/show"
 
 function mapStateToProps (state) {
@@ -10,11 +10,8 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
     return {
-        auth: (user) => {
-            dispatch(Actions.auth(user))
-        },
-        logout: () => {
-            dispatch(Actions.logout())
+        loginUser: () => {
+            dispatch(Actions.loginUser())
         },
         showError: (error) => {
             dispatch(ActionsErrorShow.showError(error))
@@ -22,6 +19,4 @@ function mapDispatchToProps (dispatch) {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps, null, {
-    pure: false
-})(Auth)
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

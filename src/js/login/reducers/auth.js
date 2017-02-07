@@ -8,6 +8,11 @@ export default function Login (state = initialState , action) {
     case "SET_LOGIN_AUTH": {
         return JSON.parse(JSON.stringify(action))
     }
+    case "LOGOUT_LOGIN_AUTH": {
+        state.Login = false
+        state.Name = ""
+        return JSON.parse(JSON.stringify(state))
+    }
     default:
         return state
     }

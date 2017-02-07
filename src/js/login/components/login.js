@@ -2,11 +2,11 @@
 import React, {Component, PropTypes} from "react"
 import Http from "../../utils/http"
 import {Link} from "react-router"
-import { ButtonToolbar, FormGroup, Col, Button, Grid, Row, Jumbotron } from "react-bootstrap"
+import { FormGroup, Col, Button, Grid, Row, Jumbotron, Form } from "react-bootstrap"
 
-export default class New extends Component {
+export default class Login extends Component {
 
-    new() {
+    login() {
         let email = this.refs.email.value
         let password = this.refs.password.value
 
@@ -16,10 +16,10 @@ export default class New extends Component {
         }
         console.log(action)
 
-        Http.postApi("login/new/", action).then((response) => {
+        Http.postApi("login/check/", action).then((response) => {
             console.log(response)
-            console.log("登録しました")
-            location.href = "/#/"
+            console.log("ログインしました")
+            location.href = "/"
         }).catch((err) => {
             this.props.showError(err)
         })
@@ -46,23 +46,18 @@ export default class New extends Component {
                         <FormGroup controlId="formHorizontalEmail">
                             <input type="text" className="form-control" placeholder="メールアドレス" ref="email" />
                         </FormGroup>
-                        <FormGroup controlId="formHorizontalPassword">
-                            <input type="text" className="form-control" placeholder="パスワード" ref="password"/>
-                        </FormGroup>
-                        <FormGroup>
-                            <Col smOffset={4}>
-                                <ButtonToolbar>
-                                    <Button bsStyle="link">キャンセル</Button>
-                                    <Button bsStyle="success" onClick={() => this.new()}>
-                                        規約に同意して登録する
-                                    </Button>
-                                </ButtonToolbar>
-                            </Col>
-                        </FormGroup>
+                        <Form componentClass="fieldset" inline>
+                            <FormGroup controlId="formHorizontalPassword">
+                                <input type="text" className="form-control" placeholder="パスワード" ref="password" size="45"/>&nbsp;&nbsp;
+                                <Button bsStyle="success" onClick={() => this.login()}>
+                                    ログイン
+                                </Button>
+                            </FormGroup>
+                        </Form>
                         <br />
                         <br />
                         <Link to="login/login">
-                            <Button bsStyle="link">登録済みの場合は、こちら</Button>
+                            <Button bsStyle="link">メールアドレスを入力して登録する場合は、こちら</Button>
                         </Link>
                     </Col>
                 </Row>
@@ -71,6 +66,6 @@ export default class New extends Component {
     }
 }
 
-New.propTypes = {
+Login.propTypes = {
     showError: PropTypes.func
 }

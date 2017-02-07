@@ -13,8 +13,6 @@ export default class List extends Component {
     componentWillMount () {
         // TODO:既に持っていたら取らないようにする
         this.getList()
-
-        console.log (this.props)
     }
     /**
      * リストを取得する

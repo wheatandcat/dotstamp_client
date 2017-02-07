@@ -1,3 +1,4 @@
+/*eslint no-console: ["error", { allow: ["log", "error"] }] */
 import React, {PropTypes, Component} from "react"
 import Http from "../../utils/http"
 import {Nav, NavItem, NavDropdown, MenuItem, Glyphicon} from "react-bootstrap"
@@ -14,6 +15,19 @@ export default class Auth extends Component {
         Http.postApi("login/auth/").then((response) => {
             this.props.auth(response.body)
         }).catch((err) => {
+            this.props.showError(err)
+        })
+    }
+    /**
+     * ログアウトする
+     */
+    logout() {
+        Http.postApi("login/logout/").then((response) => {
+            this.props.logout(response.body)
+            console.log("ログインしました")
+            location.href = "/"
+        }).catch((err) => {
+            console.log(err)
             this.props.showError(err)
         })
     }
@@ -64,11 +78,9 @@ export default class Auth extends Component {
                         </MenuItem>
                     </LinkContainer>
                     <MenuItem divider />
-                    <LinkContainer to="/user/logout">
-                        <MenuItem eventKey={3.4}>
-                            <Glyphicon glyph="log-out"/>&nbsp;ログアウト
-                        </MenuItem>
-                    </LinkContainer>
+                    <MenuItem eventKey={3.4} onClick={() => this.logout()}>
+                        <Glyphicon glyph="log-out"/>&nbsp;ログアウト
+                    </MenuItem>
                 </NavDropdown>
             </Nav>
         )
@@ -81,7 +93,7 @@ export default class Auth extends Component {
     noLogin() {
         return (
             <Nav pullRight>
-                <LinkContainer to="/login/new">
+                <LinkContainer to="/login/login">
                     <NavItem eventKey={1} >
                         ログインする
                     </NavItem>
@@ -103,6 +115,7 @@ export default class Auth extends Component {
 
 Auth.propTypes = {
     auth: PropTypes.func,
+    logout: PropTypes.func,
     showError: PropTypes.func,
     loginAuth: PropTypes.object,
 }
