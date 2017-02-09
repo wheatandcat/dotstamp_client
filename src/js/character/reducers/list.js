@@ -8,20 +8,25 @@ const initialState = {
         fileName: "",
         select: 0
     },
-    imageType: IMAGE_DISPLAY_TYPE_CHARACTER
+    imageType: IMAGE_DISPLAY_TYPE_CHARACTER,
+    load: false,
 }
 
 export default function List (state = initialState , action) {
     switch (action.type) {
     case "GET_CHARACTER_LIST": {
-        let tmp = []
+        if (!Array.isArray(action.list.Image)) {
+            action.list.Image = []
+        }
 
+        let tmp = []
         for (let value of action.list.Image) {
             value["imageType"] = action.imageType
             tmp.push(value)
         }
 
         state.list = tmp
+        state.load = true
 
         return JSON.parse(JSON.stringify(state))
     }

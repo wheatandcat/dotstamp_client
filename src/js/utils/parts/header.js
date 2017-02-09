@@ -11,7 +11,7 @@ import {
 import LoginAuth from "./../../login/containers/auth"
 import {Link} from "react-router"
 
-import {HeaderInfo} from "./../../../css/common"
+import {HeaderInfo} from "./../../../css/common.css"
 
 export default class Header extends React.Component {
     /**

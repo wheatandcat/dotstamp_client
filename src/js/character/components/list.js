@@ -1,17 +1,18 @@
 import React, {PropTypes, Component} from "react"
 import Dropzone from "react-dropzone"
-import { ListGroup, ListGroupItem, ButtonToolbar, Button, Well } from "react-bootstrap"
+import {ListGroup, ListGroupItem, ButtonToolbar, Button, Well, Alert} from "react-bootstrap"
 
 import Http from "../../utils/http"
 import Upload from "../../utils/upload"
 import Slider from "../../utils/slider"
 import Image from "../../utils/image"
-import { IMAGE_DISPLAY_TYPE_CHARACTER_MAIN } from "../../utils/image"
+import {IMAGE_DISPLAY_TYPE_CHARACTER_MAIN} from "../../utils/image"
 import Footer from "../../utils/parts/footer"
+import {ImageUpload} from "../../../css/character.css"
+
 
 export default class List extends Component {
     componentWillMount () {
-        // TODO:既に持っていたら取らないようにする
         this.getList()
     }
     /**
@@ -81,9 +82,20 @@ export default class List extends Component {
     selectmCharacter (icon) {
         this.props.setIcon(icon.ID)
     }
+    /**
+     * アイコンのメイン表示を取得する
+     */
     getIconMain () {
-        if (this.props.characterList.icon.fileName == "") {
+        if (!this.props.characterList.load) {
             return ""
+        }
+
+        if (this.props.characterList.icon.fileName == "") {
+            return (
+                <Alert bsStyle="warning">
+                    <strong>警告！</strong> 設定している画像がありません。
+                </Alert>
+            )
         }
 
         return (
@@ -95,6 +107,9 @@ export default class List extends Component {
             </div>
         )
     }
+    /**
+     * アイコンメニューを取得する
+     */
     getIconMenu () {
         return (
             <div className="center-block">
@@ -118,7 +133,7 @@ export default class List extends Component {
             <div>
                 <ListGroup>
                     <ListGroupItem>
-                        <h1>キャラクター</h1>
+                        <h1>キャラ設定</h1>
                         <div>
                             {this.getIconMain()}
                         </div>
@@ -134,7 +149,11 @@ export default class List extends Component {
                         </div>
                     </ListGroupItem>
                     <ListGroupItem>
-                        <Dropzone accept="image/gif,image/jpeg,image/png,image/jpg" onDrop={this.handleDropFile.bind(this)}>
+                        <Dropzone
+                            accept="image/gif,image/jpeg,image/png,image/jpg"
+                            onDrop={this.handleDropFile.bind(this)}
+                            className={ImageUpload}
+                        >
                             <div>
                                 ファイルを指定またはドラッグ&ドロップ
                                 <p>

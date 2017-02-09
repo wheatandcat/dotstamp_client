@@ -6,10 +6,11 @@ import { TALK_TYPE_TEXT, TALK_TYPE_IMAGE } from "../../actions/talk"
 import Upload from "../../../utils/upload"
 import Slider from "../../../utils/slider"
 
-import { Edit, Group, GroupSlider } from "./../../../../css/form"
+import { Edit, Group } from "./../../../../css/form.css"
 
 export default class Main extends Component {
     componentWillMount () {}
+    
     /**
      * 本文を変更する
      *
@@ -124,8 +125,8 @@ export default class Main extends Component {
     render () {
         return (
             <div>
-                <div className="btn-toolbar" role="toolbar">
-                    <Well className={GroupSlider}>
+                <div>
+                    <Well bsStyle="info">
                         <Slider list={this.props.characterList.list} handleClick={(id) => this.props.changeCharacter(id)} />
                     </Well>
                 </div>

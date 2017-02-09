@@ -7,7 +7,7 @@ import Images from "../../utils/image"
 import Footer from "../../utils/parts/footer"
 import ContributionShowFrame from "../components/show/frame"
 
-import { line, Toggle } from "./../../../css/common"
+import { line, Toggle } from "./../../../css/common.css"
 
 import {IMAGE_DISPLAY_TYPE_CHARACTER} from "../../utils/image"
 
@@ -107,7 +107,6 @@ export default class List extends Component {
      * @return {object} html
      */
     gatItem(obj) {
-        console.log(obj)
         return (
             <div>
                 <Media>

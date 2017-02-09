@@ -5,8 +5,8 @@ import Image from "../../../utils/image"
 import { IMAGE_DISPLAY_TYPE_TALK_IMAGE, IMAGE_DISPLAY_TYPE_CHARACTER_TALK } from "../../../utils/image"
 import { TALK_TYPE_IMAGE } from "../../actions/talk"
 
-import { Balloon } from "./../../../../css/talk"
-import { line } from "./../../../../css/common"
+import { Balloon } from "./../../../../css/talk.css"
+import { line } from "./../../../../css/common.css"
 
 export default class Talk extends Component {
     /**

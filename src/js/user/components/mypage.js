@@ -1,6 +1,6 @@
 import React, {PropTypes, Component} from "react"
 import {Grid, Row, Col, ListGroup, ListGroupItem, Button, Glyphicon, Panel, ControlLabel} from "react-bootstrap"
-import { Group } from "./../../../../css/form"
+import { Group } from "./../../../../css/form.css"
 import Upload from "../../../utils/upload"
 
 export default class Mypage extends Component {

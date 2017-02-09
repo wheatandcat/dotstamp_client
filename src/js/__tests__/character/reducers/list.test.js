@@ -37,6 +37,7 @@ describe("ReducersList", () => {
 
         const result = Reducers(undefined, Actions.getList(params.list, 4))
 
+
         expect(result).toEqual(expected)
     })
 

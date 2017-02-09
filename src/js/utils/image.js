@@ -3,10 +3,11 @@
 import React, { Component, PropTypes } from "react"
 import { Image } from "react-bootstrap"
 
-import { UserIcon } from "./../../css/user"
-import { TalkIcon, TalkImage } from "./../../css/talk"
-import { FormIcon } from "./../../css/form"
-import { MainIcon } from "./../../css/character"
+
+import { TalkIcon, TalkImage } from "./../../css/talk.css"
+import { FormIcon } from "./../../css/form.css"
+import { MainIcon } from "./../../css/character.css"
+import { UserIcon } from "./../../css/user.css"
 
 // 表示タイプ
 export const IMAGE_DISPLAY_TYPE_NONE = 0

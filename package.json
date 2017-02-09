@@ -1,5 +1,5 @@
 {
-  "name": "ttol_server",
+  "name": "dotstamp_client",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,28 +7,21 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint client/js/**/*.js"
+    "test": "jest --watch"
   },
   "jest": {
-    "scriptPreprocessor": "<rootDir>/node_modules/webpack-babel-jest",
-    "testFileExtensions": [
-      "es6",
-      "js"
-    ],
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "es6"
-    ]
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/js/__mocks__/fileMock.js",
+      "\\.(css|less)$": "<rootDir>/src/js/__mocks__/styleMock.js"
+    }
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/pandemo/ttol_server.git"
+    "url": "git+ssh://git@bitbucket.org:pandemo/dotstamp_client.git"
   },
   "author": "",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/pandemo/ttol_server#readme",
+  "homepage": "https://bitbucket.org/pandemo/dotstamp_client#readme",
   "devDependencies": {
     "autoprefixer": "^6.6.1",
     "babel-jest": "16.0.0",
@@ -43,6 +36,7 @@
     "browserify": "^13.1.0",
     "css-loader": "^0.26.1",
     "cssnano": "^3.10.0",
+    "dateformat": "^2.0.0",
     "enzyme": "2.4.1",
     "escodegen": "^1.8.1",
     "esformatter": "^0.10.0",

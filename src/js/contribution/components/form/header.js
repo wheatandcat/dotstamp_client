@@ -16,7 +16,7 @@ import {
 import FormMain from "../../containers/form/main"
 import TalkBoard from "../../containers/talk/board"
 
-import {Preview, Footer, Group, GroupList} from "./../../../../css/form"
+import {Preview, Footer, Group, GroupList} from "./../../../../css/form.css"
 
 var self
 
@@ -125,7 +125,7 @@ export default class Header extends Component {
         }
 
         return (
-            <div>
+            <FormGroup>
                 <Form inline>
                     {tagList.map((tag) => {
                         return (
@@ -142,7 +142,7 @@ export default class Header extends Component {
                         </Button>
                     </FormGroup>
                 </Form>
-            </div>
+            </FormGroup>
         )
     }
     /**

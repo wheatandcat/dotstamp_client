@@ -19,7 +19,7 @@ export default class New extends Component {
         Http.postApi("login/new/", action).then((response) => {
             console.log(response)
             console.log("登録しました")
-            location.href = "/#/"
+            location.href = "/"
         }).catch((err) => {
             this.props.showError(err)
         })
@@ -47,7 +47,7 @@ export default class New extends Component {
                             <input type="text" className="form-control" id="user" name="user" placeholder="メールアドレス" ref="email" />
                         </FormGroup>
                         <FormGroup controlId="formHorizontalPassword">
-                            <input type="text" className="form-control" id="password" name="password" placeholder="パスワード" ref="password"/>
+                            <input type="password" className="form-control" id="password" name="password" placeholder="パスワード" ref="password"/>
                         </FormGroup>
                         <FormGroup>
                             <Col smOffset={4}>

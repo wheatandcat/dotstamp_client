@@ -48,7 +48,7 @@ export default class Login extends Component {
                         </FormGroup>
                         <Form componentClass="fieldset" inline>
                             <FormGroup controlId="formHorizontalPassword">
-                                <input type="text" className="form-control" id="password" name="password" placeholder="パスワード" ref="password" size="45"/>&nbsp;&nbsp;
+                                <input type="password" className="form-control" id="password" name="password" placeholder="パスワード" ref="password" size="45"/>&nbsp;&nbsp;
                                 <Button bsStyle="success" onClick={() => this.login()}>
                                     ログイン
                                 </Button>
@@ -56,7 +56,7 @@ export default class Login extends Component {
                         </Form>
                         <br />
                         <br />
-                        <Link to="login/login">
+                        <Link to="login/new">
                             <Button bsStyle="link">メールアドレスを入力して登録する場合は、こちら</Button>
                         </Link>
                     </Col>

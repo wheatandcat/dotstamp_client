@@ -4,7 +4,7 @@ import ContributionTalk from "../containers/talk/main"
 import {Well, Button, Label} from "react-bootstrap"
 import Footer from "../../utils/parts/footer"
 
-import { Tag } from "./../../../css/talk"
+import { Tag } from "./../../../css/talk.css"
 
 
 export default class Show extends Component {

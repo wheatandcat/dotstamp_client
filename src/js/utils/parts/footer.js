@@ -1,7 +1,7 @@
 import React from "react"
 import { Breadcrumb } from "react-bootstrap"
 
-import { FooterInfo } from "./../../../css/common"
+import { FooterInfo } from "./../../../css/common.css"
 
 export default class Footer extends React.Component {
     /**

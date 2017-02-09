@@ -106,8 +106,9 @@ export default class Slider extends Component {
     getList () {
         return (
             <Form inline>
-                <FormGroup>
-                    {Object.keys(this.props.list).map((key) => this.getImage(this.props.list[key].FileName, this.props.list[key].imageType, this.props.list[key].ID, key)
+                <FormGroup bsClass="center-block">
+                    {Object.keys(this.props.list).map((key) =>
+                        this.getImage(this.props.list[key].FileName, this.props.list[key].imageType, this.props.list[key].ID, key)
                      )}
                 </FormGroup>
             </Form>
