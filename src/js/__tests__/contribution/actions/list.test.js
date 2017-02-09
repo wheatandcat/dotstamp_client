@@ -1,27 +1,29 @@
-import Actions from "../../../contribution/actions/list"
+import {initList, getList} from "../../../contribution/actions/list"
 
-describe("ActionsList", () => {
-    it("アクション：リストの初期値", () => {
+describe("ContributionActionsList", () => {
+    it("リストの初期値", () => {
         const expected = {
             type: "GET_CONTRIBUTION_LIST",
-            list: []
+            list: [],
+            order: 0,
         }
 
-        const result = Actions.initList()
+        const result = initList()
 
         expect(result).toEqual(expected)
     })
 
-    it("アクション：リストを取得する", () => {
+    it("リストを取得する", () => {
         const expected = {
             type: "GET_CONTRIBUTION_LIST",
             list: [
                 "abc",
                 "edf"
-            ]
+            ],
+            init: 1,
         }
 
-        const result = Actions.getList(["abc", "edf"])
+        const result = getList(["abc", "edf"], 1)
 
         expect(result).toEqual(expected)
     })

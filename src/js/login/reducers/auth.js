@@ -6,6 +6,7 @@ const initialState = {
 export default function Login (state = initialState , action) {
     switch (action.type) {
     case "SET_LOGIN_AUTH": {
+        console.log (action)
         return JSON.parse(JSON.stringify(action))
     }
     case "LOGOUT_LOGIN_AUTH": {

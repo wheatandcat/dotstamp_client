@@ -1,4 +1,6 @@
-import {createStore, compose } from "redux"
+import {createStore, compose, applyMiddleware} from "redux"
+import thunk from "redux-thunk"
+
 import rootReducer from "../reducers/index"
 
 import persistState, {mergePersistedState} from "redux-localstorage"
@@ -9,11 +11,16 @@ const localStorage = compose(
     filter(["loginAuth"])
 )(adapter(window.localStorage))
 
+const middlewares = [
+    thunk,
+]
+
 const finalCreateStore = compose(
-    persistState(localStorage, "auth")
+    persistState(localStorage, "auth"),
+    applyMiddleware(...middlewares)
 )(createStore)
 
-export default function configureStore() {
-    const reducer = compose(mergePersistedState())(rootReducer)
-    return finalCreateStore(reducer)
+export default function configureStore(initialState) {
+    const store = compose(mergePersistedState())(rootReducer)
+    return finalCreateStore(store, initialState)
 }

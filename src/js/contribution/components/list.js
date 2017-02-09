@@ -25,6 +25,7 @@ export default class List extends Component {
             order: this.props.contributionList.order
         }
 
+        this.props.fetchPostsIfNeeded(action)
         Http.postApi("contribution/list/", action).then((response) => {
             return this.props.getList(response.body, init)
         }).catch((err) => {

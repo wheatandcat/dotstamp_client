@@ -1,3 +1,5 @@
+import "babel-polyfill"
+
 import React, { Component, PropTypes } from "react"
 import { render } from "react-dom"
 import { Provider } from "react-redux"
@@ -16,6 +18,9 @@ import CharacterList from "./character/containers/list"
 
 import ErrorShow from "./error/containers/show"
 import Header from "./utils/parts/header"
+
+import { fetchPostsIfNeeded } from "./contribution/actions/list"
+
 
 import { IndexRoute, Router, Route, hashHistory } from "react-router"
 

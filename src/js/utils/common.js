@@ -7,5 +7,6 @@ import dateFormat from "dateformat"
  * @return {string} 日付
  */
 export function DateFormat(data) {
+    
     return dateFormat(data, "yyyy/mm/dd hh:MM:ss")
 }

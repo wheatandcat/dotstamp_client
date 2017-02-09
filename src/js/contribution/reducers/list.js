@@ -5,9 +5,16 @@ const initialState = {
     next: true,
     init: true,
     itemMap: {},
+    fetch: {
+        isFetching: false,
+        didInvalidate: false,
+        items: [],
+    }
 }
 
 export default function List (state = initialState , action) {
+    console.log (action)
+
     switch (action.type) {
     case "GET_CONTRIBUTION_LIST": {
         state.list = action.list

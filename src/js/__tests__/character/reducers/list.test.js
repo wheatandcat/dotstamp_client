@@ -1,7 +1,9 @@
 import Actions from "../../../character/actions/list"
 import Reducers from "../../../character/reducers/list"
+import {IMAGE_DISPLAY_TYPE_CHARACTER, IMAGE_DISPLAY_TYPE_CHARACTER_FORM} from "../../../utils/image"
 
-describe("ReducersList", () => {
+
+describe("CharacterReducersList", () => {
     it("リストを取得する", () => {
         const params = {
             list: {
@@ -25,18 +27,19 @@ describe("ReducersList", () => {
             list: [
                 {
                     ID: 1,
-                    imageType: 4
+                    imageType: IMAGE_DISPLAY_TYPE_CHARACTER_FORM
                 },
                 {
                     ID: 2,
-                    imageType: 4
+                    imageType: IMAGE_DISPLAY_TYPE_CHARACTER_FORM
                 }
             ],
-            imageType: 4
+            imageType: IMAGE_DISPLAY_TYPE_CHARACTER,
+            load: true,
         }
 
-        const result = Reducers(undefined, Actions.getList(params.list, 4))
 
+        const result = Reducers(undefined, Actions.getList(params.list, 4))
 
         expect(result).toEqual(expected)
     })
@@ -66,15 +69,16 @@ describe("ReducersList", () => {
                 {
                     ID: 1,
                     FileName: "abc.jpg",
-                    imageType: 4
+                    imageType: IMAGE_DISPLAY_TYPE_CHARACTER_FORM
                 },
                 {
                     ID: 2,
                     FileName: "def.jpg",
-                    imageType: 4
+                    imageType: IMAGE_DISPLAY_TYPE_CHARACTER_FORM
                 }
             ],
-            imageType: 4
+            imageType: IMAGE_DISPLAY_TYPE_CHARACTER,
+            load: true,
         }
         Reducers(undefined, Actions.getList(params.list, 4))
         const result = Reducers(undefined, Actions.setIcon(1))
