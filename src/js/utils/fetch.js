@@ -8,7 +8,7 @@ var host = (typeof (BASE_URL) == "undefined") ? "http://192.168.33.10:8080/" : B
 var fetchStateList = []
 
 /**
- * 必要な場合はPOST通信が行う
+ * 必要な場合はPOST通信を行う
  *
  * @param  {string} url URL
  * @param  {string} type タイプ
@@ -98,18 +98,80 @@ function receiveErrorResponse(url, response) {
  * @return {object} レスポンス
  */
 function fetchPosts(url, type, paramas, receiveParam) {
+
     const requestParams = {
         method: "POST",
+        credentials: "same-origin",
         headers: {
-            "Accept": "*/*",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: Object.keys(paramas).map(function(key){ return key+"="+ paramas[key] }).join("&"),
+    }
+
+    return dispatch => {
+        return fetch(host + url, requestParams)
+        .then(response =>
+            response.json().then(json => ({
+                status: response.status,
+                json
+            })
+        ))
+        .then(
+            ({ status, json }) => {
+                if (status >= 400) {
+                    return dispatch(receiveErrorResponse(url, json))
+                }
+
+                dispatch(receiveResponse(url, type, json, receiveParam))
+            }
+        )
+    }
+}
+
+/**
+ * 必要な場合はアップロード通信を行う
+ *
+ * @param  {string} url URL
+ * @param  {string} type タイプ
+ * @param  {object} paramas パラメータ
+ * @param  {object} receiveParam 返しパラメータ
+ * @return {object} アクション
+ */
+export function fetchUploadIfNeeded(url, type, paramas, receiveParam = {}) {
+    return (dispatch) => {
+        if (shouldFetchPosts(url)) {
+            // thunkからthunkを呼び出せる！
+            return dispatch(fetchUpload(url, type, paramas, receiveParam))
+        } else {
+            // 下記コードを呼び、wait forには何もないことを知らせる
+            return Promise.resolve()
         }
+    }
+}
+
+/**
+ * アップロードする
+ *
+ * @param  {string} url URL
+ * @param  {string} type タイプ
+ * @param  {object} paramas パラメータ
+ * @param  {object} receiveParam 返しパラメータ
+ * @return {object} レスポンス
+ */
+function fetchUpload(url, type, paramas, receiveParam) {
+    const requestParams = {
+        method: "POST",
+        credentials: "include",
+        headers: {
+            "Accept": "application/json, */*",
+        },
+        body: paramas,
     }
 
     return dispatch => {
         return fetch(host + url, {
             ...requestParams
-        }, ...paramas)
+        })
         .then(response =>
             response.json().then(json => ({
                 status: response.status,

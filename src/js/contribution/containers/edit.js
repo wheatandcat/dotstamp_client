@@ -1,9 +1,7 @@
 import { connect } from "react-redux"
 import Show from "../components/edit"
-import ActionsShow from "../actions/edit"
-import ActionsForm from "../actions/form"
-import ActionsCharacterList from "../../character/actions/list"
-import ActionsErrorShow from "../../error/actions/show"
+import * as types from "../../constants/ActionTypes"
+import {fetchPostsIfNeeded} from "../../utils/fetch"
 
 import { IMAGE_DISPLAY_TYPE_CHARACTER_FORM } from "../../utils/image"
 
@@ -13,17 +11,21 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
     return {
-        getDetail: (id, title, body, tagList) => {
-            dispatch(ActionsShow.getDetail(id, title, body, tagList))
+        getDetail: (id) => {
+            dispatch(fetchPostsIfNeeded(
+                    "contribution/edit/" + id,
+                    types.GET_CONTRIBUTION_EDIT
+                )
+            )
         },
-        setCharacterImageList: (response) => {
-            dispatch(ActionsCharacterList.getList(response, IMAGE_DISPLAY_TYPE_CHARACTER_FORM))
-        },
-        changeCharacter: (character) => {
-            dispatch(ActionsForm.changeCharacter(character))
-        },
-        showError: (error) => {
-            dispatch(ActionsErrorShow.showError(error))
+        setCharacterImageList: () => {
+            dispatch(fetchPostsIfNeeded(
+                    "characterImage/list/",
+                    types.GET_CHARACTER_LIST,
+                    {},
+                    {imageType:IMAGE_DISPLAY_TYPE_CHARACTER_FORM}
+                )
+            )
         }
     }
 }

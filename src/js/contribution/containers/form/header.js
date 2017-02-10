@@ -1,8 +1,10 @@
 import { connect } from "react-redux"
 import FormHeader from "../../components/form/header"
-
-import ActionsForm from "../../actions/form"
+import {changeTitle, changeTag, changeHeight} from "../../actions/form"
+import {fetchPostsIfNeeded} from "../../../utils/fetch"
+import * as types from "../../../constants/ActionTypes"
 import ActionsErrorShow from "../../../error/actions/show"
+
 
 function mapStateToProps (state) {
     return state
@@ -11,13 +13,22 @@ function mapStateToProps (state) {
 function mapDispatchToProps (dispatch) {
     return {
         changeTitle: (title) => {
-            dispatch(ActionsForm.changeTitle(title))
+            dispatch(changeTitle(title))
         },
         changeTag: (tag) => {
-            dispatch(ActionsForm.changeTag(tag))
+            dispatch(changeTag(tag))
         },
         changeHeight: (height) => {
-            dispatch(ActionsForm.changeHeight(height))
+            dispatch(changeHeight(height))
+        },
+        new: (action) => {
+            console.log (action)
+            dispatch(fetchPostsIfNeeded(
+                    "contribution/new/",
+                    types.NEW_CONTRIBUTION_FORM,
+                    action
+                )
+            )
         },
         showError: (error) => {
             dispatch(ActionsErrorShow.showError(error))

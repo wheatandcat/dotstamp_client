@@ -1,17 +1,7 @@
 import React, {Component, PropTypes} from "react"
 
 import Http from "../../../utils/http"
-import {
-    Button,
-    ButtonToolbar,
-    SplitButton,
-    MenuItem,
-    ListGroup,
-    ListGroupItem,
-    FormGroup,
-    FormControl,
-    Form
-} from "react-bootstrap"
+import {Button, ButtonToolbar, SplitButton, MenuItem, ListGroup, ListGroupItem, FormGroup, FormControl, Form} from "react-bootstrap"
 
 import FormMain from "../../containers/form/main"
 import TalkBoard from "../../containers/talk/board"
@@ -71,11 +61,17 @@ export default class Header extends Component {
             tag: tag,
             body: JSON.stringify(body)
         }
-
+        /*
         if (contributionId == null) {
             Http.postApi("contribution/new/", action).then((response) => {
                 location.href = "/#/contribution/edit/" + response.body
             })
+        } else {
+            Http.postApi("contribution/save/", action).then(() => {})
+        }
+        */
+        if (contributionId == null) {
+            this.props.new(action)
         } else {
             Http.postApi("contribution/save/", action).then(() => {})
         }
@@ -212,5 +208,6 @@ Header.propTypes = {
     contributionForm: PropTypes.object,
     contributionId: PropTypes.string,
     contributionTalk: PropTypes.array,
-    title: PropTypes.string
+    title: PropTypes.string,
+    new: PropTypes.func,
 }

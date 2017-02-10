@@ -1,11 +1,10 @@
-import Actions from "../../../contribution/actions/edit"
+import * as types from "../../../constants/ActionTypes"
 import Reducers from "../../../contribution/reducers/edit"
 
-
-describe("ReducersList", () => {
+describe("contribution/reducers/edit", () => {
     it("詳細を取得する", () => {
         const expected = {
-            type: "GET_CONTRIBUTION_EDIT",
+            type: types.GET_CONTRIBUTION_EDIT,
             id: 1,
             title: "abc",
             body: "abcdef",
@@ -15,7 +14,7 @@ describe("ReducersList", () => {
             ]
         }
 
-        const result = Reducers(undefined, Actions.getDetail(1, "abc", "abcdef", ["efg", "hij"]))
+        const result = Reducers(undefined, expected)
 
         expect(result).toEqual(expected)
     })

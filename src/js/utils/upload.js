@@ -13,7 +13,6 @@ export default class Upload {
             let formData = new FormData()
             fileList.forEach(function(f) {
                 formData.append("file", f)
-
                 Http.postImageApi(url, formData).then((response) => {
                     resolve(response)
                 })

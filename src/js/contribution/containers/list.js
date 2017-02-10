@@ -2,7 +2,7 @@ import { connect } from "react-redux"
 import List from "../components/list"
 import {next, deleteItem} from "../actions/list"
 import {fetchPostsIfNeeded} from "../../utils/fetch"
-import * as types from "../constants/ActionTypes"
+import * as types from "../../constants/ActionTypes"
 
 function mapStateToProps (state) {
     return state

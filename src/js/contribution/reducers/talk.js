@@ -1,3 +1,5 @@
+import * as types from "../../constants/ActionTypes"
+
 // 初期ステート設定
 var list = []
 
@@ -5,11 +7,11 @@ const initialState = []
 
 export default function Talk (state = initialState , action) {
     switch (action.type) {
-    case "GET_CONTRIBUTION_EDIT": {
-        list = action.body
+    case types.GET_CONTRIBUTION_EDIT: {
+        list = action.response.Body
         return list
     }
-    case "ADD_CONTRIBUTION_BODY": {
+    case types.ADD_CONTRIBUTION_FORM_BODY: {
         let priority = list.length
 
         list.push({
@@ -25,7 +27,7 @@ export default function Talk (state = initialState , action) {
 
         return state
     }
-    case "EDIT_CONTRIBUTION_BODY": {
+    case types.EDIT_CONTRIBUTION_FORM_BODY: {
         list[action.priority].Body = action.body
         list[action.priority].Character = action.character
         list[action.priority].TalkType = action.talkType

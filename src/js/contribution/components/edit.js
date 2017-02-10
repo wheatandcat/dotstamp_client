@@ -1,5 +1,4 @@
 import React, {PropTypes, Component} from "react"
-import Http from "../../utils/http"
 import FormHeader from "../containers/form/header"
 
 export default class Edit extends Component {
@@ -12,16 +11,8 @@ export default class Edit extends Component {
      * @param  {number} id 投稿ID
      */
     edit(id) {
-        Http.postApi("contribution/edit/" + id).then((response) => {
-            return this.props.getDetail(id, response.body.Title, response.body.Body, response.body.Tag)
-        })
-        Http.postApi("characterImage/list/").then((response) => {
-            this.props.setCharacterImageList(response.body)
-
-            if (response.body.Image.length > 0) {
-                this.props.changeCharacter(response.body.Image[0])
-            }
-        })
+        this.props.getDetail(id)
+        this.props.setCharacterImageList()
     }
     /**
      * 描画する

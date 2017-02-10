@@ -1,4 +1,6 @@
 import { DIRECTION_LEFT } from "../actions/talk"
+import * as types from "../../constants/ActionTypes"
+
 
 const initialState = {
     edit: false,
@@ -16,7 +18,7 @@ const initialState = {
 }
 
 var onBoardScrollActionTypeList = [
-    "ADD_CONTRIBUTION_BODY"
+    types.ADD_CONTRIBUTION_FORM_BODY
 ]
 
 export default function Form (state = initialState , action) {
@@ -28,39 +30,53 @@ export default function Form (state = initialState , action) {
     }
 
     switch (action.type) {
-    case "EDIT_CONTRIBUTION_BODY":
+    case types.EDIT_CONTRIBUTION_FORM_BODY: {
         state.edit = false
         state.body = ""
         state.priority = null
 
         return JSON.parse(JSON.stringify(state))
-    case "CHANGE_CONTRIBUTION_CHARACTER":
+    }
+    case types.CHANGE_CONTRIBUTION_FORM_CHARACTER: {
         state.character = action.character
 
         return JSON.parse(JSON.stringify(state))
-    case "CHANGE_CONTRIBUTION_BODY":
+    }
+    case types.GET_CHARACTER_LIST: {
+        if (action.response.Image.length > 0) {
+             state.character = action.response.Image[0]
+         }
+
+        return JSON.parse(JSON.stringify(state))
+    }
+    case types.CHANGE_CONTRIBUTION_FORM_BODY: {
         state.body = action.body
 
         return JSON.parse(JSON.stringify(state))
-    case "CHANGE_DIRECTION":
+    }
+    case "CHANGE_DIRECTION": {
         state.directionType = action.directionType
 
-        return state
-    case "DELETE_CONTRIBUTION_BODY":
+        return JSON.parse(JSON.stringify(state))
+    }
+    case "DELETE_CONTRIBUTION_BODY": {
         state.edit = false
         state.body = ""
         state.priority = null
 
         return JSON.parse(JSON.stringify(state))
-    case "CHANGE_CONTRIBUTION_TITLE":
+    }
+    case types.CHANGE_CONTRIBUTION_FORM_TITLE: {
         state.title = action.title
 
         return JSON.parse(JSON.stringify(state))
-    case "CHANGE_CONTRIBUTION_TAG":
+    }
+    case types.CHANGE_CONTRIBUTION_FORM_TAG: {
         state.tag = action.tag
 
         return JSON.parse(JSON.stringify(state))
-    case "SET_CONTRIBUTION_EDIT_BODY":
+    }
+    case "SET_CONTRIBUTION_EDIT_BODY": {
         state.edit = true
         state.body = action.body
         state.priority = action.priority
@@ -68,15 +84,22 @@ export default function Form (state = initialState , action) {
         state.character = action.character
 
         return JSON.parse(JSON.stringify(state))
-    case "GET_CONTRIBUTION_EDIT":
-        state.title = action.title
-        state.tagList = action.tagList
+    }
+    case types.GET_CONTRIBUTION_EDIT: {
+        state.title = action.response.Title
+        state.tagList = action.response.Tag
 
         return JSON.parse(JSON.stringify(state))
-    case "CHANGE_CONTRIBUTION_HEIGHT":
+    }
+    case types.CHANGE_CONTRIBUTION_FORM_HEIGHT: {
         state.height = action.height
 
         return JSON.parse(JSON.stringify(state))
+    }
+    case types.NEW_CONTRIBUTION_FORM: {
+        location.href = "/#/contribution/edit/" + action.response
+        return JSON.parse(JSON.stringify(state))
+    }
     default:
         return state
     }

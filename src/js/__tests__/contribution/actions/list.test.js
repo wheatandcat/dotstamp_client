@@ -1,4 +1,4 @@
-import * as types from "../../../contribution/constants/ActionTypes"
+import * as types from "../../../constants/ActionTypes"
 
 import {next, deleteItem} from "../../../contribution/actions/list"
 

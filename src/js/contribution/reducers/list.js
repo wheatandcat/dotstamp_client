@@ -1,4 +1,4 @@
-import * as types from "../constants/ActionTypes"
+import * as types from "../../constants/ActionTypes"
 
 // 初期ステート設定
 const initialState = {

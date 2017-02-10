@@ -1,9 +1,6 @@
 import React, {PropTypes, Component} from "react"
 import Dropzone from "react-dropzone"
 import {ListGroup, ListGroupItem, ButtonToolbar, Button, Well, Alert} from "react-bootstrap"
-
-import Http from "../../utils/http"
-import Upload from "../../utils/upload"
 import Slider from "../../utils/slider"
 import Image from "../../utils/image"
 import {IMAGE_DISPLAY_TYPE_CHARACTER_MAIN} from "../../utils/image"
@@ -13,21 +10,8 @@ import {ImageUpload} from "../../../css/character.css"
 
 export default class List extends Component {
     componentWillMount () {
-        this.getList()
-    }
-    /**
-     * リストを取得する
-     */
-    getList () {
-        Http.postApi("characterImage/list/").then((response) => {
-            this.props.getList(response.body)
-
-            if (response.body.Image.length > 0) {
-                this.props.setIcon(response.body.Image[0].ID)
-            }
-        }).catch((err) => {
-            this.props.showError(err)
-        })
+        // リストを取得
+        this.props.getList()
     }
     /**
      * 画像ドロップの監視
@@ -43,36 +27,10 @@ export default class List extends Component {
      * @param  {array} fileList ファイルリスト
      */
     uploadFile (fileList) {
-        Upload.imageFileList(fileList, "characterImage/upload/").then((response) => {
-            this.props.getList(response.body)
+        let formData = new FormData()
 
-            if (response.body.Image.length > 0) {
-                this.props.setIcon(response.body.Image[response.body.Image.length - 1].ID)
-            }
-        }).catch((err) => {
-            this.props.showError(err)
-        })
-    }
-    /**
-     * キャラクターを削除する
-     *
-     * @param  {int} id キャラクターID
-     */
-    delteCharacter (id) {
-        Http.postApi("characterImage/delete/" + id).then((response) => {
-            this.props.getList(response.body)
-
-            if (response.body.Image.length > 0) {
-                let select = this.props.characterList.icon.select - 1
-                if (select < 0) {
-                    select = 0
-                }
-
-                this.props.setIcon(response.body.Image[select].ID)
-            }
-        }).catch((err) => {
-            this.props.showError(err)
-        })
+        formData.append("file", fileList[0])
+        this.props.upload(formData)
     }
     /**
      * キャラクターを選択する
@@ -115,7 +73,10 @@ export default class List extends Component {
             <div className="center-block">
                 <Well bsStyle="info">
                     <ButtonToolbar bsStyle="center-block">
-                        <Button bsStyle="danger" onClick={() => this.delteCharacter(this.props.characterList.icon.id)}>
+                        <Button
+                            bsStyle="danger"
+                            onClick={() => this.props.delete(this.props.characterList.icon.id)}
+                        >
                             削除
                         </Button>
                     </ButtonToolbar>
@@ -173,5 +134,6 @@ List.propTypes = {
     characterList: PropTypes.object,
     setIcon: PropTypes.func,
     getList: PropTypes.func,
-    showError: PropTypes.func,
+    delete: PropTypes.func,
+    upload: PropTypes.func,
 }
