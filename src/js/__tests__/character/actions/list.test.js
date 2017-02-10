@@ -1,18 +1,6 @@
 import Actions from "../../../character/actions/list"
 
 describe("character/action", () => {
-    it("アクション：リストの初期値", () => {
-        const expected = {
-            type: "GET_CHARACTER_LIST",
-            list: [],
-            imageType: 4
-        }
-
-        const result = Actions.initList()
-
-        expect(result).toEqual(expected)
-    })
-
     it("アクション：リストを取得する", () => {
         const expected = {
             type: "GET_CHARACTER_LIST",

@@ -1,29 +1,26 @@
-import {initList, getList} from "../../../contribution/actions/list"
+import * as types from "../../../contribution/constants/ActionTypes"
 
-describe("ContributionActionsList", () => {
-    it("リストの初期値", () => {
+import {next, deleteItem} from "../../../contribution/actions/list"
+
+describe("contribution/actions/list", () => {
+    it("次のページを表示する", () => {
         const expected = {
-            type: "GET_CONTRIBUTION_LIST",
-            list: [],
-            order: 0,
+            type: types.GET_CONTRIBUTION_LIST_NEXT
         }
 
-        const result = initList()
+        const result = next()
 
         expect(result).toEqual(expected)
     })
 
-    it("リストを取得する", () => {
+    it("アイテムを削除する", () => {
+        const id = 1
         const expected = {
-            type: "GET_CONTRIBUTION_LIST",
-            list: [
-                "abc",
-                "edf"
-            ],
-            init: 1,
+            type: types.DELETE_CONTRIBUTION_LIST_ITEM,
+            id
         }
 
-        const result = getList(["abc", "edf"], 1)
+        const result = deleteItem(id)
 
         expect(result).toEqual(expected)
     })

@@ -1,4 +1,4 @@
-import { combineReducers } from "redux"
+import {combineReducers} from "redux"
 import contributionEdit from "../contribution/reducers/edit"
 import contributionList from "../contribution/reducers/list"
 import contributionShow from "../contribution/reducers/show"
@@ -15,6 +15,7 @@ import characterList from "../character/reducers/list"
 import loginNew from "../login/reducers/new"
 import loginAuth from "../login/reducers/auth"
 
+
 // 機能ごとのstateを管理
 const rootReducer = combineReducers({
     contributionEdit: contributionEdit,
@@ -27,7 +28,7 @@ const rootReducer = combineReducers({
     userMypage: userMypage,
     loginNew: loginNew,
     loginAuth: loginAuth,
-    characterList: characterList
+    characterList: characterList,
 })
 
 export default rootReducer

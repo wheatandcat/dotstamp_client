@@ -19,9 +19,6 @@ import CharacterList from "./character/containers/list"
 import ErrorShow from "./error/containers/show"
 import Header from "./utils/parts/header"
 
-import { fetchPostsIfNeeded } from "./contribution/actions/list"
-
-
 import { IndexRoute, Router, Route, hashHistory } from "react-router"
 
 const store = configureStore()

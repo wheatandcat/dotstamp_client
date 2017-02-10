@@ -1,7 +1,8 @@
 import { connect } from "react-redux"
 import List from "../components/list"
-import {getList, next, addItem, deleteItem, fetchPostsIfNeeded} from "../actions/list"
-import ActionsErrorShow from "../../error/actions/show"
+import {next, deleteItem} from "../actions/list"
+import {fetchPostsIfNeeded} from "../../utils/fetch"
+import * as types from "../constants/ActionTypes"
 
 function mapStateToProps (state) {
     return state
@@ -9,23 +10,27 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
     return {
-        getList: (list, init) => {
-            dispatch(getList(list, init))
+        getList: (action, receiveParam) => {
+            dispatch(fetchPostsIfNeeded(
+                    "contribution/list/",
+                    types.GET_CONTRIBUTION_LIST,
+                    action,
+                    receiveParam
+                )
+            )
         },
         next: () => {
             dispatch(next())
         },
-        addItem: (response) => {
-            dispatch(addItem(response))
+        addItem: (id) => {
+            dispatch(fetchPostsIfNeeded(
+                    "contribution/show/" + id,
+                    types.ADD_CONTRIBUTION_LIST_ITEM
+                )
+            )
         },
         deleteItem: (id) => {
             dispatch(deleteItem(id))
-        },
-        fetchPostsIfNeeded:(action) => {
-            dispatch(fetchPostsIfNeeded("contributionList", action))
-        },
-        showError: (error) => {
-            dispatch(ActionsErrorShow.showError(error))
         }
     }
 }

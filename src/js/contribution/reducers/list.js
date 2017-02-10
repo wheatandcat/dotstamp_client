@@ -1,3 +1,5 @@
+import * as types from "../constants/ActionTypes"
+
 // 初期ステート設定
 const initialState = {
     list: [],
@@ -5,36 +7,29 @@ const initialState = {
     next: true,
     init: true,
     itemMap: {},
-    fetch: {
-        isFetching: false,
-        didInvalidate: false,
-        items: [],
-    }
 }
 
-export default function List (state = initialState , action) {
-    console.log (action)
-
+export default function List (state = initialState, action) {
     switch (action.type) {
-    case "GET_CONTRIBUTION_LIST": {
-        state.list = action.list
+    case types.GET_CONTRIBUTION_LIST: {
+        state.list = action.response
 
         state.order++
 
         state.next = false
-        if (action.init) {
+        if (action.receiveParam.init) {
             state.next = true
         }
-        state.init = action.init
+        state.init = action.receiveParam.init
 
         return JSON.parse(JSON.stringify(state))
     }
-    case "GET_CONTRIBUTION_LIST_NEXT": {
+    case types.GET_CONTRIBUTION_LIST_NEXT: {
         state.next = true
 
         return JSON.parse(JSON.stringify(state))
     }
-    case "ADD_CONTRIBUTION_LIST_ITEM": {
+    case types.ADD_CONTRIBUTION_LIST_ITEM: {
         let response = action.response
         state.itemMap[response.ID] = {
             title: response.Title,
@@ -44,7 +39,7 @@ export default function List (state = initialState , action) {
 
         return JSON.parse(JSON.stringify(state))
     }
-    case "DELETE_CONTRIBUTION_LIST_ITEM": {
+    case types.DELETE_CONTRIBUTION_LIST_ITEM: {
         if (state.itemMap[action.id] != undefined) {
             delete state.itemMap[action.id]
         }

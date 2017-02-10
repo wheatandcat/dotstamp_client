@@ -1,6 +1,5 @@
 import React, {Component, PropTypes} from "react"
 
-import Http from "../../utils/http"
 import {Link} from "react-router"
 import {Media, Button, ButtonGroup, Well ,Glyphicon, Collapse} from "react-bootstrap"
 import Images from "../../utils/image"
@@ -19,18 +18,15 @@ export default class List extends Component {
     }
     /**
      * リストを取得する
+     *
+     * @param  {bool} init 初期取得フラグ
      */
     getList(init) {
         let action = {
             order: this.props.contributionList.order
         }
 
-        this.props.fetchPostsIfNeeded(action)
-        Http.postApi("contribution/list/", action).then((response) => {
-            return this.props.getList(response.body, init)
-        }).catch((err) => {
-            this.props.showError(err)
-        })
+        this.props.getList(action, {init})
     }
 
     /**
@@ -38,26 +34,6 @@ export default class List extends Component {
      */
     next() {
         this.getList(false)
-    }
-    /**
-     * 作品の詳細を取得する
-     *
-     * @param  {number} id 投稿ID
-     */
-    show(id) {
-        this.getDetail(id)
-    }
-    /**
-     * 詳細を取得する
-     *
-     * @param  {number} id 投稿ID
-     */
-    getDetail(id) {
-        Http.postApi("contribution/show/" + id).then((response) => {
-            this.props.addItem(response.body)
-        }).catch((err) => {
-            this.props.showError(err)
-        })
     }
     /**
      * 詳細画面リンクを取得する
@@ -95,7 +71,7 @@ export default class List extends Component {
         return (
             <div>
                 <hr className={line}/>
-                <Button className={Toggle} onClick={() => this.show(obj.ID)}>
+                <Button className={Toggle} onClick={() => this.props.addItem(obj.ID)}>
                     <Glyphicon glyph="chevron-down"/>
                 </Button>
             </div>
@@ -148,7 +124,6 @@ export default class List extends Component {
                 <div/>
             )
         }
-
         return (
             <div>
                 {list.map((obj) =>
@@ -183,7 +158,6 @@ export default class List extends Component {
             newList = []
         }
 
-
         let nextButton
         if (newLine >= VIEW_PAGE_LIMIT) {
             nextButton = (
@@ -211,11 +185,9 @@ export default class List extends Component {
                     <p>
                         現在、○○件投稿されています
                     </p>
-                    <p>
-                        <Button bsStyle="primary">
-                            投稿する
-                        </Button>
-                    </p>
+                    <Button bsStyle="primary">
+                        投稿する
+                    </Button>
                 </Well>
                 <div>
                     {this.getItemList(oldList, true)}
@@ -239,5 +211,4 @@ List.propTypes = {
     next: PropTypes.func,
     addItem: PropTypes.func,
     deleteItem: PropTypes.func,
-    showError: PropTypes.func,
 }
