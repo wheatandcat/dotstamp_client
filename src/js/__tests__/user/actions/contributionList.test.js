@@ -1,16 +1,13 @@
-import Actions from "../../../user/actions/contributionList"
+import {setContribution} from "../../../user/actions/contributionList"
+import * as types from "../../../constants/ActionTypes"
 
-describe("ActionsList", () => {
-    it("user/actions/contributionList", () => {
+describe("user/actions/contributionList", () => {
+    it("投稿IDを設定する", () => {
         const expected = {
-            type: "GET_USER_CONTRBUTION_LIST",
-            list: [
-                "abc",
-                "def"
-            ]
+            type: types.SET_USER_CONTRBUTION_LIST,
+            contributionId: 1,
         }
-
-        const result = Actions.getList(["abc", "def"])
+        const result = setContribution(1)
 
         expect(result).toEqual(expected)
     })

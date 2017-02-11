@@ -1,18 +1,30 @@
-import Actions from "../../../user/actions/contributionList"
-import Reducers from "../../../user/reducers/contributionList"
+import * as types from "../../../constants/ActionTypes"
+import reducer from "../../../user/reducers/contributionList"
 
 describe("user/reducers/contributionList", () => {
     it("投稿リストを取得する", () => {
-        const expected = {
-            contributionId: 0,
-            list: [
-                "abc",
-                "def"
+        const result = reducer(undefined, {
+            type: types.GET_USER_CONTRBUTION_LIST,
+            response: [
+                {
+                    ID: 1,
+                },
+                {
+                    ID: 2,
+                }
             ]
-        }
+        })
 
-        const result = Reducers(undefined, Actions.getList(["abc", "def"]))
-
-        expect(result).toEqual(expected)
+        expect(result).toEqual({
+            contributionId: 1,
+            list:[
+                {
+                    ID: 1,
+                },
+                {
+                    ID: 2,
+                }
+            ]
+        })
     })
 })

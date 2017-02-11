@@ -1,19 +1,14 @@
-import Actions from "../../../contribution/actions/form"
-import Reducers from "../../../contribution/reducers/form"
+import * as types from "../../../constants/ActionTypes"
+import reducer from "../../../contribution/reducers/form"
+import { DIRECTION_LEFT } from "../../../contribution/actions/talk"
 
-describe("ReducersList", () => {
+describe("contribution/reducers/form", () => {
     it("本文を編集する", () => {
-        const params = {
-            character: {
-                ID: 1,
-                FileName: "abc"
-            },
-            body: "def",
-            directionType: 1,
-            priority: 1
-        }
+        const result = reducer(undefined, {
+            type: types.EDIT_CONTRIBUTION_FORM_BODY,
+        })
 
-        const expected = {
+        expect(result).toEqual({
             edit: false,
             tag: "",
             tagList: [],
@@ -23,14 +18,9 @@ describe("ReducersList", () => {
             character: {
                 FileName: ""
             },
-            directionType: 1,
-            boardScroll: false,
-            height: 450
-
-        }
-
-        const result = Reducers(undefined, Actions.editBody(params.body, params.character, params.directionType, params.priority))
-
-        expect(result).toEqual(expected)
+            directionType: DIRECTION_LEFT,
+            height: 450,
+            boardScroll: false
+        })
     })
 })

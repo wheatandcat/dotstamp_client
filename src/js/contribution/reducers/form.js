@@ -44,18 +44,13 @@ export default function Form (state = initialState , action) {
     }
     case types.GET_CHARACTER_LIST: {
         if (action.response.Image.length > 0) {
-             state.character = action.response.Image[0]
-         }
+            state.character = action.response.Image[0]
+        }
 
         return JSON.parse(JSON.stringify(state))
     }
     case types.CHANGE_CONTRIBUTION_FORM_BODY: {
         state.body = action.body
-
-        return JSON.parse(JSON.stringify(state))
-    }
-    case "CHANGE_DIRECTION": {
-        state.directionType = action.directionType
 
         return JSON.parse(JSON.stringify(state))
     }

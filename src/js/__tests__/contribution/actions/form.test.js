@@ -1,123 +1,94 @@
-import Actions from "../../../contribution/actions/form"
+import {addBody, editBody, changeCharacter, changeBody, changeTitle, changeTag} from "../../../contribution/actions/form"
+import * as types from "../../../constants/ActionTypes"
 
-describe("ActionsList", () => {
-    it("アクション：本文を追加する", () => {
-        const params = {
+describe("contribution/actions/form", () => {
+    it("本文を追加する", () => {
+        const result = addBody(
+            "aaaa",
+            {
+                ID: 1,
+                FileName: "abc"
+            },
+            1,
+            1
+        )
+
+        expect(result).toEqual({
+            type: types.ADD_CONTRIBUTION_FORM_BODY,
             character: {
                 ID: 1,
                 FileName: "abc"
             },
-            body: "def",
+            body: "aaaa",
             directionType: 1,
             talkType: 1
-        }
-
-        const expected = {
-            type: "ADD_CONTRIBUTION_BODY",
-            character: {
-                ID: 1,
-                FileName: "abc"
-            },
-            body: "def",
-            directionType: 1,
-            talkType: 1
-        }
-
-        const result = Actions.addBody(params.body, params.character, params.directionType, params.talkType)
-
-        expect(result).toEqual(expected)
+        })
     })
 
-    it("アクション：本文を編集する", () => {
-        const params = {
+    it("本文を編集する", () => {
+        const result = editBody(
+            "aaaa",
+            {
+                ID: 1,
+                FileName: "abc"
+            },
+            1,
+            1
+        )
+
+        expect(result).toEqual({
+            type:  types.EDIT_CONTRIBUTION_FORM_BODY,
             character: {
                 ID: 1,
                 FileName: "abc"
             },
-            body: "def",
+            body: "aaaa",
             directionType: 1,
             priority: 1
-        }
-
-        const expected = {
-            type: "EDIT_CONTRIBUTION_BODY",
-            character: {
-                ID: 1,
-                FileName: "abc"
-            },
-            body: "def",
-            directionType: 1,
-            priority: 1
-        }
-
-        const result = Actions.editBody(params.body, params.character, params.directionType, params.priority)
-
-        expect(result).toEqual(expected)
+        })
     })
 
-    it("アクション：本文を編集する", () => {
-        const params = {
+    it("キャラクターを変更する", () => {
+        const result = changeCharacter(
+            {
+                ID: 1,
+                FileName: "abc"
+            }
+        )
+
+        expect(result).toEqual({
+            type: types.CHANGE_CONTRIBUTION_FORM_CHARACTER,
             character: {
                 ID: 1,
                 FileName: "abc"
             }
-        }
-
-        const expected = {
-            type: "CHANGE_CONTRIBUTION_CHARACTER",
-            character: {
-                ID: 1,
-                FileName: "abc"
-            }
-        }
-
-        const result = Actions.changeCharacter(params.character)
-
-        expect(result).toEqual(expected)
+        })
     })
 
-    it("アクション：本文を変更する", () => {
-        const params = {
-            body: "def"
-        }
+    it("本文を変更する", () => {
+        const result = changeBody("abc")
 
-        const expected = {
-            type: "CHANGE_CONTRIBUTION_BODY",
-            body: "def"
-        }
-
-        const result = Actions.changeBody(params.body)
-
-        expect(result).toEqual(expected)
+        expect(result).toEqual({
+            type: types.CHANGE_CONTRIBUTION_FORM_BODY,
+            body: "abc",
+        })
     })
 
-    it("アクション：タイトルを変更する", () => {
-        const params = {
+    it("タイトルを変更する", () => {
+        const result = changeTitle("abc")
+
+        expect(result).toEqual({
+            type: types.CHANGE_CONTRIBUTION_FORM_TITLE,
             title: "abc"
-        }
-
-        const expected = {
-            type: "CHANGE_CONTRIBUTION_TITLE",
-            title: "abc"
-        }
-
-        const result = Actions.changeTitle(params.title)
-
-        expect(result).toEqual(expected)
+        })
     })
 
-    it("アクション：タグを変更する", () => {
-        const params = {
+    it("タグを変更する", () => {
+        const result = changeTag("abc")
+
+        expect(result).toEqual({
+            type: types.CHANGE_CONTRIBUTION_FORM_TAG,
             tag: "abc"
-        }
-
-        const expected = {
-            type: "CHANGE_CONTRIBUTION_TAG",
-            tag: "abc"
-        }
-
-        const result = Actions.changeTag(params.tag)
-
-        expect(result).toEqual(expected)
+        })
     })
 })
