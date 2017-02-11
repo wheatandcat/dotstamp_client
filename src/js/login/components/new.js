@@ -1,27 +1,16 @@
 /*eslint no-console: ["error", { allow: ["log", "error"] }] */
 import React, {Component, PropTypes} from "react"
-import Http from "../../utils/http"
 import {Link} from "react-router"
 import { ButtonToolbar, FormGroup, Col, Button, Grid, Row, Jumbotron } from "react-bootstrap"
 
 export default class New extends Component {
-
     new() {
         let email = this.refs.email.value
         let password = this.refs.password.value
 
-        let action = {
+        this.props.new({
             email: email,
             password: password
-        }
-        console.log(action)
-
-        Http.postApi("login/new/", action).then((response) => {
-            console.log(response)
-            console.log("登録しました")
-            location.href = "/"
-        }).catch((err) => {
-            this.props.showError(err)
         })
     }
     /**
@@ -72,5 +61,5 @@ export default class New extends Component {
 }
 
 New.propTypes = {
-    showError: PropTypes.func
+    new: PropTypes.func
 }

@@ -1,3 +1,6 @@
+import * as types from "../../constants/ActionTypes"
+
+
 const initialState = {
     Login: false,
     Name: ""
@@ -5,11 +8,10 @@ const initialState = {
 
 export default function Login (state = initialState , action) {
     switch (action.type) {
-    case "SET_LOGIN_AUTH": {
-        console.log (action)
-        return JSON.parse(JSON.stringify(action))
+    case types.SET_LOGIN_AUTH: {
+        return JSON.parse(JSON.stringify(action.response))
     }
-    case "LOGOUT_LOGIN_AUTH": {
+    case types.LOGOUT_LOGIN_AUTH: {
         state.Login = false
         state.Name = ""
         return JSON.parse(JSON.stringify(state))

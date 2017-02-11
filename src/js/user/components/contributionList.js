@@ -14,13 +14,7 @@ export default class ContributionList extends Component {
      * リストを取得する
      */
     getList() {
-        Http.postApi("user/contributionList/").then((response) => {
-            this.props.getList(response.body)
-
-            if (Array.isArray(response.body) && response.body.length > 0) {
-                this.setContribution(response.body[0].ID)
-            }
-        })
+        this.props.getList()
     }
     /**
      * 投稿を設定する

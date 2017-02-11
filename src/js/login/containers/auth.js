@@ -1,8 +1,7 @@
 import { connect } from "react-redux"
-
 import Auth from "../components/auth"
-import Actions from "../actions/auth"
-import ActionsErrorShow from "../../error/actions/show"
+import {fetchPostsIfNeeded} from "../../utils/fetch"
+import * as types from "../../constants/ActionTypes"
 
 function mapStateToProps (state) {
     return state
@@ -10,14 +9,19 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
     return {
-        auth: (user) => {
-            dispatch(Actions.auth(user))
+        auth: () => {
+            dispatch(fetchPostsIfNeeded(
+                    "login/auth/",
+                    types.SET_LOGIN_AUTH
+                )
+            )
         },
         logout: () => {
-            dispatch(Actions.logout())
-        },
-        showError: (error) => {
-            dispatch(ActionsErrorShow.showError(error))
+            dispatch(fetchPostsIfNeeded(
+                    "login/logout/",
+                    types.LOGOUT_LOGIN_AUTH
+                )
+            )
         }
     }
 }

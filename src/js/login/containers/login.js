@@ -1,8 +1,7 @@
 import { connect } from "react-redux"
-
 import Login from "../components/login"
-import Actions from "../actions/new"
-import ActionsErrorShow from "../../error/actions/show"
+import {fetchPostsIfNeeded} from "../../utils/fetch"
+import * as types from "../../constants/ActionTypes"
 
 function mapStateToProps (state) {
     return state
@@ -10,11 +9,13 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
     return {
-        loginUser: () => {
-            dispatch(Actions.loginUser())
-        },
-        showError: (error) => {
-            dispatch(ActionsErrorShow.showError(error))
+        loginCheck: (params) => {
+            dispatch(fetchPostsIfNeeded(
+                    "login/check/",
+                    types.SET_LOGIN_USER,
+                    params
+                )
+            )
         }
     }
 }

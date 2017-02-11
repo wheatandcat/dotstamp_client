@@ -1,35 +1,12 @@
 /*eslint no-console: ["error", { allow: ["log", "error"] }] */
 import React, {PropTypes, Component} from "react"
-import Http from "../../utils/http"
 import {Nav, NavItem, NavDropdown, MenuItem, Glyphicon} from "react-bootstrap"
 import { LinkContainer } from "react-router-bootstrap"
 
 export default class Auth extends Component {
     componentWillMount () {
-        this.auth()
-    }
-    /**
-     * 認証する
-     */
-    auth() {
-        Http.postApi("login/auth/").then((response) => {
-            this.props.auth(response.body)
-        }).catch((err) => {
-            this.props.showError(err)
-        })
-    }
-    /**
-     * ログアウトする
-     */
-    logout() {
-        Http.postApi("login/logout/").then((response) => {
-            this.props.logout(response.body)
-            console.log("ログインしました")
-            location.href = "/"
-        }).catch((err) => {
-            console.log(err)
-            this.props.showError(err)
-        })
+        // 認証する
+        this.props.auth()
     }
     /**
      * メニューを取得する
@@ -78,7 +55,7 @@ export default class Auth extends Component {
                         </MenuItem>
                     </LinkContainer>
                     <MenuItem divider />
-                    <MenuItem eventKey={3.4} onClick={() => this.logout()}>
+                    <MenuItem eventKey={3.4} onClick={() => this.props.logout()}>
                         <Glyphicon glyph="log-out"/>&nbsp;ログアウト
                     </MenuItem>
                 </NavDropdown>

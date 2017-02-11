@@ -1,7 +1,6 @@
 import { connect } from "react-redux"
 import ContributionList from "../components/contributionList"
-import Actions from "../actions/contributionList"
-import ActionsErrorShow from "../../error/actions/show"
+import {setContribution} from "../actions/contributionList"
 import {fetchPostsIfNeeded} from "../../utils/fetch"
 import * as types from "../../constants/ActionTypes"
 
@@ -11,11 +10,15 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
     return {
-        getList: (contributionList) => {
-            dispatch(Actions.getList(contributionList))
+        getList: () => {
+            dispatch(fetchPostsIfNeeded(
+                    "user/contributionList/",
+                    types.GET_USER_CONTRBUTION_LIST
+                )
+            )
         },
         setContribution: (contributionId) => {
-            dispatch(Actions.setContribution(contributionId))
+            dispatch(setContribution(contributionId))
         },
         getDetail: (id) => {
             dispatch(fetchPostsIfNeeded(
@@ -23,9 +26,6 @@ function mapDispatchToProps (dispatch) {
                     types.GET_CONTRIBUTION_SHOW
                 )
             )
-        },
-        showError: (error) => {
-            dispatch(ActionsErrorShow.showError(error))
         }
     }
 }
