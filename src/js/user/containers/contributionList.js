@@ -26,6 +26,19 @@ function mapDispatchToProps (dispatch) {
                     types.GET_CONTRIBUTION_SHOW
                 )
             )
+        },
+        delete: (id) => {
+            dispatch(fetchPostsIfNeeded(
+                    "contribution/delete/" + id,
+                    types.DELETE_CONTRIBUTION_SHOW
+                )
+            ).then(() => {
+                dispatch(fetchPostsIfNeeded(
+                        "user/contributionList/",
+                        types.GET_USER_CONTRBUTION_LIST
+                    )
+                )
+            })
         }
     }
 }

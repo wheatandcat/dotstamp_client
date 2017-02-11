@@ -1,5 +1,4 @@
 import React, {PropTypes, Component} from "react"
-import Http from "../../utils/http"
 import {Link} from "react-router"
 //import {DateFormat} from "../../utils/common"
 
@@ -31,15 +30,13 @@ export default class ContributionList extends Component {
      * @param  {number} id 投稿ID
      */
     deleteContribution(id) {
-        Http.postApi("contribution/delete/" + id).then((response) => {
-            this.props.getList(response.body)
-        })
+        this.props.delete(id)
     }
     /**
      * 編集パスを取得する
      *
-     * @param  {{number}} id 投稿ID
-     * @return {{string}} 編集パス
+     * @param  {number} id 投稿ID
+     * @return {string} 編集パス
      */
     getEditPath(id) {
         return "/contribution/edit/" + id
@@ -108,6 +105,7 @@ export default class ContributionList extends Component {
 ContributionList.propTypes = {
     getList: PropTypes.func,
     getDetail: PropTypes.func,
+    delete: PropTypes.func,
     setContribution: PropTypes.func,
     contributionShow: PropTypes.object,
     userContributionList: PropTypes.object,

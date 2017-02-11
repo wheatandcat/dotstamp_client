@@ -1,7 +1,7 @@
 import { connect } from "react-redux"
 
 import Show from "../components/show"
-import ActionsErrorShow from "../actions/show"
+import {showError, closeError} from "../actions/show"
 
 function mapStateToProps (state) {
     return state
@@ -10,10 +10,10 @@ function mapStateToProps (state) {
 function mapDispatchToProps (dispatch) {
     return {
         showError: (error) => {
-            dispatch(ActionsErrorShow.showError(error))
+            dispatch(showError(error))
         },
         closeError: () => {
-            dispatch(ActionsErrorShow.closeError())
+            dispatch(closeError())
         }
     }
 }

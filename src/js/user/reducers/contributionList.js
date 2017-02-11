@@ -10,7 +10,7 @@ export default function ContributionList (state = initialState , action) {
     switch (action.type) {
     case types.GET_USER_CONTRBUTION_LIST: {
         state.list = action.response
-        if (state.list.length > 0) {
+        if (Array.isArray(state.list) && state.list.length > 0) {
             state.contributionId = state.list[0].ID
         }
 

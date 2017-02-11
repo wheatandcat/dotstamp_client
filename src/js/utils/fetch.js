@@ -1,5 +1,6 @@
 /*global BASE_URL*/
 import fetch from "isomorphic-fetch"
+import * as types from "../constants/ActionTypes"
 
 // ホスト
 var host = (typeof (BASE_URL) == "undefined") ? "http://192.168.33.10:8080/" : BASE_URL
@@ -80,7 +81,7 @@ function receiveErrorResponse(url, response) {
     fetchStateList[url].isFetching = false
 
     return {
-        type: "SHOW_ERROR_MESSAGE",
+        type: types.SHOW_ERROR_MESSAGE,
         message: response.Message,
         errCode: response.ErrCode,
         show: true,
