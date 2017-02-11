@@ -5,23 +5,54 @@ var list = []
 
 const initialState = []
 
+/**
+ * 本文追加状態を取得する
+ *
+ * @param  {object} character キャラクター
+ * @param  {string} body      本文
+ * @param  {number} talkType  会話タイプ
+ * @param  {number} directionType  方向タイプ
+ * @param  {number} priority  優先順位
+ * @return {object} 状態
+ */
+function getAddBodyState(character, body, talkType, directionType, priority) {
+    return {
+        Body: body,
+        Character: character,
+        DirectionType: directionType,
+        TalkType: talkType,
+        Edit: false,
+        Priority: priority,
+    }
+}
+
 export default function Talk (state = initialState , action) {
     switch (action.type) {
     case types.GET_CONTRIBUTION_EDIT: {
         list = action.response.Body
         return list
     }
-    case types.ADD_CONTRIBUTION_FORM_BODY: {
-        let priority = list.length
+    case types.UPLOAD_CONTRIBUTION_FORM: {
+        list.push(getAddBodyState(
+            action.receiveParam.character,
+            action.response,
+            action.receiveParam.talkType,
+            action.receiveParam.directionType,
+            list.length
+        ))
 
-        list.push({
-            Priority: priority,
-            Body: action.body,
-            Character: action.character,
-            DirectionType: action.directionType,
-            TalkType: action.talkType,
-            Edit: false
-        })
+        state = list.concat()
+
+        return state
+    }
+    case types.ADD_CONTRIBUTION_FORM_BODY: {
+        list.push(getAddBodyState(
+            action.character,
+            action.body,
+            action.talkType,
+            action.directionType,
+            list.length
+        ))
 
         state = list.concat()
 
@@ -38,7 +69,7 @@ export default function Talk (state = initialState , action) {
 
         return state
     }
-    case "SET_CONTRIBUTION_EDIT_BODY": {
+    case types.SET_CONTRIBUTION_TALK_EDIT_BODY: {
         let editList = []
         for (let value of list) {
             value.Edit = (value.Priority == action.priority)
@@ -49,7 +80,7 @@ export default function Talk (state = initialState , action) {
 
         return state
     }
-    case "DELETE_CONTRIBUTION_BODY": {
+    case types.DELETE_CONTRIBUTION_TALK_BODY: {
         list.splice(action.priority, 1)
 
         list.forEach((obj, key) => obj["Priority"] = key)
@@ -58,7 +89,7 @@ export default function Talk (state = initialState , action) {
 
         return state
     }
-    case "SET_CONTRIBUTION_TALK_LIST": {
+    case types.SET_CONTRIBUTION_TALK_LIST: {
 
         return action.talkList.concat()
     }

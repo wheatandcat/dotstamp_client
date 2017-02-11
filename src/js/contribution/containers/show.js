@@ -1,7 +1,8 @@
 import { connect } from "react-redux"
 import Show from "../components/show/main"
-import ActionsShow from "../actions/show"
-import ActionsErrorShow from "../../error/actions/show"
+
+import {fetchPostsIfNeeded} from "../../utils/fetch"
+import * as types from "../../constants/ActionTypes"
 
 function mapStateToProps (state) {
     return state
@@ -9,11 +10,12 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
     return {
-        getDetail: (title, body, tagList) => {
-            dispatch(ActionsShow.getDetail(title, body, tagList))
-        },
-        showError: (error) => {
-            dispatch(ActionsErrorShow.showError(error))
+        getDetail: (id) => {
+            dispatch(fetchPostsIfNeeded(
+                    "contribution/show/" + id,
+                    types.GET_CONTRIBUTION_SHOW
+                )
+            )
         }
     }
 }

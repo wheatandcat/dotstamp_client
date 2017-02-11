@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from "react"
-import Http from "../../../utils/http"
 import ContributionShowFrame from "./frame"
 import Footer from "../../../utils/parts/footer"
 
@@ -17,9 +16,7 @@ export default class Main extends Component {
      * @param  {number} id 投稿ID
      */
     getDetail(id) {
-        Http.postApi("contribution/show/" + id).then((response) => {
-            return this.props.getDetail(response.body.Title, response.body.Body, response.body.Tag)
-        })
+        this.props.getDetail(id)
     }
     /**
      * 描画する

@@ -11,12 +11,12 @@ const initialState = {
 export default function Edit(state = initialState, action) {
     switch (action.type) {
     case types.GET_CONTRIBUTION_EDIT:
-        state.id = action.ID
-        state.title = action.Title
-        state.body = action.Body
-        state.tagList = action.Tag
+        state.id = action.response.ID
+        state.title = action.response.Title
+        state.body = action.response.Body
+        state.tagList = action.response.Tag
 
-        return action.response
+        return JSON.parse(JSON.stringify(state))
     default:
         return state
     }

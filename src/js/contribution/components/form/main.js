@@ -1,16 +1,13 @@
 import React, {Component, PropTypes} from "react"
-
 import { Glyphicon, Well, Button, ButtonGroup, ButtonToolbar, MenuItem, SplitButton, ControlLabel } from "react-bootstrap"
-
 import { TALK_TYPE_TEXT, TALK_TYPE_IMAGE } from "../../actions/talk"
-import Upload from "../../../utils/upload"
 import Slider from "../../../utils/slider"
-
 import { Edit, Group } from "./../../../../css/form.css"
+
 
 export default class Main extends Component {
     componentWillMount () {}
-    
+
     /**
      * 本文を変更する
      *
@@ -108,13 +105,14 @@ export default class Main extends Component {
      * @param  {array} fileList ファイルリスト
      */
     uploadFile (fileList) {
-        Upload.imageFileList(fileList, "contribution/upload/").then((response) => {
-            this.addBody(
-                response.body,
-                this.props.contributionForm.character,
-                this.props.contributionForm.directionType,
-                TALK_TYPE_IMAGE
-            )
+        let formData = new FormData()
+
+        formData.append("file", fileList[0])
+
+        this.props.upload(formData, {
+            character: this.props.contributionForm.character,
+            directionType: this.props.contributionForm.directionType,
+            talkType: TALK_TYPE_IMAGE
         })
     }
     /**
@@ -184,4 +182,5 @@ Main.propTypes = {
     contributionForm: PropTypes.object,
     characterList: PropTypes.object,
     editBody: PropTypes.func,
+    upload: PropTypes.func,
 }

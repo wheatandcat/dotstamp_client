@@ -59,7 +59,7 @@ export default function Form (state = initialState , action) {
 
         return JSON.parse(JSON.stringify(state))
     }
-    case "DELETE_CONTRIBUTION_BODY": {
+    case types.DELETE_CONTRIBUTION_TALK_BODY: {
         state.edit = false
         state.body = ""
         state.priority = null
@@ -76,7 +76,7 @@ export default function Form (state = initialState , action) {
 
         return JSON.parse(JSON.stringify(state))
     }
-    case "SET_CONTRIBUTION_EDIT_BODY": {
+    case types.SET_CONTRIBUTION_TALK_EDIT_BODY: {
         state.edit = true
         state.body = action.body
         state.priority = action.priority

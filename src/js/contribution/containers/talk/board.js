@@ -1,7 +1,6 @@
 import { connect } from "react-redux"
 import TalkBoard from "../../components/talk/board"
-import ActionsTalk from "../../actions/talk"
-import ActionsErrorShow from "../../../error/actions/show"
+import {setTalkList} from "../../actions/talk"
 
 function mapStateToProps (state) {
     return state
@@ -10,10 +9,7 @@ function mapStateToProps (state) {
 function mapDispatchToProps (dispatch) {
     return {
         setTalkList: (talkList) => {
-            dispatch(ActionsTalk.setTalkList(talkList))
-        },
-        showError: (error) => {
-            dispatch(ActionsErrorShow.showError(error))
+            dispatch(setTalkList(talkList))
         }
     }
 }

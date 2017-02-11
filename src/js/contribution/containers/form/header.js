@@ -3,7 +3,6 @@ import FormHeader from "../../components/form/header"
 import {changeTitle, changeTag, changeHeight} from "../../actions/form"
 import {fetchPostsIfNeeded} from "../../../utils/fetch"
 import * as types from "../../../constants/ActionTypes"
-import ActionsErrorShow from "../../../error/actions/show"
 
 
 function mapStateToProps (state) {
@@ -22,7 +21,6 @@ function mapDispatchToProps (dispatch) {
             dispatch(changeHeight(height))
         },
         new: (action) => {
-            console.log (action)
             dispatch(fetchPostsIfNeeded(
                     "contribution/new/",
                     types.NEW_CONTRIBUTION_FORM,
@@ -30,8 +28,13 @@ function mapDispatchToProps (dispatch) {
                 )
             )
         },
-        showError: (error) => {
-            dispatch(ActionsErrorShow.showError(error))
+        save: (action) => {
+            dispatch(fetchPostsIfNeeded(
+                    "contribution/save/",
+                    types.SAVE_CONTRIBUTION_FORM,
+                    action
+                )
+            )
         }
     }
 }

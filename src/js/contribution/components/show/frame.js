@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from "react"
 import ContributionTalk from "../../containers/talk/main"
-import {Well, Button, Label} from "react-bootstrap"
+import {Well, Button} from "react-bootstrap"
 
 import Tag from "../../../utils/parts/tag"
 

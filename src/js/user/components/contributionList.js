@@ -1,7 +1,7 @@
 import React, {PropTypes, Component} from "react"
 import Http from "../../utils/http"
 import {Link} from "react-router"
-import {DateFormat} from "../../utils/common"
+//import {DateFormat} from "../../utils/common"
 
 import {Grid,Row,Col,Tab,Nav,NavItem,ButtonToolbar,Button} from "react-bootstrap"
 import ContributionShow from "../../contribution/containers/show"
@@ -29,17 +29,7 @@ export default class ContributionList extends Component {
      */
     setContribution(id) {
         this.props.setContribution(id)
-        this.getDetail(id)
-    }
-    /**
-     * 詳細を取得する
-     *
-     * @param  {number} id 投稿ID
-     */
-    getDetail(id) {
-        Http.postApi("contribution/show/" + id).then((response) => {
-            this.props.getDetail(response.body.Title, response.body.Body, response.body.Tag)
-        })
+        this.props.getDetail(id)
     }
     /**
      * 作品を削除する

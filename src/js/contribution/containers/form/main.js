@@ -2,7 +2,9 @@ import { connect } from "react-redux"
 import FormMain from "../../components/form/main"
 
 import {addBody, editBody, changeCharacter, changeBody} from "../../actions/form"
-import ActionsErrorShow from "../../../error/actions/show"
+import {fetchUploadIfNeeded} from "../../../utils/fetch"
+import * as types from "../../../constants/ActionTypes"
+
 
 function mapStateToProps (state) {
     return state
@@ -22,8 +24,14 @@ function mapDispatchToProps (dispatch) {
         changeBody: (body) => {
             dispatch(changeBody(body))
         },
-        showError: (error) => {
-            dispatch(ActionsErrorShow.showError(error))
+        upload: (formData, params) => {
+            dispatch(fetchUploadIfNeeded(
+                    "contribution/upload/",
+                    types.UPLOAD_CONTRIBUTION_FORM,
+                    formData,
+                    params
+                )
+            )
         }
     }
 }

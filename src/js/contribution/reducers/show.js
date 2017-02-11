@@ -1,3 +1,5 @@
+import * as types from "../../constants/ActionTypes"
+
 // 初期ステート設定
 const initialState = {
     title: "",
@@ -7,10 +9,10 @@ const initialState = {
 
 export default function Show (state = initialState , action) {
     switch (action.type) {
-    case "GET_CONTRIBUTION_SHOW": {
-        state.title = action.title
-        state.body = action.body
-        state.tagList = action.tagList
+    case types.GET_CONTRIBUTION_SHOW: {
+        state.title = action.response.Title
+        state.body = action.response.Body
+        state.tagList = action.response.Tag
 
         return JSON.parse(JSON.stringify(state))
     }
