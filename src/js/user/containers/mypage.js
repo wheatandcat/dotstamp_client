@@ -1,7 +1,8 @@
 import { connect } from "react-redux"
 
 import Mypage from "../components/mypage"
-import ActionsErrorShow from "../../error/actions/show"
+import {fetchPostsIfNeeded} from "../../utils/fetch"
+import * as types from "../../constants/ActionTypes"
 
 function mapStateToProps (state) {
     return state
@@ -9,9 +10,13 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
     return {
-        showError: (error) => {
-            dispatch(ActionsErrorShow.showError(error))
-        }
+        getUser: () => {
+            dispatch(fetchPostsIfNeeded(
+                    "user/show/",
+                    types.SET_USER
+                )
+            )
+        },
     }
 }
 
