@@ -1,7 +1,8 @@
-import { connect } from "react-redux"
+import {connect} from "react-redux"
 
 import Mypage from "../components/mypage"
-import {fetchPostsIfNeeded} from "../../utils/fetch"
+import {changeUserName} from "../actions/mypage"
+import {fetchPostsIfNeeded, fetchUploadIfNeeded} from "../../utils/fetch"
 import * as types from "../../constants/ActionTypes"
 
 function mapStateToProps (state) {
@@ -17,6 +18,22 @@ function mapDispatchToProps (dispatch) {
                 )
             )
         },
+        upload: (formData) => {
+            dispatch(fetchUploadIfNeeded(
+                    "user/profile/upload/",
+                    types.UPLOAD_USER_PROFILE,
+                    formData
+                )
+            ).then(() => {
+                dispatch(fetchPostsIfNeeded(
+                    "user/show/",
+                    types.SET_USER
+                ))
+            })
+        },
+        changeUserName: (name) => {
+            dispatch(changeUserName(name))
+        }
     }
 }
 

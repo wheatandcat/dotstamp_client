@@ -1,14 +1,14 @@
 import * as types from "../../constants/ActionTypes"
 
 /**
- * アイコンを変更する
+ * ユーザ名を変更する
  *
- * @param  {string} url URL
+ * @param  {string} name ユーザ名
  * @return {object} アクション
  */
-export function setIcon(url) {
+export function changeUserName(name) {
     return {
-        type: types.SET_USER_MYPAGE_ICON,
-        icon: url,
+        type: types.CHANGE_USER_NAME,
+        name: name
     }
 }

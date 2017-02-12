@@ -1,7 +1,8 @@
 /*global UPLOAD_PATH*/
+/*global IMAGE_PATH*/
 
-import React, { Component, PropTypes } from "react"
-import { Image } from "react-bootstrap"
+import React, {Component, PropTypes} from "react"
+import {Image, Thumbnail} from "react-bootstrap"
 
 
 import { TalkIcon, TalkImage } from "./../../css/talk.css"
@@ -16,7 +17,7 @@ export const IMAGE_DISPLAY_TYPE_CHARACTER = 2
 export const IMAGE_DISPLAY_TYPE_CHARACTER_TALK = 3
 export const IMAGE_DISPLAY_TYPE_CHARACTER_FORM = 4
 export const IMAGE_DISPLAY_TYPE_CHARACTER_MAIN = 5
-
+export const IMAGE_DISPLAY_TYPE_ICON = 6
 
 var imageDisplayTypeList
 
@@ -24,12 +25,21 @@ export default class Images extends Component {
     componentWillMount () {
         imageDisplayTypeList = {}
 
+        imageDisplayTypeList[IMAGE_DISPLAY_TYPE_NONE] = {
+            src: (filePath) => {
+                return this.getImageSrc(filePath)
+            },
+            className: "",
+            option: {},
+            tag: Thumbnail,
+        }
         imageDisplayTypeList[IMAGE_DISPLAY_TYPE_TALK_IMAGE] = {
             src: (fileName) => {
                 return this.getUploadSrc("talk/", fileName)
             },
             className: TalkImage,
             option: {},
+            tag: Image,
         }
         imageDisplayTypeList[IMAGE_DISPLAY_TYPE_CHARACTER] = {
             src: (fileName) => {
@@ -39,6 +49,7 @@ export default class Images extends Component {
             option: {
                 circle: true,
             },
+            tag: Image,
         }
         imageDisplayTypeList[IMAGE_DISPLAY_TYPE_CHARACTER_TALK] = {
             src: (fileName) => {
@@ -46,6 +57,7 @@ export default class Images extends Component {
             },
             className: TalkIcon,
             option: {},
+            tag: Image,
         }
         imageDisplayTypeList[IMAGE_DISPLAY_TYPE_CHARACTER_FORM] = {
             src: (fileName) => {
@@ -55,6 +67,7 @@ export default class Images extends Component {
             option: {
                 circle: true,
             },
+            tag: Image,
         }
         imageDisplayTypeList[IMAGE_DISPLAY_TYPE_CHARACTER_MAIN] = {
             src: (fileName) => {
@@ -62,6 +75,15 @@ export default class Images extends Component {
             },
             className: MainIcon + " center-block",
             option: {},
+            tag: Image,
+        }
+        imageDisplayTypeList[IMAGE_DISPLAY_TYPE_ICON] = {
+            src: (fileName) => {
+                return this.getUploadSrc("icon/", fileName)
+            },
+            className: "",
+            option: {},
+            tag: Thumbnail,
         }
     }
     /**
@@ -75,6 +97,15 @@ export default class Images extends Component {
         return UPLOAD_PATH + dirName + fileName
     }
     /**
+     * 画像ファイルを取得する
+     *
+     * @param  {string} filePath ファイルパス
+     * @return {string} 画像ファイルパス
+     */
+    getImageSrc (filePath) {
+        return IMAGE_PATH + filePath
+    }
+    /**
      * 画像取得する
      *
      * @return {object}  html
@@ -83,7 +114,7 @@ export default class Images extends Component {
         let setting = imageDisplayTypeList[this.props.imageDisplayType]
 
         return (
-            <Image src={setting.src(this.props.fileName)} className={setting.className} {...setting.option} />
+            <setting.tag src={setting.src(this.props.fileName)} className={setting.className} {...setting.option} />
         )
     }
     /**
@@ -102,4 +133,8 @@ Images.propTypes = {
     imageClassName: PropTypes.string,
     fileName: PropTypes.string,
     imageDisplayType: PropTypes.number,
+}
+
+Images.defaultProps = {
+    imageDisplayType: IMAGE_DISPLAY_TYPE_NONE,
 }

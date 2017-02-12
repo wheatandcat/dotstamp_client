@@ -1,4 +1,4 @@
-import { connect } from "react-redux"
+import {connect} from "react-redux"
 import List from "../components/list"
 import {setIcon} from "../actions/list"
 import {fetchPostsIfNeeded, fetchUploadIfNeeded} from "../../utils/fetch"
@@ -39,12 +39,11 @@ function mapDispatchToProps (dispatch) {
                 )
             ).then(() => {
                 dispatch(fetchPostsIfNeeded(
-                        "characterImage/list/",
-                        types.GET_CHARACTER_LIST,
-                        {},
-                        {imageType:IMAGE_DISPLAY_TYPE_CHARACTER}
-                    )
-                )
+                    "characterImage/list/",
+                    types.GET_CHARACTER_LIST,
+                    {},
+                    {imageType:IMAGE_DISPLAY_TYPE_CHARACTER}
+                ))
             })
         }
     }

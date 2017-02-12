@@ -68,16 +68,12 @@ export default class Header extends Component {
     }
     /**
      * タイトルを変更する
-     *
-     * @param  {object} event イベント
      */
     changeTitle() {
         this.props.changeTitle(this.refs.title.value)
     }
     /**
      * タグを変更する
-     *
-     * @param  {object} event イベント
      */
     changeTag() {
         this.props.changeTag(this.refs.tag.value)

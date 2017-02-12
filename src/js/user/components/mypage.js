@@ -3,6 +3,7 @@ import {Grid, Row, Col, ListGroup, ListGroupItem, Button, Glyphicon, Panel, Cont
 import {Group} from "./../../../css/form.css"
 import {Paragraph} from "./../../../css/common.css"
 import Footer from "../../utils/parts/footer"
+import Icon from "../../utils/parts/icon"
 
 export default class Mypage extends Component {
     componentWillMount() {
@@ -27,7 +28,16 @@ export default class Mypage extends Component {
      * @param  {array} fileList ファイルリスト
      */
     uploadFile(fileList) {
+        let formData = new FormData()
+        formData.append("file", fileList[0])
 
+        this.props.upload(formData)
+    }
+    /**
+     * ユーザ名を変更する
+     */
+    changeUserName() {
+        this.props.changeUserName(this.refs.userName.value)
     }
     /**
      * 描画する
@@ -53,31 +63,43 @@ export default class Mypage extends Component {
                         </Col>
                         <Col xs={12} md={8}>
                             <Panel header="アカウント">
-                                <p>アイコン</p>
-                                <div className={Paragraph}>
-                                    <Button>
-                                        <ControlLabel htmlFor="image-file" bsClass={Group}>
-                                            <Glyphicon glyph="picture"/>
-                                        </ControlLabel>
-                                        <input
-                                            type="file"
-                                            id="image-file"
-                                            name="image-file"
-                                            className="hidden"
-                                            accept="image/gif,image/jpeg,image/png,image/jpg"
-                                            ref="file"
-                                            onChange={this.handleChangeFile.bind(this)}
-                                        />
-                                    </Button>
-                                    <ControlLabel htmlFor="image-file" bsClass={Group}>
-                                        <Button bsStyle="link">画像をアップロード</Button>
-                                    </ControlLabel>
+                                <ControlLabel>アイコン</ControlLabel>
+                                    <div className={Paragraph}>
+                                    <Grid>
+                                        <Row>
+                                            <Col sm={2} md={1}>
+                                                <Icon imageId={this.props.userMypage.User.ProfileImageID} />
+                                            </Col>
+                                            <Col sm={20} md={10}>
+                                                <Button bsStyle="link">
+                                                    <ControlLabel htmlFor="image-file" bsClass={Group}>
+                                                        <Glyphicon glyph="picture"/>&nbsp;画像を変更する
+                                                    </ControlLabel>
+                                                    <input
+                                                        type="file"
+                                                        id="image-file"
+                                                        name="image-file"
+                                                        className="hidden"
+                                                        accept="image/gif,image/jpeg,image/png,image/jpg"
+                                                        ref="file"
+                                                        onChange={this.handleChangeFile.bind(this)}
+                                                    />
+                                                </Button>
+                                            </Col>
+                                        </Row>
+                                    </Grid>
                                 </div>
                                 <br/>
-                                <p>ユーザ名</p>
+                                <ControlLabel>ユーザ名</ControlLabel>
                                 <FormGroup controlId="formHorizontalEmail">
                                     <Col sm={8}>
-                                        <input type="text" className="form-control" ref="userName"/>
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            ref="userName"
+                                            value={this.props.userMypage.User.Name}
+                                            onChange={this.changeUserName.bind(this)}
+                                        />
                                     </Col>
                                 </FormGroup>
                                 <br/>
@@ -98,4 +120,7 @@ export default class Mypage extends Component {
 
 Mypage.propTypes = {
     getUser: PropTypes.func,
+    upload: PropTypes.func,
+    changeUserName:  PropTypes.func,
+    userMypage: PropTypes.object,
 }
