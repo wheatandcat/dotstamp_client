@@ -14,6 +14,7 @@
 /doc/*
 /log/*
 !/log/.keep
+/coverage/*
 /dist/js/bundle.js
 /dist/inde.html
 /node_modules/*

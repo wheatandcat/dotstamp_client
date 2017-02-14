@@ -33,7 +33,15 @@ function mapDispatchToProps (dispatch) {
         },
         changeUserName: (name) => {
             dispatch(changeUserName(name))
-        }
+        },
+        save: (action) => {
+            dispatch(fetchPostsIfNeeded(
+                    "user/save/",
+                    types.SAVE_USER,
+                    action
+                )
+            )
+        },
     }
 }
 

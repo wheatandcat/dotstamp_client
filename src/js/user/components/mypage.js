@@ -4,19 +4,23 @@ import {Group} from "./../../../css/form.css"
 import {Paragraph} from "./../../../css/common.css"
 import Footer from "../../utils/parts/footer"
 import Icon from "../../utils/parts/icon"
+import {LinkContainer} from "react-router-bootstrap"
 
 export default class Mypage extends Component {
     componentWillMount() {
         this.getUser()
 
     }
+    /**
+     * ユーザ取得する
+     */
     getUser() {
         this.props.getUser()
     }
     /**
      * 画像指定を変更の監視する
      *
-     * @param  {object} e イベントオブジェクト
+     * @param {object} e イベントオブジェクト
      */
     handleChangeFile(e) {
         let fileList = e.target.files
@@ -25,7 +29,7 @@ export default class Mypage extends Component {
     /**
      * ファイルをアップロードする
      *
-     * @param  {array} fileList ファイルリスト
+     * @param {array} fileList ファイルリスト
      */
     uploadFile(fileList) {
         let formData = new FormData()
@@ -40,6 +44,18 @@ export default class Mypage extends Component {
         this.props.changeUserName(this.refs.userName.value)
     }
     /**
+     * 保存する
+     */
+    save() {
+        let userName = this.refs.userName.value
+
+        let action = {
+            name: userName,
+        }
+
+        this.props.save(action)
+    }
+    /**
      * 描画する
      *
      * @return {object} html
@@ -52,10 +68,12 @@ export default class Mypage extends Component {
                         <br/>
                         <Col xs={6} md={4}>
                             <ListGroup>
-                                <ListGroupItem bsStyle="info">メニュー</ListGroupItem>
-                                <ListGroupItem>
-                                    <Glyphicon glyph="user"/>&nbsp;アカウント
-                                </ListGroupItem>
+                                <ListGroupItem disabled>メニュー</ListGroupItem>
+                                <LinkContainer to="/user/mypage">
+                                    <ListGroupItem>
+                                        <Glyphicon glyph="user"/>&nbsp;アカウント
+                                    </ListGroupItem>
+                                </LinkContainer>
                                 <ListGroupItem>
                                     <Glyphicon glyph="lock"/>&nbsp;パスワード
                                 </ListGroupItem>
@@ -105,9 +123,9 @@ export default class Mypage extends Component {
                                 <br/>
                                 <br/>
                                 <br/>
-                                    <Button bsStyle="success">
-                                        保存する
-                                    </Button>
+                                <Button bsStyle="success" onClick={() => this.save()}>
+                                    保存する
+                                </Button>
                             </Panel>
                         </Col>
                     </Row>
@@ -121,6 +139,7 @@ export default class Mypage extends Component {
 Mypage.propTypes = {
     getUser: PropTypes.func,
     upload: PropTypes.func,
-    changeUserName:  PropTypes.func,
+    changeUserName: PropTypes.func,
     userMypage: PropTypes.object,
+    save: PropTypes.func,
 }

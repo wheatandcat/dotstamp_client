@@ -1,7 +1,7 @@
 /*eslint no-console: ["error", { allow: ["log", "error"] }] */
 import React, {PropTypes, Component} from "react"
 import {Nav, NavItem, NavDropdown, MenuItem, Glyphicon} from "react-bootstrap"
-import { LinkContainer } from "react-router-bootstrap"
+import {LinkContainer} from "react-router-bootstrap"
 
 export default class Auth extends Component {
     componentWillMount () {

@@ -23,6 +23,9 @@ export default function Mypage (state = initialState , action) {
 
         return JSON.parse(JSON.stringify(state))
     }
+    case types.SAVE_USER: {
+        return JSON.parse(JSON.stringify(state))
+    }
     default:
         return state
     }
