@@ -1,4 +1,3 @@
-/*eslint no-console: ["error", { allow: ["log", "error"] }] */
 import React, {Component, PropTypes} from "react"
 import {Link} from "react-router"
 import { FormGroup, Col, Button, Grid, Row, Jumbotron, Form } from "react-bootstrap"
