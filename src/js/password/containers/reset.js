@@ -15,7 +15,15 @@ function mapDispatchToProps (dispatch) {
                     types.CHECK_PASSWORD
                 )
             )
-        }
+        },
+        save: (action) => {
+            dispatch(fetchPostsIfNeeded(
+                    "user/forget_password/save/",
+                    types.SAVE_PASSWORD,
+                    action
+                )
+            )
+        },
     }
 }
 

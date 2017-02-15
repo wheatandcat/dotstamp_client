@@ -93,6 +93,5 @@ export default class Auth extends Component {
 Auth.propTypes = {
     auth: PropTypes.func,
     logout: PropTypes.func,
-    showError: PropTypes.func,
     loginAuth: PropTypes.object,
 }
