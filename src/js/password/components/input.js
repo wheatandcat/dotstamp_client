@@ -19,7 +19,7 @@ export default class Input extends Component {
      * 報告する
      */
     report() {
-        if (!this.props.passwordInput.send) {
+        if (!this.props.passwordInput.fetch) {
             return ""
         }
 

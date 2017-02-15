@@ -1,7 +1,7 @@
 import * as types from "../../constants/ActionTypes"
 
 const initialState = {
-    send: false,
+    fetch: false,
     warning: false,
     message: "",
 }
@@ -9,7 +9,7 @@ const initialState = {
 export default function Input (state = initialState , action) {
     switch (action.type) {
     case types.ADD_PASSWORD: {
-        state.send = true
+        state.fetch = true
         state.warning = action.response.Warning
         state.message = action.response.Message
 

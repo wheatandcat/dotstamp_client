@@ -1,6 +1,7 @@
 import * as types from "../../constants/ActionTypes"
 
 const initialState = {
+    fetch: false,
     warning: false,
     message: "",
 }
@@ -8,6 +9,7 @@ const initialState = {
 export default function Reset (state = initialState , action) {
     switch (action.type) {
     case types.CHECK_PASSWORD: {
+        state.fetch = true
         state.warning = action.response.Warning
         state.message = action.response.Message
 
