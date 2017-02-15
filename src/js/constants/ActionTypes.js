@@ -45,3 +45,8 @@ export const SET_USER = "SET_USER"
 export const UPLOAD_USER_PROFILE = "UPLOAD_USER_PROFILE"
 export const CHANGE_USER_NAME = "CHANGE_USER_NAME"
 export const SAVE_USER = "SAVE_USER"
+
+
+export const ADD_PASSWORD = "ADD_PASSWORD"
+export const CHECK_PASSWORD = "CHECK_PASSWORD"
+export const SAVE_PASSWORD = "SAVE_PASSWORD"

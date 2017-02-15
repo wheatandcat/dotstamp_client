@@ -44,7 +44,12 @@ export default class Login extends Component {
                                 <Button bsStyle="success" onClick={() => this.login()}>
                                     ログイン
                                 </Button>
+                                <br />
+                                <Link to="/password/input">
+                                    <Button bsStyle="link">パスワードを忘れた場合は、こちら</Button>
+                                </Link>
                             </FormGroup>
+
                         </Form>
                         <br />
                         <br />

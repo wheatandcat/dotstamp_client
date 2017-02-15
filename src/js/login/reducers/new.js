@@ -4,7 +4,7 @@ const initialState = {
     state: 0
 }
 
-export default function Login (state = initialState , action) {
+export default function New (state = initialState , action) {
     switch (action.type) {
     case types.SET_LOGIN_USER: {
         location.href = "/"

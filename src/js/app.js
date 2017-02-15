@@ -18,6 +18,9 @@ import loginLogin from "./login/containers/login"
 
 import CharacterList from "./character/containers/list"
 
+import PasswordInput from "./password/containers/input"
+import PasswordReset from "./password/containers/reset"
+
 import ErrorShow from "./error/containers/show"
 import Header from "./utils/parts/header"
 
@@ -60,6 +63,8 @@ class App extends Component {
                         <Route path="/character/list" component={CharacterList} />
                         <Route path="/login/new" component={loginNew} />
                         <Route path="/login/login" component={loginLogin} />
+                        <Route path="/password/input" component={PasswordInput} />
+                        <Route path="/password/reset/:email/:keyword" component={PasswordReset} />
                     </Route>
                 </Router>
             </Provider>

@@ -15,6 +15,8 @@ import characterList from "../character/reducers/list"
 import loginNew from "../login/reducers/new"
 import loginAuth from "../login/reducers/auth"
 
+import passwordInput from "../password/reducers/input"
+import passwordReset from "../password/reducers/reset"
 
 // 機能ごとのstateを管理
 const rootReducer = combineReducers({
@@ -29,6 +31,8 @@ const rootReducer = combineReducers({
     loginNew: loginNew,
     loginAuth: loginAuth,
     characterList: characterList,
+    passwordInput,
+    passwordReset,
 })
 
 export default rootReducer
