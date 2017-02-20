@@ -31,3 +31,7 @@
 .Paragraph {
     padding: 5px 15px;
 }
+
+.Center {
+    text-align: center;
+}

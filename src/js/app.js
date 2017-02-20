@@ -9,6 +9,7 @@ import ContributionNew from "./contribution/containers/new"
 import ContributionEdit from "./contribution/containers/edit"
 import ContributionList from "./contribution/containers/list"
 import ContributionShow from "./contribution/containers/show"
+import ContributionSearch from "./contribution/containers/search"
 
 import UserContributionList from "./user/containers/contributionList"
 import UserMypage from "./user/containers/mypage"
@@ -57,7 +58,8 @@ class App extends Component {
                         <Route path="/contribution/new" component={ContributionNew} />
                         <Route name="/contribution/edit" path="/contribution/edit/:id" component={ContributionEdit} />
                         <Route path="/contribution/list" component={ContributionList} />
-                        <Route name="/contribution/show" path="/contribution/show/:id" component={ContributionShow} />
+                        <Route path="/contribution/show/:id" component={ContributionShow} />
+                        <Route path="/contribution/search/:search/:order/:page" component={ContributionSearch} />
                         <Route path="/user/contributionList" component={UserContributionList} />
                         <Route path="/user/mypage" component={UserMypage} />
                         <Route path="/character/list" component={CharacterList} />

@@ -1,6 +1,6 @@
 import { DIRECTION_LEFT } from "../actions/talk"
 import * as types from "../../constants/ActionTypes"
-
+import {VIEW_STATUS_PUBLIC} from "../../constants/contribution"
 
 const initialState = {
     edit: false,
@@ -14,7 +14,8 @@ const initialState = {
     },
     directionType: DIRECTION_LEFT,
     height: 450,
-    boardScroll: false
+    boardScroll: false,
+    viewStatus: VIEW_STATUS_PUBLIC,
 }
 
 var onBoardScrollActionTypeList = [
@@ -93,6 +94,11 @@ export default function Form (state = initialState , action) {
     }
     case types.NEW_CONTRIBUTION_FORM: {
         location.href = "/#/contribution/edit/" + action.response
+        return JSON.parse(JSON.stringify(state))
+    }
+    case types.SET_CONTRIBUTION_FORM_VIEW_STATUS: {
+        state.viewStatus = action.viewStatus
+
         return JSON.parse(JSON.stringify(state))
     }
     default:

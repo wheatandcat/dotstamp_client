@@ -1,6 +1,6 @@
 import { connect } from "react-redux"
 import FormHeader from "../../components/form/header"
-import {changeTitle, changeTag, changeHeight} from "../../actions/form"
+import {changeTitle, changeTag, changeHeight, setViewStatus} from "../../actions/form"
 import {fetchPostsIfNeeded} from "../../../utils/fetch"
 import * as types from "../../../constants/ActionTypes"
 
@@ -27,6 +27,9 @@ function mapDispatchToProps (dispatch) {
                     action
                 )
             )
+        },
+        setViewStatus: (viewStatus) => {
+            dispatch(setViewStatus(viewStatus))
         },
         save: (action) => {
             dispatch(fetchPostsIfNeeded(

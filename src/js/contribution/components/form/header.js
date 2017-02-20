@@ -1,5 +1,7 @@
 import React, {Component, PropTypes} from "react"
-import {Button, ButtonToolbar, SplitButton, MenuItem, ListGroup, ListGroupItem, FormGroup, FormControl, Form} from "react-bootstrap"
+import {ButtonToolbar, Dropdown, Button, MenuItem, ListGroup, ListGroupItem, FormGroup, FormControl, Form, Glyphicon} from "react-bootstrap"
+import {VIEW_STATUS_PUBLIC, VIEW_STATUS_PRIVATE} from "../../../constants/contribution"
+
 
 import FormMain from "../../containers/form/main"
 import TalkBoard from "../../containers/talk/board"
@@ -57,7 +59,8 @@ export default class Header extends Component {
             userContributionId: contributionId,
             title: title,
             tag: tag,
-            body: JSON.stringify(body)
+            body: JSON.stringify(body),
+            viewStatus: this.props.contributionForm.viewStatus
         }
 
         if (contributionId == null) {
@@ -128,9 +131,9 @@ export default class Header extends Component {
         )
     }
     /**
-     * ボードのstyleを取得する
+     * ボードスタイルを取得する
      *
-     * @return {object} style
+     * @return {object} スタイル
      */
     getBoardStyle() {
         let height = this.props.contributionForm.height - 470
@@ -138,6 +141,57 @@ export default class Header extends Component {
         return {
             height: height + "px"
         }
+    }
+    /**
+     * 表示状態を取得する
+     *
+     * @return {object} html
+     */
+    getViewStatus() {
+        let viewStausMap = []
+        viewStausMap[VIEW_STATUS_PUBLIC] = {
+            eventKey: 1,
+            text: "投稿する　",
+            glyph: "edit",
+            status: VIEW_STATUS_PUBLIC,
+        }
+        viewStausMap[VIEW_STATUS_PRIVATE] = {
+            eventKey: 2,
+            text: "下書き保存",
+            glyph: "floppy-disk",
+            status: VIEW_STATUS_PRIVATE,
+        }
+
+        let viewStaus = (item) => {
+            if (item.status == this.props.contributionForm.viewStatus) {
+                return (
+                    <MenuItem eventKey={item.eventKey} key={item.eventKey} active>
+                        <Glyphicon glyph={item.glyph}/>&nbsp;{item.text}
+                    </MenuItem>
+                )
+            }
+
+            return (
+                <MenuItem eventKey={item.eventKey} key={item.eventKey} onClick={() => this.props.setViewStatus(item.status)}>
+                    <Glyphicon glyph={item.glyph}/>&nbsp;{item.text}
+                </MenuItem>
+            )
+        }
+
+        let status = viewStausMap[this.props.contributionForm.viewStatus]
+        return (
+            <Dropdown id="dropdown-custom-1">
+                <Button onClick={() => this.save()}>
+                    <Glyphicon glyph={status.glyph} />&nbsp;{status.text}
+                </Button>
+                <Dropdown.Toggle/>
+                <Dropdown.Menu className="super-colors">
+                    {viewStausMap.map((item) => {
+                        return viewStaus(item)
+                    })}
+                </Dropdown.Menu>
+            </Dropdown>
+        )
     }
     /**
      * 描画する
@@ -153,22 +207,9 @@ export default class Header extends Component {
                             <input type="text" id="title" className="form-control" placeholder="タイトル(100文字以内)" ref="title" value={this.props.contributionForm.title} onChange={this.changeTitle.bind(this)}/>
                         </FormGroup>
                         {this.getTag()}
+
                         <ButtonToolbar>
-                            <SplitButton title="投稿する" dropup id="split-button-dropup" onClick={() => this.save()}>
-                                <MenuItem eventKey="1">
-                                    下書き保存
-                                </MenuItem>
-                                <MenuItem eventKey="2">
-                                    投稿する
-                                </MenuItem>
-                                <MenuItem eventKey="3">
-                                    Something else here
-                                </MenuItem>
-                                <MenuItem divider/>
-                                <MenuItem eventKey="4">
-                                    Separated link
-                                </MenuItem>
-                            </SplitButton>
+                            {this.getViewStatus()}
                         </ButtonToolbar>
                     </ListGroupItem>
                     <ListGroupItem>
@@ -191,6 +232,7 @@ Header.propTypes = {
     changeTitle: PropTypes.func,
     changeHeight: PropTypes.func,
     changeTag: PropTypes.func,
+    setViewStatus: PropTypes.func,
     contributionForm: PropTypes.object,
     contributionId: PropTypes.number,
     contributionTalk: PropTypes.array,

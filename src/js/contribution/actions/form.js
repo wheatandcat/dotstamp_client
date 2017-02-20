@@ -102,3 +102,16 @@ export function changeHeight(height) {
         height: height
     }
 }
+
+/**
+ * 表示状態を設定する
+ *
+ * @param  {number} viewStatus 表示状態
+ * @return {object} アクション
+ */
+export function setViewStatus(viewStatus) {
+    return {
+        type: types.SET_CONTRIBUTION_FORM_VIEW_STATUS,
+        viewStatus: viewStatus
+    }
+}

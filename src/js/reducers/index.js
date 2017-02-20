@@ -4,6 +4,7 @@ import contributionList from "../contribution/reducers/list"
 import contributionShow from "../contribution/reducers/show"
 import contributionTalk from "../contribution/reducers/talk"
 import contributionForm from "../contribution/reducers/form"
+import contributionSearch from "../contribution/reducers/search"
 
 import errorShow from "../error/reducers/show"
 
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
     contributionShow: contributionShow,
     contributionTalk: contributionTalk,
     contributionForm: contributionForm,
+    contributionSearch,
     errorShow: errorShow,
     userContributionList: userContributionList,
     userMypage: userMypage,
