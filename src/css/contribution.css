@@ -4,12 +4,14 @@
 
 .Image {
     width: 10%;
-    min-width: 15px;
-    max-width: 30px;
+    min-width: 39px;
+    max-width: 50px;
 }
 
 .Follow {
     width: 20%;
+    min-width: 30px;
+    max-width: 50px;
 }
 
 .While {
