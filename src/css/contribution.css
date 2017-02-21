@@ -1,0 +1,17 @@
+.Body {
+    width: 100%;
+}
+
+.Image {
+    width: 10%;
+    min-width: 15px;
+    max-width: 30px;
+}
+
+.Follow {
+    width: 20%;
+}
+
+.While {
+    height: 25px;
+}

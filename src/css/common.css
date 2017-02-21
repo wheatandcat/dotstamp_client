@@ -2,6 +2,14 @@
     --marginSize: 5px;
 }
 
+.Full {
+    width: 100%;
+}
+
+.Right {
+    margin-left: auto;
+}
+
 .Line {
     border-top: 1px solid #ccc;
 }
@@ -14,8 +22,9 @@
     position: relative;
     top: -21px;
     display: inline-block;
-    float: right;
-    padding: 5px 50px;
+    left: 50%;
+    float: none;
+    padding: 5px 30px;
     background: #fafafa;
     border: 1px solid #e1e1e8;
     border-top: none;
@@ -46,4 +55,13 @@
 
 .Strong {
     font-size:24px;
+}
+
+.Dark {
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+.Thin {
+    color: rgba(0, 0, 0, .41);
 }
