@@ -4,7 +4,7 @@ import {Navbar, FormGroup, FormControl, Button, Glyphicon, InputGroup} from "rea
 import LoginAuth from "./../../login/containers/auth"
 import {Link} from "react-router"
 
-import {HeaderInfo} from "./../../../css/common.css"
+import {Narrowly} from "./../../../css/common.css"
 
 export default class Header extends React.Component {
     search() {
@@ -23,7 +23,7 @@ export default class Header extends React.Component {
      */
     render() {
         return (
-            <Navbar className={HeaderInfo}>
+            <Navbar className={Narrowly}>
                 <Navbar.Header>
                     <Navbar.Brand>
                         <Link to="/">

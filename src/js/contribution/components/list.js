@@ -1,14 +1,10 @@
 import React, {Component, PropTypes} from "react"
 
-import {Link} from "react-router"
-import {Media, Button, ButtonGroup, Well ,Glyphicon, Collapse} from "react-bootstrap"
-import Images from "../../utils/image"
+import {Button, ButtonGroup, Well ,Glyphicon, Collapse} from "react-bootstrap"
 import Footer from "../../utils/parts/footer"
+import Thumbnail from "../../utils/parts/contribution/thumbnail"
 import ContributionShowFrame from "../components/show/frame"
-
-import { line, Toggle } from "./../../../css/common.css"
-
-import {IMAGE_DISPLAY_TYPE_CHARACTER} from "../../utils/image"
+import {Line, Toggle} from "./../../../css/common.css"
 
 const VIEW_PAGE_LIMIT = 10
 
@@ -36,15 +32,6 @@ export default class List extends Component {
         this.getList(false)
     }
     /**
-     * 詳細画面リンクを取得する
-     *
-     * @param  {number} id 投稿ID
-     * @return {string} 詳細画面リンク
-     */
-    getShowPath(id) {
-        return "/contribution/show/" + id
-    }
-    /**
      * アイテム表示を取得する
      *
      * @param  {object} obj アイテム
@@ -60,7 +47,7 @@ export default class List extends Component {
                         body = {item.body}
                         tagList = {item.tagList}
                     />
-                    <hr className={line}/>
+                    <hr className={Line}/>
                     <Button className={Toggle} onClick={() => this.props.deleteItem(obj.ID)}>
                         <Glyphicon glyph="chevron-up"/>
                     </Button>
@@ -70,7 +57,7 @@ export default class List extends Component {
 
         return (
             <div>
-                <hr className={line}/>
+                <hr className={Line}/>
                 <Button className={Toggle} onClick={() => this.props.addItem(obj.ID)}>
                     <Glyphicon glyph="chevron-down"/>
                 </Button>
@@ -80,34 +67,14 @@ export default class List extends Component {
     /**
      * アイテムを取得する
      *
-     * @param  {object} obj アイテム
+     * @param  {object} item アイテム
      * @return {object} html
      */
-    gatItem(obj) {
+    gatItem(item) {
         return (
             <div>
-                <Media>
-                    <Media.Left>
-                        <Images
-                            fileName="4fc82b26aecb47d2868c4efbe3581732a3e7cbcc6c2efb32062c08170a05eeb8.jpg"
-                            imageDisplayType={IMAGE_DISPLAY_TYPE_CHARACTER}
-                        />
-                    </Media.Left>
-                    <Media.Body>
-                        ○○さんが 15分前に投稿しました
-                        <Media.Heading>
-                            <Link to={this.getShowPath(obj.ID)}>
-                                {obj.Title}
-                            </Link>
-
-                        </Media.Heading>
-                    </Media.Body>
-                    <Media.Right>
-                        <Glyphicon glyph="thumbs-up"/>
-                        <span>2</span>
-                    </Media.Right>
-                </Media>
-                {this.getItemShow(obj)}
+                <Thumbnail {...item} />
+                {this.getItemShow(item)}
             </div>
         )
     }

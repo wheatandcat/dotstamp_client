@@ -5,10 +5,11 @@ import React, {Component, PropTypes} from "react"
 import {Image, Thumbnail} from "react-bootstrap"
 
 
-import { TalkIcon, TalkImage } from "./../../css/talk.css"
-import { FormIcon } from "./../../css/form.css"
-import { MainIcon } from "./../../css/character.css"
-import { UserIcon } from "./../../css/user.css"
+import {TalkIcon, TalkImage} from "./../../css/talk.css"
+import {FormIcon} from "./../../css/form.css"
+import {MainIcon} from "./../../css/character.css"
+import {UserIcon} from "./../../css/user.css"
+import {Narrowly} from "./../../css/common.css"
 
 // 表示タイプ
 export const IMAGE_DISPLAY_TYPE_NONE = 0
@@ -81,7 +82,7 @@ export default class Images extends Component {
             src: (fileName) => {
                 return this.getUploadSrc("icon/", fileName)
             },
-            className: "",
+            className: Narrowly,
             option: {},
             tag: Thumbnail,
         }

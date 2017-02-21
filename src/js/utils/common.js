@@ -6,7 +6,18 @@ import dateFormat from "dateformat"
  * @param  {string} data 日付
  * @return {string} 日付
  */
-export function DateFormat(data) {
-    
+export function DateTimeFormat(data) {
+
     return dateFormat(data, "yyyy/mm/dd hh:MM:ss")
+}
+
+/**
+ * 整形した日を取得する
+ *
+ * @param  {string} data 日付
+ * @return {string} 日付
+ */
+export function DateFormat(data) {
+
+    return dateFormat(data, "yyyy/mm/dd")
 }

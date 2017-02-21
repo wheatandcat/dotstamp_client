@@ -9,7 +9,7 @@ const initialState = {
 export default function List (state = initialState, action) {
     switch (action.type) {
     case types.GET_CONTRIBUTION_SEARCH_LIST: {
-        console.log (action)
+        state.list = action.response
 
         return JSON.parse(JSON.stringify(state))
     }

@@ -1,8 +1,6 @@
 import React, { Component, PropTypes } from "react"
-
 import {Label} from "react-bootstrap"
-
-import { Item } from "./../../../css/tag.css"
+import {Item} from "./../../../css/tag.css"
 
 export default class Tag extends Component {
     getItem(item) {

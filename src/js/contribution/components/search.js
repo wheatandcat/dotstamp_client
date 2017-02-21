@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from "react"
-import {FormControl, Glyphicon, Button, Col, Pagination, DropdownButton, MenuItem} from "react-bootstrap"
-
-import {Center} from "./../../../css/common.css"
+import {Well, FormControl, Glyphicon, Button, Col, Pagination, DropdownButton, MenuItem} from "react-bootstrap"
+import Thumbnail from "../../utils/parts/contribution/thumbnail"
+import {Center, Line} from "./../../../css/common.css"
 
 export default class Search extends Component {
     componentWillMount() {
@@ -17,7 +17,6 @@ export default class Search extends Component {
             page: this.props.params.page,
             limit: this.props.contributionSearch.limit,
         }
-        console.log (action)
 
         this.props.search(action)
     }
@@ -27,27 +26,41 @@ export default class Search extends Component {
      * @return {object} html
      */
     render() {
+        let list = this.props.contributionSearch.list
+        if (!Array.isArray(list)) {
+            list = []
+        }
+
         return (
             <div>
-                <br />
-                <Col sm={10}>
-                  <FormControl type="text" placeholder="検索ワード" defaultValue={this.props.params.search} />
-                </Col>
-                <Col sm={1}>
-                    <Button onClick={() => this.search()}>
-                        <Glyphicon glyph="search"/>&nbsp;検索&nbsp;
-                    </Button>
-                </Col>
-                <br />
-                <br />
-                <Col sm={10}>
-                </Col>
-                <Col sm={2}>
-                    <DropdownButton title="人気順" id="bg-nested-dropdown">
-                        <MenuItem eventKey="1">人気順</MenuItem>
-                        <MenuItem eventKey="2">新規順</MenuItem>
-                    </DropdownButton>
-                </Col>
+                <Well>
+                    <Col sm={8}>
+                      <FormControl type="text" placeholder="検索ワード" defaultValue={this.props.params.search} />
+                    </Col>
+                    <Col sm={1}>
+                        <Button onClick={() => this.search()}>
+                            <Glyphicon glyph="search"/>&nbsp;検索&nbsp;
+                        </Button>
+                    </Col>
+                    <Col sm={2}>
+                        &nbsp;
+                        &nbsp;
+                        <DropdownButton title="人気順" id="bg-nested-dropdown">
+                            <MenuItem eventKey="1">人気順</MenuItem>
+                            <MenuItem eventKey="2">新規順</MenuItem>
+                        </DropdownButton>
+                    </Col>
+                    <br />
+                    <br />
+                </Well>
+                <div>
+                {list.map((item) =>
+                    <div key={item.ID}>
+                        <Thumbnail {...item} />
+                        <hr className={Line}/>
+                    </div>
+                )}
+                </div>
                 <div className={Center}>
                     <Pagination
                       prev
