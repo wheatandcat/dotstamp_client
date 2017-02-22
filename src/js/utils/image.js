@@ -30,7 +30,7 @@ export default class Images extends Component {
             src: (filePath) => {
                 return this.getImageSrc(filePath)
             },
-            className: "",
+            className: Narrowly,
             option: {},
             tag: Thumbnail,
         }

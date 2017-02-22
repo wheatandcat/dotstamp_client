@@ -27,9 +27,11 @@ export default class Main extends Component {
         return (
             <div>
                 <ContributionShowFrame
-                    title = {this.props.contributionShow.title}
-                    body = {this.props.contributionShow.body}
-                    tagList = {this.props.contributionShow.tagList}
+                    title = {this.props.contributionShow.Title}
+                    body = {this.props.contributionShow.Body}
+                    tagList = {this.props.contributionShow.TagList}
+                    user = {this.props.contributionShow.User}
+                    updatedAt = {this.props.contributionShow.UpdatedAt}
                 />
                 <Footer/>
             </div>

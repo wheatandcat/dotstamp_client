@@ -2,7 +2,7 @@ import React, {PropTypes, Component} from "react"
 import {Link} from "react-router"
 //import {DateFormat} from "../../utils/common"
 
-import {Grid,Row,Col,Tab,Nav,NavItem,ButtonToolbar,Button} from "react-bootstrap"
+import {PageHeader, Glyphicon, Row,Col,Tab,Nav,NavItem,ButtonToolbar,Button} from "react-bootstrap"
 import ContributionShow from "../../contribution/containers/show"
 
 export default class ContributionList extends Component {
@@ -59,34 +59,30 @@ export default class ContributionList extends Component {
 
         return (
             <div>
-                <Grid>
+                <PageHeader>&nbsp;投稿一覧</PageHeader>
+                <Tab.Container id="left-tabs-example" defaultActiveKey={1} onSelect={this.setContribution.bind(this)}>
                     <Row>
-                        <Col xs={6} md={4}>
-                            <h2>投稿</h2>
-                            <br/>
-                            <Tab.Container id="left-tabs-example" defaultActiveKey={1} onSelect={this.setContribution.bind(this)}>
-                                <Nav bsStyle="pills" stacked>
-                                    {list.map((obj) => <NavItem key={obj.ID} eventKey={obj.ID}>
-                                        <p>
-                                            {obj.Title}
-                                        </p>
-                                        2014/12/21 10:00:00
-                                    </NavItem>)}
-                                </Nav>
-                            </Tab.Container>
+                        <Col xs={3} md={2}>
+                            <Nav bsStyle="pills" stacked>
+                                {list.map((obj) => <NavItem key={obj.ID} eventKey={obj.ID}>
+                                    <p>
+                                        {obj.Title}
+                                    </p>
+                                    2014/12/21 10:00:00
+                                </NavItem>)}
+                            </Nav>
                         </Col>
-                        <Col xs={12} md={8}>
-                            <br/>
+                        <Col xsHidden md={10}>
                             <div>
                                 <ButtonToolbar>
-                                    <Button>
-                                        <Link to={this.getEditPath(this.props.userContributionList.contributionId)}>
-                                            編集
-                                        </Link>
-                                    </Button>
+                                    <Link to={this.getEditPath(this.props.userContributionList.contributionId)}>
+                                        <Button bsStyle="success">
+                                            <Glyphicon glyph="edit"/>&nbsp;編集
+                                        </Button>
+                                    </Link>
                                     <Button bsStyle="danger" onClick={
                                     () => this.deleteContribution(this.props.userContributionList.contributionId)}>
-                                        削除
+                                        <Glyphicon glyph="trash"/>&nbsp;削除
                                     </Button>
                                 </ButtonToolbar>
                             </div>
@@ -96,7 +92,7 @@ export default class ContributionList extends Component {
                             }}/>
                         </Col>
                     </Row>
-                </Grid>
+                </Tab.Container>
             </div>
         )
     }

@@ -8,7 +8,7 @@ import dateFormat from "dateformat"
  */
 export function DateTimeFormat(data) {
 
-    return dateFormat(data, "yyyy/mm/dd hh:MM:ss")
+    return dateFormat(data, "yyyy年m月d日 hh:MM:ss")
 }
 
 /**

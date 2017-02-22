@@ -32,7 +32,7 @@ const store = configureStore()
 class Menu extends Component {
     render () {
         return (
-            <div className="container">
+            <div>
                 <Header/>
                 {this.props.children}
                 <ErrorShow />

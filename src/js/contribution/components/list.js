@@ -5,7 +5,6 @@ import Footer from "../../utils/parts/footer"
 import Thumbnail from "../../utils/parts/contribution/thumbnail"
 import ContributionShowFrame from "../components/show/frame"
 import {Line, Toggle} from "./../../../css/common.css"
-import {While} from "./../../../css/contribution.css"
 
 
 const VIEW_PAGE_LIMIT = 10
@@ -58,7 +57,7 @@ export default class List extends Component {
         }
 
         return (
-            <div className={While}>
+            <div>
                 <hr className={Line}/>
                 <Button className={Toggle} onClick={() => this.props.addItem(obj.ID)}>
                     <Glyphicon glyph="chevron-down"/>
