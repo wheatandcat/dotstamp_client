@@ -10,8 +10,11 @@ const initialState = {
         Name: "",
         ProfileImageID: 0,
     },
+    FollowCount: -1,
     UpdatedAt: "",
     CreatedAt: "",
+    Following: false,
+    Load: false,
 }
 
 export default function Show (state = initialState , action) {
@@ -23,6 +26,22 @@ export default function Show (state = initialState , action) {
         state.User = action.response.User
         state.UpdatedAt = action.response.UpdatedAt
         state.CreatedAt = action.response.CreatedAt
+        state.FollowCount = action.response.FollowCount
+        state.Following = action.response.Following
+
+        state.Load = true
+
+        return JSON.parse(JSON.stringify(state))
+    }
+    case types.DELETE_FOLLOW: {
+        state.FollowCount = action.response.FollowCount
+        state.Following = false
+
+        return JSON.parse(JSON.stringify(state))
+    }
+    case types.ADD_FOLLOW: {
+        state.FollowCount = action.response.FollowCount
+        state.Following = true
 
         return JSON.parse(JSON.stringify(state))
     }

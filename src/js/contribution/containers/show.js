@@ -16,6 +16,22 @@ function mapDispatchToProps (dispatch) {
                     types.GET_CONTRIBUTION_SHOW
                 )
             )
+        },
+        addFollow:(action) => {
+            dispatch(fetchPostsIfNeeded(
+                    "follow/add",
+                    types.ADD_FOLLOW,
+                    action
+                )
+            )
+        },
+        deleteFollow:(action) => {
+            dispatch(fetchPostsIfNeeded(
+                    "follow/delete",
+                    types.DELETE_FOLLOW,
+                    action
+                )
+            )
         }
     }
 }
