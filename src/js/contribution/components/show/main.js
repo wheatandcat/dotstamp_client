@@ -1,9 +1,11 @@
 import React, { Component, PropTypes } from "react"
-import {Grid, Row, Col, Button, PageHeader, Glyphicon, Media} from "react-bootstrap"
+import {Grid, Row, Col, Button, PageHeader, Glyphicon} from "react-bootstrap"
 import ContributionShowFrame from "./frame"
 
 import Footer from "../../../utils/parts/footer"
 import {Middle, Center, Large, Info, Paragraph} from "../../../../css/common.css"
+import {Author} from "../../../../css/contribution.css"
+
 import Icon from "../../../utils/parts/icon"
 import Tag from "../../../utils/parts/tag"
 import {DateTimeFormat} from "../../../utils/common"
@@ -101,20 +103,21 @@ export default class Main extends Component {
                 </Grid>
                 <br />
                 <div className={Info} >
-                    <div className="container">
-                        <Media className={Paragraph}>
-                            <Media.Left>
+                    <Grid>
+                        <Row>
+                            <Col xs={1} md={1} className={Paragraph}>
                                 <Icon imageId={this.props.contributionShow.User.ProfileImageID}/>
-                            </Media.Left>
-                            <Media.Body className={Middle}>
-                                &nbsp;{this.props.contributionShow.User.Name}
-                            </Media.Body>
-                            <Media.Right className={Middle}>
-                                &nbsp;<Glyphicon glyph="time"/>
-                                &nbsp;{DateTimeFormat(this.props.contributionShow.UpdatedAt)}に更新
-                            </Media.Right>
-                        </Media>
-                    </div>
+                            </Col>
+                            <Col xsHidden md={11} className={Author}>
+                                <div className={Middle}>
+                                    {this.props.contributionShow.User.Name}
+
+                                    &nbsp;&nbsp;&nbsp;<Glyphicon glyph="time"/>
+                                    &nbsp;{DateTimeFormat(this.props.contributionShow.UpdatedAt)}に更新
+                                </div>
+                            </Col>
+                        </Row>
+                    </Grid>
                 </div>
                 <br />
             </div>

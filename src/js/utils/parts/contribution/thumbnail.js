@@ -5,7 +5,7 @@ import Tag from "../../parts/tag"
 import {Link} from "react-router"
 import {DateFormat} from "../../common"
 
-import {Strong, Gap, Dark, Thin, Full} from "../../../../css/common.css"
+import {Strong, LittleStrong, Gap, Dark, Thin} from "../../../../css/common.css"
 import {Body, Image, Follow} from "../../../../css/contribution.css"
 
 
@@ -67,7 +67,7 @@ export default class Thumbnail extends Component {
      */
     render () {
         return (
-            <Media className={Full}>
+            <Media>
                 <Media.Left className={Image}>
                     <Icon imageId={this.props.User.ProfileImageID} />
                 </Media.Left>
@@ -81,11 +81,13 @@ export default class Thumbnail extends Component {
                             <Tag list={this.props.Tag} />
                         </div>
                     </Media.Heading>
-                    {this.getSearchMatch()}
+                    <p>
+                        {this.getSearchMatch()}
+                    </p>
                 </Media.Body>
                 <Media.Right className={Follow}>
                     <Glyphicon glyph="thumbs-up"/>
-                    <span>3</span>
+                    <span className={LittleStrong}>&nbsp;{this.props.FollowCount}</span>
                 </Media.Right>
             </Media>
         )
@@ -100,4 +102,5 @@ Thumbnail.propTypes = {
     Tag:  PropTypes.array,
     Search: PropTypes.string,
     searchMatch: PropTypes.string,
+    FollowCount: PropTypes.number,
 }

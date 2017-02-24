@@ -71,7 +71,11 @@
 }
 
 .Strong {
-    font-size:24px;
+    font-size: 25px;
+}
+
+.LittleStrong {
+    font-size: 20px;
 }
 
 .Dark {

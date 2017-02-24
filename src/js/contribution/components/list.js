@@ -73,7 +73,7 @@ export default class List extends Component {
      */
     gatItem(item) {
         return (
-            <div>
+            <div key={item.ID}>
                 <Thumbnail {...item} />
                 {this.getItemShow(item)}
             </div>
@@ -94,11 +94,9 @@ export default class List extends Component {
         }
         return (
             <div>
-                {list.map((obj) =>
-                    <span key={obj.ID}>
-                        {this.gatItem(obj)}
-                    </span>
-                )}
+                {list.map((item) => {
+                    return this.gatItem(item)
+                })}
             </div>
         )
     }

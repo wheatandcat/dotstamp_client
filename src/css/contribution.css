@@ -1,19 +1,21 @@
 .Body {
-    width: 100%;
+
 }
 
 .Image {
-    width: 10%;
-    min-width: 39px;
-    max-width: 50px;
+    min-width: 70px;
+    max-width: 90px;
 }
 
 .Follow {
-    width: 20%;
-    min-width: 30px;
-    max-width: 50px;
+    min-width: 70px;
+    max-width: 90px;
 }
 
 .While {
     height: 25px;
+}
+
+.Author {
+    padding-top: 15px;
 }
