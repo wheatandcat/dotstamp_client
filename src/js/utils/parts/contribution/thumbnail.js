@@ -81,9 +81,9 @@ export default class Thumbnail extends Component {
                             <Tag list={this.props.Tag} />
                         </div>
                     </Media.Heading>
-                    <p>
+                    <div>
                         {this.getSearchMatch()}
-                    </p>
+                    </div>
                 </Media.Body>
                 <Media.Right className={Follow}>
                     <Glyphicon glyph="thumbs-up"/>

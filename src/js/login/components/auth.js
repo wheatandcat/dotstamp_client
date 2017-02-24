@@ -49,8 +49,13 @@ export default class Auth extends Component {
                             <Glyphicon glyph="picture"/>&nbsp;キャラ設定
                         </MenuItem>
                     </LinkContainer>
-                    <LinkContainer to="/help/index">
+                    <LinkContainer to="/user/followList/1/1">
                         <MenuItem eventKey={3.3}>
+                            <Glyphicon glyph="thumbs-up"/>&nbsp;フォローリスト
+                        </MenuItem>
+                    </LinkContainer>
+                    <LinkContainer to="/help/index">
+                        <MenuItem eventKey={3.4}>
                             <Glyphicon glyph="question-sign"/>&nbsp;ヘルプ
                         </MenuItem>
                     </LinkContainer>

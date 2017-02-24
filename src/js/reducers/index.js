@@ -10,6 +10,7 @@ import errorShow from "../error/reducers/show"
 
 import userContributionList from "../user/reducers/contributionList"
 import userMypage from "../user/reducers/mypage"
+import userFollowList from "../user/reducers/followList"
 
 import characterList from "../character/reducers/list"
 
@@ -30,6 +31,7 @@ const rootReducer = combineReducers({
     errorShow: errorShow,
     userContributionList: userContributionList,
     userMypage: userMypage,
+    userFollowList,
     loginNew: loginNew,
     loginAuth: loginAuth,
     characterList: characterList,

@@ -13,6 +13,7 @@ import ContributionSearch from "./contribution/containers/search"
 
 import UserContributionList from "./user/containers/contributionList"
 import UserMypage from "./user/containers/mypage"
+import UserFollowList from "./user/containers/followList"
 
 import loginNew from "./login/containers/new"
 import loginLogin from "./login/containers/login"
@@ -62,6 +63,7 @@ class App extends Component {
                         <Route path="/contribution/search/:search/:order/:page" component={ContributionSearch} />
                         <Route path="/user/contributionList" component={UserContributionList} />
                         <Route path="/user/mypage" component={UserMypage} />
+                        <Route path="/user/followList/:order/:page" component={UserFollowList} />
                         <Route path="/character/list" component={CharacterList} />
                         <Route path="/login/new" component={loginNew} />
                         <Route path="/login/login" component={loginLogin} />
@@ -73,7 +75,6 @@ class App extends Component {
         )
     }
 }
-
 
 render((
     <App></App>

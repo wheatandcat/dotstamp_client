@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from "react"
-import {FormGroup, PageHeader, Form, FormControl, Glyphicon, Button, Col, Pagination, DropdownButton, MenuItem} from "react-bootstrap"
+import {FormGroup, Form, FormControl, Glyphicon, Button, Col, DropdownButton, MenuItem} from "react-bootstrap"
 import Thumbnail from "../../utils/parts/contribution/thumbnail"
-import {Center, Line} from "./../../../css/common.css"
+import {Line} from "./../../../css/common.css"
 
 export default class Search extends Component {
     componentWillMount() {
@@ -60,26 +60,12 @@ export default class Search extends Component {
                 </div>
                 <hr />
                 <div>
-                {list.map((item) =>
-                    <div key={item.ID}>
-                        <Thumbnail {...item} searchMatch={this.props.params.search} />
-                        <hr className={Line}/>
-                    </div>
-                )}
-                </div>
-                <div className={Center}>
-                    <Pagination
-                      prev
-                      next
-                      first
-                      last
-                      ellipsis
-                      boundaryLinks
-                      bsSize="large"
-                      items={20}
-                      maxButtons={5}
-                      activePage={1}
-                     />
+                    {list.map((item) =>
+                        <div key={item.ID}>
+                            <Thumbnail {...item} searchMatch={this.props.params.search} />
+                            <hr className={Line}/>
+                        </div>
+                    )}
                 </div>
             </div>
         )
