@@ -1,24 +1,41 @@
 import React, {Component, PropTypes} from "react"
 import {FormGroup, Form, FormControl, Glyphicon, Button, Col, DropdownButton, MenuItem} from "react-bootstrap"
 import Thumbnail from "../../utils/parts/contribution/thumbnail"
+import Pagination from "../../utils/parts/pagination"
 import {Line} from "./../../../css/common.css"
 
 export default class Search extends Component {
     componentWillMount() {
-        this.search()
+        this.search(this.props.params.search, this.props.params.page, this.props.params.order)
+        this.props.paging(this.props.params.search, this.props.params.page, this.props.params.order)
     }
     /**
      * 検索する
+     *
+     * @param {string} search 検索
+     * @param {number} page ページ
+     * @param {number} order 順番
      */
-    search() {
+    search(search, page, order) {
         let action = {
-            search: this.props.params.search,
-            order: this.props.params.order,
-            page: this.props.params.page,
-            limit: this.props.contributionSearch.limit,
+            search: search,
+            order: order,
+            page: page,
+            limit: this.props.contributionSearch.Limit,
         }
 
+
         this.props.search(action)
+    }
+    /**
+     * ページングする
+     *
+     * @param {number} page ページ
+     * @param {number} order 順番
+     */
+    paging(page, order) {
+        this.search(this.props.contributionSearch.Search, page, order)
+        this.props.paging(this.props.contributionSearch.Search, page, order)
     }
     /**
      * 描画する
@@ -26,7 +43,7 @@ export default class Search extends Component {
      * @return {object} html
      */
     render() {
-        let list = this.props.contributionSearch.list
+        let list = this.props.contributionSearch.List
         if (!Array.isArray(list)) {
             list = []
         }
@@ -67,6 +84,14 @@ export default class Search extends Component {
                         </div>
                     )}
                 </div>
+                <Pagination
+                    count={this.props.contributionSearch.Count}
+                    limit={this.props.contributionSearch.Limit}
+                    link="user/followList"
+                    order={parseInt(this.props.contributionSearch.Order)}
+                    activePage={parseInt(this.props.contributionSearch.Page)}
+                    paging={this.paging.bind(this)}
+                />
             </div>
         )
     }
@@ -76,4 +101,5 @@ Search.propTypes = {
     params: PropTypes.object,
     contributionSearch: PropTypes.object,
     search: PropTypes.func,
+    paging: PropTypes.func,
 }

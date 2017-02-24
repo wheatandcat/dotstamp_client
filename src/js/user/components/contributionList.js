@@ -1,9 +1,10 @@
 import React, {PropTypes, Component} from "react"
 import {Link} from "react-router"
-//import {DateFormat} from "../../utils/common"
 
 import {PageHeader, Glyphicon, Row,Col,Tab,Nav,NavItem,ButtonToolbar,Button} from "react-bootstrap"
 import ContributionShow from "../../contribution/containers/show"
+import {DateTimeFormat} from "../../utils/common"
+
 
 export default class ContributionList extends Component {
     componentWillMount() {
@@ -47,7 +48,7 @@ export default class ContributionList extends Component {
      * @return {object} html
      */
     render() {
-        let list = this.props.userContributionList.list
+        let list = this.props.userContributionList.List
         if (!Array.isArray(list)) {
             list = []
         }
@@ -64,24 +65,24 @@ export default class ContributionList extends Component {
                     <Row>
                         <Col xs={3} md={2}>
                             <Nav bsStyle="pills" stacked>
-                                {list.map((obj) => <NavItem key={obj.ID} eventKey={obj.ID}>
+                                {list.map((item) => <NavItem key={item.ID} eventKey={item.ID}>
                                     <p>
-                                        {obj.Title}
+                                        {item.Title}
                                     </p>
-                                    2014/12/21 10:00:00
+                                    {DateTimeFormat(item.CreatedAt)}
                                 </NavItem>)}
                             </Nav>
                         </Col>
                         <Col xsHidden md={10}>
                             <div>
                                 <ButtonToolbar>
-                                    <Link to={this.getEditPath(this.props.userContributionList.contributionId)}>
+                                    <Link to={this.getEditPath(this.props.userContributionList.ContributionId)}>
                                         <Button bsStyle="success">
                                             <Glyphicon glyph="edit"/>&nbsp;編集
                                         </Button>
                                     </Link>
                                     <Button bsStyle="danger" onClick={
-                                    () => this.deleteContribution(this.props.userContributionList.contributionId)}>
+                                    () => this.deleteContribution(this.props.userContributionList.ContributionId)}>
                                         <Glyphicon glyph="trash"/>&nbsp;削除
                                     </Button>
                                 </ButtonToolbar>

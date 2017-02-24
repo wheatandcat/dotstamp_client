@@ -2,22 +2,25 @@ import * as types from "../../constants/ActionTypes"
 
 // 初期ステート設定
 const initialState = {
-    contributionId: 0,
-    list: []
+    ContributionId: 0,
+    List: [],
+    Count: 0,
 }
 
 export default function ContributionList (state = initialState , action) {
     switch (action.type) {
     case types.GET_USER_CONTRBUTION_LIST: {
-        state.list = action.response
-        if (Array.isArray(state.list) && state.list.length > 0) {
-            state.contributionId = state.list[0].ID
+        state.List = action.response.List
+        state.Count = action.response.Count
+
+        if (Array.isArray(state.List) && state.List.length > 0) {
+            state.ContributionId = state.List[0].ID
         }
 
         return JSON.parse(JSON.stringify(state))
     }
     case types.SET_USER_CONTRBUTION_LIST: {
-        state.contributionId = action.contributionId
+        state.ContributionId = action.contributionId
 
         return JSON.parse(JSON.stringify(state))
     }

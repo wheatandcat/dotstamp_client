@@ -1,6 +1,8 @@
 import { connect } from "react-redux"
 import Search from "../components/search"
+
 import {fetchPostsIfNeeded} from "../../utils/fetch"
+import {paging} from "../actions/search"
 import * as types from "../../constants/ActionTypes"
 
 function mapStateToProps (state) {
@@ -16,6 +18,9 @@ function mapDispatchToProps (dispatch) {
                     action
                 )
             )
+        },
+        paging: (search, page, order) => {
+            dispatch(paging(search, page, order))
         },
     }
 }
