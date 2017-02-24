@@ -1,14 +1,21 @@
 import React, {PropTypes, Component} from "react"
 import {Link} from "react-router"
-
+import {Typeahead} from "react-bootstrap-typeahead"
 import {PageHeader, Glyphicon, Row,Col,Tab,Nav,NavItem,ButtonToolbar,Button} from "react-bootstrap"
 import ContributionShow from "../../contribution/containers/show"
 import {DateTimeFormat} from "../../utils/common"
 
+var load = false
 
 export default class ContributionList extends Component {
     componentWillMount() {
         this.getList()
+    }
+    componentWillUpdate() {
+        if (!load && this.props.userContributionList.ContributionId != 0) {
+            load = true
+            this.setContribution(this.props.userContributionList.ContributionId)
+        }
     }
     /**
      * リストを取得する
@@ -43,6 +50,34 @@ export default class ContributionList extends Component {
         return "/contribution/edit/" + id
     }
     /**
+     * 編集パスを取得する
+     *
+     * @param  {number} id 投稿ID
+     * @return {string} 編集パス
+     */
+    inputTitle(text) {
+        let list = []
+        let count = 0
+        let all = this.props.userContributionList.All
+        let length = all.length
+        if (text.target.value == "") {
+            console.log ("アウト")
+        }
+
+
+        all.forEach((item) => {
+            if ( item.Title.indexOf(text.target.value) != -1) {
+                list.push(item)
+            }
+
+            count++
+
+            if (count >= length) {
+                this.props.setTitleSearch(list)
+            }
+        })
+    }
+    /**
      * 描画する
      *
      * @return {object} html
@@ -64,6 +99,16 @@ export default class ContributionList extends Component {
                 <Tab.Container id="left-tabs-example" defaultActiveKey={1} onSelect={this.setContribution.bind(this)}>
                     <Row>
                         <Col xs={3} md={2}>
+                            <Typeahead
+                                options={this.props.userContributionList.TitleList}
+                                maxVisible={2}
+                                placeholder="タイトル検索"
+                                onBlur={this.inputTitle.bind(this)}
+                                onOptionSelected={this.inputTitle.bind(this)}
+                                inputProps={{ref:"searchText"}}
+                                ref="test"
+                            />
+                            <br />
                             <Nav bsStyle="pills" stacked>
                                 {list.map((item) => <NavItem key={item.ID} eventKey={item.ID}>
                                     <p>
@@ -106,4 +151,5 @@ ContributionList.propTypes = {
     setContribution: PropTypes.func,
     contributionShow: PropTypes.object,
     userContributionList: PropTypes.object,
+    setTitleSearch: PropTypes.func,
 }

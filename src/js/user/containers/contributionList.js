@@ -1,6 +1,6 @@
 import { connect } from "react-redux"
 import ContributionList from "../components/contributionList"
-import {setContribution} from "../actions/contributionList"
+import {setContribution, setTitleSearch} from "../actions/contributionList"
 import {fetchPostsIfNeeded} from "../../utils/fetch"
 import * as types from "../../constants/ActionTypes"
 
@@ -26,6 +26,9 @@ function mapDispatchToProps (dispatch) {
                     types.GET_CONTRIBUTION_SHOW
                 )
             )
+        },
+        setTitleSearch: (list) => {
+            dispatch(setTitleSearch(list))
         },
         delete: (id) => {
             dispatch(fetchPostsIfNeeded(

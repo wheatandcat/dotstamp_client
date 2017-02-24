@@ -12,3 +12,16 @@ export function setContribution(contributionId) {
         contributionId: contributionId
     }
 }
+
+/**
+ * 検索タイトルを設定する
+ *
+ * @param  {string} list リスト
+ * @return {object} アクション
+ */
+export function setTitleSearch(list) {
+    return {
+        type: types.SET_USER_CONTRBUTION_LIST_SEARCH,
+        list: list
+    }
+}
