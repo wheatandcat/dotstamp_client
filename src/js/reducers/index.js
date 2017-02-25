@@ -32,7 +32,7 @@ const rootReducer = combineReducers({
     userContributionList: userContributionList,
     userMypage: userMypage,
     userFollowList,
-    loginNew: loginNew,
+    loginNew,
     loginAuth: loginAuth,
     characterList: characterList,
     passwordInput,

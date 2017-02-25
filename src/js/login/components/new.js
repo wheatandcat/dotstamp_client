@@ -1,7 +1,7 @@
 /*eslint no-console: ["error", { allow: ["log", "error"] }] */
 import React, {Component, PropTypes} from "react"
 import {Link} from "react-router"
-import { ButtonToolbar, FormGroup, Col, Button, Grid, Row, Jumbotron } from "react-bootstrap"
+import {Alert, ButtonToolbar, FormGroup, Col, Button, Grid, Row, Jumbotron} from "react-bootstrap"
 
 export default class New extends Component {
     new() {
@@ -13,6 +13,23 @@ export default class New extends Component {
             password: password
         })
     }
+    /**
+     * 警告を取得する
+     *
+     * @return {object} html
+     */
+    getAlert() {
+        if(!this.props.loginNew.Warning) {
+            return ""
+        }
+
+        return (
+            <Alert bsStyle="danger">
+                {this.props.loginNew.Message}
+            </Alert>
+        )
+    }
+
     /**
      * 描画する
      *
@@ -32,6 +49,7 @@ export default class New extends Component {
                         </Jumbotron>
                     </Col>
                     <Col md={6}>
+                        {this.getAlert()}
                         <FormGroup controlId="formHorizontalEmail">
                             <input type="text" className="form-control" id="user" name="user" placeholder="メールアドレス" ref="email" />
                         </FormGroup>
@@ -61,5 +79,6 @@ export default class New extends Component {
 }
 
 New.propTypes = {
-    new: PropTypes.func
+    new: PropTypes.func,
+    loginNew: PropTypes.object,
 }
