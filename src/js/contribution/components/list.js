@@ -43,6 +43,7 @@ export default class List extends Component {
             let item = this.props.contributionList.itemMap[obj.ID]
             return (
                 <div>
+                    <hr />
                     <ContributionShowFrame
                         title = {item.title}
                         body = {item.body}
@@ -147,15 +148,17 @@ export default class List extends Component {
         return (
             <div>
                 <Well>
-                    <br/>
-                    <p>
-                        現在、○○件投稿されています
-                    </p>
-                    <Button bsStyle="primary">
-                        投稿する
-                    </Button>
+                    <div className="container">
+                        <br/>
+                        <p>
+                            現在、○○件投稿されています
+                        </p>
+                        <Button bsStyle="primary">
+                            投稿する
+                        </Button>
+                    </div>
                 </Well>
-                <div>
+                <div className="container">
                     {this.getItemList(oldList, true)}
 
                     <Collapse in={this.props.contributionList.next} timeout={3000}>

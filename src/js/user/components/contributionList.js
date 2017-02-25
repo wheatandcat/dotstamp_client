@@ -55,15 +55,35 @@ export default class ContributionList extends Component {
      * @param  {number} id 投稿ID
      * @return {string} 編集パス
      */
+    changeTitle(text) {
+        let list = []
+        let count = 0
+        let all = this.props.userContributionList.All
+        let length = all.length
+
+        all.forEach((item) => {
+            if ( item.Title.indexOf(text[0]) != -1) {
+                list.push(item)
+            }
+
+            count++
+
+            if (count >= length) {
+                this.props.setTitleSearch(list)
+            }
+        })
+    }
+    /**
+     * 編集パスを取得する
+     *
+     * @param  {number} id 投稿ID
+     * @return {string} 編集パス
+     */
     inputTitle(text) {
         let list = []
         let count = 0
         let all = this.props.userContributionList.All
         let length = all.length
-        if (text.target.value == "") {
-            console.log ("アウト")
-        }
-
 
         all.forEach((item) => {
             if ( item.Title.indexOf(text.target.value) != -1) {
@@ -98,15 +118,13 @@ export default class ContributionList extends Component {
                 <PageHeader>&nbsp;投稿一覧</PageHeader>
                 <Tab.Container id="left-tabs-example" defaultActiveKey={1} onSelect={this.setContribution.bind(this)}>
                     <Row>
-                        <Col xs={3} md={2}>
+                        <Col sm={2}>
                             <Typeahead
                                 options={this.props.userContributionList.TitleList}
                                 maxVisible={2}
                                 placeholder="タイトル検索"
+                                onChange={this.changeTitle.bind(this)}
                                 onBlur={this.inputTitle.bind(this)}
-                                onOptionSelected={this.inputTitle.bind(this)}
-                                inputProps={{ref:"searchText"}}
-                                ref="test"
                             />
                             <br />
                             <Nav bsStyle="pills" stacked>
@@ -118,7 +136,7 @@ export default class ContributionList extends Component {
                                 </NavItem>)}
                             </Nav>
                         </Col>
-                        <Col xsHidden md={10}>
+                        <Col sm={10}>
                             <div>
                                 <ButtonToolbar>
                                     <Link to={this.getEditPath(this.props.userContributionList.ContributionId)}>

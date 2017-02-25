@@ -51,7 +51,7 @@ export default class FollowList extends Component {
                     &nbsp;&nbsp;<Glyphicon glyph="thumbs-up"/>&nbsp;検索フォローリスト
                      <small>&nbsp;フォロー済みの投稿</small>
                 </PageHeader>
-                <div>
+                <div className="container">
                     {list.map((item) =>
                         <div key={item.ID}>
                             <Thumbnail {...item} searchMatch={this.props.params.search} />

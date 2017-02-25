@@ -56,32 +56,32 @@ export default class Slider extends Component {
     getSetting () {
         let showNum = DISPLAY_ICON_NUM_MAX
         if (this.props.list.length < DISPLAY_ICON_NUM_MAX) {
-            if (this.props.list.length % 2 == 1) {
-                showNum = this.props.list.length - 1
-            } else {
-                showNum = this.props.list.length
-            }
+            showNum = this.props.list.length
+        }
+
+        if (showNum % 2 == 0) {
+            showNum--
         }
 
         var self = this
-        var setting = {
-            dots: true,
-            Form : "slider center",
+
+        const setting = {
+            className: "center",
+            centerPadding: "0px",
             centerMode: true,
+            dots: true,
             infinite: true,
-            initialSlide: 0,
+            speed: 500,
             slidesToShow: showNum,
-            focusOnSelect: true,
-            touchMove: true,
-            draggable: true,
             slidesToScroll: 1,
+            focusOnSelect: true,
+            pauseOnHover: true,
             nextArrow: <NextArrow />,
             prevArrow: <PrevArrow />,
             afterChange: function (currentSlide) {
                 self.handleClick(currentSlide)
             }
         }
-
         return setting
     }
     /**
