@@ -21,14 +21,14 @@ export default class Talk extends Component {
         return (
             <div>
                 <Grid>
-                    <Row className="show-grid">
-                        <Col xs={3} md={2}>
+                    <Row>
+                        <Col sm={4} md={2}>
                             <Image fileName={fileName} imageDisplayType={IMAGE_DISPLAY_TYPE_CHARACTER_TALK}/>
                         </Col>
-                        <Col xsHidden md={8} className={BalloonTalk}>
+                        <Col sm={8} md={3} className={BalloonTalk}>
                             {this.getBody(talk)}
                         </Col>
-                        <Col xsHidden md={2} className={BalloonTalk}>
+                        <Col sm={4} md={2} className={BalloonTalk}>
                             {this.getBodyMenu(talk)}
                         </Col>
                     </Row>

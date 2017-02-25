@@ -38,6 +38,22 @@ function mapDispatchToProps (dispatch) {
                     action
                 )
             )
+        },
+        addTag: (action) => {
+            dispatch(fetchPostsIfNeeded(
+                    "tag/add/",
+                    types.ADD_CONTRIBUTION_TAG,
+                    action
+                )
+            )
+        },
+        deleteTag: (action) => {
+            dispatch(fetchPostsIfNeeded(
+                    "tag/delete/",
+                    types.DELETE_CONTRIBUTION_TAG,
+                    action
+                )
+            )
         }
     }
 }

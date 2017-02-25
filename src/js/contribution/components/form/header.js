@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from "react"
-import {ButtonToolbar, Dropdown, Button, MenuItem, ListGroup, ListGroupItem, FormGroup, FormControl, Form, Glyphicon} from "react-bootstrap"
+import {Label, ButtonToolbar, Dropdown, Button, MenuItem, ListGroup, ListGroupItem, FormGroup, Form, Glyphicon} from "react-bootstrap"
 import {VIEW_STATUS_PUBLIC, VIEW_STATUS_PRIVATE} from "../../../constants/contribution"
 
 
@@ -7,6 +7,8 @@ import FormMain from "../../containers/form/main"
 import TalkBoard from "../../containers/talk/board"
 
 import {Preview, Footer, Group, GroupList} from "./../../../../css/form.css"
+import {Item} from "./../../../../css/tag.css"
+import {Alert} from "./../../../../css/common.css"
 
 var self
 
@@ -95,6 +97,29 @@ export default class Header extends Component {
         )
     }
     /**
+     * タグ追加する
+     */
+    addTag() {
+        let tag = this.refs.addTag.value
+
+        this.props.addTag({
+            userContributionId: this.props.contributionId,
+            name: tag,
+        })
+
+        this.refs.addTag.value = ""
+
+    }
+    /**
+     * タグを削除する
+     */
+    deleteTag(id) {
+        this.props.deleteTag({
+            userContributionId: this.props.contributionId,
+            id: id,
+        })
+    }
+    /**
      * タグを取得する
      *
      * @return {object} html
@@ -114,15 +139,22 @@ export default class Header extends Component {
                 <Form inline>
                     {tagList.map((tag) => {
                         return (
-                            <Button key={tag.ID}>
-                                <span>ｘ</span>
-                                <span>{tag.Name}</span>
-                            </Button>
+                            <span key={tag.ID}>&nbsp;
+                                <Label bsStyle="info" className={Item}>
+                                    <Glyphicon
+                                        glyph="remove"
+                                        className={Alert}
+                                        onClick={() => this.deleteTag(tag.ID)}
+                                    />&nbsp;
+                                    <span>{tag.Name}</span>
+                                </Label>
+                            </span>
                         )
                     })}
+                    &nbsp;
                     <FormGroup>
-                        <FormControl type="text"/>
-                        <Button>
+                        <input type="text" className="form-control" placeholder="タグを追加する" ref="addTag" />
+                        <Button onClick={() => this.addTag()}>
                             追加
                         </Button>
                     </FormGroup>
@@ -239,4 +271,6 @@ Header.propTypes = {
     title: PropTypes.string,
     new: PropTypes.func,
     save: PropTypes.func,
+    addTag: PropTypes.func,
+    deleteTag: PropTypes.func,
 }

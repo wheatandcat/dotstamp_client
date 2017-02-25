@@ -2,6 +2,10 @@
     --marginSize: 5px;
 }
 
+.Alert {
+    color: #d80000;
+}
+
 .Full {
     width: 100%;
 }

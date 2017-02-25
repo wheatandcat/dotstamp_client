@@ -151,9 +151,11 @@ export default class ContributionList extends Component {
                                 </ButtonToolbar>
                             </div>
                             <hr/>
-                            <ContributionShow params={{
-                                id: 0
-                            }}/>
+                        <div style={{zoom: "75%"}}>
+                                <ContributionShow params={{
+                                    id: 0
+                                }}/>
+                            </div>
                         </Col>
                     </Row>
                 </Tab.Container>
