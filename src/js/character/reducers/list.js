@@ -44,6 +44,7 @@ export default function List (state = initialState , action) {
         }
 
         let tmp = []
+
         for (let value of action.response.Image) {
             value["imageType"] = action.receiveParam.imageType
             tmp.push(value)
