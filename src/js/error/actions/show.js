@@ -26,3 +26,15 @@ export function closeError() {
         show: false
     }
 }
+
+/**
+ * エラー報告を開く
+ *
+ * @return {[object]} アクション
+ */
+export function openBugReport() {
+    return {
+        type: types.OPEN_ERROR_BUG_REPORT,
+        bugReport: true
+    }
+}

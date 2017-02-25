@@ -2,23 +2,35 @@ import * as types from "../../constants/ActionTypes"
 
 // 初期ステート設定
 const initialState = {
-    message: "",
-    errCode: 0,
-    show: false
+    Message: "",
+    ErrCode: 0,
+    Show: false,
+    BugReport: false,
+    BugReported: false,
 }
 
 export default function Show (state = initialState , action) {
     switch (action.type) {
     case types.SHOW_ERROR_MESSAGE: {
-        state.message = action.message
-        state.errCode = action.errCode
-        state.show = action.show
+        state.Message = action.message
+        state.ErrCode = action.errCode
+        state.Show = action.show
 
         return JSON.parse(JSON.stringify(state))
     }
     case types.CLOSE_ERROR_MESSAGE: {
+        state.Show = action.show
 
-        state.show = action.show
+        return JSON.parse(JSON.stringify(state))
+    }
+    case types.OPEN_ERROR_BUG_REPORT: {
+        state.BugReport = action.bugReport
+
+        return JSON.parse(JSON.stringify(state))
+    }
+    case types.ADD_ERROR_BUG_REPORT: {
+        state.BugReported = true
+
         return JSON.parse(JSON.stringify(state))
     }
     default:
