@@ -1,6 +1,6 @@
 import { connect } from "react-redux"
 import ContributionList from "../components/contributionList"
-import {setContribution, setTitleSearch} from "../actions/contributionList"
+import {setViewStatus, setContribution, setTitleSearch} from "../actions/contributionList"
 import {fetchPostsIfNeeded} from "../../utils/fetch"
 import * as types from "../../constants/ActionTypes"
 
@@ -13,7 +13,8 @@ function mapDispatchToProps (dispatch) {
         getList: () => {
             dispatch(fetchPostsIfNeeded(
                     "user/contributionList/",
-                    types.GET_USER_CONTRBUTION_LIST
+                    types.GET_USER_CONTRBUTION_LIST,
+                    {order: 1}
                 )
             )
         },
@@ -30,6 +31,9 @@ function mapDispatchToProps (dispatch) {
         setTitleSearch: (list) => {
             dispatch(setTitleSearch(list))
         },
+        setViewStatus: (viewStatus) => {
+            dispatch(setViewStatus(viewStatus))
+        },
         delete: (id) => {
             dispatch(fetchPostsIfNeeded(
                     "contribution/delete/" + id,
@@ -38,7 +42,8 @@ function mapDispatchToProps (dispatch) {
             ).then(() => {
                 dispatch(fetchPostsIfNeeded(
                         "user/contributionList/",
-                        types.GET_USER_CONTRBUTION_LIST
+                        types.GET_USER_CONTRBUTION_LIST,
+                        {order: 1}
                     )
                 )
             })

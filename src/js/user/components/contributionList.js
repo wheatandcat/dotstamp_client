@@ -1,12 +1,14 @@
 import React, {PropTypes, Component} from "react"
 import {Link} from "react-router"
 import {Typeahead} from "react-bootstrap-typeahead"
-import {PageHeader, Glyphicon, Row,Col,Tab,Nav,NavItem,ButtonToolbar,Button} from "react-bootstrap"
+import {Tabs, Tab, PageHeader, Glyphicon, Row, Col, Nav, NavItem, ButtonToolbar, Button} from "react-bootstrap"
 import ContributionShow from "../../contribution/containers/show"
 import {DateTimeFormat} from "../../utils/common"
 
-var load = false
+import {VIEW_STATUS_PUBLIC, VIEW_STATUS_PRIVATE} from "../../constants/contribution"
 
+var load = false
+var tite = ""
 export default class ContributionList extends Component {
     componentWillMount() {
         this.getList()
@@ -50,20 +52,38 @@ export default class ContributionList extends Component {
         return "/contribution/edit/" + id
     }
     /**
-     * 編集パスを取得する
+     * タイトルを変更する
      *
-     * @param  {number} id 投稿ID
-     * @return {string} 編集パス
+     * @param  {string[]} text テキスト
      */
     changeTitle(text) {
+        this.searchTitle(text[0])
+    }
+    /**
+     * タイトルを入力する
+     *
+     * @param  {object} text テキスト
+     */
+    inputTitle(text) {
+        this.searchTitle(text.target.value)
+    }
+    /**
+     * タイトルを検索する
+     *
+     * @param  {string} text テキスト
+     */
+    searchTitle(text) {
         let list = []
         let count = 0
         let all = this.props.userContributionList.All
         let length = all.length
+        tite = text
 
         all.forEach((item) => {
-            if ( item.Title.indexOf(text[0]) != -1) {
-                list.push(item)
+            if (item.Title.indexOf(text) != -1) {
+                if(item.view_status == this.props.userContributionList.ViewStatus) {
+                    list.push(item)
+                }
             }
 
             count++
@@ -74,28 +94,13 @@ export default class ContributionList extends Component {
         })
     }
     /**
-     * 編集パスを取得する
+     * 公開状態を設定する
      *
-     * @param  {number} id 投稿ID
-     * @return {string} 編集パス
+     * @param  {numbet} status 状態
      */
-    inputTitle(text) {
-        let list = []
-        let count = 0
-        let all = this.props.userContributionList.All
-        let length = all.length
-
-        all.forEach((item) => {
-            if ( item.Title.indexOf(text.target.value) != -1) {
-                list.push(item)
-            }
-
-            count++
-
-            if (count >= length) {
-                this.props.setTitleSearch(list)
-            }
-        })
+    setViewStatus(status) {
+        this.props.setViewStatus(status)
+        this.searchTitle(tite)
     }
     /**
      * 描画する
@@ -116,9 +121,13 @@ export default class ContributionList extends Component {
         return (
             <div>
                 <PageHeader>&nbsp;投稿一覧</PageHeader>
-                <Tab.Container id="left-tabs-example" defaultActiveKey={1} onSelect={this.setContribution.bind(this)}>
+                <Tab.Container id="left-tabs-example" onSelect={this.setContribution.bind(this)}>
                     <Row>
-                        <Col sm={2}>
+                        <Col sm={3}>
+                            <Tabs defaultActiveKey={VIEW_STATUS_PRIVATE} animation={false} id="noanim-tab" onSelect={this.setViewStatus.bind(this)}>
+                                <Tab eventKey={VIEW_STATUS_PRIVATE} title="下書き"></Tab>
+                                <Tab eventKey={VIEW_STATUS_PUBLIC} title="公開中"></Tab>
+                            </Tabs>
                             <Typeahead
                                 options={this.props.userContributionList.TitleList}
                                 maxVisible={2}
@@ -136,7 +145,7 @@ export default class ContributionList extends Component {
                                 </NavItem>)}
                             </Nav>
                         </Col>
-                        <Col sm={10}>
+                        <Col sm={8}>
                             <div>
                                 <ButtonToolbar>
                                     <Link to={this.getEditPath(this.props.userContributionList.ContributionId)}>
@@ -172,4 +181,5 @@ ContributionList.propTypes = {
     contributionShow: PropTypes.object,
     userContributionList: PropTypes.object,
     setTitleSearch: PropTypes.func,
+    setViewStatus: PropTypes.func,
 }

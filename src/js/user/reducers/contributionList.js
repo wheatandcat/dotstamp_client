@@ -1,4 +1,5 @@
 import * as types from "../../constants/ActionTypes"
+import {VIEW_STATUS_PRIVATE} from "../../constants/contribution.js"
 
 // 初期ステート設定
 const initialState = {
@@ -8,13 +9,14 @@ const initialState = {
     Count: 0,
     TitleList: [],
     SearchTitle: "",
-    Load: false
+    Load: false,
+    ViewStatus: VIEW_STATUS_PRIVATE,
 }
 
 export default function ContributionList (state = initialState , action) {
     switch (action.type) {
     case types.GET_USER_CONTRBUTION_LIST: {
-        state.List = action.response.List
+        state.List = action.response.PrivteList
         state.All = action.response.List
         state.Count = action.response.Count
         state.TitleList = action.response.TitleList
@@ -32,6 +34,11 @@ export default function ContributionList (state = initialState , action) {
     }
     case types.SET_USER_CONTRBUTION_LIST_SEARCH: {
         state.List = action.list
+
+        return JSON.parse(JSON.stringify(state))
+    }
+    case types.SET_USER_CONTRBUTION_LIST_VIEW_STATUS: {
+        state.ViewStatus = action.viewStatus
 
         return JSON.parse(JSON.stringify(state))
     }

@@ -25,3 +25,16 @@ export function setTitleSearch(list) {
         list: list
     }
 }
+
+/**
+ * 表示状態を設定する
+ *
+ * @param  {number} viewStatus 表示状態
+ * @return {object} アクション
+ */
+export function setViewStatus(viewStatus) {
+    return {
+        type: types.SET_USER_CONTRBUTION_LIST_VIEW_STATUS,
+        viewStatus: viewStatus
+    }
+}
