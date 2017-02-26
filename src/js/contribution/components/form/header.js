@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from "react"
 import {Alert, Label, ButtonToolbar, Dropdown, Button, MenuItem, ListGroup, ListGroupItem, FormGroup, Form, Glyphicon} from "react-bootstrap"
-import {VIEW_STATUS_PUBLIC, VIEW_STATUS_PRIVATE} from "../../../constants/contribution"
+import {VIEW_STATUS_PUBLIC, VIEW_STATUS_PRIVATE, TAG_MAX_NUMBER} from "../../../constants/contribution"
 
 
 import FormMain from "../../containers/form/main"
@@ -128,6 +128,35 @@ export default class Header extends Component {
         })
     }
     /**
+     * タグ入力
+     */
+    addTagInput() {
+        let tagList = this.props.contributionForm.tagList
+        if (!Array.isArray(tagList)) {
+            tagList = []
+        }
+
+        if(tagList.length >= TAG_MAX_NUMBER) {
+            return (
+                <FormGroup>
+                    <Label bsStyle="danger">
+                        タグ登録は10個まで
+                    </Label>
+                </FormGroup>
+            )
+        }
+
+
+        return (
+            <FormGroup>
+                <input type="text" className="form-control" placeholder="タグを追加する" ref="addTag" />
+                <Button onClick={() => this.addTag()}>
+                    追加
+                </Button>
+            </FormGroup>
+        )
+    }
+    /**
      * タグを取得する
      *
      * @return {object} html
@@ -160,12 +189,7 @@ export default class Header extends Component {
                         )
                     })}
                     &nbsp;
-                    <FormGroup>
-                        <input type="text" className="form-control" placeholder="タグを追加する" ref="addTag" />
-                        <Button onClick={() => this.addTag()}>
-                            追加
-                        </Button>
-                    </FormGroup>
+                    {this.addTagInput()}
                 </Form>
             </FormGroup>
         )
