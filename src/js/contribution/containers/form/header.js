@@ -1,6 +1,6 @@
 import { connect } from "react-redux"
 import FormHeader from "../../components/form/header"
-import {changeTitle, changeTag, changeHeight, setViewStatus} from "../../actions/form"
+import {closeAlert, alertMessage, changeTitle, changeTag, changeHeight, setViewStatus} from "../../actions/form"
 import {fetchPostsIfNeeded} from "../../../utils/fetch"
 import * as types from "../../../constants/ActionTypes"
 
@@ -19,6 +19,12 @@ function mapDispatchToProps (dispatch) {
         },
         changeHeight: (height) => {
             dispatch(changeHeight(height))
+        },
+        alertMessage: (message) => {
+            dispatch(alertMessage(message))
+        },
+        closeAlert: () => {
+            dispatch(closeAlert())
         },
         new: (action) => {
             dispatch(fetchPostsIfNeeded(

@@ -16,6 +16,8 @@ const initialState = {
     height: 450,
     boardScroll: false,
     viewStatus: VIEW_STATUS_PUBLIC,
+    Warning: false,
+    Message: "",
 }
 
 var onBoardScrollActionTypeList = [
@@ -104,6 +106,18 @@ export default function Form (state = initialState , action) {
     case types.DELETE_CONTRIBUTION_TAG:
     case types.ADD_CONTRIBUTION_TAG: {
         state.tagList = action.response.Tag
+
+        return JSON.parse(JSON.stringify(state))
+    }
+    case types.ALERT_CONTRIBUTION_FORM: {
+        state.Message = action.message
+        state.Warning = true
+        console.log (state)
+
+        return JSON.parse(JSON.stringify(state))
+    }
+    case types.CLOSE_CONTRIBUTION_FORM_ALERT: {
+        state.Warning = false
 
         return JSON.parse(JSON.stringify(state))
     }

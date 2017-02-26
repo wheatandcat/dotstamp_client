@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from "react"
-import {Label, ButtonToolbar, Dropdown, Button, MenuItem, ListGroup, ListGroupItem, FormGroup, Form, Glyphicon} from "react-bootstrap"
+import {Alert, Label, ButtonToolbar, Dropdown, Button, MenuItem, ListGroup, ListGroupItem, FormGroup, Form, Glyphicon} from "react-bootstrap"
 import {VIEW_STATUS_PUBLIC, VIEW_STATUS_PRIVATE} from "../../../constants/contribution"
 
 
@@ -8,7 +8,7 @@ import TalkBoard from "../../containers/talk/board"
 
 import {Preview, Footer, Group, GroupList} from "./../../../../css/form.css"
 import {Item} from "./../../../../css/tag.css"
-import {Alert} from "./../../../../css/common.css"
+import {Close} from "./../../../../css/common.css"
 
 var self
 
@@ -52,9 +52,9 @@ export default class Header extends Component {
      */
     save() {
         let contributionId = this.props.contributionId
-        let title = this.refs.title.value
+        let title = this.refs.title.value.trim()
         let tag = (contributionId == null)
-            ? this.refs.tag.value
+            ? this.refs.tag.value.trim()
             : ""
         let body = this.props.contributionTalk
         let action = {
@@ -63,6 +63,14 @@ export default class Header extends Component {
             tag: tag,
             body: JSON.stringify(body),
             viewStatus: this.props.contributionForm.viewStatus
+        }
+
+        if (action.title == "") {
+            this.props.alertMessage("タイトルを入力して下さい")
+            return
+        } else if (action.body == "[]") {
+            this.props.alertMessage("本文を入力して下さい")
+            return
         }
 
         if (contributionId == null) {
@@ -143,7 +151,7 @@ export default class Header extends Component {
                                 <Label bsStyle="info" className={Item}>
                                     <Glyphicon
                                         glyph="remove"
-                                        className={Alert}
+                                        className={Close}
                                         onClick={() => this.deleteTag(tag.ID)}
                                     />&nbsp;
                                     <span>{tag.Name}</span>
@@ -226,6 +234,21 @@ export default class Header extends Component {
         )
     }
     /**
+     * 警告文言を取得する
+     */
+    getAlertMessage() {
+        if (!this.props.contributionForm.Warning) {
+            return ""
+        }
+
+        return (
+             <Alert bsStyle="danger">
+                 <Glyphicon glyph="remove" onClick={() => this.props.closeAlert()}/>&nbsp;{this.props.contributionForm.Message}
+             </Alert>
+        )
+    }
+
+    /**
      * 描画する
      *
      * @return {object} html
@@ -235,6 +258,7 @@ export default class Header extends Component {
             <div>
                 <ListGroup className={Group}>
                     <ListGroupItem>
+                        {this.getAlertMessage()}
                         <FormGroup>
                             <input type="text" id="title" className="form-control" placeholder="タイトル(100文字以内)" ref="title" value={this.props.contributionForm.title} onChange={this.changeTitle.bind(this)}/>
                         </FormGroup>
@@ -273,4 +297,6 @@ Header.propTypes = {
     save: PropTypes.func,
     addTag: PropTypes.func,
     deleteTag: PropTypes.func,
+    alertMessage: PropTypes.func,
+    closeAlert: PropTypes.func,
 }
