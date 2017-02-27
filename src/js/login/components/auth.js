@@ -51,7 +51,7 @@ export default class Auth extends Component {
                     </LinkContainer>
                     <LinkContainer to="/user/followList/1/1">
                         <MenuItem eventKey={3.3}>
-                            <Glyphicon glyph="thumbs-up"/>&nbsp;フォローリスト
+                            <Glyphicon glyph="thumbs-up"/>&nbsp;フォロー投稿
                         </MenuItem>
                     </LinkContainer>
                     <LinkContainer to="/help/index">

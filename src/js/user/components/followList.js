@@ -3,7 +3,7 @@ import {PageHeader, Glyphicon} from "react-bootstrap"
 import Thumbnail from "../../utils/parts/contribution/thumbnail"
 import {Line} from "./../../../css/common.css"
 import Pagination from "../../utils/parts/pagination"
-
+import Footer from "../../utils/parts/footer"
 
 export default class FollowList extends Component {
     componentWillMount() {
@@ -47,8 +47,8 @@ export default class FollowList extends Component {
 
         return (
             <div>
-                <PageHeader>
-                    &nbsp;&nbsp;<Glyphicon glyph="thumbs-up"/>&nbsp;検索フォローリスト
+                <PageHeader className="container">
+                    &nbsp;&nbsp;<Glyphicon glyph="thumbs-up"/>&nbsp;フォロー投稿
                      <small>&nbsp;フォロー済みの投稿</small>
                 </PageHeader>
                 <div className="container">
@@ -67,6 +67,8 @@ export default class FollowList extends Component {
                     activePage={parseInt(this.props.userFollowList.Page)}
                     paging={this.paging.bind(this)}
                 />
+
+                <Footer/>
             </div>
         )
     }
