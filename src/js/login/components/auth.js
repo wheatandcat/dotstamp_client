@@ -80,6 +80,11 @@ export default class Auth extends Component {
                         ログインする
                     </NavItem>
                 </LinkContainer>
+                <LinkContainer to="/login/">
+                    <NavItem eventKey={2} >
+                        ログインする
+                    </NavItem>
+                </LinkContainer>
             </Nav>
         )
     }

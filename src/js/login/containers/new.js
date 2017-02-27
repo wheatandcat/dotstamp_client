@@ -1,6 +1,7 @@
 import { connect } from "react-redux"
 
 import New from "../components/new"
+import {alert} from "../actions/new"
 import {fetchPostsIfNeeded} from "../../utils/fetch"
 import * as types from "../../constants/ActionTypes"
 
@@ -17,6 +18,9 @@ function mapDispatchToProps (dispatch) {
                     params
                 )
             )
+        },
+        alert: (message) => {
+            dispatch(alert(message))
         }
     }
 }

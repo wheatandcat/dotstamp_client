@@ -18,6 +18,12 @@ export default function New (state = initialState , action) {
 
         return JSON.parse(JSON.stringify(action.response))
     }
+    case types.SET_LOGIN_USER_ALERT: {
+        state.Warning = true
+        state.Message = action.message
+
+        return JSON.parse(JSON.stringify(state))
+    }
     default:
         return state
     }

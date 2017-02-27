@@ -7,8 +7,8 @@ export default class Login extends Component {
      * ログインする
      */
     login() {
-        let email = this.refs.email.value
-        let password = this.refs.password.value
+        let email = this.refs.email.value.trim()
+        let password = this.refs.password.value.trim()
 
         this.props.loginCheck({
             email: email,

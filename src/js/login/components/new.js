@@ -2,11 +2,29 @@
 import React, {Component, PropTypes} from "react"
 import {Link} from "react-router"
 import {Alert, ButtonToolbar, FormGroup, Col, Button, Grid, Row, Jumbotron} from "react-bootstrap"
+import AlertMessage from "../../error/containers/alertMessage"
+import {PASSWORD_LENGTH_MIN} from "../../constants/common"
 
 export default class New extends Component {
+    componentWillMount () {
+
+    }
+    /**
+     * 新規登録する
+     */
     new() {
-        let email = this.refs.email.value
-        let password = this.refs.password.value
+        let email = this.refs.email.value.trim()
+        let password = this.refs.password.value.trim()
+
+        if (!email.match(/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/)) {
+            this.props.alert("使用できないメールアドレスです")
+            return
+        }
+
+        if (password.length < PASSWORD_LENGTH_MIN) {
+            this.props.alert("パスワードは8文字以上に設定して下さい")
+            return
+        }
 
         this.props.new({
             email: email,
@@ -81,4 +99,5 @@ export default class New extends Component {
 New.propTypes = {
     new: PropTypes.func,
     loginNew: PropTypes.object,
+    alert: PropTypes.func,
 }
