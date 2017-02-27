@@ -109,7 +109,7 @@ export default class Main extends Component {
 
         formData.append("file", fileList[0])
 
-        this.props.upload(formData, {
+        this.props.upload("?userContributionId="+this.props.contributionId, formData, {
             character: this.props.contributionForm.character,
             directionType: this.props.contributionForm.directionType,
             talkType: TALK_TYPE_IMAGE
@@ -183,4 +183,5 @@ Main.propTypes = {
     characterList: PropTypes.object,
     editBody: PropTypes.func,
     upload: PropTypes.func,
+    contributionId: PropTypes.number,
 }

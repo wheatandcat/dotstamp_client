@@ -299,7 +299,7 @@ export default class Header extends Component {
                     </ListGroupItem>
                     <ListGroupItem bsClass={GroupList}>
                         <footer className={Footer + "container"}>
-                            <FormMain/>
+                            <FormMain contributionId={this.props.contributionId}/>
                         </footer>
                     </ListGroupItem>
                 </ListGroup>

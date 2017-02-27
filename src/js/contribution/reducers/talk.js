@@ -35,7 +35,7 @@ export default function Talk (state = initialState , action) {
     case types.UPLOAD_CONTRIBUTION_FORM: {
         list.push(getAddBodyState(
             action.receiveParam.character,
-            action.response,
+            action.response.Path,
             action.receiveParam.talkType,
             action.receiveParam.directionType,
             list.length
