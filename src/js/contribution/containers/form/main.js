@@ -27,7 +27,7 @@ function mapDispatchToProps (dispatch) {
         alertMessage: (message) => {
             dispatch(alertMessage(message))
         },
-        upload: (urlParam,formData, params) => {
+        upload: (urlParam, formData, params) => {
             dispatch(fetchUploadIfNeeded(
                     "contribution/upload/" + urlParam,
                     types.UPLOAD_CONTRIBUTION_FORM,

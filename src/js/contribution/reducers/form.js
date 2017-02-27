@@ -21,11 +21,12 @@ const initialState = {
 }
 
 var onBoardScrollActionTypeList = [
-    types.ADD_CONTRIBUTION_FORM_BODY
+    types.ADD_CONTRIBUTION_FORM_BODY,
+    types.UPLOAD_CONTRIBUTION_FORM,
 ]
 
 export default function Form (state = initialState , action) {
-    if (!onBoardScrollActionTypeList.indexOf(action.type)) {
+    if (onBoardScrollActionTypeList.indexOf(action.type) != -1) {
         state.boardScroll = true
         state.body = ""
     } else {

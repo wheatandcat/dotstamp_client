@@ -28,10 +28,24 @@ function getAddBodyState(character, body, talkType, directionType, priority) {
 
 export default function Talk (state = initialState , action) {
     switch (action.type) {
+    case types.EDIT_CONTRIBUTION_FORM_BODY_IMAGE: {
+        let priority = action.receiveParam.Priority
+
+        list[priority].Body = action.response.Path
+        list[priority].Character = action.receiveParam.Character
+        list[priority].TalkType = action.receiveParam.TalkType
+        list[priority].DirectionType = action.receiveParam.DirectionType
+        list[priority].Edit = false
+
+        state = list.concat()
+
+        return state
+    }
     case types.GET_CONTRIBUTION_EDIT: {
         list = action.response.Body
         return list
     }
+
     case types.UPLOAD_CONTRIBUTION_FORM: {
         list.push(getAddBodyState(
             action.receiveParam.character,

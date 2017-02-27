@@ -295,7 +295,7 @@ export default class Header extends Component {
      */
     render() {
         return (
-            <div className="container">
+            <div>
                 <ListGroup className={Group}>
                     <ListGroupItem>
                         <AlertMessage />

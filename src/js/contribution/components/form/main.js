@@ -91,6 +91,10 @@ export default class Main extends Component {
     handleChangeFile (e) {
         let fileList = e.target.files
 
+        if (fileList.length == 0) {
+            return
+        }
+
         if (fileList[0].size > UPLOAD_FILE_SIZE_MAX) {
             this.props.alertMessage("アップロード失敗！アップロードできる最大容量を超えています！！（画像は600kBまで)")
             return
@@ -147,17 +151,17 @@ export default class Main extends Component {
                     </ButtonGroup>
                     <ButtonGroup>
                         <Button>
-                        <ControlLabel htmlFor="image-file" bsClass={Group}>
-                            <Glyphicon  glyph="picture"/>
-                        </ControlLabel>
-                        <input
-                            type="file"
-                            id="image-file"
-                            name="image-file"
-                            className="hidden"
-                            accept="image/gif,image/jpeg,image/png,image/jpg"
-                            ref="file"
-                            onChange={this.handleChangeFile.bind(this)} />
+                            <ControlLabel htmlFor="image-file" bsClass={Group}>
+                                <Glyphicon  glyph="picture"/>
+                            </ControlLabel>
+                            <input
+                                type="file"
+                                id="image-file"
+                                name="image-file"
+                                className="hidden"
+                                accept="image/jpeg,image/png,image/jpg"
+                                ref="file"
+                                onChange={this.handleChangeFile.bind(this)} />
                         </Button>
                     </ButtonGroup>
                 </ButtonToolbar>

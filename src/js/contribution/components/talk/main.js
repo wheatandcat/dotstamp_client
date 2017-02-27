@@ -1,13 +1,13 @@
 import React, {Component, PropTypes} from "react"
-
-import {Grid, Row, Col, Panel, Glyphicon, ButtonToolbar, Button} from "react-bootstrap"
-
+import {ControlLabel, Grid, Row, Col, Panel, Glyphicon, ButtonToolbar, Button} from "react-bootstrap"
 import Image from "../../../utils/image"
 import {IMAGE_DISPLAY_TYPE_TALK_IMAGE, IMAGE_DISPLAY_TYPE_CHARACTER_TALK} from "../../../utils/image"
 import {TALK_TYPE_IMAGE} from "../../actions/talk"
-
+import {UPLOAD_FILE_SIZE_MAX} from "../../../constants/common"
 import {Balloon, BalloonTalk} from "./../../../../css/talk.css"
 import {line} from "./../../../../css/common.css"
+import {Group} from "./../../../../css/form.css"
+
 export default class Talk extends Component {
     /**
      * 方向タイプのhtmlを取得する
@@ -67,6 +67,41 @@ export default class Talk extends Component {
         return html
     }
     /**
+     * 画像指定を変更の監視する
+     *
+     * @param  {object} e イベントオブジェクト
+     */
+    handleChangeFile (e) {
+        let fileList = e.target.files
+
+        if (fileList.length == 0) {
+            return
+        }
+
+        if (fileList[0].size > UPLOAD_FILE_SIZE_MAX) {
+            this.props.alertMessage("アップロード失敗！アップロードできる最大容量を超えています！！（画像は600kBまで)")
+            return
+        }
+
+        this.uploadFile([fileList[0]])
+    }
+    /**
+     * ファイルをアップロードする
+     *
+     * @param  {array} fileList ファイルリスト
+     */
+    uploadFile (fileList) {
+        let formData = new FormData()
+        formData.append("file", fileList[0])
+
+        let contributionId = this.props.contributionEdit.id
+        if (contributionId == null) {
+            contributionId = 0
+        }
+
+        this.props.upload("?userContributionId="+contributionId, formData, this.props.talk)
+    }
+    /**
      * 本文のメニュー取得する
      *
      * @param  {object} talk 会話
@@ -77,12 +112,35 @@ export default class Talk extends Component {
             return
         }
 
+        let edit = ""
+
+        if (talk.TalkType == TALK_TYPE_IMAGE) {
+            edit = (
+                <Button>
+                    <ControlLabel htmlFor={"image-file-edit-"+talk.Priority} bsClass={Group}>
+                        <Glyphicon  glyph="picture"/>
+                    </ControlLabel>
+                    <input
+                        type="file"
+                        id={"image-file-edit-"+talk.Priority}
+                        name="image-file-edit"
+                        className="hidden"
+                        accept="image/jpeg,image/png,image/jpg"
+                        onChange={this.handleChangeFile.bind(this)} />
+                </Button>
+            )
+        } else {
+            edit = (
+                <Button onClick={() => this.setEditBody(talk)}>
+                    <Glyphicon glyph="edit"/>
+                </Button>
+            )
+        }
+
         return (
             <Panel>
                 <ButtonToolbar>
-                    <Button onClick={() => this.setEditBody(talk)}>
-                        <Glyphicon glyph="edit"/>
-                    </Button>
+                    {edit}
                     <Button onClick={() => this.deleteBody(talk.Priority)}>
                         <Glyphicon glyph="trash"/>
                     </Button>
@@ -141,5 +199,8 @@ Talk.propTypes = {
     talk: PropTypes.object,
     editMode: PropTypes.bool,
     deleteBody: PropTypes.func,
-    setEditBody: PropTypes.func
+    setEditBody: PropTypes.func,
+    contributionEdit: PropTypes.object,
+    alertMessage: PropTypes.func,
+    upload: PropTypes.func
 }
