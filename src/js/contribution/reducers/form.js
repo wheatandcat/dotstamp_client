@@ -112,7 +112,6 @@ export default function Form (state = initialState , action) {
     case types.ALERT_CONTRIBUTION_FORM: {
         state.Message = action.message
         state.Warning = true
-        console.log (state)
 
         return JSON.parse(JSON.stringify(state))
     }
@@ -120,6 +119,9 @@ export default function Form (state = initialState , action) {
         state.Warning = false
 
         return JSON.parse(JSON.stringify(state))
+    }
+    case types.INIT_CONTRIBUTION_NEW: {
+        return JSON.parse(JSON.stringify(initialState))
     }
     default:
         return state

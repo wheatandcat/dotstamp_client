@@ -3,6 +3,7 @@ import {FormGroup, Form, FormControl, Glyphicon, Button, Col, DropdownButton, Me
 import Thumbnail from "../../utils/parts/contribution/thumbnail"
 import Pagination from "../../utils/parts/pagination"
 import {Line} from "./../../../css/common.css"
+import Footer from "../../utils/parts/footer"
 
 export default class Search extends Component {
     componentWillMount() {
@@ -50,48 +51,51 @@ export default class Search extends Component {
 
         return (
             <div>
-                <div>
-                    <br />
-                    <Form horizontal>
-                        <FormGroup>
-                            <Col sm={10}>
-                                <FormControl type="text" placeholder="検索ワード" defaultValue={this.props.params.search} />
-                            </Col>
-                            <Col sm={2}>
-                                <Button onClick={() => this.search()}>
-                                    <Glyphicon glyph="search"/>&nbsp;検索&nbsp;
-                                </Button>
-                            </Col>
-                        </FormGroup>
-                        <FormGroup>
-                            <Col sm={10} />
-                            <Col sm={2}>
-                                <DropdownButton title="人気順" id="bg-nested-dropdown">
-                                    <MenuItem eventKey="1">人気順</MenuItem>
-                                    <MenuItem eventKey="2">新規順</MenuItem>
-                                </DropdownButton>
-                            </Col>
-                        </FormGroup>
-                    </Form>
+                <div className="container">
+                    <div>
+                        <br />
+                        <Form horizontal>
+                            <FormGroup>
+                                <Col sm={10}>
+                                    <FormControl type="text" placeholder="検索ワード" defaultValue={this.props.params.search} />
+                                </Col>
+                                <Col sm={2}>
+                                    <Button onClick={() => this.search()}>
+                                        <Glyphicon glyph="search"/>&nbsp;検索&nbsp;
+                                    </Button>
+                                </Col>
+                            </FormGroup>
+                            <FormGroup>
+                                <Col sm={10} />
+                                <Col sm={2}>
+                                    <DropdownButton title="人気順" id="bg-nested-dropdown">
+                                        <MenuItem eventKey="1">人気順</MenuItem>
+                                        <MenuItem eventKey="2">新規順</MenuItem>
+                                    </DropdownButton>
+                                </Col>
+                            </FormGroup>
+                        </Form>
 
+                    </div>
+                    <hr />
+                    <div>
+                        {list.map((item) =>
+                            <div key={item.ID}>
+                                <Thumbnail {...item} searchMatch={this.props.params.search} />
+                                <hr className={Line}/>
+                            </div>
+                        )}
+                    </div>
+                    <Pagination
+                        count={this.props.contributionSearch.Count}
+                        limit={this.props.contributionSearch.Limit}
+                        link="user/followList"
+                        order={parseInt(this.props.contributionSearch.Order)}
+                        activePage={parseInt(this.props.contributionSearch.Page)}
+                        paging={this.paging.bind(this)}
+                    />
                 </div>
-                <hr />
-                <div>
-                    {list.map((item) =>
-                        <div key={item.ID}>
-                            <Thumbnail {...item} searchMatch={this.props.params.search} />
-                            <hr className={Line}/>
-                        </div>
-                    )}
-                </div>
-                <Pagination
-                    count={this.props.contributionSearch.Count}
-                    limit={this.props.contributionSearch.Limit}
-                    link="user/followList"
-                    order={parseInt(this.props.contributionSearch.Order)}
-                    activePage={parseInt(this.props.contributionSearch.Page)}
-                    paging={this.paging.bind(this)}
-                />
+                <Footer />
             </div>
         )
     }

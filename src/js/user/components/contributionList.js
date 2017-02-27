@@ -119,7 +119,7 @@ export default class ContributionList extends Component {
         }
 
         return (
-            <div>
+            <div className="container">
                 <PageHeader>&nbsp;投稿一覧</PageHeader>
                 <Tab.Container id="left-tabs-example" onSelect={this.setContribution.bind(this)}>
                     <Row>

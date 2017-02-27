@@ -92,38 +92,41 @@ export default class List extends Component {
     render () {
         return (
             <div>
-                <ListGroup>
-                    <ListGroupItem>
-                        <h1>キャラ設定</h1>
-                        <div>
-                            {this.getIconMain()}
-                        </div>
-                    </ListGroupItem>
-                    <ListGroupItem>
-                        <div>
-                            <Well bsStyle="info">
-                                <Slider
-                                    list={this.props.characterList.list}
-                                    handleClick={(id) => this.selectmCharacter(id)}
-                                    initialSlide={this.props.characterList.icon.select} />
-                            </Well>
-                        </div>
-                    </ListGroupItem>
-                    <ListGroupItem>
-                        <Dropzone
-                            accept="image/gif,image/jpeg,image/png,image/jpg"
-                            onDrop={this.handleDropFile.bind(this)}
-                            className={ImageUpload}
-                        >
+                <div className="container">
+
+                    <ListGroup>
+                        <ListGroupItem>
+                            <h1>キャラ設定</h1>
                             <div>
-                                ファイルを指定またはドラッグ&ドロップ
-                                <p>
-                                    形式: gif/png/jpeg/jpg
-                                </p>
+                                {this.getIconMain()}
                             </div>
-                        </Dropzone>
-                    </ListGroupItem>
-                </ListGroup>
+                        </ListGroupItem>
+                        <ListGroupItem>
+                            <div>
+                                <Well bsStyle="info">
+                                    <Slider
+                                        list={this.props.characterList.list}
+                                        handleClick={(id) => this.selectmCharacter(id)}
+                                        initialSlide={this.props.characterList.icon.select} />
+                                </Well>
+                            </div>
+                        </ListGroupItem>
+                        <ListGroupItem>
+                            <Dropzone
+                                accept="image/gif,image/jpeg,image/png,image/jpg"
+                                onDrop={this.handleDropFile.bind(this)}
+                                className={ImageUpload}
+                            >
+                                <div>
+                                    ファイルを指定またはドラッグ&ドロップ
+                                    <p>
+                                        形式: gif/png/jpeg/jpg
+                                    </p>
+                                </div>
+                            </Dropzone>
+                        </ListGroupItem>
+                    </ListGroup>
+                </div>
                 <Footer />
             </div>
         )

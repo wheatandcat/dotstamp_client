@@ -2,7 +2,7 @@ import { connect } from "react-redux"
 import New from "../components/new"
 import * as types from "../../constants/ActionTypes"
 import {fetchPostsIfNeeded} from "../../utils/fetch"
-import ActionsErrorShow from "../../error/actions/show"
+import {init} from "../actions/new"
 
 import { IMAGE_DISPLAY_TYPE_CHARACTER_FORM } from "../../utils/image"
 
@@ -12,6 +12,9 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
     return {
+        init:() => {
+            dispatch(init())
+        },
         setCharacterImageList: () => {
             dispatch(fetchPostsIfNeeded(
                     "characterImage/list/",
@@ -21,9 +24,6 @@ function mapDispatchToProps (dispatch) {
                 )
             )
         },
-        showError: (error) => {
-            dispatch(ActionsErrorShow.showError(error))
-        }
     }
 }
 

@@ -93,6 +93,9 @@ export default function Talk (state = initialState , action) {
 
         return action.talkList.concat()
     }
+    case types.INIT_CONTRIBUTION_NEW: {
+        return JSON.parse(JSON.stringify(initialState))
+    }
     default:
         return state
     }
