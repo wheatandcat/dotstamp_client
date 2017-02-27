@@ -2,6 +2,8 @@ import {connect} from "react-redux"
 import List from "../components/list"
 import {setIcon} from "../actions/list"
 import {fetchPostsIfNeeded, fetchUploadIfNeeded} from "../../utils/fetch"
+import {alertMessage, alertMessageInit} from "../../error/actions/alertMessage"
+
 import * as types from "../../constants/ActionTypes"
 
 import { IMAGE_DISPLAY_TYPE_CHARACTER } from "../../utils/image"
@@ -12,6 +14,9 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
     return {
+        alertMessageInit: () => {
+            dispatch(alertMessageInit())
+        },
         getList: () => {
             dispatch(fetchPostsIfNeeded(
                     "characterImage/list/",
@@ -47,6 +52,9 @@ function mapDispatchToProps (dispatch) {
                     {imageType:IMAGE_DISPLAY_TYPE_CHARACTER}
                 ))
             })
+        },
+        alertMessage: (message) => {
+            dispatch(alertMessage(message))
         }
     }
 }

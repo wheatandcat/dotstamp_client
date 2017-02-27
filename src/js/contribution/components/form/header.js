@@ -1,12 +1,12 @@
 import React, {Component, PropTypes} from "react"
-import {Alert, Label, ButtonToolbar, Dropdown, Button, MenuItem, ListGroup, ListGroupItem, FormGroup, Form, Glyphicon} from "react-bootstrap"
+import {Label, ButtonToolbar, Dropdown, Button, MenuItem, ListGroup, ListGroupItem, FormGroup, Form, Glyphicon} from "react-bootstrap"
 import {VIEW_STATUS_PUBLIC, VIEW_STATUS_PRIVATE, TAG_MAX_NUMBER} from "../../../constants/contribution"
-
 
 import FormMain from "../../containers/form/main"
 import TalkBoard from "../../containers/talk/board"
+import AlertMessage from "../../../error/containers/alertMessage"
 
-import {Preview, Footer, Group, GroupList} from "./../../../../css/form.css"
+import {Preview, Group, GroupList} from "./../../../../css/form.css"
 import {Item} from "./../../../../css/tag.css"
 import {Close} from "./../../../../css/common.css"
 
@@ -22,6 +22,8 @@ window.addEventListener("resize", () => {
 
 export default class Header extends Component {
     componentWillMount() {
+        this.props.alertMessageInit()
+
         self = this
         if (this.props.title != "") {
             this.props.changeTitle(this.props.title)
@@ -258,21 +260,6 @@ export default class Header extends Component {
         )
     }
     /**
-     * 警告文言を取得する
-     */
-    getAlertMessage() {
-        if (!this.props.contributionForm.Warning) {
-            return ""
-        }
-
-        return (
-             <Alert bsStyle="danger">
-                 <Glyphicon glyph="remove" onClick={() => this.props.closeAlert()}/>&nbsp;{this.props.contributionForm.Message}
-             </Alert>
-        )
-    }
-
-    /**
      * 描画する
      *
      * @return {object} html
@@ -282,7 +269,7 @@ export default class Header extends Component {
             <div className="container">
                 <ListGroup className={Group}>
                     <ListGroupItem>
-                        {this.getAlertMessage()}
+                        <AlertMessage />
                         <FormGroup>
                             <input type="text" id="title" className="form-control" placeholder="タイトル(100文字以内)" ref="title" value={this.props.contributionForm.title} onChange={this.changeTitle.bind(this)}/>
                         </FormGroup>
@@ -298,7 +285,7 @@ export default class Header extends Component {
                         </div>
                     </ListGroupItem>
                     <ListGroupItem bsClass={GroupList}>
-                        <footer className={Footer + "container"}>
+                        <footer>
                             <FormMain contributionId={this.props.contributionId}/>
                         </footer>
                     </ListGroupItem>
@@ -322,5 +309,5 @@ Header.propTypes = {
     addTag: PropTypes.func,
     deleteTag: PropTypes.func,
     alertMessage: PropTypes.func,
-    closeAlert: PropTypes.func,
+    alertMessageInit: PropTypes.func,
 }

@@ -1,8 +1,9 @@
 import React, {Component, PropTypes} from "react"
-import { Glyphicon, Well, Button, ButtonGroup, ButtonToolbar, MenuItem, SplitButton, ControlLabel } from "react-bootstrap"
-import { TALK_TYPE_TEXT, TALK_TYPE_IMAGE } from "../../actions/talk"
+import {Glyphicon, Well, Button, ButtonGroup, ButtonToolbar, ControlLabel} from "react-bootstrap"
+import {TALK_TYPE_TEXT, TALK_TYPE_IMAGE} from "../../actions/talk"
+import {UPLOAD_FILE_SIZE_MAX} from "../../../constants/common"
 import Slider from "../../../utils/slider"
-import { Edit, Group } from "./../../../../css/form.css"
+import {Edit, Group} from "./../../../../css/form.css"
 
 
 export default class Main extends Component {
@@ -89,6 +90,12 @@ export default class Main extends Component {
      */
     handleChangeFile (e) {
         let fileList = e.target.files
+
+        if (fileList[0].size > UPLOAD_FILE_SIZE_MAX) {
+            this.props.alertMessage("アップロード失敗！アップロードできる最大容量を超えています！！（画像は600kBまで)")
+            return
+        }
+
         this.uploadFile([fileList[0]])
     }
     /**
@@ -106,10 +113,14 @@ export default class Main extends Component {
      */
     uploadFile (fileList) {
         let formData = new FormData()
-
         formData.append("file", fileList[0])
 
-        this.props.upload("?userContributionId="+this.props.contributionId, formData, {
+        let contributionId = this.props.contributionId
+        if (contributionId == null) {
+            contributionId = 0
+        }
+
+        this.props.upload("?userContributionId="+contributionId, formData, {
             character: this.props.contributionForm.character,
             directionType: this.props.contributionForm.directionType,
             talkType: TALK_TYPE_IMAGE
@@ -149,25 +160,6 @@ export default class Main extends Component {
                             onChange={this.handleChangeFile.bind(this)} />
                         </Button>
                     </ButtonGroup>
-                    <ButtonGroup>
-                        <SplitButton title="" dropup id="split-button-dropup" className="glyphicon glyphicon-picture">
-                            <MenuItem eventKey="1">
-                            <label htmlFor="image-file">
-                                <Glyphicon  glyph="picture"/>小さい
-                            </label>
-                            </MenuItem>
-                            <MenuItem eventKey="2">
-                            <label htmlFor="image-file">
-                                <Glyphicon  glyph="picture"/>標準
-                            </label>
-                            </MenuItem>
-                            <MenuItem eventKey="3">
-                            <label htmlFor="image-file">
-                                <Glyphicon  glyph="picture"/>大きい
-                            </label>
-                            </MenuItem>
-                        </SplitButton>
-                    </ButtonGroup>
                 </ButtonToolbar>
                 {this.getBodyTextArea()}
             </div>
@@ -184,4 +176,5 @@ Main.propTypes = {
     editBody: PropTypes.func,
     upload: PropTypes.func,
     contributionId: PropTypes.number,
+    alertMessage: PropTypes.func,
 }

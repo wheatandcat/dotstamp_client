@@ -7,6 +7,7 @@ import contributionForm from "../contribution/reducers/form"
 import contributionSearch from "../contribution/reducers/search"
 
 import errorShow from "../error/reducers/show"
+import errorAlertMessage from "../error/reducers/alertMessage"
 
 import userContributionList from "../user/reducers/contributionList"
 import userMypage from "../user/reducers/mypage"
@@ -29,6 +30,7 @@ const rootReducer = combineReducers({
     contributionForm: contributionForm,
     contributionSearch,
     errorShow: errorShow,
+    errorAlertMessage,
     userContributionList: userContributionList,
     userMypage: userMypage,
     userFollowList,

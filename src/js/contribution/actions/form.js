@@ -1,4 +1,3 @@
-
 import * as types from "../../constants/ActionTypes"
 
 /**
@@ -114,29 +113,5 @@ export function setViewStatus(viewStatus) {
     return {
         type: types.SET_CONTRIBUTION_FORM_VIEW_STATUS,
         viewStatus: viewStatus
-    }
-}
-
-/**
- * 警告文言を表示する
- *
- * @param  {string} message 文言
- * @return {object} アクション
- */
-export function alertMessage(message) {
-    return {
-        type: types.ALERT_CONTRIBUTION_FORM,
-        message: message
-    }
-}
-
-/**
- * 警告文言を閉じる
- *
- * @return {object} アクション
- */
-export function closeAlert() {
-    return {
-        type: types.CLOSE_CONTRIBUTION_FORM_ALERT,
     }
 }

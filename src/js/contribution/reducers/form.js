@@ -109,17 +109,6 @@ export default function Form (state = initialState , action) {
 
         return JSON.parse(JSON.stringify(state))
     }
-    case types.ALERT_CONTRIBUTION_FORM: {
-        state.Message = action.message
-        state.Warning = true
-
-        return JSON.parse(JSON.stringify(state))
-    }
-    case types.CLOSE_CONTRIBUTION_FORM_ALERT: {
-        state.Warning = false
-
-        return JSON.parse(JSON.stringify(state))
-    }
     case types.INIT_CONTRIBUTION_NEW: {
         return JSON.parse(JSON.stringify(initialState))
     }
