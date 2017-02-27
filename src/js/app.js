@@ -26,9 +26,10 @@ import PasswordReset from "./password/containers/reset"
 import ErrorShow from "./error/containers/show"
 import Header from "./utils/parts/header"
 
-import { IndexRoute, Router, Route, hashHistory } from "react-router"
+import {IndexRoute, Router, Route, hashHistory} from "react-router"
 
 const store = configureStore()
+
 
 class Menu extends Component {
     render () {

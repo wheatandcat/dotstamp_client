@@ -20,6 +20,35 @@ window.addEventListener("resize", () => {
     self.props.changeHeight(window.innerHeight)
 })
 
+window.onbeforeunload = function(){
+    if (self == undefined) {
+        return
+    }
+
+    let hash = location.hash
+    if (hash.indexOf("contribution/new") == -1 && hash.indexOf("contribution/edit") == -1) {
+        return
+    }
+
+    if (self.props.contributionId == null) {
+        let title = self.refs.title.value
+        let body = self.props.contributionTalk
+        if (title == "" && JSON.stringify(body) == "[]") {
+            return
+        }
+    } else {
+        let title = self.refs.title.value
+        let body = self.props.contributionTalk
+
+        if (title == self.props.contributionEdit.saveData.title && JSON.stringify(body) == self.props.contributionEdit.saveData.body) {
+            return
+        }
+    }
+
+    return true
+}
+
+
 export default class Header extends Component {
     componentWillMount() {
         this.props.alertMessageInit()
@@ -78,7 +107,7 @@ export default class Header extends Component {
         if (contributionId == null) {
             this.props.new(action)
         } else {
-            this.props.save(action)
+            this.props.save(action, action)
         }
     }
     /**
@@ -202,7 +231,7 @@ export default class Header extends Component {
      * @return {object} スタイル
      */
     getBoardStyle() {
-        let height = this.props.contributionForm.height - 470
+        let height = this.props.contributionForm.height - 480
 
         return {
             height: height + "px"

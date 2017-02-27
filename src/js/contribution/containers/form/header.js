@@ -42,6 +42,7 @@ function mapDispatchToProps (dispatch) {
             dispatch(fetchPostsIfNeeded(
                     "contribution/save/",
                     types.SAVE_CONTRIBUTION_FORM,
+                    action,
                     action
                 )
             )
