@@ -145,7 +145,11 @@ export default class Header extends Component {
      * タグ追加する
      */
     addTag() {
-        let tag = this.refs.addTag.value
+        let tag = this.refs.addTag.value.trim()
+        if (tag.length > 20) {
+            this.props.alertMessage("タグは20文字まで")
+            return
+        }
 
         this.props.addTag({
             userContributionId: this.props.contributionId,

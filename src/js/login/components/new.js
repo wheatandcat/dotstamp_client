@@ -2,7 +2,6 @@
 import React, {Component, PropTypes} from "react"
 import {Link} from "react-router"
 import {Alert, ButtonToolbar, FormGroup, Col, Button, Grid, Row, Jumbotron} from "react-bootstrap"
-import AlertMessage from "../../error/containers/alertMessage"
 import {PASSWORD_LENGTH_MIN} from "../../constants/common"
 
 export default class New extends Component {
