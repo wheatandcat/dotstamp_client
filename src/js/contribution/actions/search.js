@@ -16,3 +16,16 @@ export function paging(search, page, order) {
         order: order,
     }
 }
+
+/**
+ * 順番を設定する
+ *
+ * @param  {numbet} order 順番
+ * @return {object} アクション
+ */
+export function setOrder(order) {
+    return {
+        type: types.SET_CONTRIBUTION_SEARCH_ORDER,
+        order: order,
+    }
+}

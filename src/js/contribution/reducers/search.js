@@ -16,6 +16,11 @@ export default function List (state = initialState, action) {
         state.List = action.response.List
         state.Count = action.response.Count
 
+        state.Search = action.receiveParam.search
+        state.Page = action.receiveParam.page
+        state.Order = action.receiveParam.order
+
+        location.href = "/#/contribution/search/" + state.Search + "/" + state.Order + "/" + state.Page
         return JSON.parse(JSON.stringify(state))
     }
     case types.PAGING_CONTRIBUTION_SEARCH_LIST: {
@@ -23,7 +28,11 @@ export default function List (state = initialState, action) {
         state.Page = action.page
         state.Order = action.order
 
-        location.href = "/#/contribution/search/" + action.search + "/" + action.order + "/" + action.page
+        location.href = "/#/contribution/search/" + state.Search + "/" + state.Order + "/" + state.Page
+        return JSON.parse(JSON.stringify(state))
+    }
+    case types.SET_CONTRIBUTION_SEARCH_ORDER: {
+        state.Order = action.order
 
         return JSON.parse(JSON.stringify(state))
     }

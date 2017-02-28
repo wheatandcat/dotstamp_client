@@ -4,8 +4,9 @@ import Icon from "../../parts/icon"
 import Tag from "../../parts/tag"
 import {Link} from "react-router"
 import {DateFormat} from "../../common"
+import {VIEW_STATUS_PUBLIC} from "../../../constants/contribution"
 
-import {Strong, LittleStrong, Gap, Dark, Thin} from "../../../../css/common.css"
+import {Disable, Alert, Strong, LittleStrong, Gap, Dark, Thin} from "../../../../css/common.css"
 import {Body, Image, Follow} from "../../../../css/contribution.css"
 
 
@@ -60,12 +61,38 @@ export default class Thumbnail extends Component {
             }
         })
     }
+    getPrivate() {
+        return (
+            <Media className={Disable}>
+                <Media.Left className={Image}>
+                    <Icon imageId={this.props.User.ProfileImageID} />
+                </Media.Left>
+                <Media.Body className={Body}>
+                    {this.props.User.Name}&nbsp;さんが {DateFormat(this.props.UpdatedAt)}に投稿
+                    <Media.Heading>
+                        <br />
+                        <div>
+                            {this.props.Title}<small><span className={Alert}>（※現在非公開の投稿です）</span></small>
+                        </div>
+                    </Media.Heading>
+                </Media.Body>
+                <Media.Right className={Follow}>
+
+                </Media.Right>
+            </Media>
+        )
+    }
+
     /**
      * 描画する
      *
      * @return {object} html
      */
     render () {
+        if (this.props.ViewStatus != VIEW_STATUS_PUBLIC) {
+            return this.getPrivate()
+        }
+
         return (
             <Media>
                 <Media.Left className={Image}>
@@ -103,4 +130,5 @@ Thumbnail.propTypes = {
     Search: PropTypes.string,
     searchMatch: PropTypes.string,
     FollowCount: PropTypes.number,
+    ViewStatus: PropTypes.number,
 }
