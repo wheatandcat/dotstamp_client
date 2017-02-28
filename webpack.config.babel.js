@@ -14,7 +14,34 @@ import sorting from "postcss-sorting"
 
 // 環境設定(デフォルト:develop)
 var env = (process.env.NODE_ENV == undefined) ? "development" : process.env.NODE_ENV
+console.log ("環境:"+env)
 loadenv("./nodeConfig/." + env)
+
+var pluginList
+if (env == "production") {
+    pluginList = [
+        new webpack.DefinePlugin({
+            "process.env.NODE_ENV": JSON.stringify(env),
+            BASE_URL: JSON.stringify(process.env.BASE_URL),
+            IMAGE_PATH: JSON.stringify(process.env.IMAGE_PATH),
+            UPLOAD_PATH: JSON.stringify(process.env.UPLOAD_PATH)
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        })
+    ]
+} else {
+    pluginList = [
+        new webpack.DefinePlugin({
+            "process.env.NODE_ENV": JSON.stringify(env),
+            BASE_URL: JSON.stringify(process.env.BASE_URL),
+            IMAGE_PATH: JSON.stringify(process.env.IMAGE_PATH),
+            UPLOAD_PATH: JSON.stringify(process.env.UPLOAD_PATH)
+        })
+    ]
+}
 
 var cssLoaderConfig = [
     "style",
@@ -62,14 +89,7 @@ module.exports = [
                 }
             ]
         },
-        plugins: [
-            new webpack.DefinePlugin({
-                API_KEY: JSON.stringify("KEY:XXX-XXX"),
-                BASE_URL: JSON.stringify(process.env.BASE_URL),
-                IMAGE_PATH: JSON.stringify(process.env.IMAGE_PATH),
-                UPLOAD_PATH: JSON.stringify(process.env.UPLOAD_PATH)
-            })
-        ],
+        plugins: pluginList,
         postcss: () => {
             return [
                 cssimport,
