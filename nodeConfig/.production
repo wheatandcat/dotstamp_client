@@ -1,0 +1,8 @@
+#本番
+
+#ベースURL
+BASE_URL=http://192.168.33.10:8080/
+
+#画像ファイルパス
+IMAGE_PATH=http://192.168.33.10:8080/static/images/
+UPLOAD_PATH=http://192.168.33.10:8080/static/files/
