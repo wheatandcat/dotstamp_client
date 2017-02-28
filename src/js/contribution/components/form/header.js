@@ -58,6 +58,7 @@ export default class Header extends Component {
             this.props.changeTitle(this.props.title)
         }
 
+
         this.props.changeHeight(window.innerHeight)
     }
     /**

@@ -20,8 +20,8 @@ function mapDispatchToProps (dispatch) {
                 )
             )
         },
-        paging: (search, page, order) => {
-            dispatch(paging(search, page, order))
+        paging: (search, order, page) => {
+            dispatch(paging(search, order, page))
         },
         setOrder: (order) => {
             dispatch(setOrder(order))

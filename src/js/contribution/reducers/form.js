@@ -87,6 +87,7 @@ export default function Form (state = initialState , action) {
     case types.GET_CONTRIBUTION_EDIT: {
         state.title = action.response.Title
         state.tagList = action.response.Tag
+        state.viewStatus = action.response.ViewStatus
 
         return JSON.parse(JSON.stringify(state))
     }

@@ -10,17 +10,17 @@ import Footer from "../../utils/parts/footer"
 
 export default class Search extends Component {
     componentWillMount() {
-        this.search(this.props.params.search, this.props.params.page, this.props.params.order)
-        this.props.paging(this.props.params.search, this.props.params.page, this.props.params.order)
+        this.search(this.props.params.search, this.props.params.order, this.props.params.page)
+        this.props.paging(this.props.params.search, this.props.params.order, this.props.params.page)
     }
     /**
      * 検索する
      *
      * @param {string} search 検索
-     * @param {number} page ページ
      * @param {number} order 順番
+     * @param {number} page ページ
      */
-    search(search, page, order) {
+    search(search , order, page) {
         let action = {
             search: search,
             order: order,
@@ -39,7 +39,7 @@ export default class Search extends Component {
             return
         }
 
-        this.search(val, this.props.contributionSearch.Page, this.props.contributionSearch.Order)
+        this.search(val, this.props.contributionSearch.Order, this.props.contributionSearch.Page)
     }
     /**
      * ページングする
@@ -48,8 +48,8 @@ export default class Search extends Component {
      * @param {number} order 順番
      */
     paging(page, order) {
-        this.search(this.props.contributionSearch.Search, page, order)
-        this.props.paging(this.props.contributionSearch.Search, page, order)
+        this.search(this.props.contributionSearch.Search, order, page)
+        this.props.paging(this.props.contributionSearch.Search, order, page)
     }
     /**
      * 順番を設定する
@@ -57,7 +57,7 @@ export default class Search extends Component {
      * @param {number} order 順番
      */
     setOrder(order) {
-        this.search(this.props.contributionSearch.Search, this.props.contributionSearch.Page, order)
+        this.search(this.props.contributionSearch.Search, order, this.props.contributionSearch.Page)
     }
     /**
      * リストを取得する
@@ -81,7 +81,7 @@ export default class Search extends Component {
             <div>
                 {list.map((item) =>
                     <div key={item.ID}>
-                        <Thumbnail {...item} searchMatch={this.props.params.search} />
+                        <Thumbnail {...item} search={this.search.bind(this)} searchMatch={this.props.params.search} />
                         <hr className={Line}/>
                     </div>
                 )}

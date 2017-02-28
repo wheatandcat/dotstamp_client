@@ -1,4 +1,5 @@
 import * as types from "../../constants/ActionTypes"
+import {VIEW_STATUS_PUBLIC} from "../../constants/contribution"
 
 // 初期ステート設定
 const initialState = {
@@ -6,6 +7,7 @@ const initialState = {
     title: "",
     body: "",
     tagList: [],
+    viewStatus: VIEW_STATUS_PUBLIC,
     saveData: {
         title: "",
         body: "",
@@ -19,6 +21,7 @@ export default function Edit(state = initialState, action) {
         state.title = action.response.Title
         state.body = action.response.Body
         state.tagList = action.response.Tag
+        state.viewStatus = action.response.ViewStatus
         state.saveData.title = action.response.Title
         state.saveData.body = JSON.stringify(action.response.Body)
 

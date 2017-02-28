@@ -23,6 +23,7 @@ export default class Edit extends Component {
         return (
             <FormHeader
                 title = {this.props.contributionEdit.title}
+                viewStatus = {this.props.contributionEdit.ViewStatus}
                 contributionId = {this.props.contributionEdit.id}
                 contributionTalk = {this.props.contributionTalk}
             />

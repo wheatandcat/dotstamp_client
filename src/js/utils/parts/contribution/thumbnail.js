@@ -93,6 +93,11 @@ export default class Thumbnail extends Component {
             return this.getPrivate()
         }
 
+        let search = function(){}
+        if (this.props.search != undefined) {
+            search = this.props.search
+        }
+
         return (
             <Media>
                 <Media.Left className={Image}>
@@ -105,7 +110,7 @@ export default class Thumbnail extends Component {
                             {this.props.Title}
                         </Link>
                         <div className={Gap}>
-                            <Tag list={this.props.Tag} />
+                            <Tag list={this.props.Tag} search={search}/>
                         </div>
                     </Media.Heading>
                     <div>
@@ -131,4 +136,5 @@ Thumbnail.propTypes = {
     searchMatch: PropTypes.string,
     FollowCount: PropTypes.number,
     ViewStatus: PropTypes.number,
+    search: PropTypes.func,
 }
