@@ -99,8 +99,14 @@ export default class Header extends Component {
         if (action.title == "") {
             this.props.alertMessage("タイトルを入力して下さい")
             return
+        } else if (action.title.length > 100) {
+            this.props.alertMessage("タイトルが100文字を超えています。("+action.title.length+"文字)")
+            return
         } else if (action.body == "[]") {
             this.props.alertMessage("本文を入力して下さい")
+            return
+        } else if (action.tag.split(" ").length > 10) {
+            this.props.alertMessage("タグ登録は10個までです")
             return
         }
 
