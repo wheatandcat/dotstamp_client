@@ -6,3 +6,9 @@ export const VIEW_STATUS_PRIVATE = 2
 
 /** 最大タグ登録数 */
 export const TAG_MAX_NUMBER = 10
+
+/** 問題タイプ：スパム */
+export const PROBLEM_TYPE_SPAM = 1
+
+/** 問題タイプ：不適切 */
+export const PROBLEM_TYPE_INAPPROPRIATE = 2

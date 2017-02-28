@@ -14,6 +14,10 @@
     width: 100%;
 }
 
+.HalfTop {
+    padding-top: 10px;
+}
+
 .Right {
     margin-left: auto;
 }

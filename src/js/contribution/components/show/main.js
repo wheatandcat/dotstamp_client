@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from "react"
-import {Grid, Row, Col, Button, PageHeader, Glyphicon} from "react-bootstrap"
+import {Well, Radio, FormGroup, Modal, Dropdown, MenuItem, Grid, Row, Col, Button, PageHeader, Glyphicon} from "react-bootstrap"
 import ContributionShowFrame from "./frame"
-
+import {PROBLEM_TYPE_SPAM, PROBLEM_TYPE_INAPPROPRIATE} from "../../../constants/contribution"
 import Footer from "../../../utils/parts/footer"
-import {Middle, Center, Large, Info, Paragraph} from "../../../../css/common.css"
+import {Shift, HalfTop, Middle, Center, Large, Info, Paragraph} from "../../../../css/common.css"
 import {Author} from "../../../../css/contribution.css"
 
 import Icon from "../../../utils/parts/icon"
@@ -65,6 +65,76 @@ export default class Main extends Component {
         )
     }
     /**
+     * 通報する
+     */
+    addProblem() {
+        if (this.props.contributionShow.AddProblem) {
+            return
+        }
+
+        this.props.addProblem({
+            userContributionId: this.props.contributionShow.ID,
+            type: this.props.contributionShow.ProblemType
+        })
+    }
+    /**
+     * 通報を取得する
+     */
+    getProblem() {
+        var send = ""
+        if (this.props.contributionShow.AddProblem) {
+            send = (
+                <div>
+                    <br/>
+                    <Well>
+                        通報を送信しました。ご協力ありがとうございます。
+                    </Well>
+                </div>
+            )
+        }
+
+        return (
+            <Modal show={this.props.contributionShow.Problem} onHide={this.props.closeProblem}>
+                <Modal.Header closeButton>
+                    <Modal.Title>投稿を通報する</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <h4>以下の理由で通報します。</h4>
+                    <br />
+                    <div className={Shift}>
+                        <FormGroup>
+                            <Radio
+                                name="problemType"
+                                value={PROBLEM_TYPE_SPAM}
+                                checked={this.props.contributionShow.ProblemType==PROBLEM_TYPE_SPAM}
+                                readOnly={this.props.contributionShow.ProblemType==PROBLEM_TYPE_SPAM}
+                                onChange={() => this.props.setProblemType(PROBLEM_TYPE_SPAM)}
+                            >
+                                スパムです
+                            </Radio>
+                            <Radio
+                                name="problemType"
+                                value={PROBLEM_TYPE_INAPPROPRIATE}
+                                checked={this.props.contributionShow.ProblemType==PROBLEM_TYPE_INAPPROPRIATE}
+                                readOnly={this.props.contributionShow.ProblemType==PROBLEM_TYPE_INAPPROPRIATE}
+                                onChange={() => this.props.setProblemType(PROBLEM_TYPE_INAPPROPRIATE)}
+                            >
+                                不適切な内容が含まれています
+                            </Radio>
+                        </FormGroup>
+                    </div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button bsStyle="success" onClick={() => this.addProblem()}>
+                        <Glyphicon glyph="send"/>&nbsp;送信
+                    </Button>
+                    {send}
+                </Modal.Footer>
+            </Modal>
+        )
+
+    }
+    /**
      * タイトルを取得する
      */
     getTitle() {
@@ -84,6 +154,7 @@ export default class Main extends Component {
 
         return (
             <div>
+                {this.getProblem()}
                 <Grid>
                     <Row className="show-grid">
                         <Col xs={12} md={8}>
@@ -108,12 +179,26 @@ export default class Main extends Component {
                             <Col xs={1} md={1} className={Paragraph}>
                                 <Icon imageId={this.props.contributionShow.User.ProfileImageID}/>
                             </Col>
-                            <Col xsHidden md={11} className={Author}>
+                            <Col xs={9} md={5} className={Author}>
                                 <div className={Middle}>
                                     {this.props.contributionShow.User.Name}
 
-                                    &nbsp;&nbsp;&nbsp;<Glyphicon glyph="time"/>
+                                    &nbsp;&nbsp;&nbsp;<Glyphicon glyph="Link"/>
                                     &nbsp;{DateTimeFormat(this.props.contributionShow.UpdatedAt)}に更新
+                                </div>
+                            </Col>
+                            <Col xsHidden md={5}>
+                                <div className={"pull-right "+ HalfTop}>
+                                    <Dropdown id="dropdown-custom-1" pullRight>
+                                        <Dropdown.Toggle noCaret>
+                                            <Glyphicon glyph="list" />
+                                        </Dropdown.Toggle>
+                                        <Dropdown.Menu>
+                                            <MenuItem eventKey="1" onClick={() => this.props.openProblem()}>
+                                                <Glyphicon glyph="warning-sign"/>&nbsp;この記事を通報する
+                                            </MenuItem>
+                                        </Dropdown.Menu>
+                                    </Dropdown>
                                 </div>
                             </Col>
                         </Row>
@@ -148,4 +233,8 @@ Main.propTypes = {
     contributionShow: PropTypes.object,
     addFollow: PropTypes.func,
     deleteFollow: PropTypes.func,
+    openProblem: PropTypes.func,
+    closeProblem: PropTypes.func,
+    setProblemType: PropTypes.func,
+    addProblem:  PropTypes.func,
 }
