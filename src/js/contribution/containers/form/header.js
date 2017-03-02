@@ -67,6 +67,7 @@ function mapDispatchToProps (dispatch) {
             dispatch(fetchPostsIfNeeded(
                     "sound/add/",
                     types.ADD_CONTRIBUTION_FORM_SOUND,
+                    action,
                     action
                 )
             )

@@ -114,6 +114,12 @@ export default function Form (state = initialState , action) {
     case types.INIT_CONTRIBUTION_NEW: {
         return JSON.parse(JSON.stringify(initialState))
     }
+    case types.ADD_CONTRIBUTION_FORM_SOUND: {
+        let id = action.receiveParam.userContributionId
+
+        location.href = "/#/sound/show/" + id
+        return JSON.parse(JSON.stringify(initialState))
+    }
     default:
         return state
     }

@@ -7,10 +7,6 @@ export const PASSWORD_LENGTH_MIN = 8
 /** ボイスタイプ*/
 export const VOICE_TYPE = [
     {
-        type: 0,
-        name: "女性音声-普通(mei_normal)",
-    },
-    {
         type: 1,
         name: "女性音声-普通(mei_normal)",
     },

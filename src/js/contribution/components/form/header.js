@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from "react"
 import {Label, ButtonToolbar, Dropdown, Button, MenuItem, ListGroup, ListGroupItem, FormGroup, Form, Glyphicon} from "react-bootstrap"
 import {VIEW_STATUS_PUBLIC, VIEW_STATUS_PRIVATE, TAG_MAX_NUMBER} from "../../../constants/contribution"
-
+import {Link} from "react-router"
 import FormMain from "../../containers/form/main"
 import TalkBoard from "../../containers/talk/board"
 import AlertMessage from "../../../error/containers/alertMessage"
@@ -323,9 +323,11 @@ export default class Header extends Component {
                 )
             } else {
                 sound = (
-                    <Button bsStyle="link">
-                        <Glyphicon glyph="bullhorn" />&nbsp;記事の読み上げを編集する（β版）
-                    </Button>
+                    <Link to={"/sound/show/" + this.props.contributionId}>
+                        <Button bsStyle="link">
+                            <Glyphicon glyph="bullhorn" />&nbsp;記事の読み上げを編集する（β版）
+                        </Button>
+                    </Link>
                 )
             }
         }
