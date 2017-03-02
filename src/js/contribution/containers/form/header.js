@@ -62,7 +62,15 @@ function mapDispatchToProps (dispatch) {
                     action
                 )
             )
-        }
+        },
+        addSound: (action) => {
+            dispatch(fetchPostsIfNeeded(
+                    "sound/add/",
+                    types.ADD_CONTRIBUTION_FORM_SOUND,
+                    action
+                )
+            )
+        },
     }
 }
 

@@ -287,10 +287,10 @@ export default class Header extends Component {
         let status = viewStausMap[this.props.contributionForm.viewStatus]
         return (
             <Dropdown id="viweStatus">
-                <Button onClick={() => this.save()}>
+                <Button onClick={() => this.save()} bsStyle="success">
                     <Glyphicon glyph={status.glyph} />&nbsp;{status.text}
                 </Button>
-                <Dropdown.Toggle/>
+                <Dropdown.Toggle bsStyle="success"/>
                 <Dropdown.Menu className="super-colors">
                     {viewStausMap.map((item) => {
                         return viewStaus(item)
@@ -300,11 +300,36 @@ export default class Header extends Component {
         )
     }
     /**
+     * 音声を追加する
+     */
+    addSound() {
+        this.props.addSound({
+            userContributionId: this.props.contributionId
+        })
+    }
+    /**
      * 描画する
      *
      * @return {object} html
      */
     render() {
+        let sound = ""
+        if (this.props.contributionId != null) {
+            if (!this.props.contributionEdit.Sound) {
+                sound = (
+                    <Button bsStyle="link" onClick={() => this.addSound()}>
+                        <Glyphicon glyph="bullhorn" />&nbsp;記事の読み上げを作成する（β版）
+                    </Button>
+                )
+            } else {
+                sound = (
+                    <Button bsStyle="link">
+                        <Glyphicon glyph="bullhorn" />&nbsp;記事の読み上げを編集する（β版）
+                    </Button>
+                )
+            }
+        }
+
         return (
             <div>
                 <ListGroup className={Group}>
@@ -317,6 +342,7 @@ export default class Header extends Component {
 
                         <ButtonToolbar>
                             {this.getViewStatus()}
+                            {sound}
                         </ButtonToolbar>
                     </ListGroupItem>
                     <ListGroupItem>
@@ -341,6 +367,7 @@ Header.propTypes = {
     changeTag: PropTypes.func,
     setViewStatus: PropTypes.func,
     contributionForm: PropTypes.object,
+    contributionEdit: PropTypes.object,
     contributionId: PropTypes.number,
     contributionTalk: PropTypes.array,
     title: PropTypes.string,
@@ -350,4 +377,5 @@ Header.propTypes = {
     deleteTag: PropTypes.func,
     alertMessage: PropTypes.func,
     alertMessageInit: PropTypes.func,
+    addSound: PropTypes.func,
 }

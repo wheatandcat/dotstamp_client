@@ -26,6 +26,7 @@ export default class Edit extends Component {
                 viewStatus = {this.props.contributionEdit.ViewStatus}
                 contributionId = {this.props.contributionEdit.id}
                 contributionTalk = {this.props.contributionTalk}
+                sound = {this.props.contributionEdit.Sound}
             />
         )
     }

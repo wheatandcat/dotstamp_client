@@ -11,7 +11,9 @@ const initialState = {
     saveData: {
         title: "",
         body: "",
-    }
+    },
+    Sound: false,
+
 }
 
 export default function Edit(state = initialState, action) {
@@ -24,6 +26,7 @@ export default function Edit(state = initialState, action) {
         state.viewStatus = action.response.ViewStatus
         state.saveData.title = action.response.Title
         state.saveData.body = JSON.stringify(action.response.Body)
+        state.Sound = action.response.Sound
 
         return JSON.parse(JSON.stringify(state))
     }
