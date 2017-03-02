@@ -1,6 +1,6 @@
 import {connect} from "react-redux"
 import List from "../components/list"
-import {setIcon} from "../actions/list"
+import {setIcon, setVoiceType} from "../actions/list"
 import {fetchPostsIfNeeded, fetchUploadIfNeeded} from "../../utils/fetch"
 import {alertMessage, alertMessageInit} from "../../error/actions/alertMessage"
 
@@ -28,6 +28,17 @@ function mapDispatchToProps (dispatch) {
         },
         setIcon: (id) => {
             dispatch(setIcon(id))
+        },
+        setVoiceType: (voiceType) => {
+            dispatch(setVoiceType(voiceType))
+        },
+        save: (action) => {
+            dispatch(fetchPostsIfNeeded(
+                    "characterImage/save/",
+                    types.SAVE_CHARACTER_LIST,
+                    action
+                )
+            )
         },
         delete: (id) => {
             dispatch(fetchPostsIfNeeded(

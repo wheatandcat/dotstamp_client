@@ -1,11 +1,11 @@
 import React, {PropTypes, Component} from "react"
 import Dropzone from "react-dropzone"
-import {ListGroup, ListGroupItem, ButtonToolbar, Button, Well, Alert} from "react-bootstrap"
+import {PageHeader, Panel, ButtonGroup, Glyphicon, Dropdown, MenuItem, ListGroup, ListGroupItem, Button, Well, Alert} from "react-bootstrap"
 import Slider from "../../utils/slider"
 import Image from "../../utils/image"
 import AlertMessage from "../../error/containers/alertMessage"
 import {IMAGE_DISPLAY_TYPE_CHARACTER_MAIN} from "../../utils/image"
-import {UPLOAD_FILE_SIZE_MAX} from "../../constants/common"
+import {UPLOAD_FILE_SIZE_MAX, VOICE_TYPE, VOICE_TYPE_MAP} from "../../constants/common"
 import Footer from "../../utils/parts/footer"
 import {ImageUpload} from "../../../css/character.css"
 
@@ -16,7 +16,7 @@ export default class List extends Component {
         this.props.getList()
     }
     /**
-     * 画像ドロップの監視
+     * 画像ドロップの監視する
      *
      * @param  {array} fileList ファイルリスト
      */
@@ -66,7 +66,17 @@ export default class List extends Component {
 
         return (
             <div>
-                <Image fileName={this.props.characterList.icon.fileName} imageDisplayType={IMAGE_DISPLAY_TYPE_CHARACTER_MAIN} />
+                <Image fileName={this.props.characterList.icon.fileName} imageDisplayType={IMAGE_DISPLAY_TYPE_CHARACTER_MAIN} >
+                    <div className="center-block">
+                        <Button
+                            bsStyle="danger"
+                            onClick={() => this.props.delete(this.props.characterList.icon.id)}
+                        >
+                            <Glyphicon glyph="trash"/>&nbsp;アイコンを削除する
+                        </Button>
+                    </div>
+                </Image>
+
                 <p />
                 {this.getIconMenu()}
                 <p />
@@ -74,21 +84,55 @@ export default class List extends Component {
         )
     }
     /**
+     * 保存する
+     */
+    save() {
+        this.props.save({
+            id: this.props.characterList.icon.id,
+            voiceType: this.props.characterList.VoiceType[this.props.characterList.icon.id],
+        })
+    }
+    /**
      * アイコンメニューを取得する
      */
     getIconMenu () {
+        let voiceType = ""
+
+        let type = this.props.characterList.VoiceType[this.props.characterList.icon.id]
+        if (type != undefined) {
+            voiceType = VOICE_TYPE_MAP[type]
+        }
+
         return (
             <div className="center-block">
-                <Well bsStyle="info">
-                    <ButtonToolbar bsStyle="center-block">
-                        <Button
-                            bsStyle="danger"
-                            onClick={() => this.props.delete(this.props.characterList.icon.id)}
-                        >
-                            削除
+                <Panel header="アイコンのデフォルト音声" bsStyle="success">
+                    <ButtonGroup>
+                        <Dropdown id="voiceType" onSelect={this.props.setVoiceType.bind(this)}>
+                            <Dropdown.Toggle >
+                                <Glyphicon glyph="volume-up"/>&nbsp;{voiceType}&nbsp;&nbsp;
+                            </Dropdown.Toggle>
+                            <Dropdown.Menu>
+                                {VOICE_TYPE.map((item) => {
+                                    let option = {}
+                                    if (type == item.type) {
+                                        option = {
+                                            active: true,
+                                        }
+                                    }
+
+                                    return (
+                                        <MenuItem key={item.type} eventKey={item.type} {...option}>
+                                            &nbsp;&nbsp;&nbsp;{item.name}&nbsp;&nbsp;
+                                        </MenuItem>
+                                    )
+                                })}
+                            </Dropdown.Menu>
+                        </Dropdown>
+                        <Button bsStyle="success" onClick={() => this.save()}>
+                            設定する
                         </Button>
-                    </ButtonToolbar>
-                </Well>
+                    </ButtonGroup>
+                </Panel>
             </div>
         )
     }
@@ -101,9 +145,11 @@ export default class List extends Component {
         return (
             <div>
                 <div className="container">
+                    <PageHeader>
+                        <Glyphicon glyph="picture"/>&nbsp;アイコン設定
+                    </PageHeader>
                     <ListGroup>
                         <ListGroupItem>
-                            <h1>キャラ設定</h1>
                             <AlertMessage/>
                             <div>
                                 {this.getIconMain()}
@@ -152,6 +198,8 @@ List.propTypes = {
     getList: PropTypes.func,
     delete: PropTypes.func,
     upload: PropTypes.func,
+    save: PropTypes.func,
     alertMessage: PropTypes.func,
     alertMessageInit: PropTypes.func,
+    setVoiceType: PropTypes.func,
 }

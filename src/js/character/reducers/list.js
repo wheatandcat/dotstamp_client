@@ -11,6 +11,7 @@ const initialState = {
     },
     imageType: IMAGE_DISPLAY_TYPE_CHARACTER,
     load: false,
+    VoiceType:{},
 }
 
 /**
@@ -48,6 +49,8 @@ export default function List (state = initialState , action) {
         for (let value of action.response.Image) {
             value["imageType"] = action.receiveParam.imageType
             tmp.push(value)
+
+            state.VoiceType[value.ID] = value.VoiceType
         }
 
         state.list = tmp
@@ -62,6 +65,16 @@ export default function List (state = initialState , action) {
     }
     case types.SET_CHARACTER_LIST: {
         state = getSelectIconState(state, action.icon)
+
+        return JSON.parse(JSON.stringify(state))
+    }
+    case types.SET_CHARACTER_VOICE_TYPE: {
+        state.VoiceType[state.icon.id] = action.voiceType
+
+
+        return JSON.parse(JSON.stringify(state))
+    }
+    case types.SAVE_CHARACTER_LIST: {
 
         return JSON.parse(JSON.stringify(state))
     }

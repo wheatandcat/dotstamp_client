@@ -1,5 +1,5 @@
 import React, {PropTypes, Component} from "react"
-import {Grid, Row, Col, ListGroup, ListGroupItem, Button, Glyphicon, Panel, ControlLabel, FormGroup} from "react-bootstrap"
+import {PageHeader, Grid, Row, Col, ListGroup, ListGroupItem, Button, Glyphicon, Panel, ControlLabel, FormGroup} from "react-bootstrap"
 import {Group} from "./../../../css/form.css"
 import {Paragraph} from "./../../../css/common.css"
 import Footer from "../../utils/parts/footer"
@@ -63,6 +63,11 @@ export default class Mypage extends Component {
     render() {
         return (
             <div>
+                <div className="container">
+                    <PageHeader>
+                        <Glyphicon glyph="user"/>&nbsp;プロフィール設定
+                    </PageHeader>
+                </div>
                 <Grid>
                     <Row className="show-grid">
                         <br/>

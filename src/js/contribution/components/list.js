@@ -25,7 +25,6 @@ export default class List extends Component {
 
         this.props.getList(action, {init})
     }
-
     /**
      * 次のページを取得する
      */

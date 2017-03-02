@@ -11,3 +11,15 @@ export function setIcon(id) {
         icon: id
     }
 }
+
+/**
+ * ボイスタイプを設定する
+ * @param {int} voiceType ボイスタイプ
+ * @return {object}  アクション
+ */
+export function setVoiceType(voiceType) {
+    return {
+        type: types.SET_CHARACTER_VOICE_TYPE,
+        voiceType: voiceType
+    }
+}

@@ -286,7 +286,7 @@ export default class Header extends Component {
 
         let status = viewStausMap[this.props.contributionForm.viewStatus]
         return (
-            <Dropdown id="dropdown-custom-1">
+            <Dropdown id="viweStatus">
                 <Button onClick={() => this.save()}>
                     <Glyphicon glyph={status.glyph} />&nbsp;{status.text}
                 </Button>

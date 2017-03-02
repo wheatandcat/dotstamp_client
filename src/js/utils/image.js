@@ -76,7 +76,7 @@ export default class Images extends Component {
             },
             className: MainIcon + " center-block",
             option: {},
-            tag: Image,
+            tag: Thumbnail,
         }
         imageDisplayTypeList[IMAGE_DISPLAY_TYPE_ICON] = {
             src: (fileName) => {
@@ -115,7 +115,9 @@ export default class Images extends Component {
         let setting = imageDisplayTypeList[this.props.imageDisplayType]
 
         return (
-            <setting.tag src={setting.src(this.props.fileName)} className={setting.className} {...setting.option} />
+            <setting.tag src={setting.src(this.props.fileName)} className={setting.className} {...setting.option} >
+                {this.props.children}
+            </setting.tag>
         )
     }
     /**
@@ -134,6 +136,7 @@ Images.propTypes = {
     imageClassName: PropTypes.string,
     fileName: PropTypes.string,
     imageDisplayType: PropTypes.number,
+    children: PropTypes.object,
 }
 
 Images.defaultProps = {

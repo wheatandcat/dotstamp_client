@@ -47,10 +47,11 @@ export default class FollowList extends Component {
 
         return (
             <div>
-                <PageHeader className="container">
-                    &nbsp;&nbsp;<Glyphicon glyph="thumbs-up"/>&nbsp;フォロー投稿
-                     <small>&nbsp;フォロー済みの投稿</small>
-                </PageHeader>
+                <div className="container">
+                    <PageHeader>
+                        &nbsp;&nbsp;<Glyphicon glyph="thumbs-up"/>&nbsp;フォロー済み投稿
+                    </PageHeader>
+                </div>
                 <div className="container">
                     {list.map((item) =>
                         <div key={item.ID}>

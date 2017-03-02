@@ -41,17 +41,17 @@ export default class Auth extends Component {
                 <NavDropdown eventKey={3} title={this.props.loginAuth.Name} id="basic-nav-dropdown">
                     <LinkContainer to="/user/mypage">
                         <MenuItem eventKey={3.1}>
-                            <Glyphicon glyph="user"/>&nbsp;プロフィール
+                            <Glyphicon glyph="user"/>&nbsp;プロフィール設定
                         </MenuItem>
                     </LinkContainer>
                     <LinkContainer to="/character/list">
                         <MenuItem eventKey={3.2}>
-                            <Glyphicon glyph="picture"/>&nbsp;キャラ設定
+                            <Glyphicon glyph="picture"/>&nbsp;アイコン設定
                         </MenuItem>
                     </LinkContainer>
                     <LinkContainer to="/user/followList/1/1">
                         <MenuItem eventKey={3.3}>
-                            <Glyphicon glyph="thumbs-up"/>&nbsp;フォロー投稿
+                            <Glyphicon glyph="thumbs-up"/>&nbsp;フォロー済み投稿
                         </MenuItem>
                     </LinkContainer>
                     <LinkContainer to="/help/index">
