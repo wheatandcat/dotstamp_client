@@ -22,13 +22,13 @@ export default class Talk extends Component {
             <div>
                 <Grid>
                     <Row>
-                        <Col sm={4} md={2}>
+                        <Col sm={2} md={2}>
                             <Image fileName={fileName} imageDisplayType={IMAGE_DISPLAY_TYPE_CHARACTER_TALK}/>
                         </Col>
-                        <Col sm={8} md={3} className={BalloonTalk}>
+                        <Col sm={8} md={6} className={BalloonTalk}>
                             {this.getBody(talk)}
                         </Col>
-                        <Col sm={4} md={2} className={BalloonTalk}>
+                        <Col sm={2} md={1} className={BalloonTalk}>
                             {this.getBodyMenu(talk)}
                         </Col>
                     </Row>

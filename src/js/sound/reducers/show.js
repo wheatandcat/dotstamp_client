@@ -28,6 +28,7 @@ export default function Show (state = initialState , action) {
 
         return JSON.parse(JSON.stringify(state))
     }
+    case types.REFLECT_SOUND_SHOW:
     case types.SAVE_SOUND_SHOW_VOICE_TYPE:
     case types.SAVE_SOUND_SHOW_BODY_SOUND: {
         return JSON.parse(JSON.stringify(state))

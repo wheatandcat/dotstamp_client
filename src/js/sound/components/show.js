@@ -6,7 +6,7 @@ import {Link} from "react-router"
 import Footer from "../../utils/parts/footer"
 import {InputText, InputTextBox} from "../../../css/sound.css"
 import {Middle} from "../../../css/common.css"
-
+import Sound from "../../utils/sound"
 
 export default class Show extends Component {
     componentWillMount() {
@@ -19,6 +19,14 @@ export default class Show extends Component {
      */
     getDeatil(id) {
         this.props.getDetail({userContributionId: id})
+    }
+    /**
+     * 反映する
+     */
+    reflect() {
+        this.props.reflect({
+            userContributionId: this.props.params.id
+        })
     }
     /**
      * 音声本文を変更する
@@ -164,6 +172,9 @@ export default class Show extends Component {
                     <Button bsStyle="info" bsSize="large" href={BASE_URL + "/static/files/sound/" + this.props.params.id + ".mp3"}>
                         <Glyphicon glyph="download-alt"/>&nbsp;音声をダウンロードする
                     </Button>
+                    <br />
+                    <br />
+                    <Sound url={BASE_URL + "/static/files/sound/" + this.props.params.id + ".mp3"} />
                 </div>
             )
         }
@@ -190,7 +201,7 @@ export default class Show extends Component {
                         &nbsp;&nbsp;<Glyphicon glyph="bullhorn"/>&nbsp;読み上げを編集する（β版）
                     </PageHeader>
                     <div>
-                        <Button>
+                        <Button onClick={() => this.reflect()}>
                             <Glyphicon glyph="refresh"/>&nbsp;記事の文章を反映される
                         </Button>
                     </div>
@@ -238,5 +249,6 @@ Show.propTypes = {
     saveBodySound: PropTypes.func,
     saveVoiceType: PropTypes.func,
     make: PropTypes.func,
+    reflect: PropTypes.func,
     onLoading: PropTypes.func,
 }

@@ -44,6 +44,20 @@ function mapDispatchToProps (dispatch) {
                 )
             )
         },
+        reflect: (action) => {
+            dispatch(fetchPostsIfNeeded(
+                    "sound/reflect/",
+                    types.REFLECT_SOUND_SHOW,
+                    action
+                )
+            ).then(() => {
+                dispatch(fetchPostsIfNeeded(
+                    "sound/show/",
+                    types.GET_CONTRIBUTION_FORM_SOUND_DETAIL,
+                    action
+                ))
+            })
+        },
         onLoading: () => {
             dispatch(on())
         },
