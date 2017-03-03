@@ -1,7 +1,8 @@
 /*global BASE_URL*/
 import React, {PropTypes, Component} from "react"
-import {ButtonGroup, MenuItem, Dropdown, FormControl, Table, PageHeader, Glyphicon, Button} from "react-bootstrap"
+import {DropdownButton, ButtonGroup, MenuItem, Dropdown, FormControl, Table, PageHeader, Glyphicon, Button} from "react-bootstrap"
 import {VOICE_TYPE, VOICE_TYPE_MAP} from "../../constants/common"
+import {SOUND_STATUS_PUBLIC, SOUND_STATUS_PRIVATE} from "../../constants/contribution"
 import {Link} from "react-router"
 import Footer from "../../utils/parts/footer"
 import {InputText, InputTextBox} from "../../../css/sound.css"
@@ -159,6 +160,50 @@ export default class Show extends Component {
         })
     }
     /**
+     * 保存する
+     *
+     * @param  {number} soundStatus 音声状態
+     */
+    save(soundStatus) {
+        this.props.save({
+            userContributionId: this.props.params.id,
+            soundStatus: soundStatus,
+        })
+    }
+    /**
+     * 音声状態を取得する
+     */
+    getSoundStatus() {
+        if (!this.props.soundShow.Make) {
+            return ""
+        }
+
+        let title = ""
+        let active = {
+            SOUND_STATUS_PUBLIC: false,
+            SOUND_STATUS_PRIVATE: false,
+        }
+
+        if (this.props.soundShow.SoundStatus == SOUND_STATUS_PUBLIC) {
+            title = " 音声ファイルを公開する"
+            active[SOUND_STATUS_PUBLIC] = true
+        } else {
+            title = " 音声ファイルを非公開"
+            active[SOUND_STATUS_PRIVATE] = true
+        }
+
+        return (
+            <div>
+                <br />
+                <DropdownButton bsStyle="success" title={title} id="voice-status" onSelect={this.save.bind(this)}>
+                    <MenuItem eventKey={SOUND_STATUS_PUBLIC} active={active[SOUND_STATUS_PUBLIC]}>&nbsp;公開に設定する</MenuItem>
+                    <MenuItem eventKey={SOUND_STATUS_PRIVATE} active={active[SOUND_STATUS_PRIVATE]}>&nbsp;非公開に設定する</MenuItem>
+                </DropdownButton>
+            </div>
+        )
+    }
+
+    /**
      * 描画する
      *
      * @return {object} html
@@ -169,12 +214,12 @@ export default class Show extends Component {
             download = (
                 <div className="pull-right">
                     <br />
-                    <Button bsStyle="info" bsSize="large" href={BASE_URL + "/static/files/sound/" + this.props.params.id + ".mp3"}>
+                    <Button bsStyle="info" bsSize="large" href={BASE_URL + "static/files/sound/" + this.props.params.id + ".mp3"}>
                         <Glyphicon glyph="download-alt"/>&nbsp;音声をダウンロードする
                     </Button>
                     <br />
                     <br />
-                    <Sound url={BASE_URL + "/static/files/sound/" + this.props.params.id + ".mp3"} />
+                    <Sound url={BASE_URL + "/static/files/sound/" + this.props.params.id + ".mp3?=" + this.props.soundShow.Hash} />
                 </div>
             )
         }
@@ -205,6 +250,7 @@ export default class Show extends Component {
                             <Glyphicon glyph="refresh"/>&nbsp;記事の文章を反映される
                         </Button>
                     </div>
+                    {this.getSoundStatus()}
                     <div className="pull-right">
                         <Link to={"/contribution/edit/" + this.props.params.id}>
                             投稿編集に戻る
@@ -251,4 +297,5 @@ Show.propTypes = {
     make: PropTypes.func,
     reflect: PropTypes.func,
     onLoading: PropTypes.func,
+    save: PropTypes.func,
 }

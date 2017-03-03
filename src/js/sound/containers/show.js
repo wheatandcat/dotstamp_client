@@ -58,6 +58,15 @@ function mapDispatchToProps (dispatch) {
                 ))
             })
         },
+        save: (action) => {
+            dispatch(fetchPostsIfNeeded(
+                    "sound/save/",
+                    types.SAVE_SOUND_SHOW,
+                    action,
+                    action
+                )
+            )
+        },
         onLoading: () => {
             dispatch(on())
         },

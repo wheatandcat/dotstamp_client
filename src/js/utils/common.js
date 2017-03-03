@@ -21,3 +21,20 @@ export function DateFormat(data) {
 
     return dateFormat(data, "yyyy/mm/dd")
 }
+
+
+/**
+ * ランダムな文字列を取得する
+ *
+ * @param  {number} myStrong ランダム値
+ * @return {string} ランダム文字列
+ */
+export function getUniqueStr(myStrong) {
+    let strong = 1000
+
+    if (myStrong) {
+        strong = myStrong
+    }
+
+    return new Date().getTime().toString(16) + Math.floor(strong * Math.random()).toString(16)
+}
