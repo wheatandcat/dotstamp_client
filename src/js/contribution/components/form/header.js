@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from "react"
-import {Label, ButtonToolbar, Dropdown, Button, MenuItem, ListGroup, ListGroupItem, FormGroup, Form, Glyphicon} from "react-bootstrap"
+import {Label, Dropdown, Button, MenuItem, ListGroup, ListGroupItem, FormGroup, Form, Glyphicon} from "react-bootstrap"
 import {VIEW_STATUS_PUBLIC, VIEW_STATUS_PRIVATE, TAG_MAX_NUMBER} from "../../../constants/contribution"
 import {Link} from "react-router"
 import FormMain from "../../containers/form/main"
@@ -314,12 +314,26 @@ export default class Header extends Component {
      */
     render() {
         let sound = ""
+
+        let soundStatus = ""
+
         if (this.props.contributionId != null) {
+            if (this.props.contributionEdit.SoundFile) {
+                soundStatus = (
+                    <Label bsStyle="success">&nbsp;音声ファイル：&nbsp;公開状態&nbsp;</Label>
+                )
+            } else {
+                soundStatus = (
+                    <Label bsStyle="danger">&nbsp;音声ファイル：&nbsp;非公開状態&nbsp;</Label>
+                )
+            }
+
             if (!this.props.contributionEdit.Sound) {
                 sound = (
                     <Button bsStyle="link" onClick={() => this.addSound()}>
                         <Glyphicon glyph="bullhorn" />&nbsp;記事の読み上げを作成する（β版）
                     </Button>
+
                 )
             } else {
                 sound = (
@@ -342,10 +356,9 @@ export default class Header extends Component {
                         </FormGroup>
                         {this.getTag()}
 
-                        <ButtonToolbar>
-                            {this.getViewStatus()}
-                            {sound}
-                        </ButtonToolbar>
+                        {this.getViewStatus()}
+                        {sound}
+                        {soundStatus}
                     </ListGroupItem>
                     <ListGroupItem>
                         <div className={Preview} ref="preview" style={this.getBoardStyle()}>

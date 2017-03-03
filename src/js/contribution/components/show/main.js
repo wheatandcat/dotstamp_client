@@ -1,3 +1,4 @@
+/*global BASE_URL*/
 import React, { Component, PropTypes } from "react"
 import {Well, Radio, FormGroup, Modal, Dropdown, MenuItem, Grid, Row, Col, Button, PageHeader, Glyphicon} from "react-bootstrap"
 import ContributionShowFrame from "./frame"
@@ -5,6 +6,7 @@ import {PROBLEM_TYPE_SPAM, PROBLEM_TYPE_INAPPROPRIATE} from "../../../constants/
 import Footer from "../../../utils/parts/footer"
 import {Shift, HalfTop, Middle, Center, Large, Info, Paragraph} from "../../../../css/common.css"
 import {Author} from "../../../../css/contribution.css"
+import Sound from "../../../utils/sound"
 
 import Icon from "../../../utils/parts/icon"
 import Tag from "../../../utils/parts/tag"
@@ -214,9 +216,21 @@ export default class Main extends Component {
      * @return {object} html
      */
     render() {
+        let sound = ""
+        if (this.props.contributionShow.SoundFile) {
+            sound = (
+                <div className="container">
+                    <Sound url={BASE_URL + "/static/files/sound/" + this.props.params.id + ".mp3"} />
+                    <hr />
+                </div>
+            )
+        }
+
+
         return (
             <div>
                 {this.getTitle()}
+                {sound}
                 <ContributionShowFrame
                     title = {this.props.contributionShow.Title}
                     body = {this.props.contributionShow.Body}

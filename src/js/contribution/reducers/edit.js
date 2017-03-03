@@ -13,7 +13,7 @@ const initialState = {
         body: "",
     },
     Sound: false,
-
+    SoundFile: false,
 }
 
 export default function Edit(state = initialState, action) {
@@ -27,6 +27,7 @@ export default function Edit(state = initialState, action) {
         state.saveData.title = action.response.Title
         state.saveData.body = JSON.stringify(action.response.Body)
         state.Sound = action.response.Sound
+        state.SoundFile = action.response.SoundFile
 
         return JSON.parse(JSON.stringify(state))
     }
