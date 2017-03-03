@@ -15,16 +15,26 @@ const initialState = {
 
 export default function ContributionList (state = initialState , action) {
     switch (action.type) {
+    case types.INIT_USER_CONTRBUTION_LIST: {
+
+        return JSON.parse(JSON.stringify(initialState))
+    }
     case types.GET_USER_CONTRBUTION_LIST: {
-        state.List = action.response.PrivteList
+
+        if (!state.Load) {
+            state.List = action.response.PrivteList
+            if (Array.isArray(state.List) && state.List.length > 0) {
+                state.ContributionId = state.List[0].ID
+            }
+        } else {
+            state.List = action.response.List
+        }
+
         state.All = action.response.List
         state.Count = action.response.Count
         state.TitleList = action.response.TitleList
 
-        if (Array.isArray(state.List) && state.List.length > 0) {
-            state.ContributionId = state.List[0].ID
-        }
-
+        state.Load = true
         return JSON.parse(JSON.stringify(state))
     }
     case types.SET_USER_CONTRBUTION_LIST: {
@@ -39,6 +49,11 @@ export default function ContributionList (state = initialState , action) {
     }
     case types.SET_USER_CONTRBUTION_LIST_VIEW_STATUS: {
         state.ViewStatus = action.viewStatus
+
+        return JSON.parse(JSON.stringify(state))
+    }
+    case types.DELETE_CONTRIBUTION_SHOW: {
+        state.ContributionId = 0
 
         return JSON.parse(JSON.stringify(state))
     }

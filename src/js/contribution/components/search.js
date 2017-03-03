@@ -79,8 +79,8 @@ export default class Search extends Component {
 
         return (
             <div>
-                {list.map((item) =>
-                    <div key={item.ID}>
+                {list.map((item, key) =>
+                    <div key={key}>
                         <Thumbnail {...item} search={this.search.bind(this)} searchMatch={this.props.params.search} />
                         <hr className={Line}/>
                     </div>

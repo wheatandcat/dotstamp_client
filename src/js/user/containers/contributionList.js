@@ -1,6 +1,6 @@
 import { connect } from "react-redux"
 import ContributionList from "../components/contributionList"
-import {setViewStatus, setContribution, setTitleSearch} from "../actions/contributionList"
+import {init, setViewStatus, setContribution, setTitleSearch} from "../actions/contributionList"
 import {fetchPostsIfNeeded} from "../../utils/fetch"
 import * as types from "../../constants/ActionTypes"
 
@@ -10,6 +10,9 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
     return {
+        init: () => {
+            dispatch(init())
+        },
         getList: () => {
             dispatch(fetchPostsIfNeeded(
                     "user/contributionList/",

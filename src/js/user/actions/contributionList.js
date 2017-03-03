@@ -1,6 +1,17 @@
 import * as types from "../../constants/ActionTypes"
 
 /**
+ * 初期化する
+ *
+ * @return {object} アクション
+ */
+export function init() {
+    return {
+        type: types.INIT_USER_CONTRBUTION_LIST,
+    }
+}
+
+/**
  * 投稿IDを設定する
  *
  * @param  {array} contributionId 投稿ID

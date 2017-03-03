@@ -15,6 +15,8 @@ export default class Main extends Component {
      * @param  {object} event イベント
      */
     changeBody (event) {
+
+
         this.props.changeBody(event.target.value)
     }
     /**
@@ -35,7 +37,7 @@ export default class Main extends Component {
                 id="body"
                 className={className}
                 rows="4"
-                placeholder="本文"
+                placeholder="本文。（最大:256文字まで）"
                 ref="body"
                 value={this.props.contributionForm.body}
                 onChange={this.changeBody.bind(this)} />
@@ -49,6 +51,11 @@ export default class Main extends Component {
         let body = input.value.trim()
 
         if (!body) {
+            return
+        }
+
+        if (body.length > 256) {
+            this.props.alertMessage("最大文字数を超えています！（256文字まで)")
             return
         }
 

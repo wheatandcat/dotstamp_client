@@ -48,20 +48,26 @@ export default class List extends Component {
                         body = {item.body}
                         tagList = {item.tagList}
                     />
-                    <hr className={Line}/>
-                    <Button className={Toggle} onClick={() => this.props.deleteItem(obj.ID)}>
-                        <Glyphicon glyph="chevron-up"/>
-                    </Button>
+                    <br />
+                    <ButtonGroup vertical block>
+                        <Button bsSize="xsmall" onClick={() => this.props.deleteItem(obj.ID)}>
+                            <Glyphicon glyph="chevron-up"/>
+                        </Button>
+                    </ButtonGroup>
+                    <br />
                 </div>
             )
         }
 
         return (
             <div>
-                <hr className={Line}/>
-                <Button className={Toggle} onClick={() => this.props.addItem(obj.ID)}>
-                    <Glyphicon glyph="chevron-down"/>
-                </Button>
+                <br />
+                <ButtonGroup vertical block>
+                    <Button bsSize="xsmall" onClick={() => this.props.addItem(obj.ID)}>
+                        <Glyphicon glyph="chevron-down"/>
+                    </Button>
+                </ButtonGroup>
+                <br />
             </div>
         )
     }
@@ -127,13 +133,13 @@ export default class List extends Component {
         let nextButton
         if (newLine >= VIEW_PAGE_LIMIT) {
             nextButton = (
-                <Button onClick={() => this.next()}>
-                    <Glyphicon glyph="chevron-down"/>
+                <Button bsStyle="success" onClick={() => this.next()}>
+                    <Glyphicon glyph="chevron-down"/>次のページを読み込む
                 </Button>
             )
         } else {
             nextButton = (
-                <Button disabled>
+                <Button bsStyle="success" disabled>
                     <Glyphicon glyph="minus"/>
                 </Button>
             )
@@ -163,6 +169,8 @@ export default class List extends Component {
                     <Collapse in={this.props.contributionList.next} timeout={3000}>
                          {this.getItemList(newList, this.props.contributionList.next)}
                     </Collapse>
+                    <br />
+                    <br />
                     <ButtonGroup vertical block>
                         {nextButton}
                     </ButtonGroup>

@@ -11,7 +11,7 @@ const DISPLAY_ICON_NUM_MAX = 4
 var NextArrow = React.createClass({
     render: function () {
         return (
-            <div {...this.props} style={{display: "block", background: "red"}}></div>
+            <div {...this.props} style={{display: "block"}}></div>
         )
     }
 })
@@ -19,7 +19,7 @@ var NextArrow = React.createClass({
 var PrevArrow = React.createClass({
     render: function () {
         return (
-            <div {...this.props} style={{display: "block", background: "red"}}></div>
+            <div {...this.props} style={{display: "block"}}></div>
         )
     }
 })

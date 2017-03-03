@@ -53,8 +53,8 @@ export default class FollowList extends Component {
                     </PageHeader>
                 </div>
                 <div className="container">
-                    {list.map((item) =>
-                        <div key={item.ID}>
+                    {list.map((item, key) =>
+                        <div key={key}>
                             <Thumbnail {...item} searchMatch={this.props.params.search} />
                             <hr className={Line}/>
                         </div>

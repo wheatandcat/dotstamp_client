@@ -3,6 +3,9 @@ import React, {PropTypes, Component} from "react"
 import {DropdownButton, ButtonGroup, MenuItem, Dropdown, FormControl, Table, PageHeader, Glyphicon, Button} from "react-bootstrap"
 import {VOICE_TYPE, VOICE_TYPE_MAP} from "../../constants/common"
 import {SOUND_STATUS_PUBLIC, SOUND_STATUS_PRIVATE} from "../../constants/contribution"
+import {TALK_TYPE_IMAGE} from "../../contribution/actions/talk"
+import Image, {IMAGE_DISPLAY_TYPE_TALK_IMAGE} from "../../utils/image"
+
 import {Link} from "react-router"
 import Footer from "../../utils/parts/footer"
 import {InputText, InputTextBox} from "../../../css/sound.css"
@@ -103,6 +106,22 @@ export default class Show extends Component {
         })
     }
     /**
+     * 本文詳細を取得する
+     *
+     * @param  {object} item 会話
+     * @return {object} 本文html
+     */
+    getBodyDetail(item) {
+        let html
+        if (item.talk_type == TALK_TYPE_IMAGE) {
+            html = <Image fileName={item.Body} imageDisplayType={IMAGE_DISPLAY_TYPE_TALK_IMAGE}/>
+        } else {
+            html = this.changeBr(item.Body)
+        }
+
+        return html
+    }
+    /**
      * 音声本文を保存する
      *
      * @param  {number} priority 優先度
@@ -126,13 +145,13 @@ export default class Show extends Component {
                 <td>
                     {item.Priority + 1}
                 </td>
-                <td>
-                    {this.changeBr(item.Body)}
+                <td className={InputTextBox}>
+                    {this.getBodyDetail(item)}
                 </td>
                 <td className={InputTextBox}>
                     <FormControl
                         componentClass="textarea"
-                        placeholder="読み上げ本文"
+                        placeholder="読み上げ本文。空の場合は、読み上げをスルーします"
                         value={item.body_sound}
                         onChange={this.changeBodySound.bind(this)}
                         id={"body_sound-" + item.Priority}

@@ -1,10 +1,10 @@
 /*global BASE_URL*/
 import React, { Component, PropTypes } from "react"
-import {Well, Radio, FormGroup, Modal, Dropdown, MenuItem, Grid, Row, Col, Button, PageHeader, Glyphicon} from "react-bootstrap"
+import {Label, Well, Radio, FormGroup, Modal, Dropdown, MenuItem, Grid, Row, Col, Button, PageHeader, Glyphicon} from "react-bootstrap"
 import ContributionShowFrame from "./frame"
 import {PROBLEM_TYPE_SPAM, PROBLEM_TYPE_INAPPROPRIATE} from "../../../constants/contribution"
 import Footer from "../../../utils/parts/footer"
-import {Shift, HalfTop, Middle, Center, Large, Info, Paragraph} from "../../../../css/common.css"
+import {Normal, Shift, HalfTop, Middle, Center, Large, Info, Paragraph} from "../../../../css/common.css"
 import {Author} from "../../../../css/contribution.css"
 import Sound from "../../../utils/sound"
 
@@ -32,6 +32,10 @@ export default class Main extends Component {
      * フォロー追加する
      */
     addFollow() {
+        if (this.props.params.id == 0) {
+            return
+        }
+
         this.props.addFollow({
             userContributionId : this.props.params.id,
         })
@@ -40,6 +44,10 @@ export default class Main extends Component {
      * フォロー削除する
      */
     deleteFollow() {
+        if (this.props.params.id == 0) {
+            return
+        }
+
         this.props.deleteFollow({
             userContributionId : this.props.params.id,
         })
@@ -83,6 +91,10 @@ export default class Main extends Component {
      * 通報を取得する
      */
     getProblem() {
+        if (this.props.params.id == 0) {
+            return
+        }
+
         var send = ""
         if (this.props.contributionShow.AddProblem) {
             send = (
@@ -217,10 +229,12 @@ export default class Main extends Component {
      */
     render() {
         let sound = ""
-        if (this.props.contributionShow.SoundFile) {
+        if (this.props.contributionShow.SoundFile && this.props.params.id != 0) {
             sound = (
                 <div className="container">
-                    <Sound url={BASE_URL + "/static/files/sound/" + this.props.params.id + ".mp3"} />
+                    <Sound url={BASE_URL + "/static/files/sound/" + this.props.params.id + ".mp3"} >
+                        <Label bsStyle="warning" className={Normal}>&nbsp;音声公開中&nbsp;</Label>&nbsp;&nbsp;&nbsp;
+                    </Sound>
                     <hr />
                 </div>
             )

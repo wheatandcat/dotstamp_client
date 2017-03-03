@@ -56,6 +56,7 @@ export default class SoundWrapper extends Component {
 
         return (
             <div>
+                {this.props.children}
                 {player}
                 <Sound
                     url={this.props.url}
@@ -69,5 +70,5 @@ export default class SoundWrapper extends Component {
 
 SoundWrapper.propTypes = {
     url: PropTypes.string,
-
+    children: PropTypes.array,
 }

@@ -74,6 +74,28 @@ export default function Show (state = initialState , action) {
 
         return JSON.parse(JSON.stringify(state))
     }
+    case types.DELETE_CONTRIBUTION_SHOW: {
+        return JSON.parse(JSON.stringify({
+            ID: 0,
+            Title: "",
+            Body: [],
+            TagList: [],
+            User:{
+                ID: 0,
+                Name: "",
+                ProfileImageID: 0,
+            },
+            FollowCount: -1,
+            UpdatedAt: "",
+            CreatedAt: "",
+            Following: false,
+            Load: false,
+            Problem: false,
+            ProblemType: PROBLEM_TYPE_SPAM,
+            AddProblem: false,
+            SoundFile: false,
+        }))
+    }
     default:
         return state
     }

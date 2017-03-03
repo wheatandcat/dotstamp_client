@@ -107,6 +107,7 @@ export default function Talk (state = initialState , action) {
 
         return action.talkList.concat()
     }
+    case types.DELETE_CONTRIBUTION_SHOW:
     case types.INIT_CONTRIBUTION_NEW: {
         list = []
         return JSON.parse(JSON.stringify(initialState))

@@ -11,6 +11,7 @@ var load = false
 var tite = ""
 export default class ContributionList extends Component {
     componentWillMount() {
+        this.props.init()
         this.getList()
     }
     componentWillUpdate() {
@@ -103,6 +104,35 @@ export default class ContributionList extends Component {
         this.searchTitle(tite)
     }
     /**
+     * 操作を取得する
+     */
+    getControl() {
+        let disabled = false
+        let text = ""
+        if (this.props.userContributionList.ContributionId == 0) {
+            disabled = true
+            text = "（※選択されていません）"
+        }
+
+        return (
+            <ButtonToolbar>
+                <Link to={this.getEditPath(this.props.userContributionList.ContributionId)}>
+                    <Button bsStyle="success" disabled={disabled}>
+                        <Glyphicon glyph="edit"/>&nbsp;編集
+                    </Button>
+                </Link>
+                <Button
+                    bsStyle="danger"
+                    onClick={() => this.deleteContribution(this.props.userContributionList.ContributionId)}
+                    disabled={disabled}
+                >
+                    <Glyphicon glyph="trash"/>&nbsp;削除
+                </Button>
+                {text}
+            </ButtonToolbar>
+        )
+    }
+    /**
      * 描画する
      *
      * @return {object} html
@@ -118,12 +148,33 @@ export default class ContributionList extends Component {
             body = []
         }
 
+        let side
+        if (list.length == 0) {
+            side = (
+                <div>
+                    一致する投稿はありませんでした。
+                </div>
+            )
+        } else {
+            side = (
+                <Nav bsStyle="pills" stacked>
+                    {list.map((item) => <NavItem key={item.ID} eventKey={item.ID}>
+                        <p>
+                            {item.Title}
+                        </p>
+                        {DateTimeFormat(item.CreatedAt)}
+                    </NavItem>)}
+                </Nav>
+            )
+        }
+
+
         return (
             <div className="container">
                 <PageHeader>
                     <Glyphicon glyph="list-alt"/>&nbsp;投稿一覧
                 </PageHeader>
-                <Tab.Container id="left-tabs-example" onSelect={this.setContribution.bind(this)}>
+                <Tab.Container id="left-tabs-example" onSelect={this.setContribution.bind(this)} activeKey={this.props.userContributionList.ContributionId}>
                     <Row>
                         <Col sm={3}>
                             <Tabs defaultActiveKey={VIEW_STATUS_PRIVATE} animation={false} id="noanim-tab" onSelect={this.setViewStatus.bind(this)}>
@@ -138,31 +189,14 @@ export default class ContributionList extends Component {
                                 onBlur={this.inputTitle.bind(this)}
                             />
                             <br />
-                            <Nav bsStyle="pills" stacked>
-                                {list.map((item) => <NavItem key={item.ID} eventKey={item.ID}>
-                                    <p>
-                                        {item.Title}
-                                    </p>
-                                    {DateTimeFormat(item.CreatedAt)}
-                                </NavItem>)}
-                            </Nav>
+                            {side}
                         </Col>
                         <Col sm={8}>
                             <div>
-                                <ButtonToolbar>
-                                    <Link to={this.getEditPath(this.props.userContributionList.ContributionId)}>
-                                        <Button bsStyle="success">
-                                            <Glyphicon glyph="edit"/>&nbsp;編集
-                                        </Button>
-                                    </Link>
-                                    <Button bsStyle="danger" onClick={
-                                    () => this.deleteContribution(this.props.userContributionList.ContributionId)}>
-                                        <Glyphicon glyph="trash"/>&nbsp;削除
-                                    </Button>
-                                </ButtonToolbar>
+                                {this.getControl()}
                             </div>
                             <hr/>
-                        <div style={{zoom: "75%"}}>
+                            <div style={{zoom: "75%"}}>
                                 <ContributionShow params={{
                                     id: 0
                                 }}/>
@@ -184,4 +218,5 @@ ContributionList.propTypes = {
     userContributionList: PropTypes.object,
     setTitleSearch: PropTypes.func,
     setViewStatus: PropTypes.func,
+    init: PropTypes.func,
 }
