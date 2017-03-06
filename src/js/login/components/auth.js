@@ -1,6 +1,6 @@
 /*eslint no-console: ["error", { allow: ["log", "error"] }] */
 import React, {PropTypes, Component} from "react"
-import {Nav, NavItem, NavDropdown, MenuItem, Glyphicon} from "react-bootstrap"
+import {Button, Nav, NavItem, NavDropdown, MenuItem, Glyphicon} from "react-bootstrap"
 import {LinkContainer} from "react-router-bootstrap"
 
 export default class Auth extends Component {
@@ -75,14 +75,16 @@ export default class Auth extends Component {
     noLogin() {
         return (
             <Nav pullRight>
-                <LinkContainer to="/login/login">
-                    <NavItem eventKey={1} >
-                        ログインする
+                <LinkContainer to="/login/new">
+                    <NavItem eventKey={2} >
+                        <Button bsStyle="success" bsSize="xsmall">
+                             ユーザ登録
+                        </Button>
                     </NavItem>
                 </LinkContainer>
-                <LinkContainer to="/login/">
-                    <NavItem eventKey={2} >
-                        ログインする
+                <LinkContainer to="/login/login">
+                    <NavItem eventKey={1} >
+                        <Glyphicon glyph="log-in"/>&nbsp;ログインする
                     </NavItem>
                 </LinkContainer>
             </Nav>

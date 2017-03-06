@@ -4,7 +4,6 @@ import {Button, ButtonGroup, Well ,Glyphicon, Collapse} from "react-bootstrap"
 import Footer from "../../utils/parts/footer"
 import Thumbnail from "../../utils/parts/contribution/thumbnail"
 import ContributionShowFrame from "../components/show/frame"
-import {Line, Toggle} from "./../../../css/common.css"
 
 
 const VIEW_PAGE_LIMIT = 10
@@ -61,7 +60,7 @@ export default class List extends Component {
 
         return (
             <div>
-                <br />
+                <br/>
                 <ButtonGroup vertical block>
                     <Button bsSize="xsmall" onClick={() => this.props.addItem(obj.ID)}>
                         <Glyphicon glyph="chevron-down"/>
@@ -159,7 +158,7 @@ export default class List extends Component {
                             現在、○○件投稿されています
                         </p>
                         <Button bsStyle="primary">
-                            投稿する
+                            .stampとは
                         </Button>
                     </div>
                 </Well>

@@ -47,7 +47,7 @@ export default class Input extends Component {
      */
     render() {
         return (
-            <div>
+            <div className="container">
                 <PageHeader>パスワードを再設定する</PageHeader>
                 {this.report()}
                 <ControlLabel>メールアドレス</ControlLabel>

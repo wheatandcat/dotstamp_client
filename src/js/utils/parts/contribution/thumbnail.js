@@ -68,7 +68,9 @@ export default class Thumbnail extends Component {
                     <Icon imageId={this.props.User.ProfileImageID} />
                 </Media.Left>
                 <Media.Body className={Body}>
-                    {this.props.User.Name}&nbsp;さんが {DateFormat(this.props.UpdatedAt)}に投稿
+                    <p>
+                        {this.props.User.Name}&nbsp;さんが {DateFormat(this.props.UpdatedAt)}に投稿
+                    </p>
                     <Media.Heading>
                         <br />
                         <div>
@@ -100,11 +102,13 @@ export default class Thumbnail extends Component {
 
         return (
             <Media>
-                <Media.Left className={Image}>
+                <Media.Left className={Image} align="middle">
                     <Icon imageId={this.props.User.ProfileImageID} />
                 </Media.Left>
                 <Media.Body className={Body}>
-                    {this.props.User.Name}&nbsp;さんが {DateFormat(this.props.UpdatedAt)}に投稿
+                    <p>
+                        {this.props.User.Name}&nbsp;さんが {DateFormat(this.props.UpdatedAt)}に投稿
+                    </p>
                     <Media.Heading>
                         <Link to={this.getShowPath(this.props.ID)} className={Strong}>
                             {this.props.Title}

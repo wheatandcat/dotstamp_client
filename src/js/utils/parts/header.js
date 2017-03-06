@@ -1,10 +1,11 @@
 import React from "react"
-import {Navbar, FormGroup, FormControl, Button, Glyphicon, InputGroup} from "react-bootstrap"
+import {Image, Navbar, FormGroup, FormControl, Button, Glyphicon, InputGroup} from "react-bootstrap"
 
 import LoginAuth from "./../../login/containers/auth"
 import {Link} from "react-router"
 
-import {Narrowly} from "./../../../css/common.css"
+import {Stamp, Narrowly} from "./../../../css/common.css"
+import {Top} from "./../../../css/header.css"
 
 export default class Header extends React.Component {
     search() {
@@ -23,11 +24,11 @@ export default class Header extends React.Component {
      */
     render() {
         return (
-            <Navbar className={Narrowly}>
+            <Navbar className={Narrowly + " " + Stamp}>
                 <Navbar.Header>
-                    <Navbar.Brand>
+                    <Navbar.Brand className={Top}>
                         <Link to="/">
-                            &nbsp;&nbsp;.Stamp
+                            <Image src="/static/images/common/top.png" rounded />
                         </Link>
                     </Navbar.Brand>
                     <Navbar.Toggle/>

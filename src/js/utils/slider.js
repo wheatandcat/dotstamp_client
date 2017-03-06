@@ -5,7 +5,7 @@ import {Form , FormGroup} from "react-bootstrap"
 import Image from "./image"
 
 const DISPLAY_ICON_NUM_MIN = 1
-const DISPLAY_ICON_NUM_MAX = 4
+const DISPLAY_ICON_NUM_MAX = 5
 
 
 var NextArrow = React.createClass({

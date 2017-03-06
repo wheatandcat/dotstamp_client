@@ -30,6 +30,20 @@
     margin-bottom: 0;
 }
 
+.Stamp {
+    background-color: #f1e2aa;
+    border-bottom-color: rgb(238, 164, 127);
+    color: #000;
+}
+
+.StampAddress {
+    font-size:35px;
+    color: rgb(238, 164, 127);
+    text-align: right;
+}
+
+
+
 .NoSpace {
     padding: 0;
     margin: 0;

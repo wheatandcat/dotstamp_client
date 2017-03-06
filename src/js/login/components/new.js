@@ -1,13 +1,12 @@
 /*eslint no-console: ["error", { allow: ["log", "error"] }] */
 import React, {Component, PropTypes} from "react"
 import {Link} from "react-router"
-import {Alert, ButtonToolbar, FormGroup, Col, Button, Grid, Row, Jumbotron} from "react-bootstrap"
+import {Well, Image, PageHeader, Alert, ButtonToolbar, FormGroup, Col, Button, Grid, Row, Jumbotron} from "react-bootstrap"
+import {Full, Stamp, StampAddress} from "../../../css/common.css"
 import {PASSWORD_LENGTH_MIN} from "../../constants/common"
 
 export default class New extends Component {
-    componentWillMount () {
-
-    }
+    componentWillMount() {}
     /**
      * 新規登録する
      */
@@ -25,10 +24,7 @@ export default class New extends Component {
             return
         }
 
-        this.props.new({
-            email: email,
-            password: password
-        })
+        this.props.new({email: email, password: password})
     }
     /**
      * 警告を取得する
@@ -36,7 +32,7 @@ export default class New extends Component {
      * @return {object} html
      */
     getAlert() {
-        if(!this.props.loginNew.Warning) {
+        if (!this.props.loginNew.Warning) {
             return ""
         }
 
@@ -54,43 +50,66 @@ export default class New extends Component {
      */
     render() {
         return (
-            <Grid>
-                <br/>
-                <br/>
-                <Row className="show-grid">
-                    <Col md={6}>
-                        <Jumbotron>
-                              <h1>Hello, .Stamp!</h1>
-                              <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-                              <p><Button bsStyle="primary">Learn more</Button></p>
-                        </Jumbotron>
-                    </Col>
-                    <Col md={6}>
-                        {this.getAlert()}
-                        <FormGroup controlId="formHorizontalEmail">
-                            <input type="text" className="form-control" id="user" name="user" placeholder="メールアドレス" ref="email" />
-                        </FormGroup>
-                        <FormGroup controlId="formHorizontalPassword">
-                            <input type="password" className="form-control" id="password" name="password" placeholder="パスワード" ref="password"/>
-                        </FormGroup>
-                        <FormGroup>
-                            <Col smOffset={4}>
-                                <ButtonToolbar>
-                                    <Button bsStyle="link">キャンセル</Button>
-                                    <Button bsStyle="success" onClick={() => this.new()}>
-                                        規約に同意して登録する
-                                    </Button>
-                                </ButtonToolbar>
-                            </Col>
-                        </FormGroup>
-                        <br />
-                        <br />
-                        <Link to="login/login">
-                            <Button bsStyle="link">登録済みの場合は、こちら</Button>
-                        </Link>
-                    </Col>
-                </Row>
-            </Grid>
+            <div>
+                <div className="container">
+                    <PageHeader>
+                        .stamp&nbsp;&nbsp;新規ユーザ登録をする
+                    </PageHeader>
+                </div>
+                <Grid>
+                    <br/>
+                    <br/>
+                    <Row className="show-grid">
+                        <Col md={6}>
+                            <Well className={Stamp}>
+                                <table className={Full}>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <Image src="/static/images/common/icon.png" rounded/>
+                                            </td>
+                                            <td className={StampAddress}>
+                                                    □□□□□□
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <Jumbotron className={Stamp}>
+                                    <h1>Hello,&nbsp;.Stamp!</h1>
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <Image src="/static/images/common/doc.png" rounded/>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<Button bsStyle="primary">Learn more</Button>
+                                </Jumbotron>
+                            </Well>
+                        </Col>
+                        <Col md={6}>
+                            {this.getAlert()}
+                            <FormGroup controlId="formHorizontalEmail">
+                                <input type="text" className="form-control" id="user" name="user" placeholder="メールアドレス" ref="email"/>
+                            </FormGroup>
+                            <FormGroup controlId="formHorizontalPassword">
+                                <input type="password" className="form-control" id="password" name="password" placeholder="パスワード" ref="password"/>
+                            </FormGroup>
+                            <FormGroup>
+                                <Col smOffset={4}>
+                                    <ButtonToolbar>
+                                        <Button bsStyle="success" onClick={() => this.new()}>
+                                            規約に同意して登録する
+                                        </Button>
+                                    </ButtonToolbar>
+                                </Col>
+                            </FormGroup>
+                            <br/>
+                            <br/>
+                            <Link to="login/login">
+                                <Button bsStyle="link">登録済みならばログインから</Button>
+                            </Link>
+                        </Col>
+                    </Row>
+                </Grid>
+            </div>
         )
     }
 }

@@ -55,7 +55,7 @@ export default class Reset extends Component {
         }
 
         return (
-            <div>
+            <div className="container">
                 <PageHeader>パスワードを再設定する</PageHeader>
                 <ControlLabel>パスワード</ControlLabel>
 
