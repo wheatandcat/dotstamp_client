@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from "react"
 import {Link} from "react-router"
-import {Image, Well, Glyphicon, PageHeader, FormGroup, Col, Button, Grid, Row, Jumbotron, Form} from "react-bootstrap"
-import {Full, Stamp, StampAddress} from "../../../css/common.css"
+import {Glyphicon, PageHeader, FormGroup, Col, Button, Grid, Row, Form} from "react-bootstrap"
+import Envelope from "../../utils/parts/envelope"
 
 export default class Login extends Component {
     /**
@@ -34,31 +34,10 @@ export default class Login extends Component {
                     <br/>
                     <br/>
                     <Row>
-                        <Col md={6}>
-                            <Well className={Stamp}>
-                                <table className={Full}>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <Image src="/static/images/common/icon.png" rounded/>
-                                            </td>
-                                            <td className={StampAddress}>
-                                                    □□□□□□
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <Jumbotron className={Stamp}>
-                                    <h1>Hello,&nbsp;.Stamp!</h1>
-                                    <br />
-                                    <br />
-                                    <br />
-                                    <Image src="/static/images/common/doc.png" rounded/>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;<Button bsStyle="primary">Learn more</Button>
-                                </Jumbotron>
-                            </Well>
+                        <Col xs={9} md={6}>
+                            <Envelope />
                         </Col>
-                        <Col md={6}>
+                        <Col xs={9} md={6}>
                             <FormGroup controlId="formHorizontalEmail">
                                 <input type="text" id="user" name="user" className="form-control" placeholder="メールアドレス" ref="email" />
                             </FormGroup>
@@ -73,7 +52,6 @@ export default class Login extends Component {
                                         <Button bsStyle="link">パスワードを忘れた場合は、こちら</Button>
                                     </Link>
                                 </FormGroup>
-
                             </Form>
                             <br />
                             <br />

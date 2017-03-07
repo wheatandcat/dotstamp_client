@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from "react"
-
+import {Link} from "react-router"
 import {Button, ButtonGroup, Well ,Glyphicon, Collapse} from "react-bootstrap"
 import Footer from "../../utils/parts/footer"
 import Thumbnail from "../../utils/parts/contribution/thumbnail"
@@ -157,9 +157,11 @@ export default class List extends Component {
                         <p>
                             現在、○○件投稿されています
                         </p>
-                        <Button bsStyle="primary">
-                            .stampとは
-                        </Button>
+                        <Link to="/about">
+                            <Button bsStyle="primary">
+                                .stampとは
+                            </Button>
+                        </Link>
                     </div>
                 </Well>
                 <div className="container">

@@ -100,6 +100,15 @@
     display: table-cell;
     vertical-align: middle;
 }
+
+.Icon {
+    font-size: 80px;
+}
+
+.SubIcon {
+    font-size: 40px;
+}
+
 .Large {
     font-size: 30px;
 }

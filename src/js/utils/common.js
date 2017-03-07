@@ -1,3 +1,4 @@
+/*global BASE_URL*/
 import dateFormat from "dateformat"
 
 /**
@@ -37,4 +38,13 @@ export function getUniqueStr(myStrong) {
     }
 
     return new Date().getTime().toString(16) + Math.floor(strong * Math.random()).toString(16)
+}
+
+/**
+ * トップURLを取得する
+ *
+ * @return {string} URL
+ */
+export function getTopUrl() {
+    return BASE_URL
 }

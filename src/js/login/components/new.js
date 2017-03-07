@@ -1,9 +1,10 @@
 /*eslint no-console: ["error", { allow: ["log", "error"] }] */
 import React, {Component, PropTypes} from "react"
 import {Link} from "react-router"
-import {Well, Image, PageHeader, Alert, ButtonToolbar, FormGroup, Col, Button, Grid, Row, Jumbotron} from "react-bootstrap"
-import {Full, Stamp, StampAddress} from "../../../css/common.css"
+import {PageHeader, Alert, ButtonToolbar, FormGroup, Col, Button, Grid, Row} from "react-bootstrap"
 import {PASSWORD_LENGTH_MIN} from "../../constants/common"
+import Envelope from "../../utils/parts/envelope"
+
 
 export default class New extends Component {
     componentWillMount() {}
@@ -61,28 +62,7 @@ export default class New extends Component {
                     <br/>
                     <Row className="show-grid">
                         <Col md={6}>
-                            <Well className={Stamp}>
-                                <table className={Full}>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <Image src="/static/images/common/icon.png" rounded/>
-                                            </td>
-                                            <td className={StampAddress}>
-                                                    □□□□□□
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <Jumbotron className={Stamp}>
-                                    <h1>Hello,&nbsp;.Stamp!</h1>
-                                    <br />
-                                    <br />
-                                    <br />
-                                    <Image src="/static/images/common/doc.png" rounded/>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;<Button bsStyle="primary">Learn more</Button>
-                                </Jumbotron>
-                            </Well>
+                            <Envelope />
                         </Col>
                         <Col md={6}>
                             {this.getAlert()}

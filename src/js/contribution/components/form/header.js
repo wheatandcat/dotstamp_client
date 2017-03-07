@@ -20,34 +20,43 @@ window.addEventListener("resize", () => {
     self.props.changeHeight(window.innerHeight)
 })
 
-window.onbeforeunload = function(){
+var checkContributionEdit = function(hash) {
     if (self == undefined) {
-        return
+        return false
     }
 
-    let hash = location.hash
     if (hash.indexOf("contribution/new") == -1 && hash.indexOf("contribution/edit") == -1) {
-        return
+        return false
     }
+
 
     if (self.props.contributionId == null) {
-        let title = self.refs.title.value
+        let title = self.props.contributionForm.title
         let body = self.props.contributionTalk
         if (title == "" && JSON.stringify(body) == "[]") {
-            return
+            return false
         }
     } else {
-        let title = self.refs.title.value
+        let title = self.props.contributionForm.title
         let body = self.props.contributionTalk
 
         if (title == self.props.contributionEdit.saveData.title && JSON.stringify(body) == self.props.contributionEdit.saveData.body) {
-            return
+            return false
         }
     }
 
     return true
 }
 
+window.onbeforeunload = function(){
+    let hash = location.hash
+
+    if (checkContributionEdit(hash)) {
+        return true
+    }
+
+    return
+}
 
 export default class Header extends Component {
     componentWillMount() {

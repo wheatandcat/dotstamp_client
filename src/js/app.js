@@ -28,9 +28,17 @@ import SoundShow from "./sound/containers/show"
 import ErrorShow from "./error/containers/show"
 import Header from "./utils/parts/header"
 
+import About from "./utils/parts/about"
+import Help from "./utils/parts/help"
+
 import {IndexRoute, Router, Route, hashHistory} from "react-router"
 
 const store = configureStore()
+
+
+window.onhashchange = function() {
+    window.scrollTo(0, 0)
+}
 
 
 class Menu extends Component {
@@ -73,6 +81,8 @@ class App extends Component {
                         <Route path="/password/input" component={PasswordInput} />
                         <Route path="/password/reset/:email/:keyword" component={PasswordReset} />
                         <Route path="/sound/show/:id" component={SoundShow} />
+                        <Route path="/about" component={About} />
+                        <Route path="/help" component={Help} />
                     </Route>
                 </Router>
             </Provider>

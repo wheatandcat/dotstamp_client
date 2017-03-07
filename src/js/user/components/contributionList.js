@@ -168,6 +168,18 @@ export default class ContributionList extends Component {
             )
         }
 
+        let contribution = ""
+
+        if (this.props.userContributionList.ContributionId != 0) {
+            contribution = (
+                <div style={{zoom: "75%"}}>
+                    <ContributionShow params={{
+                        id: 0
+                    }}/>
+                </div>
+            )
+        }
+
 
         return (
             <div className="container">
@@ -196,11 +208,8 @@ export default class ContributionList extends Component {
                                 {this.getControl()}
                             </div>
                             <hr/>
-                            <div style={{zoom: "75%"}}>
-                                <ContributionShow params={{
-                                    id: 0
-                                }}/>
-                            </div>
+                            {contribution}
+
                         </Col>
                     </Row>
                 </Tab.Container>

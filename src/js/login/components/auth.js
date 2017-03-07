@@ -54,7 +54,7 @@ export default class Auth extends Component {
                             <Glyphicon glyph="thumbs-up"/>&nbsp;フォロー済み投稿
                         </MenuItem>
                     </LinkContainer>
-                    <LinkContainer to="/help/index">
+                    <LinkContainer to="/help">
                         <MenuItem eventKey={3.4}>
                             <Glyphicon glyph="question-sign"/>&nbsp;ヘルプ
                         </MenuItem>
