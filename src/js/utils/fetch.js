@@ -58,7 +58,7 @@ function shouldFetchPosts(url) {
  * @param  {object} receiveParam 返しパラメータ
  * @return {object} アクション
  */
-function receiveResponse(url, type, response, receiveParam) {
+function receiveResponse(url, type, response, receiveParam = {}) {
     fetchStateList[url].isFetching = false
 
     return {
@@ -175,6 +175,57 @@ function fetchUpload(url, type, paramas, receiveParam) {
         })
         .then(response =>
             response.json().then(json => ({
+                status: response.status,
+                json
+            })
+        ))
+        .then(
+            ({ status, json }) => {
+                if (status >= 400) {
+                    return dispatch(receiveErrorResponse(url, json))
+                }
+
+                dispatch(receiveResponse(url, type, json, receiveParam))
+            }
+        )
+    }
+}
+
+
+/**
+ * 必要な場合は通信しテキストを取得する
+ *
+ * @param  {string} url URL
+ * @param  {string} type タイプ
+ * @param  {object} receiveParam 返しパラメータ
+ * @return {object} アクション
+ */
+export function fetchTextIfNeeded(url, type, receiveParam) {
+    return (dispatch) => {
+        if (shouldFetchPosts(url)) {
+            // thunkからthunkを呼び出せる！
+            return dispatch(fetchText(url, type, receiveParam))
+        } else {
+            // 下記コードを呼び、wait forには何もないことを知らせる
+            return Promise.resolve()
+        }
+    }
+}
+
+/**
+ * テキストを取得する
+ *
+ * @param  {string} url URL
+ * @param  {string} type タイプ
+ * @param  {object} receiveParam 返しパラメータ
+ * @return {object} レスポンス
+ */
+function fetchText(url, type, receiveParam) {
+
+    return dispatch => {
+        return fetch(host + url)
+        .then(response =>
+            response.text().then(json => ({
                 status: response.status,
                 json
             })

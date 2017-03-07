@@ -29,7 +29,7 @@ export default class Help extends Component {
                         </Link>
                     </Panel>
 
-                    <Panel header="その他" bsStyle="info">
+                    <Panel header="参考" bsStyle="info">
                         ブログ記事：<br />
                         &nbsp;&nbsp;&nbsp;&nbsp;・
                     </Panel>

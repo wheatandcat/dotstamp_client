@@ -99,3 +99,5 @@ export const OFF_LOADING = "OFF_LOADING"
 
 export const INIT_QUESTION = "INIT_QUESTION"
 export const ADD_QUESTION = "ADD_QUESTION"
+
+export const GET_JSON = "GET_JSON"

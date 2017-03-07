@@ -79,9 +79,6 @@ export default class Mypage extends Component {
                                         <Glyphicon glyph="user"/>&nbsp;アカウント
                                     </ListGroupItem>
                                 </LinkContainer>
-                                <ListGroupItem>
-                                    <Glyphicon glyph="lock"/>&nbsp;パスワード
-                                </ListGroupItem>
                             </ListGroup>
                         </Col>
                         <Col xs={12} md={8}>

@@ -30,6 +30,8 @@ import Header from "./utils/parts/header"
 
 import questionShow from "./question/containers/show"
 
+import informationShow from "./information/containers/show"
+
 import About from "./utils/parts/about"
 import Help from "./utils/parts/help"
 
@@ -86,6 +88,7 @@ class App extends Component {
                         <Route path="/about" component={About} />
                         <Route path="/help" component={Help} />
                         <Route path="/question" component={questionShow} />
+                        <Route path="/information/:file" component={informationShow} />
                     </Route>
                 </Router>
             </Provider>

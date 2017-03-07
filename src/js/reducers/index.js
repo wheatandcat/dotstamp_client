@@ -24,6 +24,7 @@ import passwordInput from "../password/reducers/input"
 import passwordReset from "../password/reducers/reset"
 
 import soundShow from "../sound/reducers/show"
+import informationShow from "../information/reducers/show"
 
 // 機能ごとのstateを管理
 const rootReducer = combineReducers({
@@ -45,6 +46,7 @@ const rootReducer = combineReducers({
     passwordInput,
     passwordReset,
     soundShow,
+    informationShow,
 })
 
 export default rootReducer
