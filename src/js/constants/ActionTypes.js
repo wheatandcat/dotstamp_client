@@ -96,3 +96,6 @@ export const SAVE_PASSWORD = "SAVE_PASSWORD"
 
 export const ON_LOADING = "ON_LOADING"
 export const OFF_LOADING = "OFF_LOADING"
+
+export const INIT_QUESTION = "INIT_QUESTION"
+export const ADD_QUESTION = "ADD_QUESTION"

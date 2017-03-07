@@ -12,7 +12,7 @@ export default class Show extends Component {
      * バグ報告を追加する
      */
     addBugReport() {
-        let val = this.input.value
+        let val = this.input.value.trim()
         if (val== "") {
             return
         }

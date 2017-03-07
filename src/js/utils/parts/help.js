@@ -1,7 +1,8 @@
 import React, {Component} from "react"
-import {PageHeader, Panel, Alert, Glyphicon} from "react-bootstrap"
+import {PageHeader, Panel, Alert, Glyphicon, Button} from "react-bootstrap"
 import {Normal} from "../../../css/common.css"
 import Footer from "./footer"
+import {Link} from "react-router"
 
 export default class Help extends Component {
     /**
@@ -23,6 +24,9 @@ export default class Help extends Component {
                     </Alert>
                     <Panel header="問い合わせ" bsStyle="success">
 
+                        <Link to="/question">
+                            <Button bsStyle="info">問い合わせ</Button>
+                        </Link>
                     </Panel>
 
                     <Panel header="その他" bsStyle="info">

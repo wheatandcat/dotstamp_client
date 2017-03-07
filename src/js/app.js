@@ -28,6 +28,8 @@ import SoundShow from "./sound/containers/show"
 import ErrorShow from "./error/containers/show"
 import Header from "./utils/parts/header"
 
+import questionShow from "./question/containers/show"
+
 import About from "./utils/parts/about"
 import Help from "./utils/parts/help"
 
@@ -83,6 +85,7 @@ class App extends Component {
                         <Route path="/sound/show/:id" component={SoundShow} />
                         <Route path="/about" component={About} />
                         <Route path="/help" component={Help} />
+                        <Route path="/question" component={questionShow} />
                     </Route>
                 </Router>
             </Provider>

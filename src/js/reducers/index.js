@@ -18,6 +18,8 @@ import characterList from "../character/reducers/list"
 import loginNew from "../login/reducers/new"
 import loginAuth from "../login/reducers/auth"
 
+import questionShow from "../question/reducers/show"
+
 import passwordInput from "../password/reducers/input"
 import passwordReset from "../password/reducers/reset"
 
@@ -39,6 +41,7 @@ const rootReducer = combineReducers({
     loginNew,
     loginAuth: loginAuth,
     characterList: characterList,
+    questionShow,
     passwordInput,
     passwordReset,
     soundShow,
