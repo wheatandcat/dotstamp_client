@@ -3,27 +3,26 @@ import reducer from "../../../contribution/reducers/list"
 
 describe("contribution/reducers/list", () => {
     it("リストを取得する", () => {
-        expect(
-            reducer(
-                undefined,
+        const expected = {
+            type: types.GET_CONTRIBUTION_LIST,
+            response: [
                 {
-                    type: types.GET_CONTRIBUTION_LIST,
-                    response: [
-                        {
-                            id: 1,
-                            body: "abc",
-                        },
-                        {
-                            id: 2,
-                            body: "def"
-                        }
-                    ],
-                    receiveParam: {
-                        init: true
-                    }
+                    id: 1,
+                    body: "abc",
+                },
+                {
+                    id: 2,
+                    body: "def"
                 }
-            )
-        ).toEqual({
+            ],
+            receiveParam: {
+                init: true
+            }
+        }
+
+        const result = reducer(undefined, expected)
+
+        expect(result).toEqual({
             list: [
                 {
                     id: 1,

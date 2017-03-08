@@ -41,7 +41,7 @@ function setuplogin() {
 describe("login/components/auth", () => {
     it("ログインなし時を表示する", () => {
         const {props, enzymeWrapper} = setupNologin()
-        expect(enzymeWrapper.find("LinkContainer").props().to).toBe("/login/login")
+        expect(enzymeWrapper.find("LinkContainer").at(0).props().to).toBe("/login/new")
 
         expect(props.auth.mock.calls.length).toBe(1)
     })
@@ -54,7 +54,7 @@ describe("login/components/auth", () => {
 
         it("ログアウトする", (enzymeWrapper) => {
             enzymeWrapper.find("MenuItem").at(5).simulate("click")
-            expect(props.logout.mock.calls.length).toBe(1)            
+            expect(props.logout.mock.calls.length).toBe(1)
         })
     })
 })

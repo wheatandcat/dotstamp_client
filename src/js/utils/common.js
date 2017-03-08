@@ -9,7 +9,7 @@ import dateFormat from "dateformat"
  */
 export function DateTimeFormat(data) {
 
-    return dateFormat(data, "yyyy年m月d日 hh:MM:ss")
+    return dateFormat(data, "yyyy年mm月dd日 hh:MM:ss")
 }
 
 /**

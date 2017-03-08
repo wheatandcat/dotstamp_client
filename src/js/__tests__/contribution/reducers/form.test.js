@@ -1,6 +1,7 @@
 import * as types from "../../../constants/ActionTypes"
 import reducer from "../../../contribution/reducers/form"
 import { DIRECTION_LEFT } from "../../../contribution/actions/talk"
+import {VIEW_STATUS_PUBLIC} from "../../../constants/contribution"
 
 describe("contribution/reducers/form", () => {
     it("本文を編集する", () => {
@@ -20,7 +21,10 @@ describe("contribution/reducers/form", () => {
             },
             directionType: DIRECTION_LEFT,
             height: 450,
-            boardScroll: false
+            boardScroll: false,
+            Warning: false,
+            Message: "",
+            viewStatus: VIEW_STATUS_PUBLIC,
         })
     })
 })

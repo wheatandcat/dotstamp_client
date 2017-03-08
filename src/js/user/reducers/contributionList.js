@@ -1,5 +1,5 @@
 import * as types from "../../constants/ActionTypes"
-import {VIEW_STATUS_PRIVATE} from "../../constants/contribution.js"
+import {VIEW_STATUS_PRIVATE} from "../../constants/contribution"
 
 // 初期ステート設定
 const initialState = {

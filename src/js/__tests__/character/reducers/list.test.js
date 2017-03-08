@@ -32,7 +32,8 @@ describe("character/reducers/list", () => {
                 select: 0,
             },
             imageType: 2,
-            load: true
+            load: true,
+            VoiceType:{},
         })
     })
 

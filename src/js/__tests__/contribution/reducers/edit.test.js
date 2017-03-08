@@ -8,7 +8,9 @@ describe("contribution/reducers/edit", () => {
             response: {
                 ID: 1,
                 Title: "abc",
-                Body: "abcdef",
+                Body: {
+                    aa: "abcdef",
+                },
                 Tag: [
                     "efg",
                     "hij"
@@ -19,13 +21,21 @@ describe("contribution/reducers/edit", () => {
         const result = reducer(undefined, expected)
 
         expect(result).toEqual({
-            body: "abcdef",
+            body: {
+                aa: "abcdef",
+            },
             id: 1,
             tagList: [
                 "efg",
                 "hij"
             ],
-            title: "abc"
+            title: "abc",
+            saveData: {
+                title: "abc",
+                body: JSON.stringify({
+                    aa: "abcdef",
+                }),
+            },
         })
     })
 })

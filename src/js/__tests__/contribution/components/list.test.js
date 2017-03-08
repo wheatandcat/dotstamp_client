@@ -45,7 +45,7 @@ function setup() {
 describe("contribution/components/list", () => {
     it("リストを表示する", () => {
         const {props, enzymeWrapper} = setup()
-        expect(enzymeWrapper.find("Link").props().to).toBe("/contribution/show/1")
+        expect(enzymeWrapper.find("Link").props().to).toBe("/about")
 
         expect(props.getList.mock.calls.length).toBe(1)
         expect(props.addItem.mock.calls.length).toBe(0)
