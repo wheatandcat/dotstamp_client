@@ -49,6 +49,14 @@ export default function Form (state = initialState , action) {
     case types.GET_CHARACTER_LIST: {
         if (action.response.Image.length > 0) {
             state.character = action.response.Image[0]
+        } else {
+            state.character = {
+                CharacterID: 0,
+                FileName: "default1.png",
+                ID: 0,
+                Priority: 0,
+                VoiceType: 0,
+            }
         }
 
         return JSON.parse(JSON.stringify(state))

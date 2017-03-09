@@ -8,10 +8,23 @@ import {Center, Line} from "./../../../css/common.css"
 import Footer from "../../utils/parts/footer"
 
 
+var tmpSearch = ""
+
 export default class Search extends Component {
     componentWillMount() {
         this.search(this.props.params.search, this.props.params.order, this.props.params.page)
         this.props.paging(this.props.params.search, this.props.params.order, this.props.params.page)
+    }
+    /**
+     * コマンドを送信する
+     *
+     * @param  {object} e エレメント
+     */
+    sendCommand(e) {
+        let ENTER = 13
+        if (e.keyCode == ENTER) {
+            this.setSearch()
+        }
     }
     /**
      * 検索する
@@ -21,14 +34,12 @@ export default class Search extends Component {
      * @param {number} page ページ
      */
     search(search , order, page) {
-        let action = {
+        this.props.search({
             search: search,
             order: order,
             page: page,
             limit: this.props.contributionSearch.Limit,
-        }
-
-        this.props.search(action)
+        })
     }
     /**
      * 検索を設定する
@@ -38,8 +49,13 @@ export default class Search extends Component {
         if (val == "") {
             return
         }
+        if (val == tmpSearch) {
+            return
+        }
 
-        this.search(val, this.props.contributionSearch.Order, this.props.contributionSearch.Page)
+        this.search(val, this.props.contributionSearch.Order, 1)
+
+        tmpSearch = val
     }
     /**
      * ページングする
@@ -95,6 +111,7 @@ export default class Search extends Component {
      * @return {object} html
      */
     render() {
+
         let list = this.props.contributionSearch.List
         if (!Array.isArray(list)) {
             list = []
@@ -124,10 +141,16 @@ export default class Search extends Component {
                 <div className="container">
                     <div>
                         <br />
-                        <Form horizontal>
+                        <Form horizontal componentClass="div">
                             <FormGroup>
                                 <Col sm={10}>
-                                    <FormControl type="text" placeholder="検索ワード" defaultValue={this.props.params.search} inputRef={ref => { this.input = ref}}/>
+                                    <FormControl
+                                        type="text"
+                                        placeholder="検索ワード"
+                                        defaultValue={this.props.params.search}
+                                        inputRef={ref => { this.input = ref}}
+                                        onKeyDown={this.sendCommand.bind(this)}
+                                    />
                                 </Col>
                                 <Col sm={2}>
                                     <Button onClick={() => this.setSearch()}>

@@ -190,10 +190,10 @@ export default class Main extends Component {
                 <div className={Info} >
                     <Grid>
                         <Row>
-                            <Col xs={1} md={1} className={Paragraph}>
+                            <Col sm={2} md={1} className={Paragraph}>
                                 <Icon imageId={this.props.contributionShow.User.ProfileImageID}/>
                             </Col>
-                            <Col xs={9} md={5} className={Author}>
+                            <Col sm={18} md={10} className={Author}>
                                 <div className={Middle}>
                                     {this.props.contributionShow.User.Name}
 
@@ -201,7 +201,7 @@ export default class Main extends Component {
                                     &nbsp;{DateTimeFormat(this.props.contributionShow.UpdatedAt)}に更新
                                 </div>
                             </Col>
-                            <Col xsHidden md={5}>
+                            <Col  md={1} xsHidden>
                                 <div className={"pull-right "+ HalfTop}>
                                     <Dropdown id="dropdown-custom-1" pullRight>
                                         <Dropdown.Toggle noCaret>

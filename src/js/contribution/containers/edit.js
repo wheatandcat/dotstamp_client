@@ -1,4 +1,4 @@
-import { connect } from "react-redux"
+import {connect} from "react-redux"
 import Show from "../components/edit"
 import * as types from "../../constants/ActionTypes"
 import {fetchPostsIfNeeded} from "../../utils/fetch"

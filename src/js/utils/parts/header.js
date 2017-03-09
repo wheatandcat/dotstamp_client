@@ -1,18 +1,41 @@
-import React from "react"
+import React, {Component, PropTypes} from "react"
+import {connect} from "react-redux"
 import {Image, Navbar, FormGroup, FormControl, Button, Glyphicon, InputGroup} from "react-bootstrap"
-
+import {fetchPostsIfNeeded} from "../fetch"
 import LoginAuth from "./../../login/containers/auth"
 import {Link} from "react-router"
+import * as types from "../../constants/ActionTypes"
 
 import {Stamp, Narrowly} from "./../../../css/common.css"
 import {Top} from "./../../../css/header.css"
 
-export default class Header extends React.Component {
+class Header extends Component {
+    /**
+     * コマンドを送信する
+     *
+     * @param  {object} e エレメント
+     */
+    sendCommand(e) {
+        let ENTER = 13
+        if (e.keyCode == ENTER) {
+            this.search()
+        }
+    }
+    /**
+     * 検索する
+     */
     search() {
         var search = this.input.value.trim()
         if(search == ""){
             return
         }
+
+        this.props.search({
+            search: search,
+            order: 1,
+            page: 1,
+            limit: this.props.contributionSearch.Limit,
+        })
 
         location.href = "/#/contribution/search/" + search + "/1/1"
         return
@@ -37,7 +60,12 @@ export default class Header extends React.Component {
                     <Navbar.Form pullLeft>
                         <FormGroup>
                             <InputGroup>
-                                <FormControl type="text"  inputRef={ref => { this.input = ref }} placeholder="Search"/>
+                                <FormControl
+                                    type="text"
+                                    inputRef={ref => { this.input = ref }}
+                                    placeholder="Search"
+                                    onKeyDown={this.sendCommand.bind(this)}
+                                />
                                 <InputGroup.Button>
                                     <Button onClick={() => this.search()}>
                                         <Glyphicon glyph="search"/>
@@ -52,3 +80,31 @@ export default class Header extends React.Component {
         )
     }
 }
+
+Header.propTypes = {
+    contributionSearch: PropTypes.object,
+    search: PropTypes.func,
+}
+
+function mapStateToProps (state) {
+    return state
+}
+
+function mapDispatchToProps (dispatch) {
+    return {
+        search: (action) => {
+            dispatch(fetchPostsIfNeeded(
+                    "contribution/search/",
+                    types.GET_CONTRIBUTION_SEARCH_LIST,
+                    action,
+                    action
+                )
+            )
+        },
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Header)

@@ -23,3 +23,13 @@ export function setVoiceType(voiceType) {
         voiceType: voiceType
     }
 }
+
+/**
+ * 初期化する
+ * @return {object}  アクション
+ */
+export function init() {
+    return {
+        type: types.INIT_CHARACTER_LIST,
+    }
+}

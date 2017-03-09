@@ -1,6 +1,6 @@
 import {connect} from "react-redux"
 import List from "../components/list"
-import {setIcon, setVoiceType} from "../actions/list"
+import {init, setIcon, setVoiceType} from "../actions/list"
 import {fetchPostsIfNeeded, fetchUploadIfNeeded} from "../../utils/fetch"
 import {alertMessage, alertMessageInit} from "../../error/actions/alertMessage"
 
@@ -14,6 +14,9 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
     return {
+        init: () => {
+            dispatch(init())
+        },
         alertMessageInit: () => {
             dispatch(alertMessageInit())
         },

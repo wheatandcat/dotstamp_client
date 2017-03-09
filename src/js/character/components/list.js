@@ -12,6 +12,8 @@ import {ImageUpload} from "../../../css/character.css"
 
 export default class List extends Component {
     componentWillMount () {
+        this.props.init()
+
         this.props.alertMessageInit()
         this.props.getList()
     }
@@ -199,6 +201,7 @@ List.propTypes = {
     delete: PropTypes.func,
     upload: PropTypes.func,
     save: PropTypes.func,
+    init: PropTypes.func,
     alertMessage: PropTypes.func,
     alertMessageInit: PropTypes.func,
     setVoiceType: PropTypes.func,

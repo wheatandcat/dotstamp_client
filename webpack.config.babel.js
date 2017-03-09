@@ -38,7 +38,8 @@ if (env == "production") {
             "process.env.NODE_ENV": JSON.stringify(env),
             BASE_URL: JSON.stringify(process.env.BASE_URL),
             IMAGE_PATH: JSON.stringify(process.env.IMAGE_PATH),
-            UPLOAD_PATH: JSON.stringify(process.env.UPLOAD_PATH)
+            UPLOAD_PATH: JSON.stringify(process.env.UPLOAD_PATH),
+            ENV: JSON.stringify(process.env.ENV),
         })
     ]
 }

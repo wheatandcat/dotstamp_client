@@ -1,4 +1,4 @@
-import { connect } from "react-redux"
+import {connect} from "react-redux"
 import Search from "../components/search"
 
 import {fetchPostsIfNeeded} from "../../utils/fetch"

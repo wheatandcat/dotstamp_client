@@ -1,3 +1,5 @@
+/*global ENV*/
+/*eslint no-console: ["error", { allow: ["log", "debug", "info", "warn"] }] */
 import "babel-polyfill"
 
 import React, { Component, PropTypes } from "react"
@@ -39,6 +41,12 @@ import {IndexRoute, Router, Route, hashHistory} from "react-router"
 
 const store = configureStore()
 
+if (ENV=="production") {
+    console.debug = function(){}
+    console.info = function(){}
+    console.log = function(){}
+    console.warn = function(){}
+}
 
 window.onhashchange = function() {
     window.scrollTo(0, 0)

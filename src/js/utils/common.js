@@ -48,3 +48,18 @@ export function getUniqueStr(myStrong) {
 export function getTopUrl() {
     return BASE_URL
 }
+
+/**
+ * 省略する
+ *
+ * @param  {string} str 文字
+ * @param  {number} maxNumber 最大文字数
+ * @return {string} 省略文字
+ */
+export function abridgement(str, maxNumber) {
+    if (str.length <= maxNumber) {
+        return str
+    }
+
+    return str.substring(0 ,maxNumber) + "..."
+}

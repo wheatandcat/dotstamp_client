@@ -36,12 +36,48 @@ function getSelectIconState(state, id) {
     return state
 }
 
+/**
+ * デフォルメキャラクターリストを取得す
+ *
+ * @return {array[]} キャラクターリスト
+ */
+function getDefaultCharacterList() {
+    let hash = location.hash
+    if (hash.indexOf("contribution/new") == -1 && hash.indexOf("contribution/edit") == -1) {
+        return []
+    }
+
+    let list = []
+    let max = 9
+
+    for(var i = 1; i < max; i++) {
+        list.push({
+            CharacterID: 0,
+            FileName: "default"+ i +".png",
+            ID: 0,
+            Priority: 0,
+            VoiceType: 0,
+        })
+    }
+
+    return list
+}
+
+
 export default function List (state = initialState , action) {
     switch (action.type) {
+    case types.INIT_CHARACTER_LIST: {
+        return JSON.parse(JSON.stringify(initialState))
+    }
     case types.DELETE_CHARACTER_LIST:
     case types.GET_CHARACTER_LIST: {
+
         if (!Array.isArray(action.response.Image)) {
             action.response.Image = []
+        }
+
+        if (action.response.Image.length == 0) {
+            action.response.Image = getDefaultCharacterList()
         }
 
         let tmp = []

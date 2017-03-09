@@ -2,6 +2,7 @@
 import React, {PropTypes, Component} from "react"
 import {Button, Nav, NavItem, NavDropdown, MenuItem, Glyphicon} from "react-bootstrap"
 import {LinkContainer} from "react-router-bootstrap"
+import {abridgement} from "../../utils/common"
 
 export default class Auth extends Component {
     componentWillMount () {
@@ -38,7 +39,7 @@ export default class Auth extends Component {
                         <Glyphicon glyph="list-alt"/>&nbsp;投稿一覧
                     </NavItem>
                 </LinkContainer>
-                <NavDropdown eventKey={3} title={this.props.loginAuth.Name} id="basic-nav-dropdown">
+                <NavDropdown eventKey={3} title={abridgement(this.props.loginAuth.Name, 12)} id="basic-nav-dropdown">
                     <LinkContainer to="/user/mypage">
                         <MenuItem eventKey={3.1}>
                             <Glyphicon glyph="user"/>&nbsp;プロフィール設定
