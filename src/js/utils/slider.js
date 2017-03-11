@@ -1,6 +1,7 @@
 import React, {PropTypes, Component} from "react"
 import Slick from "react-slick"
-import {Form , FormGroup} from "react-bootstrap"
+import {Thumbnail, Form , FormGroup} from "react-bootstrap"
+import {Absolute} from "../../css/common.css"
 
 import Image from "./image"
 
@@ -35,6 +36,12 @@ export default class Slider extends Component {
     }
     previous () {
         this.refs.slider.slickPrev()
+    }
+    componentWillMount () {
+        this.setState({
+            over: false,
+            overImage:{}
+        })
     }
     /**
      * 描写更新後に実行する
@@ -134,22 +141,70 @@ export default class Slider extends Component {
     getImage (fileName, ImageType, id, key) {
         return (
             <div key={key}>
-                <Image fileName={fileName} imageDisplayType={ImageType} />
+                <Image fileName={fileName} imageDisplayType={ImageType} onMouseOver={this.over.bind(this)} onMouseOut={this.out.bind(this)}/>
             </div>
         )
     }
-
+    /**
+     * マウスオーバーする
+     *
+     * @param  {object} e エレメント
+     */
+    over(e) {
+        this.setState({
+            over: true,
+            overImage:{
+                src: e.target.src,
+                x: e.pageX,
+                y: e.pageY,
+            }
+        })
+    }
+    /**
+     * マウスアウトする
+     */
+    out() {
+        this.setState({
+            over: false,
+            overImage:{}
+        })
+    }
     /**
      * 描画する
      *
      * @return {object} html
      */
     render () {
-        if (this.props.list.length <= DISPLAY_ICON_NUM_MIN) {
-            return this.getList()
+
+        let magnification = ""
+        if (this.state.over) {
+            let style = {
+                top: "-60px",
+                left: (this.state.overImage.x - 30) + "px",
+                width: "100px",
+                zIndex: 9999,
+            }
+
+            magnification = (
+                <Thumbnail src={this.state.overImage.src} className={Absolute} style={style}/>
+            )
         }
 
-        return this.getSlider()
+        if (this.props.list.length <= DISPLAY_ICON_NUM_MIN) {
+            return (
+                <div>
+                    {magnification}
+                    {this.getList()}
+                </div>
+            )
+        }
+
+        return (
+            <div>
+                {magnification}
+                {this.getSlider()}
+            </div>
+        )
     }
 }
 
@@ -157,4 +212,11 @@ Slider.propTypes = {
     list: PropTypes.array,
     handleClick: PropTypes.func,
     initialSlide: PropTypes.number,
+    over: PropTypes.bool,
+    overImage: PropTypes.object,
+}
+
+Slider.defaultProps = {
+    over: false,
+    overImage: {},
 }

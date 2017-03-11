@@ -153,10 +153,7 @@ export default class List extends Component {
             <div>
                 <Well>
                     <div className="container">
-                        <br/>
-                        <p>
-                            現在、○○件投稿されています
-                        </p>
+                        <h3>新着投稿</h3>
                         <Link to="/about">
                             <Button bsStyle="primary">
                                 .stampとは

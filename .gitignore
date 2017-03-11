@@ -9,11 +9,13 @@
 .DS_Store
 ._.DS_Store
 .npm-debug.log
+bin/
+
 
 # Ignore all logfiles and tempfiles.
 /doc/*
-/log/*
-!/log/.keep
+/product/*
+!/product/.gitkeep
 /coverage/*
 /dist/js/bundle.js
 /dist/inde.html

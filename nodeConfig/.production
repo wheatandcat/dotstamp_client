@@ -2,8 +2,8 @@
 ENV=production
 
 #ベースURL
-BASE_URL=http://192.168.33.10:80/
+BASE_URL=http://160.16.118.176/
 
 #画像ファイルパス
-IMAGE_PATH=http://192.168.33.10:80/static/images/
-UPLOAD_PATH=http://192.168.33.10:80/static/files/
+IMAGE_PATH=http://160.16.118.176/static/images/
+UPLOAD_PATH=http://160.16.118.176/static/files/

@@ -4,7 +4,7 @@ import {TALK_TYPE_TEXT, TALK_TYPE_IMAGE} from "../../actions/talk"
 import {UPLOAD_FILE_SIZE_MAX} from "../../../constants/common"
 import Slider from "../../../utils/slider"
 import {Edit, Group} from "./../../../../css/form.css"
-
+import {Warning} from "../../../../css/common.css"
 
 export default class Main extends Component {
     componentWillMount () {}
@@ -143,9 +143,17 @@ export default class Main extends Component {
      * @return {object} html
      */
     render () {
+        let defaultIcon = ""
+        if (this.props.characterList.DefaultIcon) {
+            defaultIcon = (
+                <div className={Warning}>デフォルトアイコン表示中...</div>
+            )
+        }
+
         return (
             <div>
                 <div>
+                    {defaultIcon}
                     <Well bsStyle="info">
                         <Slider list={this.props.characterList.list} handleClick={(id) => this.props.changeCharacter(id)} />
                     </Well>

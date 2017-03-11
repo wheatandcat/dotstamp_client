@@ -12,6 +12,7 @@ const initialState = {
     imageType: IMAGE_DISPLAY_TYPE_CHARACTER,
     load: false,
     VoiceType:{},
+    DefaultIcon: false,
 }
 
 /**
@@ -78,6 +79,9 @@ export default function List (state = initialState , action) {
 
         if (action.response.Image.length == 0) {
             action.response.Image = getDefaultCharacterList()
+            state.DefaultIcon = true
+        } else {
+            state.DefaultIcon = false
         }
 
         let tmp = []

@@ -114,8 +114,15 @@ export default class Images extends Component {
     getImg () {
         let setting = imageDisplayTypeList[this.props.imageDisplayType]
 
+        if (this.props.onMouseOver != undefined) {
+            setting.option["onMouseOver"] = this.props.onMouseOver
+        }
+        if (this.props.onMouseOut != undefined) {
+            setting.option["onMouseOut"] = this.props.onMouseOut
+        }
+
         return (
-            <setting.tag src={setting.src(this.props.fileName)} className={setting.className} {...setting.option} >
+            <setting.tag src={setting.src(this.props.fileName)} className={setting.className} {...setting.option}>
                 {this.props.children}
             </setting.tag>
         )
@@ -137,6 +144,8 @@ Images.propTypes = {
     fileName: PropTypes.string,
     imageDisplayType: PropTypes.number,
     children: PropTypes.object,
+    onMouseOver: PropTypes.func,
+    onMouseOut: PropTypes.func,
 }
 
 Images.defaultProps = {

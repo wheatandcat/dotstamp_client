@@ -1,9 +1,9 @@
-# server ライセンス
+# server license
 
 ## golang
 
 Copyright (c) 2009 The Go Authors. All rights reserved.
-BSDライセンス
+BSD License
 https://golang.org/LICENSE
 
 ## beego

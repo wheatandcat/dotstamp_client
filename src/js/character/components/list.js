@@ -58,7 +58,7 @@ export default class List extends Component {
             return ""
         }
 
-        if (this.props.characterList.icon.fileName == "") {
+        if (this.props.characterList.DefaultIcon) {
             return (
                 <Alert bsStyle="warning">
                     <strong>警告！</strong> 設定している画像がありません。

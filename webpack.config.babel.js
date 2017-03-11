@@ -11,6 +11,7 @@ import precss from "precss"
 import cssnext from "postcss-cssnext"
 import cssimport from "postcss-import"
 import sorting from "postcss-sorting"
+import CompressionPlugin from "compression-webpack-plugin"
 
 // 環境設定(デフォルト:develop)
 var env = (process.env.NODE_ENV == undefined) ? "development" : process.env.NODE_ENV
@@ -18,20 +19,33 @@ console.log ("環境:"+env)
 loadenv("./nodeConfig/." + env)
 
 var pluginList
+var output = __dirname + "/dist"
+
 if (env == "production") {
     pluginList = [
         new webpack.DefinePlugin({
             "process.env.NODE_ENV": JSON.stringify(env),
             BASE_URL: JSON.stringify(process.env.BASE_URL),
             IMAGE_PATH: JSON.stringify(process.env.IMAGE_PATH),
-            UPLOAD_PATH: JSON.stringify(process.env.UPLOAD_PATH)
+            UPLOAD_PATH: JSON.stringify(process.env.UPLOAD_PATH),
+            ENV: JSON.stringify(process.env.ENV),
         }),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false
             }
+        }),
+        new CompressionPlugin({
+            asset: "[path].gz[query]",
+            algorithm: "gzip",
+            test: /\.js$/,
+            threshold: 10240,
+            minRatio: 0.8
         })
     ]
+
+    output = __dirname + "/product"
+
 } else {
     pluginList = [
         new webpack.DefinePlugin({
@@ -58,7 +72,7 @@ module.exports = [
             "html": "./index.html"
         },
         output: {
-            path: __dirname + "/dist",
+            path: output,
             filename: "js/bundle.js"
         },
         resolve: {

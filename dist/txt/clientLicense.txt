@@ -1,4 +1,4 @@
-# client ライセンス
+# client license
 
 ## bootstrap
 
