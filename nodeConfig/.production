@@ -2,8 +2,8 @@
 ENV=production
 
 #ベースURL
-BASE_URL=http://160.16.118.176/
+BASE_URL=http://dotstamp.com/
 
 #画像ファイルパス
-IMAGE_PATH=http://160.16.118.176/static/images/
-UPLOAD_PATH=http://160.16.118.176/static/files/
+IMAGE_PATH=http://dotstamp.com/static/images/
+UPLOAD_PATH=http://dotstamp.com/static/files/
