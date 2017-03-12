@@ -1,5 +1,5 @@
-import React, {Component} from "react"
-import {Button, Well, Image, Jumbotron} from "react-bootstrap"
+import React, {PropTypes, Component} from "react"
+import {Panel, Button, Well, Image, Jumbotron} from "react-bootstrap"
 import {Full, Stamp, StampAddress} from "../../../css/common.css"
 import {Title} from "../../../css/user.css"
 import {Link} from "react-router"
@@ -30,13 +30,29 @@ export default class Envelope extends Component {
                     <br />
                     <br />
                     <br />
-                    <Image src="/static/images/common/doc.png" rounded/>
+                <Image src="/static/images/common/doc.png" ref="targetIcon" rounded/>
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <Link to="/about">
-                        <Button bsStyle="primary">Learn more</Button>
+                        <Button bsStyle="primary">.stampとは</Button>
                     </Link>
                 </Jumbotron>
+                <Panel collapsible expanded={this.props.open} style={{zoom: "75%"}}>
+                    <pre >
+                        {this.props.text}
+                    </pre>
+                </Panel>
             </Well>
         )
     }
+}
+
+
+Envelope.propTypes = {
+    open: PropTypes.bool,
+    text: PropTypes.string,
+}
+
+Envelope.defaultProps = {
+    open: false,
+    text: "",
 }

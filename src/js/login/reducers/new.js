@@ -1,9 +1,10 @@
 import * as types from "../../constants/ActionTypes"
 
 const initialState = {
-    state: 0,
     Warning: false,
     Message: "",
+    Open: false,
+    Text: "",
 }
 
 export default function New (state = initialState , action) {
@@ -21,6 +22,13 @@ export default function New (state = initialState , action) {
     case types.SET_LOGIN_USER_ALERT: {
         state.Warning = true
         state.Message = action.message
+
+        return JSON.parse(JSON.stringify(state))
+    }
+    case types.OPEN_LOGIN_TERMS: {
+        state.Open = true
+        state.Text = action.response
+
 
         return JSON.parse(JSON.stringify(state))
     }

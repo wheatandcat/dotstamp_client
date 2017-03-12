@@ -4,7 +4,7 @@ import {Link} from "react-router"
 import {PageHeader, Alert, ButtonToolbar, FormGroup, Col, Button, Grid, Row} from "react-bootstrap"
 import {PASSWORD_LENGTH_MIN} from "../../constants/common"
 import Envelope from "../../utils/parts/envelope"
-
+import {NoSpace} from "../../../css/common.css"
 
 export default class New extends Component {
     componentWillMount() {}
@@ -62,7 +62,7 @@ export default class New extends Component {
                     <br/>
                     <Row className="show-grid">
                         <Col md={6}>
-                            <Envelope />
+                            <Envelope open={this.props.loginNew.Open} text={this.props.loginNew.Text}/>
                         </Col>
                         <Col md={6}>
                             {this.getAlert()}
@@ -73,13 +73,17 @@ export default class New extends Component {
                                 <input type="password" className="form-control" id="password" name="password" placeholder="パスワード" ref="password"/>
                             </FormGroup>
                             <FormGroup>
-                                <Col smOffset={4}>
-                                    <ButtonToolbar>
-                                        <Button bsStyle="success" onClick={() => this.new()}>
-                                            規約に同意して登録する
-                                        </Button>
-                                    </ButtonToolbar>
-                                </Col>
+                                <br />
+                                <div>
+                                    <Button bsStyle="link" className={NoSpace}  onClick={() => this.props.open()}>利用規約</Button>
+                                    に同意のうえ、「利用規約に同意して登録する」ボタンを押してください。
+                                </div>
+                                <br />
+                                <ButtonToolbar>
+                                    <Button bsStyle="success" bsSize="large" onClick={() => this.new()}>
+                                        利用規約に同意して登録する
+                                    </Button>
+                                </ButtonToolbar>
                             </FormGroup>
                             <br/>
                             <br/>
@@ -96,6 +100,7 @@ export default class New extends Component {
 
 New.propTypes = {
     new: PropTypes.func,
+    open: PropTypes.func,
     loginNew: PropTypes.object,
     alert: PropTypes.func,
 }

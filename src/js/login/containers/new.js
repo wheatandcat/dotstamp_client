@@ -2,7 +2,7 @@ import { connect } from "react-redux"
 
 import New from "../components/new"
 import {alert} from "../actions/new"
-import {fetchPostsIfNeeded} from "../../utils/fetch"
+import {fetchPostsIfNeeded, fetchTextIfNeeded} from "../../utils/fetch"
 import * as types from "../../constants/ActionTypes"
 
 function mapStateToProps (state) {
@@ -16,6 +16,14 @@ function mapDispatchToProps (dispatch) {
                     "login/new/",
                     types.SET_LOGIN_USER,
                     params
+                )
+            )
+        },
+        open: () => {
+            dispatch(fetchTextIfNeeded(
+                    "static/txt/terms.txt",
+                    types.OPEN_LOGIN_TERMS,
+                    {fileName: "terms"}
                 )
             )
         },
