@@ -100,7 +100,7 @@ export default class Mypage extends Component {
                                                         id="image-file"
                                                         name="image-file"
                                                         className="hidden"
-                                                        accept="image/gif,image/jpeg,image/png,image/jpg"
+                                                        accept="image/jpeg,image/png,image/jpg"
                                                         ref="file"
                                                         onChange={this.handleChangeFile.bind(this)}
                                                     />
