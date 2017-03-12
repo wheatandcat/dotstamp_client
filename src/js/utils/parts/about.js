@@ -1,6 +1,7 @@
 import React, {Component} from "react"
 import {Image, Panel, Glyphicon, Col, Grid, Row, Jumbotron} from "react-bootstrap"
 import {Icon, Center} from "../../../css/common.css"
+import Footer from "./footer"
 
 export default class About extends Component {
     /**
@@ -80,7 +81,7 @@ export default class About extends Component {
                 <br />
                 <br />
                 <div className="container">
-                    <h3>・・・というのは建前で、開発者が好き勝手作ってる実験的なWebサービス(？)です。</h3>
+                    <h3>・・・というのは建前で、開発しているWebサービスです。</h3>
                     <h3>気が向いたら使ってみてください。&nbsp;&nbsp;(^^ </h3>
                     <br />
                     <br />
@@ -99,6 +100,7 @@ export default class About extends Component {
                         &nbsp;&nbsp;&nbsp;&nbsp;.<br />
                     </Panel>
                 </div>
+                <Footer/>
             </div>
         )
     }

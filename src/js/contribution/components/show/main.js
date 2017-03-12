@@ -4,7 +4,7 @@ import {Label, Well, Radio, FormGroup, Modal, Dropdown, MenuItem, Grid, Row, Col
 import ContributionShowFrame from "./frame"
 import {PROBLEM_TYPE_SPAM, PROBLEM_TYPE_INAPPROPRIATE} from "../../../constants/contribution"
 import Footer from "../../../utils/parts/footer"
-import {Normal, Shift, HalfTop, Middle, Center, Large, Info, Paragraph} from "../../../../css/common.css"
+import {Normal, Shift, HalfTop, Middle, Center, Large, Info, Paragraph, Gap} from "../../../../css/common.css"
 import {Author} from "../../../../css/contribution.css"
 import Sound from "../../../utils/sound"
 
@@ -193,11 +193,10 @@ export default class Main extends Component {
                             <Col sm={2} md={1} className={Paragraph}>
                                 <Icon imageId={this.props.contributionShow.User.ProfileImageID}/>
                             </Col>
-                            <Col sm={18} md={10} className={Author}>
+                            <Col sm={18} md={10} className={Author + " " + Gap}>
                                 <div className={Middle}>
                                     {this.props.contributionShow.User.Name}
-
-                                    &nbsp;&nbsp;&nbsp;<Glyphicon glyph="Link"/>
+                                    &nbsp;&nbsp;&nbsp;<Glyphicon glyph="time"/>
                                     &nbsp;{DateTimeFormat(this.props.contributionShow.UpdatedAt)}に更新
                                 </div>
                             </Col>

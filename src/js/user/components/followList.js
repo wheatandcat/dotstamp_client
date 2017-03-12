@@ -1,7 +1,7 @@
 import React, {PropTypes, Component} from "react"
 import {PageHeader, Glyphicon} from "react-bootstrap"
 import Thumbnail from "../../utils/parts/contribution/thumbnail"
-import {Line} from "./../../../css/common.css"
+import {Line, Center} from "./../../../css/common.css"
 import Pagination from "../../utils/parts/pagination"
 import Footer from "../../utils/parts/footer"
 
@@ -45,6 +45,26 @@ export default class FollowList extends Component {
             list = []
         }
 
+        let page = ""
+        if (list.length == 0) {
+            page = (
+                <div className={Center}>
+                    フォロー済み投稿の登録はありません。
+                </div>
+            )
+        } else {
+            page = (
+                <Pagination
+                    count={this.props.userFollowList.Count}
+                    limit={this.props.userFollowList.Limit}
+                    link="user/followList"
+                    order={parseInt(this.props.userFollowList.Order)}
+                    activePage={parseInt(this.props.userFollowList.Page)}
+                    paging={this.paging.bind(this)}
+                />
+            )
+        }
+
         return (
             <div>
                 <div className="container">
@@ -60,15 +80,7 @@ export default class FollowList extends Component {
                         </div>
                     )}
                 </div>
-                <Pagination
-                    count={this.props.userFollowList.Count}
-                    limit={this.props.userFollowList.Limit}
-                    link="user/followList"
-                    order={parseInt(this.props.userFollowList.Order)}
-                    activePage={parseInt(this.props.userFollowList.Page)}
-                    paging={this.paging.bind(this)}
-                />
-
+                {page}
                 <Footer/>
             </div>
         )
