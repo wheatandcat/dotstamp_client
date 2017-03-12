@@ -35,10 +35,10 @@ export default class Show extends Component {
                             <LinkContainer to="/information/clientLicense">
                                 <ListGroupItem onClick={() => this.get("clientLicense")}>client License</ListGroupItem>
                             </LinkContainer>
-                            <LinkContainer to="/information/serverlicense">
+                            <LinkContainer to="/information/serverLicense">
                                 <ListGroupItem onClick={() => this.get("serverlicense")}>server license</ListGroupItem>
                             </LinkContainer>
-                            <LinkContainer to="/information/ansiblelicense">
+                            <LinkContainer to="/information/ansibleLicense">
                                 <ListGroupItem onClick={() => this.get("ansiblelicense")}>infrastructure License</ListGroupItem>
                             </LinkContainer>
                         </ListGroup>
