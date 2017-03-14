@@ -5,18 +5,43 @@ import {UPLOAD_FILE_SIZE_MAX} from "../../../constants/common"
 import Slider from "../../../utils/slider"
 import {Edit, Group} from "./../../../../css/form.css"
 import {Warning} from "../../../../css/common.css"
+import {ImageForm} from "../../../../css/contribution.css"
+
+var self
+
+window.addEventListener("keydown", function(event) {
+    if (self == undefined) {
+        return
+    }
+
+    if (!event.shiftKey ) {
+        return
+    }
+
+    if (event.keyCode == 91) {
+        self.addBodyText()
+    }
+
+    if (event.keyCode == 13) {
+        self.refs.body.focus()
+    }
+
+    if (event.keyCode == 73) {
+        self.refs.file.click()
+    }
+
+})
 
 export default class Main extends Component {
-    componentWillMount () {}
-
+    componentWillMount () {
+        self = this
+    }
     /**
      * 本文を変更する
      *
      * @param  {object} event イベント
      */
     changeBody (event) {
-
-
         this.props.changeBody(event.target.value)
     }
     /**
@@ -154,7 +179,7 @@ export default class Main extends Component {
             <div>
                 <div>
                     {defaultIcon}
-                    <Well bsStyle="info">
+                    <Well bsStyle="info" className={ImageForm}>
                         <Slider list={this.props.characterList.list} handleClick={(id) => this.props.changeCharacter(id)} />
                     </Well>
                 </div>

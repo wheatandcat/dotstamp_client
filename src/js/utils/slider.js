@@ -1,12 +1,46 @@
 import React, {PropTypes, Component} from "react"
 import Slick from "react-slick"
-import {Thumbnail, Form , FormGroup} from "react-bootstrap"
-import {Absolute} from "../../css/common.css"
-
-import Image from "./image"
+import {Overlay, Image, Popover, Form , FormGroup} from "react-bootstrap"
+import UtitsImage from "./image"
+import {getUploadUrl} from "./common"
 
 const DISPLAY_ICON_NUM_MIN = 1
 const DISPLAY_ICON_NUM_MAX = 5
+
+var self
+
+window.addEventListener("keydown", function(event) {
+    if (self == undefined) {
+        return
+    }
+
+    if (!event.shiftKey) {
+        return
+    }
+
+    if (event.keyCode == 39) {
+        self.refs.slider.slickGoTo(self.state.key + 1)
+    }
+    if (event.keyCode == 37) {
+        self.refs.slider.slickGoTo(self.state.key - 1)
+    }
+
+    if (!event.altKey) {
+        if (event.keyCode == 38) {
+            let item = self.props.list[self.state.key]
+            self.setState({
+                tip: true,
+                overImage:{
+                    src: getUploadUrl() + "character/" + item.FileName,
+                }
+            })
+        }
+
+        if (event.keyCode == 40) {
+            self.setState({tip: false})
+        }
+    }
+})
 
 
 var NextArrow = React.createClass({
@@ -30,6 +64,7 @@ export default class Slider extends Component {
         super(props)
         this.next = this.next.bind(this)
         this.previous = this.previous.bind(this)
+
     }
     next () {
         this.refs.slider.slickNext()
@@ -40,7 +75,9 @@ export default class Slider extends Component {
     componentWillMount () {
         this.setState({
             over: false,
-            overImage:{}
+            overImage:{},
+            tip: false,
+            key: 0,
         })
     }
     /**
@@ -70,7 +107,7 @@ export default class Slider extends Component {
             showNum--
         }
 
-        var self = this
+        self = this
 
         const setting = {
             className: "center",
@@ -86,6 +123,7 @@ export default class Slider extends Component {
             nextArrow: <NextArrow />,
             prevArrow: <PrevArrow />,
             afterChange: function (currentSlide) {
+                self.change(currentSlide)
                 self.handleClick(currentSlide)
             }
         }
@@ -129,6 +167,13 @@ export default class Slider extends Component {
     handleClick (key) {
         this.props.handleClick(this.props.list[key])
     }
+    getTip() {
+        return (
+            <Popover id="tooltip" title="拡大表示" onClick={this.click.bind(this)}>
+                <Image src={this.state.overImage.src} width={120}/>
+            </Popover>
+        )
+    }
     /**
      * 画像を取得する
      *
@@ -141,9 +186,36 @@ export default class Slider extends Component {
     getImage (fileName, ImageType, id, key) {
         return (
             <div key={key}>
-                <Image fileName={fileName} imageDisplayType={ImageType} onMouseOver={this.over.bind(this)} onMouseOut={this.out.bind(this)}/>
+                <UtitsImage fileName={fileName} imageDisplayType={ImageType} onClick={this.click.bind(this)}/>
             </div>
         )
+    }
+    /**
+     * 画像変更する
+     *
+     * @param  {number} key キー
+     */
+    change(key) {
+        let item = this.props.list[key]
+        this.setState({
+            key: key,
+            overImage:{
+                src: getUploadUrl() + "character/" + item.FileName,
+            }
+        })
+    }
+    /**
+     * クリックする
+     *
+     * @param  {object} e エレメント
+     */
+    click(e) {
+        this.setState({
+            tip: !this.state.tip,
+            overImage:{
+                src: e.target.src,
+            }
+        })
     }
     /**
      * マウスオーバーする
@@ -151,12 +223,14 @@ export default class Slider extends Component {
      * @param  {object} e エレメント
      */
     over(e) {
+        let target = e.target.getBoundingClientRect()
+
         this.setState({
             over: true,
             overImage:{
                 src: e.target.src,
-                x: e.pageX,
-                y: e.pageY,
+                x: target.left,
+                y: target.top,
             }
         })
     }
@@ -175,33 +249,19 @@ export default class Slider extends Component {
      * @return {object} html
      */
     render () {
-
-        let magnification = ""
-        if (this.state.over) {
-            let style = {
-                top: "-60px",
-                left: (this.state.overImage.x - 30) + "px",
-                width: "100px",
-                zIndex: 9999,
-            }
-
-            magnification = (
-                <Thumbnail src={this.state.overImage.src} className={Absolute} style={style}/>
-            )
-        }
-
         if (this.props.list.length <= DISPLAY_ICON_NUM_MIN) {
             return (
                 <div>
-                    {magnification}
                     {this.getList()}
                 </div>
             )
         }
 
         return (
-            <div>
-                {magnification}
+            <div ref="target">
+                <Overlay show={this.state.tip} target={this.refs.target} placement="top">
+                    {this.getTip()}
+                </Overlay>
                 {this.getSlider()}
             </div>
         )

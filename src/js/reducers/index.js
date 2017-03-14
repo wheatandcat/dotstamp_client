@@ -26,6 +26,8 @@ import passwordReset from "../password/reducers/reset"
 import soundShow from "../sound/reducers/show"
 import informationShow from "../information/reducers/show"
 
+import messageShow from "../message/reducers/show"
+
 // 機能ごとのstateを管理
 const rootReducer = combineReducers({
     contributionEdit: contributionEdit,
@@ -47,6 +49,7 @@ const rootReducer = combineReducers({
     passwordReset,
     soundShow,
     informationShow,
+    messageShow,
 })
 
 export default rootReducer

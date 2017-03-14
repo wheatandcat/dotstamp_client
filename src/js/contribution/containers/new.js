@@ -1,10 +1,10 @@
-import { connect } from "react-redux"
+import {connect} from "react-redux"
 import New from "../components/new"
 import * as types from "../../constants/ActionTypes"
 import {fetchPostsIfNeeded} from "../../utils/fetch"
 import {init} from "../actions/new"
 
-import { IMAGE_DISPLAY_TYPE_CHARACTER_FORM } from "../../utils/image"
+import {IMAGE_DISPLAY_TYPE_CHARACTER} from "../../utils/image"
 
 function mapStateToProps (state) {
     return state
@@ -20,7 +20,7 @@ function mapDispatchToProps (dispatch) {
                     "characterImage/list/",
                     types.GET_CHARACTER_LIST,
                     {},
-                    {imageType:IMAGE_DISPLAY_TYPE_CHARACTER_FORM}
+                    {imageType:IMAGE_DISPLAY_TYPE_CHARACTER}
                 )
             )
         },

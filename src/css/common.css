@@ -16,6 +16,13 @@
 
 .Absolute {
     position: absolute;
+
+}
+
+.FadeMessage {
+    z-index: 9999;
+    width: 100%;
+    text-align: right;
 }
 
 .Warning {

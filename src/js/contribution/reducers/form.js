@@ -18,6 +18,7 @@ const initialState = {
     viewStatus: VIEW_STATUS_PUBLIC,
     Warning: false,
     Message: "",
+    help: false,
 }
 
 var onBoardScrollActionTypeList = [
@@ -127,6 +128,16 @@ export default function Form (state = initialState , action) {
 
         location.href = "/#/sound/show/" + id
         return JSON.parse(JSON.stringify(initialState))
+    }
+    case types.OPEN_CONTRIBUTION_FORM_HELP: {
+        state.help = true
+
+        return JSON.parse(JSON.stringify(state))
+    }
+    case types.CLOSE_CONTRIBUTION_FORM_HELP: {
+        state.help = false
+
+        return JSON.parse(JSON.stringify(state))
     }
     default:
         return state

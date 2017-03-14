@@ -1,14 +1,15 @@
 import React, {Component, PropTypes} from "react"
-import {Label, Dropdown, Button, MenuItem, ListGroup, ListGroupItem, FormGroup, Form, Glyphicon} from "react-bootstrap"
+import {Panel, Table, Modal, Label, Dropdown, Button, MenuItem, ListGroup, ListGroupItem, FormGroup, Form, Glyphicon} from "react-bootstrap"
 import {VIEW_STATUS_PUBLIC, VIEW_STATUS_PRIVATE, TAG_MAX_NUMBER} from "../../../constants/contribution"
 import {Link} from "react-router"
 import FormMain from "../../containers/form/main"
 import TalkBoard from "../../containers/talk/board"
 import AlertMessage from "../../../error/containers/alertMessage"
+import MessageSow from "../../../message/containers/show"
 
 import {Preview, Group, GroupList} from "./../../../../css/form.css"
 import {Item} from "./../../../../css/tag.css"
-import {Close} from "./../../../../css/common.css"
+import {Absolute, Close} from "./../../../../css/common.css"
 
 var self
 
@@ -19,6 +20,48 @@ window.addEventListener("resize", () => {
 
     self.props.changeHeight(window.innerHeight)
 })
+
+window.addEventListener("keydown", function(event) {
+    if (self == undefined) {
+        return
+    }
+
+    if (!event.shiftKey) {
+        return
+    }
+
+    if (event.keyCode == 17) {
+        self.save()
+    }
+
+
+    if (event.altKey) {
+        if (event.keyCode == 38) {
+            self.refs.preview.scrollTop-= 30
+        }
+
+        if (event.keyCode == 40) {
+            self.refs.preview.scrollTop+= 30
+        }
+    }
+})
+
+
+function checkDiff() {
+    if (self == undefined) {
+        return false
+    }
+
+    let title = self.props.contributionForm.title
+    let body = self.props.contributionTalk
+
+    if (title == self.props.contributionEdit.saveData.title && JSON.stringify(body) == self.props.contributionEdit.saveData.body) {
+        return false
+    }
+
+    return true
+}
+
 
 var checkContributionEdit = function(hash) {
     if (self == undefined) {
@@ -37,10 +80,7 @@ var checkContributionEdit = function(hash) {
             return false
         }
     } else {
-        let title = self.props.contributionForm.title
-        let body = self.props.contributionTalk
-
-        if (title == self.props.contributionEdit.saveData.title && JSON.stringify(body) == self.props.contributionEdit.saveData.body) {
+        if (!checkDiff()) {
             return false
         }
     }
@@ -67,8 +107,9 @@ export default class Header extends Component {
             this.props.changeTitle(this.props.title)
         }
 
-
         this.props.changeHeight(window.innerHeight)
+
+        this.props.closeHelp()
     }
     /**
      * 描写更新後に実行する
@@ -120,11 +161,19 @@ export default class Header extends Component {
             return
         }
 
+        this.props.message("保存しました", "success")
+
+        if (!checkDiff()) {
+            return
+        }
+
+
         if (contributionId == null) {
             this.props.new(action)
         } else {
             this.props.save(action, action)
         }
+
     }
     /**
      * タイトルを変更する
@@ -196,7 +245,6 @@ export default class Header extends Component {
                 </FormGroup>
             )
         }
-
 
         return (
             <FormGroup>
@@ -317,6 +365,84 @@ export default class Header extends Component {
         })
     }
     /**
+     * ヘルプを取得する
+     */
+    getHelp() {
+        return (
+            <Modal show={this.props.contributionForm.help} onHide={this.props.closeHelp}>
+                <Modal.Header closeButton>
+                    <Modal.Title>操作方法</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <h4>操作</h4>
+                    <Panel header="選択中のアイコンを拡大表示">
+                        画面中央のアイコンをクリックすると、選択中のアイコンを吹き出しで表示する<br />
+                        もう一度クリックすると閉じる
+                    </Panel>
+                    <br />
+                    <Panel header="並び替え">
+                        吹き出し部分をドラック&ドロップすることで並び替え可能です
+                    </Panel>
+                    <br />
+                    <h4>ショートカットキー</h4>
+                    <Table striped bordered condensed hover>
+                        <thead>
+                            <tr>
+                                <th>操作</th>
+                                <th>キー</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>アイコンを右周りに変更</td>
+                                <td>shift&nbsp;+&nbsp;→</td>
+                            </tr>
+                            <tr>
+                                <td>アイコンを左周りに変更</td>
+                                <td>shift&nbsp;+&nbsp;←</td>
+                            </tr>
+                            <tr>
+                                <td>アイコンを拡大表示</td>
+                                <td>shift&nbsp;+&nbsp;↑</td>
+                            </tr>
+                            <tr>
+                                <td>アイコンを拡大非表示</td>
+                                <td>shift&nbsp;+&nbsp;↓</td>
+                            </tr>
+                            <tr>
+                                <td>テキスト書き込み</td>
+                                <td>shift&nbsp;+&nbsp;command</td>
+                            </tr>
+                            <tr>
+                                <td>投稿する or 下書き保存</td>
+                                <td>shift&nbsp;+&nbsp;ctrl</td>
+                            </tr>
+                            <tr>
+                                <td>フォーカスをテキストに移動</td>
+                                <td>shift&nbsp;+&nbsp;enter</td>
+                            </tr>
+                            <tr>
+                                <td>画像をアップロード</td>
+                                <td>shift&nbsp;+&nbsp;i</td>
+                            </tr>
+                            <tr>
+                                <td>アイコンを拡大表示</td>
+                                <td>shift&nbsp;+&nbsp;↑</td>
+                            </tr>
+                            <tr>
+                                <td>書き込みスペースをスクロール</td>
+                                <td>shift&nbsp;+&nbsp;alt&nbsp;+&nbsp;↓&nbsp;or&nbsp;↑</td>
+                            </tr>
+                        </tbody>
+                    </Table>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button onClick={this.props.closeHelp}>Close</Button>
+                </Modal.Footer>
+            </Modal>
+        )
+    }
+    /**
      * 描画する
      *
      * @return {object} html
@@ -357,6 +483,8 @@ export default class Header extends Component {
 
         return (
             <div>
+                <MessageSow />
+                {this.getHelp()}
                 <ListGroup className={Group}>
                     <ListGroupItem>
                         <AlertMessage />
@@ -370,6 +498,11 @@ export default class Header extends Component {
                         {soundStatus}
                     </ListGroupItem>
                     <ListGroupItem>
+                        <div className={Absolute}>
+                            <Button bsSize="small" bsStyle="info" onClick={() => this.props.openHelp()}>
+                                <Glyphicon glyph="info-sign" />
+                            </Button>
+                        </div>
                         <div className={Preview} ref="preview" style={this.getBoardStyle()}>
                             <TalkBoard talkList={this.props.contributionTalk}/>
                         </div>
@@ -402,4 +535,7 @@ Header.propTypes = {
     alertMessage: PropTypes.func,
     alertMessageInit: PropTypes.func,
     addSound: PropTypes.func,
+    openHelp: PropTypes.func,
+    closeHelp: PropTypes.func,
+    message:  PropTypes.func,
 }

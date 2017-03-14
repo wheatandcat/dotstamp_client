@@ -163,8 +163,6 @@ export default class List extends Component {
                                     <Slider
                                         list={this.props.characterList.list}
                                         handleClick={(id) => this.selectmCharacter(id)}
-                                        initialSlide={this.props.characterList.icon.select}
-                                        maxSize={600000}
                                     />
                                 </Well>
                             </div>

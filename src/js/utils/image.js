@@ -120,6 +120,9 @@ export default class Images extends Component {
         if (this.props.onMouseOut != undefined) {
             setting.option["onMouseOut"] = this.props.onMouseOut
         }
+        if (this.props.onClick != undefined) {
+            setting.option["onClick"] = this.props.onClick
+        }
 
         return (
             <setting.tag src={setting.src(this.props.fileName)} className={setting.className} {...setting.option}>
@@ -146,6 +149,7 @@ Images.propTypes = {
     children: PropTypes.object,
     onMouseOver: PropTypes.func,
     onMouseOut: PropTypes.func,
+    onClick: PropTypes.func,
 }
 
 Images.defaultProps = {

@@ -115,3 +115,25 @@ export function setViewStatus(viewStatus) {
         viewStatus: viewStatus
     }
 }
+
+/**
+ * ヘルプを開く
+ *
+ * @return {object} アクション
+ */
+export function openHelp() {
+    return {
+        type: types.OPEN_CONTRIBUTION_FORM_HELP,
+    }
+}
+
+/**
+ * ヘルプを閉じる
+ *
+ * @return {object} アクション
+ */
+export function closeHelp() {
+    return {
+        type: types.CLOSE_CONTRIBUTION_FORM_HELP,
+    }
+}

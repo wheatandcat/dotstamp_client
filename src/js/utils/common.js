@@ -1,4 +1,5 @@
 /*global BASE_URL*/
+/*global UPLOAD_PATH*/
 import dateFormat from "dateformat"
 
 /**
@@ -23,7 +24,6 @@ export function DateFormat(data) {
     return dateFormat(data, "yyyy/mm/dd")
 }
 
-
 /**
  * ランダムな文字列を取得する
  *
@@ -47,6 +47,15 @@ export function getUniqueStr(myStrong) {
  */
 export function getTopUrl() {
     return BASE_URL
+}
+
+/**
+ * アップロードURLを取得する
+ *
+ * @return {string} URL
+ */
+export function getUploadUrl() {
+    return UPLOAD_PATH
 }
 
 /**
