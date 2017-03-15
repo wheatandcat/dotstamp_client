@@ -11,6 +11,8 @@ import Footer from "../../utils/parts/footer"
 import {InputText, InputTextBox} from "../../../css/sound.css"
 import {Middle} from "../../../css/common.css"
 import Sound from "../../utils/sound"
+import MessageSow from "../../message/containers/show"
+
 
 export default class Show extends Component {
     componentWillMount() {
@@ -51,7 +53,10 @@ export default class Show extends Component {
         this.props.saveVoiceType({
             id: tmp[2],
             voice_type: tmp[1],
+            priority: tmp[0],
         })
+
+        this.props.message("保存しました", "success")
     }
     /**
      * ボイスタイプを取得する
@@ -131,7 +136,10 @@ export default class Show extends Component {
         this.props.saveBodySound({
             id: id,
             body: this.props.soundShow.List[priority].body_sound,
+            priority: priority,
         })
+
+        this.props.message("保存しました", "success")
     }
     /**
      * アイテムを取得する
@@ -140,6 +148,19 @@ export default class Show extends Component {
      * @return {object} html
      */
     getItem(item) {
+        let make = ""
+        if (item.make_status) {
+            let name = item.user_contribution_id + "_" + item.Priority
+            make = (
+                <Sound
+                    url={BASE_URL + "/static/files/tmp/sound/" + name + ".wav?=" + (new Date().getTime())}
+                    repeat=""
+                    play=""
+                    pause=""
+                />
+            )
+        }
+
         return (
             <tr key={item.Priority}>
                 <td>
@@ -166,6 +187,9 @@ export default class Show extends Component {
                 <td>
                     {this.getVoiceType(item)}
                 </td>
+                <td>
+                    {make}
+                </td>
             </tr>
         )
     }
@@ -188,6 +212,8 @@ export default class Show extends Component {
             userContributionId: this.props.params.id,
             soundStatus: soundStatus,
         })
+
+        this.props.message("設定を保存しました", "success")
     }
     /**
      * 音声状態を取得する
@@ -260,6 +286,7 @@ export default class Show extends Component {
 
         return (
             <div>
+                <MessageSow />
                 <div className="container">
                     <PageHeader>
                         &nbsp;&nbsp;<Glyphicon glyph="bullhorn"/>&nbsp;読み上げを編集する（β版）
@@ -286,6 +313,7 @@ export default class Show extends Component {
                                 <th>読み上げ本文</th>
                                 <th>操作</th>
                                 <th>音声タイプ設定</th>
+                                <th>再生</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -317,4 +345,5 @@ Show.propTypes = {
     reflect: PropTypes.func,
     onLoading: PropTypes.func,
     save: PropTypes.func,
+    message: PropTypes.func,
 }

@@ -41,9 +41,14 @@ export default function Show (state = initialState , action) {
 
         return JSON.parse(JSON.stringify(state))
     }
-    case types.REFLECT_SOUND_SHOW:
+    case types.REFLECT_SOUND_SHOW: {
+        return JSON.parse(JSON.stringify(state))
+    }
     case types.SAVE_SOUND_SHOW_VOICE_TYPE:
     case types.SAVE_SOUND_SHOW_BODY_SOUND: {
+        
+        state.List[parseInt(action.receiveParam.priority)].make_status = 1
+
         return JSON.parse(JSON.stringify(state))
     }
     case types.MAKE_SOUND_SHOW: {
