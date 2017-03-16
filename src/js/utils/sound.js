@@ -77,7 +77,7 @@ SoundWrapper.propTypes = {
 }
 
 SoundWrapper.defaultProps = {
-    repeat: "  音声を再生終了しました。もう一度再生する",
-    play: "  音声を再生する",
-    pause: "  音声を再生中",
+    repeat: "  記事の読み上げは終了しました。もう一度再生する",
+    play: "  記事の読み上げを再生する",
+    pause: "  記事の読み上げを再生中",
 }

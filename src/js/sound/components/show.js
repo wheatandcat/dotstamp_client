@@ -233,10 +233,10 @@ export default class Show extends Component {
         }
 
         if (this.props.soundShow.SoundStatus == SOUND_STATUS_PUBLIC) {
-            title = " 音声ファイルを公開する"
+            title = " 読み上げファイルを公開する"
             active[SOUND_STATUS_PUBLIC] = true
         } else {
-            title = " 音声ファイルを非公開"
+            title = " 読み上げファイルを非公開"
             active[SOUND_STATUS_PRIVATE] = true
         }
 
@@ -261,12 +261,14 @@ export default class Show extends Component {
             download = (
                 <div className="pull-right">
                     <br />
-                    <Button bsStyle="info" bsSize="large" href={BASE_URL + "static/files/sound/" + this.props.params.id + ".mp3"}>
-                        <Glyphicon glyph="download-alt"/>&nbsp;音声をダウンロードする
+                    <Button bsStyle="info" bsSize="large" href={BASE_URL + "static/files/sound/" + this.props.params.id + ".mp3?=" + (new Date().getTime())}>
+                        <Glyphicon glyph="download-alt"/>&nbsp;mp3をダウンロードする
                     </Button>
                     <br />
                     <br />
-                    <Sound url={BASE_URL + "/static/files/sound/" + this.props.params.id + ".mp3?=" + this.props.soundShow.Hash} />
+                    <Sound
+                        url={BASE_URL + "/static/files/sound/" + this.props.params.id + ".mp3?=" + + (new Date().getTime())}
+                    />
                 </div>
             )
         }
@@ -275,13 +277,13 @@ export default class Show extends Component {
         if (!this.props.soundShow.Loading) {
             make = (
                 <Button bsStyle="success" bsSize="large" block onClick={() => this.make()}>
-                    音声ファイルを作成する
+                    読み上げファイルを作成する
                 </Button>
             )
         } else {
             make = (
                 <Button bsStyle="success" bsSize="large" active>
-                    音声ファイル作成中です・・・・
+                    読み上げファイル作成中です・・・・
                 </Button>
             )
         }

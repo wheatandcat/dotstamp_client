@@ -61,14 +61,15 @@ export default class About extends Component {
                                 </div>
                             </Col>
                             <Col sm={6} md={3}>
-                                <Glyphicon glyph="thumbs-up" className={Icon}/>
+                                <Glyphicon glyph="globe" className={Icon}/>
                                 <br />
                                 <br />
                                 <p>
-                                    フォロー
+                                    オープンソース
                                 </p>
                                 <div>
-                                    良い記事にフォローしよう！
+                                    このサービスはオープンソースプロジェクトです。
+                                    ソースコードは全て公開しています。詳しくは下記リンクから
                                 </div>
                             </Col>
                         </Row>
@@ -83,6 +84,9 @@ export default class About extends Component {
                 <div className="container">
                     <h3>・・・というのは建前で、開発しているWebサービスです。</h3>
                     <h3>気が向いたら使ってみてください。&nbsp;&nbsp;(^^ </h3>
+                    <p>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;・今後の更新予定は開発者ブログに記載しています（）
+                    </p>
                     <br />
                     <br />
                     <Panel header="リンク" bsStyle="info">
@@ -91,7 +95,7 @@ export default class About extends Component {
                         <br />
                         Twitter： <br />
                         <br />
-                        git：OSSでソースコード公開しています<br />
+                        オープンソースプロジェクトとして、githubにてソースコードを公開中<br />
                         ・server<br />
                         &nbsp;&nbsp;&nbsp;&nbsp;.<br />
                         ・client<br />

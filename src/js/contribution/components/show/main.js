@@ -232,7 +232,7 @@ export default class Main extends Component {
             sound = (
                 <div className="container">
                     <Sound url={BASE_URL + "/static/files/sound/" + this.props.params.id + ".mp3"} >
-                        <Label bsStyle="warning" className={Normal}>&nbsp;音声公開中&nbsp;</Label>&nbsp;&nbsp;&nbsp;
+                        <Label bsStyle="warning" className={Normal}>&nbsp;読み上げ公開&nbsp;</Label>&nbsp;&nbsp;&nbsp;
                     </Sound>
                     <hr />
                 </div>

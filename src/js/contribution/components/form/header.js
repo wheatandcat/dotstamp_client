@@ -163,8 +163,10 @@ export default class Header extends Component {
 
         this.props.message("保存しました", "success")
 
-        if (!checkDiff()) {
-            return
+        if (this.props.contributionEdit.saveData.viewStatus == this.props.contributionForm.viewStatus) {
+            if (!checkDiff()) {
+                return
+            }
         }
 
 

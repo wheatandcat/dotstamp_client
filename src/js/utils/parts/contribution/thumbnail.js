@@ -1,10 +1,11 @@
 import React, {PropTypes, Component} from "react"
-import {Media, Glyphicon} from "react-bootstrap"
+import {Label, Media, Glyphicon} from "react-bootstrap"
 import Icon from "../../parts/icon"
 import Tag from "../../parts/tag"
 import {Link} from "react-router"
 import {DateFormat} from "../../common"
-import {VIEW_STATUS_PUBLIC} from "../../../constants/contribution"
+import {VIEW_STATUS_PUBLIC, SOUND_STATUS_PUBLIC} from "../../../constants/contribution"
+
 
 import {Disable, Alert, Strong, LittleStrong, Gap, Dark, Thin} from "../../../../css/common.css"
 import {Body, Image, Follow} from "../../../../css/contribution.css"
@@ -100,6 +101,17 @@ export default class Thumbnail extends Component {
             search = this.props.search
         }
 
+        let sound = ""
+        if (this.props.SoundStatus == SOUND_STATUS_PUBLIC) {
+            sound = (
+                <span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<Label bsStyle="warning">読み上げ公開</Label>
+                </span>
+
+            )
+        }
+
+
         return (
             <Media>
                 <Media.Left className={Image} align="middle">
@@ -108,6 +120,7 @@ export default class Thumbnail extends Component {
                 <Media.Body className={Body}>
                     <p>
                         {this.props.User.Name}&nbsp;さんが {DateFormat(this.props.UpdatedAt)}に投稿
+                        {sound}
                     </p>
                     <Media.Heading>
                         <Link to={this.getShowPath(this.props.ID)} className={Strong}>
@@ -141,4 +154,5 @@ Thumbnail.propTypes = {
     FollowCount: PropTypes.number,
     ViewStatus: PropTypes.number,
     search: PropTypes.func,
+    SoundStatus: PropTypes.number,
 }

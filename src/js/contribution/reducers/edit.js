@@ -11,6 +11,7 @@ const initialState = {
     saveData: {
         title: "",
         body: "",
+        viewStatus: VIEW_STATUS_PUBLIC,
     },
     Sound: false,
     SoundFile: false,
@@ -34,6 +35,8 @@ export default function Edit(state = initialState, action) {
     case types.SAVE_CONTRIBUTION_FORM: {
         state.saveData.title = action.receiveParam.title
         state.saveData.body = action.receiveParam.body
+        state.saveData.viewStatus = action.receiveParam.viewStatus
+
 
         return JSON.parse(JSON.stringify(state))
     }
