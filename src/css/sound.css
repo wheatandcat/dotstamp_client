@@ -1,9 +1,11 @@
 .InputText {
     width: 290px;
     max-width: 290px;
+    min-height: 100px;
 }
 
 .InputTextBox {
-    width: 300px;
-    max-width: 300px;
+    width: 320px;
+    max-width: 320px;
+    min-height: 100px;
 }

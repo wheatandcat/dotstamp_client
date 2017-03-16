@@ -1,6 +1,6 @@
 /*global BASE_URL*/
 import React, {PropTypes, Component} from "react"
-import {DropdownButton, ButtonGroup, MenuItem, Dropdown, FormControl, Table, PageHeader, Glyphicon, Button} from "react-bootstrap"
+import {Well, FormGroup, Checkbox, DropdownButton, ButtonGroup, MenuItem, Dropdown, FormControl, Table, PageHeader, Glyphicon, Button} from "react-bootstrap"
 import {VOICE_TYPE, VOICE_TYPE_MAP} from "../../constants/common"
 import {SOUND_STATUS_PUBLIC, SOUND_STATUS_PRIVATE} from "../../constants/contribution"
 import {TALK_TYPE_IMAGE} from "../../contribution/actions/talk"
@@ -9,7 +9,7 @@ import Image, {IMAGE_DISPLAY_TYPE_TALK_IMAGE} from "../../utils/image"
 import {Link} from "react-router"
 import Footer from "../../utils/parts/footer"
 import {InputText, InputTextBox} from "../../../css/sound.css"
-import {Middle} from "../../../css/common.css"
+import {Middle, NoSpace} from "../../../css/common.css"
 import Sound from "../../utils/sound"
 import MessageSow from "../../message/containers/show"
 
@@ -31,8 +31,11 @@ export default class Show extends Component {
      */
     reflect() {
         this.props.reflect({
-            userContributionId: this.props.params.id
+            userContributionId: this.props.params.id,
+            overwrite: this.overwrite.checked,
         })
+
+        this.props.message("記事の内容を反映中です", "success")
     }
     /**
      * 音声本文を変更する
@@ -247,7 +250,6 @@ export default class Show extends Component {
             </div>
         )
     }
-
     /**
      * 描画する
      *
@@ -292,9 +294,21 @@ export default class Show extends Component {
                         &nbsp;&nbsp;<Glyphicon glyph="bullhorn"/>&nbsp;読み上げを編集する（β版）
                     </PageHeader>
                     <div>
-                        <Button onClick={() => this.reflect()}>
-                            <Glyphicon glyph="refresh"/>&nbsp;記事の文章を反映される
-                        </Button>
+                        <Well className={NoSpace}>
+                            <br />
+                            <FormGroup>
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
+                                <Button onClick={() => this.reflect()}>
+                                    <Glyphicon glyph="refresh"/>&nbsp;記事の内容を反映される
+                                </Button>
+                                &nbsp;
+                                &nbsp;
+                                <Checkbox inputRef={ref => { this.overwrite = ref }} inline>既存のデータも上書して反映する</Checkbox>
+                            </FormGroup>
+                        </Well>
                     </div>
                     {this.getSoundStatus()}
                     <div className="pull-right">
