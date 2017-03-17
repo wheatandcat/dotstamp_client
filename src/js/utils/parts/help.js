@@ -31,7 +31,7 @@ export default class Help extends Component {
 
                     <Panel header="参考" bsStyle="info">
                         ブログ記事：<br />
-                        &nbsp;&nbsp;&nbsp;&nbsp;・
+                        &nbsp;&nbsp;&nbsp;&nbsp;・ <a href="http://wheatandcat.hatenablog.com/" target="_blank">麦と猫のエンジニアブログ</a><br />
                     </Panel>
                 </div>
                 <Footer/>

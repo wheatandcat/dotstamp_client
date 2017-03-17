@@ -25,10 +25,10 @@ export default class Footer extends React.Component {
                     <Breadcrumb.Item href={getTopUrl() + "#/information/terms"}>
                         利用規約
                     </Breadcrumb.Item>
-                    <Breadcrumb.Item href="http://192.168.33.10:8080/#/about?_k=sbqb4v">
+                    <Breadcrumb.Item href="http://wheatandcat.hatenablog.com/" target="_blank">
                         ブログ
                     </Breadcrumb.Item>
-                    <Breadcrumb.Item href="http://192.168.33.10:8080/#/about?_k=sbqb4v">
+                    <Breadcrumb.Item href="https://github.com/wheatandcat/dotstamp_ansible" target="_blank">
                         git
                     </Breadcrumb.Item>
                 </Breadcrumb>

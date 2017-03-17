@@ -8,8 +8,8 @@ const initialState = {
 const title = {
     "terms": "利用規約",
     "clientLicense": "Client License",
-    "serverlicense": "server License",
-    "ansiblelicense": "infrastructure License",
+    "serverLicense": "server License",
+    "ansibleLicense": "infrastructure License",
 }
 
 export default function Show (state = initialState , action) {

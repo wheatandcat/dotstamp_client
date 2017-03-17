@@ -84,24 +84,20 @@ export default class About extends Component {
                 <div className="container">
                     <h3>・・・というのは建前で、開発しているWebサービスです。</h3>
                     <h3>気が向いたら使ってみてください。&nbsp;&nbsp;(^^ </h3>
-                    <p>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;・今後の更新予定は開発者ブログに記載しています（）
-                    </p>
                     <br />
                     <br />
                     <Panel header="リンク" bsStyle="info">
-                        ブログ： <br />
-                        &nbsp;&nbsp;&nbsp;&nbsp;.stamp開発の話：<br />
+                        <b>ブログ</b>： <a href="http://wheatandcat.hatenablog.com/" target="_blank">麦と猫のエンジニアブログ</a><br />
                         <br />
-                        Twitter： <br />
+                        <b>Twitter</b>： <a href="https://twitter.com/wheatAndCat" target="_blank">麦と猫</a>
                         <br />
-                        オープンソースプロジェクトとして、githubにてソースコードを公開中<br />
-                        ・server<br />
-                        &nbsp;&nbsp;&nbsp;&nbsp;.<br />
-                        ・client<br />
-                        &nbsp;&nbsp;&nbsp;&nbsp;.<br />
-                        ・ansible<br />
-                        &nbsp;&nbsp;&nbsp;&nbsp;.<br />
+                        <br />
+                        <b>オープンソースプロジェクトです。githubでソースコードを公開しています。</b><br />
+                        &nbsp;&nbsp;・<a href="https://github.com/wheatandcat/dotstamp_server" target="_blank">サーバーサイド</a><br />
+                        &nbsp;&nbsp;・<a href="https://github.com/wheatandcat/dotstamp_client" target="_blank">クライアントサイド</a><br />
+                        &nbsp;&nbsp;・<a href="https://github.com/wheatandcat/dotstamp_ansible" target="_blank">環境構築</a><br />
+                        &nbsp;&nbsp;・<a href="https://github.com/wheatandcat/dotstamp_deploy_script" target="_blank">デプロイスクリプト</a><br />
+                        &nbsp;&nbsp;・<a href="https://github.com/wheatandcat/dotstamp_deploy_ansible" target="_blank">デプロイ環境構築</a><br />
                     </Panel>
                 </div>
                 <Footer/>
