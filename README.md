@@ -42,6 +42,10 @@ webpack
 ```
 webpack --watch
 ```
+リリースビルド
+```
+NODE_ENV=production  webpack
+```
 ## その他コマンド
 テスト & 監視
 ```
@@ -53,3 +57,5 @@ webpack-dev-server --inline --watch
 #ブラウザでアクセス
 http://192.168.33.10:3000
 ```
+## ライセンス
+BSDライセンス
