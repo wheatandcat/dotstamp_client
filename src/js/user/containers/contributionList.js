@@ -1,6 +1,6 @@
 import { connect } from "react-redux"
 import ContributionList from "../components/contributionList"
-import {init, setViewStatus, setContribution, setTitleSearch} from "../actions/contributionList"
+import {init, setViewStatus, setContribution, setTitleSearch, openDeleteConfirm, closeDeleteConfirm} from "../actions/contributionList"
 import {fetchPostsIfNeeded} from "../../utils/fetch"
 import * as types from "../../constants/ActionTypes"
 
@@ -12,6 +12,12 @@ function mapDispatchToProps (dispatch) {
     return {
         init: () => {
             dispatch(init())
+        },
+        openDeleteConfirm: () => {
+            dispatch(openDeleteConfirm())
+        },
+        closeDeleteConfirm: () => {
+            dispatch(closeDeleteConfirm())
         },
         getList: () => {
             dispatch(fetchPostsIfNeeded(

@@ -1,6 +1,6 @@
 import { connect } from "react-redux"
 import FormMain from "../../components/form/main"
-import {addBody, editBody, changeCharacter, changeBody} from "../../actions/form"
+import {addBody, editBody, changeCharacter, changeBody, cancelEdit} from "../../actions/form"
 import {alertMessage} from "../../../error/actions/alertMessage"
 import {fetchUploadIfNeeded} from "../../../utils/fetch"
 import * as types from "../../../constants/ActionTypes"
@@ -17,6 +17,9 @@ function mapDispatchToProps (dispatch) {
         },
         editBody: (body, character, directionType, priority) => {
             dispatch(editBody(body, character, directionType, priority))
+        },
+        cancelEdit: () => {
+            dispatch(cancelEdit())
         },
         changeCharacter: (character) => {
             dispatch(changeCharacter(character))

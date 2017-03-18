@@ -49,3 +49,25 @@ export function setViewStatus(viewStatus) {
         viewStatus: viewStatus
     }
 }
+
+/**
+ * 削除確認を開く
+ *
+ * @return {object} アクション
+ */
+export function openDeleteConfirm() {
+    return {
+        type: types.OPEN_USER_CONTRBUTION_LIST_CONFIRM,
+    }
+}
+
+/**
+ * 削除確認を閉じる
+ *
+ * @return {object} アクション
+ */
+export function closeDeleteConfirm() {
+    return {
+        type: types.CLOSE_USER_CONTRBUTION_LIST_CONFIRM,
+    }
+}

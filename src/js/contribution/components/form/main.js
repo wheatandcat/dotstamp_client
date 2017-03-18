@@ -4,7 +4,7 @@ import {TALK_TYPE_TEXT, TALK_TYPE_IMAGE} from "../../actions/talk"
 import {UPLOAD_FILE_SIZE_MAX} from "../../../constants/common"
 import Slider from "../../../utils/slider"
 import {Edit, Group} from "./../../../../css/form.css"
-import {Warning} from "../../../../css/common.css"
+import {Warning, Alert} from "../../../../css/common.css"
 import {ImageForm} from "../../../../css/contribution.css"
 
 var self
@@ -57,15 +57,17 @@ export default class Main extends Component {
         }
 
         return (
-            <textarea
-                name="body"
-                id="body"
-                className={className}
-                rows="4"
-                placeholder="本文。（最大:256文字まで）"
-                ref="body"
-                value={this.props.contributionForm.body}
-                onChange={this.changeBody.bind(this)} />
+            <div>
+                <textarea
+                    name="body"
+                    id="body"
+                    className={className}
+                    rows="4"
+                    placeholder="本文。（最大:256文字まで）"
+                    ref="body"
+                    value={this.props.contributionForm.body}
+                    onChange={this.changeBody.bind(this)} />
+            </div>
         )
     }
     /**
@@ -175,6 +177,16 @@ export default class Main extends Component {
             )
         }
 
+        let cancel = ""
+        if (this.props.contributionForm.edit) {
+            cancel = (
+                <Button className="pull-right" onClick={() => this.props.cancelEdit()}>
+                    <Glyphicon glyph="remove" className={Alert} />
+                </Button>
+            )
+        }
+
+
         return (
             <div>
                 <div>
@@ -204,7 +216,9 @@ export default class Main extends Component {
                                 onChange={this.handleChangeFile.bind(this)} />
                         </Button>
                     </ButtonGroup>
+                    {cancel}
                 </ButtonToolbar>
+
                 {this.getBodyTextArea()}
             </div>
         )
@@ -221,4 +235,5 @@ Main.propTypes = {
     upload: PropTypes.func,
     contributionId: PropTypes.number,
     alertMessage: PropTypes.func,
+    cancelEdit: PropTypes.func,
 }

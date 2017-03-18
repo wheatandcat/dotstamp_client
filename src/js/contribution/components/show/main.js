@@ -60,6 +60,14 @@ export default class Main extends Component {
             return ""
         }
 
+        if (!this.props.loginAuth.Login) {
+            return (
+                <Button bsStyle="success" bsSize="small" disabled block>
+                    <Glyphicon glyph="thumbs-up"/>&nbsp;フォローする(ゲストユーザーは使用できません)
+                </Button>
+            )
+        }
+
         if (!this.props.contributionShow.Following) {
             return (
                 <Button bsStyle="success" bsSize="small" block onClick={() => this.addFollow()}>
@@ -264,4 +272,5 @@ Main.propTypes = {
     closeProblem: PropTypes.func,
     setProblemType: PropTypes.func,
     addProblem:  PropTypes.func,
+    loginAuth: PropTypes.object,
 }

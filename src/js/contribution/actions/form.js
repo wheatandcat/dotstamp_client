@@ -137,3 +137,15 @@ export function closeHelp() {
         type: types.CLOSE_CONTRIBUTION_FORM_HELP,
     }
 }
+
+
+/**
+ * 編集をキャンセルする
+ *
+ * @return {object} アクション
+ */
+export function cancelEdit() {
+    return {
+        type: types.CANCEL_CONTRIBUTION_FROM_EDIT,
+    }
+}

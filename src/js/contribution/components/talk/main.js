@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from "react"
-import {ControlLabel, Grid, Row, Col, Panel, Glyphicon, ButtonToolbar, Button} from "react-bootstrap"
+import {Well, ControlLabel, Grid, Row, Col, Glyphicon, ButtonToolbar, Button} from "react-bootstrap"
 import Image from "../../../utils/image"
 import {IMAGE_DISPLAY_TYPE_TALK_IMAGE, IMAGE_DISPLAY_TYPE_CHARACTER_TALK} from "../../../utils/image"
 import {TALK_TYPE_IMAGE} from "../../actions/talk"
@@ -25,10 +25,10 @@ export default class Talk extends Component {
                         <Col sm={2} md={2}>
                             <Image fileName={fileName} imageDisplayType={IMAGE_DISPLAY_TYPE_CHARACTER_TALK}/>
                         </Col>
-                        <Col sm={8} md={6} className={BalloonTalk}>
+                        <Col sm={20} md={8} className={BalloonTalk}>
                             {this.getBody(talk)}
                         </Col>
-                        <Col sm={2} md={1} className={BalloonTalk}>
+                        <Col sm={2} md={2} className={BalloonTalk}>
                             {this.getBodyMenu(talk)}
                         </Col>
                     </Row>
@@ -117,12 +117,12 @@ export default class Talk extends Component {
         if (talk.TalkType == TALK_TYPE_IMAGE) {
             edit = (
                 <Button>
-                    <ControlLabel htmlFor={"image-file-edit-"+talk.Priority} bsClass={Group}>
+                    <ControlLabel htmlFor={"image-file-edit-" + talk.Priority} bsClass={Group}>
                         <Glyphicon  glyph="picture"/>
                     </ControlLabel>
                     <input
                         type="file"
-                        id={"image-file-edit-"+talk.Priority}
+                        id={"image-file-edit-" + talk.Priority}
                         name="image-file-edit"
                         className="hidden"
                         accept="image/jpeg,image/png,image/jpg"
@@ -138,14 +138,14 @@ export default class Talk extends Component {
         }
 
         return (
-            <Panel>
-                <ButtonToolbar>
-                    {edit}
-                    <Button onClick={() => this.deleteBody(talk.Priority)}>
-                        <Glyphicon glyph="trash"/>
-                    </Button>
-                </ButtonToolbar>
-            </Panel>
+            <Well>
+            <ButtonToolbar>
+                {edit}
+                <Button onClick={() => this.deleteBody(talk.Priority)}>
+                    <Glyphicon glyph="trash"/>
+                </Button>
+            </ButtonToolbar>
+        </Well>
         )
     }
     /**
@@ -179,7 +179,13 @@ export default class Talk extends Component {
      * @param  {object} talk 会話
      */
     setEditBody(talk) {
-        this.props.setEditBody(talk.Priority, talk.Body, talk.Character, talk.DirectionType, talk.TalkType)
+        this.props.setEditBody(
+            talk.Priority,
+            talk.Body,
+            talk.Character,
+            talk.DirectionType,
+            talk.TalkType
+        )
     }
     /**
      * 描画する

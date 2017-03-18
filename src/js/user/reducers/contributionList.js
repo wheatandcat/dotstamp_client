@@ -11,6 +11,7 @@ const initialState = {
     SearchTitle: "",
     Load: false,
     ViewStatus: VIEW_STATUS_PRIVATE,
+    DeleteConfirm: false,
 }
 
 export default function ContributionList (state = initialState , action) {
@@ -54,6 +55,17 @@ export default function ContributionList (state = initialState , action) {
     }
     case types.DELETE_CONTRIBUTION_SHOW: {
         state.ContributionId = 0
+        state.DeleteConfirm = false
+
+        return JSON.parse(JSON.stringify(state))
+    }
+    case types.OPEN_USER_CONTRBUTION_LIST_CONFIRM: {
+        state.DeleteConfirm = true
+
+        return JSON.parse(JSON.stringify(state))
+    }
+    case types.CLOSE_USER_CONTRBUTION_LIST_CONFIRM: {
+        state.DeleteConfirm = false
 
         return JSON.parse(JSON.stringify(state))
     }

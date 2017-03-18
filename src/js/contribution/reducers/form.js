@@ -19,6 +19,9 @@ const initialState = {
     Warning: false,
     Message: "",
     help: false,
+    EditTmp: {
+        Body: "",
+    }
 }
 
 var onBoardScrollActionTypeList = [
@@ -35,9 +38,12 @@ export default function Form (state = initialState , action) {
     }
 
     switch (action.type) {
+    case types.CANCEL_CONTRIBUTION_FROM_EDIT:
     case types.EDIT_CONTRIBUTION_FORM_BODY: {
         state.edit = false
-        state.body = ""
+        // 保持していた入力に戻す
+        state.body = state.EditTmp.Body
+        state.EditTmp.Body = ""
         state.priority = null
 
         return JSON.parse(JSON.stringify(state))
@@ -86,10 +92,12 @@ export default function Form (state = initialState , action) {
     }
     case types.SET_CONTRIBUTION_TALK_EDIT_BODY: {
         state.edit = true
+
+        // 現在の入力を保持
+        state.EditTmp.Body = state.body
+
         state.body = action.body
         state.priority = action.priority
-        state.directionType = action.directionType
-        state.character = action.character
 
         return JSON.parse(JSON.stringify(state))
     }

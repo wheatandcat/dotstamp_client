@@ -1,7 +1,7 @@
 import React, {PropTypes, Component} from "react"
 import {Link} from "react-router"
 import {Typeahead} from "react-bootstrap-typeahead"
-import {Tabs, Tab, PageHeader, Glyphicon, Row, Col, Nav, NavItem, ButtonToolbar, Button} from "react-bootstrap"
+import {Modal, Tabs, Tab, PageHeader, Glyphicon, Row, Col, Nav, NavItem, ButtonToolbar, Button} from "react-bootstrap"
 import ContributionShow from "../../contribution/containers/show"
 import {DateTimeFormat} from "../../utils/common"
 
@@ -104,6 +104,28 @@ export default class ContributionList extends Component {
         this.searchTitle(tite)
     }
     /**
+     * 削除確認を取得する
+     */
+    getDeleteConfirm() {
+        return (
+            <Modal show={this.props.userContributionList.DeleteConfirm} onHide={this.props.closeDeleteConfirm}>
+                <Modal.Header closeButton>
+                    <Modal.Title>投稿削除</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    投稿を削除します。よろしいですか？
+                    <br />
+                    <br />
+                    <ButtonToolbar>
+                        <Button bsStyle="danger" onClick={() => this.deleteContribution(this.props.userContributionList.ContributionId)}>削除する</Button>
+                        <Button onClick={() => this.props.closeDeleteConfirm()}>キャンセル</Button>
+                    </ButtonToolbar>
+                </Modal.Body>
+            </Modal>
+        )
+    }
+
+    /**
      * 操作を取得する
      */
     getControl() {
@@ -123,7 +145,7 @@ export default class ContributionList extends Component {
                 </Link>
                 <Button
                     bsStyle="danger"
-                    onClick={() => this.deleteContribution(this.props.userContributionList.ContributionId)}
+                    onClick={() => this.props.openDeleteConfirm()}
                     disabled={disabled}
                 >
                     <Glyphicon glyph="trash"/>&nbsp;削除
@@ -183,6 +205,7 @@ export default class ContributionList extends Component {
 
         return (
             <div className="container">
+                {this.getDeleteConfirm()}
                 <PageHeader>
                     <Glyphicon glyph="list-alt"/>&nbsp;投稿一覧
                 </PageHeader>
@@ -228,4 +251,6 @@ ContributionList.propTypes = {
     setTitleSearch: PropTypes.func,
     setViewStatus: PropTypes.func,
     init: PropTypes.func,
+    closeDeleteConfirm: PropTypes.func,
+    openDeleteConfirm: PropTypes.func,
 }

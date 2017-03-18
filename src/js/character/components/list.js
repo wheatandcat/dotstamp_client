@@ -61,7 +61,10 @@ export default class List extends Component {
         if (this.props.characterList.DefaultIcon) {
             return (
                 <Alert bsStyle="warning">
-                    <strong>警告！</strong> 設定している画像がありません。
+                    <strong>警告！</strong> 設定しているアイコン画像がありません。
+                    <br />
+                    <br />
+                    アイコン画像の設定が無い場合は、デフォルトアイコンが適用されます。
                 </Alert>
             )
         }
@@ -174,12 +177,14 @@ export default class List extends Component {
                                 className={ImageUpload}
                             >
                                 <div>
-                                    ファイルを指定またはドラッグ&ドロップ
+                                    クリックして画像ファイルを指定するか、または画像ファイルをドラッグ&ドロップ
+                                    <br />
+                                    <br />
                                     <p>
                                         形式: png/jpeg/jpg
                                     </p>
                                     <p>
-                                        最大600kB
+                                        最大600kBまで
                                     </p>
                                 </div>
                             </Dropzone>
