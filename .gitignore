@@ -20,3 +20,4 @@ bin/
 /dist/js/bundle.js
 /dist/inde.html
 /node_modules/*
+/nodeConfig/.production

@@ -24,11 +24,11 @@ Copyright (c) 2014-present Stephen J. Collings, Matthew Honnibal, Pieter Vanderw
 The MIT License (MIT)
 https://github.com/react-bootstrap/react-bootstrap/blob/master/LICENSE
 
-## redux-router
+## react-router
 
-Copyright (c) 2015-2016 Andrew Clark
+Copyright (c) 2015-present, Ryan Florence, Michael Jackson
 The MIT License (MIT)
-https://github.com/acdlite/redux-router/blob/master/LICENSE
+https://github.com/ReactTraining/react-router/blob/master/LICENSE.md
 
 ## react-slick
 
