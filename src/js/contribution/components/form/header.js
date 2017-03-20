@@ -133,6 +133,10 @@ export default class Header extends Component {
      * 保存する
      */
     save() {
+        if(this.props.contributionForm.Experience) {
+            return
+        }
+
         let contributionId = this.props.contributionId
         let title = this.refs.title.value.trim()
         let tag = (contributionId == null)
@@ -387,6 +391,11 @@ export default class Header extends Component {
                     <br />
                     <Panel header="並び替え">
                         吹き出し部分をドラック&ドロップすることで並び替え可能です
+                    </Panel>
+                    <br />
+                    <Panel header="読み上げ機能">
+                        読み上げ機能は記事を保存後に表示される。「読み上げ機能を作成する」から編集できます<br />
+                        ※お試し投稿では使用できません
                     </Panel>
                     <br />
                     <h4>ショートカットキー</h4>
