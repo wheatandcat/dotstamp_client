@@ -1,9 +1,0 @@
-#本番
-ENV=production
-
-#ベースURL
-BASE_URL=http://dotstamp.com/
-
-#画像ファイルパス
-IMAGE_PATH=http://dotstamp.com/static/images/
-UPLOAD_PATH=http://dotstamp.com/static/files/
