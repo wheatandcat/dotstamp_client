@@ -1,5 +1,6 @@
 import * as types from "../../../constants/ActionTypes"
 import reducer from "../../../contribution/reducers/edit"
+import {VIEW_STATUS_PUBLIC} from "../../../constants/contribution"
 
 describe("contribution/reducers/edit", () => {
     it("詳細を取得する", () => {
@@ -35,6 +36,7 @@ describe("contribution/reducers/edit", () => {
                 body: JSON.stringify({
                     aa: "abcdef",
                 }),
+                viewStatus: VIEW_STATUS_PUBLIC,
             },
         })
     })

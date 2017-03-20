@@ -25,6 +25,11 @@ describe("contribution/reducers/form", () => {
             Warning: false,
             Message: "",
             viewStatus: VIEW_STATUS_PUBLIC,
+            EditTmp: {
+                Body: "",
+            },
+            Experience: false,
+            help: false,
         })
     })
 })

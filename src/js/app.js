@@ -97,6 +97,7 @@ class App extends Component {
                         <Route path="/help" component={Help} />
                         <Route path="/question" component={questionShow} />
                         <Route path="/information/:file" component={informationShow} />
+                        <Route path="/contribution/experience" component={ContributionNew} />
                     </Route>
                 </Router>
             </Provider>

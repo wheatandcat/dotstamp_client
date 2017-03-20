@@ -34,6 +34,7 @@ describe("character/reducers/list", () => {
             imageType: 2,
             load: true,
             VoiceType:{},
+            DefaultIcon: false,
         })
     })
 

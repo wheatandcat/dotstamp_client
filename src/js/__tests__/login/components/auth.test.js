@@ -41,7 +41,7 @@ function setuplogin() {
 describe("login/components/auth", () => {
     it("ログインなし時を表示する", () => {
         const {props, enzymeWrapper} = setupNologin()
-        expect(enzymeWrapper.find("LinkContainer").at(0).props().to).toBe("/login/new")
+        expect(enzymeWrapper.find("LinkContainer").at(0).props().to).toBe("/contribution/experience")
 
         expect(props.auth.mock.calls.length).toBe(1)
     })

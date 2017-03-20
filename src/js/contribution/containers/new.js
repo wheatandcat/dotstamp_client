@@ -1,6 +1,7 @@
 import {connect} from "react-redux"
 import New from "../components/new"
 import * as types from "../../constants/ActionTypes"
+import {setDefaultList} from "../../character/actions/list"
 import {fetchPostsIfNeeded} from "../../utils/fetch"
 import {init} from "../actions/new"
 
@@ -12,8 +13,11 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
     return {
-        init:() => {
-            dispatch(init())
+        init:(experience) => {
+            dispatch(init(experience))
+        },
+        setDefaultList: () => {
+            dispatch(setDefaultList())
         },
         setCharacterImageList: () => {
             dispatch(fetchPostsIfNeeded(

@@ -18,6 +18,10 @@
     position: absolute;
 }
 
+.Front {
+    z-index: 10;
+}
+
 .FadeMessage {
     z-index: 9999;
     width: 100%;

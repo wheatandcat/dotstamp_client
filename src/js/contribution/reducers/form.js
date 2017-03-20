@@ -21,7 +21,8 @@ const initialState = {
     help: false,
     EditTmp: {
         Body: "",
-    }
+    },
+    Experience: false,
 }
 
 var onBoardScrollActionTypeList = [
@@ -50,6 +51,17 @@ export default function Form (state = initialState , action) {
     }
     case types.CHANGE_CONTRIBUTION_FORM_CHARACTER: {
         state.character = action.character
+
+        return JSON.parse(JSON.stringify(state))
+    }
+    case types.SET_CHARACTER_LIST_DEFAULT: {
+        state.character = {
+            CharacterID: 0,
+            FileName: "default1.png",
+            ID: 0,
+            Priority: 0,
+            VoiceType: 0,
+        }
 
         return JSON.parse(JSON.stringify(state))
     }
@@ -106,6 +118,8 @@ export default function Form (state = initialState , action) {
         state.tagList = action.response.Tag
         state.viewStatus = action.response.ViewStatus
 
+        state.Experience = false
+
         return JSON.parse(JSON.stringify(state))
     }
     case types.CHANGE_CONTRIBUTION_FORM_HEIGHT: {
@@ -129,7 +143,9 @@ export default function Form (state = initialState , action) {
         return JSON.parse(JSON.stringify(state))
     }
     case types.INIT_CONTRIBUTION_NEW: {
-        return JSON.parse(JSON.stringify(initialState))
+        state.Experience = action.experience
+
+        return JSON.parse(JSON.stringify(state))
     }
     case types.ADD_CONTRIBUTION_FORM_SOUND: {
         let id = action.receiveParam.userContributionId

@@ -1,6 +1,6 @@
 /*eslint no-console: ["error", { allow: ["log", "error"] }] */
 import React, {PropTypes, Component} from "react"
-import {Button, Nav, NavItem, NavDropdown, MenuItem, Glyphicon} from "react-bootstrap"
+import {Label, Button, Nav, NavItem, NavDropdown, MenuItem, Glyphicon} from "react-bootstrap"
 import {LinkContainer} from "react-router-bootstrap"
 import {abridgement} from "../../utils/common"
 
@@ -76,6 +76,11 @@ export default class Auth extends Component {
     noLogin() {
         return (
             <Nav pullRight>
+                <LinkContainer to="/contribution/experience">
+                    <NavItem eventKey={1}>
+                        <Glyphicon glyph="edit"/>&nbsp;投稿&nbsp;<Label bsStyle="warning">お試し</Label>
+                    </NavItem>
+                </LinkContainer>
                 <LinkContainer to="/login/new">
                     <NavItem eventKey={2} >
                         <Button bsStyle="success" bsSize="xsmall">

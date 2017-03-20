@@ -4,7 +4,7 @@ import {TALK_TYPE_TEXT, TALK_TYPE_IMAGE} from "../../actions/talk"
 import {UPLOAD_FILE_SIZE_MAX} from "../../../constants/common"
 import Slider from "../../../utils/slider"
 import {Edit, Group} from "./../../../../css/form.css"
-import {Warning, Alert} from "../../../../css/common.css"
+import {Gap, Front, Warning, Alert} from "../../../../css/common.css"
 import {ImageForm} from "../../../../css/contribution.css"
 
 var self
@@ -57,7 +57,7 @@ export default class Main extends Component {
         }
 
         return (
-            <div>
+            <div className={Gap}>
                 <textarea
                     name="body"
                     id="body"
@@ -173,7 +173,7 @@ export default class Main extends Component {
         let defaultIcon = ""
         if (this.props.characterList.DefaultIcon) {
             defaultIcon = (
-                <div className={Warning}>デフォルトアイコン表示中...</div>
+                <div className={Warning + " " + Front}>デフォルトアイコン表示中...</div>
             )
         }
 
@@ -186,6 +186,7 @@ export default class Main extends Component {
             )
         }
 
+        let disabled = this.props.contributionForm.Experience
 
         return (
             <div>
@@ -197,12 +198,12 @@ export default class Main extends Component {
                 </div>
                 <ButtonToolbar>
                     <ButtonGroup>
-                        <Button bsSize="small" onClick={() => this.addBodyText()}>
+                        <Button bsSize="small" bsStyle="info" onClick={() => this.addBodyText()}>
                             書き込み
                         </Button>
                     </ButtonGroup>
                     <ButtonGroup>
-                        <Button>
+                        <Button bsSize="small" disabled={disabled} bsStyle="info">
                             <ControlLabel htmlFor="image-file" bsClass={Group}>
                                 <Glyphicon  glyph="picture"/>
                             </ControlLabel>
@@ -213,7 +214,7 @@ export default class Main extends Component {
                                 className="hidden"
                                 accept="image/jpeg,image/png,image/jpg"
                                 ref="file"
-                                onChange={this.handleChangeFile.bind(this)} />
+                                onChange={this.handleChangeFile.bind(this)} disabled={disabled}/>
                         </Button>
                     </ButtonGroup>
                     {cancel}

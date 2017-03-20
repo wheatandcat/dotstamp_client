@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from "react"
 import {Link} from "react-router"
-import {Button, ButtonGroup, Well ,Glyphicon, Collapse} from "react-bootstrap"
+import {Alert, Button, ButtonGroup, Well ,Glyphicon, Collapse} from "react-bootstrap"
 import Footer from "../../utils/parts/footer"
 import Thumbnail from "../../utils/parts/contribution/thumbnail"
 import ContributionShowFrame from "../components/show/frame"
@@ -40,8 +40,11 @@ export default class List extends Component {
         if (this.props.contributionList.itemMap[obj.ID] != undefined) {
             let item = this.props.contributionList.itemMap[obj.ID]
             return (
-                <div>
+                <div onDoubleClick={() =>this.props.deleteItem(obj.ID)}>
                     <hr />
+                    <Alert bsStyle="success">
+                        記事の上でダブルクリックをすると閉じます
+                    </Alert>
                     <ContributionShowFrame
                         title = {item.title}
                         body = {item.body}

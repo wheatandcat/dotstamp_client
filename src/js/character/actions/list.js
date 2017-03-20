@@ -33,3 +33,14 @@ export function init() {
         type: types.INIT_CHARACTER_LIST,
     }
 }
+
+
+/**
+ * デフォルトを設定する
+ * @return {object}  アクション
+ */
+export function setDefaultList() {
+    return {
+        type: types.SET_CHARACTER_LIST_DEFAULT,
+    }
+}

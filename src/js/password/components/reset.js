@@ -16,7 +16,7 @@ export default class Reset extends Component {
             keyword: this.props.params.keyword,
             password: this.refs.password.value
         }
-        console.log (action)
+
         this.props.save(action)
     }
     /**

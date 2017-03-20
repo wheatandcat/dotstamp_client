@@ -1,6 +1,6 @@
 import {connect} from "react-redux"
 import List from "../components/list"
-import {init, setIcon, setVoiceType} from "../actions/list"
+import {setDefaultList, init, setIcon, setVoiceType} from "../actions/list"
 import {fetchPostsIfNeeded, fetchUploadIfNeeded} from "../../utils/fetch"
 import {alertMessage, alertMessageInit} from "../../error/actions/alertMessage"
 
@@ -16,6 +16,9 @@ function mapDispatchToProps (dispatch) {
     return {
         init: () => {
             dispatch(init())
+        },
+        setDefaultList: () => {
+            dispatch(setDefaultList())
         },
         alertMessageInit: () => {
             dispatch(alertMessageInit())

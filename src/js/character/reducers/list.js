@@ -6,7 +6,7 @@ const initialState = {
     list: [],
     icon: {
         id: 0,
-        fileName: "",
+        fileName: "default1.png",
         select: 0
     },
     imageType: IMAGE_DISPLAY_TYPE_CHARACTER,
@@ -38,13 +38,13 @@ function getSelectIconState(state, id) {
 }
 
 /**
- * デフォルメキャラクターリストを取得す
+ * デフォルメキャラクターリストを取得する
  *
  * @return {array[]} キャラクターリスト
  */
 function getDefaultCharacterList() {
     let hash = location.hash
-    if (hash.indexOf("contribution/new") == -1 && hash.indexOf("contribution/edit") == -1) {
+    if (hash.indexOf("contribution/new") == -1 && hash.indexOf("contribution/experience") == -1 && hash.indexOf("contribution/edit") == -1) {
         return []
     }
 
@@ -69,6 +69,24 @@ export default function List (state = initialState , action) {
     switch (action.type) {
     case types.INIT_CHARACTER_LIST: {
         return JSON.parse(JSON.stringify(initialState))
+    }
+    case types.SET_CHARACTER_LIST_DEFAULT: {
+        let tmp = []
+
+        let image = getDefaultCharacterList()
+
+        for (let value of image) {
+            value["imageType"] = IMAGE_DISPLAY_TYPE_CHARACTER
+            tmp.push(value)
+
+            state.VoiceType[value.ID] = value.VoiceType
+        }
+
+        state.DefaultIcon = true
+        state.list = tmp
+        state.load = true
+
+        return JSON.parse(JSON.stringify(state))
     }
     case types.DELETE_CHARACTER_LIST:
     case types.GET_CHARACTER_LIST: {

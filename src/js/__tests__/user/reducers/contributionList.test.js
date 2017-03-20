@@ -50,7 +50,8 @@ describe("user/reducers/contributionList", () => {
             Count: 2,
             SearchTitle: "",
             Load: true,
-            ViewStatus: VIEW_STATUS_PRIVATE
+            ViewStatus: VIEW_STATUS_PRIVATE,
+            DeleteConfirm: false,
         })
     })
 })

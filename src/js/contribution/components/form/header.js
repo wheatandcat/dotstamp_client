@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from "react"
-import {Panel, Table, Modal, Label, Dropdown, Button, MenuItem, ListGroup, ListGroupItem, FormGroup, Form, Glyphicon} from "react-bootstrap"
+import {Tooltip, Panel, Table, Modal, Label, Dropdown, Button, MenuItem, ListGroup, ListGroupItem, FormGroup, Form, Glyphicon} from "react-bootstrap"
 import {VIEW_STATUS_PUBLIC, VIEW_STATUS_PRIVATE, TAG_MAX_NUMBER} from "../../../constants/contribution"
 import {Link} from "react-router"
 import FormMain from "../../containers/form/main"
@@ -9,7 +9,7 @@ import MessageSow from "../../../message/containers/show"
 
 import {Preview, Group, GroupList} from "./../../../../css/form.css"
 import {Item} from "./../../../../css/tag.css"
-import {Absolute, Close} from "./../../../../css/common.css"
+import {Front, Absolute, Close} from "./../../../../css/common.css"
 
 var self
 
@@ -344,9 +344,12 @@ export default class Header extends Component {
         }
 
         let status = viewStausMap[this.props.contributionForm.viewStatus]
+
+        let disabled = this.props.contributionForm.Experience
+
         return (
-            <Dropdown id="viweStatus">
-                <Button onClick={() => this.save()} bsStyle="success">
+            <Dropdown id="viweStatus" disabled={disabled} ref="viweStatus">
+                <Button onClick={() => this.save()} bsStyle="success" disabled={disabled}>
                     <Glyphicon glyph={status.glyph} />&nbsp;{status.text}
                 </Button>
                 <Dropdown.Toggle bsStyle="success"/>
@@ -483,10 +486,26 @@ export default class Header extends Component {
             }
         }
 
+        let experience = ""
+        if(this.props.contributionForm.Experience) {
+            experience = (
+                <Tooltip
+                    id="tooltip-right"
+                    placement="right"
+                    className="in"
+                    positionLeft={170}
+                    positionTop={160}
+                >
+                    「お試し」投稿のデータは保存<br/>できません。
+                </Tooltip>
+            )
+        }
+
         return (
             <div>
                 <MessageSow />
                 {this.getHelp()}
+                {experience}
                 <ListGroup className={Group}>
                     <ListGroupItem>
                         <AlertMessage />
@@ -494,15 +513,14 @@ export default class Header extends Component {
                             <input type="text" id="title" className="form-control" placeholder="タイトル(100文字以内)" ref="title" value={this.props.contributionForm.title} onChange={this.changeTitle.bind(this)}/>
                         </FormGroup>
                         {this.getTag()}
-
                         {this.getViewStatus()}
                         {sound}
                         {soundStatus}
                     </ListGroupItem>
                     <ListGroupItem>
                         <div className={Absolute}>
-                            <Button bsSize="small" bsStyle="info" onClick={() => this.props.openHelp()}>
-                                <Glyphicon glyph="info-sign" />
+                            <Button bsSize="small" bsStyle="info" className={Front} onClick={() => this.props.openHelp()}>
+                                <Glyphicon glyph="info-sign" />&nbsp;ヒント
                             </Button>
                         </div>
                         <div className={Preview} ref="preview" style={this.getBoardStyle()}>
