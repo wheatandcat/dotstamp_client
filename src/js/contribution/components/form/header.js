@@ -393,8 +393,8 @@ export default class Header extends Component {
                         吹き出し部分をドラック&ドロップすることで並び替え可能です
                     </Panel>
                     <br />
-                    <Panel header="読み上げ機能">
-                        読み上げ機能は記事を保存後に表示される。「読み上げ機能を作成する」から編集できます<br />
+                <Panel header="動画を作成する">
+                        動画作成は記事を保存後に表示される。「動画を作成する」から編集できます<br />
                         ※お試し投稿では使用できません
                     </Panel>
                     <br />
@@ -463,24 +463,11 @@ export default class Header extends Component {
      */
     render() {
         let sound = ""
-
-        let soundStatus = ""
-
         if (this.props.contributionId != null) {
-            if (this.props.contributionEdit.SoundFile) {
-                soundStatus = (
-                    <Label bsStyle="success">&nbsp;音声ファイル：&nbsp;公開状態&nbsp;</Label>
-                )
-            } else {
-                soundStatus = (
-                    <Label bsStyle="danger">&nbsp;音声ファイル：&nbsp;非公開状態&nbsp;</Label>
-                )
-            }
-
             if (!this.props.contributionEdit.Sound) {
                 sound = (
                     <Button bsStyle="link" onClick={() => this.addSound()}>
-                        <Glyphicon glyph="bullhorn" />&nbsp;記事の読み上げを作成する（β版）
+                        <Glyphicon glyph="bullhorn" />&nbsp;動画を作成する（β版）
                     </Button>
 
                 )
@@ -488,7 +475,7 @@ export default class Header extends Component {
                 sound = (
                     <Link to={"/sound/show/" + this.props.contributionId}>
                         <Button bsStyle="link">
-                            <Glyphicon glyph="bullhorn" />&nbsp;記事の読み上げを編集する（β版）
+                            <Glyphicon glyph="bullhorn" />&nbsp;動画を編集する（β版）
                         </Button>
                     </Link>
                 )
@@ -524,7 +511,6 @@ export default class Header extends Component {
                         {this.getTag()}
                         {this.getViewStatus()}
                         {sound}
-                        {soundStatus}
                     </ListGroupItem>
                     <ListGroupItem>
                         <div className={Absolute}>

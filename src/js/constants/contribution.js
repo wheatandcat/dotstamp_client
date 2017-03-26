@@ -23,3 +23,14 @@ export const ORDER_TYPE_NEW = 1
 
 /** フォロー数順 */
 export const ORDER_TYPE_FOLLOW_COUNT = 2
+
+/** 状態：公開 */
+export const STATUS_PUBLIC = 1
+/** 状態：非公開 */
+export const STATUS_PRIVATE = 2
+/** 状態：エラー */
+export const STATUS_ERROR = 3
+/** 状態：実行中 */
+export const STATUS_RUNNING = 4
+/** 状態：作り直し */
+export const STATUS_REMEAKE = 5

@@ -9,3 +9,9 @@
     max-width: 320px;
     min-height: 100px;
 }
+
+
+.Input {
+    overflow-y: scroll;
+    height: 620px;
+}

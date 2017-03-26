@@ -1,12 +1,12 @@
-/*global BASE_URL*/
 import React, { Component, PropTypes } from "react"
-import {Label, Well, Radio, FormGroup, Modal, Dropdown, MenuItem, Grid, Row, Col, Button, PageHeader, Glyphicon} from "react-bootstrap"
+import {Media, Alert, Well, Radio, FormGroup, Modal, Dropdown, MenuItem, Grid, Row, Col, Button, PageHeader, Glyphicon} from "react-bootstrap"
+import YouTube from "react-youtube"
+
 import ContributionShowFrame from "./frame"
 import {PROBLEM_TYPE_SPAM, PROBLEM_TYPE_INAPPROPRIATE} from "../../../constants/contribution"
 import Footer from "../../../utils/parts/footer"
-import {Normal, Shift, HalfTop, Middle, Center, Large, Info, Paragraph, Gap} from "../../../../css/common.css"
+import {Shift, HalfTop, Middle, Center, Large, Info, Paragraph, Gap} from "../../../../css/common.css"
 import {Author} from "../../../../css/contribution.css"
-import Sound from "../../../utils/sound"
 
 import Icon from "../../../utils/parts/icon"
 import Tag from "../../../utils/parts/tag"
@@ -230,28 +230,51 @@ export default class Main extends Component {
         )
     }
     /**
+     * YouTubeを取得する
+     *
+     * @return {object} html
+     */
+    getYoutube() {
+        if (this.props.contributionShow.Movie.movie_id == "") {
+            return ""
+        }
+
+        const opts = {
+            height: "390",
+            width: "640",
+            playerVars: {
+                autoplay: 0,
+            }
+        }
+
+        return (
+            <div className="container">
+                <Alert bsStyle="info">
+                    <Media>
+                        <Media.Left>
+                            <YouTube
+                              videoId={this.props.contributionShow.Movie.movie_id}
+                              opts={opts}
+                            />
+                        </Media.Left>
+                        <Media.Body>
+                            <Media.Heading>記事動画</Media.Heading>
+                        </Media.Body>
+                    </Media>
+                </Alert>
+            </div>
+        )
+    }
+    /**
      * 描画する
      *
      * @return {object} html
      */
     render() {
-        let sound = ""
-        if (this.props.contributionShow.SoundFile && this.props.params.id != 0) {
-            sound = (
-                <div className="container">
-                    <Sound url={BASE_URL + "/static/files/sound/" + this.props.params.id + ".mp3"} >
-                        <Label bsStyle="warning" className={Normal}>&nbsp;読み上げ公開&nbsp;</Label>&nbsp;&nbsp;&nbsp;
-                    </Sound>
-                    <hr />
-                </div>
-            )
-        }
-
-
         return (
             <div>
                 {this.getTitle()}
-                {sound}
+                {this.getYoutube()}
                 <ContributionShowFrame
                     title = {this.props.contributionShow.Title}
                     body = {this.props.contributionShow.Body}

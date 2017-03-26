@@ -1,15 +1,16 @@
 /*global BASE_URL*/
 import React, {PropTypes, Component} from "react"
-import {Well, FormGroup, Checkbox, DropdownButton, ButtonGroup, MenuItem, Dropdown, FormControl, Table, PageHeader, Glyphicon, Button} from "react-bootstrap"
+import {MenuItem, Dropdown, FormControl, Table, PageHeader, Glyphicon, Button} from "react-bootstrap"
 import {VOICE_TYPE, VOICE_TYPE_MAP} from "../../constants/common"
-import {SOUND_STATUS_PUBLIC, SOUND_STATUS_PRIVATE} from "../../constants/contribution"
 import {TALK_TYPE_IMAGE} from "../../contribution/actions/talk"
 import Image, {IMAGE_DISPLAY_TYPE_TALK_IMAGE} from "../../utils/image"
 
-import {Link} from "react-router"
+
+import Menu from "../containers/menu"
+
 import Footer from "../../utils/parts/footer"
-import {InputText, InputTextBox} from "../../../css/sound.css"
-import {Middle, NoSpace} from "../../../css/common.css"
+import {Input, InputText, InputTextBox} from "../../../css/sound.css"
+import {Middle} from "../../../css/common.css"
 import Sound from "../../utils/sound"
 import MessageSow from "../../message/containers/show"
 
@@ -25,17 +26,6 @@ export default class Show extends Component {
      */
     getDeatil(id) {
         this.props.getDetail({userContributionId: id})
-    }
-    /**
-     * 反映する
-     */
-    reflect() {
-        this.props.reflect({
-            userContributionId: this.props.params.id,
-            overwrite: this.overwrite.checked,
-        })
-
-        this.props.message("記事の内容を反映中です", "success")
     }
     /**
      * 音声本文を変更する
@@ -197,97 +187,11 @@ export default class Show extends Component {
         )
     }
     /**
-     * 作成する
-     */
-    make() {
-        this.props.onLoading()
-        this.props.make({
-            userContributionId: this.props.params.id
-        })
-    }
-    /**
-     * 保存する
-     *
-     * @param  {number} soundStatus 音声状態
-     */
-    save(soundStatus) {
-        this.props.save({
-            userContributionId: this.props.params.id,
-            soundStatus: soundStatus,
-        })
-
-        this.props.message("設定を保存しました", "success")
-    }
-    /**
-     * 音声状態を取得する
-     */
-    getSoundStatus() {
-        if (!this.props.soundShow.Make) {
-            return ""
-        }
-
-        let title = ""
-        let active = {
-            SOUND_STATUS_PUBLIC: false,
-            SOUND_STATUS_PRIVATE: false,
-        }
-
-        if (this.props.soundShow.SoundStatus == SOUND_STATUS_PUBLIC) {
-            title = " 読み上げファイルを公開する"
-            active[SOUND_STATUS_PUBLIC] = true
-        } else {
-            title = " 読み上げファイルを非公開"
-            active[SOUND_STATUS_PRIVATE] = true
-        }
-
-        return (
-            <div>
-                <br />
-                <DropdownButton bsStyle="success" title={title} id="voice-status" onSelect={this.save.bind(this)}>
-                    <MenuItem eventKey={SOUND_STATUS_PUBLIC} active={active[SOUND_STATUS_PUBLIC]}>&nbsp;公開に設定する</MenuItem>
-                    <MenuItem eventKey={SOUND_STATUS_PRIVATE} active={active[SOUND_STATUS_PRIVATE]}>&nbsp;非公開に設定する</MenuItem>
-                </DropdownButton>
-            </div>
-        )
-    }
-    /**
      * 描画する
      *
      * @return {object} html
      */
     render() {
-        let download = ""
-        if (this.props.soundShow.Make) {
-            download = (
-                <div className="pull-right">
-                    <br />
-                    <Button bsStyle="info" bsSize="large" href={BASE_URL + "static/files/sound/" + this.props.params.id + ".mp3?=" + (new Date().getTime())}>
-                        <Glyphicon glyph="download-alt"/>&nbsp;mp3をダウンロードする
-                    </Button>
-                    <br />
-                    <br />
-                    <Sound
-                        url={BASE_URL + "/static/files/sound/" + this.props.params.id + ".mp3?=" + + (new Date().getTime())}
-                    />
-                </div>
-            )
-        }
-
-        let make = ""
-        if (!this.props.soundShow.Loading) {
-            make = (
-                <Button bsStyle="success" bsSize="large" block onClick={() => this.make()}>
-                    読み上げファイルを作成する
-                </Button>
-            )
-        } else {
-            make = (
-                <Button bsStyle="success" bsSize="large" active>
-                    読み上げファイル作成中です・・・・
-                </Button>
-            )
-        }
-
         return (
             <div>
                 <MessageSow />
@@ -295,32 +199,9 @@ export default class Show extends Component {
                     <PageHeader>
                         &nbsp;&nbsp;<Glyphicon glyph="bullhorn"/>&nbsp;読み上げを編集する（β版）
                     </PageHeader>
-                    <div>
-                        <Well className={NoSpace}>
-                            <br />
-                            <FormGroup>
-                                &nbsp;
-                                &nbsp;
-                                &nbsp;
-                                &nbsp;
-                                <Button onClick={() => this.reflect()}>
-                                    <Glyphicon glyph="refresh"/>&nbsp;記事の内容を反映される
-                                </Button>
-                                &nbsp;
-                                &nbsp;
-                                <Checkbox inputRef={ref => { this.overwrite = ref }} inline>既存のデータも上書して反映する</Checkbox>
-                            </FormGroup>
-                        </Well>
-                    </div>
-                    {this.getSoundStatus()}
-                    <div className="pull-right">
-                        <Link to={"/contribution/edit/" + this.props.params.id}>
-                            投稿編集に戻る
-                        </Link>
-                        <br />
-                    </div>
+                    <Menu userContributionId={this.props.params.id} />
                 </div>
-                <div className="container">
+                <div className={"container " + Input} >
                     <Table striped bordered condensed hover>
                         <thead>
                             <tr>
@@ -338,10 +219,6 @@ export default class Show extends Component {
                             })}
                         </tbody>
                     </Table>
-                     <ButtonGroup vertical block>
-                        {make}
-                    </ButtonGroup>
-                    {download}
                 </div>
                 <Footer />
             </div>
@@ -357,9 +234,5 @@ Show.propTypes = {
     changeVoiceType: PropTypes.func,
     saveBodySound: PropTypes.func,
     saveVoiceType: PropTypes.func,
-    make: PropTypes.func,
-    reflect: PropTypes.func,
-    onLoading: PropTypes.func,
-    save: PropTypes.func,
     message: PropTypes.func,
 }

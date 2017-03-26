@@ -144,6 +144,9 @@ export default function Form (state = initialState , action) {
     }
     case types.INIT_CONTRIBUTION_NEW: {
         state.Experience = action.experience
+        state.title = ""
+        state.tag = ""
+        state.tagList = []
 
         return JSON.parse(JSON.stringify(state))
     }

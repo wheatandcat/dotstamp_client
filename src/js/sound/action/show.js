@@ -29,3 +29,16 @@ export function changeVoiceType(priority, voiceType) {
         voiceType: voiceType,
     }
 }
+
+/**
+ * 動画状態を変更する
+ *
+ * @param  {number} movieStatus 動画状態
+ * @return {object} アクション
+ */
+export function changeMovieStatus(movieStatus) {
+    return {
+        type: types.CHANGE_SOUND_SHOW_MOVIE_STATUS,
+        movieStatus: movieStatus,
+    }
+}

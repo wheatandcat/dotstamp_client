@@ -1,7 +1,6 @@
 import { connect } from "react-redux"
 import Show from "../components/show"
 import {message} from "../../message/actions/show"
-import {on} from "../../loading/actions/show"
 import {changeBodySound, changeVoiceType} from "../action/show"
 import {fetchPostsIfNeeded} from "../../utils/fetch"
 import * as types from "../../constants/ActionTypes"
@@ -40,46 +39,6 @@ function mapDispatchToProps (dispatch) {
                     action
                 )
             )
-        },
-        make: (action) => {
-            dispatch(fetchPostsIfNeeded(
-                    "sound/make/",
-                    types.MAKE_SOUND_SHOW,
-                    action
-                )
-            ).then(() => {
-                dispatch(fetchPostsIfNeeded(
-                    "sound/show/",
-                    types.GET_CONTRIBUTION_FORM_SOUND_DETAIL,
-                    action
-                ))
-            })
-        },
-        reflect: (action) => {
-            dispatch(fetchPostsIfNeeded(
-                    "sound/reflect/",
-                    types.REFLECT_SOUND_SHOW,
-                    action
-                )
-            ).then(() => {
-                dispatch(fetchPostsIfNeeded(
-                    "sound/show/",
-                    types.GET_CONTRIBUTION_FORM_SOUND_DETAIL,
-                    action
-                ))
-            })
-        },
-        save: (action) => {
-            dispatch(fetchPostsIfNeeded(
-                    "sound/save/",
-                    types.SAVE_SOUND_SHOW,
-                    action,
-                    action
-                )
-            )
-        },
-        onLoading: () => {
-            dispatch(on())
         },
         changeBodySound: (priority, bodySound) => {
             dispatch(changeBodySound(priority, bodySound))

@@ -118,6 +118,10 @@
     margin-top: 5px;
 }
 
+.HeightFull {
+    height: 100%;
+}
+
 .Center {
     text-align: center;
 }
@@ -154,6 +158,10 @@
 .Dark {
     color: rgb(0, 0, 0);
     font-weight: bold;
+}
+
+.White {
+    background-color: rgb(256, 256, 256);
 }
 
 .Thin {

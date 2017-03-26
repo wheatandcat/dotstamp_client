@@ -24,6 +24,8 @@ import passwordInput from "../password/reducers/input"
 import passwordReset from "../password/reducers/reset"
 
 import soundShow from "../sound/reducers/show"
+import soundMenu from "../sound/reducers/menu"
+
 import informationShow from "../information/reducers/show"
 
 import messageShow from "../message/reducers/show"
@@ -48,6 +50,7 @@ const rootReducer = combineReducers({
     passwordInput,
     passwordReset,
     soundShow,
+    soundMenu,
     informationShow,
     messageShow,
 })

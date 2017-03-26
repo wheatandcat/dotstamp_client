@@ -21,6 +21,7 @@ const initialState = {
     ProblemType: PROBLEM_TYPE_SPAM,
     AddProblem: false,
     SoundFile: false,
+    Movie: {}
 }
 
 export default function Show (state = initialState , action) {
@@ -36,6 +37,7 @@ export default function Show (state = initialState , action) {
         state.FollowCount = action.response.FollowCount
         state.Following = action.response.Following
         state.SoundFile = action.response.SoundFile
+        state.Movie = action.response.Movie
 
         state.Load = true
 

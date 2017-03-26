@@ -4,7 +4,7 @@ import Icon from "../../parts/icon"
 import Tag from "../../parts/tag"
 import {Link} from "react-router"
 import {DateFormat} from "../../common"
-import {VIEW_STATUS_PUBLIC, SOUND_STATUS_PUBLIC} from "../../../constants/contribution"
+import {VIEW_STATUS_PUBLIC} from "../../../constants/contribution"
 
 
 import {Disable, Alert, Strong, LittleStrong, Gap, Dark, Thin} from "../../../../css/common.css"
@@ -102,15 +102,13 @@ export default class Thumbnail extends Component {
         }
 
         let sound = ""
-        if (this.props.SoundStatus == SOUND_STATUS_PUBLIC) {
+        if (this.props.Movie.movie_id != "") {
             sound = (
                 <span>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<Label bsStyle="warning">読み上げ公開</Label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<Label bsStyle="warning">動画あり</Label>
                 </span>
-
             )
         }
-
 
         return (
             <Media>
@@ -155,4 +153,5 @@ Thumbnail.propTypes = {
     ViewStatus: PropTypes.number,
     search: PropTypes.func,
     SoundStatus: PropTypes.number,
+    Movie: PropTypes.object,
 }
