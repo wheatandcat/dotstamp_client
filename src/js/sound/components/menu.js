@@ -9,7 +9,24 @@ import {getTopUrl} from "../../utils/common"
 
 import {Link} from "react-router"
 
+var self
+
+window.document.getElementById("uploadToken").onchange = function(){
+    if (self == undefined) {
+        return false
+    }
+
+    self.props.message("認証成功。YouTubeのアップロード開始します", "success")
+    self.uploadYoutube()
+
+    return
+}
+
+
 export default class Menu extends Component {
+    componentWillMount() {
+        self = this
+    }
     /**
      * 反映する
      */
@@ -22,17 +39,14 @@ export default class Menu extends Component {
         this.props.message("記事の内容を反映中です", "success")
     }
     /**
-     * 保存する
-     *
-     * @param  {number} soundStatus 音声状態
+     * 作成する
      */
-    save(soundStatus) {
-        this.props.save({
-            userContributionId: this.props.userContributionId,
-            soundStatus: soundStatus,
+    make() {
+        this.props.makingMovie()
+        this.props.close()
+        this.props.make({
+            userContributionId: this.props.userContributionId
         })
-
-        this.props.message("設定を保存しました", "success")
     }
     /**
      * [getReMakeConfirm description]
@@ -40,7 +54,7 @@ export default class Menu extends Component {
      */
     getReMakeConfirm() {
         return (
-            <Modal show={this.props.soundMenu.Open} onHide={this.props.close}>
+            <Modal show={this.props.soundMenu.Open} onHide={this.props.close}  bsSize="large">
                 <Modal.Header closeButton>
                     <Modal.Title>動画を作り直す</Modal.Title>
                 </Modal.Header>
@@ -57,7 +71,7 @@ export default class Menu extends Component {
                         <Button onClick={this.props.close}>キャンセル</Button>
                         &nbsp;
                         &nbsp;
-                        <Button bsStyle="warning" onClick={() => this.makeMovie()}>作り直す</Button>
+                        <Button bsStyle="warning" onClick={() => this.make()}>作り直す</Button>
                     </ButtonToolbar>
                 </Modal.Body>
                 <Modal.Footer></Modal.Footer>
@@ -65,24 +79,11 @@ export default class Menu extends Component {
         )
     }
     /**
-     * 動画を作成する
-     */
-    makeMovie() {
-        this.props.makingMovie()
-
-        this.props.makeMovie({
-            userContributionId: this.props.userContributionId,
-        })
-    }
-    /**
      * 動画作成を取得する
      *
      * @return {object} html
      */
     getMakeMovie() {
-        if (!this.props.soundShow.MakeSound) {
-            return ""
-        }
         if (this.props.soundMenu.Making) {
             return (
                  <Button bsStyle="warning" active>
@@ -91,10 +92,9 @@ export default class Menu extends Component {
             )
         }
 
-
         if (!this.props.soundShow.MakeMovie) {
             return (
-                 <Button bsStyle="warning" onClick={() => this.makeMovie()}>
+                 <Button bsStyle="warning" onClick={() => this.make()}>
                      動画を作成する
                  </Button>
             )
@@ -106,13 +106,19 @@ export default class Menu extends Component {
             </Button>
         )
     }
+    /**
+     * アップロードする
+     */
     upload() {
         this.props.uploading()
         this.props.closeUpload()
+
+        window.open(getTopUrl() + "movie/connect/" + this.props.userContributionId, "child", "width=500,height=250")
     }
+
+
     /**
-     * [getReMakeConfirm description]
-     * @return [type] [description]
+     * getUploadConfirm アップロードを確認を取得する
      */
     getUploadConfirm() {
         return (
@@ -137,7 +143,7 @@ export default class Menu extends Component {
                         <Button onClick={this.props.closeUpload}>キャンセル</Button>
                         &nbsp;
                         &nbsp;
-                        <Button bsStyle="danger" href={getTopUrl() + "movie/connect/" + this.props.userContributionId}  onClick={this.upload.bind(this)} target="_brank">YouTubeにアップロードする</Button>
+                        <Button bsStyle="danger" onClick={this.upload.bind(this)}>YouTubeにアップロードする</Button>
                     </ButtonToolbar>
                 </Modal.Body>
                 <Modal.Footer></Modal.Footer>
@@ -156,7 +162,7 @@ export default class Menu extends Component {
 
         if (this.props.soundShow.MovieStatus == STATUS_RUNNING) {
             return (
-                <Button bsStyle="danger" active>
+                <Button bsStyle="danger" active >
                     YouTubeに動画をアップロード中...
                 </Button>
             )
@@ -177,11 +183,10 @@ export default class Menu extends Component {
         )
     }
     /**
-     * 作成する
+     * YouTubeにアップロードする
      */
-    make() {
-        this.props.onLoading()
-        this.props.make({
+    uploadYoutube() {
+        this.props.upload({
             userContributionId: this.props.userContributionId
         })
     }
@@ -191,22 +196,8 @@ export default class Menu extends Component {
      * @return {object} html
      */
     render() {
-        let make = ""
-        if (!this.props.soundShow.Loading) {
-            make = (
-                <Button bsStyle="success" onClick={() => this.make()}>
-                    読み上げファイルを作成する
-                </Button>
-            )
-        } else {
-            make = (
-                <Button bsStyle="success" active>
-                    読み上げファイル作成中です・・・・
-                </Button>
-            )
-        }
         let download = ""
-        if (this.props.soundShow.MakeSound) {
+        if (this.props.soundShow.MakeMovie) {
             download = (
                 <div className="pull-right">
                     <Sound
@@ -240,9 +231,6 @@ export default class Menu extends Component {
                 <div>
                     <br />
                     <ButtonToolbar>
-                        {make}
-                        &nbsp;
-                        &nbsp;
                         {download}
                         &nbsp;
                         &nbsp;
@@ -268,16 +256,14 @@ Menu.propTypes = {
     soundShow: PropTypes.object,
     soundMenu: PropTypes.object,
     userContributionId:PropTypes.string,
-    makeMovie:  PropTypes.func,
+    make: PropTypes.func,
+    makingMovie:  PropTypes.func,
     message: PropTypes.func,
-    save: PropTypes.func,
     reflect: PropTypes.func,
     open: PropTypes.func,
     close: PropTypes.func,
-    makingMovie: PropTypes.func,
     uploading: PropTypes.func,
     openUpload: PropTypes.func,
     closeUpload: PropTypes.func,
-    make: PropTypes.func,
-    onLoading: PropTypes.func,
+    upload: PropTypes.func,
 }

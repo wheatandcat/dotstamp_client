@@ -1,30 +1,20 @@
 import * as types from "../../constants/ActionTypes"
 
 import {getUniqueStr} from "../../utils/common"
-import {SOUND_STATUS_PRIVATE, STATUS_PRIVATE, STATUS_PUBLIC, STATUS_REMEAKE, STATUS_RUNNING} from "../../constants/contribution"
+import {STATUS_PRIVATE, STATUS_PUBLIC, STATUS_REMEAKE, STATUS_RUNNING} from "../../constants/contribution"
 
 const initialState = {
     List:[],
-    MakeSound: false,
-    Loading: false,
     Hash: "",
-    SoundStatus: SOUND_STATUS_PRIVATE,
     MakeMovie: false,
     MovieStatus: STATUS_PRIVATE,
 }
 
 export default function Show (state = initialState , action) {
     switch (action.type) {
-    case types.ON_LOADING: {
-        state.Loading = true
-
-        return JSON.parse(JSON.stringify(state))
-    }
     case types.GET_CONTRIBUTION_FORM_SOUND_DETAIL: {
         state.List = action.response.List
-        state.MakeSound = action.response.SoundFile
         state.Hash = getUniqueStr()
-        state.SoundStatus = action.response.SoundStatus
         state.MakeMovie = action.response.MovieFile
 
         if (action.response.Movie != 0) {
@@ -43,11 +33,6 @@ export default function Show (state = initialState , action) {
 
         return JSON.parse(JSON.stringify(state))
     }
-    case types.SAVE_SOUND_SHOW: {
-        state.SoundStatus = action.receiveParam.soundStatus
-
-        return JSON.parse(JSON.stringify(state))
-    }
     case types.REFLECT_SOUND_SHOW: {
         return JSON.parse(JSON.stringify(state))
     }
@@ -58,19 +43,17 @@ export default function Show (state = initialState , action) {
 
         return JSON.parse(JSON.stringify(state))
     }
-    case types.MAKE_SOUND_SHOW: {
-        state.MakeSound = true
-        state.Loading = false
-        state.Hash = getUniqueStr()
-
-        return JSON.parse(JSON.stringify(state))
-    }
     case types.MAKE_SOUND_SHOW_MOVIE: {
         state.MakeMovie = true
 
         if (state.MovieStatus == STATUS_PUBLIC) {
             state.MovieStatus = STATUS_REMEAKE
         }
+
+        return JSON.parse(JSON.stringify(state))
+    }
+    case types.UPLOAD_SOUND_YOUTUBE: {
+        state.MovieStatus = STATUS_PUBLIC
 
         return JSON.parse(JSON.stringify(state))
     }

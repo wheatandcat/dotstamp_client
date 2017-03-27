@@ -1,7 +1,6 @@
 import {connect} from "react-redux"
 import Menu from "../components/menu"
 import {message} from "../../message/actions/show"
-import {on} from "../../loading/actions/show"
 import {uploading, openUpload, closeUpload, makingMovie, open, close} from "../action/menu"
 import {fetchPostsIfNeeded} from "../../utils/fetch"
 import * as types from "../../constants/ActionTypes"
@@ -33,21 +32,10 @@ function mapDispatchToProps (dispatch) {
         message: (val, type) => {
             dispatch(message(val, type))
         },
-        onLoading: () => {
-            dispatch(on())
-        },
-        makeMovie: (action) => {
-            dispatch(fetchPostsIfNeeded(
-                    "movie/make/",
-                    types.MAKE_SOUND_SHOW_MOVIE,
-                    action
-                )
-            )
-        },
         make: (action) => {
             dispatch(fetchPostsIfNeeded(
-                    "sound/make/",
-                    types.MAKE_SOUND_SHOW,
+                    "movie//make/",
+                    types.MAKE_SOUND_SHOW_MOVIE,
                     action
                 )
             ).then(() => {
@@ -58,14 +46,19 @@ function mapDispatchToProps (dispatch) {
                 ))
             })
         },
-        save: (action) => {
+        upload: (action) => {
             dispatch(fetchPostsIfNeeded(
-                    "sound/save/",
-                    types.SAVE_SOUND_SHOW,
-                    action,
+                    "movie/upload/",
+                    types.UPLOAD_SOUND_YOUTUBE,
                     action
                 )
-            )
+            ).then(() => {
+                dispatch(fetchPostsIfNeeded(
+                    "sound/show/",
+                    types.GET_CONTRIBUTION_FORM_SOUND_DETAIL,
+                    action
+                ))
+            })
         },
         reflect: (action) => {
             dispatch(fetchPostsIfNeeded(

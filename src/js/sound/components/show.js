@@ -197,7 +197,7 @@ export default class Show extends Component {
                 <MessageSow />
                 <div className="container">
                     <PageHeader>
-                        &nbsp;&nbsp;<Glyphicon glyph="bullhorn"/>&nbsp;読み上げを編集する（β版）
+                        &nbsp;&nbsp;<Glyphicon glyph="bullhorn"/>&nbsp;動画を編集する（β版）
                     </PageHeader>
                     <Menu userContributionId={this.props.params.id} />
                 </div>
