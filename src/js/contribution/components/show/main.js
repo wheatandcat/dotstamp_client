@@ -1,13 +1,13 @@
-import React, { Component, PropTypes } from "react"
-import {Media, Alert, Well, Radio, FormGroup, Modal, Dropdown, MenuItem, Grid, Row, Col, Button, PageHeader, Glyphicon} from "react-bootstrap"
-import YouTube from "react-youtube"
+import React, {Component, PropTypes} from "react"
+import {Label, Well, Radio, FormGroup, Modal, Dropdown, MenuItem, Grid, Row, Col, Button, PageHeader, Glyphicon} from "react-bootstrap"
 
 import ContributionShowFrame from "./frame"
 import {PROBLEM_TYPE_SPAM, PROBLEM_TYPE_INAPPROPRIATE} from "../../../constants/contribution"
 import Footer from "../../../utils/parts/footer"
-import {Shift, HalfTop, Middle, Center, Large, Info, Paragraph, Gap} from "../../../../css/common.css"
+import {FontNormal, Shift, HalfTop, Middle, Center, Large, Info, Paragraph, Gap} from "../../../../css/common.css"
 import {Author} from "../../../../css/contribution.css"
 
+import YouTube from "../../../utils/youtube"
 import Icon from "../../../utils/parts/icon"
 import Tag from "../../../utils/parts/tag"
 import {DateTimeFormat} from "../../../utils/common"
@@ -239,29 +239,13 @@ export default class Main extends Component {
             return ""
         }
 
-        const opts = {
-            height: "390",
-            width: "640",
-            playerVars: {
-                autoplay: 0,
-            }
-        }
-
         return (
             <div className="container">
-                <Alert bsStyle="info">
-                    <Media>
-                        <Media.Left>
-                            <YouTube
-                              videoId={this.props.contributionShow.Movie.movie_id}
-                              opts={opts}
-                            />
-                        </Media.Left>
-                        <Media.Body>
-                            <Media.Heading>記事動画</Media.Heading>
-                        </Media.Body>
-                    </Media>
-                </Alert>
+                 <Label bsStyle="success" className={FontNormal}>記事を読み上げる</Label>
+                <br />
+                <YouTube
+                  videoId={this.props.contributionShow.Movie.movie_id}
+                />
             </div>
         )
     }

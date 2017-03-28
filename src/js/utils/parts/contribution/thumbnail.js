@@ -21,6 +21,9 @@ export default class Thumbnail extends Component {
     getShowPath(id) {
         return "/contribution/show/" + id
     }
+    /**
+     * 検索一致を取得する
+     */
     getSearchMatch() {
         let search = this.props.Search
 
@@ -62,6 +65,9 @@ export default class Thumbnail extends Component {
             }
         })
     }
+    /**
+     * 非公開を取得する
+     */
     getPrivate() {
         return (
             <Media className={Disable}>
@@ -85,7 +91,6 @@ export default class Thumbnail extends Component {
             </Media>
         )
     }
-
     /**
      * 描画する
      *
@@ -105,7 +110,7 @@ export default class Thumbnail extends Component {
         if (this.props.Movie.movie_id != "") {
             sound = (
                 <span>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<Label bsStyle="warning">動画あり</Label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<Label bsStyle="warning">読み上げ公開</Label>
                 </span>
             )
         }

@@ -8,6 +8,7 @@ const initialState = {
     Hash: "",
     MakeMovie: false,
     MovieStatus: STATUS_PRIVATE,
+    MovieID: "",
 }
 
 export default function Show (state = initialState , action) {
@@ -19,6 +20,7 @@ export default function Show (state = initialState , action) {
 
         if (action.response.Movie != 0) {
             state.MovieStatus = action.response.Movie.movie_status
+            state.MovieID = action.response.Movie.movie_id
         }
 
         return JSON.parse(JSON.stringify(state))

@@ -155,6 +155,11 @@
     font-size: 12px;
 }
 
+.FontNormal {
+    font-weight: normal;    
+}
+
+
 .Dark {
     color: rgb(0, 0, 0);
     font-weight: bold;

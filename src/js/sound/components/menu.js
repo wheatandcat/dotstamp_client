@@ -1,12 +1,11 @@
 /*global BASE_URL*/
 import React, {PropTypes, Component} from "react"
-import {Alert, Modal, ButtonToolbar, Well, FormGroup, Checkbox, Glyphicon, Button} from "react-bootstrap"
+import {Table, Alert, Modal, ButtonToolbar, Well, FormGroup, Checkbox, Glyphicon, Button} from "react-bootstrap"
 import Sound from "../../utils/sound"
 import {STATUS_PUBLIC, STATUS_RUNNING} from "../../constants/contribution"
 import {NoSpace} from "../../../css/common.css"
-
 import {getTopUrl} from "../../utils/common"
-
+import YouTube from "../../utils/youtube"
 import {Link} from "react-router"
 
 var self
@@ -21,7 +20,6 @@ window.document.getElementById("uploadToken").onchange = function(){
 
     return
 }
-
 
 export default class Menu extends Component {
     componentWillMount() {
@@ -133,6 +131,7 @@ export default class Menu extends Component {
                         ・Googleのアカウントが必要です。<br />
                         ・事前にYouTubeのマイチャンネルの作成が必要です。<br />
                         ・アップロードした動画は自身のマイチャンネルに追加されます<br />
+                        ・再生時間が短すぎる動画はアップロードできないみたいなのでご注意下さい<br />
                         ・Youtubeに15分以上の動画をアップロードするにはアカウント認証が必要です。詳細は、<a href="https://support.google.com/youtube/answer/71673?hl=ja" target="_blank">こちら</a>
                     </Alert>
                     <div>
@@ -157,7 +156,9 @@ export default class Menu extends Component {
      */
     getUploadYoutube() {
         if (!this.props.soundShow.MakeMovie) {
-            return ""
+            <Button bsStyle="danger" disabled>
+                YouTubeに動画をアップロードする
+            </Button>
         }
 
         if (this.props.soundShow.MovieStatus == STATUS_RUNNING) {
@@ -191,6 +192,120 @@ export default class Menu extends Component {
         })
     }
     /**
+     * 情報を取得する
+     */
+    getInformation() {
+        let downloadMp3 = (
+            <span>
+                ファイル無し &nbsp;(
+                <Button bsStyle="link" bsSize="small" onClick={() => this.make()}>
+                    作成する
+                </Button>
+                )
+            </span>
+        )
+        let downloadMp4 = (
+            <span>
+                ファイル無し &nbsp;(
+                <Button bsStyle="link" bsSize="small" onClick={() => this.make()}>
+                    作成する
+                </Button>
+                )
+            </span>
+        )
+
+        if (this.props.soundMenu.Making) {
+            downloadMp3 = (
+                <span>作成中...</span>
+            )
+            downloadMp4 = (
+                <span>作成中...</span>
+            )
+        }
+
+        if (this.props.soundShow.MakeMovie) {
+            downloadMp3 = (
+                <Button
+                    bsStyle="success"
+                    bsSize="small"
+                    href={getTopUrl() + "static/files/sound/" + this.props.userContributionId + ".mp3"}
+                    target="_blank"
+                >
+                    ダウンロード
+                </Button>
+            )
+            downloadMp4 = (
+                <Button
+                    bsStyle="success"
+                    bsSize="small"
+                    href={getTopUrl() + "static/files/movie/" + this.props.userContributionId + ".mp4"}
+                    target="_blank"
+                >
+                    ダウンロード
+                </Button>
+            )
+        }
+
+        let upload = "アップロードしていません"
+
+        if (this.props.soundShow.MovieID != ""){
+            upload = "アップロード済み"
+        }
+
+        let message = ""
+        if (this.props.soundMenu.Information.Show) {
+            message = (
+                <Alert bsStyle="success">
+                    <strong>アップロード完了しました！</strong><br />
+                    <Button bsStyle="link" href="https://www.youtube.com/my_videos" target="_blank">
+                        YouTubeマイチャンネル
+                    </Button>
+                </Alert>
+            )
+        }
+
+        return (
+            <Modal show={this.props.soundMenu.Information.Show} onHide={this.props.closeInformation} bsSize="large">
+                <Modal.Header closeButton>
+                    <Modal.Title>
+                        <Glyphicon glyph="info-sign"/>&nbsp;詳細情報
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {message}
+                    <Table responsive>
+                        <thead>
+                            <tr>
+                                <th>音声</th>
+                                <th>動画</th>
+                                <th>YouTube</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{downloadMp3}</td>
+                                <td>{downloadMp4}</td>
+                                <td>{upload}</td>
+                            </tr>
+                        </tbody>
+                    </Table>
+                    <div>
+                        <strong>動画情報</strong>
+                    </div>
+                    <YouTube
+                        videoId={this.props.soundShow.MovieID}
+                        screen={true}
+                    />
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button onClick={this.props.closeInformation}>
+                        閉じる
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+        )
+    }
+    /**
      * 描画する
      *
      * @return {object} html
@@ -209,6 +324,7 @@ export default class Menu extends Component {
 
         return (
             <div>
+                {this.getInformation()}
                 {this.getUploadConfirm()}
                 {this.getReMakeConfirm()}
                 <div>
@@ -238,6 +354,11 @@ export default class Menu extends Component {
                         &nbsp;
                         &nbsp;
                         {this.getUploadYoutube()}
+                        &nbsp;
+                        &nbsp;
+                        <Button onClick={() => this.props.openInformation()}>
+                            <Glyphicon glyph="info-sign"/>&nbsp;詳細
+                        </Button>
                     </ButtonToolbar>
                 </div>
                 <br />
@@ -266,4 +387,6 @@ Menu.propTypes = {
     openUpload: PropTypes.func,
     closeUpload: PropTypes.func,
     upload: PropTypes.func,
+    openInformation: PropTypes.func,
+    closeInformation: PropTypes.func,
 }

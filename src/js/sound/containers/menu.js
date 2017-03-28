@@ -1,7 +1,7 @@
 import {connect} from "react-redux"
 import Menu from "../components/menu"
 import {message} from "../../message/actions/show"
-import {uploading, openUpload, closeUpload, makingMovie, open, close} from "../action/menu"
+import {openInformation, closeInformation, uploading, openUpload, closeUpload, makingMovie, open, close} from "../action/menu"
 import {fetchPostsIfNeeded} from "../../utils/fetch"
 import * as types from "../../constants/ActionTypes"
 
@@ -28,6 +28,12 @@ function mapDispatchToProps (dispatch) {
         },
         uploading: () => {
             dispatch(uploading())
+        },
+        openInformation: () => {
+            dispatch(openInformation())
+        },
+        closeInformation: () => {
+            dispatch(closeInformation())
         },
         message: (val, type) => {
             dispatch(message(val, type))

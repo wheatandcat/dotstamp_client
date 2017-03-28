@@ -65,3 +65,25 @@ export function uploading() {
         type: types.UPLOADING_SOUND_MENU_MOVIE,
     }
 }
+
+/**
+ * 情報を開く
+ *
+ * @return {object} アクション
+ */
+export function openInformation() {
+    return {
+        type: types.OPEN_SOUND_MENU_INFORMATION,
+    }
+}
+
+/**
+ * 情報を閉じる
+ *
+ * @return {object} アクション
+ */
+export function closeInformation() {
+    return {
+        type: types.CLOSE_SOUND_MENU_INFORMATION,
+    }
+}
