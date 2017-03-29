@@ -43,7 +43,7 @@ export default class YouTubeWrapper extends Component {
             finished: false,
             screen: this.state.screen,
         })
-        target.stopVideo()
+        target.pauseVideo()
     }
     /**
      * プレイヤーを取得する

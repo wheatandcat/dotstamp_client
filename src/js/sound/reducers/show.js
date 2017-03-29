@@ -36,6 +36,8 @@ export default function Show (state = initialState , action) {
         state.MovieStatus = action.response.MovieStatus
         if (state.MovieStatus == STATUS_RUNNING) {
             state.MovieMakeListener = true
+        } else  {
+            state.MakeMovie = true
         }
 
         return JSON.parse(JSON.stringify(state))
