@@ -156,9 +156,11 @@ export default class Menu extends Component {
      */
     getUploadYoutube() {
         if (!this.props.soundShow.MakeMovie) {
-            <Button bsStyle="danger" disabled>
-                YouTubeに動画をアップロードする
-            </Button>
+            return (
+                <Button bsStyle="danger" disabled>
+                    YouTubeに動画をアップロードする
+                </Button>
+            )
         }
 
         if (this.props.soundShow.MovieStatus == STATUS_RUNNING) {
@@ -253,7 +255,7 @@ export default class Menu extends Component {
         }
 
         let message = ""
-        if (this.props.soundMenu.Information.Show) {
+        if (this.props.soundMenu.Information.Message != "") {
             message = (
                 <Alert bsStyle="success">
                     <strong>アップロード完了しました！</strong><br />

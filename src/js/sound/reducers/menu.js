@@ -5,7 +5,7 @@ const initialState = {
     OpenUpload: false,
     Making: false,
     Information: {
-        Shwo:false,
+        Shwo: false,
         Message: "",
     }
 }
