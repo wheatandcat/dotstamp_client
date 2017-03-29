@@ -19,6 +19,15 @@ export default class Show extends Component {
     componentWillMount() {
         this.getDeatil(this.props.params.id)
     }
+    componentDidUpdate() {
+        if (!this.props.soundShow.MovieMakeListener) {
+            return
+        }
+
+        this.props.offMovieMakeListener()
+
+        setTimeout(() => {this.props.check({userContributionId: this.props.params.id})}, 30000)
+    }
     /**
      * 詳細を取得する
      *
@@ -234,5 +243,7 @@ Show.propTypes = {
     changeVoiceType: PropTypes.func,
     saveBodySound: PropTypes.func,
     saveVoiceType: PropTypes.func,
+    offMovieMakeListener: PropTypes.func,
+    check: PropTypes.func,
     message: PropTypes.func,
 }

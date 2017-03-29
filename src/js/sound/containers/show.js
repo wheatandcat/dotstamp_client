@@ -1,7 +1,7 @@
 import { connect } from "react-redux"
 import Show from "../components/show"
 import {message} from "../../message/actions/show"
-import {changeBodySound, changeVoiceType} from "../action/show"
+import {changeBodySound, changeVoiceType, offMovieMakeListener} from "../action/show"
 import {fetchPostsIfNeeded} from "../../utils/fetch"
 import * as types from "../../constants/ActionTypes"
 
@@ -31,6 +31,14 @@ function mapDispatchToProps (dispatch) {
                 )
             )
         },
+        check: (action) => {
+            dispatch(fetchPostsIfNeeded(
+                    "movie/check/",
+                    types.CHECK_SOUND_SHOW_MOVIE,
+                    action
+                )
+            )
+        },
         saveVoiceType: (action) => {
             dispatch(fetchPostsIfNeeded(
                     "sound/saveVoice/",
@@ -45,6 +53,9 @@ function mapDispatchToProps (dispatch) {
         },
         changeVoiceType: (priority, voiceType) => {
             dispatch(changeVoiceType(priority, voiceType))
+        },
+        offMovieMakeListener: () => {
+            dispatch(offMovieMakeListener())
         }
     }
 }

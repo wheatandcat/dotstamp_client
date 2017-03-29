@@ -40,17 +40,11 @@ function mapDispatchToProps (dispatch) {
         },
         make: (action) => {
             dispatch(fetchPostsIfNeeded(
-                    "movie//make/",
+                    "movie/make/",
                     types.MAKE_SOUND_SHOW_MOVIE,
                     action
                 )
-            ).then(() => {
-                dispatch(fetchPostsIfNeeded(
-                    "sound/show/",
-                    types.GET_CONTRIBUTION_FORM_SOUND_DETAIL,
-                    action
-                ))
-            })
+            )
         },
         upload: (action) => {
             dispatch(fetchPostsIfNeeded(

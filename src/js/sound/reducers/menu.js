@@ -1,4 +1,6 @@
 import * as types from "../../constants/ActionTypes"
+import {STATUS_RUNNING} from "../../constants/contribution"
+
 
 const initialState = {
     Open: false,
@@ -37,8 +39,13 @@ export default function Show (state = initialState , action) {
 
         return JSON.parse(JSON.stringify(state))
     }
+    case types.CHECK_SOUND_SHOW_MOVIE: {
+        state.Making = (state.MovieStatus == STATUS_RUNNING)
+
+        return JSON.parse(JSON.stringify(state))
+    }
     case types.MAKE_SOUND_SHOW_MOVIE: {
-        state.Making = false
+        state.Making = true
         state.Open = false
 
         return JSON.parse(JSON.stringify(state))

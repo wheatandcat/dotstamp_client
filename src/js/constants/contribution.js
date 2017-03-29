@@ -34,3 +34,7 @@ export const STATUS_ERROR = 3
 export const STATUS_RUNNING = 4
 /** 状態：作り直し */
 export const STATUS_REMEAKE = 5
+/** 状態：アップロード中 */
+export const STATUS_UPLOADING = 6
+/** 状態：作成済み */
+export const STATUS_MADE = 7

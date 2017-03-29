@@ -2,7 +2,7 @@
 import React, {PropTypes, Component} from "react"
 import {Table, Alert, Modal, ButtonToolbar, Well, FormGroup, Checkbox, Glyphicon, Button} from "react-bootstrap"
 import Sound from "../../utils/sound"
-import {STATUS_PUBLIC, STATUS_RUNNING} from "../../constants/contribution"
+import {STATUS_PUBLIC, STATUS_UPLOADING, STATUS_RUNNING} from "../../constants/contribution"
 import {NoSpace} from "../../../css/common.css"
 import {getTopUrl} from "../../utils/common"
 import YouTube from "../../utils/youtube"
@@ -59,7 +59,7 @@ export default class Menu extends Component {
                 <Modal.Body>
                     <Alert bsStyle="danger">
                         <strong>注意！！</strong><br />
-                        動画を作り直した場合、記事と動画のリンクが外れます
+                        動画作成には、10分以上かかる場合があります
                     </Alert>
                     <div>
                         動画ファイルを作り直しますか？
@@ -82,10 +82,18 @@ export default class Menu extends Component {
      * @return {object} html
      */
     getMakeMovie() {
-        if (this.props.soundMenu.Making) {
+        if (this.props.soundShow.MovieStatus == STATUS_RUNNING) {
             return (
                  <Button bsStyle="warning" active>
                      動画を作成中...
+                 </Button>
+            )
+        }
+
+        if (this.props.soundShow.MovieStatus == STATUS_UPLOADING) {
+            return (
+                 <Button bsStyle="warning" disabled>
+                      動画を作成する
                  </Button>
             )
         }
@@ -155,7 +163,7 @@ export default class Menu extends Component {
      * @return {object} html
      */
     getUploadYoutube() {
-        if (!this.props.soundShow.MakeMovie) {
+        if (!this.props.soundShow.MakeMovie || this.props.soundShow.MovieStatus == STATUS_RUNNING) {
             return (
                 <Button bsStyle="danger" disabled>
                     YouTubeに動画をアップロードする
@@ -163,7 +171,7 @@ export default class Menu extends Component {
             )
         }
 
-        if (this.props.soundShow.MovieStatus == STATUS_RUNNING) {
+        if (this.props.soundShow.MovieStatus == STATUS_UPLOADING) {
             return (
                 <Button bsStyle="danger" active >
                     YouTubeに動画をアップロード中...

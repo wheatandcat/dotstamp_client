@@ -42,3 +42,12 @@ export function changeMovieStatus(movieStatus) {
         movieStatus: movieStatus,
     }
 }
+
+/**
+ * 作成状態の監視をOFFにする
+ */
+export function offMovieMakeListener() {
+    return {
+        type: types.OFF_SOUND_SHOW_MOVIE_MAKE_LISTENER,
+    }
+}

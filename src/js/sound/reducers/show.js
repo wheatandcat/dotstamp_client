@@ -1,7 +1,7 @@
 import * as types from "../../constants/ActionTypes"
 
 import {getUniqueStr} from "../../utils/common"
-import {STATUS_PRIVATE, STATUS_PUBLIC, STATUS_REMEAKE, STATUS_RUNNING} from "../../constants/contribution"
+import {STATUS_PRIVATE, STATUS_PUBLIC, STATUS_UPLOADING, STATUS_RUNNING} from "../../constants/contribution"
 
 const initialState = {
     List:[],
@@ -9,6 +9,8 @@ const initialState = {
     MakeMovie: false,
     MovieStatus: STATUS_PRIVATE,
     MovieID: "",
+    CheckMake: false,
+    MovieMakeListener: false,
 }
 
 export default function Show (state = initialState , action) {
@@ -22,6 +24,24 @@ export default function Show (state = initialState , action) {
             state.MovieStatus = action.response.Movie.movie_status
             state.MovieID = action.response.Movie.movie_id
         }
+
+        if (state.MovieStatus == STATUS_RUNNING) {
+            state.CheckMake = true
+            state.MovieMakeListener = true
+        }
+
+        return JSON.parse(JSON.stringify(state))
+    }
+    case types.CHECK_SOUND_SHOW_MOVIE: {
+        state.MovieStatus = action.response.MovieStatus
+        if (state.MovieStatus == STATUS_RUNNING) {
+            state.MovieMakeListener = true
+        }
+
+        return JSON.parse(JSON.stringify(state))
+    }
+    case types.OFF_SOUND_SHOW_MOVIE_MAKE_LISTENER: {
+        state.MovieMakeListener = false
 
         return JSON.parse(JSON.stringify(state))
     }
@@ -48,9 +68,10 @@ export default function Show (state = initialState , action) {
     case types.MAKE_SOUND_SHOW_MOVIE: {
         state.MakeMovie = true
 
-        if (state.MovieStatus == STATUS_PUBLIC) {
-            state.MovieStatus = STATUS_REMEAKE
-        }
+        state.MovieStatus = STATUS_RUNNING
+
+        state.CheckMake = true
+        state.MovieMakeListener = true
 
         return JSON.parse(JSON.stringify(state))
     }
@@ -60,7 +81,7 @@ export default function Show (state = initialState , action) {
         return JSON.parse(JSON.stringify(state))
     }
     case types.UPLOADING_SOUND_MENU_MOVIE: {
-        state.MovieStatus = STATUS_RUNNING
+        state.MovieStatus = STATUS_UPLOADING
 
         return JSON.parse(JSON.stringify(state))
     }
