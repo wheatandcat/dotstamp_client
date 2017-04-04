@@ -143,6 +143,7 @@ export default class Header extends Component {
             ? this.refs.tag.value.trim()
             : ""
         let body = this.props.contributionTalk
+
         let action = {
             userContributionId: contributionId,
             title: title,

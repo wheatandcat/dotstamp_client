@@ -17,13 +17,17 @@ const initialState = []
  */
 function getAddBodyState(character, body, talkType, directionType, priority) {
     return {
-        Body: body,
+        Body: replaceBody(body),
         Character: character,
         DirectionType: directionType,
         TalkType: talkType,
         Edit: false,
         Priority: priority,
     }
+}
+
+function replaceBody(body) {
+    return body.replace("%", "％").replace("&", "＆").replace(";", "；")
 }
 
 export default function Talk (state = initialState , action) {
@@ -73,7 +77,7 @@ export default function Talk (state = initialState , action) {
         return state
     }
     case types.EDIT_CONTRIBUTION_FORM_BODY: {
-        list[action.priority].Body = action.body
+        list[action.priority].Body = replaceBody(action.body)
         list[action.priority].Character = action.character
         list[action.priority].TalkType = action.talkType
         list[action.priority].DirectionType = action.directionType
