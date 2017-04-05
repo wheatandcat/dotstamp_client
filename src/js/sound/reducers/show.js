@@ -10,7 +10,9 @@ const initialState = {
     MovieStatus: STATUS_PRIVATE,
     MovieID: "",
     CheckMake: false,
+    Detail: false,
     MovieMakeListener: false,
+    VoiceList: false,
 }
 
 export default function Show (state = initialState , action) {
@@ -29,6 +31,7 @@ export default function Show (state = initialState , action) {
             state.CheckMake = true
             state.MovieMakeListener = true
         }
+        state.Detail = false
 
         return JSON.parse(JSON.stringify(state))
     }
@@ -37,7 +40,9 @@ export default function Show (state = initialState , action) {
         if (state.MovieStatus == STATUS_RUNNING) {
             state.MovieMakeListener = true
         } else  {
+            state.MovieMakeListener = false
             state.MakeMovie = true
+            state.Detail = true
         }
 
         return JSON.parse(JSON.stringify(state))
@@ -84,6 +89,17 @@ export default function Show (state = initialState , action) {
     }
     case types.UPLOADING_SOUND_MENU_MOVIE: {
         state.MovieStatus = STATUS_UPLOADING
+
+        return JSON.parse(JSON.stringify(state))
+    }
+    case types.OPEN_SOUND_SHOW_VOICE_LIST: {
+        state.VoiceList = true
+
+        return JSON.parse(JSON.stringify(state))
+    }
+    case types.SAVE_SOUND_SHOW_VOICE_TYPE_LIST:
+    case types.CLOSE_SOUND_SHOW_VOICE_LIST: {
+        state.VoiceList = false
 
         return JSON.parse(JSON.stringify(state))
     }

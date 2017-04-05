@@ -51,3 +51,21 @@ export function offMovieMakeListener() {
         type: types.OFF_SOUND_SHOW_MOVIE_MAKE_LISTENER,
     }
 }
+
+/**
+ * ボイスリストを開く
+ */
+export function openVoiceList() {
+    return {
+        type: types.OPEN_SOUND_SHOW_VOICE_LIST,
+    }
+}
+
+/**
+ * ボイスリストを閉じる
+ */
+export function closeVoiceList() {
+    return {
+        type: types.CLOSE_SOUND_SHOW_VOICE_LIST,
+    }
+}

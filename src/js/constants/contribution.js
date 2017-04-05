@@ -38,3 +38,8 @@ export const STATUS_REMEAKE = 5
 export const STATUS_UPLOADING = 6
 /** 状態：作成済み */
 export const STATUS_MADE = 7
+
+/** 作成済み */
+export const MAKE_STATUS_MADE = 1
+/** 未作成 */
+export const MAKE_STATUS_UNCREATED = 2

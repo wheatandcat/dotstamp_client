@@ -1,7 +1,8 @@
 /*global BASE_URL*/
 import React, {PropTypes, Component} from "react"
-import {MenuItem, Dropdown, FormControl, Table, PageHeader, Glyphicon, Button} from "react-bootstrap"
+import {Alert, FormGroup, ControlLabel, ButtonToolbar, Modal, MenuItem, Dropdown, FormControl, Table, PageHeader, Glyphicon, Button} from "react-bootstrap"
 import {VOICE_TYPE, VOICE_TYPE_MAP} from "../../constants/common"
+import {MAKE_STATUS_MADE} from "../../constants/contribution"
 import {TALK_TYPE_IMAGE} from "../../contribution/actions/talk"
 import Image, {IMAGE_DISPLAY_TYPE_TALK_IMAGE} from "../../utils/image"
 
@@ -20,6 +21,10 @@ export default class Show extends Component {
         this.getDeatil(this.props.params.id)
     }
     componentDidUpdate() {
+        if (this.props.soundShow.Detail) {
+            this.getDeatil(this.props.params.id)
+        }
+
         if (!this.props.soundShow.MovieMakeListener) {
             return
         }
@@ -151,7 +156,7 @@ export default class Show extends Component {
      */
     getItem(item) {
         let make = ""
-        if (item.make_status) {
+        if (item.make_status == MAKE_STATUS_MADE) {
             let name = item.user_contribution_id + "_" + item.Priority
             make = (
                 <Sound
@@ -196,6 +201,55 @@ export default class Show extends Component {
         )
     }
     /**
+     * ボイスタイプリストを保存する
+     */
+    saveVoiceTypeList() {
+        this.props.saveVoiceTypeList({
+            userContributionId: this.props.params.id,
+            voiceType: this.selectVoice.value,
+        })
+
+        this.props.message("音声タイプの一括変更を実行", "success")
+    }
+    /**
+     * ボイスタイプリストを取得する
+     */
+    getVoiceTypeList() {
+        return (
+            <Modal show={this.props.soundShow.VoiceList} onHide={this.props.closeVoiceList}  bsSize="large">
+                <Modal.Header closeButton>
+                    <Modal.Title>一括で音声タイプを変更する</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <div>
+                        <Alert bsStyle="info">
+                            一括で変換する音声タイプを選択して下さい。
+                            <br />
+                            <br />
+                            <FormGroup controlId="formControlsSelect" bsSize="small">
+                                <ControlLabel>音声タイプ</ControlLabel>
+                                <FormControl componentClass="select" placeholder="select" inputRef={ref => { this.selectVoice = ref}}>
+                                {VOICE_TYPE.map((voive) => {
+                                    return (
+                                        <option value={voive.type} key={voive.type}>{voive.name}</option>
+                                    )
+                                })}
+                                </FormControl>
+                            </FormGroup>
+                        </Alert>
+                    </div>
+                     <ButtonToolbar>
+                        <Button onClick={this.props.closeVoiceList}>キャンセル</Button>
+                        &nbsp;
+                        &nbsp;
+                        <Button bsStyle="warning" onClick={() => this.saveVoiceTypeList()}>一括で変更する</Button>
+                    </ButtonToolbar>
+                </Modal.Body>
+                <Modal.Footer></Modal.Footer>
+            </Modal>
+        )
+    }
+    /**
      * 描画する
      *
      * @return {object} html
@@ -203,6 +257,7 @@ export default class Show extends Component {
     render() {
         return (
             <div>
+                {this.getVoiceTypeList()}
                 <MessageSow />
                 <div className="container">
                     <PageHeader>
@@ -218,7 +273,19 @@ export default class Show extends Component {
                                 <th>本文</th>
                                 <th>読み上げ本文</th>
                                 <th>操作</th>
-                                <th>音声タイプ設定</th>
+                                <th>
+                                    音声タイプ設定
+                                    <Dropdown id="sound-voice-dropdown-1" className="pull-right" pullRight>
+                                        <Dropdown.Toggle noCaret bsSize="xsmall">
+                                            <Glyphicon glyph="list" />
+                                        </Dropdown.Toggle>
+                                        <Dropdown.Menu>
+                                            <MenuItem eventKey="1" onClick={() => this.props.openVoiceList()}>
+                                                <Glyphicon glyph="bullhorn"/>&nbsp;&nbsp;一括で音声タイプを変更する
+                                            </MenuItem>
+                                        </Dropdown.Menu>
+                                    </Dropdown>
+                                </th>
                                 <th>再生</th>
                             </tr>
                         </thead>
@@ -244,6 +311,9 @@ Show.propTypes = {
     saveBodySound: PropTypes.func,
     saveVoiceType: PropTypes.func,
     offMovieMakeListener: PropTypes.func,
+    openVoiceList: PropTypes.func,
+    closeVoiceList: PropTypes.func,
+    saveVoiceTypeList: PropTypes.func,
     check: PropTypes.func,
     message: PropTypes.func,
 }

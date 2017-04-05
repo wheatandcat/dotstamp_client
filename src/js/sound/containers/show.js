@@ -1,7 +1,7 @@
 import { connect } from "react-redux"
 import Show from "../components/show"
 import {message} from "../../message/actions/show"
-import {changeBodySound, changeVoiceType, offMovieMakeListener} from "../action/show"
+import {openVoiceList, closeVoiceList, changeBodySound, changeVoiceType, offMovieMakeListener} from "../action/show"
 import {fetchPostsIfNeeded} from "../../utils/fetch"
 import * as types from "../../constants/ActionTypes"
 
@@ -48,6 +48,20 @@ function mapDispatchToProps (dispatch) {
                 )
             )
         },
+        saveVoiceTypeList: (action) => {
+            dispatch(fetchPostsIfNeeded(
+                    "sound/saveVoiceList/",
+                    types.SAVE_SOUND_SHOW_VOICE_TYPE_LIST,
+                    action
+                )
+            ).then(() => {
+                dispatch(fetchPostsIfNeeded(
+                    "sound/show/",
+                    types.GET_CONTRIBUTION_FORM_SOUND_DETAIL,
+                    action
+                ))
+            })
+        },
         changeBodySound: (priority, bodySound) => {
             dispatch(changeBodySound(priority, bodySound))
         },
@@ -56,6 +70,12 @@ function mapDispatchToProps (dispatch) {
         },
         offMovieMakeListener: () => {
             dispatch(offMovieMakeListener())
+        },
+        openVoiceList: () => {
+            dispatch(openVoiceList())
+        },
+        closeVoiceList: () => {
+            dispatch(closeVoiceList())
         }
     }
 }
