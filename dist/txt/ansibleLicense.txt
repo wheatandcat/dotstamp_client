@@ -31,6 +31,11 @@ https://sourceforge.net/projects/hts-engine/files/hts_engine%20API/hts_engine_AP
 Copyright (c) 2001-2015  Nagoya Institute of Technology
 https://sourceforge.net/projects/mmdagent/files/MMDAgent_Example/MMDAgent_Example-1.7/
 
+# AquesTalk
+
+http://www.a-quest.com/licence_free.html
+※開発ライセンスを受けて取得して使用しています
+
 ## sox
 
 Copyright (C) 1991, 1999 Free Software Foundation, Inc.
