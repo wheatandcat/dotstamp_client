@@ -30,10 +30,12 @@ export const VOICE_TYPE = [
         type: 6,
         name: "男性音声-普通(m100)",
     },
+    /*
     {
         type: 7,
         name: "ゆっくり-普通(AquesTalk)",
     }
+    */
 ]
 
 /** ボイスタイプマップ*/
@@ -45,5 +47,5 @@ export const VOICE_TYPE_MAP = {
     4: "女性音声-嬉しい(mei_happy)",
     5: "女性音声-悲しい(mei_sad)",
     6: "男性音声-普通(m100)",
-    7: "ゆっくり-普通(AquesTalk)",
+    //7: "ゆっくり-普通(AquesTalk)",
 }
