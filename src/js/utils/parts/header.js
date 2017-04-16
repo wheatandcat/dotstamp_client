@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from "react"
 import {connect} from "react-redux"
 import {Image, Navbar, FormGroup, FormControl, Button, Glyphicon, InputGroup} from "react-bootstrap"
 import {fetchPostsIfNeeded} from "../fetch"
-import LoginAuth from "./../../login/containers/auth"
+import LoginAuth from "./../../redux/login/containers/auth"
 import {Link} from "react-router"
 import * as types from "../../constants/ActionTypes"
 

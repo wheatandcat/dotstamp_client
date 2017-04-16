@@ -36,6 +36,11 @@ https://sourceforge.net/projects/mmdagent/files/MMDAgent_Example/MMDAgent_Exampl
 http://www.a-quest.com/licence_free.html
 ※開発ライセンスを受けて取得して使用しています
 
+# AqKanji2Koe 
+
+http://www.a-quest.com/licence_free.html
+※開発ライセンスを受けて取得して使用しています
+
 ## sox
 
 Copyright (C) 1991, 1999 Free Software Foundation, Inc.

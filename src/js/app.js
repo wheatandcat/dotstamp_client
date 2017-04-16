@@ -7,32 +7,32 @@ import { render } from "react-dom"
 import { Provider } from "react-redux"
 
 import configureStore from "./store/configureStore"
-import ContributionNew from "./contribution/containers/new"
-import ContributionEdit from "./contribution/containers/edit"
-import ContributionList from "./contribution/containers/list"
-import ContributionShow from "./contribution/containers/show"
-import ContributionSearch from "./contribution/containers/search"
+import ContributionNew from "./redux/contribution/containers/new"
+import ContributionEdit from "./redux/contribution/containers/edit"
+import ContributionList from "./redux/contribution/containers/list"
+import ContributionShow from "./redux/contribution/containers/show"
+import ContributionSearch from "./redux/contribution/containers/search"
 
-import UserContributionList from "./user/containers/contributionList"
-import UserMypage from "./user/containers/mypage"
-import UserFollowList from "./user/containers/followList"
+import UserContributionList from "./redux/user/containers/contributionList"
+import UserMypage from "./redux/user/containers/mypage"
+import UserFollowList from "./redux/user/containers/followList"
 
-import loginNew from "./login/containers/new"
-import loginLogin from "./login/containers/login"
+import loginNew from "./redux/login/containers/new"
+import loginLogin from "./redux/login/containers/login"
 
-import CharacterList from "./character/containers/list"
+import CharacterList from "./redux/character/containers/list"
 
-import PasswordInput from "./password/containers/input"
-import PasswordReset from "./password/containers/reset"
+import PasswordInput from "./redux/password/containers/input"
+import PasswordReset from "./redux/password/containers/reset"
 
-import SoundShow from "./sound/containers/show"
+import SoundShow from "./redux/sound/containers/show"
 
-import ErrorShow from "./error/containers/show"
+import ErrorShow from "./redux/error/containers/show"
 import Header from "./utils/parts/header"
 
-import questionShow from "./question/containers/show"
+import questionShow from "./redux/question/containers/show"
 
-import informationShow from "./information/containers/show"
+import informationShow from "./redux/information/containers/show"
 
 import About from "./utils/parts/about"
 import Help from "./utils/parts/help"
@@ -51,7 +51,6 @@ if (ENV=="production") {
 window.onhashchange = function() {
     window.scrollTo(0, 0)
 }
-
 
 class Menu extends Component {
     render () {

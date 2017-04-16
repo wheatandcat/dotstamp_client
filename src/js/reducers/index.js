@@ -1,36 +1,35 @@
 import {combineReducers} from "redux"
-import contributionEdit from "../contribution/reducers/edit"
-import contributionList from "../contribution/reducers/list"
-import contributionShow from "../contribution/reducers/show"
-import contributionTalk from "../contribution/reducers/talk"
-import contributionForm from "../contribution/reducers/form"
-import contributionSearch from "../contribution/reducers/search"
+import contributionEdit from "../redux/contribution/reducers/edit"
+import contributionList from "../redux/contribution/reducers/list"
+import contributionShow from "../redux/contribution/reducers/show"
+import contributionTalk from "../redux/contribution/reducers/talk"
+import contributionForm from "../redux/contribution/reducers/form"
+import contributionSearch from "../redux/contribution/reducers/search"
 
-import errorShow from "../error/reducers/show"
-import errorAlertMessage from "../error/reducers/alertMessage"
+import errorShow from "../redux/error/reducers/show"
+import errorAlertMessage from "../redux/error/reducers/alertMessage"
 
-import userContributionList from "../user/reducers/contributionList"
-import userMypage from "../user/reducers/mypage"
-import userFollowList from "../user/reducers/followList"
+import userContributionList from "../redux/user/reducers/contributionList"
+import userMypage from "../redux/user/reducers/mypage"
+import userFollowList from "../redux/user/reducers/followList"
 
-import characterList from "../character/reducers/list"
+import characterList from "../redux/character/reducers/list"
 
-import loginNew from "../login/reducers/new"
-import loginAuth from "../login/reducers/auth"
+import loginNew from "../redux/login/reducers/new"
+import loginAuth from "../redux/login/reducers/auth"
 
-import questionShow from "../question/reducers/show"
+import questionShow from "../redux/question/reducers/show"
 
-import passwordInput from "../password/reducers/input"
-import passwordReset from "../password/reducers/reset"
+import passwordInput from "../redux/password/reducers/input"
+import passwordReset from "../redux/password/reducers/reset"
 
-import soundShow from "../sound/reducers/show"
-import soundMenu from "../sound/reducers/menu"
+import soundShow from "../redux/sound/reducers/show"
+import soundMenu from "../redux/sound/reducers/menu"
 
-import informationShow from "../information/reducers/show"
+import informationShow from "../redux/information/reducers/show"
 
-import messageShow from "../message/reducers/show"
+import messageShow from "../redux/message/reducers/show"
 
-// 機能ごとのstateを管理
 const rootReducer = combineReducers({
     contributionEdit: contributionEdit,
     contributionList: contributionList,
