@@ -1,38 +1,40 @@
 import * as types from "../../../constants/ActionTypes"
 
 const initialState = {
-    Warning: false,
-    Message: "",
-    Open: false,
-    Text: "",
+  Warning: false,
+  Message: "",
+  Open: false,
+  Text: ""
 }
 
-export default function New (state = initialState , action) {
-    switch (action.type) {
-    case types.SET_LOGIN_USER: {
-        state.Warning = action.response.Warning
-        state.Message = action.response.Message
+export default function New(state = initialState, action) {
+  switch (action.type) {
+  case types.SET_LOGIN_USER:
+    {
+      state.Warning = action.response.Warning
+      state.Message = action.response.Message
 
-        if(!state.Warning) {
-            location.href = "/"
-        }
+      if (!state.Warning) {
+        location.href = "/"
+      }
 
-        return JSON.parse(JSON.stringify(action.response))
+      return JSON.parse(JSON.stringify(action.response))
     }
-    case types.SET_LOGIN_USER_ALERT: {
-        state.Warning = true
-        state.Message = action.message
+  case types.SET_LOGIN_USER_ALERT:
+    {
+      state.Warning = true
+      state.Message = action.message
 
-        return JSON.parse(JSON.stringify(state))
+      return JSON.parse(JSON.stringify(state))
     }
-    case types.OPEN_LOGIN_TERMS: {
-        state.Open = true
-        state.Text = action.response
+  case types.OPEN_LOGIN_TERMS:
+    {
+      state.Open = true
+      state.Text = action.response
 
-
-        return JSON.parse(JSON.stringify(state))
+      return JSON.parse(JSON.stringify(state))
     }
-    default:
-        return state
-    }
+  default:
+    return state
+  }
 }

@@ -8,11 +8,7 @@ import * as types from "../../../constants/ActionTypes"
  * @return {object} アクション
  */
 export function changeBodySound(priority, bodySound) {
-    return {
-        type: types.CHANGE_SOUND_SHOW_BODY_SOUND,
-        priority: priority,
-        bodySound: bodySound,
-    }
+  return {type: types.CHANGE_SOUND_SHOW_BODY_SOUND, priority: priority, bodySound: bodySound}
 }
 
 /**
@@ -23,11 +19,7 @@ export function changeBodySound(priority, bodySound) {
  * @return {object} アクション
  */
 export function changeVoiceType(priority, voiceType) {
-    return {
-        type: types.CHANGE_SOUND_SHOW_VOICE_TYPE,
-        priority: priority,
-        voiceType: voiceType,
-    }
+  return {type: types.CHANGE_SOUND_SHOW_VOICE_TYPE, priority: priority, voiceType: voiceType}
 }
 
 /**
@@ -37,35 +29,26 @@ export function changeVoiceType(priority, voiceType) {
  * @return {object} アクション
  */
 export function changeMovieStatus(movieStatus) {
-    return {
-        type: types.CHANGE_SOUND_SHOW_MOVIE_STATUS,
-        movieStatus: movieStatus,
-    }
+  return {type: types.CHANGE_SOUND_SHOW_MOVIE_STATUS, movieStatus: movieStatus}
 }
 
 /**
  * 作成状態の監視をOFFにする
  */
 export function offMovieMakeListener() {
-    return {
-        type: types.OFF_SOUND_SHOW_MOVIE_MAKE_LISTENER,
-    }
+  return {type: types.OFF_SOUND_SHOW_MOVIE_MAKE_LISTENER}
 }
 
 /**
  * ボイスリストを開く
  */
 export function openVoiceList() {
-    return {
-        type: types.OPEN_SOUND_SHOW_VOICE_LIST,
-    }
+  return {type: types.OPEN_SOUND_SHOW_VOICE_LIST}
 }
 
 /**
  * ボイスリストを閉じる
  */
 export function closeVoiceList() {
-    return {
-        type: types.CLOSE_SOUND_SHOW_VOICE_LIST,
-    }
+  return {type: types.CLOSE_SOUND_SHOW_VOICE_LIST}
 }

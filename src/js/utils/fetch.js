@@ -18,15 +18,15 @@ var fetchStateList = []
  * @return {object} アクション
  */
 export function fetchPostsIfNeeded(url, type, paramas = {}, receiveParam = {}) {
-    return (dispatch) => {
-        if (shouldFetchPosts(url)) {
-            // thunkからthunkを呼び出せる！
-            return dispatch(fetchPosts(url, type, paramas, receiveParam))
-        } else {
-            // 下記コードを呼び、wait forには何もないことを知らせる
-            return Promise.resolve()
-        }
+  return (dispatch) => {
+    if (shouldFetchPosts(url)) {
+      // thunkからthunkを呼び出せる！
+      return dispatch(fetchPosts(url, type, paramas, receiveParam))
+    } else {
+      // 下記コードを呼び、wait forには何もないことを知らせる
+      return Promise.resolve()
     }
+  }
 }
 
 /**
@@ -36,17 +36,17 @@ export function fetchPostsIfNeeded(url, type, paramas = {}, receiveParam = {}) {
  * @return {bool} 通信フラグ
  */
 function shouldFetchPosts(url) {
-    if (fetchStateList[url] == undefined) {
-        fetchStateList[url] = {
-            isFetching: false
-        }
+  if (fetchStateList[url] == undefined) {
+    fetchStateList[url] = {
+      isFetching: false
     }
+  }
 
-    if (!fetchStateList[url].isFetching) {
-        return true
-    }
+  if (!fetchStateList[url].isFetching) {
+    return true
+  }
 
-    return false
+  return false
 }
 
 /**
@@ -59,15 +59,15 @@ function shouldFetchPosts(url) {
  * @return {object} アクション
  */
 function receiveResponse(url, type, response, receiveParam = {}) {
-    fetchStateList[url].isFetching = false
+  fetchStateList[url].isFetching = false
 
-    return {
-        type,
-        url,
-        response,
-        receivedAt: Date.now(),
-        receiveParam
-    }
+  return {
+    type,
+    url,
+    response,
+    receivedAt: Date.now(),
+    receiveParam
+  }
 }
 
 /**
@@ -78,15 +78,15 @@ function receiveResponse(url, type, response, receiveParam = {}) {
  * @return {object} アクション
  */
 function receiveErrorResponse(url, response) {
-    fetchStateList[url].isFetching = false
+  fetchStateList[url].isFetching = false
 
-    return {
-        type: types.SHOW_ERROR_MESSAGE,
-        message: response.Message,
-        errCode: response.ErrCode,
-        show: true,
-        receivedAt: Date.now(),
-    }
+  return {
+    type: types.SHOW_ERROR_MESSAGE,
+    message: response.Message,
+    errCode: response.ErrCode,
+    show: true,
+    receivedAt: Date.now(),
+  }
 }
 
 /**
@@ -100,33 +100,33 @@ function receiveErrorResponse(url, response) {
  */
 function fetchPosts(url, type, paramas, receiveParam) {
 
-    const requestParams = {
-        method: "POST",
-        credentials: "same-origin",
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: Object.keys(paramas).map(function(key){ return key+"="+ paramas[key] }).join("&"),
-    }
+  const requestParams = {
+    method: "POST",
+    credentials: "same-origin",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: Object.keys(paramas).map(function(key){ return key+"="+ paramas[key] }).join("&"),
+  }
 
-    return dispatch => {
-        return fetch(host + url, requestParams)
-        .then(response =>
-            response.json().then(json => ({
-                status: response.status,
-                json
-            })
-        ))
-        .then(
-            ({ status, json }) => {
-                if (status >= 400) {
-                    return dispatch(receiveErrorResponse(url, json))
-                }
+  return dispatch => {
+    return fetch(host + url, requestParams)
+    .then(response =>
+      response.json().then(json => ({
+        status: response.status,
+        json
+      })
+    ))
+    .then(
+      ({ status, json }) => {
+        if (status >= 400) {
+          return dispatch(receiveErrorResponse(url, json))
+        }
 
-                dispatch(receiveResponse(url, type, json, receiveParam))
-            }
-        )
-    }
+        dispatch(receiveResponse(url, type, json, receiveParam))
+      }
+    )
+  }
 }
 
 /**
@@ -139,15 +139,15 @@ function fetchPosts(url, type, paramas, receiveParam) {
  * @return {object} アクション
  */
 export function fetchUploadIfNeeded(url, type, paramas, receiveParam = {}) {
-    return (dispatch) => {
-        if (shouldFetchPosts(url)) {
-            // thunkからthunkを呼び出せる！
-            return dispatch(fetchUpload(url, type, paramas, receiveParam))
-        } else {
-            // 下記コードを呼び、wait forには何もないことを知らせる
-            return Promise.resolve()
-        }
+  return (dispatch) => {
+    if (shouldFetchPosts(url)) {
+      // thunkからthunkを呼び出せる！
+      return dispatch(fetchUpload(url, type, paramas, receiveParam))
+    } else {
+      // 下記コードを呼び、wait forには何もないことを知らせる
+      return Promise.resolve()
     }
+  }
 }
 
 /**
@@ -160,35 +160,35 @@ export function fetchUploadIfNeeded(url, type, paramas, receiveParam = {}) {
  * @return {object} レスポンス
  */
 function fetchUpload(url, type, paramas, receiveParam) {
-    const requestParams = {
-        method: "POST",
-        credentials: "include",
-        headers: {
-            "Accept": "application/json, */*",
-        },
-        body: paramas,
-    }
+  const requestParams = {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      "Accept": "application/json, */*",
+    },
+    body: paramas,
+  }
 
-    return dispatch => {
-        return fetch(host + url, {
-            ...requestParams
-        })
-        .then(response =>
-            response.json().then(json => ({
-                status: response.status,
-                json
-            })
-        ))
-        .then(
-            ({ status, json }) => {
-                if (status >= 400) {
-                    return dispatch(receiveErrorResponse(url, json))
-                }
+  return dispatch => {
+    return fetch(host + url, {
+      ...requestParams
+    })
+    .then(response =>
+      response.json().then(json => ({
+        status: response.status,
+        json
+      })
+    ))
+    .then(
+      ({ status, json }) => {
+        if (status >= 400) {
+          return dispatch(receiveErrorResponse(url, json))
+        }
 
-                dispatch(receiveResponse(url, type, json, receiveParam))
-            }
-        )
-    }
+        dispatch(receiveResponse(url, type, json, receiveParam))
+      }
+    )
+  }
 }
 
 
@@ -201,15 +201,15 @@ function fetchUpload(url, type, paramas, receiveParam) {
  * @return {object} アクション
  */
 export function fetchTextIfNeeded(url, type, receiveParam) {
-    return (dispatch) => {
-        if (shouldFetchPosts(url)) {
-            // thunkからthunkを呼び出せる！
-            return dispatch(fetchText(url, type, receiveParam))
-        } else {
-            // 下記コードを呼び、wait forには何もないことを知らせる
-            return Promise.resolve()
-        }
+  return (dispatch) => {
+    if (shouldFetchPosts(url)) {
+      // thunkからthunkを呼び出せる！
+      return dispatch(fetchText(url, type, receiveParam))
+    } else {
+      // 下記コードを呼び、wait forには何もないことを知らせる
+      return Promise.resolve()
     }
+  }
 }
 
 /**
@@ -222,22 +222,22 @@ export function fetchTextIfNeeded(url, type, receiveParam) {
  */
 function fetchText(url, type, receiveParam) {
 
-    return dispatch => {
-        return fetch(host + url)
-        .then(response =>
-            response.text().then(json => ({
-                status: response.status,
-                json
-            })
-        ))
-        .then(
-            ({ status, json }) => {
-                if (status >= 400) {
-                    return dispatch(receiveErrorResponse(url, json))
-                }
+  return dispatch => {
+    return fetch(host + url)
+    .then(response =>
+      response.text().then(json => ({
+        status: response.status,
+        json
+      })
+    ))
+    .then(
+      ({ status, json }) => {
+        if (status >= 400) {
+          return dispatch(receiveErrorResponse(url, json))
+        }
 
-                dispatch(receiveResponse(url, type, json, receiveParam))
-            }
-        )
-    }
+        dispatch(receiveResponse(url, type, json, receiveParam))
+      }
+    )
+  }
 }

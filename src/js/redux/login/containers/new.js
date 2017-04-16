@@ -1,36 +1,26 @@
-import { connect } from "react-redux"
+import {connect} from "react-redux"
 
 import New from "../components/new"
 import {alert} from "../actions/new"
 import {fetchPostsIfNeeded, fetchTextIfNeeded} from "../../../utils/fetch"
 import * as types from "../../../constants/ActionTypes"
 
-function mapStateToProps (state) {
-    return state
+function mapStateToProps(state) {
+  return state
 }
 
-function mapDispatchToProps (dispatch) {
-    return {
-        new: (params) => {
-            dispatch(fetchPostsIfNeeded(
-                    "login/new/",
-                    types.SET_LOGIN_USER,
-                    params
-                )
-            )
-        },
-        open: () => {
-            dispatch(fetchTextIfNeeded(
-                    "static/txt/terms.txt",
-                    types.OPEN_LOGIN_TERMS,
-                    {fileName: "terms"}
-                )
-            )
-        },
-        alert: (message) => {
-            dispatch(alert(message))
-        }
+function mapDispatchToProps(dispatch) {
+  return {
+    new: (params) => {
+      dispatch(fetchPostsIfNeeded("login/new/", types.SET_LOGIN_USER, params))
+    },
+    open: () => {
+      dispatch(fetchTextIfNeeded("static/txt/terms.txt", types.OPEN_LOGIN_TERMS, {fileName: "terms"}))
+    },
+    alert: (message) => {
+      dispatch(alert(message))
     }
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(New)

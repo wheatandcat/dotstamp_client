@@ -8,19 +8,19 @@ import adapter from "redux-localstorage/lib/adapters/localStorage"
 import filter from "redux-localstorage-filter"
 
 const localStorage = compose(
-    filter(["loginAuth"])
+  filter(["loginAuth"])
 )(adapter(window.localStorage))
 
 const middlewares = [
-    thunk,
+  thunk,
 ]
 
 const finalCreateStore = compose(
-    persistState(localStorage, "auth"),
-    applyMiddleware(...middlewares)
+  persistState(localStorage, "auth"),
+  applyMiddleware(...middlewares)
 )(createStore)
 
 export default function configureStore(initialState) {
-    const store = compose(mergePersistedState())(rootReducer)
-    return finalCreateStore(store, initialState)
+  const store = compose(mergePersistedState())(rootReducer)
+  return finalCreateStore(store, initialState)
 }

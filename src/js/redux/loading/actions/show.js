@@ -6,9 +6,7 @@ import * as types from "../../../constants/ActionTypes"
  * @return {object] アクション
  */
 export function on() {
-    return {
-        type: types.ON_LOADING,
-    }
+  return {type: types.ON_LOADING}
 }
 
 /**
@@ -17,7 +15,5 @@ export function on() {
  * @return {object] アクション
  */
 export function off() {
-    return {
-        type: types.OFF_LOADING,
-    }
+  return {type: types.OFF_LOADING}
 }

@@ -8,9 +8,5 @@ import * as types from "../../../constants/ActionTypes"
  * @return {object} アクション
  */
 export function paging(page, order) {
-    return {
-        type: types.PAGING_USER_FOLLOW_LIST,
-        page: page,
-        order: order,
-    }
+  return {type: types.PAGING_USER_FOLLOW_LIST, page: page, order: order}
 }

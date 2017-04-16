@@ -7,62 +7,62 @@ import {ORDER_TYPE_NEW} from "../../constants/contribution"
 
 
 export default class Tag extends Component {
-    /**
-     * 検索を設定する
-     *
-     * @param {string} search 検索
-     */
-    setSearch(search) {
-        this.props.search(search, 1, ORDER_TYPE_NEW)
+  /**
+   * 検索を設定する
+   *
+   * @param {string} search 検索
+   */
+  setSearch(search) {
+    this.props.search(search, 1, ORDER_TYPE_NEW)
+  }
+  /**
+   * アイテムを取得する
+   *
+   * @param {object} item アイテム
+   * @return {object} html
+   */
+  getItem(item) {
+    let hash = location.hash
+    if (hash.indexOf("/contribution/search") != -1) {
+      let url = "contribution/search/" + item.Name + "/" + ORDER_TYPE_NEW + "/1"
+      return (
+        <Link to={url}  onClick={() => this.setSearch(item.Name)}>
+          <Label bsStyle="info" className={Item}>
+            {item.Name}
+          </Label>
+        </Link>
+      )
     }
-    /**
-     * アイテムを取得する
-     *
-     * @param {object} item アイテム
-     * @return {object} html
-     */
-    getItem(item) {
-        let hash = location.hash
-        if (hash.indexOf("/contribution/search") != -1) {
-            let url = "contribution/search/" + item.Name + "/" + ORDER_TYPE_NEW + "/1"
-            return (
-                <Link to={url}  onClick={() => this.setSearch(item.Name)}>
-                    <Label bsStyle="info" className={Item}>
-                        {item.Name}
-                    </Label>
-                </Link>
-            )
-        }
 
-        return (
-            <Link to={"contribution/search/" + item.Name + "/" + ORDER_TYPE_NEW + "/1"}>
-                <Label bsStyle="info" className={Item}>
-                    {item.Name}
-                </Label>
-            </Link>
-        )
-    }
-    /**
-     * 描画する
-     *
-     * @return {object} html
-     */
-    render () {
-        let list = this.props.list
-        return (
-            <div>
-                {list.map((item) =>
+    return (
+      <Link to={"contribution/search/" + item.Name + "/" + ORDER_TYPE_NEW + "/1"}>
+        <Label bsStyle="info" className={Item}>
+          {item.Name}
+        </Label>
+      </Link>
+    )
+  }
+  /**
+   * 描画する
+   *
+   * @return {object} html
+   */
+  render () {
+    let list = this.props.list
+    return (
+      <div>
+        {list.map((item) =>
 
-                    <span key={item.ID}>
-                        {this.getItem(item)}
-                    </span>
-                )}
-            </div>
-        )
-    }
+          <span key={item.ID}>
+            {this.getItem(item)}
+          </span>
+        )}
+      </div>
+    )
+  }
 }
 
 Tag.propTypes = {
-    list: PropTypes.array,
-    search: PropTypes.func,
+  list: PropTypes.array,
+  search: PropTypes.func,
 }

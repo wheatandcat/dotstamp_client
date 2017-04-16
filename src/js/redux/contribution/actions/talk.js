@@ -21,14 +21,14 @@ export const TALK_TYPE_IMAGE = 2
  * @return {[object]}  アクション
  */
 export function setEditBody(priority, body, character, directionType, talkType) {
-    return {
-        type: types.SET_CONTRIBUTION_TALK_EDIT_BODY,
-        priority: priority,
-        character: character,
-        directionType: directionType,
-        talekType: talkType,
-        body: body
-    }
+  return {
+    type: types.SET_CONTRIBUTION_TALK_EDIT_BODY,
+    priority: priority,
+    character: character,
+    directionType: directionType,
+    talekType: talkType,
+    body: body
+  }
 }
 
 /**
@@ -38,10 +38,7 @@ export function setEditBody(priority, body, character, directionType, talkType) 
  * @return {[object]}  アクション
  */
 export function deleteBody(priority) {
-    return {
-        type: types.DELETE_CONTRIBUTION_TALK_BODY,
-        priority: priority
-    }
+  return {type: types.DELETE_CONTRIBUTION_TALK_BODY, priority: priority}
 }
 
 /**
@@ -51,8 +48,5 @@ export function deleteBody(priority) {
  * @return {[object]}  アクション
  */
 export function setTalkList(talkList) {
-    return {
-        type: types.SET_CONTRIBUTION_TALK_LIST,
-        talkList: talkList
-    }
+  return {type: types.SET_CONTRIBUTION_TALK_LIST, talkList: talkList}
 }

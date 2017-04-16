@@ -6,9 +6,7 @@ import * as types from "../../../constants/ActionTypes"
  * @return {object} アクション
  */
 export function alertMessageInit() {
-    return {
-        type: types.INIT_ERROR_ALERT_MESSAGE,
-    }
+  return {type: types.INIT_ERROR_ALERT_MESSAGE}
 }
 
 /**
@@ -18,10 +16,7 @@ export function alertMessageInit() {
  * @return {object} アクション
  */
 export function alertMessage(message) {
-    return {
-        type: types.OPEN_ERROR_ALERT_MESSAGE,
-        message: message
-    }
+  return {type: types.OPEN_ERROR_ALERT_MESSAGE, message: message}
 }
 
 /**
@@ -30,7 +25,5 @@ export function alertMessage(message) {
  * @return {object} アクション
  */
 export function closeAlert() {
-    return {
-        type: types.CLOSE_ERROR_ALERT_MESSAGE,
-    }
+  return {type: types.CLOSE_ERROR_ALERT_MESSAGE}
 }

@@ -6,9 +6,7 @@ import * as types from "../../../constants/ActionTypes"
  * @return {object} アクション
  */
 export function open() {
-    return {
-        type: types.OPEN_SOUND_MENU_REMAKE,
-    }
+  return {type: types.OPEN_SOUND_MENU_REMAKE}
 }
 
 /**
@@ -17,9 +15,7 @@ export function open() {
  * @return {object} アクション
  */
 export function close() {
-    return {
-        type: types.CLOSE_SOUND_MENU_REMAKE,
-    }
+  return {type: types.CLOSE_SOUND_MENU_REMAKE}
 }
 
 /**
@@ -28,9 +24,7 @@ export function close() {
  * @return {object} アクション
  */
 export function openUpload() {
-    return {
-        type: types.OPEN_SOUND_MENU_UPLOAD,
-    }
+  return {type: types.OPEN_SOUND_MENU_UPLOAD}
 }
 
 /**
@@ -39,9 +33,7 @@ export function openUpload() {
  * @return {object} アクション
  */
 export function closeUpload() {
-    return {
-        type: types.CLOSE_SOUND_MENU_UPLOAD,
-    }
+  return {type: types.CLOSE_SOUND_MENU_UPLOAD}
 }
 
 /**
@@ -50,9 +42,7 @@ export function closeUpload() {
  * @return {object} アクション
  */
 export function makingMovie() {
-    return {
-        type: types.MAKING_SOUND_MENU_MOVIE,
-    }
+  return {type: types.MAKING_SOUND_MENU_MOVIE}
 }
 
 /**
@@ -61,9 +51,7 @@ export function makingMovie() {
  * @return {object} アクション
  */
 export function uploading() {
-    return {
-        type: types.UPLOADING_SOUND_MENU_MOVIE,
-    }
+  return {type: types.UPLOADING_SOUND_MENU_MOVIE}
 }
 
 /**
@@ -72,9 +60,7 @@ export function uploading() {
  * @return {object} アクション
  */
 export function openInformation() {
-    return {
-        type: types.OPEN_SOUND_MENU_INFORMATION,
-    }
+  return {type: types.OPEN_SOUND_MENU_INFORMATION}
 }
 
 /**
@@ -83,7 +69,5 @@ export function openInformation() {
  * @return {object} アクション
  */
 export function closeInformation() {
-    return {
-        type: types.CLOSE_SOUND_MENU_INFORMATION,
-    }
+  return {type: types.CLOSE_SOUND_MENU_INFORMATION}
 }

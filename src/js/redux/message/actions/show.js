@@ -6,9 +6,7 @@ import * as types from "../../../constants/ActionTypes"
  * @return {object} アクション
  */
 export function init() {
-    return {
-        type: types.INIT_MESSAGE_SHOW,
-    }
+  return {type: types.INIT_MESSAGE_SHOW}
 }
 
 /**
@@ -19,11 +17,7 @@ export function init() {
  * @return {object} アクション
  */
 export function message(message, style) {
-    return {
-        type: types.OPEN_MESSAGE_SHOW,
-        message: message,
-        style: style,
-    }
+  return {type: types.OPEN_MESSAGE_SHOW, message: message, style: style}
 }
 
 /**
@@ -32,7 +26,5 @@ export function message(message, style) {
  * @return {object} アクション
  */
 export function close() {
-    return {
-        type: types.CLOSE_MESSAGE_SHOW,
-    }
+  return {type: types.CLOSE_MESSAGE_SHOW}
 }

@@ -10,7 +10,7 @@ import dateFormat from "dateformat"
  */
 export function DateTimeFormat(data) {
 
-    return dateFormat(data, "yyyy年mm月dd日 hh:MM:ss")
+  return dateFormat(data, "yyyy年mm月dd日 hh:MM:ss")
 }
 
 /**
@@ -21,7 +21,7 @@ export function DateTimeFormat(data) {
  */
 export function DateFormat(data) {
 
-    return dateFormat(data, "yyyy/mm/dd")
+  return dateFormat(data, "yyyy/mm/dd")
 }
 
 /**
@@ -31,13 +31,13 @@ export function DateFormat(data) {
  * @return {string} ランダム文字列
  */
 export function getUniqueStr(myStrong) {
-    let strong = 1000
+  let strong = 1000
 
-    if (myStrong) {
-        strong = myStrong
-    }
+  if (myStrong) {
+    strong = myStrong
+  }
 
-    return new Date().getTime().toString(16) + Math.floor(strong * Math.random()).toString(16)
+  return new Date().getTime().toString(16) + Math.floor(strong * Math.random()).toString(16)
 }
 
 /**
@@ -46,7 +46,7 @@ export function getUniqueStr(myStrong) {
  * @return {string} URL
  */
 export function getTopUrl() {
-    return BASE_URL
+  return BASE_URL
 }
 
 /**
@@ -55,7 +55,7 @@ export function getTopUrl() {
  * @return {string} URL
  */
 export function getUploadUrl() {
-    return UPLOAD_PATH
+  return UPLOAD_PATH
 }
 
 /**
@@ -66,9 +66,9 @@ export function getUploadUrl() {
  * @return {string} 省略文字
  */
 export function abridgement(str, maxNumber) {
-    if (str.length <= maxNumber) {
-        return str
-    }
+  if (str.length <= maxNumber) {
+    return str
+  }
 
-    return str.substring(0 ,maxNumber) + "..."
+  return str.substring(0 ,maxNumber) + "..."
 }

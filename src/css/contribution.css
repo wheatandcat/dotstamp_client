@@ -1,26 +1,26 @@
 .Body {
-    padding-top: 5px;
+  padding-top: 5px;
 }
 
 .Image {
-    min-width: 70px;
-    max-width: 90px;
+  min-width: 70px;
+  max-width: 90px;
 }
 
 .Follow {
-    min-width: 70px;
-    max-width: 90px;
+  min-width: 70px;
+  max-width: 90px;
 }
 
 .While {
-    height: 25px;
+  height: 25px;
 }
 
 .Author {
-    padding-top: 15px;
+  padding-top: 15px;
 }
 
 .ImageForm {
-    padding: 5px 20px 20px 20px;
-    margin-bottom: 5px;
+  padding: 5px 20px 20px 20px;
+  margin-bottom: 5px;
 }

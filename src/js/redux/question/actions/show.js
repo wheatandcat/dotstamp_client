@@ -6,7 +6,5 @@ import * as types from "../../../constants/ActionTypes"
  * @return {[object]} アクション
  */
 export function init() {
-    return {
-        type: types.INIT_QUESTION,
-    }
+  return {type: types.INIT_QUESTION}
 }

@@ -6,10 +6,11 @@ import * as types from "../../../constants/ActionTypes"
  * @return {object}  アクション
  */
 export function setIcon(id) {
-    return {
-        type: types.SET_CHARACTER_LIST,
-        icon: id
-    }
+  return {
+    type: types.
+    SET_CHARACTER_LIST,
+    icon: id
+  }
 }
 
 /**
@@ -18,10 +19,10 @@ export function setIcon(id) {
  * @return {object}  アクション
  */
 export function setVoiceType(voiceType) {
-    return {
-        type: types.SET_CHARACTER_VOICE_TYPE,
-        voiceType: voiceType
-    }
+  return {
+    type: types.SET_CHARACTER_VOICE_TYPE,
+    voiceType: voiceType
+  }
 }
 
 /**
@@ -29,18 +30,13 @@ export function setVoiceType(voiceType) {
  * @return {object}  アクション
  */
 export function init() {
-    return {
-        type: types.INIT_CHARACTER_LIST,
-    }
+  return {type: types.INIT_CHARACTER_LIST}
 }
-
 
 /**
  * デフォルトを設定する
  * @return {object}  アクション
  */
 export function setDefaultList() {
-    return {
-        type: types.SET_CHARACTER_LIST_DEFAULT,
-    }
+  return {type: types.SET_CHARACTER_LIST_DEFAULT}
 }

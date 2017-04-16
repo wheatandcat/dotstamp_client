@@ -1,13 +1,13 @@
 .MainIcon {
-    width: 210px;
+  width: 210px;
 }
 
 .ImageUpload {
-    width: 100%;
-    height: 200px;
-    border-width: 2px;
-    border-color: rgb(102, 102, 102);
-    border-style: dashed;
-    border-radius: 5px;
-    padding: 15px;
+  width: 100%;
+  height: 200px;
+  border-width: 2px;
+  border-color: rgb(102, 102, 102);
+  border-style: dashed;
+  border-radius: 5px;
+  padding: 15px;
 }

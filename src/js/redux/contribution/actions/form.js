@@ -10,13 +10,13 @@ import * as types from "../../../constants/ActionTypes"
  * @return {object} アクション
  */
 export function addBody(body, character, directionType, talkType) {
-    return {
-        type: types.ADD_CONTRIBUTION_FORM_BODY,
-        character: character,
-        body: body,
-        directionType: directionType,
-        talkType: talkType
-    }
+  return {
+    type: types.ADD_CONTRIBUTION_FORM_BODY,
+    character: character,
+    body: body,
+    directionType: directionType,
+    talkType: talkType
+  }
 }
 
 /**
@@ -29,13 +29,13 @@ export function addBody(body, character, directionType, talkType) {
  * @return {object} アクション
  */
 export function editBody(body, character, directionType, priority) {
-    return {
-        type: types.EDIT_CONTRIBUTION_FORM_BODY,
-        character: character,
-        body: body,
-        directionType: directionType,
-        priority: priority
-    }
+  return {
+    type: types.EDIT_CONTRIBUTION_FORM_BODY,
+    character: character,
+    body: body,
+    directionType: directionType,
+    priority: priority
+  }
 }
 
 /**
@@ -45,10 +45,10 @@ export function editBody(body, character, directionType, priority) {
  * @return {object} アクション
  */
 export function changeCharacter(character) {
-    return {
-        type: types.CHANGE_CONTRIBUTION_FORM_CHARACTER,
-        character: character
-    }
+  return {
+    type: types.CHANGE_CONTRIBUTION_FORM_CHARACTER,
+    character: character
+  }
 }
 
 /**
@@ -58,10 +58,10 @@ export function changeCharacter(character) {
  * @return {object} アクション
  */
 export function changeBody(body) {
-    return {
-        type: types.CHANGE_CONTRIBUTION_FORM_BODY,
-        body: body
-    }
+  return {
+    type: types.CHANGE_CONTRIBUTION_FORM_BODY,
+    body: body
+  }
 }
 
 /**
@@ -71,10 +71,10 @@ export function changeBody(body) {
  * @return {object} アクション
  */
 export function changeTitle(title) {
-    return {
-        type: types.CHANGE_CONTRIBUTION_FORM_TITLE,
-        title: title
-    }
+  return {
+    type: types.CHANGE_CONTRIBUTION_FORM_TITLE,
+    title: title
+  }
 }
 
 /**
@@ -84,10 +84,10 @@ export function changeTitle(title) {
  * @return {object} アクション
  */
 export function changeTag(tag) {
-    return {
-        type: types.CHANGE_CONTRIBUTION_FORM_TAG,
-        tag: tag
-    }
+  return {
+    type: types.CHANGE_CONTRIBUTION_FORM_TAG,
+    tag: tag
+  }
 }
 
 /**
@@ -97,10 +97,10 @@ export function changeTag(tag) {
  * @return {object} アクション
  */
 export function changeHeight(height) {
-    return {
-        type: types.CHANGE_CONTRIBUTION_FORM_HEIGHT,
-        height: height
-    }
+  return {
+    type: types.CHANGE_CONTRIBUTION_FORM_HEIGHT,
+    height: height
+  }
 }
 
 /**
@@ -110,21 +110,18 @@ export function changeHeight(height) {
  * @return {object} アクション
  */
 export function setViewStatus(viewStatus) {
-    return {
-        type: types.SET_CONTRIBUTION_FORM_VIEW_STATUS,
-        viewStatus: viewStatus
-    }
+  return {
+    type: types.SET_CONTRIBUTION_FORM_VIEW_STATUS,
+    viewStatus: viewStatus
+  }
 }
-
 /**
  * ヘルプを開く
  *
  * @return {object} アクション
  */
 export function openHelp() {
-    return {
-        type: types.OPEN_CONTRIBUTION_FORM_HELP,
-    }
+  return {type: types.OPEN_CONTRIBUTION_FORM_HELP}
 }
 
 /**
@@ -133,11 +130,8 @@ export function openHelp() {
  * @return {object} アクション
  */
 export function closeHelp() {
-    return {
-        type: types.CLOSE_CONTRIBUTION_FORM_HELP,
-    }
+  return {type: types.CLOSE_CONTRIBUTION_FORM_HELP}
 }
-
 
 /**
  * 編集をキャンセルする
@@ -145,7 +139,5 @@ export function closeHelp() {
  * @return {object} アクション
  */
 export function cancelEdit() {
-    return {
-        type: types.CANCEL_CONTRIBUTION_FROM_EDIT,
-    }
+  return {type: types.CANCEL_CONTRIBUTION_FROM_EDIT}
 }

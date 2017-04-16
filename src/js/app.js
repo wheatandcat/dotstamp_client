@@ -44,68 +44,68 @@ import {IndexRoute, Router, Route, hashHistory} from "react-router"
 const store = configureStore()
 
 if (ENV=="production") {
-    console.debug = function(){}
-    console.info = function(){}
-    console.log = function(){}
-    console.warn = function(){}
+  console.debug = function(){}
+  console.info = function(){}
+  console.log = function(){}
+  console.warn = function(){}
 }
 
 window.onhashchange = function() {
-    window.scrollTo(0, 0)
+  window.scrollTo(0, 0)
 }
 
 class Menu extends Component {
-    render () {
-        return (
-            <div>
-                <Header/>
-                {this.props.children}
-                <ErrorShow />
-            </div>
-        )
-    }
+  render () {
+    return (
+      <div>
+        <Header/>
+        {this.props.children}
+        <ErrorShow />
+      </div>
+    )
+  }
 }
 
 Menu.propTypes = {
-    children: PropTypes.object,
+  children: PropTypes.object,
 }
 
 class App extends Component {
-    componentWillMount () {
+  componentWillMount () {
 
-    }
-    render () {
-        return (
-            <Provider store={store}>
-                <Router history={hashHistory}>
-                    <Route path="/" component={Menu}>
-                        <IndexRoute component={ContributionList} />
-                        <Route path="/contribution/new" component={ContributionNew} />
-                        <Route name="/contribution/edit" path="/contribution/edit/:id" component={ContributionEdit} />
-                        <Route path="/contribution/list" component={ContributionList} />
-                        <Route path="/contribution/show/:id" component={ContributionShow} />
-                        <Route path="/contribution/search/:search/:order/:page" component={ContributionSearch} />
-                        <Route path="/user/contributionList" component={UserContributionList} />
-                        <Route path="/user/mypage" component={UserMypage} />
-                        <Route path="/user/followList/:order/:page" component={UserFollowList} />
-                        <Route path="/character/list" component={CharacterList} />
-                        <Route path="/login/new" component={loginNew} />
-                        <Route path="/login/login" component={loginLogin} />
-                        <Route path="/password/input" component={PasswordInput} />
-                        <Route path="/password/reset/:email/:keyword" component={PasswordReset} />
-                        <Route path="/sound/show/:id" component={SoundShow} />
-                        <Route path="/about" component={About} />
-                        <Route path="/help" component={Help} />
-                        <Route path="/question" component={questionShow} />
-                        <Route path="/information/:file" component={informationShow} />
-                        <Route path="/contribution/experience" component={ContributionNew} />
-                    </Route>
-                </Router>
-            </Provider>
-        )
-    }
+  }
+  render () {
+    return (
+      <Provider store={store}>
+        <Router history={hashHistory}>
+          <Route path="/" component={Menu}>
+            <IndexRoute component={ContributionList} />
+            <Route path="/contribution/new" component={ContributionNew} />
+            <Route name="/contribution/edit" path="/contribution/edit/:id" component={ContributionEdit} />
+            <Route path="/contribution/list" component={ContributionList} />
+            <Route path="/contribution/show/:id" component={ContributionShow} />
+            <Route path="/contribution/search/:search/:order/:page" component={ContributionSearch} />
+            <Route path="/user/contributionList" component={UserContributionList} />
+            <Route path="/user/mypage" component={UserMypage} />
+            <Route path="/user/followList/:order/:page" component={UserFollowList} />
+            <Route path="/character/list" component={CharacterList} />
+            <Route path="/login/new" component={loginNew} />
+            <Route path="/login/login" component={loginLogin} />
+            <Route path="/password/input" component={PasswordInput} />
+            <Route path="/password/reset/:email/:keyword" component={PasswordReset} />
+            <Route path="/sound/show/:id" component={SoundShow} />
+            <Route path="/about" component={About} />
+            <Route path="/help" component={Help} />
+            <Route path="/question" component={questionShow} />
+            <Route path="/information/:file" component={informationShow} />
+            <Route path="/contribution/experience" component={ContributionNew} />
+          </Route>
+        </Router>
+      </Provider>
+    )
+  }
 }
 
 render((
-    <App></App>
-    ), document.querySelector("#root"))
+  <App></App>
+  ), document.querySelector("#root"))

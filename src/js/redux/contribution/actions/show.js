@@ -6,9 +6,7 @@ import * as types from "../../../constants/ActionTypes"
  * @return {object} アクション
  */
 export function openProblem() {
-    return {
-        type: types.OPEN_CONTRIBUTION_SHOW_PROBLEM,
-    }
+  return {type: types.OPEN_CONTRIBUTION_SHOW_PROBLEM}
 }
 
 /**
@@ -17,9 +15,7 @@ export function openProblem() {
  * @return {object} アクション
  */
 export function closeProblem() {
-    return {
-        type: types.CLOSE_CONTRIBUTION_SHOW_PROBLEM,
-    }
+  return {type: types.CLOSE_CONTRIBUTION_SHOW_PROBLEM}
 }
 
 /**
@@ -29,8 +25,5 @@ export function closeProblem() {
  * @return {object} アクション
  */
 export function setProblemType(problemType) {
-    return {
-        type: types.SET_CONTRIBUTION_SHOW_PROBLEM_TYPE,
-        problemType: problemType,
-    }
+  return {type: types.SET_CONTRIBUTION_SHOW_PROBLEM_TYPE, problemType: problemType}
 }

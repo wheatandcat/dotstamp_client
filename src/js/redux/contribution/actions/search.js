@@ -9,12 +9,12 @@ import * as types from "../../../constants/ActionTypes"
  * @return {object} アクション
  */
 export function paging(search, order, page) {
-    return {
-        type: types.PAGING_CONTRIBUTION_SEARCH_LIST,
-        search: search,
-        page: page,
-        order: order,
-    }
+  return {
+  type: types.PAGING_CONTRIBUTION_SEARCH_LIST,
+  search: search,
+  page: page,
+  order: order,
+  }
 }
 
 /**
@@ -24,8 +24,8 @@ export function paging(search, order, page) {
  * @return {object} アクション
  */
 export function setOrder(order) {
-    return {
-        type: types.SET_CONTRIBUTION_SEARCH_ORDER,
-        order: order,
-    }
+  return {
+  type: types.SET_CONTRIBUTION_SEARCH_ORDER,
+  order: order,
+  }
 }

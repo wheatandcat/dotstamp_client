@@ -7,8 +7,8 @@ import * as types from "../../../constants/ActionTypes"
  * @return {object}  アクション
  */
 export function init(experience) {
-    return {
-        type: types.INIT_CONTRIBUTION_NEW,
-        experience: experience,
-    }
+  return {
+  type: types.INIT_CONTRIBUTION_NEW,
+  experience: experience,
+  }
 }
