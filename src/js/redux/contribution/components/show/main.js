@@ -1,4 +1,5 @@
-import React, {Component, PropTypes} from "react"
+import PropTypes from "prop-types"
+import React, { Component } from "react"
 import {Label, Well, Radio, FormGroup, Modal, Dropdown, MenuItem, Grid, Row, Col, Button, PageHeader, Glyphicon} from "react-bootstrap"
 
 import ContributionShowFrame from "./frame"

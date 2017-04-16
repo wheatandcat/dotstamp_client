@@ -1,4 +1,5 @@
-import React, {PropTypes, Component} from "react"
+import PropTypes from "prop-types"
+import React, { Component } from "react"
 import {Grid, Row, ListGroup, ListGroupItem, Glyphicon, Col, PageHeader, Panel} from "react-bootstrap"
 import Footer from "../../../utils/parts/footer"
 import {LinkContainer} from "react-router-bootstrap"

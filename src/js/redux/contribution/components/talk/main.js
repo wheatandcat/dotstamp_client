@@ -1,4 +1,5 @@
-import React, {Component, PropTypes} from "react"
+import PropTypes from "prop-types"
+import React, { Component } from "react"
 import {Well, ControlLabel, Grid, Row, Col, Glyphicon, ButtonToolbar, Button} from "react-bootstrap"
 import Image from "../../../../utils/image"
 import {IMAGE_DISPLAY_TYPE_TALK_IMAGE, IMAGE_DISPLAY_TYPE_CHARACTER_TALK} from "../../../../utils/image"

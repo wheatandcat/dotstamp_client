@@ -1,4 +1,5 @@
-import React, {PropTypes, Component} from "react"
+import PropTypes from "prop-types"
+import React, { Component } from "react"
 import {Panel, Button, Well, Image, Jumbotron} from "react-bootstrap"
 import {Full, Stamp, StampAddress} from "../../../css/common.css"
 import {Title} from "../../../css/user.css"

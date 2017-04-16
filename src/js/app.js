@@ -2,7 +2,9 @@
 /*eslint no-console: ["error", { allow: ["log", "debug", "info", "warn"] }] */
 import "babel-polyfill"
 
-import React, { Component, PropTypes } from "react"
+import PropTypes from "prop-types"
+
+import React, { Component } from "react"
 import { render } from "react-dom"
 import { Provider } from "react-redux"
 

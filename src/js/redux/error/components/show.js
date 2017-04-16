@@ -1,4 +1,5 @@
-import React, {PropTypes, Component} from "react"
+import PropTypes from "prop-types"
+import React, { Component } from "react"
 import {Collapse, Well, Modal, Button, Alert, FormControl, FormGroup} from "react-bootstrap"
 
 export default class Show extends Component {

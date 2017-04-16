@@ -1,4 +1,5 @@
-import React, {PropTypes, Component} from "react"
+import PropTypes from "prop-types"
+import React, { Component } from "react"
 import Dropzone from "react-dropzone"
 import {PageHeader, Panel, ButtonGroup, Glyphicon, Dropdown, MenuItem, ListGroup, ListGroupItem, Button, Well, Alert} from "react-bootstrap"
 import Slider from "../../../utils/slider"

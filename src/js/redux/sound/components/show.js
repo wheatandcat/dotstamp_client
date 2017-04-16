@@ -1,5 +1,6 @@
+import PropTypes from "prop-types"
 /*global BASE_URL*/
-import React, {PropTypes, Component} from "react"
+import React, { Component } from "react"
 import {Alert, FormGroup, ControlLabel, ButtonToolbar, Modal, MenuItem, Dropdown, FormControl, Table, PageHeader, Glyphicon, Button} from "react-bootstrap"
 import {VOICE_TYPE, VOICE_TYPE_MAP} from "../../../constants/common"
 import {MAKE_STATUS_MADE} from "../../../constants/contribution"

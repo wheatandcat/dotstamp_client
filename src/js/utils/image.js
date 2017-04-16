@@ -1,7 +1,8 @@
+import PropTypes from "prop-types"
 /*global UPLOAD_PATH*/
 /*global IMAGE_PATH*/
 
-import React, {Component, PropTypes} from "react"
+import React, { Component } from "react"
 import {Image, Thumbnail} from "react-bootstrap"
 
 

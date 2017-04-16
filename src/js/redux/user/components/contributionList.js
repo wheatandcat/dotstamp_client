@@ -1,4 +1,5 @@
-import React, {PropTypes, Component} from "react"
+import PropTypes from "prop-types"
+import React, { Component } from "react"
 import {Link} from "react-router"
 import {Typeahead} from "react-bootstrap-typeahead"
 import {Modal, Tabs, Tab, PageHeader, Glyphicon, Row, Col, Nav, NavItem, ButtonToolbar, Button} from "react-bootstrap"

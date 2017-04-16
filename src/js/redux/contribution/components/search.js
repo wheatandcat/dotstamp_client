@@ -1,4 +1,5 @@
-import React, {Component, PropTypes} from "react"
+import PropTypes from "prop-types"
+import React, { Component } from "react"
 import {FormGroup, Form, FormControl, Glyphicon, Button, Col, DropdownButton, MenuItem} from "react-bootstrap"
 import {LinkContainer} from "react-router-bootstrap"
 import Thumbnail from "../../../utils/parts/contribution/thumbnail"

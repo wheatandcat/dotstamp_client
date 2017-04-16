@@ -1,4 +1,5 @@
-import React, {PropTypes, Component} from "react"
+import PropTypes from "prop-types"
+import React, { Component } from "react"
 import {Label, Media, Glyphicon} from "react-bootstrap"
 import Icon from "../../parts/icon"
 import Tag from "../../parts/tag"

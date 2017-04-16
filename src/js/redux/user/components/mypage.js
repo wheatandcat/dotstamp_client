@@ -1,4 +1,5 @@
-import React, {PropTypes, Component} from "react"
+import PropTypes from "prop-types"
+import React, { Component } from "react"
 import {PageHeader, Grid, Row, Col, ListGroup, ListGroupItem, Button, Glyphicon, Panel, ControlLabel, FormGroup} from "react-bootstrap"
 import {Group} from "./../../../../css/form.css"
 import {Paragraph} from "./../../../../css/common.css"

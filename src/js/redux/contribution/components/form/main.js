@@ -1,4 +1,5 @@
-import React, {Component, PropTypes} from "react"
+import PropTypes from "prop-types"
+import React, { Component } from "react"
 import {Glyphicon, Well, Button, ButtonGroup, ButtonToolbar, ControlLabel} from "react-bootstrap"
 import {TALK_TYPE_TEXT, TALK_TYPE_IMAGE} from "../../actions/talk"
 import {UPLOAD_FILE_SIZE_MAX} from "../../../../constants/common"

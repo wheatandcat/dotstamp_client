@@ -1,4 +1,5 @@
-import React, {PropTypes, Component} from "react"
+import PropTypes from "prop-types"
+import React, { Component } from "react"
 import {PageHeader, Glyphicon} from "react-bootstrap"
 import Thumbnail from "../../../utils/parts/contribution/thumbnail"
 import {Line, Center} from "./../../../../css/common.css"

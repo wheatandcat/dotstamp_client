@@ -1,4 +1,5 @@
-import React, {PropTypes, Component} from "react"
+import PropTypes from "prop-types"
+import React, { Component } from "react"
 import Slick from "react-slick"
 import {Overlay, Image, Popover, Form , FormGroup} from "react-bootstrap"
 import UtitsImage from "./image"

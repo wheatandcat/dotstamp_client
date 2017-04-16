@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from "react"
+import PropTypes from "prop-types"
+import React, { Component } from "react"
 import {Label} from "react-bootstrap"
 import {Item} from "./../../../css/tag.css"
 import {Link} from "react-router"

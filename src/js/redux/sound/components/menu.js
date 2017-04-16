@@ -1,5 +1,6 @@
+import PropTypes from "prop-types"
 /*global BASE_URL*/
-import React, {PropTypes, Component} from "react"
+import React, { Component } from "react"
 import {Table, Alert, Modal, ButtonToolbar, Well, FormGroup, Checkbox, Glyphicon, Button} from "react-bootstrap"
 import Sound from "../../../utils/sound"
 import {STATUS_PUBLIC, STATUS_UPLOADING, STATUS_RUNNING} from "../../../constants/contribution"

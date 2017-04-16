@@ -1,5 +1,6 @@
+import PropTypes from "prop-types"
 /*eslint no-console: ["error", { allow: ["log", "error"] }] */
-import React, {Component, PropTypes} from "react"
+import React, { Component } from "react"
 import { FormGroup,Button,ControlLabel,PageHeader,Alert,Panel} from "react-bootstrap"
 import {Link} from "react-router"
 

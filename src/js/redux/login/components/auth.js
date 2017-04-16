@@ -1,5 +1,6 @@
+import PropTypes from "prop-types"
 /*eslint no-console: ["error", { allow: ["log", "error"] }] */
-import React, {PropTypes, Component} from "react"
+import React, { Component } from "react"
 import {Label, Button, Nav, NavItem, NavDropdown, MenuItem, Glyphicon} from "react-bootstrap"
 import {LinkContainer} from "react-router-bootstrap"
 import {abridgement} from "../../../utils/common"

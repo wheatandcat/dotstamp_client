@@ -1,4 +1,5 @@
-import React, {Component, PropTypes} from "react"
+import PropTypes from "prop-types"
+import React, { Component } from "react"
 import Images, {IMAGE_DISPLAY_TYPE_ICON} from "../image"
 
 const IMAGE_ID_DEFAULT = 0

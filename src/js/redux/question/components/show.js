@@ -1,4 +1,5 @@
-import React, {PropTypes, Component} from "react"
+import PropTypes from "prop-types"
+import React, { Component } from "react"
 import {Glyphicon, Col, ControlLabel, PageHeader, Panel, Button, FormControl, FormGroup, Alert} from "react-bootstrap"
 import Footer from "../../../utils/parts/footer"
 import {Required} from "../../../../css/common.css"

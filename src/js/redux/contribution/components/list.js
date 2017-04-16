@@ -1,4 +1,5 @@
-import React, {Component, PropTypes} from "react"
+import PropTypes from "prop-types"
+import React, { Component } from "react"
 import {Link} from "react-router"
 import {Alert, Button, ButtonGroup, Well ,Glyphicon, Collapse} from "react-bootstrap"
 import Footer from "../../../utils/parts/footer"
