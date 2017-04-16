@@ -1,6 +1,6 @@
 import React from "react"
 import {shallow} from "enzyme"
-import ContributionList from "../../../contribution/components/list"
+import ContributionList from "../../../redux/contribution/components/list"
 
 function setup() {
   const props = {

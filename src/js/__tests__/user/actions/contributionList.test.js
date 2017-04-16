@@ -1,4 +1,4 @@
-import {setContribution} from "../../../user/actions/contributionList"
+import {setContribution} from "../../../redux/user/actions/contributionList"
 import * as types from "../../../constants/ActionTypes"
 
 describe("user/actions/contributionList", () => {

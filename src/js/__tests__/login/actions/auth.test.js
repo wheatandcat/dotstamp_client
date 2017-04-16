@@ -1,4 +1,4 @@
-import {auth, logout} from "../../../login/actions/auth"
+import {auth, logout} from "../../../redux/login/actions/auth"
 import * as types from "../../../constants/ActionTypes"
 
 describe("login/actions/auth", () => {

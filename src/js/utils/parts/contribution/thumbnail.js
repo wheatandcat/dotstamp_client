@@ -118,6 +118,9 @@ export default class Thumbnail extends Component {
       )
     }
 
+    console.log (this.props)
+    console.log ("------------")
+
     return (
       <Media>
         <Media.Left className={Image} align="middle">

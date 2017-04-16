@@ -1,5 +1,5 @@
 import * as types from "../../../constants/ActionTypes"
-import reducer from "../../../error/reducers/show"
+import reducer from "../../../redux/error/reducers/show"
 
 
 describe("error/reducers/show", () => {

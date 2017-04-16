@@ -1,6 +1,6 @@
 import React from "react"
 import {shallow} from "enzyme"
-import LoginLogin from "../../../login/components/login"
+import LoginLogin from "../../../redux/login/components/login"
 
 function setup() {
   const props = {

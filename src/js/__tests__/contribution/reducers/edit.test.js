@@ -1,5 +1,5 @@
 import * as types from "../../../constants/ActionTypes"
-import reducer from "../../../contribution/reducers/edit"
+import reducer from "../../../redux/contribution/reducers/edit"
 import {VIEW_STATUS_PUBLIC} from "../../../constants/contribution"
 
 describe("contribution/reducers/edit", () => {

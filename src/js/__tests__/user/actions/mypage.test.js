@@ -1,4 +1,4 @@
-import {changeUserName} from "../../../user/actions/mypage"
+import {changeUserName} from "../../../redux/user/actions/mypage"
 import * as types from "../../../constants/ActionTypes"
 
 describe("user/actions/contributionList", () => {

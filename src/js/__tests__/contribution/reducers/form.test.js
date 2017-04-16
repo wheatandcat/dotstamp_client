@@ -1,6 +1,6 @@
 import * as types from "../../../constants/ActionTypes"
-import reducer from "../../../contribution/reducers/form"
-import { DIRECTION_LEFT } from "../../../contribution/actions/talk"
+import reducer from "../../../redux/contribution/reducers/form"
+import { DIRECTION_LEFT } from "../../../redux/contribution/actions/talk"
 import {VIEW_STATUS_PUBLIC} from "../../../constants/contribution"
 
 describe("contribution/reducers/form", () => {

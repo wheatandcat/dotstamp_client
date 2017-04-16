@@ -1,5 +1,5 @@
 import * as types from "../../../constants/ActionTypes"
-import reducer from "../../../contribution/reducers/list"
+import reducer from "../../../redux/contribution/reducers/list"
 
 describe("contribution/reducers/list", () => {
   it("リストを取得する", () => {

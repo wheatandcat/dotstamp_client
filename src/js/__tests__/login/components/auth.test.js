@@ -1,6 +1,6 @@
 import React from "react"
 import {shallow} from "enzyme"
-import LoginAuth from "../../../login/components/auth"
+import LoginAuth from "../../../redux/login/components/auth"
 
 function setupNologin() {
   const props = {

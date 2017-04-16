@@ -1,6 +1,6 @@
 import * as types from "../../../constants/ActionTypes"
 
-import {next, deleteItem} from "../../../contribution/actions/list"
+import {next, deleteItem} from "../../../redux/contribution/actions/list"
 
 describe("contribution/actions/list", () => {
   it("次のページを表示する", () => {

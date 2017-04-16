@@ -1,6 +1,6 @@
 import React from "react"
 import {shallow} from "enzyme"
-import UserMypage from "../../../user/components/mypage"
+import UserMypage from "../../../redux/user/components/mypage"
 
 function setup() {
   const props = {

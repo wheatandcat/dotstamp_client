@@ -1,5 +1,5 @@
 import * as types from "../../../constants/ActionTypes"
-import reducer from "../../../user/reducers/contributionList"
+import reducer from "../../../redux/user/reducers/contributionList"
 import {VIEW_STATUS_PRIVATE} from "../../../constants/contribution"
 
 

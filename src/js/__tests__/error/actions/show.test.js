@@ -1,4 +1,4 @@
-import {showError, closeError, openBugReport} from "../../../error/actions/show"
+import {showError, closeError, openBugReport} from "../../../redux/error/actions/show"
 import * as types from "../../../constants/ActionTypes"
 
 describe("error/actions/show", () => {

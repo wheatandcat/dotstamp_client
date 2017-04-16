@@ -1,5 +1,5 @@
 import * as types from "../../../constants/ActionTypes"
-import reducer from "../../../login/reducers/auth"
+import reducer from "../../../redux/login/reducers/auth"
 
 describe("login/reducers/auth", () => {
   it("認証する", () => {

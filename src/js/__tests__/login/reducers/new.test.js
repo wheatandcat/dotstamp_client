@@ -1,5 +1,5 @@
 import * as types from "../../../constants/ActionTypes"
-import reducer from "../../../login/reducers/new"
+import reducer from "../../../redux/login/reducers/new"
 
 describe("login/reducers/new", () => {
   it("ユーザ設定する", () => {

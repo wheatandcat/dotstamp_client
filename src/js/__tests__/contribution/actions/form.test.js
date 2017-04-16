@@ -1,4 +1,4 @@
-import {addBody, editBody, changeCharacter, changeBody, changeTitle, changeTag} from "../../../contribution/actions/form"
+import {addBody, editBody, changeCharacter, changeBody, changeTitle, changeTag} from "../../../redux/contribution/actions/form"
 import * as types from "../../../constants/ActionTypes"
 
 describe("contribution/actions/form", () => {
