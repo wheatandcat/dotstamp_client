@@ -44,21 +44,21 @@ window.addEventListener("keydown", function(event) {
 })
 
 
-var NextArrow = React.createClass({
-    render: function () {
+class NextArrow extends React.Component {
+    render() {
         return (
             <div {...this.props} style={{display: "block"}}></div>
         )
     }
-})
+}
 
-var PrevArrow = React.createClass({
-    render: function () {
+class PrevArrow extends React.Component {
+    render() {
         return (
             <div {...this.props} style={{display: "block"}}></div>
         )
     }
-})
+}
 
 export default class Slider extends Component {
     constructor (props) {
