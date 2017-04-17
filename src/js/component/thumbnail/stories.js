@@ -84,9 +84,7 @@ storiesOf("Thumbnail")
         OnSearch={action("search")}
         ShowPath="/test/1"
         SearchMatch={(<span key="SearchMatch">SearchMatch</span>)}
-        Sound={(
-          <span key="Sound">Sound</span>
-        )}
+        Sound={(<span key="Sound">Sound</span>)}
         Tag={[
           {
             ID: 1,

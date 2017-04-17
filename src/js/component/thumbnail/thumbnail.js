@@ -78,10 +78,7 @@ export default class Thumbnail extends Component {
       )
     }
 
-    let OnSearch = function() {}
-    if (this.props.OnSearch != undefined) {
-      OnSearch = this.props.OnSearch
-    }
+    let OnSearch = this.props.OnSearch
 
     let sound = (<span />)
     if (this.props.Movie.movie_id != "") {
