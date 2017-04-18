@@ -1,0 +1,9 @@
+#開発環境
+ENV=test
+
+#ベースURL
+BASE_URL=/
+
+#画像ファイルパス
+IMAGE_PATH=http:images/
+UPLOAD_PATH=files/

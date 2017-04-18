@@ -1,3 +1,4 @@
+// @flow
 import PropTypes from "prop-types"
 import React, { Component } from "react"
 import {Media, Glyphicon} from "react-bootstrap"
@@ -5,9 +6,7 @@ import Icon from "../../utils/parts/icon"
 import Tag from "../../utils/parts/tag"
 import {Link} from "react-router"
 import {DateFormat} from "../../utils/common"
-
-import {Strong, LittleStrong, Gap} from "../../../css/common.css"
-import {Body, Image, Follow} from "../../../css/contribution.css"
+import {Body, Image, Follow, Strong, LittleStrong, Gap} from "./styles.css"
 
 export default class Public extends Component {
   render() {

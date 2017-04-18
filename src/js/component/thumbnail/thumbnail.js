@@ -1,8 +1,9 @@
+// @flow
 import PropTypes from "prop-types"
 import React, { Component } from "react"
 import {Label} from "react-bootstrap"
 import {VIEW_STATUS_PUBLIC} from "../../constants/contribution"
-import {Dark, Thin} from "../../../css/common.css"
+import {Dark, Thin} from "./styles.css"
 import {Public, Private} from "./index"
 
 export default class Thumbnail extends Component {
@@ -12,7 +13,7 @@ export default class Thumbnail extends Component {
    * @param  {number} id 投稿ID
    * @return {string} 詳細画面リンク
    */
-  getShowPath(id) {
+  getShowPath(id: number) {
     return "/contribution/show/" + id
   }
   /**
@@ -47,7 +48,7 @@ export default class Thumbnail extends Component {
    * @param  {string} text テキスト
    * @return {string} 改行変換後テキスト
    */
-  replaceMatchText(text, search) {
+  replaceMatchText(text: string, search: string) {
     let regex = new RegExp(search + "(.*?)", "g")
 
     return text.split(regex).map(function(line, i) {

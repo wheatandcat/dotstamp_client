@@ -1,10 +1,10 @@
+// @flow
 import PropTypes from "prop-types"
 import React, { Component } from "react"
 import {Media} from "react-bootstrap"
 import Icon from "../../utils/parts/icon"
 import {DateFormat} from "../../utils/common"
-import {Disable, Alert} from "../../../css/common.css"
-import {Body, Image, Follow} from "../../../css/contribution.css"
+import {Alert, Body, Disable, Follow, Image} from "./styles.css"
 
 export default class Private extends Component {
   render() {

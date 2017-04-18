@@ -1,0 +1,42 @@
+.Alert {
+  color: #d80000;
+}
+
+.Body {
+  padding-top: 5px;
+}
+
+.Dark {
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+}
+
+.Disable {
+  background-color: #f5f5f5;
+}
+
+.Follow {
+  min-width: 70px;
+  max-width: 90px;
+}
+
+.Image {
+  min-width: 70px;
+  max-width: 90px;
+}
+
+.LittleStrong {
+  font-size: 20px;
+}
+
+.Strong {
+  font-size: 25px;
+}
+
+.Thin {
+  color: rgba(0, 0, 0, .41);
+}
+
+.Gap {
+  margin-top: 5px;
+}

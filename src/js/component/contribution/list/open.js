@@ -1,3 +1,4 @@
+// @flow
 import PropTypes from "prop-types"
 import React, { Component } from "react"
 import {Alert, Button, ButtonGroup, Glyphicon} from "react-bootstrap"
@@ -25,5 +26,6 @@ export default class Open extends Component {
 
 Open.propTypes = {
   children: PropTypes.element,
+  ID: PropTypes.number,
   onDelete: PropTypes.func,
 }

@@ -1,3 +1,4 @@
+// @flow
 import React from "react"
 import { storiesOf, action } from "@kadira/storybook"
 import { Close, List, Open } from "./index"

@@ -4,6 +4,7 @@
         "es6": true,
         "jest": true
     },
+    "parser": "babel-eslint",
     "extends": ["eslint:recommended", "plugin:react/recommended"],
     "parserOptions": {
         "ecmaFeatures": {
@@ -13,7 +14,8 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "flowtype"
     ],
     "rules": {
         "indent": [
@@ -31,6 +33,8 @@
         "semi": [
             "error",
             "never"
-        ]
+        ],
+        "flowtype/define-flow-type": 1,
+        "flowtype/use-flow-type": 1
     }
 }

@@ -3,8 +3,7 @@
 var webpack = require("webpack")
 var loadenv = require("node-env-file")
 
-var env = (process.env.NODE_ENV == undefined) ? "development" : process.env.NODE_ENV
-
+var env = "test"
 loadenv("./nodeConfig/." + env)
 
 var pluginList = [new webpack.DefinePlugin({
