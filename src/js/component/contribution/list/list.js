@@ -5,16 +5,12 @@ import {Thumbnail} from "../../../component/thumbnail/"
 
 export default class List extends Component {
   render() {
-    if (!this.props.Show) {
-      return (<div />)
-    }
-
     return (
       <div>
         {this.props.List.map((item) => {
           return (
-            <div key={item.ID}>
-              <Thumbnail {...item}/>
+            <div key={item.Content.ID}>
+              <Thumbnail {...item.Content}/>
               {item.Bottom}
             </div>
           )
@@ -26,5 +22,4 @@ export default class List extends Component {
 
 List.propTypes = {
   List: PropTypes.array,
-  Show: PropTypes.bool,
 }

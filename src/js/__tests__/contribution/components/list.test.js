@@ -31,7 +31,6 @@ function setup() {
       itemMap: {},
     },
     getList: jest.fn(),
-    addItem: jest.fn(),
   }
 
   const enzymeWrapper = shallow(<ContributionList {...props}/>)
@@ -48,9 +47,5 @@ describe("contribution/components/list", () => {
     expect(enzymeWrapper.find("Link").props().to).toBe("/about")
 
     expect(props.getList.mock.calls.length).toBe(1)
-    expect(props.addItem.mock.calls.length).toBe(0)
-
-    enzymeWrapper.find("Button").at(1).simulate("click")
-    expect(props.addItem.mock.calls.length).toBe(1)
   })
 })

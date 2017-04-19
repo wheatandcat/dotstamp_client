@@ -22,10 +22,17 @@ describe("components/contribution/list/open", () => {
     setup()
   })
 
-  it("on add", () => {
+  it("on delete click", () => {
     const { props, enzymeWrapper } = setup()
 
     enzymeWrapper.find("Button").simulate("click")
+    expect(props.onDelete).toHaveBeenCalled()
+  })
+
+  it("on delete doubleclick", () => {
+    const { props, enzymeWrapper } = setup()
+
+    enzymeWrapper.simulate("doubleclick")
     expect(props.onDelete).toHaveBeenCalled()
   })
 })

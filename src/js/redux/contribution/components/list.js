@@ -1,10 +1,10 @@
 import PropTypes from "prop-types"
 import React, { Component } from "react"
 import {Link} from "react-router"
-import {Alert, Button, ButtonGroup, Well ,Glyphicon, Collapse} from "react-bootstrap"
+import {Button, ButtonGroup, Well ,Glyphicon, Collapse} from "react-bootstrap"
 import Footer from "../../../utils/parts/footer"
-import Thumbnail from "../../../utils/parts/contribution/thumbnail"
 import ContributionShowFrame from "../components/show/frame"
+import {Combination} from "../../../component/contribution/list/"
 
 const VIEW_PAGE_LIMIT = 10
 
@@ -31,58 +31,6 @@ export default class List extends Component {
     this.getList(false)
   }
   /**
-   * アイテム表示を取得する
-   *
-   * @param  {object} obj アイテム
-   * @return {object} html
-   */
-  getItemShow(obj) {
-    if (this.props.contributionList.itemMap[obj.ID] != undefined) {
-      let item = this.props.contributionList.itemMap[obj.ID]
-      return (
-        <div onDoubleClick={() => this.props.deleteItem(obj.ID)}>
-          <hr/>
-          <Alert bsStyle="success">
-            記事の上でダブルクリックをすると閉じます
-          </Alert>
-          <ContributionShowFrame title={item.title} body={item.body} tagList={item.tagList}/>
-          <br/>
-          <ButtonGroup vertical block>
-            <Button bsSize="xsmall" onClick={() => this.props.deleteItem(obj.ID)}>
-              <Glyphicon glyph="chevron-up"/>
-            </Button>
-          </ButtonGroup>
-          <br/>
-        </div>
-      )
-    }
-
-    return (
-      <div>
-        <br/>
-        <ButtonGroup vertical block>
-          <Button bsSize="xsmall" onClick={() => this.props.addItem(obj.ID)}>
-            <Glyphicon glyph="chevron-down"/>
-          </Button>
-        </ButtonGroup>
-        <br/>
-      </div>
-    )
-  }
-  /**
-   * アイテムを取得する
-   *
-   * @param  {object} item アイテム
-   * @return {object} html
-   */
-  gatItem(item) {
-    return (
-      <div key={item.ID}>
-        <Thumbnail {...item}/> {this.getItemShow(item)}
-      </div>
-    )
-  }
-  /**
    * アイテムリストを取得する
    *
    * @param  {array[]} list リスト
@@ -93,12 +41,26 @@ export default class List extends Component {
     if (!show) {
       return (<div/>)
     }
+
+    let contribution = (<div />)
+    let openID = -1
+
+    list.forEach((item) => {
+      if (this.props.contributionList.itemMap[item.ID] != undefined) {
+        let tmp = this.props.contributionList.itemMap[item.ID]
+        contribution = (<ContributionShowFrame title={tmp.title} body={tmp.body} tagList={tmp.tagList}/>)
+        openID = item.ID
+      }
+    })
+
     return (
-      <div>
-        {list.map((item) => {
-          return this.gatItem(item)
-        })}
-      </div>
+      <Combination
+        List={list}
+        OpenID={openID}
+        Show={contribution}
+        onAdd={this.props.addItem}
+        onDelete={this.props.deleteItem}
+      />
     )
   }
   /**

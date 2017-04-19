@@ -6,7 +6,7 @@ import {Alert, Button, ButtonGroup, Glyphicon} from "react-bootstrap"
 export default class Open extends Component {
   render() {
     return (
-      <div>
+      <div onDoubleClick={() => this.props.onDelete(this.props.ID)}>
         <hr/>
         <Alert bsStyle="success">
           記事の上でダブルクリックをすると閉じます
