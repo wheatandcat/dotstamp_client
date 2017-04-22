@@ -1,6 +1,6 @@
 import PropTypes from "prop-types"
 import React, { Component } from "react"
-import {Link} from "react-router"
+import {Link} from "react-router-dom"
 import {Typeahead} from "react-bootstrap-typeahead"
 import {Modal, Tabs, Tab, PageHeader, Glyphicon, Row, Col, Nav, NavItem, ButtonToolbar, Button} from "react-bootstrap"
 import ContributionShow from "../../contribution/containers/show"

@@ -1,5 +1,4 @@
-/*global BASE_URL*/
-/*global UPLOAD_PATH*/
+/*global process*/
 import dateFormat from "dateformat"
 
 /**
@@ -46,7 +45,7 @@ export function getUniqueStr(myStrong) {
  * @return {string} URL
  */
 export function getTopUrl() {
-  return BASE_URL
+  return process.env.BASE_URL
 }
 
 /**
@@ -55,7 +54,7 @@ export function getTopUrl() {
  * @return {string} URL
  */
 export function getUploadUrl() {
-  return UPLOAD_PATH
+  return process.env.UPLOAD_PATH
 }
 
 /**

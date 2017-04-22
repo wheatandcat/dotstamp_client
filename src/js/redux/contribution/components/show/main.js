@@ -15,11 +15,18 @@ import {DateTimeFormat} from "../../../../utils/common"
 
 export default class Main extends Component {
   componentWillMount() {
-    if (this.props.params.id == 0) {
+    if (this.getID() == 0) {
       return
     }
 
-    this.getDetail(this.props.params.id)
+    this.getDetail(this.getID())
+  }
+  getID() {
+    if (this.props.match == undefined) {
+      return this.props.params.id
+    }
+
+    return this.props.match.params.id
   }
   /**
    * 詳細を取得する
@@ -33,21 +40,21 @@ export default class Main extends Component {
    * フォロー追加する
    */
   addFollow() {
-    if (this.props.params.id == 0) {
+    if (this.getID() == 0) {
       return
     }
 
-    this.props.addFollow({userContributionId: this.props.params.id})
+    this.props.addFollow({userContributionId: this.getID()})
   }
   /**
    * フォロー削除する
    */
   deleteFollow() {
-    if (this.props.params.id == 0) {
+    if (this.getID() == 0) {
       return
     }
 
-    this.props.deleteFollow({userContributionId: this.props.params.id})
+    this.props.deleteFollow({userContributionId: this.getID()})
   }
   /**
    * フォローを取得する
@@ -93,7 +100,7 @@ export default class Main extends Component {
    * 通報を取得する
    */
   getProblem() {
-    if (this.props.params.id == 0) {
+    if (this.getID() == 0) {
       return
     }
 
@@ -119,10 +126,22 @@ export default class Main extends Component {
           <br/>
           <div className={Shift}>
             <FormGroup>
-              <Radio name="problemType" value={PROBLEM_TYPE_SPAM} checked={this.props.contributionShow.ProblemType == PROBLEM_TYPE_SPAM} readOnly={this.props.contributionShow.ProblemType == PROBLEM_TYPE_SPAM} onChange={() => this.props.setProblemType(PROBLEM_TYPE_SPAM)}>
+              <Radio
+                name="problemType"
+                value={PROBLEM_TYPE_SPAM}
+                checked={this.props.contributionShow.ProblemType == PROBLEM_TYPE_SPAM}
+                readOnly={this.props.contributionShow.ProblemType == PROBLEM_TYPE_SPAM}
+                onChange={() => this.props.setProblemType(PROBLEM_TYPE_SPAM)}
+              >
                 スパムです
               </Radio>
-              <Radio name="problemType" value={PROBLEM_TYPE_INAPPROPRIATE} checked={this.props.contributionShow.ProblemType == PROBLEM_TYPE_INAPPROPRIATE} readOnly={this.props.contributionShow.ProblemType == PROBLEM_TYPE_INAPPROPRIATE} onChange={() => this.props.setProblemType(PROBLEM_TYPE_INAPPROPRIATE)}>
+              <Radio
+                name="problemType"
+                value={PROBLEM_TYPE_INAPPROPRIATE}
+                checked={this.props.contributionShow.ProblemType == PROBLEM_TYPE_INAPPROPRIATE}
+                readOnly={this.props.contributionShow.ProblemType == PROBLEM_TYPE_INAPPROPRIATE}
+                onChange={() => this.props.setProblemType(PROBLEM_TYPE_INAPPROPRIATE)}
+              >
                 不適切な内容が含まれています
               </Radio>
             </FormGroup>
@@ -223,7 +242,12 @@ export default class Main extends Component {
 
     return (
       <div className="container">
-        <Label bsStyle="success" className={FontNormal}>記事を読み上げる</Label>
+        <Label
+          bsStyle="success"
+          className={FontNormal}
+        >
+          記事を読み上げる
+        </Label>
         <br/>
         <YouTube videoId={this.props.contributionShow.Movie.movie_id}/>
       </div>
@@ -239,7 +263,9 @@ export default class Main extends Component {
       <div>
         {this.getTitle()}
         {this.getYoutube()}
-        <ContributionShowFrame title={this.props.contributionShow.Title} body={this.props.contributionShow.Body}/>
+        <ContributionShowFrame
+          title={this.props.contributionShow.Title}
+          body={this.props.contributionShow.Body}/>
         <Footer/>
       </div>
     )
@@ -247,6 +273,7 @@ export default class Main extends Component {
 }
 
 Main.propTypes = {
+  match: PropTypes.object,
   params: PropTypes.object,
   getDetail: PropTypes.func,
   contributionShow: PropTypes.object,

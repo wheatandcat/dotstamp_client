@@ -7,7 +7,7 @@ import {STATUS_PUBLIC, STATUS_UPLOADING, STATUS_RUNNING} from "../../../constant
 import {NoSpace} from "../../../../css/common.css"
 import {getTopUrl} from "../../../utils/common"
 import YouTube from "../../../utils/youtube"
-import {Link} from "react-router"
+import {Link} from "react-router-dom"
 
 var self
 window.document.getElementById("uploadToken").onchange = function() {

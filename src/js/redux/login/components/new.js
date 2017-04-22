@@ -1,7 +1,7 @@
 import PropTypes from "prop-types"
 /*eslint no-console: ["error", { allow: ["log", "error"] }] */
 import React, { Component } from "react"
-import {Link} from "react-router"
+import {Link} from "react-router-dom"
 import {PageHeader, Alert, ButtonToolbar, FormGroup, Col, Button, Grid, Row} from "react-bootstrap"
 import {PASSWORD_LENGTH_MIN} from "../../../constants/common"
 import Envelope from "../../../utils/parts/envelope"

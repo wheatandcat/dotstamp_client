@@ -18,11 +18,11 @@ import MessageSow from "../../message/containers/show"
 
 export default class Show extends Component {
   componentWillMount() {
-    this.getDeatil(this.props.params.id)
+    this.getDeatil(this.props.match.params.id)
   }
   componentDidUpdate() {
     if (this.props.soundShow.Detail) {
-      this.getDeatil(this.props.params.id)
+      this.getDeatil(this.props.match.params.id)
     }
 
     if (!this.props.soundShow.MovieMakeListener) {
@@ -32,7 +32,7 @@ export default class Show extends Component {
     this.props.offMovieMakeListener()
 
     setTimeout(() => {
-      this.props.check({userContributionId: this.props.params.id})
+      this.props.check({userContributionId: this.props.match.params.id})
     }, 30000)
   }
   /**
@@ -184,7 +184,7 @@ export default class Show extends Component {
      * ボイスタイプリストを保存する
      */
   saveVoiceTypeList() {
-    this.props.saveVoiceTypeList({userContributionId: this.props.params.id, voiceType: this.selectVoice.value})
+    this.props.saveVoiceTypeList({userContributionId: this.props.match.params.id, voiceType: this.selectVoice.value})
 
     this.props.message("音声タイプの一括変更を実行", "success")
   }
@@ -241,7 +241,7 @@ export default class Show extends Component {
           <PageHeader>
             &nbsp;&nbsp;<Glyphicon glyph="bullhorn"/>&nbsp;読み上げを編集する（β版）
           </PageHeader>
-          <Menu userContributionId={this.props.params.id}/>
+          <Menu userContributionId={this.props.match.params.id}/>
         </div>
         <div className={"container " + Input}>
           <Table striped bordered condensed hover>
@@ -281,7 +281,7 @@ export default class Show extends Component {
 }
 
 Show.propTypes = {
-  params: PropTypes.object,
+  match: PropTypes.object,
   getDetail: PropTypes.func,
   soundShow: PropTypes.object,
   changeBodySound: PropTypes.func,

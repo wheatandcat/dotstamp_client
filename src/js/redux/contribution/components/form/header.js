@@ -16,7 +16,7 @@ import {
   Glyphicon
 } from "react-bootstrap"
 import {VIEW_STATUS_PUBLIC, VIEW_STATUS_PRIVATE, TAG_MAX_NUMBER} from "../../../../constants/contribution"
-import {Link} from "react-router"
+import {Link} from "react-router-dom"
 import FormMain from "../../containers/form/main"
 import TalkBoard from "../../containers/talk/board"
 import AlertMessage from "../../../error/containers/alertMessage"

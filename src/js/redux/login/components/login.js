@@ -1,6 +1,6 @@
 import PropTypes from "prop-types"
 import React, { Component } from "react"
-import {Link} from "react-router"
+import {Link} from "react-router-dom"
 import {Glyphicon, PageHeader, FormGroup, Col, Button, Grid, Row, Form} from "react-bootstrap"
 import Envelope from "../../../utils/parts/envelope"
 export default class Login extends Component {

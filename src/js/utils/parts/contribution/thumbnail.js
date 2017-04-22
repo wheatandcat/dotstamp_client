@@ -3,7 +3,7 @@ import React, { Component } from "react"
 import {Label, Media, Glyphicon} from "react-bootstrap"
 import Icon from "../../parts/icon"
 import Tag from "../../parts/tag"
-import {Link} from "react-router"
+import {Link} from "react-router-dom"
 import {DateFormat} from "../../common"
 import {VIEW_STATUS_PUBLIC} from "../../../constants/contribution"
 

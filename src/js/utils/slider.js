@@ -43,23 +43,6 @@ window.addEventListener("keydown", function(event) {
   }
 })
 
-
-class NextArrow extends React.Component {
-  render() {
-    return (
-      <div {...this.props} style={{display: "block"}}></div>
-    )
-  }
-}
-
-class PrevArrow extends React.Component {
-  render() {
-    return (
-      <div {...this.props} style={{display: "block"}}></div>
-    )
-  }
-}
-
 export default class Slider extends Component {
   constructor (props) {
     super(props)
@@ -121,8 +104,6 @@ export default class Slider extends Component {
       slidesToScroll: 1,
       focusOnSelect: true,
       pauseOnHover: true,
-      nextArrow: <NextArrow />,
-      prevArrow: <PrevArrow />,
       afterChange: function (currentSlide) {
         self.change(currentSlide)
         self.handleClick(currentSlide)

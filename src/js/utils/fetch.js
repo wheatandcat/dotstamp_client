@@ -1,9 +1,9 @@
-/*global BASE_URL*/
+/*global process*/
 import fetch from "isomorphic-fetch"
 import * as types from "../constants/ActionTypes"
 
 // ホスト
-var host = (typeof (BASE_URL) == "undefined") ? "http://192.168.33.10:8080/" : BASE_URL
+var host = (typeof (process.env.BASE_URL) == "undefined") ? "http://192.168.33.10:8080/" : process.env.BASE_URL
 
 // 通信状態リスト
 var fetchStateList = []

@@ -3,7 +3,7 @@ import React, { Component } from "react"
 import {Panel, Button, Well, Image, Jumbotron} from "react-bootstrap"
 import {Full, Stamp, StampAddress} from "../../../css/common.css"
 import {Title} from "../../../css/user.css"
-import {Link} from "react-router"
+import {Link} from "react-router-dom"
 
 export default class Envelope extends Component {
   /**

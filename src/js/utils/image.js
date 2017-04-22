@@ -1,7 +1,5 @@
+/*global process*/
 import PropTypes from "prop-types"
-/*global UPLOAD_PATH*/
-/*global IMAGE_PATH*/
-
 import React, { Component } from "react"
 import {Image, Thumbnail} from "react-bootstrap"
 
@@ -96,7 +94,11 @@ export default class Images extends Component {
    * @return {string}  画像ファイルパス
    */
   getUploadSrc (dirName, fileName) {
-    return UPLOAD_PATH + dirName + fileName
+    if (process.env.UPLOAD_PATH == undefined) {
+      return "http:test/files/" + dirName + fileName
+    }
+
+    return process.env.UPLOAD_PATH + dirName + fileName
   }
   /**
    * 画像ファイルを取得する
@@ -105,7 +107,11 @@ export default class Images extends Component {
    * @return {string} 画像ファイルパス
    */
   getImageSrc (filePath) {
-    return IMAGE_PATH + filePath
+    if (process.env.IMAGE_PATH == undefined) {
+      return "http:timages/" + filePath
+    }
+
+    return process.env.IMAGE_PATH + filePath
   }
   /**
    * 画像取得する

@@ -2,18 +2,21 @@ import PropTypes from "prop-types"
 /*eslint no-console: ["error", { allow: ["log", "error"] }] */
 import React, { Component } from "react"
 import { FormGroup,Button,ControlLabel,PageHeader,Alert,Panel} from "react-bootstrap"
-import {Link} from "react-router"
+import {Link} from "react-router-dom"
 export default class Reset extends Component {
   componentWillMount() {
-    this.props.check(this.props.params.email, this.props.params.keyword)
+    this.props.check(
+      this.props.match.params.email,
+      this.props.match.params.keyword
+    )
   }
   /**
      * 保存する
      */
   save() {
     let action = {
-      email: this.props.params.email,
-      keyword: this.props.params.keyword,
+      email: this.props.match.params.email,
+      keyword: this.props.match.params.keyword,
       password: this.refs.password.value
     }
 
@@ -69,7 +72,7 @@ export default class Reset extends Component {
 }
 
 Reset.propTypes = {
-  params: PropTypes.object,
+  match: PropTypes.object,
   check: PropTypes.func,
   save: PropTypes.func,
   passwordReset: PropTypes.object

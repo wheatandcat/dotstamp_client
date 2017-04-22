@@ -8,8 +8,14 @@ import Footer from "../../../utils/parts/footer"
 
 export default class FollowList extends Component {
   componentWillMount() {
-    this.getList(this.props.params.page, this.props.params.order)
-    this.props.paging(this.props.params.page, this.props.params.order)
+    this.getList(
+      this.props.match.params.page,
+      this.props.match.params.order
+    )
+    this.props.paging(
+      this.props.match.params.page,
+      this.props.match.params.order
+    )
   }
   /**
      * リストを取得する
@@ -62,7 +68,7 @@ export default class FollowList extends Component {
         </div>
         <div className="container">
           {list.map((item, key) => <div key={key}>
-            <Thumbnail {...item} searchMatch={this.props.params.search}/>
+            <Thumbnail {...item} searchMatch={this.props.match.params.search}/>
             <hr className={Line}/>
           </div>)}
         </div>
@@ -74,7 +80,7 @@ export default class FollowList extends Component {
 }
 
 FollowList.propTypes = {
-  params: PropTypes.object,
+  match: PropTypes.object,
   getList: PropTypes.func,
   paging: PropTypes.func,
   userFollowList: PropTypes.object

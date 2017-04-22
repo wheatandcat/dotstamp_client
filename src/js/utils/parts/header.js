@@ -4,7 +4,7 @@ import {connect} from "react-redux"
 import {Image, Navbar, FormGroup, FormControl, Button, Glyphicon, InputGroup} from "react-bootstrap"
 import {fetchPostsIfNeeded} from "../fetch"
 import LoginAuth from "./../../redux/login/containers/auth"
-import {Link} from "react-router"
+import {Link} from "react-router-dom"
 import * as types from "../../constants/ActionTypes"
 
 import {Stamp, Narrowly} from "./../../../css/common.css"

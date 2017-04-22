@@ -12,8 +12,17 @@ var tmpSearch = ""
 
 export default class Search extends Component {
   componentWillMount() {
-    this.search(this.props.params.search, this.props.params.order, this.props.params.page)
-    this.props.paging(this.props.params.search, this.props.params.order, this.props.params.page)
+    this.search(
+      this.match.props.params.search,
+      this.props.match.params.order,
+      this.props.match.params.page
+    )
+
+    this.props.paging(
+      this.props.match.params.search,
+      this.props.match.params.order,
+      this.props.match.params.page
+    )
   }
   /**
    * コマンドを送信する
@@ -90,7 +99,7 @@ export default class Search extends Component {
     return (
       <div>
         {list.map((item, key) => <div key={key}>
-          <Thumbnail {...item} search={this.search.bind(this)} searchMatch={this.props.params.search}/>
+          <Thumbnail {...item} search={this.search.bind(this)} searchMatch={this.props.match.params.search}/>
           <hr className={Line}/>
         </div>)}
       </div>
@@ -111,7 +120,15 @@ export default class Search extends Component {
 
     let pagination = ""
     if (list.length > 0) {
-      pagination = (<Pagination count={this.props.contributionSearch.Count} limit={this.props.contributionSearch.Limit} link="user/followList" order={parseInt(this.props.contributionSearch.Order)} activePage={parseInt(this.props.contributionSearch.Page)} paging={this.paging.bind(this)}/>)
+      pagination = (
+        <Pagination
+          count={this.props.contributionSearch.Count}
+          limit={this.props.contributionSearch.Limit}
+          link="user/followList"
+          order={parseInt(this.props.contributionSearch.Order)}
+          activePage={parseInt(this.props.contributionSearch.Page)}
+          paging={this.paging.bind(this)}
+        />)
     }
 
     let order = "　新着順　"
@@ -127,9 +144,13 @@ export default class Search extends Component {
             <Form horizontal componentClass="div">
               <FormGroup>
                 <Col sm={10}>
-                  <FormControl type="text" placeholder="検索ワード" defaultValue={this.props.params.search} inputRef={ref => {
-                    this.input = ref
-                  }} onKeyDown={this.sendCommand.bind(this)}/>
+                  <FormControl
+                    type="text"
+                    placeholder="検索ワード"
+                    defaultValue={this.props.match.params.search}
+                    inputRef={ref => {this.input = ref}}
+                    onKeyDown={this.sendCommand.bind(this)}
+                  />
                 </Col>
                 <Col sm={2}>
                   <Button onClick={() => this.setSearch()}>
@@ -140,7 +161,11 @@ export default class Search extends Component {
               <FormGroup>
                 <Col sm={10}/>
                 <Col sm={2}>
-                  <DropdownButton title={order} id="search-order-dropdown" pullRight onSelect={this.setOrder.bind(this)}>
+                  <DropdownButton
+                    title={order} id="search-order-dropdown"
+                    pullRight
+                    onSelect={this.setOrder.bind(this)}
+                  >
                     <LinkContainer to={"/contribution/search/" + this.props.contributionSearch.Search + "/" + ORDER_TYPE_NEW + "/" + this.props.contributionSearch.Page}>
                       <MenuItem eventKey={ORDER_TYPE_NEW}>新規順</MenuItem>
                     </LinkContainer>
@@ -163,7 +188,7 @@ export default class Search extends Component {
 }
 
 Search.propTypes = {
-  params: PropTypes.object,
+  match: PropTypes.object,
   contributionSearch: PropTypes.object,
   search: PropTypes.func,
   paging: PropTypes.func,

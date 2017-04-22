@@ -1,6 +1,6 @@
 import PropTypes from "prop-types"
 import React, { Component } from "react"
-import {Link} from "react-router"
+import {Link} from "react-router-dom"
 import {Button, ButtonGroup, Well ,Glyphicon, Collapse} from "react-bootstrap"
 import Footer from "../../../utils/parts/footer"
 import ContributionShowFrame from "../components/show/frame"

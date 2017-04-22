@@ -2,7 +2,7 @@ import React, {Component} from "react"
 import {PageHeader, Panel, Alert, Glyphicon, Button} from "react-bootstrap"
 import {Normal} from "../../../css/common.css"
 import Footer from "./footer"
-import {Link} from "react-router"
+import {Link} from "react-router-dom"
 
 export default class Help extends Component {
   /**

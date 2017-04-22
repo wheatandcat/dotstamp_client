@@ -6,4 +6,4 @@ BASE_URL=/
 
 #画像ファイルパス
 IMAGE_PATH=http:images/
-UPLOAD_PATH=files/
+UPLOAD_PATH=http:test/files/

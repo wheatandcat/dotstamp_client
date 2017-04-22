@@ -5,7 +5,7 @@ import Footer from "../../../utils/parts/footer"
 import {LinkContainer} from "react-router-bootstrap"
 export default class Show extends Component {
   componentWillMount() {
-    this.get(this.props.params.file)
+    this.get(this.props.match.params.file)
   }
   /**
      * 追加する
@@ -63,6 +63,6 @@ export default class Show extends Component {
 
 Show.propTypes = {
   get: PropTypes.func,
-  params: PropTypes.object,
+  match: PropTypes.object,
   informationShow: PropTypes.object
 }

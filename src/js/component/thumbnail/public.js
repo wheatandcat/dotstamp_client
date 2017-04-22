@@ -4,7 +4,7 @@ import React, { Component } from "react"
 import {Media, Glyphicon} from "react-bootstrap"
 import Icon from "../../utils/parts/icon"
 import Tag from "../../utils/parts/tag"
-import {Link} from "react-router"
+import {Link} from "react-router-dom"
 import {DateFormat} from "../../utils/common"
 import {Body, Image, Follow, Strong, LittleStrong, Gap} from "./styles.css"
 

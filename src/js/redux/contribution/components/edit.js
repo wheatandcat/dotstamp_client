@@ -4,7 +4,7 @@ import FormHeader from "../containers/form/header"
 
 export default class Edit extends Component {
   componentWillMount() {
-    this.edit(this.props.params.id)
+    this.edit(this.props.match.params.id)
   }
   /**
    * 編集する
@@ -26,7 +26,7 @@ export default class Edit extends Component {
 }
 
 Edit.propTypes = {
-  params: PropTypes.object,
+  match: PropTypes.object,
   contributionEdit: PropTypes.object,
   contributionTalk: PropTypes.array,
   getDetail: PropTypes.func,

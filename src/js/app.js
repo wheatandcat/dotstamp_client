@@ -1,4 +1,4 @@
-/*global ENV*/
+/*global process*/
 /*eslint no-console: ["error", { allow: ["log", "debug", "info", "warn"] }] */
 import "babel-polyfill"
 
@@ -7,6 +7,7 @@ import PropTypes from "prop-types"
 import React, { Component } from "react"
 import { render } from "react-dom"
 import { Provider } from "react-redux"
+import { HashRouter as Router, Switch, Route } from "react-router-dom"
 
 import configureStore from "./store/configureStore"
 import ContributionNew from "./redux/contribution/containers/new"
@@ -39,11 +40,10 @@ import informationShow from "./redux/information/containers/show"
 import About from "./utils/parts/about"
 import Help from "./utils/parts/help"
 
-import {IndexRoute, Router, Route, hashHistory} from "react-router"
-
 const store = configureStore()
 
-if (ENV=="production") {
+
+if (process.env.ENV=="production") {
   console.debug = function(){}
   console.info = function(){}
   console.log = function(){}
@@ -77,29 +77,32 @@ class App extends Component {
   render () {
     return (
       <Provider store={store}>
-        <Router history={hashHistory}>
-          <Route path="/" component={Menu}>
-            <IndexRoute component={ContributionList} />
-            <Route path="/contribution/new" component={ContributionNew} />
-            <Route name="/contribution/edit" path="/contribution/edit/:id" component={ContributionEdit} />
-            <Route path="/contribution/list" component={ContributionList} />
-            <Route path="/contribution/show/:id" component={ContributionShow} />
-            <Route path="/contribution/search/:search/:order/:page" component={ContributionSearch} />
-            <Route path="/user/contributionList" component={UserContributionList} />
-            <Route path="/user/mypage" component={UserMypage} />
-            <Route path="/user/followList/:order/:page" component={UserFollowList} />
-            <Route path="/character/list" component={CharacterList} />
-            <Route path="/login/new" component={loginNew} />
-            <Route path="/login/login" component={loginLogin} />
-            <Route path="/password/input" component={PasswordInput} />
-            <Route path="/password/reset/:email/:keyword" component={PasswordReset} />
-            <Route path="/sound/show/:id" component={SoundShow} />
-            <Route path="/about" component={About} />
-            <Route path="/help" component={Help} />
-            <Route path="/question" component={questionShow} />
-            <Route path="/information/:file" component={informationShow} />
-            <Route path="/contribution/experience" component={ContributionNew} />
-          </Route>
+        <Router>
+          <div>
+            <Menu />
+            <Switch>
+              <Route exact path="/" component={ContributionList} />
+              <Route path="/contribution/new" component={ContributionNew} />
+              <Route name="/contribution/edit" path="/contribution/edit/:id" component={ContributionEdit} />
+              <Route path="/contribution/list" component={ContributionList} />
+              <Route path="/contribution/show/:id" component={ContributionShow} />
+              <Route path="/contribution/search/:search/:order/:page" component={ContributionSearch} />
+              <Route path="/user/contributionList" component={UserContributionList} />
+              <Route path="/user/mypage" component={UserMypage} />
+              <Route path="/user/followList/:order/:page" component={UserFollowList} />
+              <Route path="/character/list" component={CharacterList} />
+              <Route path="/login/new" component={loginNew} />
+              <Route path="/login/login" component={loginLogin} />
+              <Route path="/password/input" component={PasswordInput} />
+              <Route path="/password/reset/:email/:keyword" component={PasswordReset} />
+              <Route path="/sound/show/:id" component={SoundShow} />
+              <Route path="/about" component={About} />
+              <Route path="/help" component={Help} />
+              <Route path="/question" component={questionShow} />
+              <Route path="/information/:file" component={informationShow} />
+              <Route path="/contribution/experience" component={ContributionNew} />
+            </Switch>
+          </div>
         </Router>
       </Provider>
     )
@@ -108,4 +111,4 @@ class App extends Component {
 
 render((
   <App></App>
-  ), document.querySelector("#root"))
+), document.querySelector("#root"))

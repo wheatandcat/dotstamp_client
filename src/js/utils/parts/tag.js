@@ -2,7 +2,7 @@ import PropTypes from "prop-types"
 import React, { Component } from "react"
 import {Label} from "react-bootstrap"
 import {Item} from "./../../../css/tag.css"
-import {Link} from "react-router"
+import {Link} from "react-router-dom"
 import {ORDER_TYPE_NEW} from "../../constants/contribution"
 
 
