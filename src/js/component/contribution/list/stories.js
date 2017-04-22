@@ -1,9 +1,15 @@
 // @flow
 import React from "react"
 import { storiesOf, action } from "@kadira/storybook"
+import { MemoryRouter } from "react-router"
 import { Close, Combination, List, Open } from "./index"
 
 storiesOf("contribution list")
+.addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>
+      {story()}
+    </MemoryRouter>
+))
 .add("open", () => (
   <Open
     ID={1}

@@ -1,9 +1,15 @@
 // @flow
 import React from "react"
 import { storiesOf, action } from "@kadira/storybook"
+import { MemoryRouter } from "react-router"
 import { Thumbnail, Private, Public } from "./index"
 
 storiesOf("Thumbnail")
+.addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>
+      {story()}
+    </MemoryRouter>
+))
 .add("Thumbnail on body & sound", () => (
   <div className="container">
     <Thumbnail

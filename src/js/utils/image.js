@@ -108,7 +108,7 @@ export default class Images extends Component {
    */
   getImageSrc (filePath) {
     if (process.env.IMAGE_PATH == undefined) {
-      return "http:timages/" + filePath
+      return "http:/images/" + filePath
     }
 
     return process.env.IMAGE_PATH + filePath

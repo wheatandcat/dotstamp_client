@@ -6,5 +6,8 @@
 [include]
 
 [libs]
+decls
 
 [options]
+module.name_mapper.extension='css' -> 'CSSModule'
+module.system=haste
