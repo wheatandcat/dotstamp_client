@@ -1,7 +1,7 @@
 // @flow
 import React from "react"
-import {storiesOf} from "@kadira/storybook"
-import {Image, Text, Balloon} from "./index"
+import {storiesOf, action} from "@kadira/storybook"
+import {Edit, Image, Text, Balloon} from "./index"
 
 storiesOf("Bllon")
 .add("text", () => (
@@ -18,6 +18,29 @@ storiesOf("Bllon")
       UserFileName="0.png"
       TalkType={1}
       Body="abcdef"
+    />
+  </div>
+)).add("edit", () => (
+  <div className="container">
+    <Edit
+      UserFileName="0.png"
+      TalkType={1}
+      Body="abcdef"
+      Item={{ body: "text" }}
+      Priority={1}
+      onChangeImage={action("onChangeImage")}
+      onChangeText={action("onChangeBody")}
+      onDelete={action("onDelete")}
+    />
+    <Edit
+      UserFileName="0.png"
+      TalkType={2}
+      Body="0.png"
+      Item={{ body: "text" }}
+      Priority={1}
+      onChangeImage={action("onChangeImage")}
+      onChangeText={action("onChangeBody")}
+      onDelete={action("onDelete")}
     />
   </div>
 ))

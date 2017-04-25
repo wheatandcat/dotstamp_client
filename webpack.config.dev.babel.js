@@ -12,6 +12,9 @@ var env = "development"
 console.log("環境:" + env)
 loadenv("./nodeConfig/." + env)
 
+var publicPath = "http://localhost:3000/"
+
+
 module.exports = {
   context: __dirname + "/src",
   entry: {
@@ -19,7 +22,9 @@ module.exports = {
   },
   output: {
     path: __dirname + "/dist",
-    filename: "js/bundle.js"
+    pathinfo: true,
+    filename: "js/bundle.js",
+    publicPath: publicPath
   },
   resolve: {
     extensions: [".js", ".jsx"]
@@ -64,6 +69,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.EnvironmentPlugin([
       "BASE_URL",
       "IMAGE_PATH",

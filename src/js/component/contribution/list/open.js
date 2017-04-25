@@ -1,31 +1,31 @@
 // @flow
-import PropTypes from "prop-types"
-import React, { Component } from "react"
+import type { Children } from "react"
+import React from "react"
 import {Alert, Button, ButtonGroup, Glyphicon} from "react-bootstrap"
 
-export default class Open extends Component {
-  render() {
-    return (
-      <div onDoubleClick={() => this.props.onDelete(this.props.ID)}>
-        <hr/>
-        <Alert bsStyle="success">
-          記事の上でダブルクリックをすると閉じます
-        </Alert>
-        {this.props.children}
-        <br/>
-        <ButtonGroup vertical block>
-          <Button bsSize="xsmall" onClick={() => this.props.onDelete(this.props.ID)}>
-            <Glyphicon glyph="chevron-up"/>
-          </Button>
-        </ButtonGroup>
-        <br/>
-      </div>
-    )
-  }
+type Props = {
+  children?: Children,
+  ID?: number,
+  onDelete: Function,
 }
 
-Open.propTypes = {
-  children: PropTypes.element,
-  ID: PropTypes.number,
-  onDelete: PropTypes.func,
-}
+export default ({
+  children,
+  ID,
+  onDelete,
+}: Props) => (
+  <div onDoubleClick={() => onDelete(ID)}>
+    <hr/>
+    <Alert bsStyle="success">
+      記事の上でダブルクリックをすると閉じます
+    </Alert>
+    {children}
+    <br/>
+    <ButtonGroup vertical block>
+      <Button bsSize="xsmall" onClick={() => onDelete(ID)}>
+        <Glyphicon glyph="chevron-up"/>
+      </Button>
+    </ButtonGroup>
+    <br/>
+  </div>
+)
