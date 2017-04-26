@@ -1,7 +1,7 @@
 // @flow
 import React from "react"
 import {storiesOf, action} from "@kadira/storybook"
-import {Edit, Image, Text, Balloon} from "./index"
+import {Image, Text, Balloon, EditImage, EditText} from "./index"
 
 storiesOf("Bllon")
 .add("text", () => (
@@ -12,35 +12,41 @@ storiesOf("Bllon")
   <div className="container">
     <Image FileName="0.png" />
   </div>
-)).add("bllon text", () => (
+)).add("bllon", () => (
   <div className="container">
     <Balloon
       UserFileName="0.png"
-      TalkType={1}
-      Body="abcdef"
+      Type={1}
+      Talk="abcdef"
+    />
+    <Balloon
+      UserFileName="0.png"
+      Type={2}
+      Talk="0.png"
     />
   </div>
 )).add("edit", () => (
   <div className="container">
-    <Edit
-      UserFileName="0.png"
-      TalkType={1}
-      Body="abcdef"
-      Item={{ body: "text" }}
-      Priority={1}
-      onChangeImage={action("onChangeImage")}
-      onChangeText={action("onChangeBody")}
-      onDelete={action("onDelete")}
-    />
-    <Edit
-      UserFileName="0.png"
-      TalkType={2}
-      Body="0.png"
-      Item={{ body: "text" }}
-      Priority={1}
-      onChangeImage={action("onChangeImage")}
-      onChangeText={action("onChangeBody")}
-      onDelete={action("onDelete")}
-    />
+    <div>
+      <EditText
+        UserFileName="0.png"
+        Type={1}
+        Talk="abcdef"
+        Item={{ body: "text" }}
+        Priority={1}
+        onChangeText={action("onChangeBody")}
+        onDelete={action("onDelete")}
+      />
+    </div>
+    <div>
+      <EditImage
+        UserFileName="0.png"
+        Type={2}
+        Talk="0.png"
+        Priority={2}
+        onChangeImage={action("onChangeImage")}
+        onDelete={action("onDelete")}
+      />
+    </div>
   </div>
 ))
