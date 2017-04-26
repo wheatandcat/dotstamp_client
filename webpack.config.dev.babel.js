@@ -7,6 +7,9 @@ import postcssCssnext from "postcss-cssnext"
 import postcssSorting from "postcss-sorting"
 import precss from "precss"
 import loadenv from "node-env-file"
+import HtmlWebpackPlugin from "html-webpack-plugin"
+
+var publicPath = "http://localhost:3000/"
 
 var env = "development"
 console.log("環境:" + env)
@@ -14,13 +17,16 @@ loadenv("./nodeConfig/." + env)
 
 module.exports = {
   context: __dirname + "/src",
-  entry: {
-    "js/application": "./js/app",
-  },
+  entry: [
+    "react-dev-utils/webpackHotDevClient",
+    "webpack/hot/dev-server",
+    "./js/app",
+  ],
   output: {
     path: __dirname + "/dist",
     pathinfo: true,
     filename: "js/bundle.js",
+    publicPath: publicPath
   },
   resolve: {
     extensions: [".js", ".jsx"]
@@ -65,7 +71,11 @@ module.exports = {
     ]
   },
   plugins: [
-    //new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: __dirname + "/dist/index.html",
+    }),
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.EnvironmentPlugin([
       "BASE_URL",
       "IMAGE_PATH",
@@ -85,5 +95,10 @@ module.exports = {
   watchOptions: {
     aggregateTimeout: 300,
     poll: 1000
+  },
+  node: {
+    fs: "empty",
+    net: "empty",
+    tls: "empty"
   }
 }
