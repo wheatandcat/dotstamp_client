@@ -13,17 +13,17 @@ import {Body, Image, Follow} from "../../../../css/contribution.css"
 
 export default class Thumbnail extends Component {
   /**
-     * 詳細画面リンクを取得する
-     *
-     * @param  {number} id 投稿ID
-     * @return {string} 詳細画面リンク
-     */
+   * 詳細画面リンクを取得する
+   *
+   * @param  {number} id 投稿ID
+   * @return {string} 詳細画面リンク
+   */
   getShowPath(id) {
     return "/contribution/show/" + id
   }
   /**
-     * 検索一致を取得する
-     */
+   * 検索一致を取得する
+   */
   getSearchMatch() {
     let search = this.props.Search
 
@@ -69,8 +69,8 @@ export default class Thumbnail extends Component {
     })
   }
   /**
-     * 非公開を取得する
-     */
+   * 非公開を取得する
+   */
   getPrivate() {
     return (
       <Media className={Disable}>
@@ -95,10 +95,10 @@ export default class Thumbnail extends Component {
     )
   }
   /**
-     * 描画する
-     *
-     * @return {object} html
-     */
+   * 描画する
+   *
+   * @return {object} html
+   */
   render() {
     if (this.props.ViewStatus != VIEW_STATUS_PUBLIC) {
       return this.getPrivate()
@@ -117,9 +117,6 @@ export default class Thumbnail extends Component {
         </span>
       )
     }
-
-    console.log (this.props)
-    console.log ("------------")
 
     return (
       <Media>

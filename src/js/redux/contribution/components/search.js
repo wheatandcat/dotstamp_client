@@ -2,18 +2,18 @@ import PropTypes from "prop-types"
 import React, { Component } from "react"
 import {FormGroup, Form, FormControl, Glyphicon, Button, Col, DropdownButton, MenuItem} from "react-bootstrap"
 import {LinkContainer} from "react-router-bootstrap"
-import Thumbnail from "../../../utils/parts/contribution/thumbnail"
 import Pagination from "../../../utils/parts/pagination"
 import {ORDER_TYPE_NEW, ORDER_TYPE_FOLLOW_COUNT} from "../../../constants/contribution"
-import {Center, Line} from "./../../../../css/common.css"
+import {Center} from "./../../../../css/common.css"
 import Footer from "../../../utils/parts/footer"
+import {List} from "../../../component/contribution/list"
 
 var tmpSearch = ""
 
 export default class Search extends Component {
   componentWillMount() {
     this.search(
-      this.match.props.params.search,
+      this.props.match.params.search,
       this.props.match.params.order,
       this.props.match.params.page
     )
@@ -97,12 +97,9 @@ export default class Search extends Component {
     }
 
     return (
-      <div>
-        {list.map((item, key) => <div key={key}>
-          <Thumbnail {...item} search={this.search.bind(this)} searchMatch={this.props.match.params.search}/>
-          <hr className={Line}/>
-        </div>)}
-      </div>
+      <List
+        List={list}
+      />
     )
 
   }

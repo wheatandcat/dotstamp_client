@@ -8,11 +8,10 @@ import postcssCssnext from "postcss-cssnext"
 import postcssSorting from "postcss-sorting"
 import precss from "precss"
 import loadenv from "node-env-file"
-import HtmlWebpackPlugin from "html-webpack-plugin"
 
 var publicPath = "http://localhost:3000/"
 
-var env = "development"
+var env = "local"
 console.log("環境:" + env)
 loadenv("./nodeConfig/." + env)
 
@@ -37,7 +36,17 @@ module.exports = {
     contentBase: __dirname + "/dist",
     host: "0.0.0.0",
     port: 3000,
-    inline: true
+    inline: true,
+    proxy: {
+      "/api/": {
+        target: "http://192.168.33.10:8080/",
+        secure: false
+      },
+      "/static/": {
+        target: "http://192.168.33.10:8080/",
+        secure: false
+      }
+    },
   },
   module: {
     rules: [
@@ -74,10 +83,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      inject: true,
-      template: __dirname + "/dist/index.html",
-    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.EnvironmentPlugin([
       "BASE_URL",
@@ -87,7 +92,17 @@ module.exports = {
     ]),
     new webpack.LoaderOptionsPlugin({
       options: {
-        postcss: [require("autoprefixer")({browsers: ["last 2 versions"]})]
+        postcss: [require("autoprefixer")({browsers: ["last 2 versions"]})],
+        proxy: {
+          "/api/": {
+            target: "http://192.168.33.10:8080/",
+            secure: false
+          },
+          "/static/": {
+            target: "http://192.168.33.10:8080/",
+            secure: false
+          }
+        },
       }
     }),
     postcssImport,

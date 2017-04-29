@@ -7,7 +7,8 @@
     "test": "tests"
   },
   "scripts": {
-    "start": "webpack-dev-server --inline --watch --config ./webpack.config.dev.babel.js",
+    "start": "webpack-dev-server --inline --watch --config ./webpack.config.local.babel.js",
+    "watch": "webpack --watch --config ./webpack.config.dev.babel.js",
     "build": "NODE_ENV=production webpack --config ./webpack.config.prod.babel.js",
     "test": "jest --watch --silent",
     "storybook": "start-storybook -p 9009 -s ./dist",

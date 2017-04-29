@@ -3,10 +3,22 @@ import fetch from "isomorphic-fetch"
 import * as types from "../constants/ActionTypes"
 
 // ホスト
-var host = (typeof (process.env.BASE_URL) == "undefined") ? "http://192.168.33.10:8080/" : process.env.BASE_URL
+var host = (typeof (process.env.BASE_URL) == "undefined") ? "http://localhost:3000/api/" : process.env.BASE_URL + "api/"
 
 // 通信状態リスト
 var fetchStateList = []
+
+
+function getOption() {
+  if (process.env.ENV=="production") {
+    return {}
+  }
+
+  return {
+    mode: "cors", //クロスオリジンリクエストをするのでCORSモードにする
+    credentials: "include" //クレデンシャルを含める指定
+  }
+}
 
 /**
  * 必要な場合はPOST通信を行う
@@ -160,7 +172,7 @@ export function fetchUploadIfNeeded(url, type, paramas, receiveParam = {}) {
  * @return {object} レスポンス
  */
 function fetchUpload(url, type, paramas, receiveParam) {
-  const requestParams = {
+  const requestParams = getOption() & {
     method: "POST",
     credentials: "include",
     headers: {
@@ -223,7 +235,7 @@ export function fetchTextIfNeeded(url, type, receiveParam) {
 function fetchText(url, type, receiveParam) {
 
   return dispatch => {
-    return fetch(host + url)
+    return fetch(host + url, getOption())
     .then(response =>
       response.text().then(json => ({
         status: response.status,

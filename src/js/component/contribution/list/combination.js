@@ -36,7 +36,10 @@ export default class Combination extends Component {
     })
 
     return (
-      <List List={list} />
+      <List
+        List={list}
+        Content
+      />
     )
   }
 }
