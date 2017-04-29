@@ -1,5 +1,5 @@
 import {connect} from "react-redux"
-
+import { withRouter } from "react-router-dom"
 import Mypage from "../components/mypage"
 import {changeUserName} from "../actions/mypage"
 import {fetchPostsIfNeeded, fetchUploadIfNeeded} from "../../../utils/fetch"
@@ -27,5 +27,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-// connectでReduxとReactコンポーネントを繋ぐ
-export default connect(mapStateToProps, mapDispatchToProps)(Mypage)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Mypage))

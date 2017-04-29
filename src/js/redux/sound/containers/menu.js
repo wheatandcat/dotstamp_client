@@ -1,4 +1,5 @@
 import {connect} from "react-redux"
+import { withRouter } from "react-router-dom"
 import Menu from "../components/menu"
 import {message} from "../../message/actions/show"
 import {openInformation, closeInformation, uploading, openUpload, closeUpload, makingMovie, open, close} from "../action/menu"
@@ -54,4 +55,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Menu)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Menu))

@@ -7,9 +7,10 @@ import PropTypes from "prop-types"
 import React, { Component } from "react"
 import { render } from "react-dom"
 import { Provider } from "react-redux"
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import { Switch, Route } from "react-router-dom"
+import { ConnectedRouter, push } from "react-router-redux"
 
-import configureStore from "./store/configureStore"
+import {history, store} from "./store/configureStore"
 import ContributionNew from "./redux/contribution/containers/new"
 import ContributionEdit from "./redux/contribution/containers/edit"
 import ContributionList from "./redux/contribution/containers/list"
@@ -40,9 +41,6 @@ import informationShow from "./redux/information/containers/show"
 import About from "./utils/parts/about"
 import Help from "./utils/parts/help"
 
-const store = configureStore()
-
-
 if (process.env.ENV=="production") {
   console.debug = function(){}
   console.info = function(){}
@@ -70,6 +68,7 @@ Menu.propTypes = {
   children: PropTypes.object,
 }
 
+
 class App extends Component {
   componentWillMount () {
 
@@ -77,7 +76,7 @@ class App extends Component {
   render () {
     return (
       <Provider store={store}>
-        <Router>
+        <ConnectedRouter history={history}>
           <div>
             <Menu />
             <Switch>
@@ -105,11 +104,16 @@ class App extends Component {
               <Route component={ContributionList}/>
             </Switch>
           </div>
-        </Router>
+        </ConnectedRouter>
       </Provider>
     )
   }
 }
+
+// store.dispatch(push("/user/contributionList"))
+// console.log(store)
+
+
 
 render((
   <App></App>

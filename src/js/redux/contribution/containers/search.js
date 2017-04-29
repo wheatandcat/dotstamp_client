@@ -1,6 +1,6 @@
 import {connect} from "react-redux"
+import { withRouter } from "react-router-dom"
 import Search from "../components/search"
-
 import {fetchPostsIfNeeded} from "../../../utils/fetch"
 import {setOrder, paging} from "../actions/search"
 import * as types from "../../../constants/ActionTypes"
@@ -23,4 +23,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Search))

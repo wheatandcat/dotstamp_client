@@ -23,8 +23,6 @@ export default function FollowList(state = initialState, action) {
       state.Page = action.page
       state.Order = action.order
 
-      location.pathname = "/user/followList/" + action.order + "/" + action.page
-
       return JSON.parse(JSON.stringify(state))
     }
   default:

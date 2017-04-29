@@ -12,36 +12,32 @@ export default class FollowList extends Component {
       this.props.match.params.page,
       this.props.match.params.order
     )
-    this.props.paging(
-      this.props.match.params.page,
-      this.props.match.params.order
-    )
   }
   /**
-     * リストを取得する
-     *
-     * @param {number} page ページ
-     * @param {number} order 順番
-     */
+   * リストを取得する
+   *
+   * @param {number} page ページ
+   * @param {number} order 順番
+   */
   getList(page, order) {
     this.props.getList({order: order, page: page, limit: this.props.userFollowList.Limit})
-
   }
   /**
-     * ページングする
-     *
-     * @param {number} page ページ
-     * @param {number} order 順番
-     */
+   * ページングする
+   *
+   * @param {number} page ページ
+   * @param {number} order 順番
+   */
   paging(page, order) {
     this.getList(page, order)
     this.props.paging(page, order)
+    this.props.history.push("/user/followList/" + order + "/" + page)
   }
   /**
-     * 描画する
-     *
-     * @return {object} html
-     */
+   * 描画する
+   *
+   * @return {object} html
+   */
   render() {
     let list = this.props.userFollowList.List
     if (!Array.isArray(list)) {
@@ -56,7 +52,16 @@ export default class FollowList extends Component {
         </div>
       )
     } else {
-      page = (<Pagination count={this.props.userFollowList.Count} limit={this.props.userFollowList.Limit} link="user/followList" order={parseInt(this.props.userFollowList.Order)} activePage={parseInt(this.props.userFollowList.Page)} paging={this.paging.bind(this)}/>)
+      page = (
+        <Pagination
+          count={this.props.userFollowList.Count}
+          limit={this.props.userFollowList.Limit}
+          link="user/followList"
+          order={parseInt(this.props.userFollowList.Order)}
+          activePage={parseInt(this.props.userFollowList.Page)}
+          paging={this.paging.bind(this)}
+        />
+      )
     }
 
     return (
@@ -78,6 +83,7 @@ export default class FollowList extends Component {
 
 FollowList.propTypes = {
   match: PropTypes.object,
+  history: PropTypes.object,
   getList: PropTypes.func,
   paging: PropTypes.func,
   userFollowList: PropTypes.object

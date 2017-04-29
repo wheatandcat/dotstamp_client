@@ -43,7 +43,6 @@ export default class Search extends Component {
    * @param {number} page ページ
    */
   search(search, order, page) {
-    console.log("aaaa")
     this.props.search({search: search, order: order, page: page, limit: this.props.contributionSearch.Limit})
   }
   /**

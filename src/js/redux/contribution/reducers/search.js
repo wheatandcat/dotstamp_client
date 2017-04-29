@@ -22,11 +22,6 @@ export default function List(state = initialState, action) {
       state.Order = action.receiveParam.order
 
 
-      const pathname = "/contribution/search/" + state.Search + "/" + state.Order + "/" + state.Page
-      if (decodeURI(location.pathname) != pathname) {
-        location.pathname = "/contribution/search/" + state.Search + "/" + state.Order + "/" + state.Page
-      }
-
       return JSON.parse(JSON.stringify(state))
     }
   case types.PAGING_CONTRIBUTION_SEARCH_LIST:

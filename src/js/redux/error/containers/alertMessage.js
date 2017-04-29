@@ -1,5 +1,5 @@
 import {connect} from "react-redux"
-
+import { withRouter } from "react-router-dom"
 import AlertMessage from "../components/alertMessage"
 import {closeAlert} from "../actions/alertMessage"
 
@@ -15,4 +15,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AlertMessage)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AlertMessage))

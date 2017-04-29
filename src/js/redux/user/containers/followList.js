@@ -1,4 +1,5 @@
 import { connect } from "react-redux"
+import { withRouter } from "react-router-dom"
 import FollowList from "../components/followList"
 import {fetchPostsIfNeeded} from "../../../utils/fetch"
 import {paging} from "../actions/followList"
@@ -19,4 +20,4 @@ function mapDispatchToProps(dispatch) {
 }
 
 // connectでReduxとReactコンポーネントを繋ぐ
-export default connect(mapStateToProps, mapDispatchToProps)(FollowList)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(FollowList))

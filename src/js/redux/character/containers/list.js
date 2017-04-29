@@ -1,4 +1,5 @@
 import {connect} from "react-redux"
+import { withRouter } from "react-router-dom"
 import List from "../components/list"
 import {setDefaultList, init, setIcon, setVoiceType} from "../actions/list"
 import {fetchPostsIfNeeded, fetchUploadIfNeeded} from "../../../utils/fetch"
@@ -49,4 +50,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(List)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(List))

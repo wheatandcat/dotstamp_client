@@ -1,4 +1,5 @@
 import {connect} from "react-redux"
+import { withRouter } from "react-router-dom"
 import List from "../components/list"
 import {next, deleteItem} from "../actions/list"
 import {fetchPostsIfNeeded} from "../../../utils/fetch"
@@ -25,4 +26,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(List)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(List))

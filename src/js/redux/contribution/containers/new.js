@@ -1,4 +1,5 @@
 import {connect} from "react-redux"
+import { withRouter } from "react-router-dom"
 import New from "../components/new"
 import * as types from "../../../constants/ActionTypes"
 import {setDefaultList} from "../../character/actions/list"
@@ -25,4 +26,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(New)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(New))

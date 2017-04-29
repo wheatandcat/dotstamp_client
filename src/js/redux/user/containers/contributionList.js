@@ -1,4 +1,5 @@
 import { connect } from "react-redux"
+import { withRouter } from "react-router-dom"
 import ContributionList from "../components/contributionList"
 import {init, setViewStatus, setContribution, setTitleSearch, openDeleteConfirm, closeDeleteConfirm} from "../actions/contributionList"
 import {fetchPostsIfNeeded} from "../../../utils/fetch"
@@ -41,5 +42,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-// connectでReduxとReactコンポーネントを繋ぐ
-export default connect(mapStateToProps, mapDispatchToProps)(ContributionList)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ContributionList))

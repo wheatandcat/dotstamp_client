@@ -1,5 +1,6 @@
 import PropTypes from "prop-types"
 import React, { Component } from "react"
+import { withRouter } from "react-router-dom"
 import {connect} from "react-redux"
 import {Image, Navbar, FormGroup, FormControl, Button, Glyphicon, InputGroup} from "react-bootstrap"
 import {fetchPostsIfNeeded} from "../fetch"
@@ -38,7 +39,7 @@ class Header extends Component {
       limit: this.props.contributionSearch.Limit,
     })
 
-    location.location = "/contribution/search/" + search + "/1/1"
+    this.props.history.push("/contribution/search/" + search + "/1/1")
     return
   }
   /**
@@ -85,6 +86,7 @@ class Header extends Component {
 Header.propTypes = {
   contributionSearch: PropTypes.object,
   search: PropTypes.func,
+  history: PropTypes.object,
 }
 
 function mapStateToProps (state) {
@@ -105,7 +107,4 @@ function mapDispatchToProps (dispatch) {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Header)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header))

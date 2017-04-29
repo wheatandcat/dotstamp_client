@@ -1,4 +1,5 @@
 import { connect } from "react-redux"
+import { withRouter } from "react-router-dom"
 import FormMain from "../../components/form/main"
 import {addBody, editBody, changeCharacter, changeBody, cancelEdit} from "../../actions/form"
 import {alertMessage} from "../../../error/actions/alertMessage"
@@ -35,4 +36,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(FormMain)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(FormMain))

@@ -1,26 +1,31 @@
 import {createStore, compose, applyMiddleware} from "redux"
+import { routerMiddleware } from "react-router-redux"
 import thunk from "redux-thunk"
-
+import { createBrowserHistory } from "history"
 import rootReducer from "../reducers/index"
 
-import persistState, {mergePersistedState} from "redux-localstorage"
+import persistState from "redux-localstorage"
 import adapter from "redux-localstorage/lib/adapters/localStorage"
 import filter from "redux-localstorage-filter"
+
+export const history = createBrowserHistory()
+
+const router = routerMiddleware(history)
 
 const localStorage = compose(
   filter(["loginAuth"])
 )(adapter(window.localStorage))
 
+
 const middlewares = [
   thunk,
+  router,
 ]
 
-const finalCreateStore = compose(
-  persistState(localStorage, "auth"),
-  applyMiddleware(...middlewares)
-)(createStore)
-
 export default function configureStore(initialState) {
-  const store = compose(mergePersistedState())(rootReducer)
-  return finalCreateStore(store, initialState)
+  const enhancer = compose(applyMiddleware(...middlewares), persistState(localStorage, "auth"))
+
+  return createStore(rootReducer, initialState, enhancer)
 }
+
+export const store = configureStore()
