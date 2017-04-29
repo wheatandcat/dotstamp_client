@@ -16,7 +16,7 @@ export default function Auth(state = initialState, action) {
       state.Login = false
       state.Name = ""
 
-      location.href = "/"
+      location.pathname = "/"
       return JSON.parse(JSON.stringify(state))
     }
   default:

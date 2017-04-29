@@ -4,21 +4,10 @@ import * as types from "../constants/ActionTypes"
 
 // ホスト
 var host = (typeof (process.env.BASE_URL) == "undefined") ? "http://localhost:3000/api/" : process.env.BASE_URL + "api/"
+var staticHost = (typeof (process.env.BASE_URL) == "undefined") ? "http://localhost:3000" : process.env.BASE_URL
 
 // 通信状態リスト
 var fetchStateList = []
-
-
-function getOption() {
-  if (process.env.ENV=="production") {
-    return {}
-  }
-
-  return {
-    mode: "cors", //クロスオリジンリクエストをするのでCORSモードにする
-    credentials: "include" //クレデンシャルを含める指定
-  }
-}
 
 /**
  * 必要な場合はPOST通信を行う
@@ -172,7 +161,7 @@ export function fetchUploadIfNeeded(url, type, paramas, receiveParam = {}) {
  * @return {object} レスポンス
  */
 function fetchUpload(url, type, paramas, receiveParam) {
-  const requestParams = getOption() & {
+  const requestParams = {
     method: "POST",
     credentials: "include",
     headers: {
@@ -235,7 +224,7 @@ export function fetchTextIfNeeded(url, type, receiveParam) {
 function fetchText(url, type, receiveParam) {
 
   return dispatch => {
-    return fetch(host + url, getOption())
+    return fetch(staticHost + url)
     .then(response =>
       response.text().then(json => ({
         status: response.status,

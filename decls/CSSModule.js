@@ -14,4 +14,5 @@ declare module CSSModule {
   declare var Strong: string
   declare var Talk: string
   declare var Thin: string
+  declare var tag: string
 }

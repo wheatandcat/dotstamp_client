@@ -4,7 +4,7 @@ import { storiesOf, action } from "@kadira/storybook"
 import { MemoryRouter } from "react-router"
 import { Close, Combination, List, Open } from "./index"
 
-storiesOf("contribution list")
+storiesOf("Contribution list")
 .addDecorator(story => (
     <MemoryRouter initialEntries={["/"]}>
       {story()}
@@ -112,6 +112,8 @@ storiesOf("contribution list")
         )
       },
     ]}
+    Content
+    OnSearch={action("search")}
   />
 ))
 .add("Combination", () => (

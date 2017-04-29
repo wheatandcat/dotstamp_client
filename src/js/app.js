@@ -7,7 +7,7 @@ import PropTypes from "prop-types"
 import React, { Component } from "react"
 import { render } from "react-dom"
 import { Provider } from "react-redux"
-import { HashRouter as Router, Switch, Route } from "react-router-dom"
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 
 import configureStore from "./store/configureStore"
 import ContributionNew from "./redux/contribution/containers/new"
@@ -82,6 +82,7 @@ class App extends Component {
             <Menu />
             <Switch>
               <Route exact path="/" component={ContributionList} />
+              <Route exact path="/index.html" component={ContributionList} />
               <Route path="/contribution/new" component={ContributionNew} />
               <Route name="/contribution/edit" path="/contribution/edit/:id" component={ContributionEdit} />
               <Route path="/contribution/list" component={ContributionList} />
@@ -101,6 +102,7 @@ class App extends Component {
               <Route path="/question" component={questionShow} />
               <Route path="/information/:file" component={informationShow} />
               <Route path="/contribution/experience" component={ContributionNew} />
+              <Route component={ContributionList}/>
             </Switch>
           </div>
         </Router>

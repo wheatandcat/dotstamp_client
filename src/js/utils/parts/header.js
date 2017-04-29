@@ -38,7 +38,7 @@ class Header extends Component {
       limit: this.props.contributionSearch.Limit,
     })
 
-    location.href = "/#/contribution/search/" + search + "/1/1"
+    location.location = "/contribution/search/" + search + "/1/1"
     return
   }
   /**

@@ -1,8 +1,8 @@
 import PropTypes from "prop-types"
 import React, {Component} from "react"
 import {PageHeader, Glyphicon} from "react-bootstrap"
-import Thumbnail from "../../../utils/parts/contribution/thumbnail"
-import {Line, Center} from "./../../../../css/common.css"
+import {List} from "../../../component/contribution/list"
+import {Center} from "./../../../../css/common.css"
 import Pagination from "../../../utils/parts/pagination"
 import Footer from "../../../utils/parts/footer"
 
@@ -67,10 +67,7 @@ export default class FollowList extends Component {
           </PageHeader>
         </div>
         <div className="container">
-          {list.map((item, key) => <div key={key}>
-            <Thumbnail {...item} searchMatch={this.props.match.params.search}/>
-            <hr className={Line}/>
-          </div>)}
+          <List List={list} />
         </div>
         {page}
         <Footer/>

@@ -4,7 +4,7 @@ import FormHeader from "../containers/form/header"
 
 export default class New extends Component {
   componentWillMount() {
-    let hash = location.hash
+    let hash = location.pathname
 
     this.props.init((hash.indexOf("contribution/experience") > -1))
 

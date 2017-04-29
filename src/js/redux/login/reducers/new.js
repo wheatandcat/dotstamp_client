@@ -15,7 +15,7 @@ export default function New(state = initialState, action) {
       state.Message = action.response.Message
 
       if (!state.Warning) {
-        location.href = "/"
+        location.pathname = "/"
       }
 
       return JSON.parse(JSON.stringify(action.response))

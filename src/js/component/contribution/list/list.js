@@ -5,10 +5,11 @@ import {Thumbnail} from "../../../component/thumbnail/"
 type Props = {
   List: Array<Object>,
   Content?: boolean,
+  onSearch?: Function,
 }
 
 
-function getItem(item: Object, Content:? boolean) {
+function getItem(item: Object, Content:? boolean, onSearch?: Function) {
   if (Content) {
     return (
       <div key={item.Content.ID}>
@@ -20,7 +21,7 @@ function getItem(item: Object, Content:? boolean) {
 
   return (
     <div key={item.ID}>
-      <Thumbnail {...item}/>
+      <Thumbnail {...item} OnSearch={onSearch}/>
       <hr />
     </div>
   )
@@ -29,10 +30,11 @@ function getItem(item: Object, Content:? boolean) {
 export default ({
   List,
   Content,
+  onSearch,
 }: Props) => (
   <div>
     {List.map((item) => {
-      return getItem(item, Content)
+      return getItem(item, Content, onSearch)
     })}
   </div>
 )

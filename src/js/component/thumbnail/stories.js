@@ -87,7 +87,6 @@ storiesOf("Thumbnail")
     <div className="container">
       <Public
         FollowCount={1}
-        ID={1}
         OnSearch={action("search")}
         ShowPath="/test/1"
         SearchMatch={(<span key="SearchMatch">SearchMatch</span>)}

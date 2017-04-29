@@ -43,7 +43,7 @@ function getSelectIconState(state, id) {
  * @return {array[]} キャラクターリスト
  */
 function getDefaultCharacterList() {
-  let hash = location.hash
+  let hash = location.pathname
   if (hash.indexOf("contribution/new") == -1 && hash.indexOf("contribution/experience") == -1 && hash.indexOf("contribution/edit") == -1) {
     return []
   }

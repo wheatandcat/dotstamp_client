@@ -100,8 +100,7 @@ var checkContributionEdit = function(hash) {
 }
 
 window.onbeforeunload = function() {
-  let hash = location.hash
-
+  let hash = location.pathname
   if (checkContributionEdit(hash)) {
     return true
   }

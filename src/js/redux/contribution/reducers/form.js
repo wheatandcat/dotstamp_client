@@ -140,7 +140,7 @@ export default function Form(state = initialState, action) {
     }
   case types.NEW_CONTRIBUTION_FORM:
     {
-      location.href = "/#/contribution/edit/" + action.response
+      location.pathname = "/contribution/edit/" + action.response
       return JSON.parse(JSON.stringify(state))
     }
   case types.SET_CONTRIBUTION_FORM_VIEW_STATUS:
@@ -169,7 +169,7 @@ export default function Form(state = initialState, action) {
     {
       let id = action.receiveParam.userContributionId
 
-      location.href = "/#/sound/show/" + id
+      location.pathname = "/sound/show/" + id
       return JSON.parse(JSON.stringify(initialState))
     }
   case types.OPEN_CONTRIBUTION_FORM_HELP:
