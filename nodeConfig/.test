@@ -5,5 +5,5 @@ ENV=test
 BASE_URL=/
 
 #画像ファイルパス
-IMAGE_PATH=http:images/
-UPLOAD_PATH=http:test/files/
+IMAGE_PATH=images/
+UPLOAD_PATH=test/files/

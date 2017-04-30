@@ -95,7 +95,7 @@ export default class Images extends Component {
    */
   getUploadSrc (dirName, fileName) {
     if (process.env.UPLOAD_PATH == undefined) {
-      return "http:test/files/" + dirName + fileName
+      return "test/files/" + dirName + fileName
     }
 
     return process.env.UPLOAD_PATH + dirName + fileName
@@ -108,7 +108,7 @@ export default class Images extends Component {
    */
   getImageSrc (filePath) {
     if (process.env.IMAGE_PATH == undefined) {
-      return "http:/images/" + filePath
+      return "images/" + filePath
     }
 
     return process.env.IMAGE_PATH + filePath

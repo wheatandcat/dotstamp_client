@@ -1,6 +1,9 @@
 /*global module*/
-import {configure} from "@kadira/storybook"
+import {configure, addDecorator} from "@kadira/storybook"
 import {setOptions} from "@kadira/storybook-addon-options"
+import GithubCorner from "@personare/react-storybook-decorator-github-corner"
+
+addDecorator(GithubCorner)
 
 setOptions({
   downPanelInRight: true

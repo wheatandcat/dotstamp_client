@@ -12,6 +12,8 @@
     "build": "NODE_ENV=production webpack --config ./webpack.config.prod.babel.js",
     "test": "jest --watch --silent",
     "storybook": "start-storybook -p 9009 -s ./dist",
+    "build-storybook": "build-storybook -s ./dist",
+    "deploy-storybook": "storybook-to-ghpages -s ./dist",
     "flow": "flow"
   },
   "jest": {
@@ -28,6 +30,11 @@
   "repository": {
     "type": "git",
     "url": "git+ssh://git@bitbucket.org:pandemo/dotstamp_client.git"
+  },
+  "storybook-deployer": {
+    "gitUsername": "wheatandcat",
+    "gitEmail": "wheatandcat@gamail.com",
+    "commitMessage": ".stamp Storybook to GitHub Pages"
   },
   "author": "",
   "license": "ISC",
@@ -69,6 +76,7 @@
     "@kadira/storybook-addon-options": "^1.0.2",
     "@kadira/storybook-database-cloud": "^2.3.2",
     "@kadira/storybook-deployer": "^1.2.0",
+    "@personare/react-storybook-decorator-github-corner": "^0.1.5",
     "autoprefixer": "^6.7.7",
     "babel-core": "^6.24.1",
     "babel-eslint": "^7.2.2",
@@ -103,7 +111,7 @@
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.9.0",
     "extract-text-webpack-plugin": "^2.1.0",
-    "flow-bin": "^0.44.2",
+    "flow-bin": "^0.45.0",
     "formatter": "^0.4.1",
     "jest": "^19.0.2",
     "lodash": "^4.17.2",
@@ -121,11 +129,11 @@
     "precss": "^1.4.0",
     "prop-types": "^15.5.8",
     "punycode": "^2.1.0",
-    "react-bootstrap": "^0.30.10",
+    "react-bootstrap": "^0.31.0",
     "react-bootstrap-typeahead": "^1.1.0",
     "react-dnd": "^2.1.4",
     "react-dnd-html5-backend": "^2.1.2",
-    "react-dropzone": "^3.7.0",
+    "react-dropzone": "^3.13.1",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
     "react-scripts": "^0.9.5",
@@ -142,7 +150,7 @@
     "watchify": "^3.7.0",
     "webpack": "^2.4.1",
     "webpack-babel-jest": "^1.0.4",
-    "webpack-dev-server": "^2.4.2",
+    "webpack-dev-server": "^2.4.5",
     "webpack-hot-middleware": "^2.18.0"
   }
 }
