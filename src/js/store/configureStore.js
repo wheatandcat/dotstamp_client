@@ -1,3 +1,4 @@
+/*global module*/
 import {createStore, compose, applyMiddleware} from "redux"
 import { routerMiddleware } from "react-router-redux"
 import thunk from "redux-thunk"
@@ -25,7 +26,16 @@ const middlewares = [
 export default function configureStore(initialState) {
   const enhancer = compose(applyMiddleware(...middlewares), persistState(localStorage, "auth"))
 
-  return createStore(rootReducer, initialState, enhancer)
+  const store = createStore(rootReducer, initialState, enhancer)
+
+  if (module.hot) {
+    module.hot.accept("../reducers/index", () => {
+      const nextRootReducer = require("../reducers/index").default
+      store.replaceReducer(nextRootReducer)
+    })
+  }
+
+  return store
 }
 
 export const store = configureStore()

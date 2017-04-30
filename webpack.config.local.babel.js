@@ -18,8 +18,8 @@ loadenv("./nodeConfig/." + env)
 module.exports = {
   context: resolve(__dirname, "src"),
   entry: [
-    "react-dev-utils/webpackHotDevClient",
-    "webpack/hot/dev-server",
+    "webpack-dev-server/client?http://localhost:3000",
+    "webpack/hot/only-dev-server",
     "./js/app",
   ],
   output: {
@@ -32,8 +32,8 @@ module.exports = {
     extensions: [".js", ".jsx"]
   },
   devServer: {
-    hot: false,
-    contentBase: __dirname + "/dist",
+    hot: true,
+    contentBase: resolve(__dirname, "dist"),
     host: "0.0.0.0",
     port: 3000,
     inline: true,
