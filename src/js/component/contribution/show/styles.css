@@ -1,0 +1,33 @@
+.followCount {
+  font-size: 30px;
+}
+
+.center {
+  text-align: center;
+}
+
+.paragraph {
+  padding: 5px 15px;
+}
+
+.author {
+  padding-top: 15px;
+  margin-top: 5px;
+}
+
+.middle {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.top {
+  padding-top: 10px;
+}
+
+.about {
+  background-color: #f5f5f5;
+}
+
+.problem {
+  padding-left: 20px;
+}
