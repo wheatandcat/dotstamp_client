@@ -1,7 +1,7 @@
 // @flow
 import React from "react"
 import {Media} from "react-bootstrap"
-import Icon from "../../utils/parts/icon"
+import Icon from "../icon/icon"
 import {DateFormat} from "../../utils/common"
 import {Alert, Body, Disable, Follow, Image} from "./styles.css"
 
@@ -18,7 +18,7 @@ export default ({
 }: Props) => (
   <Media className={Disable}>
     <Media.Left className={Image} align="middle">
-      <Icon imageId={User.ProfileImageID}/>
+      <Icon ID={User.ProfileImageID}/>
     </Media.Left>
     <Media.Body className={Body}>
       <p>

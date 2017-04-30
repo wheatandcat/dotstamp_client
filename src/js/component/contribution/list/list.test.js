@@ -3,7 +3,7 @@ import React from "react"
 import {shallow} from "enzyme"
 import List from "./list"
 
-function setup() {
+function setup(params: Object) {
   const props = {
     List: [
       {
@@ -43,7 +43,8 @@ function setup() {
           <div />
         )
       }
-    ]
+    ],
+    Content: params.Content,
   }
 
   const enzymeWrapper = shallow(<List {...props} />)
@@ -56,6 +57,14 @@ function setup() {
 
 describe("components/contribution/list/list", () => {
   it("表示", () => {
-    setup()
+    setup({
+      Content: false,
+    })
+  })
+
+  it("Content", () => {
+    setup({
+      Content: true,
+    })
   })
 })

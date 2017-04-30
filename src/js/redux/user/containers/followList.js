@@ -19,5 +19,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-// connectでReduxとReactコンポーネントを繋ぐ
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(FollowList))

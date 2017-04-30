@@ -1,7 +1,7 @@
 // @flow
 import React from "react"
 import {Media, Glyphicon} from "react-bootstrap"
-import Icon from "../../utils/parts/icon"
+import Icon from "../icon/icon"
 import {TagList} from "../tag/"
 import {Link} from "react-router-dom"
 import {DateFormat} from "../../utils/common"
@@ -32,7 +32,7 @@ export default ({
 }: Props) => (
   <Media>
     <Media.Left className={Image} align="middle">
-      <Icon imageId={User.ProfileImageID}/>
+      <Icon ID={User.ProfileImageID}/>
     </Media.Left>
     <Media.Body className={Body}>
       <p>
