@@ -34,29 +34,25 @@ cd dotstamp_client
 ```
 パッケージ取得
 ```
-npm install
+yarn
 ```
 ※ちなみに↑で落ちるときは、このいじるといいみたいです
 ```
 ulimit -n 2048
 rm -rf node_modules/ && npm cache clean && npm install
 ```
-ビルド
+local開発
 ```
-webpack
-```
-ビルド & 監視
-```
-webpack --watch
+yarn start
 ```
 リリースビルド
 ```
-NODE_ENV=production  webpack
+yarn build
 ```
 ## その他コマンド
 テスト & 監視
 ```
-jest --watch
+yarn test -- --watch
 ```
  (※このコマンドは、まだ作成途中)クライアントのみ実行
 ```
