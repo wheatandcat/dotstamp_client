@@ -44,21 +44,16 @@ rm -rf node_modules/ && npm cache clean && npm install
 local開発
 ```
 yarn start
+#ブラウザでアクセス
+http://localhost:3000
 ```
 リリースビルド
 ```
 yarn build
 ```
-## その他コマンド
 テスト & 監視
 ```
 yarn test -- --watch
-```
- (※このコマンドは、まだ作成途中)クライアントのみ実行
-```
-webpack-dev-server --inline --watch
-#ブラウザでアクセス
-http://192.168.33.10:3000
 ```
 ## ライセンス
 BSDライセンス
