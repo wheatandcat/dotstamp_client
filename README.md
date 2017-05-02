@@ -1,5 +1,7 @@
 # dotstamp_client
 
+[![Build Status](https://api.travis-ci.org/wheatandcat/dotstamp_client.svg?branch=master)](https://travis-ci.org/wheatandcat/dotstamp_client)
+
 <img src="https://raw.githubusercontent.com/wheatandcat/dotstamp_client/master/dist/images/common/about.png" data-canonical-src="https://raw.githubusercontent.com/wheatandcat/dotstamp_client/master/dist/images/common/about.png" width="200" />
 
 ## 概要
