@@ -22,9 +22,8 @@ webサービス：[.stamp](http://dotstamp.com/)
 
 ## 必要なもの
 * Node.js
-* webpack
-* Jest
 * yarn
+* storybook
 ## 環境構築
 * [ローカル環境構築](https://github.com/wheatandcat/dotstamp_ansible#ローカル環境構築手順-)
 ## 実行手順
@@ -56,5 +55,10 @@ yarn build
 ```
 yarn test -- --watch
 ```
+storybook
+```
+yarn storybook
+```
+
 ## ライセンス
 BSDライセンス
