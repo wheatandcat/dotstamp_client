@@ -1,6 +1,9 @@
 # dotstamp_client
 
 [![Build Status](https://api.travis-ci.org/wheatandcat/dotstamp_client.svg?branch=master)](https://travis-ci.org/wheatandcat/dotstamp_client)
+[![Code Climate](https://codeclimate.com/github/wheatandcat/dotstamp_client/badges/gpa.svg)](https://codeclimate.com/github/wheatandcat/dotstamp_client)
+[![Test Coverage](https://codeclimate.com/github/wheatandcat/dotstamp_client/badges/coverage.svg)](https://codeclimate.com/github/wheatandcat/dotstamp_client/coverage)
+[![Issue Count](https://codeclimate.com/github/wheatandcat/dotstamp_client/badges/issue_count.svg)](https://codeclimate.com/github/wheatandcat/dotstamp_client)
 
 <img src="https://raw.githubusercontent.com/wheatandcat/dotstamp_client/master/dist/images/common/about.png" data-canonical-src="https://raw.githubusercontent.com/wheatandcat/dotstamp_client/master/dist/images/common/about.png" width="200" />
 
