@@ -4,6 +4,8 @@
 [![Code Climate](https://codeclimate.com/github/wheatandcat/dotstamp_client/badges/gpa.svg)](https://codeclimate.com/github/wheatandcat/dotstamp_client)
 [![Test Coverage](https://codeclimate.com/github/wheatandcat/dotstamp_client/badges/coverage.svg)](https://codeclimate.com/github/wheatandcat/dotstamp_client/coverage)
 [![Issue Count](https://codeclimate.com/github/wheatandcat/dotstamp_client/badges/issue_count.svg)](https://codeclimate.com/github/wheatandcat/dotstamp_client)
+[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
+[![react storybook][https://img.shields.io/badge/react--storybook-public-green.svg](https://wheatandcat.github.io/dotstamp_client/?selectedKind=Bllon&selectedStory=text)
 
 <img src="https://raw.githubusercontent.com/wheatandcat/dotstamp_client/master/dist/images/common/about.png" data-canonical-src="https://raw.githubusercontent.com/wheatandcat/dotstamp_client/master/dist/images/common/about.png" width="200" />
 
