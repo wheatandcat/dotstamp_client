@@ -39,7 +39,7 @@
   "author": "wheatandcat",
   "license": "BSD",
   "homepage": "https://github.com/wheatandcat/dotstamp_client",
-  "devDependencies": {
+  "dependencies": {
     "bluebird": "^3.4.6",
     "browserify": "^14.3.0",
     "codeclimate-test-reporter": "^0.4.1",
@@ -70,7 +70,7 @@
     "slick-carousel": "^1.6.0",
     "stack-source-map": "^1.0.6"
   },
-  "dependencies": {
+  "devDependencies": {
     "@kadira/storybook": "^2.35.3",
     "@kadira/storybook-addon-comments": "^1.9.1",
     "@kadira/storybook-addon-knobs": "^1.7.1",
