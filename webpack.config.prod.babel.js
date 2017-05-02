@@ -2,6 +2,7 @@
 /*global __dirname*/
 /*eslint no-console: ["error", { allow: ["log", "error"] }] */
 import webpack from "webpack"
+import { resolve } from "path"
 import postcssImport from "postcss-smart-import"
 import postcssCssnext from "postcss-cssnext"
 import postcssSorting from "postcss-sorting"
@@ -14,12 +15,12 @@ console.log("環境:" + env)
 loadenv("./nodeConfig/." + env)
 
 module.exports = {
-  context: __dirname + "/src",
+  context: resolve(__dirname, "src"),
   entry: {
     "js/application": "./js/app",
   },
   output: {
-    path: __dirname + "/product",
+    path: resolve(__dirname, "product"),
     filename: "js/bundle.js"
   },
   resolve: {
@@ -39,22 +40,15 @@ module.exports = {
         use: [
           {
             loader: "style-loader",
-            options: {
-              sourceMap: true,
-            }
           },
           {
             loader: "css-loader",
             options: {
               localIdentName: "[hash:base64]-[name]-[local]",
               modules: true,
-              sourceMap: true,
             }
           } ,{
             loader: "postcss-loader",
-            options: {
-              sourceMap: true,
-            }
           }
         ],
       }

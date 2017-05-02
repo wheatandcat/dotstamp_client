@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.config.local.babel.js",
-    "watch": "webpack --watch --config ./webpack.config.dev.babel.js",
+    "development": "webpack --config ./webpack.config.dev.babel.js",
     "build": "NODE_ENV=production webpack --config ./webpack.config.prod.babel.js",
     "test": "jest --silent",
     "storybook": "start-storybook -p 9009 -s ./dist",
@@ -36,9 +36,9 @@
     "gitEmail": "wheatandcat@gamail.com",
     "commitMessage": ".stamp Storybook to GitHub Pages"
   },
-  "author": "",
-  "license": "ISC",
-  "homepage": "https://bitbucket.org/pandemo/dotstamp_client#readme",
+  "author": "wheatandcat",
+  "license": "BSD",
+  "homepage": "https://github.com/wheatandcat/dotstamp_client",
   "devDependencies": {
     "bluebird": "^3.4.6",
     "browserify": "^14.3.0",
