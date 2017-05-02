@@ -5,7 +5,7 @@
         "react"
     ],
     "plugins": [
-      "add-module-exports",
+      "react-hot-loader/babel",
       "babel-plugin-transform-flow-strip-types"
     ]
 }

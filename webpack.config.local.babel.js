@@ -18,25 +18,24 @@ loadenv("./nodeConfig/." + env)
 module.exports = {
   context: resolve(__dirname, "src"),
   entry: [
+    "react-hot-loader/patch",
     "webpack-dev-server/client?http://localhost:3000",
     "webpack/hot/only-dev-server",
     "./js/app",
   ],
   output: {
-    path: __dirname + "/dist",
-    pathinfo: true,
     filename: "js/bundle.js",
-    publicPath: publicPath
+    path: resolve(__dirname, "dist"),
+    publicPath: publicPath,
   },
   resolve: {
     extensions: [".js", ".jsx"]
   },
   devServer: {
-    hot: true,
     contentBase: resolve(__dirname, "dist"),
-    host: "0.0.0.0",
+    host: "localhost",
+    hot: true,
     port: 3000,
-    inline: true,
     historyApiFallback: true,
     stats: {
       colors: true
@@ -52,12 +51,15 @@ module.exports = {
       }
     },
   },
+  devtool: "inline-source-map",
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: "babel-loader"
+        use:[
+          "babel-loader",
+        ]
       },
       {
         test: /\.css$/,

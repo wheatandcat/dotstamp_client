@@ -36,7 +36,7 @@ export default ({
     </Media.Left>
     <Media.Body className={Body}>
       <p>
-        {User.Name}&nbsp;さんが {DateFormat(UpdatedAt)}に投稿 {Sound}
+        {User.Name}&nbsp;さんが {DateFormat(UpdatedAt)}に投稿{Sound}
       </p>
       <Media.Heading>
         <Link to={ShowPath} className={Strong}>
