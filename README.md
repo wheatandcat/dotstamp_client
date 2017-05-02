@@ -24,6 +24,7 @@ webサービス：[.stamp](http://dotstamp.com/)
 * Node.js
 * webpack
 * Jest
+* yarn
 ## 環境構築
 * [ローカル環境構築](https://github.com/wheatandcat/dotstamp_ansible#ローカル環境構築手順-)
 ## 実行手順
