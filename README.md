@@ -22,8 +22,8 @@ webサービス：[.stamp](http://dotstamp.com/)
 
 ## 必要なもの
 * Node.js
-* webpack
-* Jest
+* yarn
+* storybook
 ## 環境構築
 * [ローカル環境構築](https://github.com/wheatandcat/dotstamp_ansible#ローカル環境構築手順-)
 ## 実行手順
@@ -34,35 +34,31 @@ cd dotstamp_client
 ```
 パッケージ取得
 ```
-npm install
+yarn
 ```
 ※ちなみに↑で落ちるときは、このいじるといいみたいです
 ```
 ulimit -n 2048
 rm -rf node_modules/ && npm cache clean && npm install
 ```
-ビルド
+local開発
 ```
-webpack
-```
-ビルド & 監視
-```
-webpack --watch
+yarn start
+#ブラウザでアクセス
+http://localhost:3000
 ```
 リリースビルド
 ```
-NODE_ENV=production  webpack
+yarn build
 ```
-## その他コマンド
 テスト & 監視
 ```
-jest --watch
+yarn test -- --watch
 ```
- (※このコマンドは、まだ作成途中)クライアントのみ実行
+storybook
 ```
-webpack-dev-server --inline --watch
-#ブラウザでアクセス
-http://192.168.33.10:3000
+yarn storybook
 ```
+
 ## ライセンス
 BSDライセンス
