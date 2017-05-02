@@ -10,7 +10,7 @@
     "start": "webpack-dev-server --config ./webpack.config.local.babel.js",
     "watch": "webpack --watch --config ./webpack.config.dev.babel.js",
     "build": "NODE_ENV=production webpack --config ./webpack.config.prod.babel.js",
-    "test": "jest --watch --silent",
+    "test": "jest --silent",
     "storybook": "start-storybook -p 9009 -s ./dist",
     "build-storybook": "build-storybook -s ./dist",
     "deploy-storybook": "storybook-to-ghpages -s ./dist",
