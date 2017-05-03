@@ -46,7 +46,7 @@ export function getUniqueStr(myStrong) {
  */
 export function getStaticUrl() {
   if (process.env.IMAGE_PATH == undefined) {
-    return "/images/"
+    return "images/"
   }
 
   return process.env.IMAGE_PATH
