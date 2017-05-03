@@ -44,6 +44,19 @@ export function getUniqueStr(myStrong) {
  *
  * @return {string} URL
  */
+export function getStaticUrl() {
+  if (process.env.IMAGE_PATH == undefined) {
+    return "/images/"
+  }
+
+  return process.env.IMAGE_PATH
+}
+
+/**
+ * トップURLを取得する
+ *
+ * @return {string} URL
+ */
 export function getTopUrl() {
   return process.env.BASE_URL
 }

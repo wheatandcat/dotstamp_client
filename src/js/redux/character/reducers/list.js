@@ -55,7 +55,7 @@ function getDefaultCharacterList() {
     list.push({
       CharacterID: 0,
       FileName: "default"+ i +".png",
-      ID: 0,
+      ID: i,
       Priority: 0,
       VoiceType: 0,
     })

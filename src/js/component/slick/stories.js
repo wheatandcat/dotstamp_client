@@ -57,16 +57,6 @@ storiesOf("Slick")
           FileName: "0.jpg",
           imageType: 2,
         },
-        {
-          ID: 2,
-          FileName: "0.jpg",
-          imageType: 2,
-        },
-        {
-          ID: 3,
-          FileName: "0.jpg",
-          imageType: 2,
-        },
       ]}
       onClick={action("sclick")}
     />

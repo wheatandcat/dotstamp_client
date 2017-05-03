@@ -2,7 +2,7 @@
 import React from "react"
 import {Slick, List} from "./"
 
-const DISPLAY_ICON_NUM_MIN = 3
+const DISPLAY_ICON_NUM_MIN = 1
 
 type Props = {
   list: Array<Object>,

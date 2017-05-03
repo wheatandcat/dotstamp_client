@@ -3,7 +3,7 @@ import React, { Component } from "react"
 import {Glyphicon, Well, Button, ButtonGroup, ButtonToolbar, ControlLabel} from "react-bootstrap"
 import {TALK_TYPE_TEXT, TALK_TYPE_IMAGE} from "../../actions/talk"
 import {UPLOAD_FILE_SIZE_MAX} from "../../../../constants/common"
-import Slider from "../../../../utils/slider"
+import {Collection} from "../../../../component/slick/"
 import {Edit, Group} from "./../../../../../css/form.css"
 import {Gap, Front, Warning, Alert} from "../../../../../css/common.css"
 import {ImageForm} from "../../../../../css/contribution.css"
@@ -67,6 +67,9 @@ export default class Main extends Component {
    */
   addBodyText() {
     let input = this.refs.body
+    if (input.value == "") {
+      return
+    }
     let body = input.value.trim()
 
     if (!body) {
@@ -169,13 +172,17 @@ export default class Main extends Component {
     }
 
     let disabled = this.props.contributionForm.Experience
+    console.log(this.props.characterList.list)
 
     return (
       <div>
         <div>
           {defaultIcon}
           <Well bsStyle="info" className={ImageForm}>
-            <Slider list={this.props.characterList.list} handleClick={(id) => this.props.changeCharacter(id)}/>
+            <Collection
+              list={this.props.characterList.list}
+              onClick={(id) => this.props.changeCharacter(id)}
+            />
           </Well>
         </div>
         <ButtonToolbar>

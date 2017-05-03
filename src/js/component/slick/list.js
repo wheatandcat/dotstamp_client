@@ -15,7 +15,7 @@ export default ({
       {list.map((data) => {
         return (
           <div key={data.ID}>
-            <UtitsImage fileName={data.FileName} imageDisplayType={data.imageType}/>
+            <UtitsImage fileName={data.FileName} imageDisplayType={data.imageType} />
           </div>
         )
       })}
