@@ -6,9 +6,9 @@ import { Icon } from "./index"
 
 storiesOf("Icon")
 .addDecorator(story => (
-    <MemoryRouter initialEntries={["/"]}>
-      {story()}
-    </MemoryRouter>
+  <MemoryRouter initialEntries={["/"]}>
+    {story()}
+  </MemoryRouter>
 ))
 .add("Icon", () => (
   <div>

@@ -2,7 +2,7 @@
 import React from "react"
 import {Grid, Row, Col, Button, ButtonToolbar, ControlLabel, Glyphicon, Well} from "react-bootstrap"
 import {Avatar, Body} from "./index"
-import {Group} from "./styles.css"
+import styles from "./styles.css"
 
 type Props = {
   UserFileName: string,
@@ -32,7 +32,7 @@ export default ({
         <Well>
           <ButtonToolbar>
             <Button>
-              <ControlLabel htmlFor={"image-file-edit-" + Priority} bsClass={Group}>
+              <ControlLabel htmlFor={"image-file-edit-" + Priority} bsClass={styles.Group}>
                 <Glyphicon glyph="picture"/>
               </ControlLabel>
               <input

@@ -1,0 +1,17 @@
+.slick > div > button {
+  border-width: 0 !important;
+}
+
+.list {
+  width: 100%;
+}
+
+.list > div {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.list > div > div {
+  float: left;
+  margin-right: 20px;
+}

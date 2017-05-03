@@ -10,7 +10,7 @@
     "start": "webpack-dev-server --config ./webpack.config.local.babel.js",
     "development": "webpack --config ./webpack.config.dev.babel.js",
     "build": "NODE_ENV=production webpack --config ./webpack.config.prod.babel.js",
-    "test": "jest --silent",
+    "test": "jest",
     "storybook": "start-storybook -p 9009 -s ./dist",
     "build-storybook": "build-storybook -s ./dist",
     "deploy-storybook": "storybook-to-ghpages -s ./dist",
@@ -25,7 +25,10 @@
       "IMAGE_PATH": "http://",
       "UPLOAD_PATH": "http://",
       "ENV": "test"
-    }
+    },
+    "setupFiles": [
+      "./test/test-setup.js"
+    ]
   },
   "repository": {
     "type": "git",
@@ -84,6 +87,7 @@
     "babel-jest": "19.0.0",
     "babel-loader": "^7.0.0",
     "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-rewire": "^1.1.0",
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "babel-polyfill": "^6.22.0",
     "babel-preset-env": "^1.4.0",

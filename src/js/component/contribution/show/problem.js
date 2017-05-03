@@ -2,7 +2,7 @@
 import React from "react"
 import {Modal, Radio, FormGroup, Button, Glyphicon, Well} from "react-bootstrap"
 import {PROBLEM_TYPE_SPAM, PROBLEM_TYPE_INAPPROPRIATE} from "../../../constants/contribution"
-import {problem} from "./styles.css"
+import styles from "./styles.css"
 
 export type Props = {
   problemType: number,
@@ -43,7 +43,7 @@ export default ({
     <Modal.Body>
       <h4>以下の理由で通報します。</h4>
       <br/>
-      <div className={problem}>
+      <div className={styles.problem}>
         <FormGroup>
           <Radio
             name="problemType"

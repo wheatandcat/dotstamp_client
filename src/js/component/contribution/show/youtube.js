@@ -2,7 +2,7 @@
 import React from "react"
 import {Label} from "react-bootstrap"
 import YouTube from "../../../utils/youtube"
-import {youtube} from "./styles.css"
+import styles from "./styles.css"
 
 export type Props = {
   movieID: string,
@@ -14,7 +14,7 @@ export default ({
   <div className="container">
     <Label
       bsStyle="success"
-      className={youtube}
+      className={styles.youtube}
     >
       記事を読み上げる
     </Label>

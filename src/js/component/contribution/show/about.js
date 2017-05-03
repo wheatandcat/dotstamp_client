@@ -3,7 +3,7 @@ import React from "react"
 import {Dropdown, MenuItem, Grid, Row, Col, Glyphicon} from "react-bootstrap"
 import Icon from "../../icon/icon"
 import {DateTimeFormat} from "../../../utils/common"
-import {about, paragraph, author, middle, top} from "./styles.css"
+import styles from "./styles.css"
 
 export type Props = {
   profileImageID: number,
@@ -18,14 +18,14 @@ export default ({
   userName,
   openProblem,
 }: Props) => (
-  <div className={about}>
+  <div className={styles.about}>
     <Grid>
       <Row>
-        <Col sm={2} md={1} className={paragraph}>
+        <Col sm={2} md={1} className={styles.paragraph}>
           <Icon ID={profileImageID}/>
         </Col>
-        <Col sm={18} md={10} className={author}>
-          <div className={middle}>
+        <Col sm={18} md={10} className={styles.author}>
+          <div className={styles.middle}>
             {userName}
             &nbsp;&nbsp;&nbsp;<Glyphicon glyph="time"/>
             &nbsp;{DateTimeFormat(updatedAt)}に更新

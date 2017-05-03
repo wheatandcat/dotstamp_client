@@ -1,7 +1,7 @@
 // @flow
 import React from "react"
 import {Button, Glyphicon} from "react-bootstrap"
-import {center, followCount} from "./styles.css"
+import styles from "./styles.css"
 
 export type Props = {
   count:? number,
@@ -58,9 +58,9 @@ export default ({
   onDelete,
 }: Props) => (
   <div>
-    <div className={center}>
+    <div className={styles.center}>
       <Glyphicon glyph="thumbs-up"/>
-      <span className={followCount}>&nbsp;{count}</span>
+    <span className={styles.followCount}>&nbsp;{count}</span>
     </div>
     <div>
       {(() => {

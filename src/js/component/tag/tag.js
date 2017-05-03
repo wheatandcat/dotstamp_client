@@ -3,7 +3,7 @@ import React from "react"
 import {Label} from "react-bootstrap"
 import {Link} from "react-router-dom"
 import {ORDER_TYPE_NEW} from "../../constants/contribution"
-import {tag} from "./styles.css"
+import styles from "./styles.css"
 
 export type Props = {
   label: string,
@@ -19,7 +19,7 @@ export default ({
     to={"/contribution/search/" + label + "/" + ORDER_TYPE_NEW + "/1"}
     onClick={() => onSearch && onSearch(label, 1, ORDER_TYPE_NEW)}
   >
-    <Label bsStyle="info" className={tag}>
+    <Label bsStyle="info" className={styles.tag}>
       {label}
     </Label>
   </Link>

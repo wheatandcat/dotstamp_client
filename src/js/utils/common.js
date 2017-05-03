@@ -54,6 +54,10 @@ export function getTopUrl() {
  * @return {string} URL
  */
 export function getUploadUrl() {
+  if (process.env.UPLOAD_PATH == undefined) {
+    return "test/files/"
+  }
+
   return process.env.UPLOAD_PATH
 }
 

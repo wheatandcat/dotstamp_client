@@ -6,6 +6,7 @@
     ],
     "plugins": [
       "react-hot-loader/babel",
-      "babel-plugin-transform-flow-strip-types"
+      "babel-plugin-transform-flow-strip-types",
+      "rewire"
     ]
 }

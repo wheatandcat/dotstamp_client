@@ -6,9 +6,9 @@ import { Close, Combination, List, Open } from "./index"
 
 storiesOf("Contribution list")
 .addDecorator(story => (
-    <MemoryRouter initialEntries={["/"]}>
-      {story()}
-    </MemoryRouter>
+  <MemoryRouter initialEntries={["/"]}>
+    {story()}
+  </MemoryRouter>
 ))
 .add("open", () => (
   <Open

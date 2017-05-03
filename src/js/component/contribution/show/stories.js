@@ -8,9 +8,9 @@ import { About, Follow, Title, Problem, Youtube, Header } from "./index"
 storiesOf("Contribution show")
 .addDecorator(withKnobs)
 .addDecorator(story => (
-    <MemoryRouter initialEntries={["/"]}>
-      {story()}
-    </MemoryRouter>
+  <MemoryRouter initialEntries={["/"]}>
+    {story()}
+  </MemoryRouter>
 ))
 .add("Follow", () => (
   <div>

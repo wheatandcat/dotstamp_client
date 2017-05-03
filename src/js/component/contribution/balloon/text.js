@@ -1,6 +1,6 @@
 // @flow
 import React, {Component} from "react"
-import {Balloon} from "./styles.css"
+import styles from "./styles.css"
 
 type Props = {
   Label: string,
@@ -20,7 +20,7 @@ export default class Text extends Component {
   }
   render() {
     return (
-      <div className={Balloon}>
+      <div className={styles.Balloon}>
         {this.changeBr()}
       </div>
     )

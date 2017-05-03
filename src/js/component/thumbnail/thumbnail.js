@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import React, { Component } from "react"
 import {Label} from "react-bootstrap"
 import {VIEW_STATUS_PUBLIC} from "../../constants/contribution"
-import {Dark, Thin} from "./styles.css"
+import styles from "./styles.css"
 import {Public, Private} from "./index"
 
 export default class Thumbnail extends Component {
@@ -37,7 +37,7 @@ export default class Thumbnail extends Component {
       : index + 60
 
     return (
-      <div className={Thin}>
+      <div className={styles.Thin}>
         {this.replaceMatchText(search.substring(start, end) + "...", this.props.SearchMatch)}
       </div>
     )
@@ -54,7 +54,7 @@ export default class Thumbnail extends Component {
     return text.split(regex).map(function(line, i) {
       if (line == "" && i > 0) {
         return (
-          <span key={i} className={Dark}>
+          <span key={i} className={styles.Dark}>
             {search}
           </span>
         )

@@ -6,9 +6,9 @@ import { TagList, Tag } from "./index"
 
 storiesOf("Tag")
 .addDecorator(story => (
-    <MemoryRouter initialEntries={["/"]}>
-      {story()}
-    </MemoryRouter>
+  <MemoryRouter initialEntries={["/"]}>
+    {story()}
+  </MemoryRouter>
 ))
 .add("Tag", () => (
   <Tag

@@ -48,7 +48,6 @@ export default class Slider extends Component {
     super(props)
     this.next = this.next.bind(this)
     this.previous = this.previous.bind(this)
-
   }
   next () {
     this.refs.slider.slickNext()

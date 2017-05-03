@@ -6,9 +6,9 @@ import { Thumbnail, Private, Public } from "./index"
 
 storiesOf("Thumbnail")
 .addDecorator(story => (
-    <MemoryRouter initialEntries={["/"]}>
-      {story()}
-    </MemoryRouter>
+  <MemoryRouter initialEntries={["/"]}>
+    {story()}
+  </MemoryRouter>
 ))
 .add("Thumbnail on body & sound", () => (
   <div className="container">
