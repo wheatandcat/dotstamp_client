@@ -3,7 +3,7 @@ import React from "react"
 import {mount} from "enzyme"
 import {Slick} from "./"
 
-import { __RewireAPI__ } from "./Slick"
+import { __RewireAPI__ } from "./slick"
 const action = __RewireAPI__.__get__("action")
 
 function setup(params :Object) {
