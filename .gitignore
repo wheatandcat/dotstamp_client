@@ -11,7 +11,7 @@
 .npm-debug.log
 .out/
 bin/
-
+storybook-static/
 
 # Ignore all logfiles and tempfiles.
 /doc/*
