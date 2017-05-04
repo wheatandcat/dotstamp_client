@@ -58,6 +58,10 @@ export function getStaticUrl() {
  * @return {string} URL
  */
 export function getTopUrl() {
+  if (process.env.BASE_URL == undefined) {
+    return ""
+  }
+
   return process.env.BASE_URL
 }
 

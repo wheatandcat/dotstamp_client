@@ -1,7 +1,7 @@
 // @flow
 import React from "react"
 import {Label} from "react-bootstrap"
-import YouTube from "../../../utils/youtube"
+import {Form} from "../../youtube/"
 import styles from "./styles.css"
 
 export type Props = {
@@ -19,6 +19,6 @@ export default ({
       記事を読み上げる
     </Label>
     <br/>
-    <YouTube videoId={movieID}/>
+    <Form videoId={movieID}/>
   </div>
 )

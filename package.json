@@ -27,7 +27,7 @@
       "ENV": "test"
     },
     "setupFiles": [
-      "./test/test-setup.js"
+      "./jest-setup.js"
     ]
   },
   "repository": {

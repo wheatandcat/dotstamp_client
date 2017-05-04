@@ -1,12 +1,11 @@
 import PropTypes from "prop-types"
-/*global BASE_URL*/
 import React, { Component } from "react"
 import {Table, Alert, Modal, ButtonToolbar, Well, FormGroup, Checkbox, Glyphicon, Button} from "react-bootstrap"
 import Sound from "../../../utils/sound"
 import {STATUS_PUBLIC, STATUS_UPLOADING, STATUS_RUNNING} from "../../../constants/contribution"
 import {NoSpace} from "../../../../css/common.css"
 import {getTopUrl} from "../../../utils/common"
-import YouTube from "../../../utils/youtube"
+import {Form} from "../../../component/youtube/"
 import {Link} from "react-router-dom"
 
 var self
@@ -113,7 +112,7 @@ export default class Menu extends Component {
     this.props.uploading()
     this.props.closeUpload()
 
-    window.open(getTopUrl() + "movie/connect/" + this.props.userContributionId, "child", "width=500,height=250")
+    window.open(getTopUrl() + "api/movie/connect/" + this.props.userContributionId, "child", "width=500,height=250")
   }
 
   /**
@@ -282,7 +281,7 @@ export default class Menu extends Component {
           <div>
             <strong>動画情報</strong>
           </div>
-          <YouTube videoId={this.props.soundShow.MovieID} screen={true}/>
+          <Form videoId={this.props.soundShow.MovieID} screen={true}/>
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={this.props.closeInformation}>
@@ -302,7 +301,7 @@ export default class Menu extends Component {
     if (this.props.soundShow.MakeMovie) {
       download = (
         <div className="pull-right">
-          <Sound url={BASE_URL + "/static/files/sound/" + this.props.userContributionId + ".mp3?=" + + (new Date().getTime())}/>
+          <Sound url={getTopUrl() + "static/files/sound/" + this.props.userContributionId + ".mp3?=" + + (new Date().getTime())}/>
         </div>
       )
     }

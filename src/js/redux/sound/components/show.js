@@ -1,13 +1,11 @@
 import PropTypes from "prop-types"
-/*global BASE_URL*/
 import React, { Component } from "react"
 import {Alert, FormGroup, ControlLabel, ButtonToolbar, Modal, MenuItem, Dropdown, FormControl, Table, PageHeader, Glyphicon, Button} from "react-bootstrap"
 import {VOICE_TYPE, VOICE_TYPE_MAP} from "../../../constants/common"
 import {MAKE_STATUS_MADE} from "../../../constants/contribution"
 import {TALK_TYPE_IMAGE} from "../../contribution/actions/talk"
 import Image, {IMAGE_DISPLAY_TYPE_TALK_IMAGE} from "../../../utils/image"
-
-
+import {getTopUrl} from "../../../utils/common"
 import Menu from "../containers/menu"
 
 import Footer from "../../../utils/parts/footer"
@@ -152,7 +150,7 @@ export default class Show extends Component {
     let make = ""
     if (item.make_status == MAKE_STATUS_MADE) {
       let name = item.user_contribution_id + "_" + item.Priority
-      make = (<Sound url={BASE_URL + "/static/files/tmp/sound/" + name + ".wav?=" + (new Date().getTime())} repeat="" play="" pause=""/>)
+      make = (<Sound url={getTopUrl() + "static/files/tmp/sound/" + name + ".wav?=" + (new Date().getTime())} repeat="" play="" pause=""/>)
     }
 
     return (
