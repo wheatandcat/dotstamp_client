@@ -12,6 +12,7 @@
 .out/
 bin/
 storybook-static/
+yarn-error.log
 
 # Ignore all logfiles and tempfiles.
 /doc/*
