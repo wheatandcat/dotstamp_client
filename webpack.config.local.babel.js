@@ -3,10 +3,6 @@
 /*eslint no-console: ["error", { allow: ["log", "error"] }] */
 import webpack from "webpack"
 import { resolve } from "path"
-import postcssImport from "postcss-smart-import"
-import postcssCssnext from "postcss-cssnext"
-import postcssSorting from "postcss-sorting"
-import precss from "precss"
 import loadenv from "node-env-file"
 
 var publicPath = "http://localhost:3000/"
@@ -74,16 +70,17 @@ module.exports = {
           {
             loader: "css-loader",
             options: {
-              localIdentName: "[hash:base64]-[name]-[local]",
               modules: true,
+              importLoaders: 1,
               sourceMap: true,
             }
-          } ,{
+          },
+          {
             loader: "postcss-loader",
             options: {
               sourceMap: true,
             }
-          }
+          },
         ],
       }
     ]
@@ -111,10 +108,6 @@ module.exports = {
         },
       }
     }),
-    postcssImport,
-    postcssCssnext,
-    precss,
-    postcssSorting
   ],
   watchOptions: {
     aggregateTimeout: 300,

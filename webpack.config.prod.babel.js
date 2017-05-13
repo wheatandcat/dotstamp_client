@@ -44,12 +44,13 @@ module.exports = {
           {
             loader: "css-loader",
             options: {
-              localIdentName: "[hash:base64]-[name]-[local]",
               modules: true,
+              importLoaders: 1,
             }
-          } ,{
+          },
+          {
             loader: "postcss-loader",
-          }
+          },
         ],
       }
     ]
