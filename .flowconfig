@@ -2,6 +2,7 @@
 .*/node_modules/stylelint/.*
 .*/node_modules/esformatter/.*
 .*/node_modules/config-chain/.*
+.*/node_modules/eslint-plugin-jsx-a11y/.*
 
 [include]
 
