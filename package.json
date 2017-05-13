@@ -13,7 +13,7 @@
     "test": "jest",
     "storybook": "start-storybook -p 9009 -s ./dist",
     "build-storybook": "build-storybook -s ./dist",
-    "deploy-storybook": "storybook-to-ghpages -s ./dist",
+    "deploy-storybook": "storybook-to-ghpages",
     "flow": "flow"
   },
   "jest": {

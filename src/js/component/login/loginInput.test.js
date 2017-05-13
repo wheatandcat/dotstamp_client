@@ -23,7 +23,7 @@ describe("component/login/loginInput", () => {
 
   it("on click login", () => {
     const { props, enzymeWrapper } = setup()
-    const instance: LoginInput = enzymeWrapper.instance()
+    const instance: Object = enzymeWrapper.instance()
     instance.refs = {
       email: {
         value: "abc",
