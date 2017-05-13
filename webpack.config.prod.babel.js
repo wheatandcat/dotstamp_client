@@ -3,9 +3,6 @@
 /*eslint no-console: ["error", { allow: ["log", "error"] }] */
 import webpack from "webpack"
 import { resolve } from "path"
-import postcssImport from "postcss-smart-import"
-import postcssCssnext from "postcss-cssnext"
-import postcssSorting from "postcss-sorting"
 import precss from "precss"
 import loadenv from "node-env-file"
 import CompressionPlugin from "compression-webpack-plugin"
@@ -72,10 +69,7 @@ module.exports = {
         postcss: [require("autoprefixer")({browsers: ["last 2 versions"]})]
       }
     }),
-    postcssImport,
-    postcssCssnext,
     precss,
-    postcssSorting,
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false
