@@ -11,14 +11,14 @@ type Props = {
 function button(full?: boolean, onFull :Function, onSmaill :Function) {
   if (full) {
     return (
-      <Button onClick={() => onSmaill()}>
+      <Button onClick={() => onSmaill()} aria-label="resize-small">
         <Glyphicon glyph="resize-small"/>
       </Button>
     )
   }
 
   return (
-    <Button onClick={() => onFull()}>
+    <Button onClick={() => onFull()}  aria-label="resize-full">
       <Glyphicon glyph="resize-full"/>
     </Button>
   )

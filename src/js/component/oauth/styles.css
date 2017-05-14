@@ -1,0 +1,7 @@
+.new > div {
+  width: 60rem;
+}
+
+.form > div:nth-child(2) {
+  padding: 5rem;
+}

@@ -22,7 +22,7 @@ export default ({
     {children}
     <br/>
     <ButtonGroup vertical block>
-      <Button bsSize="xsmall" onClick={() => onDelete(ID)}>
+      <Button bsSize="xsmall" onClick={() => onDelete(ID)} aria-label="chevron-up">
         <Glyphicon glyph="chevron-up"/>
       </Button>
     </ButtonGroup>

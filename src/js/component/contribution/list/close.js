@@ -14,7 +14,7 @@ export default ({
   <div>
     <br/>
     <ButtonGroup vertical block>
-      <Button bsSize="xsmall" onClick={() => onAdd(ID)}>
+      <Button bsSize="xsmall" onClick={() => onAdd(ID)} aria-label="chevron-down">
         <Glyphicon glyph="chevron-down"/>
       </Button>
     </ButtonGroup>

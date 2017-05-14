@@ -1,15 +1,9 @@
 // @flow
 import React from "react"
 import { storiesOf, action } from "@kadira/storybook"
-import { MemoryRouter } from "react-router"
 import { Icon, NoIcon, Menu, Voice } from "./index"
 
-storiesOf("character")
-.addDecorator(story => (
-  <MemoryRouter initialEntries={["/"]}>
-    {story()}
-  </MemoryRouter>
-))
+storiesOf("Character")
 .add("voice", () => (
   <Voice
     voiceList={[

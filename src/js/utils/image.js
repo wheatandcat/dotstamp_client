@@ -132,7 +132,12 @@ export default class Images extends Component {
     }
 
     return (
-      <setting.tag src={setting.src(this.props.fileName)} className={setting.className} {...setting.option}>
+      <setting.tag
+        src={setting.src(this.props.fileName)}
+        className={setting.className}
+        alt={this.props.fileName}
+        {...setting.option}
+      >
         {this.props.children}
       </setting.tag>
     )

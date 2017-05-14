@@ -1,10 +1,10 @@
 // @flow
 import React from "react"
 import { storiesOf, action } from "@kadira/storybook"
-import { withKnobs, boolean} from "@kadira/storybook-addon-knobs"
+import { withKnobs, boolean } from "@kadira/storybook-addon-knobs"
 import { MemoryRouter } from "react-router"
-import {Col, Grid, Row} from "react-bootstrap"
-import { Hello, LoginInput, NewInput } from "./index"
+import { Col, Grid, Row } from "react-bootstrap"
+import { Hello, LoginInput, NewInput, Platform } from "./index"
 
 storiesOf("Login")
 .addDecorator(withKnobs)
@@ -22,6 +22,9 @@ storiesOf("Login")
 .add("login input", () => (
   <LoginInput
     onLogin={action("login")}
+    onGoogle={action("google")}
+    onTwitter={action("twitter")}
+    onFacebook={action("facebook")}
   />
 ))
 .add("login page", () => (
@@ -35,6 +38,9 @@ storiesOf("Login")
       <Col xs={9} md={6}>
         <LoginInput
           onLogin={action("login")}
+          onGoogle={action("google")}
+          onTwitter={action("twitter")}
+          onFacebook={action("facebook")}
         />
       </Col>
     </Row>
@@ -44,6 +50,9 @@ storiesOf("Login")
   <NewInput
     onNew={action("on new")}
     onOpen={action("on open")}
+    onGoogle={action("google")}
+    onTwitter={action("twitter")}
+    onFacebook={action("facebook")}
   />
 ))
 .add("new page", () => (
@@ -58,8 +67,18 @@ storiesOf("Login")
         <NewInput
           onNew={action("on new")}
           onOpen={action("on open")}
+          onGoogle={action("google")}
+          onTwitter={action("twitter")}
+          onFacebook={action("facebook")}
         />
       </Col>
     </Row>
   </Grid>
+))
+.add("platform", () => (
+  <Platform
+    onGoogle={action("google")}
+    onTwitter={action("twitter")}
+    onFacebook={action("facebook")}
+  />
 ))
