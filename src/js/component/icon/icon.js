@@ -1,6 +1,6 @@
 // @flow
 import React from "react"
-import Images, {IMAGE_DISPLAY_TYPE_ICON} from "../../utils/image"
+import {Icon} from "../image/"
 
 const IMAGE_ID_DEFAULT = 0
 
@@ -11,12 +11,12 @@ export type Props = {
 function get(ID: number) {
   if (ID == IMAGE_ID_DEFAULT) {
     return (
-      <Images fileName="profile/default.png" />
+      <Icon fileName="profile/default.png" />
     )
   }
 
   return (
-    <Images fileName={ID + ".jpg"} imageDisplayType={IMAGE_DISPLAY_TYPE_ICON} />
+    <Icon fileName={ID + ".jpg"} />
   )
 }
 

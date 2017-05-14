@@ -2,7 +2,7 @@ import PropTypes from "prop-types"
 import React, { Component } from "react"
 import Slider from "react-slick"
 import {Overlay, Image, Popover} from "react-bootstrap"
-import UtitsImage from "../../utils/image"
+import {Character} from "../image/"
 import {getUploadUrl} from "../../utils/common"
 import styles from "./styles.css"
 
@@ -135,7 +135,7 @@ export default class Slick extends Component {
           {this.props.list.map((data) => {
             return (
               <div key={data.ID}>
-                <UtitsImage fileName={data.FileName} imageDisplayType={data.imageType} onClick={this.click.bind(this)}/>
+                <Character fileName={data.FileName} onClick={this.click.bind(this)}/>
               </div>
             )
           })}

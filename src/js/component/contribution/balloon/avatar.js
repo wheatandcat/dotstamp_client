@@ -1,19 +1,18 @@
 // @flow
 import React from "react"
 import {Col} from "react-bootstrap"
-import ImageBallon, {IMAGE_DISPLAY_TYPE_CHARACTER_TALK} from "../../../utils/image"
+import {Talk} from "../../image/"
 
 type Props = {
-  FileName?: string,
+  FileName: string,
 }
 
 export default ({
   FileName,
 }: Props) => (
   <Col sm={2} md={2}>
-    <ImageBallon
+    <Talk
       fileName={FileName}
-      imageDisplayType={IMAGE_DISPLAY_TYPE_CHARACTER_TALK}
     />
   </Col>
 )

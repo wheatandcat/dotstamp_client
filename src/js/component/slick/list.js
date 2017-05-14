@@ -1,6 +1,6 @@
 // @flow
 import React from "react"
-import UtitsImage from "../../utils/image"
+import {Character} from "../image/"
 import styles from "./styles.css"
 
 type Props = {
@@ -15,7 +15,7 @@ export default ({
       {list.map((data) => {
         return (
           <div key={data.ID}>
-            <UtitsImage fileName={data.FileName} imageDisplayType={data.imageType} />
+            <Character fileName={data.FileName} />
           </div>
         )
       })}

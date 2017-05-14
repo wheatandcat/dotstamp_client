@@ -4,7 +4,7 @@ import {PageHeader, Grid, Row, Col, ListGroup, ListGroupItem, Button, Glyphicon,
 import {Group} from "./../../../../css/form.css"
 import {Paragraph} from "./../../../../css/common.css"
 import Footer from "../../../utils/parts/footer"
-import Icon from "../../../utils/parts/icon"
+import {Icon} from "../../../component/icon/"
 import {LinkContainer} from "react-router-bootstrap"
 
 export default class Mypage extends Component {
@@ -89,7 +89,7 @@ export default class Mypage extends Component {
                   <Grid>
                     <Row>
                       <Col sm={2} md={1}>
-                        <Icon imageId={this.props.userMypage.User.ProfileImageID}/>
+                        <Icon ID={this.props.userMypage.User.ProfileImageID}/>
                       </Col>
                       <Col sm={20} md={10}>
                         <Button bsStyle="link">
