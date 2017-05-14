@@ -38,7 +38,7 @@ export default class LoginInput extends Component {
               id="password"
               name="password"
               placeholder="パスワード"
-              ref={input => { this.email = input }}
+              ref={input => { this.password = input }}
               size="45"
             />&nbsp;&nbsp;
             <Button

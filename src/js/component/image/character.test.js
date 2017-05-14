@@ -3,9 +3,10 @@ import React from "react"
 import {shallow} from "enzyme"
 import {Character} from "./"
 
-function setup() :Object {
+function setup(params: Object) :Object {
   const props = {
     fileName: "abc.png",
+    size: params.size,
   }
 
   const enzymeWrapper = shallow(<Character {...props}/>)
@@ -18,6 +19,10 @@ function setup() :Object {
 
 describe("component/image/character", () => {
   it("表示", () => {
-    setup()
+    setup({size: ""})
+  })
+
+  it("small", () => {
+    setup({size: "small"})
   })
 })

@@ -3,7 +3,7 @@ import React from "react"
 import {storiesOf, action} from "@kadira/storybook"
 import {Image, Text, Balloon, EditImage, EditText} from "./index"
 
-storiesOf("Bllon")
+storiesOf("Contribution ballon")
 .add("text", () => (
   <div className="container">
     <Text Label="abcdef" />

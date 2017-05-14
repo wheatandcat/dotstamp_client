@@ -20,9 +20,9 @@ function action(event :Object) {
   }
 
   if (event.keyCode == 39) {
-    self.refs.slider.slickGoTo(self.state.key + 1)
+    self.slider.slickGoTo(self.state.key + 1)
   } else if (event.keyCode == 37) {
-    self.refs.slider.slickGoTo(self.state.key - 1)
+    self.slider.slickGoTo(self.state.key - 1)
   }
 
   if (event.altKey) {
@@ -45,6 +45,9 @@ function action(event :Object) {
 window.addEventListener("keydown", action)
 
 export default class Slick extends Component {
+  slider: Object
+  target: Object
+
   constructor (props) {
     super(props)
   }
@@ -63,7 +66,7 @@ export default class Slick extends Component {
       return
     }
 
-    this.refs.slider.slickGoTo(this.props.defaultValue)
+    this.slider.slickGoTo(this.props.defaultValue)
   }
   setting () {
     let showNum = DISPLAY_ICON_NUM_MAX
@@ -125,17 +128,22 @@ export default class Slick extends Component {
   }
   render () {
     return (
-      <div ref="target" className={styles.slick}>
-        <Overlay show={this.state.tip} target={this.refs.target} placement="top">
+      <div ref={(c) => { this.target = c }} className={styles.slick}>
+        <Overlay show={this.state.tip} target={this.target} placement="top">
           <Popover id="tooltip" title="拡大表示" onClick={this.click.bind(this)}>
             <Image src={this.state.balloonImage.src} width={120}/>
           </Popover>
         </Overlay>
-        <Slider {...this.setting()} ref="slider">
+        <Slider {...this.setting()} ref={(c) => { this.slider = c }} >
           {this.props.list.map((data) => {
             return (
               <div key={data.ID}>
-                <Character fileName={data.FileName} onClick={this.click.bind(this)}/>
+                <Character
+                  fileName={data.FileName}
+                  onClick={this.click.bind(this)}
+                  circle
+                  size="small"
+                />
               </div>
             )
           })}

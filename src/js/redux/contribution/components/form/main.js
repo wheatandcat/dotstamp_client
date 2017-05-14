@@ -172,7 +172,6 @@ export default class Main extends Component {
     }
 
     let disabled = this.props.contributionForm.Experience
-    console.log(this.props.characterList.list)
 
     return (
       <div>
