@@ -6,8 +6,6 @@ import {setDefaultList} from "../../character/actions/list"
 import {fetchPostsIfNeeded} from "../../../utils/fetch"
 import {init} from "../actions/new"
 
-import {IMAGE_DISPLAY_TYPE_CHARACTER} from "../../../utils/image"
-
 function mapStateToProps(state) {
   return state
 }
@@ -21,7 +19,7 @@ function mapDispatchToProps(dispatch) {
       dispatch(setDefaultList())
     },
     setCharacterImageList: () => {
-      dispatch(fetchPostsIfNeeded("characterImage/list/", types.GET_CHARACTER_LIST, {}, {imageType: IMAGE_DISPLAY_TYPE_CHARACTER}))
+      dispatch(fetchPostsIfNeeded("characterImage/list/", types.GET_CHARACTER_LIST, {}))
     }
   }
 }

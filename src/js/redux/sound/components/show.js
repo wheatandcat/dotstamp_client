@@ -4,7 +4,7 @@ import {Alert, FormGroup, ControlLabel, ButtonToolbar, Modal, MenuItem, Dropdown
 import {VOICE_TYPE, VOICE_TYPE_MAP} from "../../../constants/common"
 import {MAKE_STATUS_MADE} from "../../../constants/contribution"
 import {TALK_TYPE_IMAGE} from "../../contribution/actions/talk"
-import Image, {IMAGE_DISPLAY_TYPE_TALK_IMAGE} from "../../../utils/image"
+import {Talk} from "../../../component/image/"
 import {getTopUrl} from "../../../utils/common"
 import Menu from "../containers/menu"
 
@@ -122,7 +122,7 @@ export default class Show extends Component {
   getBodyDetail(item) {
     let html
     if (item.talk_type == TALK_TYPE_IMAGE) {
-      html = <Image fileName={item.Body} imageDisplayType={IMAGE_DISPLAY_TYPE_TALK_IMAGE}/>
+      html = <Talk fileName={item.Body} />
     } else {
       html = this.changeBr(item.Body)
     }

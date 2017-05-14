@@ -31,7 +31,6 @@ describe("character/reducers/list", () => {
         fileName: "test.png",
         select: 0,
       },
-      imageType: 2,
       load: true,
       VoiceType:{},
       DefaultIcon: false,

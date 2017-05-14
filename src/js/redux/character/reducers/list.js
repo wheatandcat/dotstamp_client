@@ -1,5 +1,4 @@
 import * as types from "../../../constants/ActionTypes"
-import { IMAGE_DISPLAY_TYPE_CHARACTER } from "../../../utils/image"
 
 // 初期ステート設定
 const initialState = {
@@ -9,7 +8,6 @@ const initialState = {
     fileName: "default1.png",
     select: 0
   },
-  imageType: IMAGE_DISPLAY_TYPE_CHARACTER,
   load: false,
   VoiceType:{},
   DefaultIcon: false,
@@ -76,7 +74,6 @@ export default function List (state = initialState , action) {
     let image = getDefaultCharacterList()
 
     for (let value of image) {
-      value["imageType"] = IMAGE_DISPLAY_TYPE_CHARACTER
       tmp.push(value)
 
       state.VoiceType[value.ID] = value.VoiceType
