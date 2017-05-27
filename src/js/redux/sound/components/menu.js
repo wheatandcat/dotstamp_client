@@ -132,7 +132,8 @@ export default class Menu extends Component {
             ・事前にYouTubeのマイチャンネルの作成が必要です。<br/>
             ・アップロードした動画は自身のマイチャンネルに追加されます<br/>
             ・再生時間が短すぎる動画はアップロードできないみたいなのでご注意下さい<br/>
-            ・Youtubeに15分以上の動画をアップロードするにはアカウント認証が必要です。詳細は、<a href="https://support.google.com/youtube/answer/71673?hl=ja" target="_blank">こちら</a>
+            ・Youtubeに15分以上の動画をアップロードするにはアカウント認証が必要です。詳細は、
+            <a href="https://support.google.com/youtube/answer/71673?hl=ja" target="_blank" rel="noreferrer noopener">こちら</a>
           </Alert>
           <div>
             YouTubeに動画をアップロードしますか？

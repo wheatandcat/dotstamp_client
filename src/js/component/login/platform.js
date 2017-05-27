@@ -3,6 +3,7 @@ import React from "react"
 import { Button} from "react-bootstrap"
 import FontAwesome from "react-fontawesome"
 import styles from "./styles.css"
+import {getTopUrl} from "../../utils/common"
 
 type Props = {
   label?: string,
@@ -18,7 +19,7 @@ export default ({
   onFacebook,
 }: Props) => (
   <div className={styles.platform}>
-    <Button bsStyle="danger" onClick={() => onGoogle()} block>
+    <Button bsStyle="danger" href={getTopUrl() + "api/google/oauth/" } block>
       <FontAwesome name="google" />&nbsp;&nbsp;Googleで{label}&nbsp;
     </Button>
     <Button bsStyle="info" onClick={() => onTwitter()} block>

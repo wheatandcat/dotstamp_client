@@ -6,7 +6,9 @@ import {Page} from "./"
 function setup() {
   const props = {
     email: "abc",
-    onNew: jest.fn()
+    onNew: jest.fn(),
+    isAlert: false,
+    message: ""
   }
 
   const enzymeWrapper = shallow(<Page {...props} />)

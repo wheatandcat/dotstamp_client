@@ -23,6 +23,8 @@ import CharacterList from "./redux/character/containers/list"
 import PasswordInput from "./redux/password/containers/input"
 import PasswordReset from "./redux/password/containers/reset"
 
+import OauthNew from "./redux/oauth/containers/new"
+
 import SoundShow from "./redux/sound/containers/show"
 
 import questionShow from "./redux/question/containers/show"
@@ -64,6 +66,7 @@ export default class Root extends Component {
               <Route path="/question" component={questionShow} />
               <Route path="/information/:file" component={informationShow} />
               <Route path="/contribution/experience" component={ContributionNew} />
+              <Route path="/oauth/" component={OauthNew} />
               <Route component={ContributionList}/>
             </Switch>
           </div>

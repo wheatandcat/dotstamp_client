@@ -1,9 +1,9 @@
 import PropTypes from "prop-types"
-/*eslint no-console: ["error", { allow: ["log", "error"] }] */
 import React, { Component } from "react"
 import {PageHeader, Alert, Col, Grid, Row} from "react-bootstrap"
 import {PASSWORD_LENGTH_MIN} from "../../../constants/common"
 import {Hello, NewInput} from "../../../component/login/"
+
 export default class New extends Component {
   componentWillMount() {}
   /**

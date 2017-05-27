@@ -1,7 +1,7 @@
 import PropTypes from "prop-types"
-/*eslint no-console: ["error", { allow: ["log", "error"] }] */
 import React, { Component } from "react"
 import { FormGroup,Button,ControlLabel,PageHeader,ListGroup,ListGroupItem,Alert} from "react-bootstrap"
+
 export default class Input extends Component {
   /**
      * 追加する

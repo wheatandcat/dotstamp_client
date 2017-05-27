@@ -13,10 +13,14 @@ export default class New extends Component {
 
   password: Object
 
+  new() {
+    this.props.onNew(this.props.email ,this.password.value)
+  }
+
   render() {
     return (
       <Panel
-        header="新規登録する"
+        header="新規登録"
         bsStyle="info"
         className={styles.form}
       >
@@ -25,7 +29,7 @@ export default class New extends Component {
           <FormControl
             label="Email"
             type="email"
-            placeholder="Email"
+            placeholder="メールアドレス"
             value={this.props.email}
             disabled
           />
@@ -35,7 +39,7 @@ export default class New extends Component {
           <FormControl
             label="Password"
             type="password"
-            placeholder="Password"
+            placeholder="パスワード"
             inputRef={ref => { this.password = ref }}
           />
         </FormGroup>
@@ -45,9 +49,9 @@ export default class New extends Component {
             <Button
               bsStyle="success"
               bsSize="large"
-              onClick={() => this.props.onNew()}
+              onClick={() => this.new()}
             >
-              利用規約に同意して登録する
+              登録する
             </Button>
           </ButtonToolbar>
         </FormGroup>

@@ -5,7 +5,7 @@ import { withKnobs } from "@kadira/storybook-addon-knobs"
 import { MemoryRouter } from "react-router"
 import { New, Page } from "./"
 
-storiesOf("oauth")
+storiesOf("Oauth")
 .addDecorator(withKnobs)
 .addDecorator(story => (
   <MemoryRouter initialEntries={["/"]}>
@@ -22,5 +22,7 @@ storiesOf("oauth")
   <Page
     email="test@abc.com"
     onNew={action("onNew")}
+    isAlert={false}
+    message=""
   />
 ))
