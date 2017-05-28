@@ -8,9 +8,9 @@ import styles from "./styles.css"
 
 const DISPLAY_ICON_NUM_MAX = 5
 
-let self: Object
+let self
 
-function action(event: Object) {
+function action(event) {
   if (self == undefined) {
     return
   }
@@ -45,9 +45,6 @@ function action(event: Object) {
 window.addEventListener("keydown", action)
 
 export default class Slick extends Component {
-  slider: Object
-  target: Object
-
   constructor(props) {
     super(props)
   }
@@ -89,7 +86,7 @@ export default class Slick extends Component {
       slidesToScroll: 1,
       focusOnSelect: true,
       pauseOnHballoon: true,
-      afterChange(currentSlide: number) {
+      afterChange(currentSlide) {
         self.change(currentSlide)
         self.props.onClick(self.props.list[currentSlide])
       }
@@ -97,7 +94,7 @@ export default class Slick extends Component {
 
     return setting
   }
-  change(key: number) {
+  change(key) {
     const item = this.props.list[key]
     this.setState({
       key,
@@ -106,7 +103,7 @@ export default class Slick extends Component {
       }
     })
   }
-  click(event: Object) {
+  click(event) {
     this.setState({
       tip: !this.state.tip,
       balloonImage: {
@@ -114,7 +111,7 @@ export default class Slick extends Component {
       }
     })
   }
-  balloon(event: Object) {
+  balloon(event) {
     const target = event.target.getBoundingClientRect()
 
     this.setState({

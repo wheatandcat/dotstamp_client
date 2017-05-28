@@ -1,34 +1,22 @@
+// @flow
 import PropTypes from "prop-types"
 import React, { Component } from "react"
-import { Link } from "react-router-dom"
-import {
-  Tooltip,
-  Label,
-  Dropdown,
-  Button,
-  MenuItem,
-  ListGroup,
-  ListGroupItem,
-  FormGroup,
-  Form,
-  Glyphicon
-} from "react-bootstrap"
-import {
-  VIEW_STATUS_PUBLIC,
-  VIEW_STATUS_PRIVATE,
-  TAG_MAX_NUMBER
-} from "../../../../constants/contribution"
+import { Button, ListGroup, ListGroupItem, Glyphicon } from "react-bootstrap"
 import FormMain from "../../containers/form/main"
 import TalkBoard from "../../containers/talk/board"
 import AlertMessage from "../../../error/containers/alertMessage"
 import MessageSow from "../../../message/containers/show"
 import { Guide } from "../../../../component/contribution/help"
+import { NewInput, AddForm } from "../../../../component/tag"
+import { Status, Sound } from "../../../../component/contribution/viewStatus"
+import {
+  NewInput as NewTitleInput
+} from "../../../../component/contribution/title"
 
 import { Preview, Group, GroupList } from "./../../../../../css/form.css"
-import { Item } from "./../../../../../css/tag.css"
-import { Front, Absolute, Close } from "./../../../../../css/common.css"
+import { Front } from "./../../../../../css/common.css"
 
-let self
+let self: Object
 
 window.addEventListener("resize", () => {
   if (self == undefined) {
@@ -53,11 +41,11 @@ window.addEventListener("keydown", event => {
 
   if (event.altKey) {
     if (event.keyCode == 38) {
-      self.refs.preview.scrollTop -= 30
+      self.preview.scrollTop -= 30
     }
 
     if (event.keyCode == 40) {
-      self.refs.preview.scrollTop += 30
+      self.preview.scrollTop += 30
     }
   }
 })
@@ -113,6 +101,7 @@ window.onbeforeunload = function() {
 }
 
 export default class Header extends Component {
+  preview: Object
   componentWillMount() {
     this.props.alertMessageInit()
 
@@ -139,7 +128,7 @@ export default class Header extends Component {
    */
   setScroll() {
     if (this.props.contributionTalk.length > 0) {
-      const node = this.refs.preview
+      const node = this.preview
       node.scrollTop = node.scrollHeight
     }
   }
@@ -152,8 +141,10 @@ export default class Header extends Component {
     }
 
     const contributionId = this.props.contributionId
-    const title = this.refs.title.value.trim()
-    const tag = contributionId == null ? this.refs.tag.value.trim() : ""
+    const title = this.props.contributionForm.title.trim()
+    const tag = contributionId == null
+      ? this.props.contributionForm.tag.trim()
+      : ""
     const body = this.props.contributionTalk
 
     const action = {
@@ -196,43 +187,10 @@ export default class Header extends Component {
     }
   }
   /**
-   * タイトルを変更する
-   */
-  changeTitle() {
-    this.props.changeTitle(this.refs.title.value)
-  }
-  /**
-   * タグを変更する
-   */
-  changeTag() {
-    this.props.changeTag(this.refs.tag.value)
-  }
-
-  /**
-   * タグ入力を取得する
-   *
-   * @return {object}  html
-   */
-  getInputTag() {
-    return (
-      <FormGroup>
-        <input
-          type="text"
-          id="tag"
-          className="form-control"
-          placeholder="タグをスペース区切りで5つまで入力（例：映画 2001年宇宙の旅）"
-          ref="tag"
-          value={this.props.contributionForm.tag}
-          onChange={this.changeTag.bind(this)}
-        />
-      </FormGroup>
-    )
-  }
-  /**
    * タグ追加する
    */
-  addTag() {
-    const tag = this.refs.addTag.value.trim()
+  addTag(name: Object) {
+    const tag = name.trim()
     if (tag.length > 20) {
       this.props.alertMessage("タグは20文字まで")
       return
@@ -242,50 +200,15 @@ export default class Header extends Component {
       userContributionId: this.props.contributionId,
       name: tag
     })
-
-    this.refs.addTag.value = ""
   }
   /**
    * タグを削除する
    */
-  deleteTag(id) {
+  deleteTag(id: number) {
     this.props.deleteTag({
       userContributionId: this.props.contributionId,
       id
     })
-  }
-  /**
-   * タグ入力
-   */
-  addTagInput() {
-    let tagList = this.props.contributionForm.tagList
-    if (!Array.isArray(tagList)) {
-      tagList = []
-    }
-
-    if (tagList.length >= TAG_MAX_NUMBER) {
-      return (
-        <FormGroup>
-          <Label bsStyle="danger">
-            タグ登録は10個まで
-          </Label>
-        </FormGroup>
-      )
-    }
-
-    return (
-      <FormGroup>
-        <input
-          type="text"
-          className="form-control"
-          placeholder="タグを追加する"
-          ref="addTag"
-        />
-        <Button onClick={() => this.addTag()}>
-          追加
-        </Button>
-      </FormGroup>
-    )
   }
   /**
    * タグを取得する
@@ -294,33 +217,15 @@ export default class Header extends Component {
    */
   getTag() {
     if (this.props.contributionId == null) {
-      return this.getInputTag()
-    }
-
-    let tagList = this.props.contributionForm.tagList
-    if (!Array.isArray(tagList)) {
-      tagList = []
+      return <NewInput onTag={this.props.changeTag.bind(this)} />
     }
 
     return (
-      <FormGroup>
-        <Form inline>
-          {tagList.map(tag => (
-            <span key={tag.ID}>
-              &nbsp;
-              <Label bsStyle="info" className={Item}>
-                <Glyphicon
-                  glyph="remove"
-                  className={Close}
-                  onClick={() => this.deleteTag(tag.ID)}
-                />&nbsp;
-                <span>{tag.Name}</span>
-              </Label>
-            </span>
-          ))}
-          &nbsp; {this.addTagInput()}
-        </Form>
-      </FormGroup>
+      <AddForm
+        tagList={this.props.contributionForm.tagList}
+        onAdd={this.addTag.bind(this)}
+        onDelete={this.deleteTag.bind(this)}
+      />
     )
   }
   /**
@@ -336,66 +241,6 @@ export default class Header extends Component {
     }
   }
   /**
-   * 表示状態を取得する
-   *
-   * @return {object} html
-   */
-  getViewStatus() {
-    const viewStausMap = []
-    viewStausMap[VIEW_STATUS_PUBLIC] = {
-      eventKey: 1,
-      text: "投稿する　",
-      glyph: "edit",
-      status: VIEW_STATUS_PUBLIC
-    }
-    viewStausMap[VIEW_STATUS_PRIVATE] = {
-      eventKey: 2,
-      text: "下書き保存",
-      glyph: "floppy-disk",
-      status: VIEW_STATUS_PRIVATE
-    }
-
-    const viewStaus = item => {
-      if (item.status == this.props.contributionForm.viewStatus) {
-        return (
-          <MenuItem eventKey={item.eventKey} key={item.eventKey} active>
-            <Glyphicon glyph={item.glyph} />&nbsp;{item.text}
-          </MenuItem>
-        )
-      }
-
-      return (
-        <MenuItem
-          eventKey={item.eventKey}
-          key={item.eventKey}
-          onClick={() => this.props.setViewStatus(item.status)}
-        >
-          <Glyphicon glyph={item.glyph} />&nbsp;{item.text}
-        </MenuItem>
-      )
-    }
-
-    const status = viewStausMap[this.props.contributionForm.viewStatus]
-
-    const disabled = this.props.contributionForm.Experience
-
-    return (
-      <Dropdown id="viweStatus" disabled={disabled} ref="viweStatus">
-        <Button
-          onClick={() => this.save()}
-          bsStyle="success"
-          disabled={disabled}
-        >
-          <Glyphicon glyph={status.glyph} />&nbsp;{status.text}
-        </Button>
-        <Dropdown.Toggle bsStyle="success" />
-        <Dropdown.Menu className="super-colors">
-          {viewStausMap.map(item => viewStaus(item))}
-        </Dropdown.Menu>
-      </Dropdown>
-    )
-  }
-  /**
    * 音声を追加する
    */
   addSound() {
@@ -407,79 +252,51 @@ export default class Header extends Component {
    * @return {object} html
    */
   render() {
-    let sound = ""
-    if (this.props.contributionId != null) {
-      if (!this.props.contributionEdit.Sound) {
-        sound = (
-          <Button bsStyle="link" onClick={() => this.addSound()}>
-            <Glyphicon glyph="bullhorn" />&nbsp;読み上げを作成する（β版）
-          </Button>
-        )
-      } else {
-        sound = (
-          <Link to={`/sound/show/${this.props.contributionId}`}>
-            <Button bsStyle="link">
-              <Glyphicon glyph="bullhorn" />&nbsp;読み上げを編集する（β版）
-            </Button>
-          </Link>
-        )
-      }
-    }
-
-    let experience = ""
-    if (this.props.contributionForm.Experience) {
-      experience = (
-        <Tooltip
-          id="tooltip-right"
-          placement="right"
-          className="in"
-          positionLeft={170}
-          positionTop={160}
-        >
-          「お試し」投稿のデータは保存<br />できません。
-        </Tooltip>
-      )
-    }
-
     return (
       <div>
         <MessageSow />
-        {" "}
         <Guide
-          show={this.props.contributionForm.help}
+          open={this.props.contributionForm.help}
           onHide={this.props.closeHelp}
         />
-        {experience}
         <ListGroup className={Group}>
           <ListGroupItem>
             <AlertMessage />
-            <FormGroup>
-              <input
-                type="text"
-                id="title"
-                className="form-control"
-                placeholder="タイトル(100文字以内)"
-                ref="title"
-                value={this.props.contributionForm.title}
-                onChange={this.changeTitle.bind(this)}
-              />
-            </FormGroup>
+            <NewTitleInput
+              defaultValue={this.props.contributionForm.title}
+              onTitle={this.props.changeTitle.bind(this)}
+            />
             {this.getTag()}
-            {this.getViewStatus()}
-            {sound}
+            <Status
+              viewStatus={this.props.contributionForm.viewStatus}
+              disabled={this.props.contributionForm.Experience}
+              onChageStatus={this.props.setViewStatus.bind(this)}
+              onPublic={this.save.bind(this)}
+              onPrivate={this.save.bind(this)}
+            />
+            <Sound
+              contributionId={this.props.contributionId}
+              created={this.props.contributionEdit.Sound}
+              addSound={this.addSound.bind(this)}
+              experience={this.props.contributionForm.Experience}
+            />
+            <Button
+              bsSize="small"
+              bsStyle="info"
+              className={Front}
+              onClick={() => this.props.openHelp()}
+            >
+              <Glyphicon glyph="info-sign" />&nbsp;ヒント
+            </Button>
           </ListGroupItem>
           <ListGroupItem>
-            <div className={Absolute}>
-              <Button
-                bsSize="small"
-                bsStyle="info"
-                className={Front}
-                onClick={() => this.props.openHelp()}
-              >
-                <Glyphicon glyph="info-sign" />&nbsp;ヒント
-              </Button>
-            </div>
-            <div className={Preview} ref="preview" style={this.getBoardStyle()}>
+            <div
+              className={Preview}
+              ref={input => {
+                this.preview = input
+              }}
+              style={this.getBoardStyle()}
+            >
               <TalkBoard talkList={this.props.contributionTalk} />
             </div>
           </ListGroupItem>

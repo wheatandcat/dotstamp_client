@@ -49,8 +49,8 @@ rules:
     - allow:
         - __get__
         - __Rewire__
+        - __set__
   # import
-  import/newline-after-import: 2
   import/imports-first: 2
   import/no-dynamic-require: 2
   import/no-extraneous-dependencies:

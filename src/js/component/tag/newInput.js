@@ -1,22 +1,33 @@
 // @flow
-import React from "react"
-import { Label } from "react-bootstrap"
-import { Link } from "react-router-dom"
-import { ORDER_TYPE_NEW } from "../../constants/contribution"
-import styles from "./styles.css"
+import React, { Component } from "react"
+import { FormGroup, FormControl } from "react-bootstrap"
 
-export type Props = {
-  label: string,
-  onSearch?: Function
+type Props = {
+  onTag: Function
 }
 
-export default ({ label, onSearch }: Props) => (
-  <Link
-    to={`/contribution/search/${label}/${ORDER_TYPE_NEW}/1`}
-    onClick={() => onSearch && onSearch(label, 1, ORDER_TYPE_NEW)}
-  >
-    <Label bsStyle="info" className={styles.tag}>
-      {label}
-    </Label>
-  </Link>
-)
+export default class NewInput extends Component {
+  props: Props
+
+  label: Object
+
+  tag() {
+    this.props.onTag(this.label.value)
+  }
+
+  render() {
+    return (
+      <FormGroup>
+        <FormControl
+          label="Tag"
+          type="tag"
+          placeholder="タグをスペース区切りで5つまで入力（例：映画 2001年宇宙の旅）"
+          inputRef={ref => {
+            this.label = ref
+          }}
+          onChange={() => this.tag()}
+        />
+      </FormGroup>
+    )
+  }
+}

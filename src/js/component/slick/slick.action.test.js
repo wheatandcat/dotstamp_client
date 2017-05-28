@@ -2,8 +2,9 @@
 import React from "react"
 import { mount } from "enzyme"
 import { Slick } from "./"
-// $FlowDisableLine
+// flow-disable-line
 import { __RewireAPI__ } from "./slick"
+
 const action = __RewireAPI__.__get__("action")
 
 function setup(params: Object) {
