@@ -280,6 +280,8 @@ export default class Header extends Component {
               addSound={this.addSound.bind(this)}
               experience={this.props.contributionForm.Experience}
             />
+          </ListGroupItem>
+          <ListGroupItem>
             <Button
               bsSize="small"
               bsStyle="info"
@@ -288,8 +290,6 @@ export default class Header extends Component {
             >
               <Glyphicon glyph="info-sign" />&nbsp;ヒント
             </Button>
-          </ListGroupItem>
-          <ListGroupItem>
             <div
               className={Preview}
               ref={input => {

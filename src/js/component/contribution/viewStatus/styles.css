@@ -1,4 +1,6 @@
 .experience {
   position: absolute !important;
-  margin-left: 20rem !important;
+  margin-left: 31rem !important;
+  top: 9.5rem;
+  z-index: 2 !important
 }
