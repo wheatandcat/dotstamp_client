@@ -8,8 +8,8 @@ export default class Show extends Component {
     this.props.init()
   }
   /**
-     * 追加する
-     */
+   * 追加する
+   */
   add() {
     let email = this.inputEmail.value.trim()
     let body = this.inputBody.value.trim()
@@ -22,10 +22,10 @@ export default class Show extends Component {
 
   }
   /**
-     * 描画する
-     *
-     * @return {object} html
-     */
+   * 描画する
+   *
+   * @return {object} html
+   */
   render() {
     let send = ""
 

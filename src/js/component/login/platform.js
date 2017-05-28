@@ -7,25 +7,19 @@ import {getTopUrl} from "../../utils/common"
 
 type Props = {
   label?: string,
-  onGoogle: Function,
-  onTwitter: Function,
-  onFacebook: Function,
 }
 
 export default ({
   label,
-  onGoogle,
-  onTwitter,
-  onFacebook,
 }: Props) => (
   <div className={styles.platform}>
     <Button bsStyle="danger" href={getTopUrl() + "api/google/oauth/" } block>
       <FontAwesome name="google" />&nbsp;&nbsp;Googleで{label}&nbsp;
     </Button>
-    <Button bsStyle="info" onClick={() => onTwitter()} block>
+    <Button bsStyle="info" href={getTopUrl() + "api/twitter/oauth/" } block>
       <FontAwesome name="twitter" />&nbsp;&nbsp;Twitterで{label}&nbsp;
     </Button>
-    <Button bsStyle="primary" onClick={() => onFacebook()} block>
+    <Button bsStyle="primary" href={getTopUrl() + "api/facebook/oauth/" } block>
       &nbsp;&nbsp;<FontAwesome name="facebook" />&nbsp;&nbsp;Facebookで{label}
     </Button>
   </div>

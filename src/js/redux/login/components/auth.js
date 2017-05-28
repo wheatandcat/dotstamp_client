@@ -21,10 +21,10 @@ export default class Auth extends Component {
     return this.login()
   }
   /**
-     * ログイン状態のメニューを取得する
-     *
-     * @return {object} html
-     */
+   * ログイン状態のメニューを取得する
+   *
+   * @return {object} html
+   */
   login() {
     return (
       <Nav pullRight>

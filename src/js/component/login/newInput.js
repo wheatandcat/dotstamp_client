@@ -8,9 +8,6 @@ import styles from "./styles.css"
 type Props = {
   onNew: Function,
   onOpen: Function,
-  onGoogle: Function,
-  onTwitter: Function,
-  onFacebook: Function,
 }
 
 export default class NewInput extends Component {
@@ -69,9 +66,6 @@ export default class NewInput extends Component {
         <br />
         <Platform
           label="アカウント登録"
-          onGoogle={this.props.onGoogle}
-          onTwitter={this.props.onTwitter}
-          onFacebook={this.props.onFacebook}
         />
         <Link to="/login/login">
           <Button bsStyle="link">登録済みならばログインから</Button>

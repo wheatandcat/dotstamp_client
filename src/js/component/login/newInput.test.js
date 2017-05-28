@@ -8,9 +8,6 @@ function setup() {
   const props = {
     onNew: jest.fn(),
     onOpen: jest.fn(),
-    onGoogle: jest.fn(),
-    onTwitter: jest.fn(),
-    onFacebook: jest.fn(),
   }
 
   const enzymeWrapper = shallow(<NewInput {...props} />)
@@ -51,9 +48,6 @@ describe("component/login/newInput", () => {
     const props = {
       onNew: jest.fn(),
       onOpen: jest.fn(),
-      onGoogle: jest.fn(),
-      onTwitter: jest.fn(),
-      onFacebook: jest.fn(),
     }
 
     mount(<MemoryRouter initialEntries={["/"]}><NewInput {...props} /></MemoryRouter>)

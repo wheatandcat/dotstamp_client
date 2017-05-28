@@ -7,9 +7,6 @@ import {LoginInput} from "./"
 function setup() {
   const props = {
     onLogin: jest.fn(),
-    onGoogle: jest.fn(),
-    onTwitter: jest.fn(),
-    onFacebook: jest.fn(),
   }
 
   const enzymeWrapper = shallow(<LoginInput {...props} />)
@@ -42,9 +39,6 @@ describe("component/login/loginInput", () => {
   it("mount", () => {
     const props = {
       onLogin: jest.fn(),
-      onGoogle: jest.fn(),
-      onTwitter: jest.fn(),
-      onFacebook: jest.fn(),
     }
 
     mount(<MemoryRouter initialEntries={["/"]}><LoginInput {...props} /></MemoryRouter>)

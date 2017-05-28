@@ -6,9 +6,6 @@ import {Platform} from "./"
 
 type Props = {
   onLogin: Function,
-  onGoogle: Function,
-  onTwitter: Function,
-  onFacebook: Function,
 }
 
 export default class LoginInput extends Component {
@@ -54,9 +51,6 @@ export default class LoginInput extends Component {
             <br />
             <Platform
               label="ログイン"
-              onGoogle={this.props.onGoogle}
-              onTwitter={this.props.onTwitter}
-              onFacebook={this.props.onFacebook}
             />
           </FormGroup>
         </Form>
