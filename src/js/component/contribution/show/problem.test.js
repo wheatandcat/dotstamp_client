@@ -1,7 +1,7 @@
 // @flow
 import React from "react"
-import {shallow} from "enzyme"
-import {Problem} from "./"
+import { shallow } from "enzyme"
+import { Problem } from "./"
 
 function setup(params: Object) {
   const props = {
@@ -10,10 +10,10 @@ function setup(params: Object) {
     show: params.show,
     onProblemType: jest.fn(),
     onHide: jest.fn(),
-    onAdd: jest.fn(),
+    onAdd: jest.fn()
   }
 
-  const enzymeWrapper = shallow(<Problem {...props}/>)
+  const enzymeWrapper = shallow(<Problem {...props} />)
 
   return {
     props,
@@ -26,7 +26,7 @@ describe("component/contribution/show/problem", () => {
     setup({
       problemType: 1,
       send: false,
-      show: true,
+      show: true
     })
   })
 
@@ -34,7 +34,7 @@ describe("component/contribution/show/problem", () => {
     setup({
       problemType: 1,
       send: true,
-      show: true,
+      show: true
     })
   })
 
@@ -42,7 +42,7 @@ describe("component/contribution/show/problem", () => {
     const { props, enzymeWrapper } = setup({
       problemType: 1,
       send: true,
-      show: true,
+      show: true
     })
 
     enzymeWrapper.find("Radio").at(0).simulate("change")
@@ -56,11 +56,10 @@ describe("component/contribution/show/problem", () => {
     const { props, enzymeWrapper } = setup({
       problemType: 1,
       send: true,
-      show: true,
+      show: true
     })
 
     enzymeWrapper.find("Button").simulate("click")
     expect(props.onAdd).toHaveBeenCalled()
   })
-
 })

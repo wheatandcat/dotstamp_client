@@ -1,6 +1,6 @@
 // @flow
 import React from "react"
-import {Title, About, Youtube} from "./"
+import { Title, About, Youtube } from "./"
 
 export type Props = {
   followElement: React$Element<*>,
@@ -10,7 +10,7 @@ export type Props = {
   userName: string,
   updatedAt: string,
   movieID: string,
-  openProblem: Function,
+  openProblem: Function
 }
 
 export default ({
@@ -21,24 +21,18 @@ export default ({
   userName,
   updatedAt,
   movieID,
-  openProblem,
+  openProblem
 }: Props) => (
   <div>
-    <Title
-      followElement={followElement}
-      tagList={tagList}
-      title={title}
-    />
-    <br/>
+    <Title followElement={followElement} tagList={tagList} title={title} />
+    <br />
     <About
       profileImageID={profileImageID}
       userName={userName}
       updatedAt={updatedAt}
       openProblem={openProblem}
     />
-    <br/>
-    <Youtube
-      movieID={movieID}
-    />
+    <br />
+    <Youtube movieID={movieID} />
   </div>
 )

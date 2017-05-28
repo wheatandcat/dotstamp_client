@@ -5,47 +5,47 @@ import { MemoryRouter } from "react-router"
 import { Thumbnail, Private, Public } from "./index"
 
 storiesOf("Thumbnail")
-.addDecorator(story => (
-  <MemoryRouter initialEntries={["/"]}>
-    {story()}
-  </MemoryRouter>
-))
-.add("Thumbnail on body & sound", () => (
-  <div className="container">
-    <Thumbnail
-      FollowCount={2}
-      ID={1}
-      Movie={{
-        movie_id: "test",
-        movie_status: 1
-      }}
-      Search="abctestedfgtuk\njshajkhfkznfklj\njdhjksdhjdklh"
-      OnSearch={action("search")}
-      SearchMatch="test"
-      SoundStatus={0}
-      Tag={[
-        {
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>
+      {story()}
+    </MemoryRouter>
+  ))
+  .add("Thumbnail on body & sound", () => (
+    <div className="container">
+      <Thumbnail
+        FollowCount={2}
+        ID={1}
+        Movie={{
+          movie_id: "test",
+          movie_status: 1
+        }}
+        Search="abctestedfgtuk\njshajkhfkznfklj\njdhjksdhjdklh"
+        OnSearch={action("search")}
+        SearchMatch="test"
+        SoundStatus={0}
+        Tag={[
+          {
+            ID: 1,
+            Name: "tag1",
+            UserContributionID: 2
+          },
+          {
+            ID: 2,
+            Name: "tag2",
+            UserContributionID: 2
+          }
+        ]}
+        Title="test"
+        UpdatedAt="2015-01-01T07:12:00+09:00"
+        User={{
           ID: 1,
-          Name: "tag1",
-          UserContributionID: 2,
-        },
-        {
-          ID: 2,
-          Name: "tag2",
-          UserContributionID: 2,
-        }
-      ]}
-      Title="test"
-      UpdatedAt="2015-01-01T07:12:00+09:00"
-      User={{
-        ID: 1,
-        Name: "name",
-        ProfileImageID: 0,
-      }}
-      ViewStatus={1}
-    />
-  </div>
-))
+          Name: "name",
+          ProfileImageID: 0
+        }}
+        ViewStatus={1}
+      />
+    </div>
+  ))
   .add("Thumbnail is not body", () => (
     <div className="container">
       <Thumbnail
@@ -64,12 +64,12 @@ storiesOf("Thumbnail")
           {
             ID: 1,
             Name: "tag1",
-            UserContributionID: 2,
+            UserContributionID: 2
           },
           {
             ID: 2,
             Name: "tag2",
-            UserContributionID: 2,
+            UserContributionID: 2
           }
         ]}
         Title="test"
@@ -77,7 +77,7 @@ storiesOf("Thumbnail")
         User={{
           ID: 1,
           Name: "name",
-          ProfileImageID: 0,
+          ProfileImageID: 0
         }}
         ViewStatus={1}
       />
@@ -89,13 +89,13 @@ storiesOf("Thumbnail")
         FollowCount={1}
         OnSearch={action("search")}
         ShowPath="/test/1"
-        SearchMatch={(<span key="SearchMatch">SearchMatch</span>)}
-        Sound={(<span key="Sound">Sound</span>)}
+        SearchMatch={<span key="SearchMatch">SearchMatch</span>}
+        Sound={<span key="Sound">Sound</span>}
         Tag={[
           {
             ID: 1,
             Name: "tag1",
-            UserContributionID: 2,
+            UserContributionID: 2
           }
         ]}
         Title="test"
@@ -103,7 +103,7 @@ storiesOf("Thumbnail")
         User={{
           ID: 1,
           Name: "name",
-          ProfileImageID: 0,
+          ProfileImageID: 0
         }}
       />
     </div>
@@ -116,7 +116,7 @@ storiesOf("Thumbnail")
         User={{
           ID: 1,
           Name: "name",
-          ProfileImageID: 0,
+          ProfileImageID: 0
         }}
       />
     </div>

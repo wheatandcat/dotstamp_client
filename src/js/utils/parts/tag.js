@@ -1,10 +1,9 @@
 import PropTypes from "prop-types"
 import React, { Component } from "react"
-import {Label} from "react-bootstrap"
-import {Item} from "./../../../css/tag.css"
-import {Link} from "react-router-dom"
-import {ORDER_TYPE_NEW} from "../../constants/contribution"
-
+import { Label } from "react-bootstrap"
+import { Item } from "./../../../css/tag.css"
+import { Link } from "react-router-dom"
+import { ORDER_TYPE_NEW } from "../../constants/contribution"
 
 export default class Tag extends Component {
   /**
@@ -22,11 +21,12 @@ export default class Tag extends Component {
    * @return {object} html
    */
   getItem(item) {
-    let hash = location.hash
+    const hash = location.hash
     if (hash.indexOf("/contribution/search") != -1) {
-      let url = "contribution/search/" + item.Name + "/" + ORDER_TYPE_NEW + "/1"
+      const url =
+        "contribution/search/" + item.Name + "/" + ORDER_TYPE_NEW + "/1"
       return (
-        <Link to={url}  onClick={() => this.setSearch(item.Name)}>
+        <Link to={url} onClick={() => this.setSearch(item.Name)}>
           <Label bsStyle="info" className={Item}>
             {item.Name}
           </Label>
@@ -35,7 +35,9 @@ export default class Tag extends Component {
     }
 
     return (
-      <Link to={"contribution/search/" + item.Name + "/" + ORDER_TYPE_NEW + "/1"}>
+      <Link
+        to={"contribution/search/" + item.Name + "/" + ORDER_TYPE_NEW + "/1"}
+      >
         <Label bsStyle="info" className={Item}>
           {item.Name}
         </Label>
@@ -47,16 +49,15 @@ export default class Tag extends Component {
    *
    * @return {object} html
    */
-  render () {
-    let list = this.props.list
+  render() {
+    const list = this.props.list
     return (
       <div>
-        {list.map((item) =>
-
+        {list.map(item => (
           <span key={item.ID}>
             {this.getItem(item)}
           </span>
-        )}
+        ))}
       </div>
     )
   }
@@ -64,5 +65,5 @@ export default class Tag extends Component {
 
 Tag.propTypes = {
   list: PropTypes.array,
-  search: PropTypes.func,
+  search: PropTypes.func
 }

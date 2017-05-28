@@ -3,8 +3,12 @@ import fetch from "isomorphic-fetch"
 import * as types from "../constants/ActionTypes"
 
 // ホスト
-var host = (typeof (process.env.BASE_URL) == "undefined") ? "http://localhost:3000/api/" : process.env.BASE_URL + "api/"
-var staticHost = (typeof (process.env.BASE_URL) == "undefined") ? "http://localhost:3000" : process.env.BASE_URL
+var host = typeof process.env.BASE_URL == "undefined"
+  ? "http://localhost:3000/api/"
+  : process.env.BASE_URL + "api/"
+var staticHost = typeof process.env.BASE_URL == "undefined"
+  ? "http://localhost:3000"
+  : process.env.BASE_URL
 
 // 通信状態リスト
 var fetchStateList = []
@@ -19,7 +23,7 @@ var fetchStateList = []
  * @return {object} アクション
  */
 export function fetchPostsIfNeeded(url, type, paramas = {}, receiveParam = {}) {
-  return (dispatch) => {
+  return dispatch => {
     if (shouldFetchPosts(url)) {
       // thunkからthunkを呼び出せる！
       return dispatch(fetchPosts(url, type, paramas, receiveParam))
@@ -86,7 +90,7 @@ function receiveErrorResponse(url, response) {
     message: response.Message,
     errCode: response.ErrCode,
     show: true,
-    receivedAt: Date.now(),
+    receivedAt: Date.now()
   }
 }
 
@@ -100,33 +104,34 @@ function receiveErrorResponse(url, response) {
  * @return {object} レスポンス
  */
 function fetchPosts(url, type, paramas, receiveParam) {
-
   const requestParams = {
     method: "POST",
     credentials: "same-origin",
     headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
+      "Content-Type": "application/x-www-form-urlencoded"
     },
-    body: Object.keys(paramas).map(function(key){ return key+"="+ paramas[key] }).join("&"),
+    body: Object.keys(paramas)
+      .map(function(key) {
+        return key + "=" + paramas[key]
+      })
+      .join("&")
   }
 
   return dispatch => {
     return fetch(host + url, requestParams)
-    .then(response =>
-      response.json().then(json => ({
-        status: response.status,
-        json
-      })
-    ))
-    .then(
-      ({ status, json }) => {
+      .then(response =>
+        response.json().then(json => ({
+          status: response.status,
+          json
+        }))
+      )
+      .then(({ status, json }) => {
         if (status >= 400) {
           return dispatch(receiveErrorResponse(url, json))
         }
 
         dispatch(receiveResponse(url, type, json, receiveParam))
-      }
-    )
+      })
   }
 }
 
@@ -140,7 +145,7 @@ function fetchPosts(url, type, paramas, receiveParam) {
  * @return {object} アクション
  */
 export function fetchUploadIfNeeded(url, type, paramas, receiveParam = {}) {
-  return (dispatch) => {
+  return dispatch => {
     if (shouldFetchPosts(url)) {
       // thunkからthunkを呼び出せる！
       return dispatch(fetchUpload(url, type, paramas, receiveParam))
@@ -165,33 +170,30 @@ function fetchUpload(url, type, paramas, receiveParam) {
     method: "POST",
     credentials: "include",
     headers: {
-      "Accept": "application/json, */*",
+      Accept: "application/json, */*"
     },
-    body: paramas,
+    body: paramas
   }
 
   return dispatch => {
     return fetch(host + url, {
       ...requestParams
     })
-    .then(response =>
-      response.json().then(json => ({
-        status: response.status,
-        json
-      })
-    ))
-    .then(
-      ({ status, json }) => {
+      .then(response =>
+        response.json().then(json => ({
+          status: response.status,
+          json
+        }))
+      )
+      .then(({ status, json }) => {
         if (status >= 400) {
           return dispatch(receiveErrorResponse(url, json))
         }
 
         dispatch(receiveResponse(url, type, json, receiveParam))
-      }
-    )
+      })
   }
 }
-
 
 /**
  * 必要な場合は通信しテキストを取得する
@@ -202,7 +204,7 @@ function fetchUpload(url, type, paramas, receiveParam) {
  * @return {object} アクション
  */
 export function fetchTextIfNeeded(url, type, receiveParam) {
-  return (dispatch) => {
+  return dispatch => {
     if (shouldFetchPosts(url)) {
       // thunkからthunkを呼び出せる！
       return dispatch(fetchText(url, type, receiveParam))
@@ -222,23 +224,20 @@ export function fetchTextIfNeeded(url, type, receiveParam) {
  * @return {object} レスポンス
  */
 function fetchText(url, type, receiveParam) {
-
   return dispatch => {
     return fetch(staticHost + url)
-    .then(response =>
-      response.text().then(json => ({
-        status: response.status,
-        json
-      })
-    ))
-    .then(
-      ({ status, json }) => {
+      .then(response =>
+        response.text().then(json => ({
+          status: response.status,
+          json
+        }))
+      )
+      .then(({ status, json }) => {
         if (status >= 400) {
           return dispatch(receiveErrorResponse(url, json))
         }
 
         dispatch(receiveResponse(url, type, json, receiveParam))
-      }
-    )
+      })
   }
 }

@@ -1,10 +1,10 @@
 import PropTypes from "prop-types"
 import React, { Component } from "react"
-import {Link} from "react-router-dom"
-import {Button, ButtonGroup, Well ,Glyphicon, Collapse} from "react-bootstrap"
+import { Link } from "react-router-dom"
+import { Button, ButtonGroup, Well, Glyphicon, Collapse } from "react-bootstrap"
 import Footer from "../../../utils/parts/footer"
 import ContributionShowFrame from "../components/show/frame"
-import {Combination} from "../../../component/contribution/list/"
+import { Combination } from "../../../component/contribution/list/"
 
 const VIEW_PAGE_LIMIT = 10
 
@@ -18,11 +18,11 @@ export default class List extends Component {
    * @param  {bool} init 初期取得フラグ
    */
   getList(init) {
-    let action = {
+    const action = {
       order: this.props.contributionList.order
     }
 
-    this.props.getList(action, {init})
+    this.props.getList(action, { init })
   }
   /**
    * 次のページを取得する
@@ -39,16 +39,22 @@ export default class List extends Component {
    */
   getItemList(list, show) {
     if (!show) {
-      return (<div/>)
+      return <div />
     }
 
-    let contribution = (<div />)
+    let contribution = <div />
     let openID = -1
 
-    list.forEach((item) => {
+    list.forEach(item => {
       if (this.props.contributionList.itemMap[item.ID] != undefined) {
-        let tmp = this.props.contributionList.itemMap[item.ID]
-        contribution = (<ContributionShowFrame title={tmp.title} body={tmp.body} tagList={tmp.tagList}/>)
+        const tmp = this.props.contributionList.itemMap[item.ID]
+        contribution = (
+          <ContributionShowFrame
+            title={tmp.title}
+            body={tmp.body}
+            tagList={tmp.tagList}
+          />
+        )
         openID = item.ID
       }
     })
@@ -79,7 +85,7 @@ export default class List extends Component {
       order = 0
     }
 
-    let newLine = (list.length - (order * VIEW_PAGE_LIMIT))
+    const newLine = list.length - order * VIEW_PAGE_LIMIT
     let oldList = list.slice(0, list.length - newLine)
     let newList = list.slice(list.length - newLine, list.length)
     if (this.props.contributionList.init) {
@@ -91,13 +97,13 @@ export default class List extends Component {
     if (newLine >= VIEW_PAGE_LIMIT) {
       nextButton = (
         <Button bsStyle="success" onClick={() => this.next()}>
-          <Glyphicon glyph="chevron-down"/>次のページを読み込む
+          <Glyphicon glyph="chevron-down" />次のページを読み込む
         </Button>
       )
     } else {
       nextButton = (
         <Button bsStyle="success" disabled>
-          <Glyphicon glyph="minus"/>
+          <Glyphicon glyph="minus" />
         </Button>
       )
     }
@@ -127,13 +133,13 @@ export default class List extends Component {
           <Collapse in={this.props.contributionList.next} timeout={3000}>
             {this.getItemList(newList, this.props.contributionList.next)}
           </Collapse>
-          <br/>
-          <br/>
+          <br />
+          <br />
           <ButtonGroup vertical block>
             {nextButton}
           </ButtonGroup>
         </div>
-        <Footer/>
+        <Footer />
       </div>
     )
   }

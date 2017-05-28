@@ -1,17 +1,17 @@
 // @flow
 import React from "react"
-import {shallow} from "enzyme"
-import {Player} from "./"
-import { PLAY, PAUSE, FINISHED} from "./player"
+import { shallow } from "enzyme"
+import { Player } from "./"
+import { PLAY, PAUSE, FINISHED } from "./player"
 
-function setup(params :Object) {
+function setup(params: Object) {
   const props = {
     status: params.status,
     onPlay: jest.fn(),
-    onPause: jest.fn(),
+    onPause: jest.fn()
   }
 
-  const enzymeWrapper = shallow(<Player {...props}/>)
+  const enzymeWrapper = shallow(<Player {...props} />)
 
   return {
     props,
@@ -21,14 +21,14 @@ function setup(params :Object) {
 
 describe("components/youtube/player", () => {
   it("PLAY", () => {
-    setup({status: PLAY})
+    setup({ status: PLAY })
   })
 
   it("PAUSE", () => {
-    setup({status: PAUSE})
+    setup({ status: PAUSE })
   })
 
   it("FINISHED", () => {
-    setup({status: FINISHED})
+    setup({ status: FINISHED })
   })
 })

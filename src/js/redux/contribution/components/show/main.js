@@ -2,7 +2,11 @@ import PropTypes from "prop-types"
 import React, { Component } from "react"
 import ContributionShowFrame from "./frame"
 import Footer from "../../../../utils/parts/footer"
-import {Header, Follow, Problem} from "../../../../component/contribution/show/"
+import {
+  Header,
+  Follow,
+  Problem
+} from "../../../../component/contribution/show/"
 
 export default class Main extends Component {
   componentWillMount() {
@@ -35,7 +39,7 @@ export default class Main extends Component {
       return
     }
 
-    this.props.addFollow({userContributionId: this.getID()})
+    this.props.addFollow({ userContributionId: this.getID() })
   }
   /**
    * フォロー削除する
@@ -45,7 +49,7 @@ export default class Main extends Component {
       return
     }
 
-    this.props.deleteFollow({userContributionId: this.getID()})
+    this.props.deleteFollow({ userContributionId: this.getID() })
   }
   /**
    * 通報する
@@ -55,7 +59,10 @@ export default class Main extends Component {
       return
     }
 
-    this.props.addProblem({userContributionId: this.props.contributionShow.ID, type: this.props.contributionShow.ProblemType})
+    this.props.addProblem({
+      userContributionId: this.props.contributionShow.ID,
+      type: this.props.contributionShow.ProblemType
+    })
   }
   /**
    * 描画する
@@ -74,15 +81,15 @@ export default class Main extends Component {
           onAdd={this.addProblem.bind(this)}
         />
         <Header
-          followElement={(
+          followElement={
             <Follow
               count={this.props.contributionShow.FollowCount}
-              actived={(this.props.contributionShow.Following)}
-              disabled={(this.props.loginAuth.Login)}
+              actived={this.props.contributionShow.Following}
+              disabled={this.props.loginAuth.Login}
               onAdd={this.addFollow}
               onDelete={this.deleteFollow}
             />
-          )}
+          }
           tagList={this.props.contributionShow.TagList}
           title={this.props.contributionShow.Title}
           profileImageID={this.props.contributionShow.User.ProfileImageID}
@@ -93,8 +100,9 @@ export default class Main extends Component {
         />
         <ContributionShowFrame
           title={this.props.contributionShow.Title}
-          body={this.props.contributionShow.Body}/>
-        <Footer/>
+          body={this.props.contributionShow.Body}
+        />
+        <Footer />
       </div>
     )
   }

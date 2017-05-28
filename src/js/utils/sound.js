@@ -1,31 +1,31 @@
 import PropTypes from "prop-types"
 import React, { Component } from "react"
 import Sound from "react-sound"
-import {Glyphicon, Button} from "react-bootstrap"
+import { Glyphicon, Button } from "react-bootstrap"
 
 export default class SoundWrapper extends Component {
-  componentWillMount () {
+  componentWillMount() {
     this.setState({
       playStatus: Sound.status.STOPPED,
-      finished: false,
+      finished: false
     })
   }
   pause() {
     this.setState({
       playStatus: Sound.status.PAUSED,
-      finished: this.state.finished,
+      finished: this.state.finished
     })
   }
   play() {
     this.setState({
       playStatus: Sound.status.PLAYING,
-      finished: false,
+      finished: false
     })
   }
-  finished(){
+  finished() {
     this.setState({
       playStatus: Sound.status.STOPPED,
-      finished: true,
+      finished: true
     })
   }
   /**
@@ -33,24 +33,27 @@ export default class SoundWrapper extends Component {
    *
    * @return {object} html
    */
-  render () {
+  render() {
     let player = ""
     if (this.state.finished) {
       player = (
         <Button onClick={() => this.play()}>
-          <Glyphicon glyph="repeat"/>{this.props.repeat}
+          <Glyphicon glyph="repeat" />{this.props.repeat}
         </Button>
       )
-    }else if (this.state.playStatus == Sound.status.STOPPED || this.state.playStatus == Sound.status.PAUSED) {
+    } else if (
+      this.state.playStatus == Sound.status.STOPPED ||
+      this.state.playStatus == Sound.status.PAUSED
+    ) {
       player = (
         <Button onClick={() => this.play()}>
-          <Glyphicon glyph="play"/>{this.props.play}
+          <Glyphicon glyph="play" />{this.props.play}
         </Button>
       )
-    } else  {
+    } else {
       player = (
         <Button onClick={() => this.pause()}>
-          <Glyphicon glyph="pause"/>{this.props.pause}
+          <Glyphicon glyph="pause" />{this.props.pause}
         </Button>
       )
     }
@@ -63,7 +66,8 @@ export default class SoundWrapper extends Component {
           url={this.props.url}
           playStatus={this.state.playStatus}
           playFromPosition={300}
-          onFinishedPlaying={this.finished.bind(this)} />
+          onFinishedPlaying={this.finished.bind(this)}
+        />
       </div>
     )
   }
@@ -74,11 +78,11 @@ SoundWrapper.propTypes = {
   children: PropTypes.array,
   repeat: PropTypes.string,
   play: PropTypes.string,
-  pause: PropTypes.string,
+  pause: PropTypes.string
 }
 
 SoundWrapper.defaultProps = {
   repeat: "  記事の読み上げは終了しました。もう一度再生する",
   play: "  記事の読み上げを再生する",
-  pause: "  記事の読み上げを再生中",
+  pause: "  記事の読み上げを再生中"
 }

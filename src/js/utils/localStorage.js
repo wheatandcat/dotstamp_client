@@ -6,7 +6,7 @@ export default class LocalStorage {
    * @return {string} 値
    */
   static get(key) {
-    let value = window.localStorage.getItem(key)
+    const value = window.localStorage.getItem(key)
 
     return value
   }
@@ -17,7 +17,7 @@ export default class LocalStorage {
    * @return {object} 値
    */
   static getJSON(key) {
-    let value = window.localStorage.getItem(key)
+    const value = window.localStorage.getItem(key)
     if (value == null) {
       return {}
     }

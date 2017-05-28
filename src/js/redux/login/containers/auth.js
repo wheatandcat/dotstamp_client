@@ -1,7 +1,7 @@
-import {connect} from "react-redux"
+import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
 import Auth from "../components/auth"
-import {fetchPostsIfNeeded} from "../../../utils/fetch"
+import { fetchPostsIfNeeded } from "../../../utils/fetch"
 import * as types from "../../../constants/ActionTypes"
 
 function mapStateToProps(state) {
@@ -19,4 +19,6 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps, null, {pure: false})(Auth))
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps, null, { pure: false })(Auth)
+)

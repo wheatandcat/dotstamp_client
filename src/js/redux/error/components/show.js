@@ -1,6 +1,14 @@
 import PropTypes from "prop-types"
 import React, { Component } from "react"
-import {Collapse, Well, Modal, Button, Alert, FormControl, FormGroup} from "react-bootstrap"
+import {
+  Collapse,
+  Well,
+  Modal,
+  Button,
+  Alert,
+  FormControl,
+  FormGroup
+} from "react-bootstrap"
 export default class Show extends Component {
   /**
      * 閉じる
@@ -12,12 +20,12 @@ export default class Show extends Component {
      * バグ報告を追加する
      */
   addBugReport() {
-    let val = this.input.value.trim()
+    const val = this.input.value.trim()
     if (val == "") {
       return
     }
 
-    this.props.addBugReport({body: val})
+    this.props.addBugReport({ body: val })
   }
   getBugReported() {
     if (!this.props.errorShow.BugReported) {
@@ -59,26 +67,34 @@ export default class Show extends Component {
           <Button onClick={() => this.close()}>
             Close
           </Button>
-          <br/>
-          <br/>
-          <Button bsStyle="danger" {...bugReport} onClick={() => this.props.openBugReport()}>
+          <br />
+          <br />
+          <Button
+            bsStyle="danger"
+            {...bugReport}
+            onClick={() => this.props.openBugReport()}
+          >
             不具合を報告する
           </Button>
-          <br/>
-          <br/>
+          <br />
+          <br />
           <Collapse in={this.props.errorShow.BugReport}>
             <Well>
               <FormGroup>
-                <FormControl componentClass="textarea" placeholder="不具合の内容" inputRef={ref => {
-                  this.input = ref
-                }}/>
+                <FormControl
+                  componentClass="textarea"
+                  placeholder="不具合の内容"
+                  inputRef={ref => {
+                    this.input = ref
+                  }}
+                />
               </FormGroup>
               <Button bsStyle="danger" onClick={() => this.addBugReport()}>
                 報告する
               </Button>
             </Well>
           </Collapse>
-          <br/> {this.getBugReported()}
+          <br /> {this.getBugReported()}
         </Modal.Footer>
       </Modal>
     )

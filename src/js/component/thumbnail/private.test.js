@@ -1,6 +1,6 @@
 // @flow
 import React from "react"
-import {shallow} from "enzyme"
+import { shallow } from "enzyme"
 import Private from "./private"
 
 function setup() {
@@ -9,12 +9,12 @@ function setup() {
     User: {
       ID: 1,
       Name: "name",
-      ProfileImageID: 0,
+      ProfileImageID: 0
     },
     UpdatedAt: "2015-01-01T07:12:00+09:00"
   }
 
-  const enzymeWrapper = shallow(<Private {...props}/>)
+  const enzymeWrapper = shallow(<Private {...props} />)
 
   return {
     props,

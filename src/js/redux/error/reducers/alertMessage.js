@@ -8,24 +8,21 @@ const initialState = {
 
 export default function AlertMessage(state = initialState, action) {
   switch (action.type) {
-  case types.INIT_ERROR_ALERT_MESSAGE:
-    {
+    case types.INIT_ERROR_ALERT_MESSAGE: {
       return JSON.parse(JSON.stringify(initialState))
     }
-  case types.CLOSE_ERROR_ALERT_MESSAGE:
-    {
+    case types.CLOSE_ERROR_ALERT_MESSAGE: {
       state.Warning = false
 
       return JSON.parse(JSON.stringify(state))
     }
-  case types.OPEN_ERROR_ALERT_MESSAGE:
-    {
+    case types.OPEN_ERROR_ALERT_MESSAGE: {
       state.Warning = true
       state.Message = action.message
 
       return JSON.parse(JSON.stringify(state))
     }
-  default:
-    return state
+    default:
+      return state
   }
 }

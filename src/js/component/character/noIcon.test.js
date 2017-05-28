@@ -1,7 +1,7 @@
 // @flow
 import React from "react"
-import {shallow} from "enzyme"
-import {NoIcon} from "./"
+import { shallow } from "enzyme"
+import { NoIcon } from "./"
 
 function setup() {
   const enzymeWrapper = shallow(<NoIcon />)

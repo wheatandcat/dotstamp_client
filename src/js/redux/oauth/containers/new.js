@@ -1,11 +1,11 @@
 // @flow
 import React, { Component } from "react"
-import {connect} from "react-redux"
+import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
-import {fetchPostsIfNeeded} from "../../../utils/fetch"
-import {PASSWORD_LENGTH_MIN} from "../../../constants/common"
-import {alert} from "../modules/new"
-import {Page} from "../../../component/oauth/"
+import { fetchPostsIfNeeded } from "../../../utils/fetch"
+import { PASSWORD_LENGTH_MIN } from "../../../constants/common"
+import { alert } from "../modules/new"
+import { Page } from "../../../component/oauth/"
 import * as types from "../../../constants/ActionTypes"
 
 type Props = {
@@ -13,13 +13,17 @@ type Props = {
   match: Object,
   alert: Function,
   new: Function,
-  loginNew: Object,
+  loginNew: Object
 }
 
 class New extends Component {
   props: Props
-  new(email :string, password: string) {
-    if (!email.match(/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/)) {
+  new(email: string, password: string) {
+    if (
+      !email.match(
+        /^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/
+      )
+    ) {
       this.props.alert("使用できないメールアドレスです")
       return
     }
@@ -29,7 +33,7 @@ class New extends Component {
       return
     }
 
-    this.props.new({email: email, password: password})
+    this.props.new({ email: email, password: password })
   }
   render() {
     return (
@@ -49,10 +53,10 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch: Dispatch) {
   return {
-    new: (params) => {
+    new: params => {
       dispatch(fetchPostsIfNeeded("login/new/", types.SET_LOGIN_USER, params))
     },
-    alert: (message) => {
+    alert: message => {
       dispatch(alert(message))
     }
   }

@@ -1,17 +1,17 @@
-import {auth, logout} from "../../../redux/login/actions/auth"
+import { auth, logout } from "../../../redux/login/actions/auth"
 import * as types from "../../../constants/ActionTypes"
 
 describe("login/actions/auth", () => {
   it("認証する", () => {
     const result = auth({
       Login: true,
-      Name: "abc",
+      Name: "abc"
     })
 
     expect(result).toEqual({
       type: types.SET_LOGIN_AUTH,
       Login: true,
-      Name: "abc",
+      Name: "abc"
     })
   })
 
@@ -19,7 +19,7 @@ describe("login/actions/auth", () => {
     const result = logout()
 
     expect(result).toEqual({
-      type: types.LOGOUT_LOGIN_AUTH,
+      type: types.LOGOUT_LOGIN_AUTH
     })
   })
 })

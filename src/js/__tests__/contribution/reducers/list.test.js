@@ -8,7 +8,7 @@ describe("contribution/reducers/list", () => {
       response: [
         {
           id: 1,
-          body: "abc",
+          body: "abc"
         },
         {
           id: 2,
@@ -26,7 +26,7 @@ describe("contribution/reducers/list", () => {
       list: [
         {
           id: 1,
-          body: "abc",
+          body: "abc"
         },
         {
           id: 2,
@@ -36,34 +36,31 @@ describe("contribution/reducers/list", () => {
       order: 1,
       next: true,
       init: true,
-      itemMap: {},
+      itemMap: {}
     })
   })
 
   it("アイテムを追加する", () => {
     expect(
-      reducer(
-        undefined,
-        {
-          type: types.ADD_CONTRIBUTION_LIST_ITEM,
-          response: {
-            ID: 1,
-            Title: "abc",
-            Body: "def",
-            Tag:[
-              {
-                ID: 1,
-                Name: "abc"
-              }
-            ]
-          },
+      reducer(undefined, {
+        type: types.ADD_CONTRIBUTION_LIST_ITEM,
+        response: {
+          ID: 1,
+          Title: "abc",
+          Body: "def",
+          Tag: [
+            {
+              ID: 1,
+              Name: "abc"
+            }
+          ]
         }
-      )
+      })
     ).toEqual({
       list: [
         {
           id: 1,
-          body: "abc",
+          body: "abc"
         },
         {
           id: 2,
@@ -84,24 +81,21 @@ describe("contribution/reducers/list", () => {
             }
           ]
         }
-      },
+      }
     })
   })
 
   it("アイテムを削除する", () => {
     expect(
-      reducer(
-        undefined,
-        {
-          type: types.DELETE_CONTRIBUTION_LIST_ITEM,
-          id: 1,
-        }
-      )
+      reducer(undefined, {
+        type: types.DELETE_CONTRIBUTION_LIST_ITEM,
+        id: 1
+      })
     ).toEqual({
       list: [
         {
           id: 1,
-          body: "abc",
+          body: "abc"
         },
         {
           id: 2,
@@ -111,7 +105,7 @@ describe("contribution/reducers/list", () => {
       order: 1,
       next: true,
       init: true,
-      itemMap: {},
+      itemMap: {}
     })
   })
 })

@@ -1,16 +1,26 @@
 import PropTypes from "prop-types"
 import React, { Component } from "react"
 import Dropzone from "react-dropzone"
-import {PageHeader, Glyphicon, ListGroup, ListGroupItem, Well} from "react-bootstrap"
-import {Collection} from "../../../component/slick/"
+import {
+  PageHeader,
+  Glyphicon,
+  ListGroup,
+  ListGroupItem,
+  Well
+} from "react-bootstrap"
+import { Collection } from "../../../component/slick/"
 import AlertMessage from "../../error/containers/alertMessage"
-import {UPLOAD_FILE_SIZE_MAX, VOICE_TYPE, VOICE_TYPE_MAP} from "../../../constants/common"
+import {
+  UPLOAD_FILE_SIZE_MAX,
+  VOICE_TYPE,
+  VOICE_TYPE_MAP
+} from "../../../constants/common"
 import Footer from "../../../utils/parts/footer"
-import {ImageUpload} from "../../../../css/character.css"
-import {NoIcon, Menu} from "../../../component/character/"
+import { ImageUpload } from "../../../../css/character.css"
+import { NoIcon, Menu } from "../../../component/character/"
 
 export default class List extends Component {
-  componentWillMount () {
+  componentWillMount() {
     this.props.init()
 
     this.props.alertMessageInit()
@@ -21,7 +31,7 @@ export default class List extends Component {
    *
    * @param  {array} fileList ファイルリスト
    */
-  handleDropFile (fileList) {
+  handleDropFile(fileList) {
     this.uploadFile(fileList)
   }
   /**
@@ -29,8 +39,8 @@ export default class List extends Component {
    *
    * @param  {array} fileList ファイルリスト
    */
-  uploadFile (fileList) {
-    let formData = new FormData()
+  uploadFile(fileList) {
+    const formData = new FormData()
 
     formData.append("file", fileList[0])
 
@@ -46,7 +56,7 @@ export default class List extends Component {
    *
    * @param  {object} icon アイコン
    */
-  selectmCharacter (icon) {
+  selectmCharacter(icon) {
     this.props.setIcon(icon.ID)
   }
   /**
@@ -55,7 +65,9 @@ export default class List extends Component {
   save() {
     this.props.save({
       id: this.props.characterList.icon.id,
-      voiceType: this.props.characterList.VoiceType[this.props.characterList.icon.id],
+      voiceType: this.props.characterList.VoiceType[
+        this.props.characterList.icon.id
+      ]
     })
   }
   /**
@@ -63,26 +75,28 @@ export default class List extends Component {
    *
    * @return {object} html
    */
-  render () {
+  render() {
     if (!this.props.characterList.load) {
       return <div />
     }
 
-    const voiceType = this.props.characterList.VoiceType[this.props.characterList.icon.id]
+    const voiceType = this.props.characterList.VoiceType[
+      this.props.characterList.icon.id
+    ]
 
     return (
       <div>
         <div className="container">
           <PageHeader>
-            <Glyphicon glyph="picture"/>&nbsp;アイコン設定
+            <Glyphicon glyph="picture" />&nbsp;アイコン設定
           </PageHeader>
           <ListGroup>
             <ListGroupItem>
-              <AlertMessage/>
+              <AlertMessage />
               <div>
                 {(() => {
                   if (this.props.characterList.DefaultIcon) {
-                    return (<NoIcon />)
+                    return <NoIcon />
                   } else {
                     return (
                       <Menu
@@ -105,7 +119,7 @@ export default class List extends Component {
                 <Well bsStyle="info">
                   <Collection
                     list={this.props.characterList.list}
-                    onClick={(id) => this.selectmCharacter(id)}
+                    onClick={id => this.selectmCharacter(id)}
                   />
                 </Well>
               </div>
@@ -147,5 +161,5 @@ List.propTypes = {
   init: PropTypes.func,
   alertMessage: PropTypes.func,
   alertMessageInit: PropTypes.func,
-  setVoiceType: PropTypes.func,
+  setVoiceType: PropTypes.func
 }

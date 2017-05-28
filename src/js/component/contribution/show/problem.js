@@ -1,7 +1,17 @@
 // @flow
 import React from "react"
-import {Modal, Radio, FormGroup, Button, Glyphicon, Well} from "react-bootstrap"
-import {PROBLEM_TYPE_SPAM, PROBLEM_TYPE_INAPPROPRIATE} from "../../../constants/contribution"
+import {
+  Modal,
+  Radio,
+  FormGroup,
+  Button,
+  Glyphicon,
+  Well
+} from "react-bootstrap"
+import {
+  PROBLEM_TYPE_SPAM,
+  PROBLEM_TYPE_INAPPROPRIATE
+} from "../../../constants/contribution"
 import styles from "./styles.css"
 
 export type Props = {
@@ -10,7 +20,7 @@ export type Props = {
   show?: boolean,
   onProblemType: Function,
   onHide: Function,
-  onAdd: Function,
+  onAdd: Function
 }
 
 function getSend(send?: boolean) {
@@ -20,7 +30,7 @@ function getSend(send?: boolean) {
 
   return (
     <div>
-      <br/>
+      <br />
       <Well>
         通報を送信しました。ご協力ありがとうございます。
       </Well>
@@ -34,7 +44,7 @@ export default ({
   show,
   onHide,
   onProblemType,
-  onAdd,
+  onAdd
 }: Props) => (
   <Modal show={show} onHide={onHide}>
     <Modal.Header closeButton>
@@ -42,7 +52,7 @@ export default ({
     </Modal.Header>
     <Modal.Body>
       <h4>以下の理由で通報します。</h4>
-      <br/>
+      <br />
       <div className={styles.problem}>
         <FormGroup>
           <Radio
@@ -68,7 +78,7 @@ export default ({
     </Modal.Body>
     <Modal.Footer>
       <Button bsStyle="success" onClick={() => onAdd()}>
-        <Glyphicon glyph="send"/>&nbsp;送信
+        <Glyphicon glyph="send" />&nbsp;送信
       </Button>
       {getSend(send)}
     </Modal.Footer>

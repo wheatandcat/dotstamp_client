@@ -1,12 +1,24 @@
 import PropTypes from "prop-types"
 import React, { Component } from "react"
-import {FormGroup, Form, FormControl, Glyphicon, Button, Col, DropdownButton, MenuItem} from "react-bootstrap"
-import {LinkContainer} from "react-router-bootstrap"
+import {
+  FormGroup,
+  Form,
+  FormControl,
+  Glyphicon,
+  Button,
+  Col,
+  DropdownButton,
+  MenuItem
+} from "react-bootstrap"
+import { LinkContainer } from "react-router-bootstrap"
 import Pagination from "../../../utils/parts/pagination"
-import {ORDER_TYPE_NEW, ORDER_TYPE_FOLLOW_COUNT} from "../../../constants/contribution"
-import {Center} from "./../../../../css/common.css"
+import {
+  ORDER_TYPE_NEW,
+  ORDER_TYPE_FOLLOW_COUNT
+} from "../../../constants/contribution"
+import { Center } from "./../../../../css/common.css"
 import Footer from "../../../utils/parts/footer"
-import {List} from "../../../component/contribution/list"
+import { List } from "../../../component/contribution/list"
 
 var tmpSearch = ""
 
@@ -30,7 +42,7 @@ export default class Search extends Component {
    * @param  {object} e エレメント
    */
   sendCommand(e) {
-    let ENTER = 13
+    const ENTER = 13
     if (e.keyCode == ENTER) {
       this.setSearch()
     }
@@ -43,13 +55,18 @@ export default class Search extends Component {
    * @param {number} page ページ
    */
   search(search, order, page) {
-    this.props.search({search: search, order: order, page: page, limit: this.props.contributionSearch.Limit})
+    this.props.search({
+      search: search,
+      order: order,
+      page: page,
+      limit: this.props.contributionSearch.Limit
+    })
   }
   /**
    * 検索を設定する
    */
   setSearch() {
-    let val = this.input.value.trim()
+    const val = this.input.value.trim()
     if (val == "") {
       return
     }
@@ -77,7 +94,11 @@ export default class Search extends Component {
    * @param {number} order 順番
    */
   setOrder(order) {
-    this.search(this.props.contributionSearch.Search, order, this.props.contributionSearch.Page)
+    this.search(
+      this.props.contributionSearch.Search,
+      order,
+      this.props.contributionSearch.Page
+    )
   }
   /**
    * リストを取得する
@@ -96,13 +117,7 @@ export default class Search extends Component {
       )
     }
 
-    return (
-      <List
-        List={list}
-        onSearch={this.search}
-      />
-    )
-
+    return <List List={list} onSearch={this.search} />
   }
   /**
    * 描画する
@@ -110,7 +125,6 @@ export default class Search extends Component {
    * @return {object} html
    */
   render() {
-
     let list = this.props.contributionSearch.List
     if (!Array.isArray(list)) {
       list = []
@@ -126,7 +140,8 @@ export default class Search extends Component {
           order={parseInt(this.props.contributionSearch.Order)}
           activePage={parseInt(this.props.contributionSearch.Page)}
           paging={this.paging.bind(this)}
-        />)
+        />
+      )
     }
 
     let order = "　新着順　"
@@ -138,7 +153,7 @@ export default class Search extends Component {
       <div>
         <div className="container">
           <div>
-            <br/>
+            <br />
             <Form horizontal componentClass="div">
               <FormGroup>
                 <Col sm={10}>
@@ -146,29 +161,52 @@ export default class Search extends Component {
                     type="text"
                     placeholder="検索ワード"
                     defaultValue={this.props.match.params.search}
-                    inputRef={ref => {this.input = ref}}
+                    inputRef={ref => {
+                      this.input = ref
+                    }}
                     onKeyDown={this.sendCommand.bind(this)}
                   />
                 </Col>
                 <Col sm={2}>
                   <Button onClick={() => this.setSearch()}>
-                    <Glyphicon glyph="search"/>&nbsp;検索&nbsp;
+                    <Glyphicon glyph="search" />&nbsp;検索&nbsp;
                   </Button>
                 </Col>
               </FormGroup>
               <FormGroup>
-                <Col sm={10}/>
+                <Col sm={10} />
                 <Col sm={2}>
                   <DropdownButton
-                    title={order} id="search-order-dropdown"
+                    title={order}
+                    id="search-order-dropdown"
                     pullRight
                     onSelect={this.setOrder.bind(this)}
                   >
-                    <LinkContainer to={"/contribution/search/" + this.props.contributionSearch.Search + "/" + ORDER_TYPE_NEW + "/" + this.props.contributionSearch.Page}>
+                    <LinkContainer
+                      to={
+                        "/contribution/search/" +
+                          this.props.contributionSearch.Search +
+                          "/" +
+                          ORDER_TYPE_NEW +
+                          "/" +
+                          this.props.contributionSearch.Page
+                      }
+                    >
                       <MenuItem eventKey={ORDER_TYPE_NEW}>新規順</MenuItem>
                     </LinkContainer>
-                    <LinkContainer to={"/contribution/search/" + this.props.contributionSearch.Search + "/" + ORDER_TYPE_FOLLOW_COUNT + "/" + this.props.contributionSearch.Page}>
-                      <MenuItem eventKey={ORDER_TYPE_FOLLOW_COUNT}>フォロー順</MenuItem>
+                    <LinkContainer
+                      to={
+                        "/contribution/search/" +
+                          this.props.contributionSearch.Search +
+                          "/" +
+                          ORDER_TYPE_FOLLOW_COUNT +
+                          "/" +
+                          this.props.contributionSearch.Page
+                      }
+                    >
+                      <MenuItem eventKey={ORDER_TYPE_FOLLOW_COUNT}>
+                        フォロー順
+                      </MenuItem>
                     </LinkContainer>
                   </DropdownButton>
                 </Col>
@@ -176,10 +214,10 @@ export default class Search extends Component {
             </Form>
 
           </div>
-          <hr/> {this.getList()}
+          <hr /> {this.getList()}
           {pagination}
         </div>
-        <Footer/>
+        <Footer />
       </div>
     )
   }

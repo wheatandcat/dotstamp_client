@@ -1,16 +1,16 @@
 // @flow
 import React from "react"
-import {mount} from "enzyme"
-import {Slick} from "./"
+import { mount } from "enzyme"
+import { Slick } from "./"
 
 import { __RewireAPI__ } from "./slick"
 const action = __RewireAPI__.__get__("action")
 
-function setup(params :Object) {
+function setup(params: Object) {
   const props = {
     list: params.list,
     defaultValue: 0,
-    onClick: jest.fn(),
+    onClick: jest.fn()
   }
 
   const enzymeWrapper = mount(<Slick {...props} />)
@@ -24,17 +24,17 @@ function setup(params :Object) {
 describe("components/slick/slick.action", () => {
   it("push key", () => {
     const { enzymeWrapper } = setup({
-      list :[
+      list: [
         {
           ID: 1,
           FileName: "0.jpg",
-          imageType: 2,
+          imageType: 2
         },
         {
           ID: 2,
           FileName: "0.jpg",
-          imageType: 2,
-        },
+          imageType: 2
+        }
       ]
     })
 
@@ -43,28 +43,28 @@ describe("components/slick/slick.action", () => {
 
     action({
       shiftKey: true,
-      keyCode: 39,
+      keyCode: 39
     })
 
     action({
       shiftKey: true,
-      keyCode: 37,
-    })
-
-    action({
-      shiftKey: true,
-      keyCode: 38,
-      altKey: true,
+      keyCode: 37
     })
 
     action({
       shiftKey: true,
       keyCode: 38,
+      altKey: true
     })
 
     action({
       shiftKey: true,
-      keyCode: 40,
+      keyCode: 38
+    })
+
+    action({
+      shiftKey: true,
+      keyCode: 40
     })
   })
 })

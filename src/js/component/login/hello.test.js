@@ -1,11 +1,11 @@
 // @flow
 import React from "react"
-import {shallow} from "enzyme"
-import {Hello} from "./"
+import { shallow } from "enzyme"
+import { Hello } from "./"
 
 function setup() {
   const props = {
-    text: "abc",
+    text: "abc"
   }
 
   const enzymeWrapper = shallow(<Hello {...props} />)
@@ -18,6 +18,6 @@ function setup() {
 
 describe("component/login/heloo", () => {
   it("表示", () => {
-    setup({ID: 1})
+    setup({ ID: 1 })
   })
 })

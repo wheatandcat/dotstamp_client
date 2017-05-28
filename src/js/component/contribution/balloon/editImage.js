@@ -1,7 +1,16 @@
 // @flow
 import React from "react"
-import {Grid, Row, Col, Button, ButtonToolbar, ControlLabel, Glyphicon, Well} from "react-bootstrap"
-import {Avatar, Body} from "./index"
+import {
+  Grid,
+  Row,
+  Col,
+  Button,
+  ButtonToolbar,
+  ControlLabel,
+  Glyphicon,
+  Well
+} from "react-bootstrap"
+import { Avatar, Body } from "./index"
 import styles from "./styles.css"
 
 type Props = {
@@ -10,7 +19,7 @@ type Props = {
   Talk: string,
   Priority: number,
   onChangeImage: Function,
-  onDelete: Function,
+  onDelete: Function
 }
 
 export default ({
@@ -19,32 +28,33 @@ export default ({
   Talk,
   Priority,
   onChangeImage,
-  onDelete,
+  onDelete
 }: Props) => (
   <Grid>
     <Row>
       <Avatar FileName={UserFileName} />
-      <Body
-        TalkType={Type}
-        Body={Talk}
-      />
-      <Col sm={2} md={2} style={{top: "15px"}}>
+      <Body TalkType={Type} Body={Talk} />
+      <Col sm={2} md={2} style={{ top: "15px" }}>
         <Well>
           <ButtonToolbar>
             <Button>
-              <ControlLabel htmlFor={"image-file-edit-" + Priority} bsClass={styles.Group}>
-                <Glyphicon glyph="picture"/>
+              <ControlLabel
+                htmlFor={"image-file-edit-" + Priority}
+                bsClass={styles.Group}
+              >
+                <Glyphicon glyph="picture" />
               </ControlLabel>
               <input
                 type="file"
                 id={"image-file-edit-" + Priority}
-                name="image-file-edit" className="hidden"
+                name="image-file-edit"
+                className="hidden"
                 accept="image/jpeg,image/png,image/jpg"
                 onChange={onChangeImage}
               />
             </Button>
             <Button onClick={() => onDelete(Priority)}>
-              <Glyphicon glyph="trash"/>
+              <Glyphicon glyph="trash" />
             </Button>
           </ButtonToolbar>
         </Well>

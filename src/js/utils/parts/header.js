@@ -1,15 +1,23 @@
 import PropTypes from "prop-types"
 import React, { Component } from "react"
 import { withRouter } from "react-router-dom"
-import {connect} from "react-redux"
-import {Image, Navbar, FormGroup, FormControl, Button, Glyphicon, InputGroup} from "react-bootstrap"
-import {fetchPostsIfNeeded} from "../fetch"
+import { connect } from "react-redux"
+import {
+  Image,
+  Navbar,
+  FormGroup,
+  FormControl,
+  Button,
+  Glyphicon,
+  InputGroup
+} from "react-bootstrap"
+import { fetchPostsIfNeeded } from "../fetch"
 import LoginAuth from "./../../redux/login/containers/auth"
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 import * as types from "../../constants/ActionTypes"
 
-import {Stamp, Narrowly} from "./../../../css/common.css"
-import {Top} from "./../../../css/header.css"
+import { Stamp, Narrowly } from "./../../../css/common.css"
+import { Top } from "./../../../css/header.css"
 
 class Header extends Component {
   /**
@@ -18,7 +26,7 @@ class Header extends Component {
    * @param  {object} e エレメント
    */
   sendCommand(e) {
-    let ENTER = 13
+    const ENTER = 13
     if (e.keyCode == ENTER) {
       this.search()
     }
@@ -28,7 +36,7 @@ class Header extends Component {
    */
   search() {
     var search = this.input.value.trim()
-    if(search == ""){
+    if (search == "") {
       return
     }
 
@@ -36,7 +44,7 @@ class Header extends Component {
       search: search,
       order: 1,
       page: 1,
-      limit: this.props.contributionSearch.Limit,
+      limit: this.props.contributionSearch.Limit
     })
 
     this.props.history.push("/contribution/search/" + search + "/1/1")
@@ -56,7 +64,7 @@ class Header extends Component {
               <Image src="/static/images/common/top.png" rounded />
             </Link>
           </Navbar.Brand>
-          <Navbar.Toggle/>
+          <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
           <Navbar.Form pullLeft>
@@ -64,19 +72,21 @@ class Header extends Component {
               <InputGroup>
                 <FormControl
                   type="text"
-                  inputRef={ref => { this.input = ref }}
+                  inputRef={ref => {
+                    this.input = ref
+                  }}
                   placeholder="Search"
                   onKeyDown={this.sendCommand.bind(this)}
                 />
                 <InputGroup.Button>
                   <Button onClick={() => this.search()}>
-                    <Glyphicon glyph="search"/>
+                    <Glyphicon glyph="search" />
                   </Button>
                 </InputGroup.Button>
               </InputGroup>
             </FormGroup>
           </Navbar.Form>
-          <LoginAuth/>
+          <LoginAuth />
         </Navbar.Collapse>
       </Navbar>
     )
@@ -86,24 +96,25 @@ class Header extends Component {
 Header.propTypes = {
   contributionSearch: PropTypes.object,
   search: PropTypes.func,
-  history: PropTypes.object,
+  history: PropTypes.object
 }
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
   return state
 }
 
-function mapDispatchToProps (dispatch) {
+function mapDispatchToProps(dispatch) {
   return {
-    search: (action) => {
-      dispatch(fetchPostsIfNeeded(
+    search: action => {
+      dispatch(
+        fetchPostsIfNeeded(
           "contribution/search/",
           types.GET_CONTRIBUTION_SEARCH_LIST,
           action,
           action
         )
       )
-    },
+    }
   }
 }
 

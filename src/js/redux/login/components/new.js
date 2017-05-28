@@ -1,16 +1,20 @@
 import PropTypes from "prop-types"
 import React, { Component } from "react"
-import {PageHeader, Alert, Col, Grid, Row} from "react-bootstrap"
-import {PASSWORD_LENGTH_MIN} from "../../../constants/common"
-import {Hello, NewInput} from "../../../component/login/"
+import { PageHeader, Alert, Col, Grid, Row } from "react-bootstrap"
+import { PASSWORD_LENGTH_MIN } from "../../../constants/common"
+import { Hello, NewInput } from "../../../component/login/"
 
 export default class New extends Component {
   componentWillMount() {}
   /**
    * 新規登録する
    */
-  new(email :string, password: string) {
-    if (!email.match(/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/)) {
+  new(email: string, password: string) {
+    if (
+      !email.match(
+        /^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/
+      )
+    ) {
       this.props.alert("使用できないメールアドレスです")
       return
     }
@@ -20,7 +24,7 @@ export default class New extends Component {
       return
     }
 
-    this.props.new({email: email, password: password})
+    this.props.new({ email: email, password: password })
   }
   /**
    * 描画する
@@ -36,8 +40,8 @@ export default class New extends Component {
           </PageHeader>
         </div>
         <Grid>
-          <br/>
-          <br/>
+          <br />
+          <br />
           <Row className="show-grid">
             <Col md={6}>
               <Hello

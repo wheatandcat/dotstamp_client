@@ -16,7 +16,9 @@ export default class Frame extends Component {
     return (
       <div>
         <div className="container">
-          {body.map((obj) => <ContributionTalk key={obj.Priority} talk={obj} editMode={false}/>)}
+          {body.map(obj => (
+            <ContributionTalk key={obj.Priority} talk={obj} editMode={false} />
+          ))}
         </div>
       </div>
     )

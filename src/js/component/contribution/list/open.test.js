@@ -1,12 +1,12 @@
 // @flow
 import React from "react"
-import {shallow} from "enzyme"
+import { shallow } from "enzyme"
 import Open from "./open"
 
 function setup() {
   const props = {
     ID: 1,
-    onDelete: jest.fn(),
+    onDelete: jest.fn()
   }
 
   const enzymeWrapper = shallow(<Open {...props}>本文</Open>)

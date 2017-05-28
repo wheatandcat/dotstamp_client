@@ -1,17 +1,17 @@
 // @flow
 import React from "react"
-import {shallow} from "enzyme"
-import {About} from "./"
+import { shallow } from "enzyme"
+import { About } from "./"
 
 function setup() {
   const props = {
     profileImageID: 1,
     userName: "abc",
     updatedAt: "2015-01-01T07:12:00+09:00",
-    openProblem: jest.fn(),
+    openProblem: jest.fn()
   }
 
-  const enzymeWrapper = shallow(<About {...props}/>)
+  const enzymeWrapper = shallow(<About {...props} />)
 
   return {
     props,

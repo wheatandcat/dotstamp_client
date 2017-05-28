@@ -1,23 +1,23 @@
 // @flow
 import React from "react"
-import {shallow} from "enzyme"
-import {Menu} from "./"
+import { shallow } from "enzyme"
+import { Menu } from "./"
 
 function setup() {
   const props = {
-    voiceList:[
+    voiceList: [
       {
         type: 1,
-        name: "ボイス1",
+        name: "ボイス1"
       },
       {
         type: 2,
-        name: "ボイス2",
+        name: "ボイス2"
       },
       {
         type: 3,
-        name: "ボイス3",
-      },
+        name: "ボイス3"
+      }
     ],
     voiceType: 1,
     voiceLabel: "voice1",
@@ -25,10 +25,10 @@ function setup() {
     IconId: 1,
     onDelete: jest.fn(),
     onVoiceType: jest.fn(),
-    onSave: jest.fn(),
+    onSave: jest.fn()
   }
 
-  const enzymeWrapper = shallow(<Menu {...props}/>)
+  const enzymeWrapper = shallow(<Menu {...props} />)
 
   return {
     props,

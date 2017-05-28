@@ -1,14 +1,14 @@
 // @flow
 import React from "react"
-import {shallow} from "enzyme"
+import { shallow } from "enzyme"
 import Avatar from "./avatar"
 
 function setup() {
   const props = {
-    FileName: "0.png",
+    FileName: "0.png"
   }
 
-  const enzymeWrapper = shallow(<Avatar {...props}/>)
+  const enzymeWrapper = shallow(<Avatar {...props} />)
 
   return {
     props,

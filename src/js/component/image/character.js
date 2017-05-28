@@ -1,6 +1,6 @@
 // @flow
 import React from "react"
-import {Image} from "./"
+import { Image } from "./"
 import styles from "./styles.css"
 
 type Props = {
@@ -9,11 +9,11 @@ type Props = {
   size?: "small",
   onMouseOver?: Function,
   onMouseOut?: Function,
-  onClick?: Function,
+  onClick?: Function
 }
 
-function className(styles :Object, size?: "small") {
-  let r =  ""
+function className(styles: Object, size?: "small") {
+  let r = ""
   if (size) {
     r = styles[size]
   }
@@ -27,7 +27,7 @@ export default ({
   size,
   onMouseOver,
   onMouseOut,
-  onClick,
+  onClick
 }: Props) => (
   <Image
     className={className(styles, size)}

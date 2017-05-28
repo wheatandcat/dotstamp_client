@@ -1,4 +1,8 @@
-import {showError, closeError, openBugReport} from "../../../redux/error/actions/show"
+import {
+  showError,
+  closeError,
+  openBugReport
+} from "../../../redux/error/actions/show"
 import * as types from "../../../constants/ActionTypes"
 
 describe("error/actions/show", () => {
@@ -7,11 +11,11 @@ describe("error/actions/show", () => {
       type: types.SHOW_ERROR_MESSAGE,
       message: "abc",
       errCode: 1,
-      show: true,
+      show: true
     }
     const result = showError({
       Message: "abc",
-      ErrCode: 1,
+      ErrCode: 1
     })
 
     expect(result).toEqual(expected)
@@ -20,7 +24,7 @@ describe("error/actions/show", () => {
   it("エラーを閉じる", () => {
     const expected = {
       type: types.CLOSE_ERROR_MESSAGE,
-      show: false,
+      show: false
     }
     const result = closeError()
 
@@ -30,7 +34,7 @@ describe("error/actions/show", () => {
   it("エラー報告を開く", () => {
     const expected = {
       type: types.OPEN_ERROR_BUG_REPORT,
-      bugReport: true,
+      bugReport: true
     }
     const result = openBugReport()
 

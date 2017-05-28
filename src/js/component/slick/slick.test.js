@@ -1,13 +1,13 @@
 // @flow
 import React from "react"
-import {mount} from "enzyme"
-import {Slick} from "./"
+import { mount } from "enzyme"
+import { Slick } from "./"
 
-function setup(params :Object) {
+function setup(params: Object) {
   const props = {
     list: params.list,
     defaultValue: params.defaultValue,
-    onClick: jest.fn(),
+    onClick: jest.fn()
   }
 
   const enzymeWrapper = mount(<Slick {...props} />)
@@ -21,23 +21,23 @@ function setup(params :Object) {
 describe("components/slick/slick", () => {
   it("表示", () => {
     setup({
-      list :[
+      list: [
         {
           ID: 1,
           FileName: "0.jpg",
-          imageType: 2,
-        },
+          imageType: 2
+        }
       ],
       defaultValue: 0
     })
 
     setup({
-      list :[
+      list: [
         {
           ID: 1,
           FileName: "0.jpg",
-          imageType: 2,
-        },
+          imageType: 2
+        }
       ],
       defaultValue: 1
     })
@@ -45,12 +45,12 @@ describe("components/slick/slick", () => {
 
   it("call click", () => {
     const { enzymeWrapper } = setup({
-      list :[
+      list: [
         {
           ID: 1,
           FileName: "0.jpg",
-          imageType: 2,
-        },
+          imageType: 2
+        }
       ]
     })
 
@@ -64,17 +64,17 @@ describe("components/slick/slick", () => {
 
   it("call change", () => {
     const { enzymeWrapper } = setup({
-      list :[
+      list: [
         {
           ID: 1,
           FileName: "0.jpg",
-          imageType: 2,
+          imageType: 2
         },
         {
           ID: 2,
           FileName: "0.jpg",
-          imageType: 2,
-        },
+          imageType: 2
+        }
       ]
     })
 
@@ -84,12 +84,12 @@ describe("components/slick/slick", () => {
 
   it("call balloon", () => {
     const { enzymeWrapper } = setup({
-      list :[
+      list: [
         {
           ID: 1,
           FileName: "0.jpg",
-          imageType: 2,
-        },
+          imageType: 2
+        }
       ]
     })
 
@@ -100,7 +100,7 @@ describe("components/slick/slick", () => {
           return {
             left: 1,
             top: 1,
-            src: "0.png",
+            src: "0.png"
           }
         }
       }

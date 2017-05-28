@@ -1,6 +1,6 @@
 // @flow
 import React from "react"
-import {Slick, List} from "./"
+import { Slick, List } from "./"
 
 const DISPLAY_ICON_NUM_MIN = 1
 
@@ -9,7 +9,7 @@ type Props = {
   defaultValue?: number,
   balloon?: boolean,
   balloonImage?: Object,
-  onClick: Function,
+  onClick: Function
 }
 
 export default ({
@@ -17,12 +17,12 @@ export default ({
   defaultValue,
   balloon,
   balloonImage,
-  onClick,
+  onClick
 }: Props) => (
   <div>
     {(() => {
       if (list.length <= DISPLAY_ICON_NUM_MIN) {
-        return (<List list={list} />)
+        return <List list={list} />
       } else {
         return (
           <Slick

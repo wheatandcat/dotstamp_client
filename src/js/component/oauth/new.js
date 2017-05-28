@@ -1,11 +1,18 @@
 // @flow
-import React, {Component} from "react"
-import {ButtonToolbar, Button, Panel, FormGroup, ControlLabel, FormControl} from "react-bootstrap"
+import React, { Component } from "react"
+import {
+  ButtonToolbar,
+  Button,
+  Panel,
+  FormGroup,
+  ControlLabel,
+  FormControl
+} from "react-bootstrap"
 import styles from "./styles.css"
 
 type Props = {
   email: string,
-  onNew: Function,
+  onNew: Function
 }
 
 export default class New extends Component {
@@ -14,16 +21,12 @@ export default class New extends Component {
   password: Object
 
   new() {
-    this.props.onNew(this.props.email ,this.password.value)
+    this.props.onNew(this.props.email, this.password.value)
   }
 
   render() {
     return (
-      <Panel
-        header="新規登録"
-        bsStyle="info"
-        className={styles.form}
-      >
+      <Panel header="新規登録" bsStyle="info" className={styles.form}>
         <FormGroup controlId="formHorizontalEmail">
           <ControlLabel>Email</ControlLabel>
           <FormControl
@@ -40,17 +43,15 @@ export default class New extends Component {
             label="Password"
             type="password"
             placeholder="パスワード"
-            inputRef={ref => { this.password = ref }}
+            inputRef={ref => {
+              this.password = ref
+            }}
           />
         </FormGroup>
         <br />
         <FormGroup>
           <ButtonToolbar>
-            <Button
-              bsStyle="success"
-              bsSize="large"
-              onClick={() => this.new()}
-            >
+            <Button bsStyle="success" bsSize="large" onClick={() => this.new()}>
               登録する
             </Button>
           </ButtonToolbar>

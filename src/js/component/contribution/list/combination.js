@@ -1,46 +1,32 @@
 // @flow
 import PropTypes from "prop-types"
 import React, { Component } from "react"
-import {List, Open, Close} from "./"
+import { List, Open, Close } from "./"
 
 export default class Combination extends Component {
   render() {
-    let list = []
+    const list = []
 
-    this.props.List.forEach((item) => {
+    this.props.List.forEach(item => {
       let Bottom
 
       if (item.ID == this.props.OpenID) {
         Bottom = (
-          <Open
-            ID={item.ID}
-            Title={item.title}
-            onDelete={this.props.onDelete}
-          >
+          <Open ID={item.ID} Title={item.title} onDelete={this.props.onDelete}>
             {this.props.Show}
           </Open>
         )
       } else {
-        Bottom = (
-          <Close
-            ID={item.ID}
-            onAdd={this.props.onAdd}
-          />
-        )
+        Bottom = <Close ID={item.ID} onAdd={this.props.onAdd} />
       }
 
       list.push({
         Content: item,
-        Bottom,
+        Bottom
       })
     })
 
-    return (
-      <List
-        List={list}
-        Content
-      />
-    )
+    return <List List={list} Content />
   }
 }
 
@@ -49,5 +35,5 @@ Combination.propTypes = {
   OpenID: PropTypes.number,
   Show: PropTypes.element,
   onAdd: PropTypes.func,
-  onDelete: PropTypes.func,
+  onDelete: PropTypes.func
 }

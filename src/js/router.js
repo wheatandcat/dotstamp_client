@@ -4,7 +4,6 @@ import { Provider } from "react-redux"
 import { Switch, Route } from "react-router-dom"
 import { ConnectedRouter } from "react-router-redux"
 
-
 import ContributionNew from "./redux/contribution/containers/new"
 import ContributionEdit from "./redux/contribution/containers/edit"
 import ContributionList from "./redux/contribution/containers/list"
@@ -35,9 +34,8 @@ import About from "./utils/parts/about"
 import Help from "./utils/parts/help"
 import Menu from "./menu"
 
-
 export default class Root extends Component {
-  render () {
+  render() {
     const { store, history } = this.props
     return (
       <Provider store={store}>
@@ -48,26 +46,48 @@ export default class Root extends Component {
               <Route exact path="/" component={ContributionList} />
               <Route exact path="/index.html" component={ContributionList} />
               <Route path="/contribution/new" component={ContributionNew} />
-              <Route name="/contribution/edit" path="/contribution/edit/:id" component={ContributionEdit} />
+              <Route
+                name="/contribution/edit"
+                path="/contribution/edit/:id"
+                component={ContributionEdit}
+              />
               <Route path="/contribution/list" component={ContributionList} />
-              <Route path="/contribution/show/:id" component={ContributionShow} />
-              <Route path="/contribution/search/:search/:order/:page" component={ContributionSearch} />
-              <Route path="/user/contributionList" component={UserContributionList} />
+              <Route
+                path="/contribution/show/:id"
+                component={ContributionShow}
+              />
+              <Route
+                path="/contribution/search/:search/:order/:page"
+                component={ContributionSearch}
+              />
+              <Route
+                path="/user/contributionList"
+                component={UserContributionList}
+              />
               <Route path="/user/mypage" component={UserMypage} />
-              <Route path="/user/followList/:order/:page" component={UserFollowList} />
+              <Route
+                path="/user/followList/:order/:page"
+                component={UserFollowList}
+              />
               <Route path="/character/list" component={CharacterList} />
               <Route path="/login/new" component={loginNew} />
               <Route path="/login/login" component={loginLogin} />
               <Route path="/password/input" component={PasswordInput} />
-              <Route path="/password/reset/:email/:keyword" component={PasswordReset} />
+              <Route
+                path="/password/reset/:email/:keyword"
+                component={PasswordReset}
+              />
               <Route path="/sound/show/:id" component={SoundShow} />
               <Route path="/about" component={About} />
               <Route path="/help" component={Help} />
               <Route path="/question" component={questionShow} />
               <Route path="/information/:file" component={informationShow} />
-              <Route path="/contribution/experience" component={ContributionNew} />
+              <Route
+                path="/contribution/experience"
+                component={ContributionNew}
+              />
               <Route path="/oauth/" component={OauthNew} />
-              <Route component={ContributionList}/>
+              <Route component={ContributionList} />
             </Switch>
           </div>
         </ConnectedRouter>
@@ -78,5 +98,5 @@ export default class Root extends Component {
 
 Root.propTypes = {
   store: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
 }

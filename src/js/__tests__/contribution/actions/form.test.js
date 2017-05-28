@@ -1,4 +1,11 @@
-import {addBody, editBody, changeCharacter, changeBody, changeTitle, changeTag} from "../../../redux/contribution/actions/form"
+import {
+  addBody,
+  editBody,
+  changeCharacter,
+  changeBody,
+  changeTitle,
+  changeTag
+} from "../../../redux/contribution/actions/form"
 import * as types from "../../../constants/ActionTypes"
 
 describe("contribution/actions/form", () => {
@@ -37,7 +44,7 @@ describe("contribution/actions/form", () => {
     )
 
     expect(result).toEqual({
-      type:  types.EDIT_CONTRIBUTION_FORM_BODY,
+      type: types.EDIT_CONTRIBUTION_FORM_BODY,
       character: {
         ID: 1,
         FileName: "abc"
@@ -49,12 +56,10 @@ describe("contribution/actions/form", () => {
   })
 
   it("キャラクターを変更する", () => {
-    const result = changeCharacter(
-      {
-        ID: 1,
-        FileName: "abc"
-      }
-    )
+    const result = changeCharacter({
+      ID: 1,
+      FileName: "abc"
+    })
 
     expect(result).toEqual({
       type: types.CHANGE_CONTRIBUTION_FORM_CHARACTER,
@@ -70,7 +75,7 @@ describe("contribution/actions/form", () => {
 
     expect(result).toEqual({
       type: types.CHANGE_CONTRIBUTION_FORM_BODY,
-      body: "abc",
+      body: "abc"
     })
   })
 

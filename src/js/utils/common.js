@@ -8,7 +8,6 @@ import dateFormat from "dateformat"
  * @return {string} 日付
  */
 export function DateTimeFormat(data) {
-
   return dateFormat(data, "yyyy年mm月dd日 hh:MM:ss")
 }
 
@@ -19,7 +18,6 @@ export function DateTimeFormat(data) {
  * @return {string} 日付
  */
 export function DateFormat(data) {
-
   return dateFormat(data, "yyyy/mm/dd")
 }
 
@@ -36,7 +34,10 @@ export function getUniqueStr(myStrong) {
     strong = myStrong
   }
 
-  return new Date().getTime().toString(16) + Math.floor(strong * Math.random()).toString(16)
+  return (
+    new Date().getTime().toString(16) +
+    Math.floor(strong * Math.random()).toString(16)
+  )
 }
 
 /**
@@ -90,5 +91,5 @@ export function abridgement(str, maxNumber) {
     return str
   }
 
-  return str.substring(0 ,maxNumber) + "..."
+  return str.substring(0, maxNumber) + "..."
 }

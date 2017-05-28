@@ -6,23 +6,18 @@ import { MemoryRouter } from "react-router"
 import { New, Page } from "./"
 
 storiesOf("Oauth")
-.addDecorator(withKnobs)
-.addDecorator(story => (
-  <MemoryRouter initialEntries={["/"]}>
-    {story()}
-  </MemoryRouter>
-))
-.add("new", () => (
-  <New
-    email="test@abc.com"
-    onNew={action("onNew")}
-  />
-))
-.add("page", () => (
-  <Page
-    email="test@abc.com"
-    onNew={action("onNew")}
-    isAlert={false}
-    message=""
-  />
-))
+  .addDecorator(withKnobs)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>
+      {story()}
+    </MemoryRouter>
+  ))
+  .add("new", () => <New email="test@abc.com" onNew={action("onNew")} />)
+  .add("page", () => (
+    <Page
+      email="test@abc.com"
+      onNew={action("onNew")}
+      isAlert={false}
+      message=""
+    />
+  ))

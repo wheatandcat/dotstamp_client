@@ -1,5 +1,5 @@
-import {combineReducers} from "redux"
-import {routerReducer as routing } from "react-router-redux"
+import { combineReducers } from "redux"
+import { routerReducer as routing } from "react-router-redux"
 import contributionEdit from "../redux/contribution/reducers/edit"
 import contributionList from "../redux/contribution/reducers/list"
 import contributionShow from "../redux/contribution/reducers/show"
@@ -53,7 +53,7 @@ const rootReducer = combineReducers({
   soundMenu,
   informationShow,
   messageShow,
-  routing,
+  routing
 })
 
 export default rootReducer

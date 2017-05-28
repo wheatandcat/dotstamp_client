@@ -9,8 +9,8 @@ const initialState = {
     select: 0
   },
   load: false,
-  VoiceType:{},
-  DefaultIcon: false,
+  VoiceType: {},
+  DefaultIcon: false
 }
 
 /**
@@ -22,7 +22,7 @@ const initialState = {
  */
 function getSelectIconState(state, id) {
   let count = 0
-  for (let value of state.list) {
+  for (const value of state.list) {
     if (value.ID == id) {
       state.icon = {
         id: value.ID,
@@ -41,99 +41,99 @@ function getSelectIconState(state, id) {
  * @return {array[]} キャラクターリスト
  */
 function getDefaultCharacterList() {
-  let hash = location.pathname
-  if (hash.indexOf("contribution/new") == -1 && hash.indexOf("contribution/experience") == -1 && hash.indexOf("contribution/edit") == -1) {
+  const hash = location.pathname
+  if (
+    hash.indexOf("contribution/new") == -1 &&
+    hash.indexOf("contribution/experience") == -1 &&
+    hash.indexOf("contribution/edit") == -1
+  ) {
     return []
   }
 
-  let list = []
-  let max = 9
+  const list = []
+  const max = 9
 
-  for(var i = 1; i < max; i++) {
+  for (var i = 1; i < max; i++) {
     list.push({
       CharacterID: 0,
-      FileName: "default"+ i +".png",
+      FileName: "default" + i + ".png",
       ID: i,
       Priority: 0,
-      VoiceType: 0,
+      VoiceType: 0
     })
   }
 
   return list
 }
 
-
-export default function List (state = initialState , action) {
+export default function List(state = initialState, action) {
   switch (action.type) {
-  case types.INIT_CHARACTER_LIST: {
-    return JSON.parse(JSON.stringify(initialState))
-  }
-  case types.SET_CHARACTER_LIST_DEFAULT: {
-    let tmp = []
-
-    let image = getDefaultCharacterList()
-
-    for (let value of image) {
-      tmp.push(value)
-
-      state.VoiceType[value.ID] = value.VoiceType
+    case types.INIT_CHARACTER_LIST: {
+      return JSON.parse(JSON.stringify(initialState))
     }
+    case types.SET_CHARACTER_LIST_DEFAULT: {
+      const tmp = []
 
-    state.DefaultIcon = true
-    state.list = tmp
-    state.load = true
+      const image = getDefaultCharacterList()
 
-    return JSON.parse(JSON.stringify(state))
-  }
-  case types.DELETE_CHARACTER_LIST:
-  case types.GET_CHARACTER_LIST: {
+      for (const value of image) {
+        tmp.push(value)
 
-    if (!Array.isArray(action.response.Image)) {
-      action.response.Image = []
-    }
+        state.VoiceType[value.ID] = value.VoiceType
+      }
 
-    if (action.response.Image.length == 0) {
-      action.response.Image = getDefaultCharacterList()
       state.DefaultIcon = true
-    } else {
-      state.DefaultIcon = false
+      state.list = tmp
+      state.load = true
+
+      return JSON.parse(JSON.stringify(state))
     }
+    case types.DELETE_CHARACTER_LIST:
+    case types.GET_CHARACTER_LIST: {
+      if (!Array.isArray(action.response.Image)) {
+        action.response.Image = []
+      }
 
-    let tmp = []
+      if (action.response.Image.length == 0) {
+        action.response.Image = getDefaultCharacterList()
+        state.DefaultIcon = true
+      } else {
+        state.DefaultIcon = false
+      }
 
-    for (let value of action.response.Image) {
-      value["imageType"] = action.receiveParam.imageType
-      tmp.push(value)
+      const tmp = []
 
-      state.VoiceType[value.ID] = value.VoiceType
+      for (const value of action.response.Image) {
+        value["imageType"] = action.receiveParam.imageType
+        tmp.push(value)
+
+        state.VoiceType[value.ID] = value.VoiceType
+      }
+
+      state.list = tmp
+      state.load = true
+
+      // アイコンの初期位置を取得
+      if (action.response.Image.length > 0) {
+        state = getSelectIconState(state, action.response.Image[0].ID)
+      }
+
+      return JSON.parse(JSON.stringify(state))
     }
+    case types.SET_CHARACTER_LIST: {
+      state = getSelectIconState(state, action.icon)
 
-    state.list = tmp
-    state.load = true
-
-    // アイコンの初期位置を取得
-    if (action.response.Image.length > 0) {
-      state = getSelectIconState(state, action.response.Image[0].ID)
+      return JSON.parse(JSON.stringify(state))
     }
+    case types.SET_CHARACTER_VOICE_TYPE: {
+      state.VoiceType[state.icon.id] = action.voiceType
 
-    return JSON.parse(JSON.stringify(state))
-  }
-  case types.SET_CHARACTER_LIST: {
-    state = getSelectIconState(state, action.icon)
-
-    return JSON.parse(JSON.stringify(state))
-  }
-  case types.SET_CHARACTER_VOICE_TYPE: {
-    state.VoiceType[state.icon.id] = action.voiceType
-
-
-    return JSON.parse(JSON.stringify(state))
-  }
-  case types.SAVE_CHARACTER_LIST: {
-
-    return JSON.parse(JSON.stringify(state))
-  }
-  default:
-    return state
+      return JSON.parse(JSON.stringify(state))
+    }
+    case types.SAVE_CHARACTER_LIST: {
+      return JSON.parse(JSON.stringify(state))
+    }
+    default:
+      return state
   }
 }

@@ -9,8 +9,7 @@ const initialState = {
 
 export default function New(state = initialState, action) {
   switch (action.type) {
-  case types.SET_LOGIN_USER:
-    {
+    case types.SET_LOGIN_USER: {
       state.Warning = action.response.Warning
       state.Message = action.response.Message
 
@@ -20,21 +19,19 @@ export default function New(state = initialState, action) {
 
       return JSON.parse(JSON.stringify(action.response))
     }
-  case types.SET_LOGIN_USER_ALERT:
-    {
+    case types.SET_LOGIN_USER_ALERT: {
       state.Warning = true
       state.Message = action.message
 
       return JSON.parse(JSON.stringify(state))
     }
-  case types.OPEN_LOGIN_TERMS:
-    {
+    case types.OPEN_LOGIN_TERMS: {
       state.Open = true
       state.Text = action.response
 
       return JSON.parse(JSON.stringify(state))
     }
-  default:
-    return state
+    default:
+      return state
   }
 }

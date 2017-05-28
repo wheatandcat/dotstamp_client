@@ -1,7 +1,7 @@
-import {connect} from "react-redux"
+import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
 import TalkBoard from "../../components/talk/board"
-import {setTalkList} from "../../actions/talk"
+import { setTalkList } from "../../actions/talk"
 
 function mapStateToProps(state) {
   return state
@@ -9,10 +9,12 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    setTalkList: (talkList) => {
+    setTalkList: talkList => {
       dispatch(setTalkList(talkList))
     }
   }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TalkBoard))
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(TalkBoard)
+)

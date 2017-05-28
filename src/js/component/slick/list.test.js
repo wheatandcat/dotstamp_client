@@ -1,20 +1,20 @@
 // @flow
 import React from "react"
-import {shallow} from "enzyme"
-import {List} from "./"
+import { shallow } from "enzyme"
+import { List } from "./"
 
 function setup() {
   const props = {
-    list :[
+    list: [
       {
         ID: 1,
         FileName: "0.jpg",
-        imageType: 2,
-      },
+        imageType: 2
+      }
     ]
   }
 
-  const enzymeWrapper = shallow(<List {...props}/>)
+  const enzymeWrapper = shallow(<List {...props} />)
 
   return {
     props,

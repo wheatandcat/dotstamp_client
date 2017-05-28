@@ -1,14 +1,14 @@
 // @flow
 import React from "react"
-import {shallow} from "enzyme"
+import { shallow } from "enzyme"
 import Text from "./text"
 
 function setup() {
   const props = {
-    Label: "abc\ndef",
+    Label: "abc\ndef"
   }
 
-  const enzymeWrapper = shallow(<Text {...props}/>)
+  const enzymeWrapper = shallow(<Text {...props} />)
 
   return {
     props,

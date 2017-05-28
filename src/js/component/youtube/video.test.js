@@ -1,17 +1,17 @@
 // @flow
 import React from "react"
-import {shallow} from "enzyme"
-import {Video} from "./"
+import { shallow } from "enzyme"
+import { Video } from "./"
 
-function setup(params :Object) {
+function setup(params: Object) {
   const props = {
     open: params.open,
     videoId: "abc",
     onReady: jest.fn(),
-    onEnd: jest.fn(),
+    onEnd: jest.fn()
   }
 
-  const enzymeWrapper = shallow(<Video {...props}/>)
+  const enzymeWrapper = shallow(<Video {...props} />)
 
   return {
     props,
@@ -22,13 +22,13 @@ function setup(params :Object) {
 describe("components/youtube/video", () => {
   it("open", () => {
     setup({
-      open: true,
+      open: true
     })
   })
 
   it("close", () => {
     setup({
-      open: false,
+      open: false
     })
   })
 })

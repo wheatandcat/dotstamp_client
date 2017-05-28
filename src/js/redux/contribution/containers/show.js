@@ -1,8 +1,8 @@
-import {connect} from "react-redux"
+import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
 import Show from "../components/show/main"
-import {setProblemType, openProblem, closeProblem} from "../actions/show"
-import {fetchPostsIfNeeded} from "../../../utils/fetch"
+import { setProblemType, openProblem, closeProblem } from "../actions/show"
+import { fetchPostsIfNeeded } from "../../../utils/fetch"
 import * as types from "../../../constants/ActionTypes"
 
 function mapStateToProps(state) {
@@ -17,20 +17,31 @@ function mapDispatchToProps(dispatch) {
     closeProblem: () => {
       dispatch(closeProblem())
     },
-    setProblemType: (problemType) => {
+    setProblemType: problemType => {
       dispatch(setProblemType(problemType))
     },
-    getDetail: (id) => {
-      dispatch(fetchPostsIfNeeded("contribution/show/" + id, types.GET_CONTRIBUTION_SHOW))
+    getDetail: id => {
+      dispatch(
+        fetchPostsIfNeeded(
+          "contribution/show/" + id,
+          types.GET_CONTRIBUTION_SHOW
+        )
+      )
     },
-    addFollow: (action) => {
+    addFollow: action => {
       dispatch(fetchPostsIfNeeded("follow/add", types.ADD_FOLLOW, action))
     },
-    deleteFollow: (action) => {
+    deleteFollow: action => {
       dispatch(fetchPostsIfNeeded("follow/delete", types.DELETE_FOLLOW, action))
     },
-    addProblem: (action) => {
-      dispatch(fetchPostsIfNeeded("problem/add", types.ADD_CONTRIBUTION_SHOW_PROBLEM, action))
+    addProblem: action => {
+      dispatch(
+        fetchPostsIfNeeded(
+          "problem/add",
+          types.ADD_CONTRIBUTION_SHOW_PROBLEM,
+          action
+        )
+      )
     }
   }
 }

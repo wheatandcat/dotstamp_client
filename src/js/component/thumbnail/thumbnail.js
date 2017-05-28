@@ -1,10 +1,10 @@
 // @flow
 import PropTypes from "prop-types"
 import React, { Component } from "react"
-import {Label} from "react-bootstrap"
-import {VIEW_STATUS_PUBLIC} from "../../constants/contribution"
+import { Label } from "react-bootstrap"
+import { VIEW_STATUS_PUBLIC } from "../../constants/contribution"
 import styles from "./styles.css"
-import {Public, Private} from "./index"
+import { Public, Private } from "./index"
 
 export default class Thumbnail extends Component {
   /**
@@ -20,25 +20,24 @@ export default class Thumbnail extends Component {
    * 検索一致を取得する
    */
   getSearchMatch() {
-    let search = this.props.Search
+    const search = this.props.Search
 
     if (search == "") {
-      return (<span />)
+      return <span />
     }
 
-    let index = search.indexOf(this.props.SearchMatch)
-    let len = search.length
+    const index = search.indexOf(this.props.SearchMatch)
+    const len = search.length
 
-    let start = (index < 11)
-      ? 0
-      : index - 10
-    let end = (len < index + 60)
-      ? len
-      : index + 60
+    const start = index < 11 ? 0 : index - 10
+    const end = len < index + 60 ? len : index + 60
 
     return (
       <div className={styles.Thin}>
-        {this.replaceMatchText(search.substring(start, end) + "...", this.props.SearchMatch)}
+        {this.replaceMatchText(
+          search.substring(start, end) + "...",
+          this.props.SearchMatch
+        )}
       </div>
     )
   }
@@ -49,7 +48,7 @@ export default class Thumbnail extends Component {
    * @return {string} 改行変換後テキスト
    */
   replaceMatchText(text: string, search: string) {
-    let regex = new RegExp(search + "(.*?)", "g")
+    const regex = new RegExp(search + "(.*?)", "g")
 
     return text.split(regex).map(function(line, i) {
       if (line == "" && i > 0) {
@@ -79,9 +78,9 @@ export default class Thumbnail extends Component {
       )
     }
 
-    let OnSearch = this.props.OnSearch
+    const OnSearch = this.props.OnSearch
 
-    let sound = (<span />)
+    let sound = <span />
     if (this.props.Movie.movie_id != "") {
       sound = (
         <span>
@@ -119,5 +118,5 @@ Thumbnail.propTypes = {
   Title: PropTypes.string,
   User: PropTypes.object,
   UpdatedAt: PropTypes.string,
-  ViewStatus: PropTypes.number,
+  ViewStatus: PropTypes.number
 }

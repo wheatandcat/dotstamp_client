@@ -1,15 +1,15 @@
 // @flow
 import React from "react"
-import {shallow} from "enzyme"
-import {Play} from "./"
+import { shallow } from "enzyme"
+import { Play } from "./"
 
 function setup() {
   const props = {
     label: "abc",
-    onPause: jest.fn(),
+    onPause: jest.fn()
   }
 
-  const enzymeWrapper = shallow(<Play {...props}/>)
+  const enzymeWrapper = shallow(<Play {...props} />)
 
   return {
     props,

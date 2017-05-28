@@ -121,7 +121,7 @@ export function setViewStatus(viewStatus) {
  * @return {object} アクション
  */
 export function openHelp() {
-  return {type: types.OPEN_CONTRIBUTION_FORM_HELP}
+  return { type: types.OPEN_CONTRIBUTION_FORM_HELP }
 }
 
 /**
@@ -130,7 +130,7 @@ export function openHelp() {
  * @return {object} アクション
  */
 export function closeHelp() {
-  return {type: types.CLOSE_CONTRIBUTION_FORM_HELP}
+  return { type: types.CLOSE_CONTRIBUTION_FORM_HELP }
 }
 
 /**
@@ -139,5 +139,5 @@ export function closeHelp() {
  * @return {object} アクション
  */
 export function cancelEdit() {
-  return {type: types.CANCEL_CONTRIBUTION_FROM_EDIT}
+  return { type: types.CANCEL_CONTRIBUTION_FROM_EDIT }
 }

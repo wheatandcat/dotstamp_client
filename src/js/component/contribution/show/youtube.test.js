@@ -1,14 +1,14 @@
 // @flow
 import React from "react"
-import {shallow} from "enzyme"
-import {Youtube} from "./"
+import { shallow } from "enzyme"
+import { Youtube } from "./"
 
 function setup() {
   const props = {
-    movieID: "",
+    movieID: ""
   }
 
-  const enzymeWrapper = shallow(<Youtube {...props}/>)
+  const enzymeWrapper = shallow(<Youtube {...props} />)
 
   return {
     props,

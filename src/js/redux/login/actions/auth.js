@@ -7,7 +7,7 @@ import * as types from "../../../constants/ActionTypes"
  * @return {object] アクション
  */
 export function auth(user) {
-  return {type: types.SET_LOGIN_AUTH, Login: user.Login, Name: user.Name}
+  return { type: types.SET_LOGIN_AUTH, Login: user.Login, Name: user.Name }
 }
 
 /**
@@ -16,5 +16,5 @@ export function auth(user) {
  * @return {object} アクション
  */
 export function logout() {
-  return {type: types.LOGOUT_LOGIN_AUTH}
+  return { type: types.LOGOUT_LOGIN_AUTH }
 }

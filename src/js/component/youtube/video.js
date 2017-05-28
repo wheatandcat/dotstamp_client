@@ -6,7 +6,7 @@ type Props = {
   open?: boolean,
   videoId: string,
   onReady: Function,
-  onEnd: Function,
+  onEnd: Function
 }
 
 function getOptions(open?: boolean) {
@@ -15,8 +15,8 @@ function getOptions(open?: boolean) {
       height: "390",
       width: "640",
       playerVars: {
-        autoplay: 0,
-      },
+        autoplay: 0
+      }
     }
   }
 
@@ -24,17 +24,12 @@ function getOptions(open?: boolean) {
     height: "1",
     width: "1",
     playerVars: {
-      autoplay: 0,
-    },
+      autoplay: 0
+    }
   }
 }
 
-export default ({
-  open,
-  videoId,
-  onReady,
-  onEnd,
-}: Props) => (
+export default ({ open, videoId, onReady, onEnd }: Props) => (
   <div>
     {(() => {
       if (open) {

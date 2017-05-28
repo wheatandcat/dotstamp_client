@@ -1,7 +1,7 @@
 import PropTypes from "prop-types"
-import React, {Component} from "react"
-import {Fade, Alert} from "react-bootstrap"
-import {Absolute, FadeMessage} from "./../../../../css/common.css"
+import React, { Component } from "react"
+import { Fade, Alert } from "react-bootstrap"
+import { Absolute, FadeMessage } from "./../../../../css/common.css"
 
 export default class Show extends Component {
   close() {
@@ -16,7 +16,12 @@ export default class Show extends Component {
      */
   render() {
     return (
-      <Fade in={this.props.messageShow.Show} onEntering={this.close.bind(this)} className={Absolute + " " + FadeMessage} unmountOnExit>
+      <Fade
+        in={this.props.messageShow.Show}
+        onEntering={this.close.bind(this)}
+        className={Absolute + " " + FadeMessage}
+        unmountOnExit
+      >
         <div>
           <Alert bsStyle={this.props.messageShow.Style}>
             {this.props.messageShow.Message}

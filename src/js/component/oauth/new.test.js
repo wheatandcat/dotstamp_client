@@ -1,7 +1,7 @@
 // @flow
 import React from "react"
-import {shallow, mount} from "enzyme"
-import {New} from "./"
+import { shallow, mount } from "enzyme"
+import { New } from "./"
 
 function setup() {
   const props = {
@@ -15,7 +15,7 @@ function setup() {
   return {
     props,
     enzymeWrapper,
-    instance,
+    instance
   }
 }
 

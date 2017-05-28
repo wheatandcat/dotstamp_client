@@ -1,5 +1,5 @@
 import React from "react"
-import {shallow} from "enzyme"
+import { shallow } from "enzyme"
 import ContributionList from "../../../redux/contribution/components/list"
 
 function setup() {
@@ -10,11 +10,10 @@ function setup() {
       list: [
         {
           ID: 1,
-          Tag:[
+          Tag: [
             {
               ID: 1,
-              Name: "abc",
-
+              Name: "abc"
             }
           ],
           Body: null,
@@ -22,18 +21,18 @@ function setup() {
           Title: "def",
           Updated: "2017-01-01T12:00:00Z",
           Created: "2017-01-01T12:00:00Z",
-          User:{
+          User: {
             ID: 1,
-            Name: "test",
+            Name: "test"
           }
         }
       ],
-      itemMap: {},
+      itemMap: {}
     },
-    getList: jest.fn(),
+    getList: jest.fn()
   }
 
-  const enzymeWrapper = shallow(<ContributionList {...props}/>)
+  const enzymeWrapper = shallow(<ContributionList {...props} />)
 
   return {
     props,
@@ -43,7 +42,7 @@ function setup() {
 
 describe("contribution/components/list", () => {
   it("リストを表示する", () => {
-    const {props, enzymeWrapper} = setup()
+    const { props, enzymeWrapper } = setup()
     expect(enzymeWrapper.find("Link").props().to).toBe("/about")
 
     expect(props.getList.mock.calls.length).toBe(1)

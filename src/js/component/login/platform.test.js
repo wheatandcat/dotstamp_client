@@ -1,7 +1,7 @@
 // @flow
 import React from "react"
-import {shallow} from "enzyme"
-import {Platform} from "./"
+import { shallow } from "enzyme"
+import { Platform } from "./"
 
 function setup() {
   const props = {}

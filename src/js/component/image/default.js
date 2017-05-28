@@ -1,16 +1,11 @@
 // @flow
 import React from "react"
-import {Thumbnail} from "./"
+import { Thumbnail } from "./"
 
 type Props = {
-  fileName: string,
+  fileName: string
 }
 
-export default ({
-  fileName,
-}: Props) => (
-  <Thumbnail
-    dir="/"
-    fileName={fileName}
-  />
+export default ({ fileName }: Props) => (
+  <Thumbnail dir="/" fileName={fileName} />
 )

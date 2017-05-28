@@ -1,17 +1,14 @@
 // @flow
 import React from "react"
-import {Button, Glyphicon} from "react-bootstrap"
+import { Button, Glyphicon } from "react-bootstrap"
 
 type Props = {
   label?: string,
-  onPlay: Function,
+  onPlay: Function
 }
 
-export default ({
-  label,
-  onPlay,
-}: Props) => (
+export default ({ label, onPlay }: Props) => (
   <Button onClick={() => onPlay()}>
-    <Glyphicon glyph="repeat"/>{label}
+    <Glyphicon glyph="repeat" />{label}
   </Button>
 )

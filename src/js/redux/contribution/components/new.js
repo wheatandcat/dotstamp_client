@@ -1,12 +1,12 @@
 import PropTypes from "prop-types"
-import React, {Component} from "react"
+import React, { Component } from "react"
 import FormHeader from "../containers/form/header"
 
 export default class New extends Component {
   componentWillMount() {
-    let hash = location.pathname
+    const hash = location.pathname
 
-    this.props.init((hash.indexOf("contribution/experience") > -1))
+    this.props.init(hash.indexOf("contribution/experience") > -1)
 
     if (hash.indexOf("contribution/experience") == -1) {
       this.getList()
@@ -26,7 +26,13 @@ export default class New extends Component {
    * @return {object} html
    */
   render() {
-    return (<FormHeader title="" contributionId={null} contributionTalk={this.props.contributionTalk}/>)
+    return (
+      <FormHeader
+        title=""
+        contributionId={null}
+        contributionTalk={this.props.contributionTalk}
+      />
+    )
   }
 }
 

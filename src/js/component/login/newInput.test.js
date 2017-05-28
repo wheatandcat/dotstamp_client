@@ -1,13 +1,13 @@
 // @flow
 import React from "react"
-import {shallow, mount} from "enzyme"
-import {MemoryRouter} from "react-router"
-import {NewInput} from "./"
+import { shallow, mount } from "enzyme"
+import { MemoryRouter } from "react-router"
+import { NewInput } from "./"
 
 function setup() {
   const props = {
     onNew: jest.fn(),
-    onOpen: jest.fn(),
+    onOpen: jest.fn()
   }
 
   const enzymeWrapper = shallow(<NewInput {...props} />)
@@ -34,10 +34,10 @@ describe("component/login/newInput", () => {
     const { props, enzymeWrapper } = setup()
     const instance: Object = enzymeWrapper.instance()
     instance.email = {
-      value: "abc",
+      value: "abc"
     }
     instance.password = {
-      value: "abc",
+      value: "abc"
     }
 
     enzymeWrapper.find("Button").at(1).simulate("click")
@@ -47,9 +47,13 @@ describe("component/login/newInput", () => {
   it("mount", () => {
     const props = {
       onNew: jest.fn(),
-      onOpen: jest.fn(),
+      onOpen: jest.fn()
     }
 
-    mount(<MemoryRouter initialEntries={["/"]}><NewInput {...props} /></MemoryRouter>)
+    mount(
+      <MemoryRouter initialEntries={["/"]}>
+        <NewInput {...props} />
+      </MemoryRouter>
+    )
   })
 })

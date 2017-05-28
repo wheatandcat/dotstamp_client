@@ -1,16 +1,16 @@
 import PropTypes from "prop-types"
 import React, { Component } from "react"
 import Slider from "react-slick"
-import {Overlay, Image, Popover} from "react-bootstrap"
-import {Character} from "../image/"
-import {getUploadUrl} from "../../utils/common"
+import { Overlay, Image, Popover } from "react-bootstrap"
+import { Character } from "../image/"
+import { getUploadUrl } from "../../utils/common"
 import styles from "./styles.css"
 
 const DISPLAY_ICON_NUM_MAX = 5
 
-var self :Object
+var self: Object
 
-function action(event :Object) {
+function action(event: Object) {
   if (self == undefined) {
     return
   }
@@ -30,15 +30,15 @@ function action(event :Object) {
   }
 
   if (event.keyCode == 38) {
-    let item = self.props.list[self.state.key]
+    const item = self.props.list[self.state.key]
     self.setState({
       tip: true,
-      balloonImage:{
-        src: getUploadUrl() + "character/" + item.FileName,
+      balloonImage: {
+        src: getUploadUrl() + "character/" + item.FileName
       }
     })
   } else if (event.keyCode == 40) {
-    self.setState({tip: false})
+    self.setState({ tip: false })
   }
 }
 
@@ -48,27 +48,27 @@ export default class Slick extends Component {
   slider: Object
   target: Object
 
-  constructor (props) {
+  constructor(props) {
     super(props)
   }
-  componentWillMount () {
+  componentWillMount() {
     this.setState({
       balloon: false,
-      balloonImage:{},
+      balloonImage: {},
       tip: false,
-      key: 0,
+      key: 0
     })
 
     self = this
   }
-  componentDidUpdate () {
+  componentDidUpdate() {
     if (!this.props.defaultValue) {
       return
     }
 
     this.slider.slickGoTo(this.props.defaultValue)
   }
-  setting () {
+  setting() {
     let showNum = DISPLAY_ICON_NUM_MAX
     if (this.props.list.length < DISPLAY_ICON_NUM_MAX) {
       showNum = this.props.list.length
@@ -89,7 +89,7 @@ export default class Slick extends Component {
       slidesToScroll: 1,
       focusOnSelect: true,
       pauseOnHballoon: true,
-      afterChange: function (currentSlide :number) {
+      afterChange: function(currentSlide: number) {
         self.change(currentSlide)
         self.props.onClick(self.props.list[currentSlide])
       }
@@ -97,45 +97,55 @@ export default class Slick extends Component {
 
     return setting
   }
-  change(key :number) {
-    let item = this.props.list[key]
+  change(key: number) {
+    const item = this.props.list[key]
     this.setState({
       key: key,
-      balloonImage:{
-        src: getUploadUrl() + "character/" + item.FileName,
+      balloonImage: {
+        src: getUploadUrl() + "character/" + item.FileName
       }
     })
   }
-  click(event :Object) {
+  click(event: Object) {
     this.setState({
       tip: !this.state.tip,
       balloonImage: {
-        src: event.target.src,
+        src: event.target.src
       }
     })
   }
-  balloon(event :Object) {
-    let target = event.target.getBoundingClientRect()
+  balloon(event: Object) {
+    const target = event.target.getBoundingClientRect()
 
     this.setState({
       balloon: true,
-      balloonImage:{
+      balloonImage: {
         src: event.target.src,
         x: target.left,
-        y: target.top,
+        y: target.top
       }
     })
   }
-  render () {
+  render() {
     return (
-      <div ref={(c) => { this.target = c }} className={styles.slick}>
+      <div
+        ref={c => {
+          this.target = c
+        }}
+        className={styles.slick}
+      >
         <Overlay show={this.state.tip} target={this.target} placement="top">
           <Popover id="tooltip" title="拡大表示" onClick={this.click.bind(this)}>
-            <Image src={this.state.balloonImage.src} width={120}/>
+            <Image src={this.state.balloonImage.src} width={120} />
           </Popover>
         </Overlay>
-        <Slider {...this.setting()} ref={(c) => { this.slider = c }} >
-          {this.props.list.map((data) => {
+        <Slider
+          {...this.setting()}
+          ref={c => {
+            this.slider = c
+          }}
+        >
+          {this.props.list.map(data => {
             return (
               <div key={data.ID}>
                 <Character
@@ -158,11 +168,11 @@ Slick.propTypes = {
   onClick: PropTypes.func,
   defaultValue: PropTypes.number,
   balloon: PropTypes.bool,
-  balloonImage: PropTypes.object,
+  balloonImage: PropTypes.object
 }
 
 Slick.defaultProps = {
   balloon: false,
   balloonImage: {},
-  defaultValue: 0,
+  defaultValue: 0
 }

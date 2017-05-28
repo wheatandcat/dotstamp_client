@@ -1,10 +1,13 @@
 import PropTypes from "prop-types"
-import React, {Component} from "react"
-import {TALK_TYPE_IMAGE} from "../../actions/talk"
-import {UPLOAD_FILE_SIZE_MAX} from "../../../../constants/common"
-import {line} from "./../../../../../css/common.css"
-import {Balloon, EditImage, EditText} from "./../../../../component/contribution/balloon/"
-
+import React, { Component } from "react"
+import { TALK_TYPE_IMAGE } from "../../actions/talk"
+import { UPLOAD_FILE_SIZE_MAX } from "../../../../constants/common"
+import { line } from "./../../../../../css/common.css"
+import {
+  Balloon,
+  EditImage,
+  EditText
+} from "./../../../../component/contribution/balloon/"
 
 export default class Talk extends Component {
   /**
@@ -13,7 +16,7 @@ export default class Talk extends Component {
    * @param  {object} e イベントオブジェクト
    */
   handleChangeFile(e) {
-    let fileList = e.target.files
+    const fileList = e.target.files
 
     if (fileList.length == 0) {
       return
@@ -32,7 +35,7 @@ export default class Talk extends Component {
    * @param  {array} fileList ファイルリスト
    */
   uploadFile(fileList) {
-    let formData = new FormData()
+    const formData = new FormData()
     formData.append("file", fileList[0])
 
     let contributionId = this.props.contributionEdit.id
@@ -40,7 +43,11 @@ export default class Talk extends Component {
       contributionId = 0
     }
 
-    this.props.upload("?userContributionId=" + contributionId, formData, this.props.talk)
+    this.props.upload(
+      "?userContributionId=" + contributionId,
+      formData,
+      this.props.talk
+    )
   }
   /**
    * 本文を削除する
@@ -56,7 +63,13 @@ export default class Talk extends Component {
    * @param  {object} talk 会話
    */
   setEditBody(talk) {
-    this.props.setEditBody(talk.Priority, talk.Body, talk.Character, talk.DirectionType, talk.TalkType)
+    this.props.setEditBody(
+      talk.Priority,
+      talk.Body,
+      talk.Character,
+      talk.DirectionType,
+      talk.TalkType
+    )
   }
   /**
    * 描画する
@@ -73,7 +86,7 @@ export default class Talk extends Component {
             Type={this.props.talk.TalkType}
             Talk={this.props.talk.Body}
           />
-          <hr className={line}/>
+          <hr className={line} />
         </div>
       )
     }
@@ -89,7 +102,7 @@ export default class Talk extends Component {
             onChangeImage={this.handleChangeFile.bind(this)}
             onDelete={this.deleteBody.bind(this)}
           />
-          <hr className={line}/>
+          <hr className={line} />
         </div>
       )
     }
@@ -105,10 +118,9 @@ export default class Talk extends Component {
           onChangeText={this.setEditBody.bind(this)}
           onDelete={this.deleteBody.bind(this)}
         />
-        <hr className={line}/>
+        <hr className={line} />
       </div>
     )
-
   }
 }
 

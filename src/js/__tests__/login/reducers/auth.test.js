@@ -7,13 +7,13 @@ describe("login/reducers/auth", () => {
       type: types.SET_LOGIN_AUTH,
       response: {
         Login: true,
-        Name: "abc",
+        Name: "abc"
       }
     })
 
     expect(result).toEqual({
       Login: true,
-      Name: "abc",
+      Name: "abc"
     })
   })
 
@@ -24,12 +24,12 @@ describe("login/reducers/auth", () => {
     })
 
     const result = reducer(undefined, {
-      type: types.LOGOUT_LOGIN_AUTH,
+      type: types.LOGOUT_LOGIN_AUTH
     })
 
     expect(result).toEqual({
       Login: false,
-      Name: "",
+      Name: ""
     })
   })
 })

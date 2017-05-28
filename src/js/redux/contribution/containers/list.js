@@ -1,8 +1,8 @@
-import {connect} from "react-redux"
+import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
 import List from "../components/list"
-import {next, deleteItem} from "../actions/list"
-import {fetchPostsIfNeeded} from "../../../utils/fetch"
+import { next, deleteItem } from "../actions/list"
+import { fetchPostsIfNeeded } from "../../../utils/fetch"
 import * as types from "../../../constants/ActionTypes"
 
 function mapStateToProps(state) {
@@ -12,15 +12,27 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     getList: (action, receiveParam) => {
-      dispatch(fetchPostsIfNeeded("contribution/list/", types.GET_CONTRIBUTION_LIST, action, receiveParam))
+      dispatch(
+        fetchPostsIfNeeded(
+          "contribution/list/",
+          types.GET_CONTRIBUTION_LIST,
+          action,
+          receiveParam
+        )
+      )
     },
     next: () => {
       dispatch(next())
     },
-    addItem: (id) => {
-      dispatch(fetchPostsIfNeeded("contribution/show/" + id, types.ADD_CONTRIBUTION_LIST_ITEM))
+    addItem: id => {
+      dispatch(
+        fetchPostsIfNeeded(
+          "contribution/show/" + id,
+          types.ADD_CONTRIBUTION_LIST_ITEM
+        )
+      )
     },
-    deleteItem: (id) => {
+    deleteItem: id => {
       dispatch(deleteItem(id))
     }
   }

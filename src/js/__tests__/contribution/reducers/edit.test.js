@@ -1,6 +1,6 @@
 import * as types from "../../../constants/ActionTypes"
 import reducer from "../../../redux/contribution/reducers/edit"
-import {VIEW_STATUS_PUBLIC} from "../../../constants/contribution"
+import { VIEW_STATUS_PUBLIC } from "../../../constants/contribution"
 
 describe("contribution/reducers/edit", () => {
   it("詳細を取得する", () => {
@@ -10,12 +10,9 @@ describe("contribution/reducers/edit", () => {
         ID: 1,
         Title: "abc",
         Body: {
-          aa: "abcdef",
+          aa: "abcdef"
         },
-        Tag: [
-          "efg",
-          "hij"
-        ]
+        Tag: ["efg", "hij"]
       }
     }
 
@@ -23,21 +20,18 @@ describe("contribution/reducers/edit", () => {
 
     expect(result).toEqual({
       body: {
-        aa: "abcdef",
+        aa: "abcdef"
       },
       id: 1,
-      tagList: [
-        "efg",
-        "hij"
-      ],
+      tagList: ["efg", "hij"],
       title: "abc",
       saveData: {
         title: "abc",
         body: JSON.stringify({
-          aa: "abcdef",
+          aa: "abcdef"
         }),
-        viewStatus: VIEW_STATUS_PUBLIC,
-      },
+        viewStatus: VIEW_STATUS_PUBLIC
+      }
     })
   })
 })

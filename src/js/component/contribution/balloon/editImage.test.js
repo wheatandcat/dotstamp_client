@@ -1,6 +1,6 @@
 // @flow
 import React from "react"
-import {shallow} from "enzyme"
+import { shallow } from "enzyme"
 import EditImage from "./editImage"
 
 function setup() {
@@ -10,10 +10,10 @@ function setup() {
     Talk: "0.png",
     Priority: 1,
     onChangeImage: jest.fn(),
-    onDelete: jest.fn(),
+    onDelete: jest.fn()
   }
 
-  const enzymeWrapper = shallow(<EditImage {...props}/>)
+  const enzymeWrapper = shallow(<EditImage {...props} />)
 
   return {
     props,

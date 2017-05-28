@@ -7,8 +7,7 @@ import * as types from "../../../constants/ActionTypes"
  */
 export function setIcon(id) {
   return {
-    type: types.
-    SET_CHARACTER_LIST,
+    type: types.SET_CHARACTER_LIST,
     icon: id
   }
 }
@@ -30,7 +29,7 @@ export function setVoiceType(voiceType) {
  * @return {object}  アクション
  */
 export function init() {
-  return {type: types.INIT_CHARACTER_LIST}
+  return { type: types.INIT_CHARACTER_LIST }
 }
 
 /**
@@ -38,5 +37,5 @@ export function init() {
  * @return {object}  アクション
  */
 export function setDefaultList() {
-  return {type: types.SET_CHARACTER_LIST_DEFAULT}
+  return { type: types.SET_CHARACTER_LIST_DEFAULT }
 }

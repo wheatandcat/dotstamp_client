@@ -1,6 +1,6 @@
 // @flow
 import React from "react"
-import {Icon, Voice} from "./"
+import { Icon, Voice } from "./"
 
 type Props = {
   fileName: string,
@@ -10,7 +10,7 @@ type Props = {
   voiceLabel: string,
   onDelete: Function,
   onVoiceType: Function,
-  onSave: Function,
+  onSave: Function
 }
 
 export default ({
@@ -21,22 +21,18 @@ export default ({
   voiceLabel,
   onDelete,
   onVoiceType,
-  onSave,
+  onSave
 }: Props) => (
   <div>
-    <Icon
-      fileName={fileName}
-      IconId={IconId}
-      onDelete={onDelete}
-    />
+    <Icon fileName={fileName} IconId={IconId} onDelete={onDelete} />
     <p />
-      <Voice
-        voiceList={voiceList}
-        voiceType={voiceType}
-        voiceLabel={voiceLabel}
-        onVoiceType={onVoiceType}
-        onSave={onSave}
-      />
+    <Voice
+      voiceList={voiceList}
+      voiceType={voiceType}
+      voiceLabel={voiceLabel}
+      onVoiceType={onVoiceType}
+      onSave={onSave}
+    />
     <p />
   </div>
 )

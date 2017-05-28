@@ -1,6 +1,6 @@
 // @flow
 import React from "react"
-import {shallow} from "enzyme"
+import { shallow } from "enzyme"
 import Combination from "./combination"
 
 function setup() {
@@ -11,7 +11,7 @@ function setup() {
         ID: 1,
         Movie: {
           movie_id: "test",
-          movie_status: 1,
+          movie_status: 1
         },
         Search: "abctestedfgtuk\njshajkhfkznfklj\njdhjksdhjdklh",
         OnSearch: jest.fn(),
@@ -21,7 +21,7 @@ function setup() {
           {
             ID: 1,
             Name: "tag1",
-            UserContributionID: 2,
+            UserContributionID: 2
           }
         ],
         Title: "test",
@@ -29,16 +29,16 @@ function setup() {
         User: {
           ID: 1,
           Name: "name",
-          ProfileImageID: 0,
+          ProfileImageID: 0
         },
-        ViewStatus: 1,
+        ViewStatus: 1
       },
       {
         FollowCount: 2,
         ID: 2,
         Movie: {
           movie_id: "test2",
-          movie_status: 1,
+          movie_status: 1
         },
         Search: "abctestedfgtuk\njshajkhfkznfklj\njdhjksdhjdklh",
         OnSearch: jest.fn(),
@@ -48,7 +48,7 @@ function setup() {
           {
             ID: 1,
             Name: "tag1",
-            UserContributionID: 2,
+            UserContributionID: 2
           }
         ],
         Title: "test",
@@ -56,15 +56,15 @@ function setup() {
         User: {
           ID: 1,
           Name: "name",
-          ProfileImageID: 0,
+          ProfileImageID: 0
         },
-        ViewStatus: 1,
-      },
+        ViewStatus: 1
+      }
     ],
     OpenID: 1,
-    Show: (<div>aaaaa</div>),
+    Show: <div>aaaaa</div>,
     onAdd: jest.fn(),
-    onDelete: jest.fn(),
+    onDelete: jest.fn()
   }
 
   const enzymeWrapper = shallow(<Combination {...props} />)

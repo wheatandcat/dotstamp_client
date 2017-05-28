@@ -1,8 +1,8 @@
-import {connect} from "react-redux"
+import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
 import New from "../components/new"
-import {alert} from "../actions/new"
-import {fetchPostsIfNeeded, fetchTextIfNeeded} from "../../../utils/fetch"
+import { alert } from "../actions/new"
+import { fetchPostsIfNeeded, fetchTextIfNeeded } from "../../../utils/fetch"
 import * as types from "../../../constants/ActionTypes"
 
 function mapStateToProps(state) {
@@ -11,13 +11,17 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    new: (params) => {
+    new: params => {
       dispatch(fetchPostsIfNeeded("login/new/", types.SET_LOGIN_USER, params))
     },
     open: () => {
-      dispatch(fetchTextIfNeeded("static/txt/terms.txt", types.OPEN_LOGIN_TERMS, {fileName: "terms"}))
+      dispatch(
+        fetchTextIfNeeded("static/txt/terms.txt", types.OPEN_LOGIN_TERMS, {
+          fileName: "terms"
+        })
+      )
     },
-    alert: (message) => {
+    alert: message => {
       dispatch(alert(message))
     }
   }

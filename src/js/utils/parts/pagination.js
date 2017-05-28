@@ -1,7 +1,7 @@
 import PropTypes from "prop-types"
 import React, { Component } from "react"
-import {Pagination} from "react-bootstrap"
-import {Center} from "./../../../css/common.css"
+import { Pagination } from "react-bootstrap"
+import { Center } from "./../../../css/common.css"
 
 export default class Paginations extends Component {
   handleSelect(page) {
@@ -13,8 +13,8 @@ export default class Paginations extends Component {
    *
    * @return {object} html
    */
-  render () {
-    let items = Math.ceil(this.props.count / this.props.limit)
+  render() {
+    const items = Math.ceil(this.props.count / this.props.limit)
 
     return (
       <div className={Center}>
@@ -30,7 +30,7 @@ export default class Paginations extends Component {
           maxButtons={5}
           activePage={this.props.activePage}
           onSelect={this.handleSelect.bind(this)}
-         />
+        />
       </div>
     )
   }
@@ -42,5 +42,5 @@ Paginations.propTypes = {
   activePage: PropTypes.number,
   link: PropTypes.string,
   order: PropTypes.number,
-  paging: PropTypes.func,
+  paging: PropTypes.func
 }

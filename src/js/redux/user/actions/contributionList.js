@@ -6,7 +6,7 @@ import * as types from "../../../constants/ActionTypes"
  * @return {object} アクション
  */
 export function init() {
-  return {type: types.INIT_USER_CONTRBUTION_LIST}
+  return { type: types.INIT_USER_CONTRBUTION_LIST }
 }
 
 /**
@@ -16,7 +16,10 @@ export function init() {
  * @return {object} アクション
  */
 export function setContribution(contributionId) {
-  return {type: types.SET_USER_CONTRBUTION_LIST, contributionId: contributionId}
+  return {
+    type: types.SET_USER_CONTRBUTION_LIST,
+    contributionId: contributionId
+  }
 }
 
 /**
@@ -26,7 +29,7 @@ export function setContribution(contributionId) {
  * @return {object} アクション
  */
 export function setTitleSearch(list) {
-  return {type: types.SET_USER_CONTRBUTION_LIST_SEARCH, list: list}
+  return { type: types.SET_USER_CONTRBUTION_LIST_SEARCH, list: list }
 }
 
 /**
@@ -36,7 +39,10 @@ export function setTitleSearch(list) {
  * @return {object} アクション
  */
 export function setViewStatus(viewStatus) {
-  return {type: types.SET_USER_CONTRBUTION_LIST_VIEW_STATUS, viewStatus: viewStatus}
+  return {
+    type: types.SET_USER_CONTRBUTION_LIST_VIEW_STATUS,
+    viewStatus: viewStatus
+  }
 }
 
 /**
@@ -45,7 +51,7 @@ export function setViewStatus(viewStatus) {
  * @return {object} アクション
  */
 export function openDeleteConfirm() {
-  return {type: types.OPEN_USER_CONTRBUTION_LIST_CONFIRM}
+  return { type: types.OPEN_USER_CONTRBUTION_LIST_CONFIRM }
 }
 
 /**
@@ -54,5 +60,5 @@ export function openDeleteConfirm() {
  * @return {object} アクション
  */
 export function closeDeleteConfirm() {
-  return {type: types.CLOSE_USER_CONTRBUTION_LIST_CONFIRM}
+  return { type: types.CLOSE_USER_CONTRBUTION_LIST_CONFIRM }
 }

@@ -1,9 +1,15 @@
 import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
 import FormMain from "../../components/form/main"
-import {addBody, editBody, changeCharacter, changeBody, cancelEdit} from "../../actions/form"
-import {alertMessage} from "../../../error/actions/alertMessage"
-import {fetchUploadIfNeeded} from "../../../../utils/fetch"
+import {
+  addBody,
+  editBody,
+  changeCharacter,
+  changeBody,
+  cancelEdit
+} from "../../actions/form"
+import { alertMessage } from "../../../error/actions/alertMessage"
+import { fetchUploadIfNeeded } from "../../../../utils/fetch"
 import * as types from "../../../../constants/ActionTypes"
 
 function mapStateToProps(state) {
@@ -21,19 +27,28 @@ function mapDispatchToProps(dispatch) {
     cancelEdit: () => {
       dispatch(cancelEdit())
     },
-    changeCharacter: (character) => {
+    changeCharacter: character => {
       dispatch(changeCharacter(character))
     },
-    changeBody: (body) => {
+    changeBody: body => {
       dispatch(changeBody(body))
     },
-    alertMessage: (message) => {
+    alertMessage: message => {
       dispatch(alertMessage(message))
     },
     upload: (urlParam, formData, params) => {
-      dispatch(fetchUploadIfNeeded("contribution/upload/" + urlParam, types.UPLOAD_CONTRIBUTION_FORM, formData, params))
+      dispatch(
+        fetchUploadIfNeeded(
+          "contribution/upload/" + urlParam,
+          types.UPLOAD_CONTRIBUTION_FORM,
+          formData,
+          params
+        )
+      )
     }
   }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(FormMain))
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(FormMain)
+)

@@ -1,7 +1,7 @@
-import {connect} from "react-redux"
+import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
 import Show from "../components/show"
-import {init, message, close} from "../actions/show"
+import { init, message, close } from "../actions/show"
 
 function mapStateToProps(state) {
   return state

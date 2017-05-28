@@ -1,6 +1,6 @@
 // @flow
 import React from "react"
-import {shallow} from "enzyme"
+import { shallow } from "enzyme"
 import EditText from "./editText"
 
 function setup() {
@@ -9,14 +9,14 @@ function setup() {
     Type: 1,
     Talk: "abcdef",
     Item: {
-      body: "text",
+      body: "text"
     },
     Priority: 1,
     onChangeText: jest.fn(),
-    onDelete: jest.fn(),
+    onDelete: jest.fn()
   }
 
-  const enzymeWrapper = shallow(<EditText {...props}/>)
+  const enzymeWrapper = shallow(<EditText {...props} />)
 
   return {
     props,

@@ -1,8 +1,8 @@
-import React, {Component} from "react"
-import {PageHeader, Panel, Alert, Glyphicon, Button} from "react-bootstrap"
-import {Normal} from "../../../css/common.css"
+import React, { Component } from "react"
+import { PageHeader, Panel, Alert, Glyphicon, Button } from "react-bootstrap"
+import { Normal } from "../../../css/common.css"
 import Footer from "./footer"
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 
 export default class Help extends Component {
   /**
@@ -19,7 +19,8 @@ export default class Help extends Component {
           </div>
           <Alert bsStyle="danger">
             <div className={Normal}>
-              <Glyphicon glyph="warning-sign"/>&nbsp;&nbsp;ヘルプは作成中です・・・問い合わせ内容が溜まったら更新します
+              <Glyphicon glyph="warning-sign" />
+              &nbsp;&nbsp;ヘルプは作成中です・・・問い合わせ内容が溜まったら更新します
             </div>
           </Alert>
           <Panel header="問い合わせ" bsStyle="success">
@@ -31,10 +32,15 @@ export default class Help extends Component {
 
           <Panel header="参考" bsStyle="info">
             ブログ記事：<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;・ <a href="http://wheatandcat.hatenablog.com/" target="_blank">麦と猫のエンジニアブログ</a><br />
+            &nbsp;&nbsp;&nbsp;&nbsp;・
+            {" "}
+            <a href="http://wheatandcat.hatenablog.com/" target="_blank">
+              麦と猫のエンジニアブログ
+            </a>
+            <br />
           </Panel>
         </div>
-        <Footer/>
+        <Footer />
       </div>
     )
   }

@@ -1,18 +1,16 @@
 // @flow
 import React from "react"
-import {Character} from "../image/"
+import { Character } from "../image/"
 import styles from "./styles.css"
 
 type Props = {
-  list: Array<Object>,
+  list: Array<Object>
 }
 
-export default ({
-  list,
-}: Props) => (
+export default ({ list }: Props) => (
   <div className={styles.list}>
     <div>
-      {list.map((data) => {
+      {list.map(data => {
         return (
           <div key={data.ID}>
             <Character fileName={data.FileName} />

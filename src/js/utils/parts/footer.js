@@ -1,7 +1,7 @@
 import React from "react"
-import {Breadcrumb} from "react-bootstrap"
-import {FooterInfo} from "./../../../css/common.css"
-import {getTopUrl} from "../../utils/common"
+import { Breadcrumb } from "react-bootstrap"
+import { FooterInfo } from "./../../../css/common.css"
+import { getTopUrl } from "../../utils/common"
 
 export default class Footer extends React.Component {
   /**
@@ -9,7 +9,7 @@ export default class Footer extends React.Component {
    *
    * @return {object} html
    */
-  render () {
+  render() {
     return (
       <footer className={FooterInfo}>
         <Breadcrumb>
@@ -25,10 +25,16 @@ export default class Footer extends React.Component {
           <Breadcrumb.Item href={getTopUrl() + "information/terms"}>
             利用規約
           </Breadcrumb.Item>
-          <Breadcrumb.Item href="http://wheatandcat.hatenablog.com/" target="_blank">
+          <Breadcrumb.Item
+            href="http://wheatandcat.hatenablog.com/"
+            target="_blank"
+          >
             ブログ
           </Breadcrumb.Item>
-          <Breadcrumb.Item href="https://github.com/wheatandcat/dotstamp_ansible" target="_blank">
+          <Breadcrumb.Item
+            href="https://github.com/wheatandcat/dotstamp_ansible"
+            target="_blank"
+          >
             git
           </Breadcrumb.Item>
         </Breadcrumb>

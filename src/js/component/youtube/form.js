@@ -1,18 +1,18 @@
 import React, { Component } from "react"
-import {Alert, Button, ButtonGroup} from "react-bootstrap"
-import { PLAY, PAUSE, FINISHED} from "./player"
+import { Alert, Button, ButtonGroup } from "react-bootstrap"
+import { PLAY, PAUSE, FINISHED } from "./player"
 import { Player, ScreenButton, Video } from "./"
 
-var target :Object
+var target: Object
 
 type State = {
   status: number,
-  full?: boolean,
+  full?: boolean
 }
 
 type Props = {
   videoId: string,
-  label?: Object,
+  label?: Object
 }
 
 export default class Frame extends Component<*, Props, State> {
@@ -22,7 +22,7 @@ export default class Frame extends Component<*, Props, State> {
   props: Props
   state = {
     status: PAUSE,
-    full: false,
+    full: false
   }
   /**
    * 開始する
@@ -32,46 +32,46 @@ export default class Frame extends Component<*, Props, State> {
       return
     }
 
-    this.setState({status: PLAY})
+    this.setState({ status: PLAY })
     target.playVideo()
   }
   /**
    * 停止する
    */
   pause() {
-    this.setState({status: PAUSE})
+    this.setState({ status: PAUSE })
     target.pauseVideo()
   }
   /**
    * 準備する
    */
-  onReady(event :Object) {
+  onReady(event: Object) {
     target = event.target
   }
   /**
    * 終了する
    */
   onEnd() {
-    this.setState({status: FINISHED})
+    this.setState({ status: FINISHED })
   }
   /**
    * スクリーンを有効にする
    */
   onScreen() {
-    this.setState({full: true})
+    this.setState({ full: true })
   }
   /**
    * スクリーンを無効にする
    */
   offScreen() {
-    this.setState({full: false})
+    this.setState({ full: false })
   }
   /**
    * 描画する
    *
    * @return {object} html
    */
-  render () {
+  render() {
     if (this.props.videoId == "") {
       return (
         <Alert bsStyle="info">
@@ -80,7 +80,7 @@ export default class Frame extends Component<*, Props, State> {
       )
     }
 
-    const style = (this.state.full)? {display: "block"} : {height: 0}
+    const style = this.state.full ? { display: "block" } : { height: 0 }
 
     return (
       <Alert bsStyle="info">
@@ -97,7 +97,11 @@ export default class Frame extends Component<*, Props, State> {
           />
         </ButtonGroup>
         <div className="pull-right">
-          <Button bsStyle="link" href={"https://youtu.be/" + this.props.videoId} target="_blank">
+          <Button
+            bsStyle="link"
+            href={"https://youtu.be/" + this.props.videoId}
+            target="_blank"
+          >
             YouTubeで視聴
           </Button>
         </div>

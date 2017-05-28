@@ -1,24 +1,24 @@
 // @flow
 import React from "react"
-import {shallow} from "enzyme"
-import {TagList} from "./"
+import { shallow } from "enzyme"
+import { TagList } from "./"
 
 function setup() {
   const props = {
     list: [
       {
         ID: 1,
-        Name: "abc",
+        Name: "abc"
       },
       {
         ID: 2,
-        Name: "def",
-      },
+        Name: "def"
+      }
     ],
-    onSearch: jest.fn(),
+    onSearch: jest.fn()
   }
 
-  const enzymeWrapper = shallow(<TagList {...props}/>)
+  const enzymeWrapper = shallow(<TagList {...props} />)
 
   return {
     props,
@@ -30,5 +30,4 @@ describe("component/tag/tagList", () => {
   it("表示", () => {
     setup()
   })
-
 })

@@ -1,11 +1,11 @@
 // @flow
-import React, {Component} from "react"
-import {FormGroup, Button, Form} from "react-bootstrap"
-import {Link} from "react-router-dom"
-import {Platform} from "./"
+import React, { Component } from "react"
+import { FormGroup, Button, Form } from "react-bootstrap"
+import { Link } from "react-router-dom"
+import { Platform } from "./"
 
 type Props = {
-  onLogin: Function,
+  onLogin: Function
 }
 
 export default class LoginInput extends Component {
@@ -24,8 +24,10 @@ export default class LoginInput extends Component {
             name="user"
             className="form-control"
             placeholder="メールアドレス"
-            ref={input => { this.email = input }}
-        />
+            ref={input => {
+              this.email = input
+            }}
+          />
         </FormGroup>
         <Form componentClass="fieldset" inline>
           <FormGroup controlId="formHorizontalPassword">
@@ -35,12 +37,18 @@ export default class LoginInput extends Component {
               id="password"
               name="password"
               placeholder="パスワード"
-              ref={input => { this.password = input }}
+              ref={input => {
+                this.password = input
+              }}
               size="45"
             />&nbsp;&nbsp;
             <Button
               bsStyle="success"
-              onClick={() => this.props.onLogin(this.email.value.trim(), this.password.value.trim())}
+              onClick={() =>
+                this.props.onLogin(
+                  this.email.value.trim(),
+                  this.password.value.trim()
+                )}
             >
               ログイン
             </Button>
@@ -49,13 +57,11 @@ export default class LoginInput extends Component {
             </Link>
             <hr />
             <br />
-            <Platform
-              label="ログイン"
-            />
+            <Platform label="ログイン" />
           </FormGroup>
         </Form>
-        <br/>
-        <br/>
+        <br />
+        <br />
         <Link to="/login/new">
           <Button bsStyle="link">メールアドレスを入力して登録する場合は、こちら</Button>
         </Link>

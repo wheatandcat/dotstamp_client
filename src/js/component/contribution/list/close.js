@@ -1,23 +1,24 @@
 // @flow
 import React from "react"
-import {Button, ButtonGroup, Glyphicon} from "react-bootstrap"
+import { Button, ButtonGroup, Glyphicon } from "react-bootstrap"
 
 type Props = {
   ID?: number,
-  onAdd: Function,
+  onAdd: Function
 }
 
-export default ({
-  ID,
-  onAdd,
-}: Props) => (
+export default ({ ID, onAdd }: Props) => (
   <div>
-    <br/>
+    <br />
     <ButtonGroup vertical block>
-      <Button bsSize="xsmall" onClick={() => onAdd(ID)} aria-label="chevron-down">
-        <Glyphicon glyph="chevron-down"/>
+      <Button
+        bsSize="xsmall"
+        onClick={() => onAdd(ID)}
+        aria-label="chevron-down"
+      >
+        <Glyphicon glyph="chevron-down" />
       </Button>
     </ButtonGroup>
-    <br/>
+    <br />
   </div>
 )

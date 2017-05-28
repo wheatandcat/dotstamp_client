@@ -1,16 +1,16 @@
 // @flow
 import React from "react"
-import {shallow} from "enzyme"
-import {Icon} from "./"
+import { shallow } from "enzyme"
+import { Icon } from "./"
 
 function setup() {
   const props = {
     fileName: "0.png",
     IconId: 1,
-    onDelete: jest.fn(),
+    onDelete: jest.fn()
   }
 
-  const enzymeWrapper = shallow(<Icon {...props}/>)
+  const enzymeWrapper = shallow(<Icon {...props} />)
 
   return {
     props,

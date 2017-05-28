@@ -1,12 +1,21 @@
-import {connect} from "react-redux"
+import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
 import Menu from "../components/menu"
-import {message} from "../../message/actions/show"
-import {openInformation, closeInformation, uploading, openUpload, closeUpload, makingMovie, open, close} from "../action/menu"
-import {fetchPostsIfNeeded} from "../../../utils/fetch"
+import { message } from "../../message/actions/show"
+import {
+  openInformation,
+  closeInformation,
+  uploading,
+  openUpload,
+  closeUpload,
+  makingMovie,
+  open,
+  close
+} from "../action/menu"
+import { fetchPostsIfNeeded } from "../../../utils/fetch"
 import * as types from "../../../constants/ActionTypes"
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
   return state
 }
 
@@ -39,17 +48,35 @@ function mapDispatchToProps(dispatch) {
     message: (val, type) => {
       dispatch(message(val, type))
     },
-    make: (action) => {
-      dispatch(fetchPostsIfNeeded("movie/make/", types.MAKE_SOUND_SHOW_MOVIE, action))
+    make: action => {
+      dispatch(
+        fetchPostsIfNeeded("movie/make/", types.MAKE_SOUND_SHOW_MOVIE, action)
+      )
     },
-    upload: (action) => {
-      dispatch(fetchPostsIfNeeded("movie/upload/", types.UPLOAD_SOUND_YOUTUBE, action)).then(() => {
-        dispatch(fetchPostsIfNeeded("sound/show/", types.GET_CONTRIBUTION_FORM_SOUND_DETAIL, action))
+    upload: action => {
+      dispatch(
+        fetchPostsIfNeeded("movie/upload/", types.UPLOAD_SOUND_YOUTUBE, action)
+      ).then(() => {
+        dispatch(
+          fetchPostsIfNeeded(
+            "sound/show/",
+            types.GET_CONTRIBUTION_FORM_SOUND_DETAIL,
+            action
+          )
+        )
       })
     },
-    reflect: (action) => {
-      dispatch(fetchPostsIfNeeded("sound/reflect/", types.REFLECT_SOUND_SHOW, action)).then(() => {
-        dispatch(fetchPostsIfNeeded("sound/show/", types.GET_CONTRIBUTION_FORM_SOUND_DETAIL, action))
+    reflect: action => {
+      dispatch(
+        fetchPostsIfNeeded("sound/reflect/", types.REFLECT_SOUND_SHOW, action)
+      ).then(() => {
+        dispatch(
+          fetchPostsIfNeeded(
+            "sound/show/",
+            types.GET_CONTRIBUTION_FORM_SOUND_DETAIL,
+            action
+          )
+        )
       })
     }
   }

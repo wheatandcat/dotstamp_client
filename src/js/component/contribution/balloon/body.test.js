@@ -1,15 +1,15 @@
 // @flow
 import React from "react"
-import {shallow} from "enzyme"
+import { shallow } from "enzyme"
 import Body from "./body"
 
-function setup(params :Object) {
+function setup(params: Object) {
   const props = {
     TalkType: params.Type,
-    Body: params.Talk,
+    Body: params.Talk
   }
 
-  const enzymeWrapper = shallow(<Body {...props}/>)
+  const enzymeWrapper = shallow(<Body {...props} />)
 
   return {
     props,
@@ -21,14 +21,14 @@ describe("component/contribution/balloon/body", () => {
   it("テキスト表示", () => {
     setup({
       Type: 1,
-      Talk: "abc",
+      Talk: "abc"
     })
   })
 
   it("画像表示", () => {
     setup({
       Type: 2,
-      Talk: "0.png",
+      Talk: "0.png"
     })
   })
 })

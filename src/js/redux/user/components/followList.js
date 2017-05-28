@@ -1,17 +1,14 @@
 import PropTypes from "prop-types"
-import React, {Component} from "react"
-import {PageHeader, Glyphicon} from "react-bootstrap"
-import {List} from "../../../component/contribution/list"
-import {Center} from "./../../../../css/common.css"
+import React, { Component } from "react"
+import { PageHeader, Glyphicon } from "react-bootstrap"
+import { List } from "../../../component/contribution/list"
+import { Center } from "./../../../../css/common.css"
 import Pagination from "../../../utils/parts/pagination"
 import Footer from "../../../utils/parts/footer"
 
 export default class FollowList extends Component {
   componentWillMount() {
-    this.getList(
-      this.props.match.params.page,
-      this.props.match.params.order
-    )
+    this.getList(this.props.match.params.page, this.props.match.params.order)
   }
   /**
    * リストを取得する
@@ -20,7 +17,11 @@ export default class FollowList extends Component {
    * @param {number} order 順番
    */
   getList(page, order) {
-    this.props.getList({order: order, page: page, limit: this.props.userFollowList.Limit})
+    this.props.getList({
+      order: order,
+      page: page,
+      limit: this.props.userFollowList.Limit
+    })
   }
   /**
    * ページングする
@@ -68,14 +69,14 @@ export default class FollowList extends Component {
       <div>
         <div className="container">
           <PageHeader>
-            &nbsp;&nbsp;<Glyphicon glyph="thumbs-up"/>&nbsp;フォロー済み投稿
+            &nbsp;&nbsp;<Glyphicon glyph="thumbs-up" />&nbsp;フォロー済み投稿
           </PageHeader>
         </div>
         <div className="container">
           <List List={list} />
         </div>
         {page}
-        <Footer/>
+        <Footer />
       </div>
     )
   }

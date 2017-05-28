@@ -1,30 +1,30 @@
 // @flow
 import React from "react"
-import {shallow} from "enzyme"
-import {Header} from "./"
+import { shallow } from "enzyme"
+import { Header } from "./"
 
 function setup() {
   const props = {
-    followElement: (<div />),
+    followElement: <div />,
     tagList: [
       {
         ID: 1,
-        Name: "abc",
+        Name: "abc"
       },
       {
         ID: 2,
-        Name: "def",
-      },
+        Name: "def"
+      }
     ],
     title: "abc",
     profileImageID: 1,
     userName: "abc",
     updatedAt: "2015-01-01T07:12:00+09:00",
     movieID: "",
-    openProblem: jest.fn(),
+    openProblem: jest.fn()
   }
 
-  const enzymeWrapper = shallow(<Header {...props}/>)
+  const enzymeWrapper = shallow(<Header {...props} />)
 
   return {
     props,

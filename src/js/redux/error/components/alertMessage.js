@@ -1,6 +1,6 @@
 import PropTypes from "prop-types"
-import React, {Component} from "react"
-import {Alert, Glyphicon} from "react-bootstrap"
+import React, { Component } from "react"
+import { Alert, Glyphicon } from "react-bootstrap"
 
 export default class AlertMessage extends Component {
   /**
@@ -15,7 +15,9 @@ export default class AlertMessage extends Component {
 
     return (
       <Alert bsStyle="danger">
-        <Glyphicon glyph="remove" onClick={() => this.props.closeAlert()}/>&nbsp;{this.props.errorAlertMessage.Message}
+        <Glyphicon glyph="remove" onClick={() => this.props.closeAlert()} />
+        &nbsp;
+        {this.props.errorAlertMessage.Message}
       </Alert>
     )
   }

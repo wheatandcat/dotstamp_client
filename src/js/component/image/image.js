@@ -1,7 +1,7 @@
 // @flow
 import React from "react"
-import {Image} from "react-bootstrap"
-import {getFileName} from "./plain"
+import { Image } from "react-bootstrap"
+import { getFileName } from "./plain"
 
 type Props = {
   dir: string,
@@ -11,7 +11,7 @@ type Props = {
   circle?: boolean,
   onMouseOver?: Function,
   onMouseOut?: Function,
-  onClick?: Function,
+  onClick?: Function
 }
 
 export default ({
@@ -22,7 +22,7 @@ export default ({
   circle,
   onMouseOver,
   onMouseOut,
-  onClick,
+  onClick
 }: Props) => (
   <Image
     className={className}

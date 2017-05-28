@@ -11,12 +11,12 @@ describe("login/reducers/new", () => {
     const result = reducer(undefined, {
       type: types.SET_LOGIN_USER,
       response: {
-        state: 1,
+        state: 1
       }
     })
 
     expect(result).toEqual({
-      state: 1,
+      state: 1
     })
   })
 })

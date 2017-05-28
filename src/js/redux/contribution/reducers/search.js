@@ -12,8 +12,7 @@ const initialState = {
 
 export default function List(state = initialState, action) {
   switch (action.type) {
-  case types.GET_CONTRIBUTION_SEARCH_LIST:
-    {
+    case types.GET_CONTRIBUTION_SEARCH_LIST: {
       state.List = action.response.List
       state.Count = action.response.Count
 
@@ -21,24 +20,21 @@ export default function List(state = initialState, action) {
       state.Page = action.receiveParam.page
       state.Order = action.receiveParam.order
 
-
       return JSON.parse(JSON.stringify(state))
     }
-  case types.PAGING_CONTRIBUTION_SEARCH_LIST:
-    {
+    case types.PAGING_CONTRIBUTION_SEARCH_LIST: {
       state.Search = action.search
       state.Page = action.page
       state.Order = action.order
 
       return JSON.parse(JSON.stringify(state))
     }
-  case types.SET_CONTRIBUTION_SEARCH_ORDER:
-    {
+    case types.SET_CONTRIBUTION_SEARCH_ORDER: {
       state.Order = action.order
 
       return JSON.parse(JSON.stringify(state))
     }
-  default:
-    return state
+    default:
+      return state
   }
 }

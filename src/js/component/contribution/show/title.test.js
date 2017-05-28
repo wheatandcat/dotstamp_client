@@ -1,25 +1,25 @@
 // @flow
 import React from "react"
-import {shallow} from "enzyme"
-import {Title} from "./"
+import { shallow } from "enzyme"
+import { Title } from "./"
 
 function setup() {
   const props = {
-    followElement: (<div />),
+    followElement: <div />,
     tagList: [
       {
         ID: 1,
-        Name: "abc",
+        Name: "abc"
       },
       {
         ID: 2,
-        Name: "def",
-      },
+        Name: "def"
+      }
     ],
-    title: "abc",
+    title: "abc"
   }
 
-  const enzymeWrapper = shallow(<Title {...props}/>)
+  const enzymeWrapper = shallow(<Title {...props} />)
 
   return {
     props,

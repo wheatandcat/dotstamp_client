@@ -1,4 +1,4 @@
-import {setIcon} from "../../../redux/character/actions/list"
+import { setIcon } from "../../../redux/character/actions/list"
 import * as types from "../../../constants/ActionTypes"
 
 describe("character/action/list", () => {

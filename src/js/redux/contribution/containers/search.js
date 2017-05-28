@@ -1,8 +1,8 @@
-import {connect} from "react-redux"
+import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
 import Search from "../components/search"
-import {fetchPostsIfNeeded} from "../../../utils/fetch"
-import {setOrder, paging} from "../actions/search"
+import { fetchPostsIfNeeded } from "../../../utils/fetch"
+import { setOrder, paging } from "../actions/search"
 import * as types from "../../../constants/ActionTypes"
 
 function mapStateToProps(state) {
@@ -11,13 +11,20 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    search: (action) => {
-      dispatch(fetchPostsIfNeeded("contribution/search/", types.GET_CONTRIBUTION_SEARCH_LIST, action, action))
+    search: action => {
+      dispatch(
+        fetchPostsIfNeeded(
+          "contribution/search/",
+          types.GET_CONTRIBUTION_SEARCH_LIST,
+          action,
+          action
+        )
+      )
     },
     paging: (search, order, page) => {
       dispatch(paging(search, order, page))
     },
-    setOrder: (order) => {
+    setOrder: order => {
       dispatch(setOrder(order))
     }
   }

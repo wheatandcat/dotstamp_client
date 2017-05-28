@@ -4,10 +4,10 @@ import ErrorShow from "./redux/error/containers/show"
 import Header from "./utils/parts/header"
 
 export default class Menu extends Component {
-  render () {
+  render() {
     return (
       <div>
-        <Header/>
+        <Header />
         {this.props.children}
         <ErrorShow />
       </div>
@@ -16,5 +16,5 @@ export default class Menu extends Component {
 }
 
 Menu.propTypes = {
-  children: PropTypes.object,
+  children: PropTypes.object
 }

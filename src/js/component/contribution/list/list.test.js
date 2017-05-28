@@ -1,6 +1,6 @@
 // @flow
 import React from "react"
-import {shallow} from "enzyme"
+import { shallow } from "enzyme"
 import List from "./list"
 
 function setup(params: Object) {
@@ -12,7 +12,7 @@ function setup(params: Object) {
           ID: 1,
           Movie: {
             movie_id: "test",
-            movie_status: 1,
+            movie_status: 1
           },
           Search: "abctestedfgtuk\njshajkhfkznfklj\njdhjksdhjdklh",
           OnSearch: jest.fn(),
@@ -22,12 +22,12 @@ function setup(params: Object) {
             {
               ID: 1,
               Name: "tag1",
-              UserContributionID: 2,
+              UserContributionID: 2
             },
             {
               ID: 2,
               Name: "tag2",
-              UserContributionID: 2,
+              UserContributionID: 2
             }
           ],
           Title: "test",
@@ -35,16 +35,14 @@ function setup(params: Object) {
           User: {
             ID: 1,
             Name: "name",
-            ProfileImageID: 0,
+            ProfileImageID: 0
           },
-          ViewStatus: 1,
+          ViewStatus: 1
         },
-        Bottom:(
-          <div />
-        )
+        Bottom: <div />
       }
     ],
-    Content: params.Content,
+    Content: params.Content
   }
 
   const enzymeWrapper = shallow(<List {...props} />)
@@ -58,13 +56,13 @@ function setup(params: Object) {
 describe("components/contribution/list/list", () => {
   it("表示", () => {
     setup({
-      Content: false,
+      Content: false
     })
   })
 
   it("Content", () => {
     setup({
-      Content: true,
+      Content: true
     })
   })
 })

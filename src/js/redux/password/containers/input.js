@@ -1,7 +1,7 @@
-import {connect} from "react-redux"
+import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
 import Input from "../components/input"
-import {fetchPostsIfNeeded} from "../../../utils/fetch"
+import { fetchPostsIfNeeded } from "../../../utils/fetch"
 import * as types from "../../../constants/ActionTypes"
 
 function mapStateToProps(state) {
@@ -10,8 +10,14 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    add: (ation) => {
-      dispatch(fetchPostsIfNeeded("user/forget_password/add/", types.ADD_PASSWORD, ation))
+    add: ation => {
+      dispatch(
+        fetchPostsIfNeeded(
+          "user/forget_password/add/",
+          types.ADD_PASSWORD,
+          ation
+        )
+      )
     }
   }
 }

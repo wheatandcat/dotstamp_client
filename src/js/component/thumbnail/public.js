@@ -1,10 +1,10 @@
 // @flow
 import React from "react"
-import {Media, Glyphicon} from "react-bootstrap"
+import { Media, Glyphicon } from "react-bootstrap"
 import Icon from "../icon/icon"
-import {TagList} from "../tag/"
-import {Link} from "react-router-dom"
-import {DateFormat} from "../../utils/common"
+import { TagList } from "../tag/"
+import { Link } from "react-router-dom"
+import { DateFormat } from "../../utils/common"
 import styles from "./styles.css"
 
 type Props = {
@@ -16,7 +16,7 @@ type Props = {
   Title: string,
   UpdatedAt: string,
   User: Object,
-  OnSearch?: Function,
+  OnSearch?: Function
 }
 
 export default ({
@@ -28,11 +28,11 @@ export default ({
   Title,
   UpdatedAt,
   User,
-  OnSearch,
+  OnSearch
 }: Props) => (
   <Media>
     <Media.Left className={styles.Image} align="middle">
-      <Icon ID={User.ProfileImageID}/>
+      <Icon ID={User.ProfileImageID} />
     </Media.Left>
     <Media.Body className={styles.Body}>
       <p>
@@ -43,7 +43,7 @@ export default ({
           {Title}
         </Link>
         <div className={styles.Gap}>
-          <TagList list={Tag} onSearch={OnSearch}/>
+          <TagList list={Tag} onSearch={OnSearch} />
         </div>
       </Media.Heading>
       <div>
@@ -51,7 +51,7 @@ export default ({
       </div>
     </Media.Body>
     <Media.Right className={styles.Follow}>
-      <Glyphicon glyph="thumbs-up"/>
+      <Glyphicon glyph="thumbs-up" />
       <span className={styles.LittleStrong}>&nbsp;{FollowCount}</span>
     </Media.Right>
   </Media>

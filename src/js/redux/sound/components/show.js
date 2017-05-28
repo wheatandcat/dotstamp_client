@@ -1,16 +1,29 @@
 import PropTypes from "prop-types"
 import React, { Component } from "react"
-import {Alert, FormGroup, ControlLabel, ButtonToolbar, Modal, MenuItem, Dropdown, FormControl, Table, PageHeader, Glyphicon, Button} from "react-bootstrap"
-import {VOICE_TYPE, VOICE_TYPE_MAP} from "../../../constants/common"
-import {MAKE_STATUS_MADE} from "../../../constants/contribution"
-import {TALK_TYPE_IMAGE} from "../../contribution/actions/talk"
-import {Talk} from "../../../component/image/"
-import {getTopUrl} from "../../../utils/common"
+import {
+  Alert,
+  FormGroup,
+  ControlLabel,
+  ButtonToolbar,
+  Modal,
+  MenuItem,
+  Dropdown,
+  FormControl,
+  Table,
+  PageHeader,
+  Glyphicon,
+  Button
+} from "react-bootstrap"
+import { VOICE_TYPE, VOICE_TYPE_MAP } from "../../../constants/common"
+import { MAKE_STATUS_MADE } from "../../../constants/contribution"
+import { TALK_TYPE_IMAGE } from "../../contribution/actions/talk"
+import { Talk } from "../../../component/image/"
+import { getTopUrl } from "../../../utils/common"
 import Menu from "../containers/menu"
 
 import Footer from "../../../utils/parts/footer"
-import {Input, InputText, InputTextBox} from "../../../../css/sound.css"
-import {Middle} from "../../../../css/common.css"
+import { Input, InputText, InputTextBox } from "../../../../css/sound.css"
+import { Middle } from "../../../../css/common.css"
 import Sound from "../../../utils/sound"
 import MessageSow from "../../message/containers/show"
 
@@ -30,7 +43,7 @@ export default class Show extends Component {
     this.props.offMovieMakeListener()
 
     setTimeout(() => {
-      this.props.check({userContributionId: this.props.match.params.id})
+      this.props.check({ userContributionId: this.props.match.params.id })
     }, 30000)
   }
   /**
@@ -39,7 +52,7 @@ export default class Show extends Component {
      * @param  {numbet} id 投稿ID
      */
   getDeatil(id) {
-    this.props.getDetail({userContributionId: id})
+    this.props.getDetail({ userContributionId: id })
   }
   /**
      * 音声本文を変更する
@@ -47,7 +60,10 @@ export default class Show extends Component {
      * @param  {object} e エレメント
      */
   changeBodySound(e) {
-    this.props.changeBodySound(e.target.id.replace("body_sound-", ""), e.target.value)
+    this.props.changeBodySound(
+      e.target.id.replace("body_sound-", ""),
+      e.target.value
+    )
   }
   /**
      * ボイスタイプを設定する
@@ -55,9 +71,13 @@ export default class Show extends Component {
      * @param  {string} voiceType ボイスタイプ
      */
   setVoiceType(voiceType) {
-    let tmp = voiceType.split("_")
+    const tmp = voiceType.split("_")
     this.props.changeVoiceType(tmp[0], tmp[1])
-    this.props.saveVoiceType({id: tmp[2], voice_type: tmp[1], priority: tmp[0]})
+    this.props.saveVoiceType({
+      id: tmp[2],
+      voice_type: tmp[1],
+      priority: tmp[0]
+    })
 
     this.props.message("保存しました", "success")
   }
@@ -75,11 +95,11 @@ export default class Show extends Component {
 
     return (
       <Dropdown id="voiceType" onSelect={this.setVoiceType.bind(this)}>
-        <Dropdown.Toggle >
-          <Glyphicon glyph="volume-up"/>&nbsp;{voiceType}&nbsp;&nbsp;
+        <Dropdown.Toggle>
+          <Glyphicon glyph="volume-up" />&nbsp;{voiceType}&nbsp;&nbsp;
         </Dropdown.Toggle>
         <Dropdown.Menu>
-          {VOICE_TYPE.map((voive) => {
+          {VOICE_TYPE.map(voive => {
             let option = {}
             if (item.voice_type == voive.type) {
               option = {
@@ -88,7 +108,11 @@ export default class Show extends Component {
             }
 
             return (
-              <MenuItem key={item.Priority + "_" + voive.type} eventKey={item.Priority + "_" + voive.type + "_" + item.ID} {...option}>
+              <MenuItem
+                key={item.Priority + "_" + voive.type}
+                eventKey={item.Priority + "_" + voive.type + "_" + item.ID}
+                {...option}
+              >
                 &nbsp;&nbsp;&nbsp;{voive.name}&nbsp;&nbsp;
               </MenuItem>
             )
@@ -104,10 +128,10 @@ export default class Show extends Component {
      * @return {string} 改行変換後テキスト
      */
   changeBr(text) {
-    let regex = /(\n)/g
+    const regex = /(\n)/g
     return text.split(regex).map(function(line, i) {
       if (line.match(regex)) {
-        return <br key={i}/>
+        return <br key={i} />
       } else {
         return line
       }
@@ -136,7 +160,11 @@ export default class Show extends Component {
      * @param  {number} id       ID
      */
   saveBodySound(priority, id) {
-    this.props.saveBodySound({id: id, body: this.props.soundShow.List[priority].body_sound, priority: priority})
+    this.props.saveBodySound({
+      id: id,
+      body: this.props.soundShow.List[priority].body_sound,
+      priority: priority
+    })
 
     this.props.message("保存しました", "success")
   }
@@ -149,8 +177,21 @@ export default class Show extends Component {
   getItem(item) {
     let make = ""
     if (item.make_status == MAKE_STATUS_MADE) {
-      let name = item.user_contribution_id + "_" + item.Priority
-      make = (<Sound url={getTopUrl() + "static/files/tmp/sound/" + name + ".wav?=" + (new Date().getTime())} repeat="" play="" pause=""/>)
+      const name = item.user_contribution_id + "_" + item.Priority
+      make = (
+        <Sound
+          url={
+            getTopUrl() +
+              "static/files/tmp/sound/" +
+              name +
+              ".wav?=" +
+              new Date().getTime()
+          }
+          repeat=""
+          play=""
+          pause=""
+        />
+      )
     }
 
     return (
@@ -162,7 +203,14 @@ export default class Show extends Component {
           {this.getBodyDetail(item)}
         </td>
         <td className={InputTextBox}>
-          <FormControl componentClass="textarea" placeholder="読み上げ本文。空の場合は、読み上げをスルーします" value={item.body_sound} onChange={this.changeBodySound.bind(this)} id={"body_sound-" + item.Priority} className={InputText}/>
+          <FormControl
+            componentClass="textarea"
+            placeholder="読み上げ本文。空の場合は、読み上げをスルーします"
+            value={item.body_sound}
+            onChange={this.changeBodySound.bind(this)}
+            id={"body_sound-" + item.Priority}
+            className={InputText}
+          />
         </td>
         <td className={Middle}>
           <Button onClick={() => this.saveBodySound(item.Priority, item.ID)}>
@@ -182,7 +230,10 @@ export default class Show extends Component {
      * ボイスタイプリストを保存する
      */
   saveVoiceTypeList() {
-    this.props.saveVoiceTypeList({userContributionId: this.props.match.params.id, voiceType: this.selectVoice.value})
+    this.props.saveVoiceTypeList({
+      userContributionId: this.props.match.params.id,
+      voiceType: this.selectVoice.value
+    })
 
     this.props.message("音声タイプの一括変更を実行", "success")
   }
@@ -191,7 +242,11 @@ export default class Show extends Component {
      */
   getVoiceTypeList() {
     return (
-      <Modal show={this.props.soundShow.VoiceList} onHide={this.props.closeVoiceList} bsSize="large">
+      <Modal
+        show={this.props.soundShow.VoiceList}
+        onHide={this.props.closeVoiceList}
+        bsSize="large"
+      >
         <Modal.Header closeButton>
           <Modal.Title>一括で音声タイプを変更する</Modal.Title>
         </Modal.Header>
@@ -199,16 +254,22 @@ export default class Show extends Component {
           <div>
             <Alert bsStyle="info">
               一括で変換する音声タイプを選択して下さい。
-              <br/>
-              <br/>
+              <br />
+              <br />
               <FormGroup controlId="formControlsSelect" bsSize="small">
                 <ControlLabel>音声タイプ</ControlLabel>
-                <FormControl componentClass="select" placeholder="select" inputRef={ref => {
-                  this.selectVoice = ref
-                }}>
-                  {VOICE_TYPE.map((voive) => {
+                <FormControl
+                  componentClass="select"
+                  placeholder="select"
+                  inputRef={ref => {
+                    this.selectVoice = ref
+                  }}
+                >
+                  {VOICE_TYPE.map(voive => {
                     return (
-                      <option value={voive.type} key={voive.type}>{voive.name}</option>
+                      <option value={voive.type} key={voive.type}>
+                        {voive.name}
+                      </option>
                     )
                   })}
                 </FormControl>
@@ -218,10 +279,12 @@ export default class Show extends Component {
           <ButtonToolbar>
             <Button onClick={this.props.closeVoiceList}>キャンセル</Button>
             &nbsp; &nbsp;
-            <Button bsStyle="warning" onClick={() => this.saveVoiceTypeList()}>一括で変更する</Button>
+            <Button bsStyle="warning" onClick={() => this.saveVoiceTypeList()}>
+              一括で変更する
+            </Button>
           </ButtonToolbar>
         </Modal.Body>
-        <Modal.Footer></Modal.Footer>
+        <Modal.Footer />
       </Modal>
     )
   }
@@ -234,12 +297,12 @@ export default class Show extends Component {
     return (
       <div>
         {this.getVoiceTypeList()}
-        <MessageSow/>
+        <MessageSow />
         <div className="container">
           <PageHeader>
-            &nbsp;&nbsp;<Glyphicon glyph="bullhorn"/>&nbsp;読み上げを編集する（β版）
+            &nbsp;&nbsp;<Glyphicon glyph="bullhorn" />&nbsp;読み上げを編集する（β版）
           </PageHeader>
-          <Menu userContributionId={this.props.match.params.id}/>
+          <Menu userContributionId={this.props.match.params.id} />
         </div>
         <div className={"container " + Input}>
           <Table striped bordered condensed hover>
@@ -251,13 +314,20 @@ export default class Show extends Component {
                 <th>操作</th>
                 <th>
                   音声タイプ設定
-                  <Dropdown id="sound-voice-dropdown-1" className="pull-right" pullRight>
+                  <Dropdown
+                    id="sound-voice-dropdown-1"
+                    className="pull-right"
+                    pullRight
+                  >
                     <Dropdown.Toggle noCaret bsSize="xsmall">
-                      <Glyphicon glyph="list"/>
+                      <Glyphicon glyph="list" />
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                      <MenuItem eventKey="1" onClick={() => this.props.openVoiceList()}>
-                        <Glyphicon glyph="bullhorn"/>&nbsp;&nbsp;一括で音声タイプを変更する
+                      <MenuItem
+                        eventKey="1"
+                        onClick={() => this.props.openVoiceList()}
+                      >
+                        <Glyphicon glyph="bullhorn" />&nbsp;&nbsp;一括で音声タイプを変更する
                       </MenuItem>
                     </Dropdown.Menu>
                   </Dropdown>
@@ -266,13 +336,13 @@ export default class Show extends Component {
               </tr>
             </thead>
             <tbody>
-              {this.props.soundShow.List.map((item) => {
+              {this.props.soundShow.List.map(item => {
                 return this.getItem(item)
               })}
             </tbody>
           </Table>
         </div>
-        <Footer/>
+        <Footer />
       </div>
     )
   }

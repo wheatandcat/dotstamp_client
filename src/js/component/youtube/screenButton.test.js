@@ -1,16 +1,16 @@
 // @flow
 import React from "react"
-import {shallow} from "enzyme"
-import {ScreenButton} from "./"
+import { shallow } from "enzyme"
+import { ScreenButton } from "./"
 
-function setup(params :Object) {
+function setup(params: Object) {
   const props = {
     full: params.full,
     onFull: jest.fn(),
-    onSmaill: jest.fn(),
+    onSmaill: jest.fn()
   }
 
-  const enzymeWrapper = shallow(<ScreenButton {...props}/>)
+  const enzymeWrapper = shallow(<ScreenButton {...props} />)
 
   return {
     props,
@@ -20,17 +20,16 @@ function setup(params :Object) {
 
 describe("components/youtube/screenButton", () => {
   it("full", () => {
-    const { props, enzymeWrapper } = setup({full: true})
+    const { props, enzymeWrapper } = setup({ full: true })
 
     enzymeWrapper.simulate("click")
     expect(props.onSmaill).toHaveBeenCalled()
   })
 
   it("small", () => {
-    const { props, enzymeWrapper } = setup({full: false})
+    const { props, enzymeWrapper } = setup({ full: false })
 
     enzymeWrapper.simulate("click")
     expect(props.onFull).toHaveBeenCalled()
   })
-
 })

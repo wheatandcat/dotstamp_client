@@ -32,9 +32,8 @@ function replaceBody(body) {
 
 export default function Talk(state = initialState, action) {
   switch (action.type) {
-  case types.EDIT_CONTRIBUTION_FORM_BODY_IMAGE:
-    {
-      let priority = action.receiveParam.Priority
+    case types.EDIT_CONTRIBUTION_FORM_BODY_IMAGE: {
+      const priority = action.receiveParam.Priority
 
       list[priority].Body = action.response.Path
       list[priority].Character = action.receiveParam.Character
@@ -46,30 +45,42 @@ export default function Talk(state = initialState, action) {
 
       return state
     }
-  case types.GET_CONTRIBUTION_EDIT:
-    {
+    case types.GET_CONTRIBUTION_EDIT: {
       list = action.response.Body
       return list
     }
 
-  case types.UPLOAD_CONTRIBUTION_FORM:
-    {
-      list.push(getAddBodyState(action.receiveParam.character, action.response.Path, action.receiveParam.talkType, action.receiveParam.directionType, list.length))
+    case types.UPLOAD_CONTRIBUTION_FORM: {
+      list.push(
+        getAddBodyState(
+          action.receiveParam.character,
+          action.response.Path,
+          action.receiveParam.talkType,
+          action.receiveParam.directionType,
+          list.length
+        )
+      )
 
       state = list.concat()
 
       return state
     }
-  case types.ADD_CONTRIBUTION_FORM_BODY:
-    {
-      list.push(getAddBodyState(action.character, action.body, action.talkType, action.directionType, list.length))
+    case types.ADD_CONTRIBUTION_FORM_BODY: {
+      list.push(
+        getAddBodyState(
+          action.character,
+          action.body,
+          action.talkType,
+          action.directionType,
+          list.length
+        )
+      )
 
       state = list.concat()
 
       return state
     }
-  case types.EDIT_CONTRIBUTION_FORM_BODY:
-    {
+    case types.EDIT_CONTRIBUTION_FORM_BODY: {
       list[action.priority].Body = replaceBody(action.body)
       list[action.priority].Character = action.character
       list[action.priority].TalkType = action.talkType
@@ -80,11 +91,10 @@ export default function Talk(state = initialState, action) {
 
       return state
     }
-  case types.SET_CONTRIBUTION_TALK_EDIT_BODY:
-    {
-      let editList = []
-      for (let value of list) {
-        value.Edit = (value.Priority == action.priority)
+    case types.SET_CONTRIBUTION_TALK_EDIT_BODY: {
+      const editList = []
+      for (const value of list) {
+        value.Edit = value.Priority == action.priority
         editList.push(value)
       }
 
@@ -92,28 +102,24 @@ export default function Talk(state = initialState, action) {
 
       return state
     }
-  case types.DELETE_CONTRIBUTION_TALK_BODY:
-    {
+    case types.DELETE_CONTRIBUTION_TALK_BODY: {
       list.splice(action.priority, 1)
 
-      list.forEach((obj, key) => obj["Priority"] = key)
-      list.forEach((obj) => obj["Edit"] = false)
+      list.forEach((obj, key) => (obj["Priority"] = key))
+      list.forEach(obj => (obj["Edit"] = false))
       state = list.concat()
 
       return state
     }
-  case types.SET_CONTRIBUTION_TALK_LIST:
-    {
-
+    case types.SET_CONTRIBUTION_TALK_LIST: {
       return action.talkList.concat()
     }
-  case types.DELETE_CONTRIBUTION_SHOW:
-  case types.INIT_CONTRIBUTION_NEW:
-    {
+    case types.DELETE_CONTRIBUTION_SHOW:
+    case types.INIT_CONTRIBUTION_NEW: {
       list = []
       return JSON.parse(JSON.stringify(initialState))
     }
-  default:
-    return state
+    default:
+      return state
   }
 }

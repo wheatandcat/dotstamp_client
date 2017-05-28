@@ -1,7 +1,7 @@
 // @flow
 import React from "react"
-import {shallow} from "enzyme"
-import {Follow} from "./"
+import { shallow } from "enzyme"
+import { Follow } from "./"
 
 function setup(params: Object) {
   const props = {
@@ -9,10 +9,10 @@ function setup(params: Object) {
     actived: params.actived,
     disabled: params.disabled,
     onAdd: jest.fn(),
-    onDelete: jest.fn(),
+    onDelete: jest.fn()
   }
 
-  const enzymeWrapper = shallow(<Follow {...props}/>)
+  const enzymeWrapper = shallow(<Follow {...props} />)
 
   return {
     props,
@@ -24,28 +24,28 @@ describe("component/contribution/show/follow", () => {
   it("表示", () => {
     setup({
       actived: false,
-      disabled: false,
+      disabled: false
     })
   })
 
   it("actived", () => {
     setup({
       actived: true,
-      disabled: false,
+      disabled: false
     })
   })
 
   it("disabled", () => {
     setup({
       actived: false,
-      disabled: true,
+      disabled: true
     })
   })
 
   it("on click add", () => {
     const { props, enzymeWrapper } = setup({
       actived: false,
-      disabled: false,
+      disabled: false
     })
 
     enzymeWrapper.find("Button").simulate("click")
@@ -55,7 +55,7 @@ describe("component/contribution/show/follow", () => {
   it("on click delete", () => {
     const { props, enzymeWrapper } = setup({
       actived: true,
-      disabled: false,
+      disabled: false
     })
 
     enzymeWrapper.find("Button").simulate("click")

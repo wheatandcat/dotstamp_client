@@ -11,24 +11,21 @@ const initialState = {
 
 export default function Mypage(state = initialState, action) {
   switch (action.type) {
-  case types.SET_USER:
-    {
+    case types.SET_USER: {
       return Object.assign({}, state, {
         User: action.response.User,
         Profile: action.response.Profile
       })
     }
-  case types.CHANGE_USER_NAME:
-    {
+    case types.CHANGE_USER_NAME: {
       state.User.Name = action.name
 
       return JSON.parse(JSON.stringify(state))
     }
-  case types.SAVE_USER:
-    {
+    case types.SAVE_USER: {
       return JSON.parse(JSON.stringify(state))
     }
-  default:
-    return state
+    default:
+      return state
   }
 }

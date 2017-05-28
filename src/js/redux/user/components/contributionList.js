@@ -1,12 +1,27 @@
 import PropTypes from "prop-types"
 import React, { Component } from "react"
-import {Link} from "react-router-dom"
-import {Typeahead} from "react-bootstrap-typeahead"
-import {Modal, Tabs, Tab, PageHeader, Glyphicon, Row, Col, Nav, NavItem, ButtonToolbar, Button} from "react-bootstrap"
+import { Link } from "react-router-dom"
+import { Typeahead } from "react-bootstrap-typeahead"
+import {
+  Modal,
+  Tabs,
+  Tab,
+  PageHeader,
+  Glyphicon,
+  Row,
+  Col,
+  Nav,
+  NavItem,
+  ButtonToolbar,
+  Button
+} from "react-bootstrap"
 import ContributionShow from "../../contribution/containers/show"
-import {DateTimeFormat} from "../../../utils/common"
+import { DateTimeFormat } from "../../../utils/common"
 
-import {VIEW_STATUS_PUBLIC, VIEW_STATUS_PRIVATE} from "../../../constants/contribution"
+import {
+  VIEW_STATUS_PUBLIC,
+  VIEW_STATUS_PRIVATE
+} from "../../../constants/contribution"
 var load = false
 var tite = ""
 export default class ContributionList extends Component {
@@ -74,13 +89,13 @@ export default class ContributionList extends Component {
      * @param  {string} text テキスト
      */
   searchTitle(text) {
-    let list = []
+    const list = []
     let count = 0
-    let all = this.props.userContributionList.All
-    let length = all.length
+    const all = this.props.userContributionList.All
+    const length = all.length
     tite = text
 
-    all.forEach((item) => {
+    all.forEach(item => {
       if (item.Title.indexOf(text) != -1) {
         if (item.view_status == this.props.userContributionList.ViewStatus) {
           list.push(item)
@@ -107,17 +122,30 @@ export default class ContributionList extends Component {
      */
   getDeleteConfirm() {
     return (
-      <Modal show={this.props.userContributionList.DeleteConfirm} onHide={this.props.closeDeleteConfirm}>
+      <Modal
+        show={this.props.userContributionList.DeleteConfirm}
+        onHide={this.props.closeDeleteConfirm}
+      >
         <Modal.Header closeButton>
           <Modal.Title>投稿削除</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           投稿を削除します。よろしいですか？
-          <br/>
-          <br/>
+          <br />
+          <br />
           <ButtonToolbar>
-            <Button bsStyle="danger" onClick={() => this.deleteContribution(this.props.userContributionList.ContributionId)}>削除する</Button>
-            <Button onClick={() => this.props.closeDeleteConfirm()}>キャンセル</Button>
+            <Button
+              bsStyle="danger"
+              onClick={() =>
+                this.deleteContribution(
+                  this.props.userContributionList.ContributionId
+                )}
+            >
+              削除する
+            </Button>
+            <Button onClick={() => this.props.closeDeleteConfirm()}>
+              キャンセル
+            </Button>
           </ButtonToolbar>
         </Modal.Body>
       </Modal>
@@ -137,13 +165,19 @@ export default class ContributionList extends Component {
 
     return (
       <ButtonToolbar>
-        <Link to={this.getEditPath(this.props.userContributionList.ContributionId)}>
+        <Link
+          to={this.getEditPath(this.props.userContributionList.ContributionId)}
+        >
           <Button bsStyle="success" disabled={disabled}>
-            <Glyphicon glyph="edit"/>&nbsp;編集
+            <Glyphicon glyph="edit" />&nbsp;編集
           </Button>
         </Link>
-        <Button bsStyle="danger" onClick={() => this.props.openDeleteConfirm()} disabled={disabled}>
-          <Glyphicon glyph="trash"/>&nbsp;削除
+        <Button
+          bsStyle="danger"
+          onClick={() => this.props.openDeleteConfirm()}
+          disabled={disabled}
+        >
+          <Glyphicon glyph="trash" />&nbsp;削除
         </Button>
         {text}
       </ButtonToolbar>
@@ -175,12 +209,14 @@ export default class ContributionList extends Component {
     } else {
       side = (
         <Nav bsStyle="pills" stacked>
-          {list.map((item) => <NavItem key={item.ID} eventKey={item.ID}>
-            <p>
-              {item.Title}
-            </p>
-            {DateTimeFormat(item.CreatedAt)}
-          </NavItem>)}
+          {list.map(item => (
+            <NavItem key={item.ID} eventKey={item.ID}>
+              <p>
+                {item.Title}
+              </p>
+              {DateTimeFormat(item.CreatedAt)}
+            </NavItem>
+          ))}
         </Nav>
       )
     }
@@ -189,12 +225,16 @@ export default class ContributionList extends Component {
 
     if (this.props.userContributionList.ContributionId != 0) {
       contribution = (
-        <div style={{
-          zoom: "75%"
-        }}>
-          <ContributionShow params={{
-            id: 0
-          }}/>
+        <div
+          style={{
+            zoom: "75%"
+          }}
+        >
+          <ContributionShow
+            params={{
+              id: 0
+            }}
+          />
         </div>
       )
     }
@@ -203,23 +243,38 @@ export default class ContributionList extends Component {
       <div className="container">
         {this.getDeleteConfirm()}
         <PageHeader>
-          <Glyphicon glyph="list-alt"/>&nbsp;投稿一覧
+          <Glyphicon glyph="list-alt" />&nbsp;投稿一覧
         </PageHeader>
-        <Tab.Container id="left-tabs-example" onSelect={this.setContribution.bind(this)} activeKey={this.props.userContributionList.ContributionId}>
+        <Tab.Container
+          id="left-tabs-example"
+          onSelect={this.setContribution.bind(this)}
+          activeKey={this.props.userContributionList.ContributionId}
+        >
           <Row>
             <Col sm={3}>
-              <Tabs defaultActiveKey={VIEW_STATUS_PRIVATE} animation={false} id="noanim-tab" onSelect={this.setViewStatus.bind(this)}>
-                <Tab eventKey={VIEW_STATUS_PRIVATE} title="下書き"></Tab>
-                <Tab eventKey={VIEW_STATUS_PUBLIC} title="公開中"></Tab>
+              <Tabs
+                defaultActiveKey={VIEW_STATUS_PRIVATE}
+                animation={false}
+                id="noanim-tab"
+                onSelect={this.setViewStatus.bind(this)}
+              >
+                <Tab eventKey={VIEW_STATUS_PRIVATE} title="下書き" />
+                <Tab eventKey={VIEW_STATUS_PUBLIC} title="公開中" />
               </Tabs>
-              <Typeahead options={this.props.userContributionList.TitleList} maxVisible={2} placeholder="タイトル検索" onChange={this.changeTitle.bind(this)} onBlur={this.inputTitle.bind(this)}/>
-              <br/> {side}
+              <Typeahead
+                options={this.props.userContributionList.TitleList}
+                maxVisible={2}
+                placeholder="タイトル検索"
+                onChange={this.changeTitle.bind(this)}
+                onBlur={this.inputTitle.bind(this)}
+              />
+              <br /> {side}
             </Col>
             <Col sm={8}>
               <div>
                 {this.getControl()}
               </div>
-              <hr/> {contribution}
+              <hr /> {contribution}
 
             </Col>
           </Row>

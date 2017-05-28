@@ -1,13 +1,13 @@
 // @flow
-import React, {Component} from "react"
-import {FormGroup, Button, ButtonToolbar} from "react-bootstrap"
-import {Link} from "react-router-dom"
-import {Platform} from "./"
+import React, { Component } from "react"
+import { FormGroup, Button, ButtonToolbar } from "react-bootstrap"
+import { Link } from "react-router-dom"
+import { Platform } from "./"
 import styles from "./styles.css"
 
 type Props = {
   onNew: Function,
-  onOpen: Function,
+  onOpen: Function
 }
 
 export default class NewInput extends Component {
@@ -26,8 +26,10 @@ export default class NewInput extends Component {
             id="user"
             name="user"
             placeholder="メールアドレス"
-            ref={input => { this.email = input }}
-        />
+            ref={input => {
+              this.email = input
+            }}
+          />
         </FormGroup>
         <FormGroup controlId="formHorizontalPassword">
           <input
@@ -36,11 +38,13 @@ export default class NewInput extends Component {
             id="password"
             name="password"
             placeholder="パスワード"
-            ref={input => { this.password = input }}
+            ref={input => {
+              this.password = input
+            }}
           />
         </FormGroup>
         <FormGroup>
-          <br/>
+          <br />
           <div>
             <Button
               bsStyle="link"
@@ -51,12 +55,16 @@ export default class NewInput extends Component {
             </Button>
             に同意のうえ、「利用規約に同意して登録する」ボタンを押してください。
           </div>
-          <br/>
+          <br />
           <ButtonToolbar>
             <Button
               bsStyle="success"
               bsSize="large"
-              onClick={() => this.props.onNew(this.email.value.trim(), this.password.value.trim())}
+              onClick={() =>
+                this.props.onNew(
+                  this.email.value.trim(),
+                  this.password.value.trim()
+                )}
             >
               利用規約に同意して登録する
             </Button>
@@ -64,9 +72,7 @@ export default class NewInput extends Component {
         </FormGroup>
         <hr />
         <br />
-        <Platform
-          label="アカウント登録"
-        />
+        <Platform label="アカウント登録" />
         <Link to="/login/login">
           <Button bsStyle="link">登録済みならばログインから</Button>
         </Link>

@@ -6,7 +6,7 @@ import * as types from "../../../constants/ActionTypes"
  * @return {object}  アクション
  */
 export function next() {
-  return {type: types.GET_CONTRIBUTION_LIST_NEXT}
+  return { type: types.GET_CONTRIBUTION_LIST_NEXT }
 }
 
 /**
@@ -16,5 +16,5 @@ export function next() {
  * @return {object}  アクション
  */
 export function deleteItem(id) {
-  return {type: types.DELETE_CONTRIBUTION_LIST_ITEM, id: id}
+  return { type: types.DELETE_CONTRIBUTION_LIST_ITEM, id: id }
 }

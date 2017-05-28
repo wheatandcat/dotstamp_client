@@ -1,4 +1,4 @@
-import {abridgement, DateFormat, DateTimeFormat} from "../../utils/common"
+import { abridgement, DateFormat, DateTimeFormat } from "../../utils/common"
 
 describe("UtilsCommon", () => {
   it("整形した日を取得する", () => {

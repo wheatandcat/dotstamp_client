@@ -9,22 +9,28 @@ export const VOICE_TYPE = [
   {
     type: 1,
     name: "女性音声-普通(mei_normal)"
-  }, {
+  },
+  {
     type: 2,
     name: "女性音声-怒ってる(mei_angry)"
-  }, {
+  },
+  {
     type: 3,
     name: "女性音声-恥ずかしい(mei_bashful)"
-  }, {
+  },
+  {
     type: 4,
     name: "女性音声-嬉しい(mei_happy)"
-  }, {
+  },
+  {
     type: 5,
     name: "女性音声-悲しい(mei_sad)"
-  }, {
+  },
+  {
     type: 6,
     name: "男性音声-普通(m100)"
-  }, {
+  },
+  {
     type: 7,
     name: "ゆっくり-普通(AquesTalk)"
   }

@@ -1,8 +1,15 @@
 import PropTypes from "prop-types"
 /*eslint no-console: ["error", { allow: ["log", "error"] }] */
 import React, { Component } from "react"
-import { FormGroup,Button,ControlLabel,PageHeader,Alert,Panel} from "react-bootstrap"
-import {Link} from "react-router-dom"
+import {
+  FormGroup,
+  Button,
+  ControlLabel,
+  PageHeader,
+  Alert,
+  Panel
+} from "react-bootstrap"
+import { Link } from "react-router-dom"
 export default class Reset extends Component {
   componentWillMount() {
     this.props.check(
@@ -14,7 +21,7 @@ export default class Reset extends Component {
      * 保存する
      */
   save() {
-    let action = {
+    const action = {
       email: this.props.match.params.email,
       keyword: this.props.match.params.keyword,
       password: this.refs.password.value
@@ -30,7 +37,7 @@ export default class Reset extends Component {
   render() {
     // チェック処理後に表示
     if (!this.props.passwordReset.fetch) {
-      return (<div/>)
+      return <div />
     }
 
     if (this.props.passwordReset.warning) {
@@ -45,7 +52,7 @@ export default class Reset extends Component {
       return (
         <div>
           <PageHeader>パスワードを再設定する</PageHeader>
-          <br/>
+          <br />
           <Panel header="パスワードを変更しました" bsStyle="success">
             <Link to="/login/login">
               ログインする
@@ -61,7 +68,14 @@ export default class Reset extends Component {
         <ControlLabel>パスワード</ControlLabel>
 
         <FormGroup controlId="formHorizontalEmail">
-          <input type="password" className="form-control" id="password" name="password" placeholder="パスワード" ref="password"/>
+          <input
+            type="password"
+            className="form-control"
+            id="password"
+            name="password"
+            placeholder="パスワード"
+            ref="password"
+          />
         </FormGroup>
         <Button bsStyle="success" onClick={() => this.save()}>
           変更する

@@ -1,13 +1,20 @@
 // @flow
 import React from "react"
-import {MenuItem, Panel, Dropdown, Button, ButtonGroup, Glyphicon} from "react-bootstrap"
+import {
+  MenuItem,
+  Panel,
+  Dropdown,
+  Button,
+  ButtonGroup,
+  Glyphicon
+} from "react-bootstrap"
 
 type Props = {
   voiceList: Array<Object>,
   voiceType: number,
   voiceLabel: string,
   onVoiceType: Function,
-  onSave: Function,
+  onSave: Function
 }
 
 export default ({
@@ -15,21 +22,21 @@ export default ({
   voiceType,
   voiceLabel,
   onVoiceType,
-  onSave,
+  onSave
 }: Props) => (
   <div className="center-block">
     <Panel header="アイコンのデフォルト音声" bsStyle="success">
       <ButtonGroup>
         <Dropdown id="voiceType" onSelect={onVoiceType.bind(this)}>
-          <Dropdown.Toggle >
-            <Glyphicon glyph="volume-up"/>&nbsp;{voiceLabel}&nbsp;&nbsp;
+          <Dropdown.Toggle>
+            <Glyphicon glyph="volume-up" />&nbsp;{voiceLabel}&nbsp;&nbsp;
           </Dropdown.Toggle>
           <Dropdown.Menu>
-            {voiceList.map((item) => {
+            {voiceList.map(item => {
               let option = {}
               if (voiceType == item.type) {
                 option = {
-                  active: true,
+                  active: true
                 }
               }
 

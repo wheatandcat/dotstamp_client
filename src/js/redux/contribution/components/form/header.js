@@ -1,5 +1,5 @@
 import PropTypes from "prop-types"
-import React, {Component} from "react"
+import React, { Component } from "react"
 import {
   Tooltip,
   Panel,
@@ -15,16 +15,20 @@ import {
   Form,
   Glyphicon
 } from "react-bootstrap"
-import {VIEW_STATUS_PUBLIC, VIEW_STATUS_PRIVATE, TAG_MAX_NUMBER} from "../../../../constants/contribution"
-import {Link} from "react-router-dom"
+import {
+  VIEW_STATUS_PUBLIC,
+  VIEW_STATUS_PRIVATE,
+  TAG_MAX_NUMBER
+} from "../../../../constants/contribution"
+import { Link } from "react-router-dom"
 import FormMain from "../../containers/form/main"
 import TalkBoard from "../../containers/talk/board"
 import AlertMessage from "../../../error/containers/alertMessage"
 import MessageSow from "../../../message/containers/show"
 
-import {Preview, Group, GroupList} from "./../../../../../css/form.css"
-import {Item} from "./../../../../../css/tag.css"
-import {Front, Absolute, Close} from "./../../../../../css/common.css"
+import { Preview, Group, GroupList } from "./../../../../../css/form.css"
+import { Item } from "./../../../../../css/tag.css"
+import { Front, Absolute, Close } from "./../../../../../css/common.css"
 
 var self
 
@@ -65,10 +69,13 @@ function checkDiff() {
     return false
   }
 
-  let title = self.props.contributionForm.title
-  let body = self.props.contributionTalk
+  const title = self.props.contributionForm.title
+  const body = self.props.contributionTalk
 
-  if (title == self.props.contributionEdit.saveData.title && JSON.stringify(body) == self.props.contributionEdit.saveData.body) {
+  if (
+    title == self.props.contributionEdit.saveData.title &&
+    JSON.stringify(body) == self.props.contributionEdit.saveData.body
+  ) {
     return false
   }
 
@@ -80,13 +87,16 @@ var checkContributionEdit = function(hash) {
     return false
   }
 
-  if (hash.indexOf("contribution/new") == -1 && hash.indexOf("contribution/edit") == -1) {
+  if (
+    hash.indexOf("contribution/new") == -1 &&
+    hash.indexOf("contribution/edit") == -1
+  ) {
     return false
   }
 
   if (self.props.contributionId == null) {
-    let title = self.props.contributionForm.title
-    let body = self.props.contributionTalk
+    const title = self.props.contributionForm.title
+    const body = self.props.contributionTalk
     if (title == "" && JSON.stringify(body) == "[]") {
       return false
     }
@@ -100,7 +110,7 @@ var checkContributionEdit = function(hash) {
 }
 
 window.onbeforeunload = function() {
-  let hash = location.pathname
+  const hash = location.pathname
   if (checkContributionEdit(hash)) {
     return true
   }
@@ -135,7 +145,7 @@ export default class Header extends Component {
    */
   setScroll() {
     if (this.props.contributionTalk.length > 0) {
-      let node = this.refs.preview
+      const node = this.refs.preview
       node.scrollTop = node.scrollHeight
     }
   }
@@ -147,14 +157,12 @@ export default class Header extends Component {
       return
     }
 
-    let contributionId = this.props.contributionId
-    let title = this.refs.title.value.trim()
-    let tag = (contributionId == null)
-      ? this.refs.tag.value.trim()
-      : ""
-    let body = this.props.contributionTalk
+    const contributionId = this.props.contributionId
+    const title = this.refs.title.value.trim()
+    const tag = contributionId == null ? this.refs.tag.value.trim() : ""
+    const body = this.props.contributionTalk
 
-    let action = {
+    const action = {
       userContributionId: contributionId,
       title: title,
       tag: tag,
@@ -166,7 +174,9 @@ export default class Header extends Component {
       this.props.alertMessage("タイトルを入力して下さい")
       return
     } else if (action.title.length > 100) {
-      this.props.alertMessage("タイトルが100文字を超えています。(" + action.title.length + "文字)")
+      this.props.alertMessage(
+        "タイトルが100文字を超えています。(" + action.title.length + "文字)"
+      )
       return
     } else if (action.body == "[]") {
       this.props.alertMessage("本文を入力して下さい")
@@ -178,7 +188,10 @@ export default class Header extends Component {
 
     this.props.message("保存しました", "success")
 
-    if (this.props.contributionEdit.saveData.viewStatus == this.props.contributionForm.viewStatus) {
+    if (
+      this.props.contributionEdit.saveData.viewStatus ==
+      this.props.contributionForm.viewStatus
+    ) {
       if (!checkDiff()) {
         return
       }
@@ -189,7 +202,6 @@ export default class Header extends Component {
     } else {
       this.props.save(action, action)
     }
-
   }
   /**
    * タイトルを変更する
@@ -212,7 +224,15 @@ export default class Header extends Component {
   getInputTag() {
     return (
       <FormGroup>
-        <input type="text" id="tag" className="form-control" placeholder="タグをスペース区切りで5つまで入力（例：映画 2001年宇宙の旅）" ref="tag" value={this.props.contributionForm.tag} onChange={this.changeTag.bind(this)}/>
+        <input
+          type="text"
+          id="tag"
+          className="form-control"
+          placeholder="タグをスペース区切りで5つまで入力（例：映画 2001年宇宙の旅）"
+          ref="tag"
+          value={this.props.contributionForm.tag}
+          onChange={this.changeTag.bind(this)}
+        />
       </FormGroup>
     )
   }
@@ -220,22 +240,27 @@ export default class Header extends Component {
    * タグ追加する
    */
   addTag() {
-    let tag = this.refs.addTag.value.trim()
+    const tag = this.refs.addTag.value.trim()
     if (tag.length > 20) {
       this.props.alertMessage("タグは20文字まで")
       return
     }
 
-    this.props.addTag({userContributionId: this.props.contributionId, name: tag})
+    this.props.addTag({
+      userContributionId: this.props.contributionId,
+      name: tag
+    })
 
     this.refs.addTag.value = ""
-
   }
   /**
    * タグを削除する
    */
   deleteTag(id) {
-    this.props.deleteTag({userContributionId: this.props.contributionId, id: id})
+    this.props.deleteTag({
+      userContributionId: this.props.contributionId,
+      id: id
+    })
   }
   /**
    * タグ入力
@@ -258,7 +283,12 @@ export default class Header extends Component {
 
     return (
       <FormGroup>
-        <input type="text" className="form-control" placeholder="タグを追加する" ref="addTag"/>
+        <input
+          type="text"
+          className="form-control"
+          placeholder="タグを追加する"
+          ref="addTag"
+        />
         <Button onClick={() => this.addTag()}>
           追加
         </Button>
@@ -283,11 +313,16 @@ export default class Header extends Component {
     return (
       <FormGroup>
         <Form inline>
-          {tagList.map((tag) => {
+          {tagList.map(tag => {
             return (
-              <span key={tag.ID}>&nbsp;
+              <span key={tag.ID}>
+                &nbsp;
                 <Label bsStyle="info" className={Item}>
-                  <Glyphicon glyph="remove" className={Close} onClick={() => this.deleteTag(tag.ID)}/>&nbsp;
+                  <Glyphicon
+                    glyph="remove"
+                    className={Close}
+                    onClick={() => this.deleteTag(tag.ID)}
+                  />&nbsp;
                   <span>{tag.Name}</span>
                 </Label>
               </span>
@@ -304,7 +339,7 @@ export default class Header extends Component {
    * @return {object} スタイル
    */
   getBoardStyle() {
-    let height = this.props.contributionForm.height - 480
+    const height = this.props.contributionForm.height - 480
 
     return {
       height: height + "px"
@@ -316,7 +351,7 @@ export default class Header extends Component {
    * @return {object} html
    */
   getViewStatus() {
-    let viewStausMap = []
+    const viewStausMap = []
     viewStausMap[VIEW_STATUS_PUBLIC] = {
       eventKey: 1,
       text: "投稿する　",
@@ -330,34 +365,42 @@ export default class Header extends Component {
       status: VIEW_STATUS_PRIVATE
     }
 
-    let viewStaus = (item) => {
+    const viewStaus = item => {
       if (item.status == this.props.contributionForm.viewStatus) {
         return (
           <MenuItem eventKey={item.eventKey} key={item.eventKey} active>
-            <Glyphicon glyph={item.glyph}/>&nbsp;{item.text}
+            <Glyphicon glyph={item.glyph} />&nbsp;{item.text}
           </MenuItem>
         )
       }
 
       return (
-        <MenuItem eventKey={item.eventKey} key={item.eventKey} onClick={() => this.props.setViewStatus(item.status)}>
-          <Glyphicon glyph={item.glyph}/>&nbsp;{item.text}
+        <MenuItem
+          eventKey={item.eventKey}
+          key={item.eventKey}
+          onClick={() => this.props.setViewStatus(item.status)}
+        >
+          <Glyphicon glyph={item.glyph} />&nbsp;{item.text}
         </MenuItem>
       )
     }
 
-    let status = viewStausMap[this.props.contributionForm.viewStatus]
+    const status = viewStausMap[this.props.contributionForm.viewStatus]
 
-    let disabled = this.props.contributionForm.Experience
+    const disabled = this.props.contributionForm.Experience
 
     return (
       <Dropdown id="viweStatus" disabled={disabled} ref="viweStatus">
-        <Button onClick={() => this.save()} bsStyle="success" disabled={disabled}>
-          <Glyphicon glyph={status.glyph}/>&nbsp;{status.text}
+        <Button
+          onClick={() => this.save()}
+          bsStyle="success"
+          disabled={disabled}
+        >
+          <Glyphicon glyph={status.glyph} />&nbsp;{status.text}
         </Button>
-        <Dropdown.Toggle bsStyle="success"/>
+        <Dropdown.Toggle bsStyle="success" />
         <Dropdown.Menu className="super-colors">
-          {viewStausMap.map((item) => {
+          {viewStausMap.map(item => {
             return viewStaus(item)
           })}
         </Dropdown.Menu>
@@ -368,33 +411,36 @@ export default class Header extends Component {
    * 音声を追加する
    */
   addSound() {
-    this.props.addSound({userContributionId: this.props.contributionId})
+    this.props.addSound({ userContributionId: this.props.contributionId })
   }
   /**
    * ヘルプを取得する
    */
   getHelp() {
     return (
-      <Modal show={this.props.contributionForm.help} onHide={this.props.closeHelp}>
+      <Modal
+        show={this.props.contributionForm.help}
+        onHide={this.props.closeHelp}
+      >
         <Modal.Header closeButton>
           <Modal.Title>操作方法</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <h4>操作</h4>
           <Panel header="選択中のアイコンを拡大表示">
-            画面中央のアイコンをクリックすると、選択中のアイコンを吹き出しで表示する<br/>
+            画面中央のアイコンをクリックすると、選択中のアイコンを吹き出しで表示する<br />
             もう一度クリックすると閉じる
           </Panel>
-          <br/>
+          <br />
           <Panel header="並び替え">
             吹き出し部分をドラック&ドロップすることで並び替え可能です
           </Panel>
-          <br/>
+          <br />
           <Panel header="読み上げを作成する">
-            読み上げ作成は記事を保存後に表示される。「読み上げを作成する」から編集できます<br/>
+            読み上げ作成は記事を保存後に表示される。「読み上げを作成する」から編集できます<br />
             ※お試し投稿では使用できません
           </Panel>
-          <br/>
+          <br />
           <h4>ショートカットキー</h4>
           <Table striped bordered condensed hover>
             <thead>
@@ -464,15 +510,14 @@ export default class Header extends Component {
       if (!this.props.contributionEdit.Sound) {
         sound = (
           <Button bsStyle="link" onClick={() => this.addSound()}>
-            <Glyphicon glyph="bullhorn"/>&nbsp;読み上げを作成する（β版）
+            <Glyphicon glyph="bullhorn" />&nbsp;読み上げを作成する（β版）
           </Button>
-
         )
       } else {
         sound = (
           <Link to={"/sound/show/" + this.props.contributionId}>
             <Button bsStyle="link">
-              <Glyphicon glyph="bullhorn"/>&nbsp;読み上げを編集する（β版）
+              <Glyphicon glyph="bullhorn" />&nbsp;読み上げを編集する（β版）
             </Button>
           </Link>
         )
@@ -482,21 +527,35 @@ export default class Header extends Component {
     let experience = ""
     if (this.props.contributionForm.Experience) {
       experience = (
-        <Tooltip id="tooltip-right" placement="right" className="in" positionLeft={170} positionTop={160}>
-          「お試し」投稿のデータは保存<br/>できません。
+        <Tooltip
+          id="tooltip-right"
+          placement="right"
+          className="in"
+          positionLeft={170}
+          positionTop={160}
+        >
+          「お試し」投稿のデータは保存<br />できません。
         </Tooltip>
       )
     }
 
     return (
       <div>
-        <MessageSow/> {this.getHelp()}
+        <MessageSow /> {this.getHelp()}
         {experience}
         <ListGroup className={Group}>
           <ListGroupItem>
-            <AlertMessage/>
+            <AlertMessage />
             <FormGroup>
-              <input type="text" id="title" className="form-control" placeholder="タイトル(100文字以内)" ref="title" value={this.props.contributionForm.title} onChange={this.changeTitle.bind(this)}/>
+              <input
+                type="text"
+                id="title"
+                className="form-control"
+                placeholder="タイトル(100文字以内)"
+                ref="title"
+                value={this.props.contributionForm.title}
+                onChange={this.changeTitle.bind(this)}
+              />
             </FormGroup>
             {this.getTag()}
             {this.getViewStatus()}
@@ -504,17 +563,22 @@ export default class Header extends Component {
           </ListGroupItem>
           <ListGroupItem>
             <div className={Absolute}>
-              <Button bsSize="small" bsStyle="info" className={Front} onClick={() => this.props.openHelp()}>
-                <Glyphicon glyph="info-sign"/>&nbsp;ヒント
+              <Button
+                bsSize="small"
+                bsStyle="info"
+                className={Front}
+                onClick={() => this.props.openHelp()}
+              >
+                <Glyphicon glyph="info-sign" />&nbsp;ヒント
               </Button>
             </div>
             <div className={Preview} ref="preview" style={this.getBoardStyle()}>
-              <TalkBoard talkList={this.props.contributionTalk}/>
+              <TalkBoard talkList={this.props.contributionTalk} />
             </div>
           </ListGroupItem>
           <ListGroupItem bsClass={GroupList}>
             <footer>
-              <FormMain contributionId={this.props.contributionId}/>
+              <FormMain contributionId={this.props.contributionId} />
             </footer>
           </ListGroupItem>
         </ListGroup>

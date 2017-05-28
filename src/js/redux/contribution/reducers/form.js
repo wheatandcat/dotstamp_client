@@ -1,6 +1,6 @@
-import {DIRECTION_LEFT} from "../actions/talk"
+import { DIRECTION_LEFT } from "../actions/talk"
 import * as types from "../../../constants/ActionTypes"
-import {VIEW_STATUS_PUBLIC} from "../../../constants/contribution"
+import { VIEW_STATUS_PUBLIC } from "../../../constants/contribution"
 
 const initialState = {
   edit: false,
@@ -39,9 +39,8 @@ export default function Form(state = initialState, action) {
   }
 
   switch (action.type) {
-  case types.CANCEL_CONTRIBUTION_FROM_EDIT:
-  case types.EDIT_CONTRIBUTION_FORM_BODY:
-    {
+    case types.CANCEL_CONTRIBUTION_FROM_EDIT:
+    case types.EDIT_CONTRIBUTION_FORM_BODY: {
       state.edit = false
       // 保持していた入力に戻す
       state.body = state.EditTmp.Body
@@ -50,14 +49,12 @@ export default function Form(state = initialState, action) {
 
       return JSON.parse(JSON.stringify(state))
     }
-  case types.CHANGE_CONTRIBUTION_FORM_CHARACTER:
-    {
+    case types.CHANGE_CONTRIBUTION_FORM_CHARACTER: {
       state.character = action.character
 
       return JSON.parse(JSON.stringify(state))
     }
-  case types.SET_CHARACTER_LIST_DEFAULT:
-    {
+    case types.SET_CHARACTER_LIST_DEFAULT: {
       state.character = {
         CharacterID: 0,
         FileName: "default1.png",
@@ -68,8 +65,7 @@ export default function Form(state = initialState, action) {
 
       return JSON.parse(JSON.stringify(state))
     }
-  case types.GET_CHARACTER_LIST:
-    {
+    case types.GET_CHARACTER_LIST: {
       if (action.response.Image.length > 0) {
         state.character = action.response.Image[0]
       } else {
@@ -84,34 +80,29 @@ export default function Form(state = initialState, action) {
 
       return JSON.parse(JSON.stringify(state))
     }
-  case types.CHANGE_CONTRIBUTION_FORM_BODY:
-    {
+    case types.CHANGE_CONTRIBUTION_FORM_BODY: {
       state.body = action.body
 
       return JSON.parse(JSON.stringify(state))
     }
-  case types.DELETE_CONTRIBUTION_TALK_BODY:
-    {
+    case types.DELETE_CONTRIBUTION_TALK_BODY: {
       state.edit = false
       state.body = ""
       state.priority = null
 
       return JSON.parse(JSON.stringify(state))
     }
-  case types.CHANGE_CONTRIBUTION_FORM_TITLE:
-    {
+    case types.CHANGE_CONTRIBUTION_FORM_TITLE: {
       state.title = action.title
 
       return JSON.parse(JSON.stringify(state))
     }
-  case types.CHANGE_CONTRIBUTION_FORM_TAG:
-    {
+    case types.CHANGE_CONTRIBUTION_FORM_TAG: {
       state.tag = action.tag
 
       return JSON.parse(JSON.stringify(state))
     }
-  case types.SET_CONTRIBUTION_TALK_EDIT_BODY:
-    {
+    case types.SET_CONTRIBUTION_TALK_EDIT_BODY: {
       state.edit = true
 
       // 現在の入力を保持
@@ -122,8 +113,7 @@ export default function Form(state = initialState, action) {
 
       return JSON.parse(JSON.stringify(state))
     }
-  case types.GET_CONTRIBUTION_EDIT:
-    {
+    case types.GET_CONTRIBUTION_EDIT: {
       state.title = action.response.Title
       state.tagList = action.response.Tag
       state.viewStatus = action.response.ViewStatus
@@ -132,32 +122,27 @@ export default function Form(state = initialState, action) {
 
       return JSON.parse(JSON.stringify(state))
     }
-  case types.CHANGE_CONTRIBUTION_FORM_HEIGHT:
-    {
+    case types.CHANGE_CONTRIBUTION_FORM_HEIGHT: {
       state.height = action.height
 
       return JSON.parse(JSON.stringify(state))
     }
-  case types.NEW_CONTRIBUTION_FORM:
-    {
+    case types.NEW_CONTRIBUTION_FORM: {
       location.pathname = "/contribution/edit/" + action.response
       return JSON.parse(JSON.stringify(state))
     }
-  case types.SET_CONTRIBUTION_FORM_VIEW_STATUS:
-    {
+    case types.SET_CONTRIBUTION_FORM_VIEW_STATUS: {
       state.viewStatus = action.viewStatus
 
       return JSON.parse(JSON.stringify(state))
     }
-  case types.DELETE_CONTRIBUTION_TAG:
-  case types.ADD_CONTRIBUTION_TAG:
-    {
+    case types.DELETE_CONTRIBUTION_TAG:
+    case types.ADD_CONTRIBUTION_TAG: {
       state.tagList = action.response.Tag
 
       return JSON.parse(JSON.stringify(state))
     }
-  case types.INIT_CONTRIBUTION_NEW:
-    {
+    case types.INIT_CONTRIBUTION_NEW: {
       state.Experience = action.experience
       state.title = ""
       state.tag = ""
@@ -165,26 +150,23 @@ export default function Form(state = initialState, action) {
 
       return JSON.parse(JSON.stringify(state))
     }
-  case types.ADD_CONTRIBUTION_FORM_SOUND:
-    {
-      let id = action.receiveParam.userContributionId
+    case types.ADD_CONTRIBUTION_FORM_SOUND: {
+      const id = action.receiveParam.userContributionId
 
       location.pathname = "/sound/show/" + id
       return JSON.parse(JSON.stringify(initialState))
     }
-  case types.OPEN_CONTRIBUTION_FORM_HELP:
-    {
+    case types.OPEN_CONTRIBUTION_FORM_HELP: {
       state.help = true
 
       return JSON.parse(JSON.stringify(state))
     }
-  case types.CLOSE_CONTRIBUTION_FORM_HELP:
-    {
+    case types.CLOSE_CONTRIBUTION_FORM_HELP: {
       state.help = false
 
       return JSON.parse(JSON.stringify(state))
     }
-  default:
-    return state
+    default:
+      return state
   }
 }

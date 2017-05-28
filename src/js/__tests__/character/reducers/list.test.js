@@ -23,18 +23,17 @@ describe("character/reducers/list", () => {
         {
           ID: 1,
           FileName: "test.png",
-          imageType: 2,
+          imageType: 2
         }
       ],
       icon: {
         id: 1,
         fileName: "test.png",
-        select: 0,
+        select: 0
       },
       load: true,
-      VoiceType:{},
-      DefaultIcon: false,
+      VoiceType: {},
+      DefaultIcon: false
     })
   })
-
 })

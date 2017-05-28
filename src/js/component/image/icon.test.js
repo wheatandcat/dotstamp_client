@@ -1,14 +1,14 @@
 // @flow
 import React from "react"
-import {shallow} from "enzyme"
-import {Icon} from "./"
+import { shallow } from "enzyme"
+import { Icon } from "./"
 
-function setup() :Object {
+function setup(): Object {
   const props = {
-    fileName: "abc.png",
+    fileName: "abc.png"
   }
 
-  const enzymeWrapper = shallow(<Icon {...props}/>)
+  const enzymeWrapper = shallow(<Icon {...props} />)
 
   return {
     props,

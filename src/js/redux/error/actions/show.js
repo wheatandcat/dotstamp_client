@@ -7,7 +7,12 @@ import * as types from "../../../constants/ActionTypes"
  * @return {[object]} アクション
  */
 export function showError(error) {
-  return {type: types.SHOW_ERROR_MESSAGE, message: error.Message, errCode: error.ErrCode, show: true}
+  return {
+    type: types.SHOW_ERROR_MESSAGE,
+    message: error.Message,
+    errCode: error.ErrCode,
+    show: true
+  }
 }
 
 /**
@@ -16,7 +21,7 @@ export function showError(error) {
  * @return {[object]} アクション
  */
 export function closeError() {
-  return {type: types.CLOSE_ERROR_MESSAGE, show: false}
+  return { type: types.CLOSE_ERROR_MESSAGE, show: false }
 }
 
 /**
@@ -25,5 +30,5 @@ export function closeError() {
  * @return {[object]} アクション
  */
 export function openBugReport() {
-  return {type: types.OPEN_ERROR_BUG_REPORT, bugReport: true}
+  return { type: types.OPEN_ERROR_BUG_REPORT, bugReport: true }
 }

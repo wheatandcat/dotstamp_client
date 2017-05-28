@@ -1,24 +1,20 @@
 // @flow
 import React from "react"
-import {Media} from "react-bootstrap"
+import { Media } from "react-bootstrap"
 import Icon from "../icon/icon"
-import {DateFormat} from "../../utils/common"
+import { DateFormat } from "../../utils/common"
 import styles from "./styles.css"
 
 type Props = {
   Title: string,
   UpdatedAt: string,
-  User: Object,
+  User: Object
 }
 
-export default ({
-  Title,
-  UpdatedAt,
-  User,
-}: Props) => (
+export default ({ Title, UpdatedAt, User }: Props) => (
   <Media className={styles.Disable}>
     <Media.Left className={styles.Image} align="middle">
-      <Icon ID={User.ProfileImageID}/>
+      <Icon ID={User.ProfileImageID} />
     </Media.Left>
     <Media.Body className={styles.Body}>
       <p>
@@ -32,6 +28,6 @@ export default ({
         </div>
       </Media.Heading>
     </Media.Body>
-    <Media.Right className={styles.Follow}></Media.Right>
+    <Media.Right className={styles.Follow} />
   </Media>
 )

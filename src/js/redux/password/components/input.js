@@ -1,15 +1,23 @@
 import PropTypes from "prop-types"
 import React, { Component } from "react"
-import { FormGroup,Button,ControlLabel,PageHeader,ListGroup,ListGroupItem,Alert} from "react-bootstrap"
+import {
+  FormGroup,
+  Button,
+  ControlLabel,
+  PageHeader,
+  ListGroup,
+  ListGroupItem,
+  Alert
+} from "react-bootstrap"
 
 export default class Input extends Component {
   /**
      * 追加する
      */
   add() {
-    let email = this.refs.email.value
+    const email = this.refs.email.value
 
-    let action = {
+    const action = {
       email: email
     }
 
@@ -52,7 +60,12 @@ export default class Input extends Component {
         {this.report()}
         <ControlLabel>メールアドレス</ControlLabel>
         <FormGroup controlId="formHorizontalEmail">
-          <input type="text" className="form-control" ref="email" placeholder="メールアドレス"/>
+          <input
+            type="text"
+            className="form-control"
+            ref="email"
+            placeholder="メールアドレス"
+          />
         </FormGroup>
         <Button bsStyle="success" onClick={() => this.add()}>
           送信する

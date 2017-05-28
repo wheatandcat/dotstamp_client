@@ -1,14 +1,13 @@
 import * as types from "../../../constants/ActionTypes"
 import reducer from "../../../redux/error/reducers/show"
 
-
 describe("error/reducers/show", () => {
   it("投稿リストを取得する", () => {
     const result = reducer(undefined, {
       type: types.SHOW_ERROR_MESSAGE,
       message: "abc",
       errCode: 1,
-      show: true,
+      show: true
     })
 
     expect(result).toEqual({
@@ -16,7 +15,7 @@ describe("error/reducers/show", () => {
       ErrCode: 1,
       Show: true,
       BugReport: false,
-      BugReported: false,
+      BugReported: false
     })
   })
 })
