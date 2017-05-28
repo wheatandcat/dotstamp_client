@@ -10,5 +10,9 @@
 decls
 
 [options]
-module.name_mapper.extension='css' -> 'CSSModule'
+suppress_comment= \\(.\\|\n\\)*\\$FlowFixMe
+suppress_comment= \\(.\\|\n\\)*\\$FlowIssue
+suppress_comment= \\(.\\|\n\\)*\\$FlowDisableLine
+module.name_mapper='.+\.s?css' -> 'CSSModule'
+module.name_mapper='.+\.ico' -> 'FileLoader'
 module.system=haste

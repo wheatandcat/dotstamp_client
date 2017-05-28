@@ -2,7 +2,7 @@
 import React from "react"
 import { mount } from "enzyme"
 import { Slick } from "./"
-
+// $FlowDisableLine
 import { __RewireAPI__ } from "./slick"
 const action = __RewireAPI__.__get__("action")
 

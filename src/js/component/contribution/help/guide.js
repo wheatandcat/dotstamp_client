@@ -1,11 +1,9 @@
 // @flow
 import React from "react"
-import FontAwesome from "react-fontawesome"
-import { Col, Modal, Panel, Table, Button } from "react-bootstrap"
-import { Character } from "../../image/"
+import { Modal, Panel, Table, Button } from "react-bootstrap"
 
 type Props = {
-  open: balloon,
+  open: boolean,
   onHide: Function
 }
 

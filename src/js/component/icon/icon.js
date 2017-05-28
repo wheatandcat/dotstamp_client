@@ -4,12 +4,12 @@ import { Icon, Default } from "../image/"
 
 const IMAGE_ID_DEFAULT = 0
 
-export type Props = {
+type Props = {
   ID: number
 }
 
 function get(ID: number) {
-  if (ID == IMAGE_ID_DEFAULT) {
+  if (ID === IMAGE_ID_DEFAULT) {
     return <Default fileName="profile/default.png" />
   }
 
