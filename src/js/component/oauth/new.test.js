@@ -10,10 +10,12 @@ function setup() {
   }
 
   const enzymeWrapper = shallow(<New {...props} />)
+  const instance: Object = enzymeWrapper.instance()
 
   return {
     props,
-    enzymeWrapper
+    enzymeWrapper,
+    instance,
   }
 }
 
@@ -23,7 +25,10 @@ describe("component/oauth/new", () => {
   })
 
   it("on click", () => {
-    const { props, enzymeWrapper } = setup()
+    const { props, enzymeWrapper, instance } = setup()
+    instance.password = {
+      value: ""
+    }
 
     enzymeWrapper.find("Button").simulate("click")
     expect(props.onNew).toHaveBeenCalled()
