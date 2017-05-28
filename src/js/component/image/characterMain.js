@@ -11,7 +11,7 @@ type Props = {
 
 export default ({ children, fileName }: Props) => (
   <Thumbnail
-    className={styles.characterMain + " center-block"}
+    className={`${styles.characterMain} center-block`}
     dir="character/"
     fileName={fileName}
     upload

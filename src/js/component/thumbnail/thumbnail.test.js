@@ -29,7 +29,7 @@ function setup(search, viewStatus, OnSearch, movieId) {
     },
     UpdatedAt: "2015-01-01T07:12:00+09:00",
     ViewStatus: viewStatus,
-    OnSearch: OnSearch
+    OnSearch
   }
 
   const enzymeWrapper = shallow(<Thumbnail {...props} />)

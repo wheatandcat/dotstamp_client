@@ -48,7 +48,7 @@ function mapDispatchToProps(dispatch) {
     delete: id => {
       dispatch(
         fetchPostsIfNeeded(
-          "characterImage/delete/" + id,
+          `characterImage/delete/${id}`,
           types.DELETE_CHARACTER_LIST
         )
       )

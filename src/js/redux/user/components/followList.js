@@ -18,8 +18,8 @@ export default class FollowList extends Component {
    */
   getList(page, order) {
     this.props.getList({
-      order: order,
-      page: page,
+      order,
+      page,
       limit: this.props.userFollowList.Limit
     })
   }
@@ -32,7 +32,7 @@ export default class FollowList extends Component {
   paging(page, order) {
     this.getList(page, order)
     this.props.paging(page, order)
-    this.props.history.push("/user/followList/" + order + "/" + page)
+    this.props.history.push(`/user/followList/${order}/${page}`)
   }
   /**
    * 描画する

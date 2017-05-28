@@ -13,7 +13,7 @@ function mapDispatchToProps(dispatch) {
   return {
     get: file => {
       dispatch(
-        fetchTextIfNeeded("static/txt/" + file + ".txt", types.GET_JSON, {
+        fetchTextIfNeeded(`static/txt/${file}.txt`, types.GET_JSON, {
           fileName: file
         })
       )

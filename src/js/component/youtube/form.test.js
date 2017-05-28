@@ -42,8 +42,8 @@ describe("components/youtube/form", () => {
     const enzymeWrapper = shallow(<Form videoId="123" />)
     const instance: Form = enzymeWrapper.instance()
     __RewireAPI__.__set__("target", {
-      playVideo: function() {},
-      pauseVideo: function() {}
+      playVideo() {},
+      pauseVideo() {}
     })
 
     instance.play()

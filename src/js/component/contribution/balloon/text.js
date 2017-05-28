@@ -13,9 +13,8 @@ export default class Text extends Component {
     return this.props.Label.split(regex).map((line, i) => {
       if (line.match(regex)) {
         return <br key={i} />
-      } else {
-        return line
       }
+      return line
     })
   }
   render() {

@@ -18,7 +18,7 @@ export default class Input extends Component {
     const email = this.refs.email.value
 
     const action = {
-      email: email
+      email
     }
 
     this.props.add(action)

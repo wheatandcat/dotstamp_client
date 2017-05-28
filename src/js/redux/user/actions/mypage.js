@@ -7,5 +7,5 @@ import * as types from "../../../constants/ActionTypes"
  * @return {object} アクション
  */
 export function changeUserName(name) {
-  return { type: types.CHANGE_USER_NAME, name: name }
+  return { type: types.CHANGE_USER_NAME, name }
 }

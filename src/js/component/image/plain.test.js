@@ -1,4 +1,4 @@
-/*global process*/
+/* global process*/
 
 // @flow
 import React from "react"

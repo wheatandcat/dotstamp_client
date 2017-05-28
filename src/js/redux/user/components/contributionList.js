@@ -22,8 +22,8 @@ import {
   VIEW_STATUS_PUBLIC,
   VIEW_STATUS_PRIVATE
 } from "../../../constants/contribution"
-var load = false
-var tite = ""
+let load = false
+let tite = ""
 export default class ContributionList extends Component {
   componentWillMount() {
     this.props.init()
@@ -65,7 +65,7 @@ export default class ContributionList extends Component {
      * @return {string} 編集パス
      */
   getEditPath(id) {
-    return "/contribution/edit/" + id
+    return `/contribution/edit/${id}`
   }
   /**
      * タイトルを変更する

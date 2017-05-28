@@ -7,5 +7,5 @@ import * as types from "../../../constants/ActionTypes"
  * @return {object] アクション
  */
 export function alert(message) {
-  return { type: types.SET_LOGIN_USER_ALERT, message: message }
+  return { type: types.SET_LOGIN_USER_ALERT, message }
 }

@@ -17,7 +17,7 @@ export function init() {
  * @return {object} アクション
  */
 export function message(message, style) {
-  return { type: types.OPEN_MESSAGE_SHOW, message: message, style: style }
+  return { type: types.OPEN_MESSAGE_SHOW, message, style }
 }
 
 /**

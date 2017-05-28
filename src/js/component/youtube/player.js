@@ -22,6 +22,5 @@ function player(status: number, onPlay: Function, onPause: Function) {
   return <Finished label="　記事の読み上げを再生中" onPlay={onPlay} />
 }
 
-export default ({ status, onPlay, onPause }: Props) => {
-  return player(status, onPlay, onPause)
-}
+export default ({ status, onPlay, onPause }: Props) =>
+  player(status, onPlay, onPause)

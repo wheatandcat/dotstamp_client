@@ -1,6 +1,6 @@
-/*global process*/
-/*eslint no-console: ["error", { allow: ["log", "debug", "info", "warn"] }] */
-/*global module*/
+/* global process*/
+/* eslint no-console: ["error", { allow: ["log", "debug", "info", "warn"] }] */
+/* global module*/
 import "babel-polyfill"
 import React from "react"
 import { render } from "react-dom"

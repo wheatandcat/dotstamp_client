@@ -3,7 +3,7 @@ import { Alert, Button, ButtonGroup } from "react-bootstrap"
 import { PLAY, PAUSE, FINISHED } from "./player"
 import { Player, ScreenButton, Video } from "./"
 
-var target: Object
+let target: Object
 
 type State = {
   status: number,
@@ -99,7 +99,7 @@ export default class Frame extends Component<*, Props, State> {
         <div className="pull-right">
           <Button
             bsStyle="link"
-            href={"https://youtu.be/" + this.props.videoId}
+            href={`https://youtu.be/${this.props.videoId}`}
             target="_blank"
           >
             YouTubeで視聴

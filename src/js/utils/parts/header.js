@@ -35,20 +35,19 @@ class Header extends Component {
    * 検索する
    */
   search() {
-    var search = this.input.value.trim()
+    const search = this.input.value.trim()
     if (search == "") {
       return
     }
 
     this.props.search({
-      search: search,
+      search,
       order: 1,
       page: 1,
       limit: this.props.contributionSearch.Limit
     })
 
-    this.props.history.push("/contribution/search/" + search + "/1/1")
-    return
+    this.props.history.push(`/contribution/search/${search}/1/1`)
   }
   /**
    * 描画する
@@ -57,7 +56,7 @@ class Header extends Component {
    */
   render() {
     return (
-      <Navbar className={Narrowly + " " + Stamp}>
+      <Navbar className={`${Narrowly} ${Stamp}`}>
         <Navbar.Header>
           <Navbar.Brand className={Top}>
             <Link to="/">

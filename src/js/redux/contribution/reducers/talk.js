@@ -1,7 +1,7 @@
 import * as types from "../../../constants/ActionTypes"
 
 // 初期ステート設定
-var list = []
+let list = []
 
 const initialState = []
 
@@ -105,8 +105,8 @@ export default function Talk(state = initialState, action) {
     case types.DELETE_CONTRIBUTION_TALK_BODY: {
       list.splice(action.priority, 1)
 
-      list.forEach((obj, key) => (obj["Priority"] = key))
-      list.forEach(obj => (obj["Edit"] = false))
+      list.forEach((obj, key) => (obj.Priority = key))
+      list.forEach(obj => (obj.Edit = false))
       state = list.concat()
 
       return state

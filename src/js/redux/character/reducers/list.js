@@ -53,10 +53,10 @@ function getDefaultCharacterList() {
   const list = []
   const max = 9
 
-  for (var i = 1; i < max; i++) {
+  for (let i = 1; i < max; i++) {
     list.push({
       CharacterID: 0,
-      FileName: "default" + i + ".png",
+      FileName: `default${i}.png`,
       ID: i,
       Priority: 0,
       VoiceType: 0
@@ -104,7 +104,7 @@ export default function List(state = initialState, action) {
       const tmp = []
 
       for (const value of action.response.Image) {
-        value["imageType"] = action.receiveParam.imageType
+        value.imageType = action.receiveParam.imageType
         tmp.push(value)
 
         state.VoiceType[value.ID] = value.VoiceType

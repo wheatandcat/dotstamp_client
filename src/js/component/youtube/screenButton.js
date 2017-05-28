@@ -24,6 +24,5 @@ function button(full?: boolean, onFull: Function, onSmaill: Function) {
   )
 }
 
-export default ({ full, onFull, onSmaill }: Props) => {
-  return button(full, onFull, onSmaill)
-}
+export default ({ full, onFull, onSmaill }: Props) =>
+  button(full, onFull, onSmaill)

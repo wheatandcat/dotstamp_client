@@ -1,7 +1,7 @@
-/*global process*/
+/* global process*/
 import request from "superagent"
 
-var host = typeof process.env.BASE_URL == "undefined"
+const host = typeof process.env.BASE_URL === "undefined"
   ? "http://192.168.33.10:8080/"
   : process.env.BASE_URL
 
@@ -14,7 +14,7 @@ export default class Http {
    * @return {object} レスポンス
    */
   static postApi(url, sendList = null) {
-    return new Promise(function(resolve, reject) {
+    return new Promise((resolve, reject) => {
       request.post(host + url).type("form").send(sendList).end((err, res) => {
         if (!err) {
           resolve(res)
@@ -32,7 +32,7 @@ export default class Http {
    * @return {object} レスポンス
    */
   static postImageApi(url, sendList = null) {
-    return new Promise(function(resolve, reject) {
+    return new Promise((resolve, reject) => {
       request.post(host + url).send(sendList).end((err, res) => {
         if (!err) {
           resolve(res)

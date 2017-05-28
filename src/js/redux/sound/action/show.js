@@ -10,8 +10,8 @@ import * as types from "../../../constants/ActionTypes"
 export function changeBodySound(priority, bodySound) {
   return {
     type: types.CHANGE_SOUND_SHOW_BODY_SOUND,
-    priority: priority,
-    bodySound: bodySound
+    priority,
+    bodySound
   }
 }
 
@@ -25,8 +25,8 @@ export function changeBodySound(priority, bodySound) {
 export function changeVoiceType(priority, voiceType) {
   return {
     type: types.CHANGE_SOUND_SHOW_VOICE_TYPE,
-    priority: priority,
-    voiceType: voiceType
+    priority,
+    voiceType
   }
 }
 
@@ -39,7 +39,7 @@ export function changeVoiceType(priority, voiceType) {
 export function changeMovieStatus(movieStatus) {
   return {
     type: types.CHANGE_SOUND_SHOW_MOVIE_STATUS,
-    movieStatus: movieStatus
+    movieStatus
   }
 }
 

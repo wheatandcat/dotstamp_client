@@ -12,10 +12,10 @@ import * as types from "../../../constants/ActionTypes"
 export function addBody(body, character, directionType, talkType) {
   return {
     type: types.ADD_CONTRIBUTION_FORM_BODY,
-    character: character,
-    body: body,
-    directionType: directionType,
-    talkType: talkType
+    character,
+    body,
+    directionType,
+    talkType
   }
 }
 
@@ -31,10 +31,10 @@ export function addBody(body, character, directionType, talkType) {
 export function editBody(body, character, directionType, priority) {
   return {
     type: types.EDIT_CONTRIBUTION_FORM_BODY,
-    character: character,
-    body: body,
-    directionType: directionType,
-    priority: priority
+    character,
+    body,
+    directionType,
+    priority
   }
 }
 
@@ -47,7 +47,7 @@ export function editBody(body, character, directionType, priority) {
 export function changeCharacter(character) {
   return {
     type: types.CHANGE_CONTRIBUTION_FORM_CHARACTER,
-    character: character
+    character
   }
 }
 
@@ -60,7 +60,7 @@ export function changeCharacter(character) {
 export function changeBody(body) {
   return {
     type: types.CHANGE_CONTRIBUTION_FORM_BODY,
-    body: body
+    body
   }
 }
 
@@ -73,7 +73,7 @@ export function changeBody(body) {
 export function changeTitle(title) {
   return {
     type: types.CHANGE_CONTRIBUTION_FORM_TITLE,
-    title: title
+    title
   }
 }
 
@@ -86,7 +86,7 @@ export function changeTitle(title) {
 export function changeTag(tag) {
   return {
     type: types.CHANGE_CONTRIBUTION_FORM_TAG,
-    tag: tag
+    tag
   }
 }
 
@@ -99,7 +99,7 @@ export function changeTag(tag) {
 export function changeHeight(height) {
   return {
     type: types.CHANGE_CONTRIBUTION_FORM_HEIGHT,
-    height: height
+    height
   }
 }
 
@@ -112,7 +112,7 @@ export function changeHeight(height) {
 export function setViewStatus(viewStatus) {
   return {
     type: types.SET_CONTRIBUTION_FORM_VIEW_STATUS,
-    viewStatus: viewStatus
+    viewStatus
   }
 }
 /**

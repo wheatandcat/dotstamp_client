@@ -1,10 +1,8 @@
 import PropTypes from "prop-types"
 import React, { Component } from "react"
+import { Link } from "react-router-dom"
 import {
   Tooltip,
-  Panel,
-  Table,
-  Modal,
   Label,
   Dropdown,
   Button,
@@ -20,17 +18,17 @@ import {
   VIEW_STATUS_PRIVATE,
   TAG_MAX_NUMBER
 } from "../../../../constants/contribution"
-import { Link } from "react-router-dom"
 import FormMain from "../../containers/form/main"
 import TalkBoard from "../../containers/talk/board"
 import AlertMessage from "../../../error/containers/alertMessage"
 import MessageSow from "../../../message/containers/show"
+import { Guide } from "../../../../component/contribution/help"
 
 import { Preview, Group, GroupList } from "./../../../../../css/form.css"
 import { Item } from "./../../../../../css/tag.css"
 import { Front, Absolute, Close } from "./../../../../../css/common.css"
 
-var self
+let self
 
 window.addEventListener("resize", () => {
   if (self == undefined) {
@@ -40,7 +38,7 @@ window.addEventListener("resize", () => {
   self.props.changeHeight(window.innerHeight)
 })
 
-window.addEventListener("keydown", function(event) {
+window.addEventListener("keydown", event => {
   if (self == undefined) {
     return
   }
@@ -82,7 +80,7 @@ function checkDiff() {
   return true
 }
 
-var checkContributionEdit = function(hash) {
+const checkContributionEdit = function(hash) {
   if (self == undefined) {
     return false
   }
@@ -100,10 +98,8 @@ var checkContributionEdit = function(hash) {
     if (title == "" && JSON.stringify(body) == "[]") {
       return false
     }
-  } else {
-    if (!checkDiff()) {
-      return false
-    }
+  } else if (!checkDiff()) {
+    return false
   }
 
   return true
@@ -114,8 +110,6 @@ window.onbeforeunload = function() {
   if (checkContributionEdit(hash)) {
     return true
   }
-
-  return
 }
 
 export default class Header extends Component {
@@ -164,8 +158,8 @@ export default class Header extends Component {
 
     const action = {
       userContributionId: contributionId,
-      title: title,
-      tag: tag,
+      title,
+      tag,
       body: JSON.stringify(body),
       viewStatus: this.props.contributionForm.viewStatus
     }
@@ -174,9 +168,7 @@ export default class Header extends Component {
       this.props.alertMessage("タイトルを入力して下さい")
       return
     } else if (action.title.length > 100) {
-      this.props.alertMessage(
-        "タイトルが100文字を超えています。(" + action.title.length + "文字)"
-      )
+      this.props.alertMessage(`タイトルが100文字を超えています。(${action.title.length}文字)`)
       return
     } else if (action.body == "[]") {
       this.props.alertMessage("本文を入力して下さい")
@@ -259,7 +251,7 @@ export default class Header extends Component {
   deleteTag(id) {
     this.props.deleteTag({
       userContributionId: this.props.contributionId,
-      id: id
+      id
     })
   }
   /**
@@ -313,21 +305,19 @@ export default class Header extends Component {
     return (
       <FormGroup>
         <Form inline>
-          {tagList.map(tag => {
-            return (
-              <span key={tag.ID}>
-                &nbsp;
-                <Label bsStyle="info" className={Item}>
-                  <Glyphicon
-                    glyph="remove"
-                    className={Close}
-                    onClick={() => this.deleteTag(tag.ID)}
-                  />&nbsp;
-                  <span>{tag.Name}</span>
-                </Label>
-              </span>
-            )
-          })}
+          {tagList.map(tag => (
+            <span key={tag.ID}>
+              &nbsp;
+              <Label bsStyle="info" className={Item}>
+                <Glyphicon
+                  glyph="remove"
+                  className={Close}
+                  onClick={() => this.deleteTag(tag.ID)}
+                />&nbsp;
+                <span>{tag.Name}</span>
+              </Label>
+            </span>
+          ))}
           &nbsp; {this.addTagInput()}
         </Form>
       </FormGroup>
@@ -342,7 +332,7 @@ export default class Header extends Component {
     const height = this.props.contributionForm.height - 480
 
     return {
-      height: height + "px"
+      height: `${height}px`
     }
   }
   /**
@@ -400,9 +390,7 @@ export default class Header extends Component {
         </Button>
         <Dropdown.Toggle bsStyle="success" />
         <Dropdown.Menu className="super-colors">
-          {viewStausMap.map(item => {
-            return viewStaus(item)
-          })}
+          {viewStausMap.map(item => viewStaus(item))}
         </Dropdown.Menu>
       </Dropdown>
     )
@@ -412,92 +400,6 @@ export default class Header extends Component {
    */
   addSound() {
     this.props.addSound({ userContributionId: this.props.contributionId })
-  }
-  /**
-   * ヘルプを取得する
-   */
-  getHelp() {
-    return (
-      <Modal
-        show={this.props.contributionForm.help}
-        onHide={this.props.closeHelp}
-      >
-        <Modal.Header closeButton>
-          <Modal.Title>操作方法</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <h4>操作</h4>
-          <Panel header="選択中のアイコンを拡大表示">
-            画面中央のアイコンをクリックすると、選択中のアイコンを吹き出しで表示する<br />
-            もう一度クリックすると閉じる
-          </Panel>
-          <br />
-          <Panel header="並び替え">
-            吹き出し部分をドラック&ドロップすることで並び替え可能です
-          </Panel>
-          <br />
-          <Panel header="読み上げを作成する">
-            読み上げ作成は記事を保存後に表示される。「読み上げを作成する」から編集できます<br />
-            ※お試し投稿では使用できません
-          </Panel>
-          <br />
-          <h4>ショートカットキー</h4>
-          <Table striped bordered condensed hover>
-            <thead>
-              <tr>
-                <th>操作</th>
-                <th>キー</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>アイコンを右周りに変更</td>
-                <td>shift&nbsp;+&nbsp;→</td>
-              </tr>
-              <tr>
-                <td>アイコンを左周りに変更</td>
-                <td>shift&nbsp;+&nbsp;←</td>
-              </tr>
-              <tr>
-                <td>アイコンを拡大表示</td>
-                <td>shift&nbsp;+&nbsp;↑</td>
-              </tr>
-              <tr>
-                <td>アイコンを拡大非表示</td>
-                <td>shift&nbsp;+&nbsp;↓</td>
-              </tr>
-              <tr>
-                <td>テキスト書き込み</td>
-                <td>shift&nbsp;+&nbsp;command</td>
-              </tr>
-              <tr>
-                <td>投稿する or 下書き保存</td>
-                <td>shift&nbsp;+&nbsp;ctrl</td>
-              </tr>
-              <tr>
-                <td>フォーカスをテキストに移動</td>
-                <td>shift&nbsp;+&nbsp;enter</td>
-              </tr>
-              <tr>
-                <td>画像をアップロード</td>
-                <td>shift&nbsp;+&nbsp;i</td>
-              </tr>
-              <tr>
-                <td>アイコンを拡大表示</td>
-                <td>shift&nbsp;+&nbsp;↑</td>
-              </tr>
-              <tr>
-                <td>書き込みスペースをスクロール</td>
-                <td>shift&nbsp;+&nbsp;alt&nbsp;+&nbsp;↓&nbsp;or&nbsp;↑</td>
-              </tr>
-            </tbody>
-          </Table>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={this.props.closeHelp}>Close</Button>
-        </Modal.Footer>
-      </Modal>
-    )
   }
   /**
    * 描画する
@@ -515,7 +417,7 @@ export default class Header extends Component {
         )
       } else {
         sound = (
-          <Link to={"/sound/show/" + this.props.contributionId}>
+          <Link to={`/sound/show/${this.props.contributionId}`}>
             <Button bsStyle="link">
               <Glyphicon glyph="bullhorn" />&nbsp;読み上げを編集する（β版）
             </Button>
@@ -541,7 +443,12 @@ export default class Header extends Component {
 
     return (
       <div>
-        <MessageSow /> {this.getHelp()}
+        <MessageSow />
+        {" "}
+        <Guide
+          show={this.props.contributionForm.help}
+          onHide={this.props.closeHelp}
+        />
         {experience}
         <ListGroup className={Group}>
           <ListGroupItem>

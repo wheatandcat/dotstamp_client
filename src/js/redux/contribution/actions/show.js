@@ -27,6 +27,6 @@ export function closeProblem() {
 export function setProblemType(problemType) {
   return {
     type: types.SET_CONTRIBUTION_SHOW_PROBLEM_TYPE,
-    problemType: problemType
+    problemType
   }
 }

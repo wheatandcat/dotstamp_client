@@ -13,7 +13,7 @@ function get(ID: number) {
     return <Default fileName="profile/default.png" />
   }
 
-  return <Icon fileName={ID + ".jpg"} />
+  return <Icon fileName={`${ID}.jpg`} />
 }
 
 export default ({ ID }: Props) => (

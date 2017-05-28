@@ -16,7 +16,7 @@ export default ({ open, text }: Props) => (
       <tbody>
         <tr>
           <td>
-            <Image src={getStaticUrl() + "common/icon.png"} rounded />
+            <Image src={`${getStaticUrl()}common/icon.png`} rounded />
           </td>
           <td className={styles.StampAddress}>
             □□□□□□
@@ -29,7 +29,7 @@ export default ({ open, text }: Props) => (
       <br />
       <br />
       <br />
-      <Image src={getStaticUrl() + "common/doc.png"} rounded />
+      <Image src={`${getStaticUrl()}common/doc.png`} rounded />
       &nbsp;&nbsp;&nbsp;&nbsp;
       <Link to="/about">
         <Button bsStyle="primary">.stampとは</Button>

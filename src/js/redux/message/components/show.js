@@ -19,7 +19,7 @@ export default class Show extends Component {
       <Fade
         in={this.props.messageShow.Show}
         onEntering={this.close.bind(this)}
-        className={Absolute + " " + FadeMessage}
+        className={`${Absolute} ${FadeMessage}`}
         unmountOnExit
       >
         <div>

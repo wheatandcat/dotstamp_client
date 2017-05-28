@@ -20,7 +20,7 @@ import { Center } from "./../../../../css/common.css"
 import Footer from "../../../utils/parts/footer"
 import { List } from "../../../component/contribution/list"
 
-var tmpSearch = ""
+let tmpSearch = ""
 
 export default class Search extends Component {
   componentWillMount() {
@@ -56,9 +56,9 @@ export default class Search extends Component {
    */
   search(search, order, page) {
     this.props.search({
-      search: search,
-      order: order,
-      page: page,
+      search,
+      order,
+      page,
       limit: this.props.contributionSearch.Limit
     })
   }
@@ -183,26 +183,12 @@ export default class Search extends Component {
                     onSelect={this.setOrder.bind(this)}
                   >
                     <LinkContainer
-                      to={
-                        "/contribution/search/" +
-                          this.props.contributionSearch.Search +
-                          "/" +
-                          ORDER_TYPE_NEW +
-                          "/" +
-                          this.props.contributionSearch.Page
-                      }
+                      to={`/contribution/search/${this.props.contributionSearch.Search}/${ORDER_TYPE_NEW}/${this.props.contributionSearch.Page}`}
                     >
                       <MenuItem eventKey={ORDER_TYPE_NEW}>新規順</MenuItem>
                     </LinkContainer>
                     <LinkContainer
-                      to={
-                        "/contribution/search/" +
-                          this.props.contributionSearch.Search +
-                          "/" +
-                          ORDER_TYPE_FOLLOW_COUNT +
-                          "/" +
-                          this.props.contributionSearch.Page
-                      }
+                      to={`/contribution/search/${this.props.contributionSearch.Search}/${ORDER_TYPE_FOLLOW_COUNT}/${this.props.contributionSearch.Page}`}
                     >
                       <MenuItem eventKey={ORDER_TYPE_FOLLOW_COUNT}>
                         フォロー順

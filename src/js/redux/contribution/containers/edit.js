@@ -13,7 +13,7 @@ function mapDispatchToProps(dispatch) {
     getDetail: id => {
       dispatch(
         fetchPostsIfNeeded(
-          "contribution/edit/" + id,
+          `contribution/edit/${id}`,
           types.GET_CONTRIBUTION_EDIT
         )
       )

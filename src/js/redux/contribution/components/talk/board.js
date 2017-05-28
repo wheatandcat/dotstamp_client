@@ -4,7 +4,7 @@ import HTML5Backend from "react-dnd-html5-backend"
 import { DragDropContext } from "react-dnd"
 import Item from "./item"
 
-var self
+let self
 
 class Board extends Component {
   componentWillMount() {
@@ -21,7 +21,7 @@ class Board extends Component {
     const talkList = self.props.talkList.concat()
     let beforeTalk, afterTalk
 
-    talkList.map(function(talk) {
+    talkList.map(talk => {
       if (talk.Priority == priority) {
         beforeTalk = talk
       }

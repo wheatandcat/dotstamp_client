@@ -23,8 +23,7 @@ export default class Tag extends Component {
   getItem(item) {
     const hash = location.hash
     if (hash.indexOf("/contribution/search") != -1) {
-      const url =
-        "contribution/search/" + item.Name + "/" + ORDER_TYPE_NEW + "/1"
+      const url = `contribution/search/${item.Name}/${ORDER_TYPE_NEW}/1`
       return (
         <Link to={url} onClick={() => this.setSearch(item.Name)}>
           <Label bsStyle="info" className={Item}>
@@ -35,9 +34,7 @@ export default class Tag extends Component {
     }
 
     return (
-      <Link
-        to={"contribution/search/" + item.Name + "/" + ORDER_TYPE_NEW + "/1"}
-      >
+      <Link to={`contribution/search/${item.Name}/${ORDER_TYPE_NEW}/1`}>
         <Label bsStyle="info" className={Item}>
           {item.Name}
         </Label>

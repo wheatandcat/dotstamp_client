@@ -1,4 +1,4 @@
-/*global process*/
+/* global process*/
 
 // @flow
 function uploadDir(): string {

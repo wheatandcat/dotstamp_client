@@ -10,13 +10,11 @@ type Props = {
 export default ({ list }: Props) => (
   <div className={styles.list}>
     <div>
-      {list.map(data => {
-        return (
-          <div key={data.ID}>
-            <Character fileName={data.FileName} />
-          </div>
-        )
-      })}
+      {list.map(data => (
+        <div key={data.ID}>
+          <Character fileName={data.FileName} />
+        </div>
+      ))}
     </div>
   </div>
 )

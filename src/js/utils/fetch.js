@@ -1,17 +1,17 @@
-/*global process*/
+/* global process*/
 import fetch from "isomorphic-fetch"
 import * as types from "../constants/ActionTypes"
 
 // ホスト
-var host = typeof process.env.BASE_URL == "undefined"
+const host = typeof process.env.BASE_URL === "undefined"
   ? "http://localhost:3000/api/"
-  : process.env.BASE_URL + "api/"
-var staticHost = typeof process.env.BASE_URL == "undefined"
+  : `${process.env.BASE_URL}api/`
+const staticHost = typeof process.env.BASE_URL === "undefined"
   ? "http://localhost:3000"
   : process.env.BASE_URL
 
 // 通信状態リスト
-var fetchStateList = []
+const fetchStateList = []
 
 /**
  * 必要な場合はPOST通信を行う
@@ -27,10 +27,9 @@ export function fetchPostsIfNeeded(url, type, paramas = {}, receiveParam = {}) {
     if (shouldFetchPosts(url)) {
       // thunkからthunkを呼び出せる！
       return dispatch(fetchPosts(url, type, paramas, receiveParam))
-    } else {
-      // 下記コードを呼び、wait forには何もないことを知らせる
-      return Promise.resolve()
     }
+    // 下記コードを呼び、wait forには何もないことを知らせる
+    return Promise.resolve()
   }
 }
 
@@ -110,15 +109,11 @@ function fetchPosts(url, type, paramas, receiveParam) {
     headers: {
       "Content-Type": "application/x-www-form-urlencoded"
     },
-    body: Object.keys(paramas)
-      .map(function(key) {
-        return key + "=" + paramas[key]
-      })
-      .join("&")
+    body: Object.keys(paramas).map(key => `${key}=${paramas[key]}`).join("&")
   }
 
-  return dispatch => {
-    return fetch(host + url, requestParams)
+  return dispatch =>
+    fetch(host + url, requestParams)
       .then(response =>
         response.json().then(json => ({
           status: response.status,
@@ -132,7 +127,6 @@ function fetchPosts(url, type, paramas, receiveParam) {
 
         dispatch(receiveResponse(url, type, json, receiveParam))
       })
-  }
 }
 
 /**
@@ -149,10 +143,9 @@ export function fetchUploadIfNeeded(url, type, paramas, receiveParam = {}) {
     if (shouldFetchPosts(url)) {
       // thunkからthunkを呼び出せる！
       return dispatch(fetchUpload(url, type, paramas, receiveParam))
-    } else {
-      // 下記コードを呼び、wait forには何もないことを知らせる
-      return Promise.resolve()
     }
+    // 下記コードを呼び、wait forには何もないことを知らせる
+    return Promise.resolve()
   }
 }
 
@@ -175,8 +168,8 @@ function fetchUpload(url, type, paramas, receiveParam) {
     body: paramas
   }
 
-  return dispatch => {
-    return fetch(host + url, {
+  return dispatch =>
+    fetch(host + url, {
       ...requestParams
     })
       .then(response =>
@@ -192,7 +185,6 @@ function fetchUpload(url, type, paramas, receiveParam) {
 
         dispatch(receiveResponse(url, type, json, receiveParam))
       })
-  }
 }
 
 /**
@@ -208,10 +200,9 @@ export function fetchTextIfNeeded(url, type, receiveParam) {
     if (shouldFetchPosts(url)) {
       // thunkからthunkを呼び出せる！
       return dispatch(fetchText(url, type, receiveParam))
-    } else {
-      // 下記コードを呼び、wait forには何もないことを知らせる
-      return Promise.resolve()
     }
+    // 下記コードを呼び、wait forには何もないことを知らせる
+    return Promise.resolve()
   }
 }
 
@@ -224,8 +215,8 @@ export function fetchTextIfNeeded(url, type, receiveParam) {
  * @return {object} レスポンス
  */
 function fetchText(url, type, receiveParam) {
-  return dispatch => {
-    return fetch(staticHost + url)
+  return dispatch =>
+    fetch(staticHost + url)
       .then(response =>
         response.text().then(json => ({
           status: response.status,
@@ -239,5 +230,4 @@ function fetchText(url, type, receiveParam) {
 
         dispatch(receiveResponse(url, type, json, receiveParam))
       })
-  }
 }

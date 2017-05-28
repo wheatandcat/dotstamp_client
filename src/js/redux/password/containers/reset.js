@@ -13,7 +13,7 @@ function mapDispatchToProps(dispatch) {
     check: (email, keyword) => {
       dispatch(
         fetchPostsIfNeeded(
-          "user/forget_password/check/" + email + "/" + keyword,
+          `user/forget_password/check/${email}/${keyword}`,
           types.CHECK_PASSWORD
         )
       )

@@ -28,7 +28,7 @@ export default class Show extends Component {
       return
     }
 
-    this.props.add({ email: email, body: body })
+    this.props.add({ email, body })
   }
   /**
    * 描画する

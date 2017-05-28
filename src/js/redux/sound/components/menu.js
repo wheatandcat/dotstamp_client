@@ -22,7 +22,7 @@ import { getTopUrl } from "../../../utils/common"
 import { Form } from "../../../component/youtube/"
 import { Link } from "react-router-dom"
 
-var self
+let self
 window.document.getElementById("uploadToken").onchange = function() {
   if (self == undefined) {
     return false
@@ -30,8 +30,6 @@ window.document.getElementById("uploadToken").onchange = function() {
 
   self.props.message("認証成功。YouTubeのアップロード開始します", "success")
   self.uploadYoutube()
-
-  return
 }
 
 export default class Menu extends Component {
@@ -134,7 +132,7 @@ export default class Menu extends Component {
     this.props.closeUpload()
 
     window.open(
-      getTopUrl() + "api/movie/connect/" + this.props.userContributionId,
+      `${getTopUrl()}api/movie/connect/${this.props.userContributionId}`,
       "child",
       "width=500,height=250"
     )
@@ -264,12 +262,7 @@ export default class Menu extends Component {
         <Button
           bsStyle="success"
           bsSize="small"
-          href={
-            getTopUrl() +
-              "static/files/sound/" +
-              this.props.userContributionId +
-              ".mp3"
-          }
+          href={`${getTopUrl()}static/files/sound/${this.props.userContributionId}.mp3`}
           target="_blank"
         >
           ダウンロード
@@ -279,12 +272,7 @@ export default class Menu extends Component {
         <Button
           bsStyle="success"
           bsSize="small"
-          href={
-            getTopUrl() +
-              "static/files/movie/" +
-              this.props.userContributionId +
-              ".mp4"
-          }
+          href={`${getTopUrl()}static/files/movie/${this.props.userContributionId}.mp4`}
           target="_blank"
         >
           ダウンロード
@@ -346,7 +334,7 @@ export default class Menu extends Component {
           <div>
             <strong>動画情報</strong>
           </div>
-          <Form videoId={this.props.soundShow.MovieID} screen={true} />
+          <Form videoId={this.props.soundShow.MovieID} screen />
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={this.props.closeInformation}>
@@ -367,13 +355,7 @@ export default class Menu extends Component {
       download = (
         <div className="pull-right">
           <Sound
-            url={
-              getTopUrl() +
-                "static/files/sound/" +
-                this.props.userContributionId +
-                ".mp3?=" +
-                +new Date().getTime()
-            }
+            url={`${getTopUrl()}static/files/sound/${this.props.userContributionId}.mp3?=${+new Date().getTime()}`}
           />
         </div>
       )
@@ -418,7 +400,7 @@ export default class Menu extends Component {
         </div>
         <br />
         <div className="pull-right">
-          <Link to={"/contribution/edit/" + this.props.userContributionId}>
+          <Link to={`/contribution/edit/${this.props.userContributionId}`}>
             投稿編集に戻る
           </Link>
           <br />

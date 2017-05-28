@@ -14,7 +14,7 @@ export default class Thumbnail extends Component {
    * @return {string} 詳細画面リンク
    */
   getShowPath(id: number) {
-    return "/contribution/show/" + id
+    return `/contribution/show/${id}`
   }
   /**
    * 検索一致を取得する
@@ -35,7 +35,7 @@ export default class Thumbnail extends Component {
     return (
       <div className={styles.Thin}>
         {this.replaceMatchText(
-          search.substring(start, end) + "...",
+          `${search.substring(start, end)}...`,
           this.props.SearchMatch
         )}
       </div>
@@ -48,18 +48,17 @@ export default class Thumbnail extends Component {
    * @return {string} 改行変換後テキスト
    */
   replaceMatchText(text: string, search: string) {
-    const regex = new RegExp(search + "(.*?)", "g")
+    const regex = new RegExp(`${search}(.*?)`, "g")
 
-    return text.split(regex).map(function(line, i) {
+    return text.split(regex).map((line, i) => {
       if (line == "" && i > 0) {
         return (
           <span key={i} className={styles.Dark}>
             {search}
           </span>
         )
-      } else {
-        return line
       }
+      return line
     })
   }
   /**

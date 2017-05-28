@@ -9,9 +9,9 @@ export default class Upload {
    * @return {type}      description
    */
   static imageFileList(fileList, url) {
-    return new Promise(function(resolve) {
+    return new Promise(resolve => {
       const formData = new FormData()
-      fileList.forEach(function(f) {
+      fileList.forEach(f => {
         formData.append("file", f)
         Http.postImageApi(url, formData).then(response => {
           resolve(response)

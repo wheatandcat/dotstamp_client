@@ -8,7 +8,7 @@ import styles from "./styles.css"
 
 const DISPLAY_ICON_NUM_MAX = 5
 
-var self: Object
+let self: Object
 
 function action(event: Object) {
   if (self == undefined) {
@@ -34,7 +34,7 @@ function action(event: Object) {
     self.setState({
       tip: true,
       balloonImage: {
-        src: getUploadUrl() + "character/" + item.FileName
+        src: `${getUploadUrl()}character/${item.FileName}`
       }
     })
   } else if (event.keyCode == 40) {
@@ -89,7 +89,7 @@ export default class Slick extends Component {
       slidesToScroll: 1,
       focusOnSelect: true,
       pauseOnHballoon: true,
-      afterChange: function(currentSlide: number) {
+      afterChange(currentSlide: number) {
         self.change(currentSlide)
         self.props.onClick(self.props.list[currentSlide])
       }
@@ -100,9 +100,9 @@ export default class Slick extends Component {
   change(key: number) {
     const item = this.props.list[key]
     this.setState({
-      key: key,
+      key,
       balloonImage: {
-        src: getUploadUrl() + "character/" + item.FileName
+        src: `${getUploadUrl()}character/${item.FileName}`
       }
     })
   }
@@ -145,18 +145,16 @@ export default class Slick extends Component {
             this.slider = c
           }}
         >
-          {this.props.list.map(data => {
-            return (
-              <div key={data.ID}>
-                <Character
-                  fileName={data.FileName}
-                  onClick={this.click.bind(this)}
-                  circle
-                  size="small"
-                />
-              </div>
-            )
-          })}
+          {this.props.list.map(data => (
+            <div key={data.ID}>
+              <Character
+                fileName={data.FileName}
+                onClick={this.click.bind(this)}
+                circle
+                size="small"
+              />
+            </div>
+          ))}
         </Slider>
       </div>
     )

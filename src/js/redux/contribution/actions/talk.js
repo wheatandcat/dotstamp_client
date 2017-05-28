@@ -29,11 +29,11 @@ export function setEditBody(
 ) {
   return {
     type: types.SET_CONTRIBUTION_TALK_EDIT_BODY,
-    priority: priority,
-    character: character,
-    directionType: directionType,
+    priority,
+    character,
+    directionType,
     talekType: talkType,
-    body: body
+    body
   }
 }
 
@@ -44,7 +44,7 @@ export function setEditBody(
  * @return {[object]}  アクション
  */
 export function deleteBody(priority) {
-  return { type: types.DELETE_CONTRIBUTION_TALK_BODY, priority: priority }
+  return { type: types.DELETE_CONTRIBUTION_TALK_BODY, priority }
 }
 
 /**
@@ -54,5 +54,5 @@ export function deleteBody(priority) {
  * @return {[object]}  アクション
  */
 export function setTalkList(talkList) {
-  return { type: types.SET_CONTRIBUTION_TALK_LIST, talkList: talkList }
+  return { type: types.SET_CONTRIBUTION_TALK_LIST, talkList }
 }

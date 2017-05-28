@@ -1,5 +1,5 @@
 import PropTypes from "prop-types"
-/*eslint no-console: ["error", { allow: ["log", "error"] }] */
+/* eslint no-console: ["error", { allow: ["log", "error"] }] */
 import React, { Component } from "react"
 import {
   FormGroup,

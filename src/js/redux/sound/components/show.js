@@ -109,8 +109,8 @@ export default class Show extends Component {
 
             return (
               <MenuItem
-                key={item.Priority + "_" + voive.type}
-                eventKey={item.Priority + "_" + voive.type + "_" + item.ID}
+                key={`${item.Priority}_${voive.type}`}
+                eventKey={`${item.Priority}_${voive.type}_${item.ID}`}
                 {...option}
               >
                 &nbsp;&nbsp;&nbsp;{voive.name}&nbsp;&nbsp;
@@ -129,12 +129,11 @@ export default class Show extends Component {
      */
   changeBr(text) {
     const regex = /(\n)/g
-    return text.split(regex).map(function(line, i) {
+    return text.split(regex).map((line, i) => {
       if (line.match(regex)) {
         return <br key={i} />
-      } else {
-        return line
       }
+      return line
     })
   }
   /**
@@ -161,9 +160,9 @@ export default class Show extends Component {
      */
   saveBodySound(priority, id) {
     this.props.saveBodySound({
-      id: id,
+      id,
       body: this.props.soundShow.List[priority].body_sound,
-      priority: priority
+      priority
     })
 
     this.props.message("保存しました", "success")
@@ -177,16 +176,10 @@ export default class Show extends Component {
   getItem(item) {
     let make = ""
     if (item.make_status == MAKE_STATUS_MADE) {
-      const name = item.user_contribution_id + "_" + item.Priority
+      const name = `${item.user_contribution_id}_${item.Priority}`
       make = (
         <Sound
-          url={
-            getTopUrl() +
-              "static/files/tmp/sound/" +
-              name +
-              ".wav?=" +
-              new Date().getTime()
-          }
+          url={`${getTopUrl()}static/files/tmp/sound/${name}.wav?=${new Date().getTime()}`}
           repeat=""
           play=""
           pause=""
@@ -208,7 +201,7 @@ export default class Show extends Component {
             placeholder="読み上げ本文。空の場合は、読み上げをスルーします"
             value={item.body_sound}
             onChange={this.changeBodySound.bind(this)}
-            id={"body_sound-" + item.Priority}
+            id={`body_sound-${item.Priority}`}
             className={InputText}
           />
         </td>
@@ -265,13 +258,11 @@ export default class Show extends Component {
                     this.selectVoice = ref
                   }}
                 >
-                  {VOICE_TYPE.map(voive => {
-                    return (
-                      <option value={voive.type} key={voive.type}>
-                        {voive.name}
-                      </option>
-                    )
-                  })}
+                  {VOICE_TYPE.map(voive => (
+                    <option value={voive.type} key={voive.type}>
+                      {voive.name}
+                    </option>
+                  ))}
                 </FormControl>
               </FormGroup>
             </Alert>
@@ -304,7 +295,7 @@ export default class Show extends Component {
           </PageHeader>
           <Menu userContributionId={this.props.match.params.id} />
         </div>
-        <div className={"container " + Input}>
+        <div className={`container ${Input}`}>
           <Table striped bordered condensed hover>
             <thead>
               <tr>
@@ -336,9 +327,7 @@ export default class Show extends Component {
               </tr>
             </thead>
             <tbody>
-              {this.props.soundShow.List.map(item => {
-                return this.getItem(item)
-              })}
+              {this.props.soundShow.List.map(item => this.getItem(item))}
             </tbody>
           </Table>
         </div>

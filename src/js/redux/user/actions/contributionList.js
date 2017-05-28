@@ -18,7 +18,7 @@ export function init() {
 export function setContribution(contributionId) {
   return {
     type: types.SET_USER_CONTRBUTION_LIST,
-    contributionId: contributionId
+    contributionId
   }
 }
 
@@ -29,7 +29,7 @@ export function setContribution(contributionId) {
  * @return {object} アクション
  */
 export function setTitleSearch(list) {
-  return { type: types.SET_USER_CONTRBUTION_LIST_SEARCH, list: list }
+  return { type: types.SET_USER_CONTRBUTION_LIST_SEARCH, list }
 }
 
 /**
@@ -41,7 +41,7 @@ export function setTitleSearch(list) {
 export function setViewStatus(viewStatus) {
   return {
     type: types.SET_USER_CONTRBUTION_LIST_VIEW_STATUS,
-    viewStatus: viewStatus
+    viewStatus
   }
 }
 

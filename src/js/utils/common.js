@@ -1,4 +1,4 @@
-/*global process*/
+/* global process*/
 import dateFormat from "dateformat"
 
 /**
@@ -91,5 +91,5 @@ export function abridgement(str, maxNumber) {
     return str
   }
 
-  return str.substring(0, maxNumber) + "..."
+  return `${str.substring(0, maxNumber)}...`
 }

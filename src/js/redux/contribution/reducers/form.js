@@ -25,7 +25,7 @@ const initialState = {
   Experience: false
 }
 
-var onBoardScrollActionTypeList = [
+const onBoardScrollActionTypeList = [
   types.ADD_CONTRIBUTION_FORM_BODY,
   types.UPLOAD_CONTRIBUTION_FORM
 ]
@@ -128,7 +128,7 @@ export default function Form(state = initialState, action) {
       return JSON.parse(JSON.stringify(state))
     }
     case types.NEW_CONTRIBUTION_FORM: {
-      location.pathname = "/contribution/edit/" + action.response
+      location.pathname = `/contribution/edit/${action.response}`
       return JSON.parse(JSON.stringify(state))
     }
     case types.SET_CONTRIBUTION_FORM_VIEW_STATUS: {
@@ -153,7 +153,7 @@ export default function Form(state = initialState, action) {
     case types.ADD_CONTRIBUTION_FORM_SOUND: {
       const id = action.receiveParam.userContributionId
 
-      location.pathname = "/sound/show/" + id
+      location.pathname = `/sound/show/${id}`
       return JSON.parse(JSON.stringify(initialState))
     }
     case types.OPEN_CONTRIBUTION_FORM_HELP: {

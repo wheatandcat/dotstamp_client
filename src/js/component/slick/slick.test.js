@@ -96,7 +96,7 @@ describe("components/slick/slick", () => {
     const instance: Slick = enzymeWrapper.instance()
     instance.balloon({
       target: {
-        getBoundingClientRect: function() {
+        getBoundingClientRect() {
           return {
             left: 1,
             top: 1,

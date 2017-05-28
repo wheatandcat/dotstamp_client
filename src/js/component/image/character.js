@@ -18,7 +18,7 @@ function className(styles: Object, size?: "small") {
     r = styles[size]
   }
 
-  return styles.character + " " + r
+  return `${styles.character} ${r}`
 }
 
 export default ({

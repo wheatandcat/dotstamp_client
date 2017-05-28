@@ -47,9 +47,8 @@ export default ({ count, actived, disabled, onAdd, onDelete }: Props) => (
           return getDisabled()
         } else if (actived) {
           return getActived(onDelete)
-        } else {
-          return get(onAdd)
         }
+        return get(onAdd)
       })()}
     </div>
   </div>

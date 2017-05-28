@@ -39,7 +39,7 @@ function mapDispatchToProps(dispatch) {
     upload: (urlParam, formData, params) => {
       dispatch(
         fetchUploadIfNeeded(
-          "contribution/upload/" + urlParam,
+          `contribution/upload/${urlParam}`,
           types.UPLOAD_CONTRIBUTION_FORM,
           formData,
           params

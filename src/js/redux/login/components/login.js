@@ -8,7 +8,7 @@ export default class Login extends Component {
    * ログインする
    */
   login(email: stirng, password: string) {
-    this.props.loginCheck({ email: email, password: password })
+    this.props.loginCheck({ email, password })
   }
   /**
    * 描画する

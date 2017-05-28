@@ -16,7 +16,7 @@ export function alertMessageInit() {
  * @return {object} アクション
  */
 export function alertMessage(message) {
-  return { type: types.OPEN_ERROR_ALERT_MESSAGE, message: message }
+  return { type: types.OPEN_ERROR_ALERT_MESSAGE, message }
 }
 
 /**

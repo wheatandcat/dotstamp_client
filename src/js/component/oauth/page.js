@@ -12,7 +12,7 @@ type Props = {
 }
 
 export default ({ email, onNew, isAlert, message }: Props) => (
-  <div className={styles.page + " container"}>
+  <div className={`${styles.page} container`}>
     <br />
     <br />
     <br />

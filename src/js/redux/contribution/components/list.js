@@ -108,7 +108,7 @@ export default class List extends Component {
       )
     }
 
-    var self = this
+    const self = this
     if (!this.props.contributionList.next) {
       setTimeout(() => {
         self.props.next()

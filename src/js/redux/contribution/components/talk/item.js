@@ -4,14 +4,14 @@ import { DragSource, DropTarget } from "react-dnd"
 import ContributionTalk from "../../containers/talk/main"
 
 // ドラッグ元のインターフェースを持たせる
-var itemSource = {
-  beginDrag: function(props) {
+const itemSource = {
+  beginDrag(props) {
     return { priority: props.priority }
   }
 }
 
 // ドラッグ元の機能と独自コンポーネントをつなぐ
-var collectSource = function(connect, monitor) {
+const collectSource = function(connect, monitor) {
   return {
     connectDragSource: connect.dragSource(),
     connectDragPreview: connect.dragPreview(),
@@ -20,8 +20,8 @@ var collectSource = function(connect, monitor) {
 }
 
 // ドラッグ先も同様にインターフェースとコンポーネントの結びつきを用意
-var itemTarget = {
-  hover: function(props, monitor) {
+const itemTarget = {
+  hover(props, monitor) {
     const draggedPriority = monitor.getItem().priority
 
     if (draggedPriority != props.priority) {
@@ -30,7 +30,7 @@ var itemTarget = {
   }
 }
 
-var collectTarget = function(connect) {
+const collectTarget = function(connect) {
   return { connectDropTarget: connect.dropTarget() }
 }
 
@@ -46,7 +46,7 @@ let Item = class Item extends Component {
     return this.props.connectDragSource(
       this.props.connectDropTarget(
         <div>
-          <ContributionTalk talk={this.props.talk} editMode={true} />
+          <ContributionTalk talk={this.props.talk} editMode />
         </div>
       )
     )

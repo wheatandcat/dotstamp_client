@@ -32,7 +32,7 @@ export default ({
           </div>
         </Col>
         <Col md={1} xsHidden>
-          <div className={"pull-right " + top}>
+          <div className={`pull-right ${top}`}>
             <Dropdown id="dropdown-custom-1" pullRight>
               <Dropdown.Toggle noCaret>
                 <Glyphicon glyph="list" />

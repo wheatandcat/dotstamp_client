@@ -6,7 +6,6 @@ import { Center } from "./../../../css/common.css"
 export default class Paginations extends Component {
   handleSelect(page) {
     this.props.paging(page, this.props.order)
-    return
   }
   /**
    * 描画する

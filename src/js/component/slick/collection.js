@@ -23,17 +23,16 @@ export default ({
     {(() => {
       if (list.length <= DISPLAY_ICON_NUM_MIN) {
         return <List list={list} />
-      } else {
-        return (
-          <Slick
-            list={list}
-            defaultValue={defaultValue}
-            balloon={balloon}
-            balloonImage={balloonImage}
-            onClick={onClick}
-          />
-        )
       }
+      return (
+        <Slick
+          list={list}
+          defaultValue={defaultValue}
+          balloon={balloon}
+          balloonImage={balloonImage}
+          onClick={onClick}
+        />
+      )
     })()}
   </div>
 )

@@ -9,6 +9,6 @@ import * as types from "../../../constants/ActionTypes"
 export function init(experience) {
   return {
     type: types.INIT_CONTRIBUTION_NEW,
-    experience: experience
+    experience
   }
 }

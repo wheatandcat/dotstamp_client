@@ -44,7 +44,7 @@ export default class Talk extends Component {
     }
 
     this.props.upload(
-      "?userContributionId=" + contributionId,
+      `?userContributionId=${contributionId}`,
       formData,
       this.props.talk
     )

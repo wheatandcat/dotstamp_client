@@ -33,7 +33,7 @@ class New extends Component {
       return
     }
 
-    this.props.new({ email: email, password: password })
+    this.props.new({ email, password })
   }
   render() {
     return (

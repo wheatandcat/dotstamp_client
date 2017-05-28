@@ -39,14 +39,14 @@ export default ({
           <ButtonToolbar>
             <Button>
               <ControlLabel
-                htmlFor={"image-file-edit-" + Priority}
+                htmlFor={`image-file-edit-${Priority}`}
                 bsClass={styles.Group}
               >
                 <Glyphicon glyph="picture" />
               </ControlLabel>
               <input
                 type="file"
-                id={"image-file-edit-" + Priority}
+                id={`image-file-edit-${Priority}`}
                 name="image-file-edit"
                 className="hidden"
                 accept="image/jpeg,image/png,image/jpg"

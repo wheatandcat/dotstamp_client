@@ -14,9 +14,9 @@ import { Collection } from "../../../../component/slick/"
 import { Edit, Group } from "./../../../../../css/form.css"
 import { Gap, Front, Warning, Alert } from "../../../../../css/common.css"
 import { ImageForm } from "../../../../../css/contribution.css"
-var self
+let self
 
-window.addEventListener("keydown", function(event) {
+window.addEventListener("keydown", event => {
   if (self == undefined) {
     return
   }
@@ -59,7 +59,7 @@ export default class Main extends Component {
     let className = "form-control"
 
     if (this.props.contributionForm.edit) {
-      className += " " + Edit
+      className += ` ${Edit}`
     }
 
     return (
@@ -168,7 +168,7 @@ export default class Main extends Component {
       contributionId = 0
     }
 
-    this.props.upload("?userContributionId=" + contributionId, formData, {
+    this.props.upload(`?userContributionId=${contributionId}`, formData, {
       character: this.props.contributionForm.character,
       directionType: this.props.contributionForm.directionType,
       talkType: TALK_TYPE_IMAGE
@@ -182,7 +182,7 @@ export default class Main extends Component {
   render() {
     let defaultIcon = ""
     if (this.props.characterList.DefaultIcon) {
-      defaultIcon = <div className={Warning + " " + Front}>デフォルトアイコン表示中...</div>
+      defaultIcon = <div className={`${Warning} ${Front}`}>デフォルトアイコン表示中...</div>
     }
 
     let cancel = ""

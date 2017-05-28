@@ -16,13 +16,13 @@ export default class Footer extends React.Component {
           <Breadcrumb.Item href={getTopUrl()}>
             Home
           </Breadcrumb.Item>
-          <Breadcrumb.Item href={getTopUrl() + "question"}>
+          <Breadcrumb.Item href={`${getTopUrl()}question`}>
             問い合わせ
           </Breadcrumb.Item>
-          <Breadcrumb.Item href={getTopUrl() + "about"}>
+          <Breadcrumb.Item href={`${getTopUrl()}about`}>
             .stampとは
           </Breadcrumb.Item>
-          <Breadcrumb.Item href={getTopUrl() + "information/terms"}>
+          <Breadcrumb.Item href={`${getTopUrl()}information/terms`}>
             利用規約
           </Breadcrumb.Item>
           <Breadcrumb.Item

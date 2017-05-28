@@ -41,7 +41,7 @@ function mapDispatchToProps(dispatch) {
     getDetail: id => {
       dispatch(
         fetchPostsIfNeeded(
-          "contribution/show/" + id,
+          `contribution/show/${id}`,
           types.GET_CONTRIBUTION_SHOW
         )
       )
@@ -55,7 +55,7 @@ function mapDispatchToProps(dispatch) {
     delete: id => {
       dispatch(
         fetchPostsIfNeeded(
-          "contribution/delete/" + id,
+          `contribution/delete/${id}`,
           types.DELETE_CONTRIBUTION_SHOW
         )
       ).then(() => {

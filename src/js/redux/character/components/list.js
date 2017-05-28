@@ -97,20 +97,19 @@ export default class List extends Component {
                 {(() => {
                   if (this.props.characterList.DefaultIcon) {
                     return <NoIcon />
-                  } else {
-                    return (
-                      <Menu
-                        fileName={this.props.characterList.icon.fileName}
-                        IconId={this.props.characterList.icon.id}
-                        voiceList={VOICE_TYPE}
-                        voiceType={voiceType}
-                        voiceLabel={VOICE_TYPE_MAP[voiceType]}
-                        onSave={this.save.bind(this)}
-                        onDelete={this.props.delete.bind(this)}
-                        onVoiceType={this.props.setVoiceType.bind(this)}
-                      />
-                    )
                   }
+                  return (
+                    <Menu
+                      fileName={this.props.characterList.icon.fileName}
+                      IconId={this.props.characterList.icon.id}
+                      voiceList={VOICE_TYPE}
+                      voiceType={voiceType}
+                      voiceLabel={VOICE_TYPE_MAP[voiceType]}
+                      onSave={this.save.bind(this)}
+                      onDelete={this.props.delete.bind(this)}
+                      onVoiceType={this.props.setVoiceType.bind(this)}
+                    />
+                  )
                 })()}
               </div>
             </ListGroupItem>

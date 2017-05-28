@@ -20,7 +20,7 @@ export function setIcon(id) {
 export function setVoiceType(voiceType) {
   return {
     type: types.SET_CHARACTER_VOICE_TYPE,
-    voiceType: voiceType
+    voiceType
   }
 }
 
