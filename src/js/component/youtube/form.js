@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from "react"
 import { Alert, Button, ButtonGroup } from "react-bootstrap"
 import { PLAY, PAUSE, FINISHED } from "./player"

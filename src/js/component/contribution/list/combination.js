@@ -1,39 +1,46 @@
 // @flow
-import PropTypes from "prop-types"
-import React, { Component } from "react"
-import { List, Open, Close } from "./"
+import React from "react"
+import { List as TmpList, Open, Close } from "./"
 
-export default class Combination extends Component {
-  render() {
-    const list = []
+type Props = {
+  List: Array<Object>,
+  OpenID: number,
+  Show: React$Element<*>,
+  onAdd: Function,
+  onDelete: Function
+}
 
-    this.props.List.forEach(item => {
-      let Bottom
+function getList(
+  list: Array<Object>,
+  OpenID: number,
+  show: React$Element<*>,
+  onAdd: Function,
+  onDelete: Function
+) {
+  const val = []
 
-      if (item.ID == this.props.OpenID) {
-        Bottom = (
-          <Open ID={item.ID} Title={item.title} onDelete={this.props.onDelete}>
-            {this.props.Show}
-          </Open>
-        )
-      } else {
-        Bottom = <Close ID={item.ID} onAdd={this.props.onAdd} />
-      }
+  list.forEach(item => {
+    let Bottom
 
-      list.push({
-        Content: item,
-        Bottom
-      })
+    if (item.ID == OpenID) {
+      Bottom = (
+        <Open ID={item.ID} Title={item.title} onDelete={onDelete}>
+          {show}
+        </Open>
+      )
+    } else {
+      Bottom = <Close ID={item.ID} onAdd={onAdd} />
+    }
+
+    val.push({
+      Content: item,
+      Bottom
     })
+  })
 
-    return <List List={list} Content />
-  }
+  return val
 }
 
-Combination.propTypes = {
-  List: PropTypes.array,
-  OpenID: PropTypes.number,
-  Show: PropTypes.element,
-  onAdd: PropTypes.func,
-  onDelete: PropTypes.func
-}
+export default ({ List, OpenID, Show, onAdd, onDelete }: Props) => (
+  <TmpList List={getList(List, OpenID, Show, onAdd, onDelete)} Content />
+)

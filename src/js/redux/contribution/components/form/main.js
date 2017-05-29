@@ -1,18 +1,14 @@
 import PropTypes from "prop-types"
 import React, { Component } from "react"
-import {
-  Glyphicon,
-  Well,
-  Button,
-  ButtonGroup,
-  ButtonToolbar,
-  ControlLabel
-} from "react-bootstrap"
+import { Well } from "react-bootstrap"
 import { TALK_TYPE_TEXT, TALK_TYPE_IMAGE } from "../../actions/talk"
 import { UPLOAD_FILE_SIZE_MAX } from "../../../../constants/common"
+import {
+  Action as FromAction,
+  Text
+} from "../../../../component/contribution/form/"
 import { Collection } from "../../../../component/slick/"
-import { Edit, Group } from "./../../../../../css/form.css"
-import { Gap, Front, Warning, Alert } from "../../../../../css/common.css"
+import { Front, Warning } from "../../../../../css/common.css"
 import { ImageForm } from "../../../../../css/contribution.css"
 let self
 
@@ -42,50 +38,19 @@ export default class Main extends Component {
   componentWillMount() {
     self = this
   }
-  /**
-   * 本文を変更する
-   *
-   * @param  {object} event イベント
-   */
-  changeBody(event) {
-    this.props.changeBody(event.target.value)
-  }
-  /**
-   * 本文入力テキストエリアを取得する
-   *
-   * @return {object}  入力テキストhtml
-   */
-  getBodyTextArea() {
-    let className = "form-control"
-
-    if (this.props.contributionForm.edit) {
-      className += ` ${Edit}`
-    }
-
-    return (
-      <div className={Gap}>
-        <textarea
-          name="body"
-          id="body"
-          className={className}
-          rows="4"
-          placeholder="本文。（最大:256文字まで）"
-          ref="body"
-          value={this.props.contributionForm.body}
-          onChange={this.changeBody.bind(this)}
-        />
-      </div>
-    )
+  changeBody(value) {
+    console.log(value)
+    this.props.changeBody(value)
   }
   /**
    * テキスト本文を追加する
    */
   addBodyText() {
-    const input = this.refs.body
+    const input = this.props.contributionForm.body
     if (input.value == "") {
       return
     }
-    const body = input.value.trim()
+    const body = input.trim()
 
     if (!body) {
       return
@@ -95,9 +60,6 @@ export default class Main extends Component {
       this.props.alertMessage("最大文字数を超えています！（256文字まで)")
       return
     }
-
-    // 入力を削除する
-    input.value = ""
 
     if (this.props.contributionForm.edit) {
       // 編集中の場合は、こちらを使用
@@ -180,26 +142,16 @@ export default class Main extends Component {
    * @return {object} html
    */
   render() {
-    let defaultIcon = ""
-    if (this.props.characterList.DefaultIcon) {
-      defaultIcon = <div className={`${Warning} ${Front}`}>デフォルトアイコン表示中...</div>
-    }
-
-    let cancel = ""
-    if (this.props.contributionForm.edit) {
-      cancel = (
-        <Button className="pull-right" onClick={() => this.props.cancelEdit()}>
-          <Glyphicon glyph="remove" className={Alert} />
-        </Button>
-      )
-    }
-
-    const disabled = this.props.contributionForm.Experience
-
     return (
       <div>
         <div>
-          {defaultIcon}
+          {(() => {
+            if (this.props.characterList.DefaultIcon) {
+              return (
+                <div className={`${Warning} ${Front}`}>デフォルトアイコン表示中...</div>
+              )
+            }
+          })()}
           <Well bsStyle="info" className={ImageForm}>
             <Collection
               list={this.props.characterList.list}
@@ -207,37 +159,18 @@ export default class Main extends Component {
             />
           </Well>
         </div>
-        <ButtonToolbar>
-          <ButtonGroup>
-            <Button
-              bsSize="small"
-              bsStyle="info"
-              onClick={() => this.addBodyText()}
-            >
-              書き込み
-            </Button>
-          </ButtonGroup>
-          <ButtonGroup>
-            <Button bsSize="small" disabled={disabled} bsStyle="info">
-              <ControlLabel htmlFor="image-file" bsClass={Group}>
-                <Glyphicon glyph="picture" />
-              </ControlLabel>
-              <input
-                type="file"
-                id="image-file"
-                name="image-file"
-                className="hidden"
-                accept="image/jpeg,image/png,image/jpg"
-                ref="file"
-                onChange={this.handleChangeFile.bind(this)}
-                disabled={disabled}
-              />
-            </Button>
-          </ButtonGroup>
-          {cancel}
-        </ButtonToolbar>
-
-        {this.getBodyTextArea()}
+        <FromAction
+          disabled={this.props.contributionForm.Experience}
+          onAdd={this.addBodyText.bind(this)}
+          onUpload={this.handleChangeFile.bind(this)}
+          cancel={this.props.contributionForm.edit}
+          onCancel={this.props.cancelEdit.bind(this)}
+        />
+        <Text
+          edit={this.props.contributionForm.edit}
+          body={this.props.contributionForm.body}
+          onChange={this.changeBody.bind(this)}
+        />
       </div>
     )
   }

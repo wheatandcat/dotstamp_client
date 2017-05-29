@@ -1,6 +1,6 @@
+// @flow
 /* global process*/
 
-// @flow
 function uploadDir(): string {
   return process.env.UPLOAD_PATH == undefined
     ? "test/files/"

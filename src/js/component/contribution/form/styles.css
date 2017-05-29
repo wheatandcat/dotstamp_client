@@ -1,0 +1,15 @@
+.upload {
+  margin-bottom: 0;
+}
+
+.action {
+  color: #d80000;
+}
+
+.edit {
+  background: rgba(153, 210, 255, .36);
+}
+
+.gap {
+  margin-top: 5px;
+}
