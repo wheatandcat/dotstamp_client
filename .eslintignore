@@ -1,3 +1,4 @@
 decls
 flow-typed
 .storybook
+src/js/__mocks__

@@ -1,6 +1,7 @@
 /*global module*/
 /*global __dirname*/
 /*eslint no-console: ["error", { allow: ["log", "error"] }] */
+/* eslint-disable global-require */
 import webpack from "webpack"
 import { resolve } from "path"
 import loadenv from "node-env-file"
@@ -17,12 +18,12 @@ module.exports = {
     "react-hot-loader/patch",
     "webpack-dev-server/client?http://localhost:3000",
     "webpack/hot/only-dev-server",
-    "./js/app",
+    "./js/app"
   ],
   output: {
     filename: "js/bundle.js",
     path: resolve(__dirname, "dist"),
-    publicPath: publicPath,
+    publicPath: publicPath
   },
   resolve: {
     extensions: [".js", ".jsx"]
@@ -45,7 +46,7 @@ module.exports = {
         target: "http://192.168.33.10:8080/",
         secure: false
       }
-    },
+    }
   },
   devtool: "inline-source-map",
   module: {
@@ -53,9 +54,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use:[
-          "babel-loader",
-        ]
+        use: ["babel-loader"]
       },
       {
         test: /\.css$/,
@@ -64,7 +63,7 @@ module.exports = {
           {
             loader: "style-loader",
             options: {
-              sourceMap: true,
+              sourceMap: true
             }
           },
           {
@@ -72,16 +71,16 @@ module.exports = {
             options: {
               modules: true,
               importLoaders: 1,
-              sourceMap: true,
+              sourceMap: true
             }
           },
           {
             loader: "postcss-loader",
             options: {
-              sourceMap: true,
+              sourceMap: true
             }
-          },
-        ],
+          }
+        ]
       }
     ]
   },
@@ -91,11 +90,14 @@ module.exports = {
       "BASE_URL",
       "IMAGE_PATH",
       "UPLOAD_PATH",
-      "ENV",
+      "ENV"
     ]),
     new webpack.LoaderOptionsPlugin({
       options: {
-        postcss: [require("autoprefixer")({browsers: ["last 2 versions"]})],
+        postcss: [
+          require("autoprefixer")({ browsers: ["last 2 versions"] }),
+          require("postcss-nesting")
+        ],
         proxy: {
           "/api/": {
             target: "http://192.168.33.10:8080/",
@@ -105,9 +107,9 @@ module.exports = {
             target: "http://192.168.33.10:8080/",
             secure: false
           }
-        },
+        }
       }
-    }),
+    })
   ],
   watchOptions: {
     aggregateTimeout: 300,

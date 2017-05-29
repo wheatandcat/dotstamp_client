@@ -1,0 +1,11 @@
+.title {
+  text-align: center;
+}
+
+.title > h3 {
+  margin-top: 40px !important;
+}
+
+.icon {
+  font-size: 80px;
+}
