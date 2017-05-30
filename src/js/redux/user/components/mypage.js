@@ -1,149 +1,38 @@
+// @flow
 import PropTypes from "prop-types"
 import React, { Component } from "react"
-import {
-  PageHeader,
-  Grid,
-  Row,
-  Col,
-  ListGroup,
-  ListGroupItem,
-  Button,
-  Glyphicon,
-  Panel,
-  ControlLabel,
-  FormGroup
-} from "react-bootstrap"
-import { Group } from "./../../../../css/form.css"
-import { Paragraph } from "./../../../../css/common.css"
 import { Link as Footer } from "../../../component/footer/"
-import { Icon } from "../../../component/icon/"
-import { LinkContainer } from "react-router-bootstrap"
+import { Page } from "../../../component/mypage/"
 
 export default class Mypage extends Component {
   componentWillMount() {
-    this.getUser()
-  }
-  /**
-     * ユーザ取得する
-     */
-  getUser() {
     this.props.getUser()
   }
-  /**
-     * 画像指定を変更の監視する
-     *
-     * @param {object} e イベントオブジェクト
-     */
-  handleChangeFile(e) {
+  handleChangeFile(e: Object) {
     const fileList = e.target.files
     this.uploadFile([fileList[0]])
   }
-  /**
-     * ファイルをアップロードする
-     *
-     * @param {array} fileList ファイルリスト
-     */
-  uploadFile(fileList) {
+  uploadFile(fileList: Array<Object>) {
     const formData = new FormData()
     formData.append("file", fileList[0])
 
     this.props.upload(formData)
   }
-  /**
-     * ユーザ名を変更する
-     */
-  changeUserName() {
-    this.props.changeUserName(this.refs.userName.value)
-  }
-  /**
-     * 保存する
-     */
   save() {
-    const userName = this.refs.userName.value
-
-    const action = {
-      name: userName
-    }
-
-    this.props.save(action)
+    this.props.save({
+      name: this.props.userMypage.User.Name
+    })
   }
-  /**
-     * 描画する
-     *
-     * @return {object} html
-     */
   render() {
     return (
       <div>
-        <div className="container">
-          <PageHeader>
-            <Glyphicon glyph="user" />&nbsp;プロフィール設定
-          </PageHeader>
-        </div>
-        <Grid>
-          <Row className="show-grid">
-            <br />
-            <Col xs={6} md={4}>
-              <ListGroup>
-                <ListGroupItem disabled>メニュー</ListGroupItem>
-                <LinkContainer to="/user/mypage">
-                  <ListGroupItem>
-                    <Glyphicon glyph="user" />&nbsp;アカウント
-                  </ListGroupItem>
-                </LinkContainer>
-              </ListGroup>
-            </Col>
-            <Col xs={12} md={8}>
-              <Panel header="アカウント">
-                <ControlLabel>アイコン</ControlLabel>
-                <div className={Paragraph}>
-                  <Grid>
-                    <Row>
-                      <Col sm={2} md={1}>
-                        <Icon ID={this.props.userMypage.User.ProfileImageID} />
-                      </Col>
-                      <Col sm={20} md={10}>
-                        <Button bsStyle="link">
-                          <ControlLabel htmlFor="image-file" bsClass={Group}>
-                            <Glyphicon glyph="picture" />&nbsp;画像を変更する
-                          </ControlLabel>
-                          <input
-                            type="file"
-                            id="image-file"
-                            name="image-file"
-                            className="hidden"
-                            accept="image/jpeg,image/png,image/jpg"
-                            ref="file"
-                            onChange={this.handleChangeFile.bind(this)}
-                          />
-                        </Button>
-                      </Col>
-                    </Row>
-                  </Grid>
-                </div>
-                <br />
-                <ControlLabel>ユーザ名</ControlLabel>
-                <FormGroup controlId="formHorizontalEmail">
-                  <Col sm={8}>
-                    <input
-                      type="text"
-                      className="form-control"
-                      ref="userName"
-                      value={this.props.userMypage.User.Name}
-                      onChange={this.changeUserName.bind(this)}
-                    />
-                  </Col>
-                </FormGroup>
-                <br />
-                <br />
-                <br />
-                <Button bsStyle="success" onClick={() => this.save()}>
-                  保存する
-                </Button>
-              </Panel>
-            </Col>
-          </Row>
-        </Grid>
+        <Page
+          name={this.props.userMypage.User.Name}
+          onChangeeName={this.props.changeUserName.bind(this)}
+          imageID={this.props.userMypage.User.ProfileImageID}
+          onChangeImage={this.handleChangeFile.bind(this)}
+          onSave={this.save.bind(this)}
+        />
         <Footer />
       </div>
     )

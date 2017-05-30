@@ -12,11 +12,11 @@ import { Icon } from "../icon/"
 import styles from "./styles.css"
 
 type Props = {
-  ProfileImageID: number,
+  imageID: number,
   onChange: Function
 }
 
-export default class NewInput extends Component {
+export default class ProfileImage extends Component {
   props: Props
 
   file: Object
@@ -26,7 +26,7 @@ export default class NewInput extends Component {
       <Grid>
         <Row>
           <Col sm={2} md={1}>
-            <Icon ID={this.props.ProfileImageID} />
+            <Icon ID={this.props.imageID} />
           </Col>
           <Col sm={20} md={10}>
             <Button bsStyle="link">

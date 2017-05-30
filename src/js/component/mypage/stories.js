@@ -1,10 +1,20 @@
 // @flow
 import React from "react"
 import { storiesOf, action } from "@kadira/storybook"
-import { Menu, ProfileImage } from "./"
+import { Menu, ProfileImage, UserName, Page } from "./"
 
 storiesOf("Mypage")
   .add("Menu", () => <Menu />)
   .add("ProfileImage", () => (
-    <ProfileImage ProfileImageID={1} onChange={action("on Change")} />
+    <ProfileImage imageID={1} onChange={action("on Change")} />
+  ))
+  .add("UserName", () => <UserName name="foo" onChange={action("on Change")} />)
+  .add("Page", () => (
+    <Page
+      name="foo"
+      onChangeeName={action("on Change name")}
+      imageID={1}
+      onChangeImage={action("on change iamge")}
+      onSave={action("on save")}
+    />
   ))
