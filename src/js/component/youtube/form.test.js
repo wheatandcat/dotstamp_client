@@ -2,7 +2,8 @@
 import React from "react"
 import { shallow } from "enzyme"
 import { Form } from "./"
-// flow-disable-line
+/* eslint-disable import/named */
+// $FlowFixMe
 import { __RewireAPI__ } from "./form"
 
 function setup(params: Object) {
@@ -33,14 +34,14 @@ describe("components/youtube/form", () => {
 
   it("no target", () => {
     const enzymeWrapper = shallow(<Form videoId="123" />)
-    const instance: Form = enzymeWrapper.instance()
+    const instance: Object = enzymeWrapper.instance()
 
     instance.play()
   })
 
   it("control", () => {
     const enzymeWrapper = shallow(<Form videoId="123" />)
-    const instance: Form = enzymeWrapper.instance()
+    const instance: Object = enzymeWrapper.instance()
     __RewireAPI__.__set__("target", {
       playVideo() {},
       pauseVideo() {}

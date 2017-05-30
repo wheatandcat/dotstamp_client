@@ -2,7 +2,7 @@
 import React from "react"
 import { mount } from "enzyme"
 import { Slick } from "./"
-// flow-disable-line
+/* eslint-disable import/named */
 import { __RewireAPI__ } from "./slick"
 
 const action = __RewireAPI__.__get__("action")

@@ -18,6 +18,6 @@ function setup() {
 
 describe("component/login/heloo", () => {
   it("表示", () => {
-    setup({ ID: 1 })
+    setup()
   })
 })
