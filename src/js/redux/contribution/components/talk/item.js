@@ -34,7 +34,7 @@ const collectTarget = function(connect) {
   return { connectDropTarget: connect.dropTarget() }
 }
 
-// アイテムコンポーネント
+/* eslint-disable import/no-mutable-exports */
 let Item = class Item extends Component {
   /**
    * 描画する

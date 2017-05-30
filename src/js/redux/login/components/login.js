@@ -1,3 +1,4 @@
+// @flow
 import PropTypes from "prop-types"
 import React, { Component } from "react"
 import { Glyphicon, PageHeader, Col, Grid, Row } from "react-bootstrap"
@@ -7,7 +8,7 @@ export default class Login extends Component {
   /**
    * ログインする
    */
-  login(email: stirng, password: string) {
+  login(email: string, password: string) {
     this.props.loginCheck({ email, password })
   }
   /**

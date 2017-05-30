@@ -1,76 +1,22 @@
+// @flow
 import PropTypes from "prop-types"
 import React, { Component } from "react"
-import {
-  FormGroup,
-  Button,
-  ControlLabel,
-  PageHeader,
-  ListGroup,
-  ListGroupItem,
-  Alert
-} from "react-bootstrap"
+import { Input as Form } from "../../../component/password/"
 
 export default class Input extends Component {
-  /**
-     * 追加する
-     */
-  add() {
-    const email = this.refs.email.value
-
-    const action = {
+  add(email: string) {
+    this.props.add({
       email
-    }
-
-    this.props.add(action)
+    })
   }
-  /**
-     * 報告する
-     */
-  report() {
-    if (!this.props.passwordInput.fetch) {
-      return ""
-    }
-
-    if (this.props.passwordInput.warning) {
-      return (
-        <Alert bsStyle="warning">
-          {this.props.passwordInput.message}
-        </Alert>
-      )
-    }
-
-    return (
-      <ListGroup>
-        <ListGroupItem bsStyle="success">
-          メール送信しました。ご確認ください！
-        </ListGroupItem>
-      </ListGroup>
-    )
-  }
-
-  /**
-     * 描画する
-     *
-     * @return {object} html
-     */
   render() {
     return (
-      <div className="container">
-        <PageHeader>パスワードを再設定する</PageHeader>
-        {this.report()}
-        <ControlLabel>メールアドレス</ControlLabel>
-        <FormGroup controlId="formHorizontalEmail">
-          <input
-            type="text"
-            className="form-control"
-            ref="email"
-            placeholder="メールアドレス"
-          />
-        </FormGroup>
-        <Button bsStyle="success" onClick={() => this.add()}>
-          送信する
-        </Button>
-      </div>
+      <Form
+        onAdd={this.add.bind(this)}
+        success={this.props.passwordInput.fetch}
+        warning={this.props.passwordInput.warning}
+        message={this.props.passwordInput.message}
+      />
     )
   }
 }
