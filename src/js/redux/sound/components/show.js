@@ -21,7 +21,7 @@ import { Talk } from "../../../component/image/"
 import { getTopUrl } from "../../../utils/common"
 import Menu from "../containers/menu"
 
-import Footer from "../../../utils/parts/footer"
+import { Link as Footer } from "../../../component/footer/"
 import { Input, InputText, InputTextBox } from "../../../../css/sound.css"
 import { Middle } from "../../../../css/common.css"
 import Sound from "../../../utils/sound"

@@ -2,7 +2,7 @@ import PropTypes from "prop-types"
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
 import { Button, ButtonGroup, Well, Glyphicon, Collapse } from "react-bootstrap"
-import Footer from "../../../utils/parts/footer"
+import { Link as Footer } from "../../../component/footer/"
 import ContributionShowFrame from "../components/show/frame"
 import { Combination } from "../../../component/contribution/list/"
 
@@ -48,13 +48,7 @@ export default class List extends Component {
     list.forEach(item => {
       if (this.props.contributionList.itemMap[item.ID] != undefined) {
         const tmp = this.props.contributionList.itemMap[item.ID]
-        contribution = (
-          <ContributionShowFrame
-            title={tmp.title}
-            body={tmp.body}
-            tagList={tmp.tagList}
-          />
-        )
+        contribution = <ContributionShowFrame list={tmp.body} />
         openID = item.ID
       }
     })

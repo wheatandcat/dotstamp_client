@@ -11,7 +11,7 @@ import {
   FormGroup,
   Alert
 } from "react-bootstrap"
-import Footer from "../../../utils/parts/footer"
+import { Link as Footer } from "../../../component/footer/"
 import { Required } from "../../../../css/common.css"
 export default class Show extends Component {
   componentWillMount() {

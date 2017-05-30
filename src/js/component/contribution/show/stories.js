@@ -2,16 +2,10 @@
 import React from "react"
 import { storiesOf, action } from "@kadira/storybook"
 import { withKnobs, boolean, number } from "@kadira/storybook-addon-knobs"
-import { MemoryRouter } from "react-router"
 import { About, Follow, Title, Problem, Youtube, Header } from "./index"
 
 storiesOf("Contribution show")
   .addDecorator(withKnobs)
-  .addDecorator(story => (
-    <MemoryRouter initialEntries={["/"]}>
-      {story()}
-    </MemoryRouter>
-  ))
   .add("Follow", () => (
     <div>
       <Follow count={1} onAdd={action("onAdd")} onDelete={action("onDelete")} />

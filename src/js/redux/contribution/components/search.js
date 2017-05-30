@@ -17,7 +17,7 @@ import {
   ORDER_TYPE_FOLLOW_COUNT
 } from "../../../constants/contribution"
 import { Center } from "./../../../../css/common.css"
-import Footer from "../../../utils/parts/footer"
+import { Link as Footer } from "../../../component/footer/"
 import { List } from "../../../component/contribution/list"
 
 let tmpSearch = ""

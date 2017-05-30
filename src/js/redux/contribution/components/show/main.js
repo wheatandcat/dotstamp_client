@@ -1,7 +1,7 @@
 import PropTypes from "prop-types"
 import React, { Component } from "react"
 import ContributionShowFrame from "./frame"
-import Footer from "../../../../utils/parts/footer"
+import { Link as Footer } from "../../../../component/footer/"
 import {
   Header,
   Follow,
@@ -98,10 +98,7 @@ export default class Main extends Component {
           movieID={this.props.contributionShow.Movie.movie_id}
           openProblem={this.props.openProblem}
         />
-        <ContributionShowFrame
-          title={this.props.contributionShow.Title}
-          body={this.props.contributionShow.Body}
-        />
+        <ContributionShowFrame list={this.props.contributionShow.Body} />
         <Footer />
       </div>
     )

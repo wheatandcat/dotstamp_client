@@ -15,7 +15,7 @@ import {
   VOICE_TYPE,
   VOICE_TYPE_MAP
 } from "../../../constants/common"
-import Footer from "../../../utils/parts/footer"
+import { Link as Footer } from "../../../component/footer/"
 import { ImageUpload } from "../../../../css/character.css"
 import { NoIcon, Menu } from "../../../component/character/"
 

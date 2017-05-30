@@ -21,7 +21,7 @@ import SoundShow from "./redux/sound/containers/show"
 import questionShow from "./redux/question/containers/show"
 import informationShow from "./redux/information/containers/show"
 import { Page as About } from "./component/about/"
-import Help from "./utils/parts/help"
+import { Page as Help } from "./component/help/"
 import Menu from "./menu"
 
 type Props = {

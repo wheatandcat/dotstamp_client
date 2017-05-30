@@ -1,7 +1,7 @@
 // @flow
 import React from "react"
 import { Title, Guide, Link } from "./"
-import Footer from "./../../utils/parts/footer"
+import { Link as Footer } from "../footer/"
 
 export default () => (
   <div>

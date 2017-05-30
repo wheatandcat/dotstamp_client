@@ -4,7 +4,7 @@ import { PageHeader, Glyphicon } from "react-bootstrap"
 import { List } from "../../../component/contribution/list"
 import { Center } from "./../../../../css/common.css"
 import Pagination from "../../../utils/parts/pagination"
-import Footer from "../../../utils/parts/footer"
+import { Link as Footer } from "../../../component/footer/"
 
 export default class FollowList extends Component {
   componentWillMount() {

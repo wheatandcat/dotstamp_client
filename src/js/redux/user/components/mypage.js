@@ -15,7 +15,7 @@ import {
 } from "react-bootstrap"
 import { Group } from "./../../../../css/form.css"
 import { Paragraph } from "./../../../../css/common.css"
-import Footer from "../../../utils/parts/footer"
+import { Link as Footer } from "../../../component/footer/"
 import { Icon } from "../../../component/icon/"
 import { LinkContainer } from "react-router-bootstrap"
 

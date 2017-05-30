@@ -10,7 +10,7 @@ import {
   PageHeader,
   Panel
 } from "react-bootstrap"
-import Footer from "../../../utils/parts/footer"
+import { Link as Footer } from "../../../component/footer/"
 import { LinkContainer } from "react-router-bootstrap"
 export default class Show extends Component {
   componentWillMount() {
