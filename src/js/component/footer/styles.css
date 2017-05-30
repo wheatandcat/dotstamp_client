@@ -1,0 +1,8 @@
+.footer {
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  margin-top: calc(var(--marginSize) * 10);
+  background-color: #f5f5f5;
+}
