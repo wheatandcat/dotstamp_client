@@ -1,0 +1,16 @@
+version: '2'
+services:
+  pushstate-server:
+    image: cmosetick/pushstate-server
+    command: pushstate-server .
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./dist/:/root
+  sitespeed.io:
+    image: sitespeedio/sitespeed.io
+    command: -V
+    privileged: true
+    shm_size: 1g
+    volumes:
+      - ./sitespeed/:/sitespeed.io/sitespeed/

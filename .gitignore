@@ -13,6 +13,7 @@
 bin/
 storybook-static/
 yarn-error.log
+sitespeed/sitespeed-result/
 
 # Ignore all logfiles and tempfiles.
 /doc/*

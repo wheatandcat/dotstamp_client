@@ -15,7 +15,10 @@
     "storybook": "start-storybook -p 9009 -s ./dist",
     "build-storybook": "build-storybook -s ./dist",
     "deploy-storybook": "storybook-to-ghpages",
-    "flow": "flow"
+    "flow": "flow",
+    "setup-perf": "docker-compose -f sitespeed/docker-compose.yml up",
+    "perf-run": "docker-compose -f sitespeed/docker-compose.yml run sitespeed.io https://www.sitespeed.io/ --graphite.host=graphite --preScript /sitespeed.io/script/login.js",
+    "stop-perf": "docker-compose -f stop && docker-compose rm"
   },
   "jest": {
     "moduleNameMapper": {
@@ -82,6 +85,7 @@
     "@kadira/storybook-deployer": "^1.2.0",
     "@personare/react-storybook-decorator-github-corner": "^0.1.5",
     "autoprefixer": "^7.1.1",
+    "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
     "babel-eslint": "^7.2.3",
     "babel-jest": "^20.0.3",
@@ -124,6 +128,7 @@
     "jest": "^20.0.4",
     "lodash": "^4.17.2",
     "node-env-file": "^0.1.8",
+    "npm-run-all": "^4.0.2",
     "postcss": "^6.0.1",
     "postcss-apply": "^0.7.0",
     "postcss-custom-media": "^6.0.0",
