@@ -1,23 +1,16 @@
 /*global module*/
-/* eslint-disable global-require */
-var autoprefixer = require("autoprefixer")
-var postcssNesting = require("postcss-nesting")
 
-module.exports = function(storybookBaseConfig) {
-  storybookBaseConfig.module.loaders.push(
+module.exports = (storybookBaseConfig, _) => {
+  storybookBaseConfig.module.rules.push(
     {
       test: /\.css$/,
-      loader: "style!css?modules!postcss"
+      loader: "style-loader!css-loader?modules!postcss-loader"
     },
     {
       test: /\.json$/,
       loader: "json-loader"
     }
   )
-
-  storybookBaseConfig.postcss = function() {
-    return [autoprefixer, postcssNesting]
-  }
 
   return storybookBaseConfig
 }

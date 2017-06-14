@@ -1,6 +1,6 @@
 // @flow
 import React from "react"
-import { storiesOf } from "@kadira/storybook"
+import { storiesOf } from "@storybook/react"
 import { Title, Guide, Link, Page } from "./"
 
 storiesOf("About")

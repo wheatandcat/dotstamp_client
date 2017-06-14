@@ -1,6 +1,7 @@
 // @flow
 import React from "react"
-import { storiesOf, action } from "@kadira/storybook"
+import { storiesOf } from "@storybook/react"
+import { action } from "@storybook/addon-actions"
 import { Image, Text, Balloon, EditImage, EditText } from "./index"
 
 storiesOf("Contribution ballon")

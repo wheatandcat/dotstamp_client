@@ -1,7 +1,8 @@
 // @flow
 import React from "react"
-import { storiesOf, action } from "@kadira/storybook"
-import { withKnobs, boolean } from "@kadira/storybook-addon-knobs"
+import { storiesOf } from "@storybook/react"
+import { action } from "@storybook/addon-actions"
+import { withKnobs, boolean } from "@storybook/addon-knobs"
 import { MemoryRouter } from "react-router"
 import { Player, ScreenButton, Video, Form } from "./"
 import { PLAY, PAUSE, FINISHED } from "./player"
