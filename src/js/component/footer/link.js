@@ -4,7 +4,7 @@ import { Breadcrumb } from "react-bootstrap"
 import { getTopUrl } from "../../utils/common"
 import styles from "./styles.css"
 
-export default () => (
+export default () =>
   <footer className={styles.footer}>
     <Breadcrumb>
       <Breadcrumb.Item href={getTopUrl()}>
@@ -33,4 +33,3 @@ export default () => (
       </Breadcrumb.Item>
     </Breadcrumb>
   </footer>
-)

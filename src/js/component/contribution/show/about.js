@@ -12,12 +12,7 @@ export type Props = {
   openProblem: Function
 }
 
-export default ({
-  profileImageID,
-  updatedAt,
-  userName,
-  openProblem
-}: Props) => (
+export default ({ profileImageID, updatedAt, userName, openProblem }: Props) =>
   <div className={styles.about}>
     <Grid>
       <Row>
@@ -48,4 +43,3 @@ export default ({
       </Row>
     </Grid>
   </div>
-)

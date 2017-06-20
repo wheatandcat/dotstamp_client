@@ -23,7 +23,7 @@ export default ({
   onMouseOver,
   onMouseOut,
   onClick
-}: Props) => (
+}: Props) =>
   <Image
     className={className}
     src={getFileName(fileName, dir, upload)}
@@ -32,4 +32,3 @@ export default ({
     onMouseOut={onMouseOut}
     onClick={onClick}
   />
-)

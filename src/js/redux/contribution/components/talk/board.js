@@ -50,14 +50,14 @@ class Board extends Component {
 
     return (
       <div>
-        {this.props.talkList.map(talk => (
+        {this.props.talkList.map(talk =>
           <Item
             key={talk.Priority}
             priority={talk.Priority}
             talk={talk}
             moveItem={this.handleMoveItem}
           />
-        ))}
+        )}
       </div>
     )
   }

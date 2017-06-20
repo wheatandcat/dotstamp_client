@@ -35,7 +35,7 @@ function get(onAdd: Function) {
   )
 }
 
-export default ({ count, actived, disabled, onAdd, onDelete }: Props) => (
+export default ({ count, actived, disabled, onAdd, onDelete }: Props) =>
   <div>
     <div className={styles.center}>
       <Glyphicon glyph="thumbs-up" />
@@ -52,4 +52,3 @@ export default ({ count, actived, disabled, onAdd, onDelete }: Props) => (
       })()}
     </div>
   </div>
-)

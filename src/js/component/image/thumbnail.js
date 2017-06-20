@@ -12,8 +12,7 @@ type Props = {
   upload?: boolean
 }
 
-export default ({ children, dir, fileName, className, upload }: Props) => (
+export default ({ children, dir, fileName, className, upload }: Props) =>
   <Thumbnail className={className} src={getFileName(fileName, dir, upload)}>
     {children}
   </Thumbnail>
-)

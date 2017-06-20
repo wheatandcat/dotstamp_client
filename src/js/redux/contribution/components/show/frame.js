@@ -6,12 +6,11 @@ type Props = {
   list: Array<Object>
 }
 
-export default ({ list }: Props) => (
+export default ({ list }: Props) =>
   <div>
     <div className="container">
-      {list.map(item => (
+      {list.map(item =>
         <ContributionTalk key={item.Priority} talk={item} editMode={false} />
-      ))}
+      )}
     </div>
   </div>
-)

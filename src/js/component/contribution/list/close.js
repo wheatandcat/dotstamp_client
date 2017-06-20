@@ -7,7 +7,7 @@ type Props = {
   onAdd: Function
 }
 
-export default ({ ID, onAdd }: Props) => (
+export default ({ ID, onAdd }: Props) =>
   <div>
     <br />
     <ButtonGroup vertical block>
@@ -21,4 +21,3 @@ export default ({ ID, onAdd }: Props) => (
     </ButtonGroup>
     <br />
   </div>
-)

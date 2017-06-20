@@ -7,7 +7,7 @@ import { Action, Upload, Text } from "./index"
 
 storiesOf("Contribution form")
   .addDecorator(withKnobs)
-  .add("action", () => (
+  .add("action", () =>
     <Action
       cancel={boolean("cancel", false)}
       disabled={boolean("disabled", false)}
@@ -15,17 +15,17 @@ storiesOf("Contribution form")
       onUpload={action("onUpload")}
       onCancel={action("onCancel")}
     />
-  ))
-  .add("upload", () => (
+  )
+  .add("upload", () =>
     <Upload
       disabled={boolean("disabled", false)}
       onChange={action("onUpload")}
     />
-  ))
-  .add("text", () => (
+  )
+  .add("text", () =>
     <Text
       edit={boolean("edit", false)}
       body="foo"
       onChange={action("onChange")}
     />
-  ))
+  )

@@ -7,14 +7,13 @@ type Props = {
   list: Array<Object>
 }
 
-export default ({ list }: Props) => (
+export default ({ list }: Props) =>
   <div className={styles.list}>
     <div>
-      {list.map(data => (
+      {list.map(data =>
         <div key={data.ID}>
           <Character fileName={data.FileName} />
         </div>
-      ))}
+      )}
     </div>
   </div>
-)

@@ -142,7 +142,7 @@ export default class Slick extends Component {
             this.slider = c
           }}
         >
-          {this.props.list.map(data => (
+          {this.props.list.map(data =>
             <div key={data.ID}>
               <Character
                 fileName={data.FileName}
@@ -151,7 +151,7 @@ export default class Slick extends Component {
                 size="small"
               />
             </div>
-          ))}
+          )}
         </Slider>
       </div>
     )

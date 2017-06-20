@@ -10,12 +10,12 @@ const style = {
 }
 
 storiesOf("Slick")
-  .addDecorator(story => (
+  .addDecorator(story =>
     <MemoryRouter initialEntries={["/"]}>
       {story()}
     </MemoryRouter>
-  ))
-  .add("Slick", () => (
+  )
+  .add("Slick", () =>
     <div style={style}>
       <Collection
         list={[
@@ -48,8 +48,8 @@ storiesOf("Slick")
         onClick={action("sclick")}
       />
     </div>
-  ))
-  .add("List", () => (
+  )
+  .add("List", () =>
     <div style={style}>
       <Collection
         list={[
@@ -62,4 +62,4 @@ storiesOf("Slick")
         onClick={action("sclick")}
       />
     </div>
-  ))
+  )

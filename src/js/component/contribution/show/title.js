@@ -9,7 +9,7 @@ export type Props = {
   title: string
 }
 
-export default ({ followElement, tagList, title }: Props) => (
+export default ({ followElement, tagList, title }: Props) =>
   <Grid>
     <Row className="show-grid">
       <Col xs={12} md={8}>
@@ -23,4 +23,3 @@ export default ({ followElement, tagList, title }: Props) => (
       </Col>
     </Row>
   </Grid>
-)

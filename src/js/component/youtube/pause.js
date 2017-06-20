@@ -7,8 +7,7 @@ type Props = {
   onPlay: Function
 }
 
-export default ({ label, onPlay }: Props) => (
+export default ({ label, onPlay }: Props) =>
   <Button onClick={() => onPlay()}>
     <Glyphicon glyph="play" />{label}
   </Button>
-)

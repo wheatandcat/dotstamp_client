@@ -33,7 +33,7 @@ const sound = (
   )
 }
 
-export default ({ contributionId, created, addSound, experience }: Props) => (
+export default ({ contributionId, created, addSound, experience }: Props) =>
   <span>
     {(() => {
       if (experience)
@@ -49,4 +49,3 @@ export default ({ contributionId, created, addSound, experience }: Props) => (
     })()}
     {sound(contributionId, created, addSound)}
   </span>
-)

@@ -29,7 +29,7 @@ export default ({
   Priority,
   onChangeText,
   onDelete
-}: Props) => (
+}: Props) =>
   <Grid>
     <Row>
       <Avatar FileName={UserFileName} />
@@ -48,4 +48,3 @@ export default ({
       </Col>
     </Row>
   </Grid>
-)

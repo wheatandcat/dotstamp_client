@@ -3,7 +3,7 @@ import React from "react"
 import { Title, Guide, Link } from "./"
 import { Link as Footer } from "../footer/"
 
-export default () => (
+export default () =>
   <div>
     <Title>
       <Guide />
@@ -16,7 +16,10 @@ export default () => (
     <br />
     <div className="container">
       <h3>・・・というのは建前で、開発しているWebサービスです。</h3>
-      <h3>気が向いたら使ってみてください。&nbsp;&nbsp;(^^ </h3><br />
+      <h3>
+        気が向いたら使ってみてください。&nbsp;&nbsp;(^^{" "}
+      </h3>
+      <br />
       （
       <a
         href="http://wheatandcat.hatenablog.com/entry/2017/03/19/161110"
@@ -33,4 +36,3 @@ export default () => (
     </div>
     <Footer />
   </div>
-)

@@ -9,9 +9,7 @@ import MessageSow from "../../../message/containers/show"
 import { Guide } from "../../../../component/contribution/help"
 import { NewInput, AddForm } from "../../../../component/tag"
 import { Status, Sound } from "../../../../component/contribution/viewStatus"
-import {
-  NewInput as NewTitleInput
-} from "../../../../component/contribution/title"
+import { NewInput as NewTitleInput } from "../../../../component/contribution/title"
 
 import { Preview, Group, GroupList } from "./../../../../../css/form.css"
 import { Front } from "./../../../../../css/common.css"

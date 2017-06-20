@@ -7,7 +7,7 @@ import { About, Follow, Title, Problem, Youtube, Header } from "./index"
 
 storiesOf("Contribution show")
   .addDecorator(withKnobs)
-  .add("Follow", () => (
+  .add("Follow", () =>
     <div>
       <Follow count={1} onAdd={action("onAdd")} onDelete={action("onDelete")} />
       <br />
@@ -26,8 +26,8 @@ storiesOf("Contribution show")
       />
       <br />
     </div>
-  ))
-  .add("About", () => (
+  )
+  .add("About", () =>
     <div>
       <About
         profileImageID={1}
@@ -36,8 +36,8 @@ storiesOf("Contribution show")
         openProblem={action("openProblem")}
       />
     </div>
-  ))
-  .add("Title", () => (
+  )
+  .add("Title", () =>
     <Title
       followElement={
         <Follow
@@ -58,8 +58,8 @@ storiesOf("Contribution show")
       ]}
       title="abcdef"
     />
-  ))
-  .add("Problem", () => (
+  )
+  .add("Problem", () =>
     <Problem
       problemType={number("problemType", 1)}
       send={boolean("send", false)}
@@ -68,10 +68,10 @@ storiesOf("Contribution show")
       onHide={action("onHide")}
       onAdd={action("onAdd")}
     />
-  ))
+  )
   .add("Youtube", () => <Youtube movieID="3ovRJjqqvdM" />)
   .add("Youtube not found", () => <Youtube movieID="" />)
-  .add("Header", () => (
+  .add("Header", () =>
     <Header
       followElement={
         <Follow
@@ -97,4 +97,4 @@ storiesOf("Contribution show")
       updatedAt="2015-01-01T07:12:00+09:00"
       openProblem={action("openProblem")}
     />
-  ))
+  )

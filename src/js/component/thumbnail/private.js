@@ -11,7 +11,7 @@ type Props = {
   User: Object
 }
 
-export default ({ Title, UpdatedAt, User }: Props) => (
+export default ({ Title, UpdatedAt, User }: Props) =>
   <Media className={styles.Disable}>
     <Media.Left className={styles.Image} align="middle">
       <Icon ID={User.ProfileImageID} />
@@ -22,7 +22,8 @@ export default ({ Title, UpdatedAt, User }: Props) => (
       </p>
       <Media.Heading>
         <div>
-          {Title}<small>
+          {Title}
+          <small>
             <span className={styles.Alert}>（※現在非公開の投稿です）</span>
           </small>
         </div>
@@ -30,4 +31,3 @@ export default ({ Title, UpdatedAt, User }: Props) => (
     </Media.Body>
     <Media.Right className={styles.Follow} />
   </Media>
-)

@@ -262,7 +262,8 @@ export default class Menu extends Component {
         <Button
           bsStyle="success"
           bsSize="small"
-          href={`${getTopUrl()}static/files/sound/${this.props.userContributionId}.mp3`}
+          href={`${getTopUrl()}static/files/sound/${this.props
+            .userContributionId}.mp3`}
           target="_blank"
         >
           ダウンロード
@@ -272,7 +273,8 @@ export default class Menu extends Component {
         <Button
           bsStyle="success"
           bsSize="small"
-          href={`${getTopUrl()}static/files/movie/${this.props.userContributionId}.mp4`}
+          href={`${getTopUrl()}static/files/movie/${this.props
+            .userContributionId}.mp4`}
           target="_blank"
         >
           ダウンロード
@@ -355,7 +357,8 @@ export default class Menu extends Component {
       download = (
         <div className="pull-right">
           <Sound
-            url={`${getTopUrl()}static/files/sound/${this.props.userContributionId}.mp3?=${+new Date().getTime()}`}
+            url={`${getTopUrl()}static/files/sound/${this.props
+              .userContributionId}.mp3?=${+new Date().getTime()}`}
           />
         </div>
       )

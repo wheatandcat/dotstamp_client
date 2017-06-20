@@ -7,7 +7,7 @@ type Props = {
   onHide: Function
 }
 
-export default ({ open, onHide }: Props) => (
+export default ({ open, onHide }: Props) =>
   <Modal show={open} onHide={onHide}>
     <Modal.Header closeButton>
       <Modal.Title>操作方法</Modal.Title>
@@ -84,4 +84,3 @@ export default ({ open, onHide }: Props) => (
       <Button onClick={onHide}>Close</Button>
     </Modal.Footer>
   </Modal>
-)

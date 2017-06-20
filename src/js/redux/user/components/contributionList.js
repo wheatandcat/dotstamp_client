@@ -209,14 +209,14 @@ export default class ContributionList extends Component {
     } else {
       side = (
         <Nav bsStyle="pills" stacked>
-          {list.map(item => (
+          {list.map(item =>
             <NavItem key={item.ID} eventKey={item.ID}>
               <p>
                 {item.Title}
               </p>
               {DateTimeFormat(item.CreatedAt)}
             </NavItem>
-          ))}
+          )}
         </Nav>
       )
     }

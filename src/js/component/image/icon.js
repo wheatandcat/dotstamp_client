@@ -7,6 +7,5 @@ type Props = {
   fileName: string
 }
 
-export default ({ fileName }: Props) => (
+export default ({ fileName }: Props) =>
   <Thumbnail className={styles.icon} dir="icon/" fileName={fileName} upload />
-)

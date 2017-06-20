@@ -7,21 +7,21 @@ import { Status, Sound, Public, Private } from "./index"
 
 storiesOf("Contribution viewStatus")
   .addDecorator(withKnobs)
-  .add("Public", () => (
+  .add("Public", () =>
     <Public
       disabled={boolean("disabled", false)}
       onSave={action("on save")}
       onChageStatus={action("on view status")}
     />
-  ))
-  .add("Private", () => (
+  )
+  .add("Private", () =>
     <Private
       disabled={boolean("disabled", false)}
       onSave={action("on save")}
       onChageStatus={action("on view status")}
     />
-  ))
-  .add("Status", () => (
+  )
+  .add("Status", () =>
     <Status
       viewStatus={number("viewStatus", 1)}
       disabled={boolean("disabled", false)}
@@ -29,12 +29,12 @@ storiesOf("Contribution viewStatus")
       onPrivate={action("on private")}
       onChageStatus={action("on view status")}
     />
-  ))
-  .add("Sound", () => (
+  )
+  .add("Sound", () =>
     <Sound
       contributionId={1}
       created={boolean("disabled", true)}
       addSound={action("add sound")}
       experience={boolean("disabled", true)}
     />
-  ))
+  )

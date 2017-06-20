@@ -3,7 +3,7 @@ import React from "react"
 import { Grid, Row, Col, Glyphicon } from "react-bootstrap"
 import styles from "./styles.css"
 
-export default () => (
+export default () =>
   <Grid>
     <Row>
       <Col sm={6} md={3}>
@@ -54,4 +54,3 @@ export default () => (
       </Col>
     </Row>
   </Grid>
-)

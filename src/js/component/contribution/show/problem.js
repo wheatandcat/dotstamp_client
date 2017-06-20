@@ -45,7 +45,7 @@ export default ({
   onHide,
   onProblemType,
   onAdd
-}: Props) => (
+}: Props) =>
   <Modal show={show} onHide={onHide}>
     <Modal.Header closeButton>
       <Modal.Title>投稿を通報する</Modal.Title>
@@ -83,4 +83,3 @@ export default ({
       {getSend(send)}
     </Modal.Footer>
   </Modal>
-)

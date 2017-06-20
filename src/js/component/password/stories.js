@@ -7,15 +7,15 @@ import { Input, Reset } from "./"
 
 storiesOf("Password")
   .addDecorator(withKnobs)
-  .add("Input", () => (
+  .add("Input", () =>
     <Input
       onAdd={action("on add")}
       success={boolean("success", false)}
       warning={boolean("warning", false)}
       message="foo"
     />
-  ))
-  .add("Reset", () => (
+  )
+  .add("Reset", () =>
     <Reset
       onSave={action("on save")}
       email="abc"
@@ -24,4 +24,4 @@ storiesOf("Password")
       warning={boolean("warning", false)}
       message="foo"
     />
-  ))
+  )

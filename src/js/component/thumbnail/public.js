@@ -29,7 +29,7 @@ export default ({
   UpdatedAt,
   User,
   OnSearch
-}: Props) => (
+}: Props) =>
   <Media>
     <Media.Left className={styles.Image} align="middle">
       <Icon ID={User.ProfileImageID} />
@@ -55,4 +55,3 @@ export default ({
       <span className={styles.LittleStrong}>&nbsp;{FollowCount}</span>
     </Media.Right>
   </Media>
-)

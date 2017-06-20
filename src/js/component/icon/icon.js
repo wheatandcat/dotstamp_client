@@ -16,8 +16,7 @@ function get(ID: number) {
   return <Icon fileName={`${ID}.jpg`} />
 }
 
-export default ({ ID }: Props) => (
+export default ({ ID }: Props) =>
   <div>
     {get(ID)}
   </div>
-)

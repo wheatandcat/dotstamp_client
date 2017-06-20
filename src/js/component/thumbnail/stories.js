@@ -6,12 +6,12 @@ import { MemoryRouter } from "react-router"
 import { Thumbnail, Private, Public } from "./index"
 
 storiesOf("Thumbnail")
-  .addDecorator(story => (
+  .addDecorator(story =>
     <MemoryRouter initialEntries={["/"]}>
       {story()}
     </MemoryRouter>
-  ))
-  .add("Thumbnail on body & sound", () => (
+  )
+  .add("Thumbnail on body & sound", () =>
     <div className="container">
       <Thumbnail
         FollowCount={2}
@@ -46,8 +46,8 @@ storiesOf("Thumbnail")
         ViewStatus={1}
       />
     </div>
-  ))
-  .add("Thumbnail is not body", () => (
+  )
+  .add("Thumbnail is not body", () =>
     <div className="container">
       <Thumbnail
         Body={null}
@@ -83,8 +83,8 @@ storiesOf("Thumbnail")
         ViewStatus={1}
       />
     </div>
-  ))
-  .add("Public", () => (
+  )
+  .add("Public", () =>
     <div className="container">
       <Public
         FollowCount={1}
@@ -108,8 +108,8 @@ storiesOf("Thumbnail")
         }}
       />
     </div>
-  ))
-  .add("Private", () => (
+  )
+  .add("Private", () =>
     <div className="container">
       <Private
         Title="test"
@@ -121,4 +121,4 @@ storiesOf("Thumbnail")
         }}
       />
     </div>
-  ))
+  )

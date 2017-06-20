@@ -258,11 +258,11 @@ export default class Show extends Component {
                     this.selectVoice = ref
                   }}
                 >
-                  {VOICE_TYPE.map(voive => (
+                  {VOICE_TYPE.map(voive =>
                     <option value={voive.type} key={voive.type}>
                       {voive.name}
                     </option>
-                  ))}
+                  )}
                 </FormControl>
               </FormGroup>
             </Alert>

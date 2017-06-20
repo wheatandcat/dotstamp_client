@@ -18,7 +18,7 @@ export default ({
   balloon,
   balloonImage,
   onClick
-}: Props) => (
+}: Props) =>
   <div>
     {(() => {
       if (list.length <= DISPLAY_ICON_NUM_MIN) {
@@ -35,4 +35,3 @@ export default ({
       )
     })()}
   </div>
-)

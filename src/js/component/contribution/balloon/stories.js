@@ -5,23 +5,23 @@ import { action } from "@storybook/addon-actions"
 import { Image, Text, Balloon, EditImage, EditText } from "./index"
 
 storiesOf("Contribution ballon")
-  .add("text", () => (
+  .add("text", () =>
     <div className="container">
       <Text Label="abcdef" />
     </div>
-  ))
-  .add("image", () => (
+  )
+  .add("image", () =>
     <div className="container">
       <Image FileName="0.png" />
     </div>
-  ))
-  .add("bllon", () => (
+  )
+  .add("bllon", () =>
     <div className="container">
       <Balloon UserFileName="0.png" Type={1} Talk="abcdef" />
       <Balloon UserFileName="0.png" Type={2} Talk="0.png" />
     </div>
-  ))
-  .add("edit", () => (
+  )
+  .add("edit", () =>
     <div className="container">
       <div>
         <EditText
@@ -45,4 +45,4 @@ storiesOf("Contribution ballon")
         />
       </div>
     </div>
-  ))
+  )

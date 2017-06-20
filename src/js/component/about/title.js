@@ -9,7 +9,7 @@ type Props = {
   children?: Children
 }
 
-export default ({ children }: Props) => (
+export default ({ children }: Props) =>
   <Jumbotron className={styles.title}>
     <div>
       <Image src={`${getStaticUrl()}common/about.png`} rounded />
@@ -19,4 +19,3 @@ export default ({ children }: Props) => (
     </h3>
     {children}
   </Jumbotron>
-)

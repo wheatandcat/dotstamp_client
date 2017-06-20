@@ -28,7 +28,7 @@ export default ({
   onMouseOver,
   onMouseOut,
   onClick
-}: Props) => (
+}: Props) =>
   <Image
     className={className(styles, size)}
     dir="character/"
@@ -39,4 +39,3 @@ export default ({
     onMouseOut={onMouseOut}
     onClick={onClick}
   />
-)

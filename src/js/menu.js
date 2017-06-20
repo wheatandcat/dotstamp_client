@@ -8,10 +8,9 @@ type Props = {
   children?: Children
 }
 
-export default ({ children }: Props) => (
+export default ({ children }: Props) =>
   <div>
     <Header />
     {children}
     <ErrorShow />
   </div>
-)

@@ -6,11 +6,11 @@ import { Menu, ProfileImage, UserName, Page } from "./"
 
 storiesOf("Mypage")
   .add("Menu", () => <Menu />)
-  .add("ProfileImage", () => (
+  .add("ProfileImage", () =>
     <ProfileImage imageID={1} onChange={action("on Change")} />
-  ))
+  )
   .add("UserName", () => <UserName name="foo" onChange={action("on Change")} />)
-  .add("Page", () => (
+  .add("Page", () =>
     <Page
       name="foo"
       onChangeeName={action("on Change name")}
@@ -18,4 +18,4 @@ storiesOf("Mypage")
       onChangeImage={action("on change iamge")}
       onSave={action("on save")}
     />
-  ))
+  )

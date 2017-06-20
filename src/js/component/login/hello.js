@@ -10,7 +10,7 @@ type Props = {
   text?: string
 }
 
-export default ({ open, text }: Props) => (
+export default ({ open, text }: Props) =>
   <Well className={styles.Stamp}>
     <table className={styles.Full}>
       <tbody>
@@ -41,4 +41,3 @@ export default ({ open, text }: Props) => (
       </pre>
     </Panel>
   </Well>
-)

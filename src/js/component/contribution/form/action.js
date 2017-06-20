@@ -12,7 +12,7 @@ type Props = {
   cancel: boolean
 }
 
-export default ({ onAdd, disabled, onUpload, cancel, onCancel }: Props) => (
+export default ({ onAdd, disabled, onUpload, cancel, onCancel }: Props) =>
   <ButtonToolbar>
     <ButtonGroup>
       <Button bsSize="small" bsStyle="info" onClick={() => onAdd()}>
@@ -30,4 +30,3 @@ export default ({ onAdd, disabled, onUpload, cancel, onCancel }: Props) => (
       }
     })()}
   </ButtonToolbar>
-)

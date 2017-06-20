@@ -10,7 +10,7 @@ export type Props = {
   onSearch?: Function
 }
 
-export default ({ label, onSearch }: Props) => (
+export default ({ label, onSearch }: Props) =>
   <Link
     to={`/contribution/search/${label}/${ORDER_TYPE_NEW}/1`}
     onClick={() => onSearch && onSearch(label, 1, ORDER_TYPE_NEW)}
@@ -19,4 +19,3 @@ export default ({ label, onSearch }: Props) => (
       {label}
     </Label>
   </Link>
-)

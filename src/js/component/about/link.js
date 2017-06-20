@@ -2,7 +2,7 @@
 import React from "react"
 import { Panel } from "react-bootstrap"
 
-export default () => (
+export default () =>
   <Panel header="リンク" bsStyle="info">
     <b>ブログ</b>
     ：
@@ -75,4 +75,3 @@ export default () => (
     </a>
     <br />
   </Panel>
-)

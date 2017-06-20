@@ -22,7 +22,7 @@ export default ({
   onDelete,
   onVoiceType,
   onSave
-}: Props) => (
+}: Props) =>
   <div>
     <Icon fileName={fileName} IconId={IconId} onDelete={onDelete} />
     <p />
@@ -35,4 +35,3 @@ export default ({
     />
     <p />
   </div>
-)

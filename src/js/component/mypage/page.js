@@ -27,7 +27,7 @@ export default ({
   name,
   onChangeeName,
   onSave
-}: Props) => (
+}: Props) =>
   <div>
     <div className="container">
       <PageHeader>
@@ -59,4 +59,3 @@ export default ({
       </Row>
     </Grid>
   </div>
-)

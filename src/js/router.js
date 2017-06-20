@@ -29,7 +29,7 @@ type Props = {
   history: Object
 }
 
-export default ({ store, history }: Props) => (
+export default ({ store, history }: Props) =>
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <div>
@@ -78,4 +78,3 @@ export default ({ store, history }: Props) => (
       </div>
     </ConnectedRouter>
   </Provider>
-)

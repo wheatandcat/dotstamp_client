@@ -6,13 +6,13 @@ import { MemoryRouter } from "react-router"
 import { AddInput, AddForm, NewInput, TagList, Tag } from "./index"
 
 storiesOf("Tag")
-  .addDecorator(story => (
+  .addDecorator(story =>
     <MemoryRouter initialEntries={["/"]}>
       {story()}
     </MemoryRouter>
-  ))
+  )
   .add("Tag", () => <Tag to="" label="abvdef" onSearch={action("search")} />)
-  .add("TagList", () => (
+  .add("TagList", () =>
     <TagList
       list={[
         {
@@ -30,10 +30,10 @@ storiesOf("Tag")
       ]}
       onSearch={action("search")}
     />
-  ))
+  )
   .add("New Input", () => <NewInput label="foo" onTag={action("change")} />)
   .add("Add Input", () => <AddInput label="foo" onAdd={action("on add")} />)
-  .add("Add Form", () => (
+  .add("Add Form", () =>
     <AddForm
       tagList={[
         { ID: 1, Name: "foo" },
@@ -43,8 +43,8 @@ storiesOf("Tag")
       onAdd={action("on add")}
       onDelete={action("on delete")}
     />
-  ))
-  .add("Add Form Max", () => (
+  )
+  .add("Add Form Max", () =>
     <AddForm
       tagList={[
         { ID: 1, Name: "foo" },
@@ -61,4 +61,4 @@ storiesOf("Tag")
       onAdd={action("on add")}
       onDelete={action("on delete")}
     />
-  ))
+  )

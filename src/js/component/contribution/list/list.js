@@ -26,8 +26,7 @@ function getItem(item: Object, Content: ?boolean, onSearch?: Function) {
   )
 }
 
-export default ({ List, Content, onSearch }: Props) => (
+export default ({ List, Content, onSearch }: Props) =>
   <div>
     {List.map(item => getItem(item, Content, onSearch))}
   </div>
-)

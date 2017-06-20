@@ -9,11 +9,10 @@ type Props = {
   Talk: string
 }
 
-export default ({ UserFileName, Type, Talk }: Props) => (
+export default ({ UserFileName, Type, Talk }: Props) =>
   <Grid>
     <Row>
       <Avatar FileName={UserFileName} />
       <Body TalkType={Type} Body={Talk} />
     </Row>
   </Grid>
-)

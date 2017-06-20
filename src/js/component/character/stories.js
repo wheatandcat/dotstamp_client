@@ -5,7 +5,7 @@ import { action } from "@storybook/addon-actions"
 import { Icon, NoIcon, Menu, Voice } from "./index"
 
 storiesOf("Character")
-  .add("voice", () => (
+  .add("voice", () =>
     <Voice
       voiceList={[
         {
@@ -26,12 +26,12 @@ storiesOf("Character")
       onVoiceType={action("voiceType")}
       onSave={action("save")}
     />
-  ))
-  .add("icon", () => (
+  )
+  .add("icon", () =>
     <Icon fileName="0.png" IconId={1} onDelete={action("onDelete")} />
-  ))
+  )
   .add("no icon", () => <NoIcon />)
-  .add("menu", () => (
+  .add("menu", () =>
     <Menu
       fileName="0.png"
       IconId={1}
@@ -55,4 +55,4 @@ storiesOf("Character")
       onSave={action("save")}
       onDelete={action("onDelete")}
     />
-  ))
+  )

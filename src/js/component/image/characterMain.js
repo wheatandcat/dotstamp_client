@@ -9,7 +9,7 @@ type Props = {
   fileName: string
 }
 
-export default ({ children, fileName }: Props) => (
+export default ({ children, fileName }: Props) =>
   <Thumbnail
     className={`${styles.characterMain} center-block`}
     dir="character/"
@@ -18,4 +18,3 @@ export default ({ children, fileName }: Props) => (
   >
     {children}
   </Thumbnail>
-)

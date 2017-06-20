@@ -7,6 +7,5 @@ type Props = {
   fileName: string
 }
 
-export default ({ fileName }: Props) => (
+export default ({ fileName }: Props) =>
   <Image className={styles.talk} dir="talk/" fileName={fileName} upload />
-)

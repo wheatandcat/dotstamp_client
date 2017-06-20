@@ -23,7 +23,7 @@ export default ({
   voiceLabel,
   onVoiceType,
   onSave
-}: Props) => (
+}: Props) =>
   <div className="center-block">
     <Panel header="アイコンのデフォルト音声" bsStyle="success">
       <ButtonGroup>
@@ -54,4 +54,3 @@ export default ({
       </ButtonGroup>
     </Panel>
   </div>
-)

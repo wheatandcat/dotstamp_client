@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 import { Link as Footer } from "../footer/"
 import styles from "./styles.css"
 
-export default () => (
+export default () =>
   <div>
     <div className="container">
       <div>
@@ -40,4 +40,3 @@ export default () => (
     </div>
     <Footer />
   </div>
-)

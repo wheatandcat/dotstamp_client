@@ -9,7 +9,7 @@ type Props = {
   onDelete: Function
 }
 
-export default ({ children, ID, onDelete }: Props) => (
+export default ({ children, ID, onDelete }: Props) =>
   <div onDoubleClick={() => onDelete(ID)}>
     <hr />
     <Alert bsStyle="success">
@@ -28,4 +28,3 @@ export default ({ children, ID, onDelete }: Props) => (
     </ButtonGroup>
     <br />
   </div>
-)

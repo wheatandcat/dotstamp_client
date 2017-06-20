@@ -6,12 +6,12 @@ import { MemoryRouter } from "react-router"
 import { Close, Combination, List, Open } from "./index"
 
 storiesOf("Contribution list")
-  .addDecorator(story => (
+  .addDecorator(story =>
     <MemoryRouter initialEntries={["/"]}>
       {story()}
     </MemoryRouter>
-  ))
-  .add("open", () => (
+  )
+  .add("open", () =>
     <Open ID={1} Title="abcdef" onDelete={action("onDelete")}>
       <div>
         本文ブロック<br />
@@ -23,9 +23,9 @@ storiesOf("Contribution list")
         本文ブロック<br />
       </div>
     </Open>
-  ))
+  )
   .add("close", () => <Close ID={1} onAdd={action("onAdd")} />)
-  .add("list", () => (
+  .add("list", () =>
     <List
       List={[
         {
@@ -97,8 +97,8 @@ storiesOf("Contribution list")
       Content
       OnSearch={action("search")}
     />
-  ))
-  .add("Combination", () => (
+  )
+  .add("Combination", () =>
     <Combination
       List={[
         {
@@ -176,4 +176,4 @@ storiesOf("Contribution list")
       onAdd={action("onAdd")}
       onDelete={action("onDelete")}
     />
-  ))
+  )

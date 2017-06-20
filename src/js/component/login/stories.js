@@ -9,21 +9,21 @@ import { Hello, LoginInput, NewInput, Platform } from "./index"
 
 storiesOf("Login")
   .addDecorator(withKnobs)
-  .addDecorator(story => (
+  .addDecorator(story =>
     <MemoryRouter initialEntries={["/"]}>
       {story()}
     </MemoryRouter>
-  ))
+  )
   .add("hello", () => <Hello open={boolean("open", false)} text="abcabcabc" />)
-  .add("login input", () => (
+  .add("login input", () =>
     <LoginInput
       onLogin={action("login")}
       onGoogle={action("google")}
       onTwitter={action("twitter")}
       onFacebook={action("facebook")}
     />
-  ))
-  .add("login page", () => (
+  )
+  .add("login page", () =>
     <Grid>
       <br />
       <br />
@@ -41,8 +41,8 @@ storiesOf("Login")
         </Col>
       </Row>
     </Grid>
-  ))
-  .add("new input", () => (
+  )
+  .add("new input", () =>
     <NewInput
       onNew={action("on new")}
       onOpen={action("on open")}
@@ -50,8 +50,8 @@ storiesOf("Login")
       onTwitter={action("twitter")}
       onFacebook={action("facebook")}
     />
-  ))
-  .add("new page", () => (
+  )
+  .add("new page", () =>
     <Grid>
       <br />
       <br />
@@ -70,11 +70,11 @@ storiesOf("Login")
         </Col>
       </Row>
     </Grid>
-  ))
-  .add("platform", () => (
+  )
+  .add("platform", () =>
     <Platform
       onGoogle={action("google")}
       onTwitter={action("twitter")}
       onFacebook={action("facebook")}
     />
-  ))
+  )

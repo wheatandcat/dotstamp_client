@@ -7,8 +7,7 @@ type Props = {
   FileName: string
 }
 
-export default ({ FileName }: Props) => (
+export default ({ FileName }: Props) =>
   <div className={styles.Balloon}>
     <Talk fileName={FileName} />
   </div>
-)

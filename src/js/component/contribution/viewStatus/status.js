@@ -43,8 +43,7 @@ export default ({
   onChageStatus,
   onPublic,
   onPrivate
-}: Props) => (
+}: Props) =>
   <span>
     {status(viewStatus, disabled, onChageStatus, onPublic, onPrivate)}
   </span>
-)

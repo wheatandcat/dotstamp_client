@@ -12,7 +12,7 @@ type Props = {
   onChageStatus: Function
 }
 
-export default ({ disabled, onSave, onChageStatus }: Props) => (
+export default ({ disabled, onSave, onChageStatus }: Props) =>
   <Dropdown id="viweStatus" disabled={disabled}>
     <Button onClick={() => onSave()} bsStyle="success" disabled={disabled}>
       <Glyphicon glyph="edit" />&nbsp;投稿する
@@ -31,4 +31,3 @@ export default ({ disabled, onSave, onChageStatus }: Props) => (
       </MenuItem>
     </Dropdown.Menu>
   </Dropdown>
-)

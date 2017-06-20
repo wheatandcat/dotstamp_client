@@ -11,7 +11,7 @@ type Props = {
   message: string
 }
 
-export default ({ email, onNew, isAlert, message }: Props) => (
+export default ({ email, onNew, isAlert, message }: Props) =>
   <div className={`${styles.page} container`}>
     <br />
     <br />
@@ -29,4 +29,3 @@ export default ({ email, onNew, isAlert, message }: Props) => (
       <New email={email} onNew={onNew} />
     </div>
   </div>
-)

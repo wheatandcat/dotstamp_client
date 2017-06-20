@@ -8,17 +8,17 @@ import { New, Page } from "./"
 
 storiesOf("Oauth")
   .addDecorator(withKnobs)
-  .addDecorator(story => (
+  .addDecorator(story =>
     <MemoryRouter initialEntries={["/"]}>
       {story()}
     </MemoryRouter>
-  ))
+  )
   .add("new", () => <New email="test@abc.com" onNew={action("onNew")} />)
-  .add("page", () => (
+  .add("page", () =>
     <Page
       email="test@abc.com"
       onNew={action("onNew")}
       isAlert={false}
       message=""
     />
-  ))
+  )

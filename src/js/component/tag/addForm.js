@@ -33,7 +33,7 @@ export default class AddForm extends Component {
     return (
       <FormGroup>
         <Form inline>
-          {this.props.tagList.map(tag => (
+          {this.props.tagList.map(tag =>
             <span key={tag.ID}>
               &nbsp;
               <Label bsStyle="info" className={styles.tag}>
@@ -46,7 +46,7 @@ export default class AddForm extends Component {
                 <span>{tag.Name}</span>
               </Label>
             </span>
-          ))}
+          )}
           &nbsp;
           {this.input()}
         </Form>

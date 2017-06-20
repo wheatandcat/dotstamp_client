@@ -3,7 +3,7 @@ import React from "react"
 import { ListGroup, ListGroupItem, Glyphicon } from "react-bootstrap"
 import { LinkContainer } from "react-router-bootstrap"
 
-export default () => (
+export default () =>
   <ListGroup>
     <ListGroupItem disabled>メニュー</ListGroupItem>
     <LinkContainer to="/user/mypage">
@@ -12,4 +12,3 @@ export default () => (
       </ListGroupItem>
     </LinkContainer>
   </ListGroup>
-)

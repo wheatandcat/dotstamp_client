@@ -17,8 +17,7 @@ function getBody(TalkType: number, Body: string) {
   return <Text Label={Body} />
 }
 
-export default ({ TalkType, Body }: Props) => (
+export default ({ TalkType, Body }: Props) =>
   <Col sm={20} md={8} style={{ top: "15px" }}>
     {getBody(TalkType, Body)}
   </Col>
-)

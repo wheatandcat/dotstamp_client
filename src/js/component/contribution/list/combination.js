@@ -41,6 +41,5 @@ function getList(
   return val
 }
 
-export default ({ List, OpenID, Show, onAdd, onDelete }: Props) => (
+export default ({ List, OpenID, Show, onAdd, onDelete }: Props) =>
   <TmpList List={getList(List, OpenID, Show, onAdd, onDelete)} Content />
-)

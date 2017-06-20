@@ -29,7 +29,7 @@ function getOptions(open?: boolean) {
   }
 }
 
-export default ({ open, videoId, onReady, onEnd }: Props) => (
+export default ({ open, videoId, onReady, onEnd }: Props) =>
   <div>
     {(() => {
       if (open) {
@@ -47,4 +47,3 @@ export default ({ open, videoId, onReady, onEnd }: Props) => (
       onEnd={onEnd}
     />
   </div>
-)

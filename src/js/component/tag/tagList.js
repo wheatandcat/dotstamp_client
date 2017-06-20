@@ -7,12 +7,11 @@ type Props = {
   onSearch?: Function
 }
 
-export default ({ list, onSearch }: Props) => (
+export default ({ list, onSearch }: Props) =>
   <div>
-    {list.map(item => (
+    {list.map(item =>
       <span key={item.ID}>
         <Tag label={item.Name} onSearch={onSearch} />
       </span>
-    ))}
+    )}
   </div>
-)

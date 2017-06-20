@@ -7,8 +7,7 @@ type Props = {
   onPause: Function
 }
 
-export default ({ label, onPause }: Props) => (
+export default ({ label, onPause }: Props) =>
   <Button onClick={() => onPause()}>
     <Glyphicon glyph="pause" />{label}
   </Button>
-)

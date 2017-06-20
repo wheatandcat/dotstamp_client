@@ -22,7 +22,7 @@ export default ({
   updatedAt,
   movieID,
   openProblem
-}: Props) => (
+}: Props) =>
   <div>
     <Title followElement={followElement} tagList={tagList} title={title} />
     <br />
@@ -35,4 +35,3 @@ export default ({
     <br />
     <Youtube movieID={movieID} />
   </div>
-)

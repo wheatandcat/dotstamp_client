@@ -9,7 +9,7 @@ type Props = {
   onDelete: Function
 }
 
-export default ({ fileName, IconId, onDelete }: Props) => (
+export default ({ fileName, IconId, onDelete }: Props) =>
   <CharacterMain fileName={fileName}>
     <div className="center-block">
       <Button bsStyle="danger" onClick={() => onDelete(IconId)}>
@@ -17,4 +17,3 @@ export default ({ fileName, IconId, onDelete }: Props) => (
       </Button>
     </div>
   </CharacterMain>
-)
