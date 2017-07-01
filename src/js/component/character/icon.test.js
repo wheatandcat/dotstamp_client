@@ -18,7 +18,7 @@ function setup() {
   }
 }
 
-describe("ccomponents/character/icon", () => {
+describe("components/character/icon", () => {
   it("表示", () => {
     setup()
   })

@@ -1,12 +1,12 @@
 {
-    "presets": [
-        "es2015",
-        "stage-0",
-        "react"
-    ],
-    "plugins": [
-      "react-hot-loader/babel",
-      "babel-plugin-transform-flow-strip-types",
-      "rewire"
-    ]
+  "presets": [
+    "es2015",
+    "stage-0",
+    "react"
+  ],
+  "plugins": [
+    "react-hot-loader/babel",
+    "babel-plugin-transform-flow-strip-types",
+    "rewire"
+  ]
 }
