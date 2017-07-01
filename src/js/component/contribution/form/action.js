@@ -5,11 +5,11 @@ import { Upload } from "./"
 import styles from "./styles.css"
 
 type Props = {
-  onAdd: Function,
+  cancel: boolean,
   disabled: boolean,
-  onUpload: Function,
+  onAdd: Function,
   onCancel: Function,
-  cancel: boolean
+  onUpload: Function
 }
 
 export default ({ onAdd, disabled, onUpload, cancel, onCancel }: Props) =>
