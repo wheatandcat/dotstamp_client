@@ -39,18 +39,16 @@ export default class Show extends Component {
     let send = ""
 
     if (this.props.questionShow.Send) {
-      send = (
-        <Alert bsStyle="success">
-          問い合わせ内容を送信しました。
-        </Alert>
-      )
+      send = <Alert bsStyle="success">問い合わせ内容を送信しました。</Alert>
     }
 
     return (
       <div>
         <div className="container">
           <div>
-            <PageHeader><Glyphicon glyph="info-sign" />&nbsp;問い合わせ</PageHeader>
+            <PageHeader>
+              <Glyphicon glyph="info-sign" />&nbsp;問い合わせ
+            </PageHeader>
           </div>
           <Panel header="問い合わせフォーム" bsStyle="info">
             <div>
@@ -92,7 +90,6 @@ export default class Show extends Component {
                 </Button>
               </Col>
             </FormGroup>
-
           </Panel>
         </div>
         <Footer />

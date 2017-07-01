@@ -202,7 +202,6 @@ export default class Search extends Component {
                 </Col>
               </FormGroup>
             </Form>
-
           </div>
           <hr /> {this.getList()}
           {pagination}

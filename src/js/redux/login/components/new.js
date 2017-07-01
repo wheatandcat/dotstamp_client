@@ -36,9 +36,7 @@ export default class New extends Component {
     return (
       <div>
         <div className="container">
-          <PageHeader>
-            .stamp&nbsp;&nbsp;新規ユーザ登録をする
-          </PageHeader>
+          <PageHeader>.stamp&nbsp;&nbsp;新規ユーザ登録をする</PageHeader>
         </div>
         <Grid>
           <br />

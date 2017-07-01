@@ -1,9 +1,10 @@
 /* global process*/
 import request from "superagent"
 
-const host = typeof process.env.BASE_URL === "undefined"
-  ? "http://192.168.33.10:8080/"
-  : process.env.BASE_URL
+const host =
+  typeof process.env.BASE_URL === "undefined"
+    ? "http://192.168.33.10:8080/"
+    : process.env.BASE_URL
 
 export default class Http {
   /**

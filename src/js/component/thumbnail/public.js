@@ -52,6 +52,8 @@ export default ({
     </Media.Body>
     <Media.Right className={styles.Follow}>
       <Glyphicon glyph="thumbs-up" />
-      <span className={styles.LittleStrong}>&nbsp;{FollowCount}</span>
+      <span className={styles.LittleStrong}>
+        &nbsp;{FollowCount}
+      </span>
     </Media.Right>
   </Media>

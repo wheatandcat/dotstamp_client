@@ -19,9 +19,7 @@ export default class AddForm extends Component {
     if (this.props.tagList.length >= TAG_MAX_NUMBER) {
       return (
         <FormGroup>
-          <Label bsStyle="danger">
-            タグ登録は10個まで
-          </Label>
+          <Label bsStyle="danger">タグ登録は10個まで</Label>
         </FormGroup>
       )
     }

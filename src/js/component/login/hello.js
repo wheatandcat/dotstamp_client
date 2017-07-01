@@ -18,9 +18,7 @@ export default ({ open, text }: Props) =>
           <td>
             <Image src={`${getStaticUrl()}common/icon.png`} rounded />
           </td>
-          <td className={styles.StampAddress}>
-            □□□□□□
-          </td>
+          <td className={styles.StampAddress}>□□□□□□</td>
         </tr>
       </tbody>
     </table>

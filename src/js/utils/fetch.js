@@ -3,12 +3,14 @@ import fetch from "isomorphic-fetch"
 import * as types from "../constants/ActionTypes"
 
 // ホスト
-const host = typeof process.env.BASE_URL === "undefined"
-  ? "http://localhost:3000/api/"
-  : `${process.env.BASE_URL}api/`
-const staticHost = typeof process.env.BASE_URL === "undefined"
-  ? "http://localhost:3000"
-  : process.env.BASE_URL
+const host =
+  typeof process.env.BASE_URL === "undefined"
+    ? "http://localhost:3000/api/"
+    : `${process.env.BASE_URL}api/`
+const staticHost =
+  typeof process.env.BASE_URL === "undefined"
+    ? "http://localhost:3000"
+    : process.env.BASE_URL
 
 // 通信状態リスト
 const fetchStateList = []

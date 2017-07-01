@@ -38,7 +38,8 @@ export default class SoundWrapper extends Component {
     if (this.state.finished) {
       player = (
         <Button onClick={() => this.play()}>
-          <Glyphicon glyph="repeat" />{this.props.repeat}
+          <Glyphicon glyph="repeat" />
+          {this.props.repeat}
         </Button>
       )
     } else if (
@@ -47,13 +48,15 @@ export default class SoundWrapper extends Component {
     ) {
       player = (
         <Button onClick={() => this.play()}>
-          <Glyphicon glyph="play" />{this.props.play}
+          <Glyphicon glyph="play" />
+          {this.props.play}
         </Button>
       )
     } else {
       player = (
         <Button onClick={() => this.pause()}>
-          <Glyphicon glyph="pause" />{this.props.pause}
+          <Glyphicon glyph="pause" />
+          {this.props.pause}
         </Button>
       )
     }

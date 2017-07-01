@@ -31,9 +31,7 @@ function getSend(send?: boolean) {
   return (
     <div>
       <br />
-      <Well>
-        通報を送信しました。ご協力ありがとうございます。
-      </Well>
+      <Well>通報を送信しました。ご協力ありがとうございます。</Well>
     </div>
   )
 }

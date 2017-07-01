@@ -21,9 +21,7 @@ const reports = (success: boolean, warning: boolean, message: string) => {
   if (success) {
     return (
       <ListGroup>
-        <ListGroupItem bsStyle="success">
-          メール送信しました。ご確認ください！
-        </ListGroupItem>
+        <ListGroupItem bsStyle="success">メール送信しました。ご確認ください！</ListGroupItem>
       </ListGroup>
     )
   }

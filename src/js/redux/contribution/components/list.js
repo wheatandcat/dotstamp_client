@@ -115,9 +115,7 @@ export default class List extends Component {
           <div className="container">
             <h3>新着投稿</h3>
             <Link to="/about">
-              <Button bsStyle="primary">
-                .stampとは
-              </Button>
+              <Button bsStyle="primary">.stampとは</Button>
             </Link>
           </div>
         </Well>

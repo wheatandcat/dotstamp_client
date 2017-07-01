@@ -74,11 +74,7 @@ export default class Frame extends Component<*, Props, State> {
    */
   render() {
     if (this.props.videoId == "") {
-      return (
-        <Alert bsStyle="info">
-          動画情報はありません
-        </Alert>
-      )
+      return <Alert bsStyle="info">動画情報はありません</Alert>
     }
 
     const style = this.state.full ? { display: "block" } : { height: 0 }

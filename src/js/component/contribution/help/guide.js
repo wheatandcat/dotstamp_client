@@ -19,9 +19,7 @@ export default ({ open, onHide }: Props) =>
         もう一度クリックすると閉じる
       </Panel>
       <br />
-      <Panel header="並び替え">
-        吹き出し部分をドラック&ドロップすることで並び替え可能です
-      </Panel>
+      <Panel header="並び替え">吹き出し部分をドラック&ドロップすることで並び替え可能です</Panel>
       <br />
       <Panel header="読み上げを作成する">
         読み上げ作成は記事を保存後に表示される。「読み上げを作成する」から編集できます<br />

@@ -133,12 +133,8 @@ export default class List extends Component {
                   クリックして画像ファイルを指定するか、または画像ファイルをドラッグ&ドロップ
                   <br />
                   <br />
-                  <p>
-                    形式: png/jpeg/jpg
-                  </p>
-                  <p>
-                    最大600kBまで
-                  </p>
+                  <p>形式: png/jpeg/jpg</p>
+                  <p>最大600kBまで</p>
                 </div>
               </Dropzone>
             </ListGroupItem>

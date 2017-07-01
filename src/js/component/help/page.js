@@ -18,7 +18,6 @@ export default () =>
         </div>
       </Alert>
       <Panel header="問い合わせ" bsStyle="success">
-
         <Link to="/question">
           <Button bsStyle="info">問い合わせ</Button>
         </Link>
@@ -26,8 +25,7 @@ export default () =>
 
       <Panel header="参考" bsStyle="info">
         ブログ記事：<br />
-        &nbsp;&nbsp;&nbsp;&nbsp;・
-        {" "}
+        &nbsp;&nbsp;&nbsp;&nbsp;・{" "}
         <a
           href="http://wheatandcat.hatenablog.com/"
           rel="noopener noreferrer"

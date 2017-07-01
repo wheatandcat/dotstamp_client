@@ -45,9 +45,7 @@ export default class Reset extends Component {
           <PageHeader>パスワードを再設定する</PageHeader>
           <br />
           <Panel header="パスワードを変更しました" bsStyle="success">
-            <Link to="/login/login">
-              ログインする
-            </Link>
+            <Link to="/login/login">ログインする</Link>
           </Panel>
         </div>
       )

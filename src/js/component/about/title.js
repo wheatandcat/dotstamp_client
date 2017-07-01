@@ -14,8 +14,6 @@ export default ({ children }: Props) =>
     <div>
       <Image src={`${getStaticUrl()}common/about.png`} rounded />
     </div>
-    <h3>
-      .stampは、対話形式で知識を共有するWebサービスです
-    </h3>
+    <h3>.stampは、対話形式で知識を共有するWebサービスです</h3>
     {children}
   </Jumbotron>

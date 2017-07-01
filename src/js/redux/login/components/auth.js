@@ -115,7 +115,11 @@ export default class Auth extends Component {
      * @return {object} html
      */
   render() {
-    return <span>{this.getMenu()}</span>
+    return (
+      <span>
+        {this.getMenu()}
+      </span>
+    )
   }
 }
 

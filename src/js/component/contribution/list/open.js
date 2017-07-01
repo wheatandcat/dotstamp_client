@@ -12,9 +12,7 @@ type Props = {
 export default ({ children, ID, onDelete }: Props) =>
   <div onDoubleClick={() => onDelete(ID)}>
     <hr />
-    <Alert bsStyle="success">
-      記事の上でダブルクリックをすると閉じます
-    </Alert>
+    <Alert bsStyle="success">記事の上でダブルクリックをすると閉じます</Alert>
     {children}
     <br />
     <ButtonGroup vertical block>

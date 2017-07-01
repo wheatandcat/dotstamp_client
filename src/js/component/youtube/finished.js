@@ -9,5 +9,6 @@ type Props = {
 
 export default ({ label, onPlay }: Props) =>
   <Button onClick={() => onPlay()}>
-    <Glyphicon glyph="repeat" />{label}
+    <Glyphicon glyph="repeat" />
+    {label}
   </Button>

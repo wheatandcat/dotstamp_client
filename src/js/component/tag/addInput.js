@@ -30,9 +30,7 @@ export default class AddInput extends Component {
           }}
         />
         <InputGroup.Button>
-          <Button onClick={() => this.addTag()}>
-            追加
-          </Button>
+          <Button onClick={() => this.addTag()}>追加</Button>
         </InputGroup.Button>
       </InputGroup>
     )

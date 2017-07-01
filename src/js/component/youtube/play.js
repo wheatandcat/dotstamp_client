@@ -9,5 +9,6 @@ type Props = {
 
 export default ({ label, onPause }: Props) =>
   <Button onClick={() => onPause()}>
-    <Glyphicon glyph="pause" />{label}
+    <Glyphicon glyph="pause" />
+    {label}
   </Button>

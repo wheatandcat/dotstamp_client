@@ -32,11 +32,7 @@ export default class Show extends Component {
       return ""
     }
 
-    return (
-      <Alert bsStyle="success">
-        不具合報告しました。ご協力ありがとうございます。
-      </Alert>
-    )
+    return <Alert bsStyle="success">不具合報告しました。ご協力ありがとうございます。</Alert>
   }
   /**
      * 描画する
@@ -54,19 +50,17 @@ export default class Show extends Component {
     return (
       <Modal show={this.props.errorShow.Show} onHide={() => this.close()}>
         <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-lg">
-            Error!!
-          </Modal.Title>
+          <Modal.Title id="contained-modal-title-lg">Error!!</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Alert bsStyle="danger">
-            <strong>{this.props.errorShow.Message}</strong>
+            <strong>
+              {this.props.errorShow.Message}
+            </strong>
           </Alert>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={() => this.close()}>
-            Close
-          </Button>
+          <Button onClick={() => this.close()}>Close</Button>
           <br />
           <br />
           <Button

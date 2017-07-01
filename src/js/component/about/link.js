@@ -5,8 +5,7 @@ import { Panel } from "react-bootstrap"
 export default () =>
   <Panel header="リンク" bsStyle="info">
     <b>ブログ</b>
-    ：
-    {" "}
+    ：{" "}
     <a
       href="http://wheatandcat.hatenablog.com/"
       rel="noopener noreferrer"
@@ -17,8 +16,7 @@ export default () =>
     <br />
     <br />
     <b>Twitter</b>
-    ：
-    {" "}
+    ：{" "}
     <a
       href="https://twitter.com/wheatAndCat"
       rel="noopener noreferrer"
@@ -28,7 +26,8 @@ export default () =>
     </a>
     <br />
     <br />
-    <b>オープンソースプロジェクトです。githubでソースコードを公開しています。</b><br />
+    <b>オープンソースプロジェクトです。githubでソースコードを公開しています。</b>
+    <br />
     &nbsp;&nbsp;・
     <a
       href="https://github.com/wheatandcat/dotstamp_server"

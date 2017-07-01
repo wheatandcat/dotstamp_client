@@ -16,9 +16,7 @@ export default () =>
     <br />
     <div className="container">
       <h3>・・・というのは建前で、開発しているWebサービスです。</h3>
-      <h3>
-        気が向いたら使ってみてください。&nbsp;&nbsp;(^^{" "}
-      </h3>
+      <h3>気が向いたら使ってみてください。&nbsp;&nbsp;(^^ </h3>
       <br />
       （
       <a

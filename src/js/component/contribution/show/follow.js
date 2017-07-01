@@ -39,7 +39,9 @@ export default ({ count, actived, disabled, onAdd, onDelete }: Props) =>
   <div>
     <div className={styles.center}>
       <Glyphicon glyph="thumbs-up" />
-      <span className={styles.followCount}>&nbsp;{count}</span>
+      <span className={styles.followCount}>
+        &nbsp;{count}
+      </span>
     </div>
     <div>
       {(() => {

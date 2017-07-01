@@ -201,11 +201,7 @@ export default class ContributionList extends Component {
 
     let side
     if (list.length == 0) {
-      side = (
-        <div>
-          一致する投稿はありませんでした。
-        </div>
-      )
+      side = <div>一致する投稿はありませんでした。</div>
     } else {
       side = (
         <Nav bsStyle="pills" stacked>
@@ -271,11 +267,8 @@ export default class ContributionList extends Component {
               <br /> {side}
             </Col>
             <Col sm={8}>
-              <div>
-                {this.getControl()}
-              </div>
+              <div>{this.getControl()}</div>
               <hr /> {contribution}
-
             </Col>
           </Row>
         </Tab.Container>

@@ -47,11 +47,7 @@ export default class FollowList extends Component {
 
     let page = ""
     if (list.length == 0) {
-      page = (
-        <div className={Center}>
-          フォロー済み投稿の登録はありません。
-        </div>
-      )
+      page = <div className={Center}>フォロー済み投稿の登録はありません。</div>
     } else {
       page = (
         <Pagination

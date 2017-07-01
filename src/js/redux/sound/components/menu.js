@@ -71,17 +71,18 @@ export default class Menu extends Component {
         </Modal.Header>
         <Modal.Body>
           <Alert bsStyle="danger">
-            <strong>注意！！</strong><br />
+            <strong>注意！！</strong>
+            <br />
             動画作成には、10分以上かかる場合があります
           </Alert>
-          <div>
-            動画ファイルを作り直しますか？
-          </div>
+          <div>動画ファイルを作り直しますか？</div>
           <br />
           <ButtonToolbar>
             <Button onClick={this.props.close}>キャンセル</Button>
             &nbsp; &nbsp;
-            <Button bsStyle="warning" onClick={() => this.make()}>作り直す</Button>
+            <Button bsStyle="warning" onClick={() => this.make()}>
+              作り直す
+            </Button>
           </ButtonToolbar>
         </Modal.Body>
         <Modal.Footer />
@@ -153,7 +154,8 @@ export default class Menu extends Component {
         </Modal.Header>
         <Modal.Body>
           <Alert bsStyle="danger">
-            <strong>注意！！この操作を行う前に以下をご確認下さい。</strong><br />
+            <strong>注意！！この操作を行う前に以下をご確認下さい。</strong>
+            <br />
             ・アップロードは、10分以上かかる可能性があります。<br />
             ・Googleのアカウントが必要です。<br />
             ・事前にYouTubeのマイチャンネルの作成が必要です。<br />
@@ -168,9 +170,7 @@ export default class Menu extends Component {
               こちら
             </a>
           </Alert>
-          <div>
-            YouTubeに動画をアップロードしますか？
-          </div>
+          <div>YouTubeに動画をアップロードしますか？</div>
           <br />
           <ButtonToolbar>
             <Button onClick={this.props.closeUpload}>キャンセル</Button>
@@ -292,7 +292,8 @@ export default class Menu extends Component {
     if (this.props.soundMenu.Information.Message != "") {
       message = (
         <Alert bsStyle="success">
-          <strong>アップロード完了しました！</strong><br />
+          <strong>アップロード完了しました！</strong>
+          <br />
           <Button
             bsStyle="link"
             href="https://www.youtube.com/my_videos"
@@ -327,9 +328,15 @@ export default class Menu extends Component {
             </thead>
             <tbody>
               <tr>
-                <td>{downloadMp3}</td>
-                <td>{downloadMp4}</td>
-                <td>{upload}</td>
+                <td>
+                  {downloadMp3}
+                </td>
+                <td>
+                  {downloadMp4}
+                </td>
+                <td>
+                  {upload}
+                </td>
               </tr>
             </tbody>
           </Table>
@@ -339,9 +346,7 @@ export default class Menu extends Component {
           <Form videoId={this.props.soundShow.MovieID} screen />
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={this.props.closeInformation}>
-            閉じる
-          </Button>
+          <Button onClick={this.props.closeInformation}>閉じる</Button>
         </Modal.Footer>
       </Modal>
     )
