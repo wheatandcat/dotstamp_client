@@ -18,7 +18,9 @@
     "flow": "flow",
     "setup-perf": "docker-compose -f sitespeed/docker-compose.yml up",
     "perf-run": "docker-compose -f sitespeed/docker-compose.yml run sitespeed.io https://www.sitespeed.io/ --graphite.host=graphite --preScript /sitespeed.io/script/login.js",
-    "stop-perf": "docker-compose -f stop && docker-compose rm"
+    "stop-perf": "docker-compose -f stop && docker-compose rm",
+    "stylelint": "run-p stylelint:*",
+    "stylelint:css": "stylelint 'src/**/*.css'"
   },
   "jest": {
     "moduleNameMapper": {
@@ -55,7 +57,7 @@
     "history": "^4.6.3",
     "isomorphic-fetch": "^2.2.1",
     "prop-types": "^15.5.10",
-    "react": "^15.5.4",
+    "react": "^15.6.1",
     "react-addons-test-utils": "^15.6.0",
     "react-bootstrap": "^0.31.0",
     "react-bootstrap-typeahead": "^1.4.0",
@@ -153,7 +155,6 @@
     "prettier-eslint": "^6.4.1",
     "storybook-addon-a11y": "^3.0.0",
     "style-loader": "^0.18.2",
-    "stylefmt-loader": "^1.2.0",
     "stylelint": "^7.12.0",
     "stylelint-config-primer": "^1.4.0",
     "stylelint-config-standard": "^16.0.0",
