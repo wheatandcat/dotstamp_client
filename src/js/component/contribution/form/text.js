@@ -10,23 +10,21 @@ type Props = {
   onChange: Function
 }
 
-type State = {
-  body: string
-}
-
-export default class Text extends Component<DefaultProps, Props, State> {
+export default class Text extends Component<DefaultProps, Props, *> {
   static defaultProps = { body: "" }
-  state = { body: "" }
   props: Props
 
   body: Object
 
   text() {
     this.props.onChange(this.body.value)
-    this.setState({ body: this.body.value })
   }
 
   render() {
+    if (this.body && this.props.body != this.body.value) {
+      this.body.value = this.props.body
+    }
+
     return (
       <div className={styles.gap}>
         <textarea
@@ -41,7 +39,6 @@ export default class Text extends Component<DefaultProps, Props, State> {
             this.body = input
           }}
           onChange={this.text.bind(this)}
-          defaultValue={this.state.body}
         />
       </div>
     )

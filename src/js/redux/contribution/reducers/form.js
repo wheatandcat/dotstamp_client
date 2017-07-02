@@ -39,6 +39,13 @@ export default function Form(state = initialState, action) {
   }
 
   switch (action.type) {
+    case types.ADD_CONTRIBUTION_FORM_BODY: {
+      state.boardScroll = true
+      state.body = ""
+      console.log(state)
+
+      return JSON.parse(JSON.stringify(state))
+    }
     case types.CANCEL_CONTRIBUTION_FROM_EDIT:
     case types.EDIT_CONTRIBUTION_FORM_BODY: {
       state.edit = false

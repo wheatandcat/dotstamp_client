@@ -30,6 +30,7 @@ import soundMenu from "../redux/sound/reducers/menu"
 import informationShow from "../redux/information/reducers/show"
 
 import messageShow from "../redux/message/reducers/show"
+import soundLength from "../redux/modules/soundLength"
 
 const rootReducer = combineReducers({
   contributionEdit,
@@ -51,6 +52,7 @@ const rootReducer = combineReducers({
   passwordReset,
   soundShow,
   soundMenu,
+  soundLength,
   informationShow,
   messageShow,
   routing

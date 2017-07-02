@@ -111,6 +111,8 @@ export default class Header extends Component {
     this.props.changeHeight(window.innerHeight)
 
     this.props.closeHelp()
+
+    this.props.soundlength()
   }
   /**
    * 描写更新後に実行する
@@ -140,9 +142,8 @@ export default class Header extends Component {
 
     const contributionId = this.props.contributionId
     const title = this.props.contributionForm.title.trim()
-    const tag = contributionId == null
-      ? this.props.contributionForm.tag.trim()
-      : ""
+    const tag =
+      contributionId == null ? this.props.contributionForm.tag.trim() : ""
     const body = this.props.contributionTalk
 
     const action = {
@@ -328,5 +329,6 @@ Header.propTypes = {
   addSound: PropTypes.func,
   openHelp: PropTypes.func,
   closeHelp: PropTypes.func,
-  message: PropTypes.func
+  message: PropTypes.func,
+  soundlength: PropTypes.func
 }

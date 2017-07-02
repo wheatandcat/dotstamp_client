@@ -1,19 +1,23 @@
+// @flow
 /* global process*/
 import fetch from "isomorphic-fetch"
+import invariant from "assert"
 import * as types from "../constants/ActionTypes"
 
 // ホスト
-const host =
-  typeof process.env.BASE_URL === "undefined"
-    ? "http://localhost:3000/api/"
-    : `${process.env.BASE_URL}api/`
-const staticHost =
-  typeof process.env.BASE_URL === "undefined"
-    ? "http://localhost:3000"
-    : process.env.BASE_URL
+const BASE_URL = process.env.BASE_URL
+invariant(BASE_URL)
+
+const host: string = typeof process.env.BASE_URL === "undefined"
+  ? "http://localhost:3000/api/"
+  : `${BASE_URL}api/`
+
+const staticHost: string = typeof process.env.BASE_URL === "undefined"
+  ? "http://localhost:3000"
+  : BASE_URL
 
 // 通信状態リスト
-const fetchStateList = []
+const fetchStateList: Object = {}
 
 /**
  * 必要な場合はPOST通信を行う
@@ -24,7 +28,12 @@ const fetchStateList = []
  * @param  {object} receiveParam 返しパラメータ
  * @return {object} アクション
  */
-export function fetchPostsIfNeeded(url, type, paramas = {}, receiveParam = {}) {
+export function fetchPostsIfNeeded(
+  url: string,
+  type: string,
+  paramas: Object = {},
+  receiveParam: Object = {}
+): Object {
   return dispatch => {
     if (shouldFetchPosts(url)) {
       // thunkからthunkを呼び出せる！
@@ -41,7 +50,7 @@ export function fetchPostsIfNeeded(url, type, paramas = {}, receiveParam = {}) {
  * @param  {string} url URL
  * @return {bool} 通信フラグ
  */
-function shouldFetchPosts(url) {
+function shouldFetchPosts(url: string): boolean {
   if (fetchStateList[url] == undefined) {
     fetchStateList[url] = {
       isFetching: false
@@ -64,7 +73,12 @@ function shouldFetchPosts(url) {
  * @param  {object} receiveParam 返しパラメータ
  * @return {object} アクション
  */
-function receiveResponse(url, type, response, receiveParam = {}) {
+function receiveResponse(
+  url: string,
+  type: string,
+  response: Object,
+  receiveParam = {}
+): Object {
   fetchStateList[url].isFetching = false
 
   return {
@@ -83,7 +97,7 @@ function receiveResponse(url, type, response, receiveParam = {}) {
  * @param  {object} response レスポンス
  * @return {object} アクション
  */
-function receiveErrorResponse(url, response) {
+function receiveErrorResponse(url: string, response: Object) {
   fetchStateList[url].isFetching = false
 
   return {
@@ -100,11 +114,73 @@ function receiveErrorResponse(url, response) {
  *
  * @param  {string} url URL
  * @param  {string} type タイプ
+ * @param  {object} receiveParam 返しパラメータ
+ * @return {object} レスポンス
+ */
+function fetchGets(url: string, type: string, receiveParam: Object) {
+  const requestParams = {
+    method: "GET",
+    credentials: "same-origin",
+    headers: {
+      "Content-Type": "pplication/json"
+    }
+  }
+
+  return dispatch =>
+    fetch(host + url, requestParams)
+      .then(response =>
+        response.json().then(json => ({
+          status: response.status,
+          json
+        }))
+      )
+      .then(({ status, json }) => {
+        if (status >= 400) {
+          return dispatch(receiveErrorResponse(url, json))
+        }
+
+        dispatch(receiveResponse(url, type, json, receiveParam))
+      })
+}
+
+/**
+ * 必要な場合は通信しテキストを取得する
+ *
+ * @param  {string} url URL
+ * @param  {string} type タイプ
+ * @param  {object} receiveParam 返しパラメータ
+ * @return {object} アクション
+ */
+export function fetchGetsIfNeeded(
+  url: string,
+  type: string,
+  receiveParam: Object
+): Object {
+  return dispatch => {
+    if (shouldFetchPosts(url)) {
+      // thunkからthunkを呼び出せる！
+      return dispatch(fetchGets(url, type, receiveParam))
+    }
+    // 下記コードを呼び、wait forには何もないことを知らせる
+    return Promise.resolve()
+  }
+}
+
+/**
+ * 通信する
+ *
+ * @param  {string} url URL
+ * @param  {string} type タイプ
  * @param  {object} paramas パラメータ
  * @param  {object} receiveParam 返しパラメータ
  * @return {object} レスポンス
  */
-function fetchPosts(url, type, paramas, receiveParam) {
+function fetchPosts(
+  url: string,
+  type: string,
+  paramas: Object,
+  receiveParam: Object
+) {
   const requestParams = {
     method: "POST",
     credentials: "same-origin",
@@ -140,7 +216,12 @@ function fetchPosts(url, type, paramas, receiveParam) {
  * @param  {object} receiveParam 返しパラメータ
  * @return {object} アクション
  */
-export function fetchUploadIfNeeded(url, type, paramas, receiveParam = {}) {
+export function fetchUploadIfNeeded(
+  url: string,
+  type: string,
+  paramas: Object,
+  receiveParam: Object = {}
+): Object {
   return dispatch => {
     if (shouldFetchPosts(url)) {
       // thunkからthunkを呼び出せる！
@@ -160,7 +241,12 @@ export function fetchUploadIfNeeded(url, type, paramas, receiveParam = {}) {
  * @param  {object} receiveParam 返しパラメータ
  * @return {object} レスポンス
  */
-function fetchUpload(url, type, paramas, receiveParam) {
+function fetchUpload(
+  url: string,
+  type: string,
+  paramas: Object,
+  receiveParam: Object
+) {
   const requestParams = {
     method: "POST",
     credentials: "include",
@@ -197,7 +283,11 @@ function fetchUpload(url, type, paramas, receiveParam) {
  * @param  {object} receiveParam 返しパラメータ
  * @return {object} アクション
  */
-export function fetchTextIfNeeded(url, type, receiveParam) {
+export function fetchTextIfNeeded(
+  url: string,
+  type: string,
+  receiveParam: Object
+): Object {
   return dispatch => {
     if (shouldFetchPosts(url)) {
       // thunkからthunkを呼び出せる！
@@ -216,7 +306,7 @@ export function fetchTextIfNeeded(url, type, receiveParam) {
  * @param  {object} receiveParam 返しパラメータ
  * @return {object} レスポンス
  */
-function fetchText(url, type, receiveParam) {
+function fetchText(url: string, type: string, receiveParam: Object) {
   return dispatch =>
     fetch(staticHost + url)
       .then(response =>

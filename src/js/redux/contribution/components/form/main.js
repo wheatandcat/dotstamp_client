@@ -39,7 +39,6 @@ export default class Main extends Component {
     self = this
   }
   changeBody(value) {
-    console.log(value)
     this.props.changeBody(value)
   }
   /**

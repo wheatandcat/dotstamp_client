@@ -53,6 +53,7 @@
   "license": "BSD",
   "homepage": "https://github.com/wheatandcat/dotstamp_client",
   "dependencies": {
+    "assert": "^1.4.1",
     "bluebird": "^3.4.6",
     "browserify": "^14.4.0",
     "dateformat": "^2.0.0",

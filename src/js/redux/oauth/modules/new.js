@@ -31,5 +31,7 @@ export default function newReducer(
         email: action.email,
         password: action.action.email
       })
+    default:
+      return state
   }
 }

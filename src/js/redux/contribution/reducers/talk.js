@@ -1,3 +1,4 @@
+// @flow
 import * as types from "../../../constants/ActionTypes"
 
 // 初期ステート設定
@@ -30,7 +31,7 @@ function replaceBody(body) {
   return body.replace("%", "％").replace("&", "＆").replace(";", "；")
 }
 
-export default function Talk(state = initialState, action) {
+export default function Talk(state: Array<*> = initialState, action: Object) {
   switch (action.type) {
     case types.EDIT_CONTRIBUTION_FORM_BODY_IMAGE: {
       const priority = action.receiveParam.Priority

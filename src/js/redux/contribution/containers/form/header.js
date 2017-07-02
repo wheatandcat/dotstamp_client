@@ -14,7 +14,7 @@ import {
   alertMessageInit
 } from "../../../error/actions/alertMessage"
 import { message } from "../../../message/actions/show"
-import { fetchPostsIfNeeded } from "../../../../utils/fetch"
+import { fetchGetsIfNeeded, fetchPostsIfNeeded } from "../../../../utils/fetch"
 import * as types from "../../../../constants/ActionTypes"
 
 function mapStateToProps(state) {
@@ -88,6 +88,9 @@ function mapDispatchToProps(dispatch) {
           action
         )
       )
+    },
+    soundlength: () => {
+      dispatch(fetchGetsIfNeeded("sound/length/", types.GET_SOUND_LENGTH))
     }
   }
 }
