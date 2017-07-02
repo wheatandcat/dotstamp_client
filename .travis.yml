@@ -16,5 +16,5 @@ after_success:
   - yarn test -- --coverage
   - npm install -g codeclimate-test-reporter
   - codeclimate-test-reporter < coverage/lcov.info
-  - yarn builda
+  - yarn build
   - yarn deploy-storybook
