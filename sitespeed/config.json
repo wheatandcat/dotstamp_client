@@ -1,0 +1,10 @@
+{
+  "browsertime": {
+    "iterations": 3,
+    "browser": "chrome",
+    "speedIndex": true,
+    "video": true,
+    "preScript": "preScript/login.js"
+  },
+  "outputFolder": "reports"
+}

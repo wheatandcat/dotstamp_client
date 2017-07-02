@@ -101,7 +101,7 @@ export default class Auth extends Component {
             </Button>
           </NavItem>
         </LinkContainer>
-        <LinkContainer to="/login/login">
+        <LinkContainer to="/login/input">
           <NavItem eventKey={1}>
             <Glyphicon glyph="log-in" />&nbsp;ログインする
           </NavItem>

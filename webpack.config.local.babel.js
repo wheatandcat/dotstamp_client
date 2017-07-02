@@ -1,7 +1,4 @@
-/*global module*/
-/*global __dirname*/
-/*eslint no-console: ["error", { allow: ["log", "error"] }] */
-/* eslint-disable global-require */
+/* eslint-disable */
 import webpack from "webpack"
 import { resolve } from "path"
 import loadenv from "node-env-file"

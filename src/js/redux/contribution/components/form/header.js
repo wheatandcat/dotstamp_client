@@ -140,8 +140,9 @@ export default class Header extends Component {
 
     const contributionId = this.props.contributionId
     const title = this.props.contributionForm.title.trim()
-    const tag =
-      contributionId == null ? this.props.contributionForm.tag.trim() : ""
+    const tag = contributionId == null
+      ? this.props.contributionForm.tag.trim()
+      : ""
     const body = this.props.contributionTalk
 
     const action = {

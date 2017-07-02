@@ -43,6 +43,7 @@ export default class LoginInput extends Component {
               size="45"
             />&nbsp;&nbsp;
             <Button
+              id="submit"
               bsStyle="success"
               onClick={() =>
                 this.props.onLogin(

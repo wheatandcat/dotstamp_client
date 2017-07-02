@@ -73,7 +73,7 @@ export default class NewInput extends Component {
         <hr />
         <br />
         <Platform label="アカウント登録" />
-        <Link to="/login/login">
+        <Link to="/login">
           <Button bsStyle="link">登録済みならばログインから</Button>
         </Link>
       </div>

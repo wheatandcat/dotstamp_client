@@ -60,7 +60,7 @@ export default ({ store, history }: Props) =>
           />
           <Route path="/character/list" component={CharacterList} />
           <Route path="/login/new" component={loginNew} />
-          <Route path="/login/login" component={loginLogin} />
+          <Route path="/login/input" component={loginLogin} />
           <Route path="/password/input" component={PasswordInput} />
           <Route
             path="/password/reset/:email/:keyword"

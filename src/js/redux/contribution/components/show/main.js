@@ -85,9 +85,9 @@ export default class Main extends Component {
             <Follow
               count={this.props.contributionShow.FollowCount}
               actived={this.props.contributionShow.Following}
-              disabled={this.props.loginAuth.Login}
-              onAdd={this.addFollow}
-              onDelete={this.deleteFollow}
+              disabled={!this.props.loginAuth.Login}
+              onAdd={this.addFollow.bind(this)}
+              onDelete={this.deleteFollow.bind(this)}
             />
           }
           tagList={this.props.contributionShow.TagList}
@@ -96,7 +96,7 @@ export default class Main extends Component {
           userName={this.props.contributionShow.User.Name}
           updatedAt={this.props.contributionShow.UpdatedAt}
           movieID={this.props.contributionShow.Movie.movie_id}
-          openProblem={this.props.openProblem}
+          openProblem={this.props.openProblem.bind(this)}
         />
         <ContributionShowFrame list={this.props.contributionShow.Body} />
         <Footer />

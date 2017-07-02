@@ -1,1 +1,16 @@
-http://dotstamp.com/login/login
+http://192.168.33.10:8080/
+http://192.168.33.10:8080/about
+http://192.168.33.10:8080/contribution/show/2
+http://192.168.33.10:8080/contribution/experience
+http://192.168.33.10:8080/character/list
+http://192.168.33.10:8080/contribution/new
+http://192.168.33.10:8080/contribution/edit/24
+http://192.168.33.10:8080/contribution/search/テスト/1/1
+http://192.168.33.10:8080/information/terms
+http://192.168.33.10:8080/information/clientLicense
+http://192.168.33.10:8080/information/serverLicense
+http://192.168.33.10:8080/information/ansibleLicense
+http://192.168.33.10:8080/help
+http://192.168.33.10:8080/question
+http://192.168.33.10:8080/user/followList/1/1
+http://192.168.33.10:8080/user/mypage

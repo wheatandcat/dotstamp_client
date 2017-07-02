@@ -1,6 +1,4 @@
-/*global module*/
-/*global __dirname*/
-/*eslint no-console: ["error", { allow: ["log", "error"] }] */
+/* eslint-disable */
 import webpack from "webpack"
 import { resolve } from "path"
 import precss from "precss"

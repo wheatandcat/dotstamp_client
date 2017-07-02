@@ -10,14 +10,14 @@ type Props = {
 export default class NewInput extends Component {
   props: Props
 
-  label: Object
+  label: { value: string }
 
   title() {
     this.props.onTitle(this.label.value)
   }
 
   render() {
-    if (this.props.defaultValue && this.label) {
+    if (this.props.defaultValue && this.label && this.label.value == "") {
       this.label.value = this.props.defaultValue
     }
 
@@ -30,7 +30,6 @@ export default class NewInput extends Component {
           inputRef={ref => {
             this.label = ref
           }}
-          defaultValue={this.props.defaultValue}
           onChange={() => this.title()}
         />
       </FormGroup>
