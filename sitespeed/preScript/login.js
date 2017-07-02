@@ -13,7 +13,6 @@ module.exports = {
         // password field. Just add you name and password and submit the form
         // For more docs, checkout the NodeJS Selenium version
         // http://seleniumhq.github.io/selenium/docs/api/javascript/index.html
-
         // we fetch the selenium webdriver from context
         const webdriver = context.webdriver
         // and get hold of some goodies we want to use

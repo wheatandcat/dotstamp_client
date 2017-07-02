@@ -5,5 +5,7 @@ services:
     command: -V
     privileged: true
     shm_size: 1g
+    environment:
+      PUBLIC_URL: $PUBLIC_URL
     volumes:
       - $PWD/sitespeed:/sitespeed.io
