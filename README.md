@@ -60,6 +60,26 @@ storybook
 ```
 yarn storybook
 ```
+flow
+```
+yarn flow
+```
+eslint
+```
+yarn eslint src
+```
+stylelint
+```
+yarn stylelint
+```
+sitespeed.io:local(開発環境)
+```
+yarn sitespeed.io:local
+```
+sitespeed.io:public(本番環境)
+```
+yarn sitespeed.io:public
+```
 
 ## ライセンス
 BSDライセンス
