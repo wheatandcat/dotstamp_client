@@ -1,0 +1,43 @@
+.group {
+  margin-bottom: 0;
+}
+
+.item {
+  position: relative;
+  display: block;
+  padding: 5px 15px;
+  margin-bottom: -1px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.preview {
+  padding: 10px;
+  overflow: auto;
+}
+
+.tip {
+  z-index: 10;
+}
+
+.defaultIcon {
+  z-index: 10;
+  font-size: 9px;
+  position: absolute;
+  border: solid 1px;
+  background-color: #ffd700;
+  padding: 2px 5px;
+  color: #777;
+  border-radius: .5em;
+}
+
+.timer {
+  float: right;
+  font-size: 15px;
+  padding: 7px;
+}
+
+.talk {
+  padding: 5px 20px 20px 20px;
+  margin-bottom: 5px;
+}
