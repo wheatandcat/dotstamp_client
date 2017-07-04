@@ -3,11 +3,11 @@ import React from "react"
 import { shallow } from "enzyme"
 import { Page } from "./"
 
-function setup() {
+function setup(params: { isAlert: boolean }) {
   const props = {
     email: "abc",
     onNew: jest.fn(),
-    isAlert: false,
+    isAlert: params.isAlert,
     message: ""
   }
 
@@ -21,6 +21,10 @@ function setup() {
 
 describe("component/oauth/page", () => {
   it("表示", () => {
-    setup()
+    setup({ isAlert: false })
+  })
+
+  it("alert", () => {
+    setup({ isAlert: true })
   })
 })

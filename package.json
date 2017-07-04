@@ -10,8 +10,8 @@
     "start": "webpack-dev-server --config ./webpack.config.local.babel.js",
     "development": "webpack --config ./webpack.config.dev.babel.js",
     "build": "NODE_ENV=production webpack --config ./webpack.config.prod.babel.js",
-    "test": "jest",
-    "testWatch": "jest --watch",
+    "test": "jest --silent",
+    "testWatch": "jest --watch --silent",
     "storybook": "start-storybook -p 9009 -s ./dist -c .storybook",
     "build-storybook": "build-storybook -s ./dist -c .storybook",
     "deploy-storybook": "storybook-to-ghpages",
@@ -36,9 +36,8 @@
       "UPLOAD_PATH": "http://",
       "ENV": "test"
     },
-    "setupFiles": [
-      "./jest-setup.js"
-    ]
+    "setupFiles": ["./jest-setup.js"],
+    "coveragePathIgnorePatterns": ["/node_modules/", "/jest-setup.js"]
   },
   "repository": {
     "type": "git",

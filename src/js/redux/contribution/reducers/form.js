@@ -42,7 +42,6 @@ export default function Form(state = initialState, action) {
     case types.ADD_CONTRIBUTION_FORM_BODY: {
       state.boardScroll = true
       state.body = ""
-      console.log(state)
 
       return JSON.parse(JSON.stringify(state))
     }

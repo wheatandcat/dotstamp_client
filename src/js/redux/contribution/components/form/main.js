@@ -8,8 +8,8 @@ import {
   Text
 } from "../../../../component/contribution/form/"
 import { Collection } from "../../../../component/slick/"
-import { Front, Warning } from "../../../../../css/common.css"
-import { ImageForm } from "../../../../../css/contribution.css"
+import { defaultIcon, talk } from "./styles.css"
+
 let self
 
 window.addEventListener("keydown", event => {
@@ -146,12 +146,10 @@ export default class Main extends Component {
         <div>
           {(() => {
             if (this.props.characterList.DefaultIcon) {
-              return (
-                <div className={`${Warning} ${Front}`}>デフォルトアイコン表示中...</div>
-              )
+              return <div className={defaultIcon}>デフォルトアイコン表示中...</div>
             }
           })()}
-          <Well bsStyle="info" className={ImageForm}>
+          <Well bsStyle="info" className={talk}>
             <Collection
               list={this.props.characterList.list}
               onClick={id => this.props.changeCharacter(id)}

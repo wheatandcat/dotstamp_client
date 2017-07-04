@@ -9,10 +9,11 @@ import MessageSow from "../../../message/containers/show"
 import { Guide } from "../../../../component/contribution/help"
 import { NewInput, AddForm } from "../../../../component/tag"
 import { Status, Sound } from "../../../../component/contribution/viewStatus"
+import { Timer } from "../../../../component/contribution/timer"
 import { NewInput as NewTitleInput } from "../../../../component/contribution/title"
-
-import { Preview, Group, GroupList } from "./../../../../../css/form.css"
-import { Front } from "./../../../../../css/common.css"
+import { formatTime } from "../../../../utils/common"
+import { TALK_TYPE_IMAGE } from "../../actions/talk"
+import { group, item, tip, timer, preview } from "./styles.css"
 
 let self: Object
 
@@ -251,6 +252,14 @@ export default class Header extends Component {
    * @return {object} html
    */
   render() {
+    const length = this.props.contributionTalk.map(function(item) {
+      if (item.TalkType == TALK_TYPE_IMAGE) {
+        return 0
+      }
+      return item.Body.length
+    })
+    const sum = length.reduce((a, x) => (a += x), 0)
+
     return (
       <div>
         <MessageSow />
@@ -258,7 +267,7 @@ export default class Header extends Component {
           open={this.props.contributionForm.help}
           onHide={this.props.closeHelp}
         />
-        <ListGroup className={Group}>
+        <ListGroup className={group}>
           <ListGroupItem>
             <AlertMessage />
             <NewTitleInput
@@ -266,31 +275,37 @@ export default class Header extends Component {
               onTitle={this.props.changeTitle.bind(this)}
             />
             {this.getTag()}
-            <Status
-              viewStatus={this.props.contributionForm.viewStatus}
-              disabled={this.props.contributionForm.Experience}
-              onChageStatus={this.props.setViewStatus.bind(this)}
-              onPublic={this.save.bind(this)}
-              onPrivate={this.save.bind(this)}
-            />
-            <Sound
-              contributionId={this.props.contributionId}
-              created={this.props.contributionEdit.Sound}
-              addSound={this.addSound.bind(this)}
-              experience={this.props.contributionForm.Experience}
-            />
+            <div>
+              <Status
+                viewStatus={this.props.contributionForm.viewStatus}
+                disabled={this.props.contributionForm.Experience}
+                onChageStatus={this.props.setViewStatus.bind(this)}
+                onPublic={this.save.bind(this)}
+                onPrivate={this.save.bind(this)}
+              />
+              <Sound
+                contributionId={this.props.contributionId}
+                created={this.props.contributionEdit.Sound}
+                addSound={this.addSound.bind(this)}
+                experience={this.props.contributionForm.Experience}
+              />
+              <Timer
+                className={timer}
+                timer={formatTime(Math.ceil(sum * this.props.sound.character))}
+              />
+            </div>
           </ListGroupItem>
           <ListGroupItem>
             <Button
               bsSize="small"
               bsStyle="info"
-              className={Front}
+              className={tip}
               onClick={() => this.props.openHelp()}
             >
               <Glyphicon glyph="info-sign" />&nbsp;ヒント
             </Button>
             <div
-              className={Preview}
+              className={preview}
               ref={input => {
                 this.preview = input
               }}
@@ -299,7 +314,7 @@ export default class Header extends Component {
               <TalkBoard talkList={this.props.contributionTalk} />
             </div>
           </ListGroupItem>
-          <ListGroupItem bsClass={GroupList}>
+          <ListGroupItem bsClass={item}>
             <footer>
               <FormMain contributionId={this.props.contributionId} />
             </footer>
@@ -330,5 +345,6 @@ Header.propTypes = {
   openHelp: PropTypes.func,
   closeHelp: PropTypes.func,
   message: PropTypes.func,
+  sound: PropTypes.object,
   soundlength: PropTypes.func
 }

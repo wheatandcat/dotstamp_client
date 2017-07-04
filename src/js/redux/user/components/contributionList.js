@@ -1,3 +1,4 @@
+// @flow
 import PropTypes from "prop-types"
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
@@ -36,17 +37,17 @@ export default class ContributionList extends Component {
     }
   }
   /**
-     * リストを取得する
-     */
+   * リストを取得する
+   */
   getList() {
     this.props.getList()
   }
   /**
-     * 投稿を設定する
-     *
-     * @param  {number} id 投稿ID
-     */
-  setContribution(id) {
+   * 投稿を設定する
+   *
+   * @param  {number} id 投稿ID
+   */
+  setContribution(id: number) {
     this.props.setContribution(id)
     this.props.getDetail(id)
   }
@@ -55,7 +56,7 @@ export default class ContributionList extends Component {
      *
      * @param  {number} id 投稿ID
      */
-  deleteContribution(id) {
+  deleteContribution(id: number) {
     this.props.delete(id)
   }
   /**
@@ -64,7 +65,7 @@ export default class ContributionList extends Component {
      * @param  {number} id 投稿ID
      * @return {string} 編集パス
      */
-  getEditPath(id) {
+  getEditPath(id: number) {
     return `/contribution/edit/${id}`
   }
   /**
@@ -72,7 +73,7 @@ export default class ContributionList extends Component {
      *
      * @param  {string[]} text テキスト
      */
-  changeTitle(text) {
+  changeTitle(text: Array<string>) {
     this.searchTitle(text[0])
   }
   /**
@@ -80,7 +81,7 @@ export default class ContributionList extends Component {
      *
      * @param  {object} text テキスト
      */
-  inputTitle(text) {
+  inputTitle(text: Object) {
     this.searchTitle(text.target.value)
   }
   /**
@@ -88,7 +89,7 @@ export default class ContributionList extends Component {
      *
      * @param  {string} text テキスト
      */
-  searchTitle(text) {
+  searchTitle(text: string) {
     const list = []
     let count = 0
     const all = this.props.userContributionList.All
@@ -109,17 +110,17 @@ export default class ContributionList extends Component {
     })
   }
   /**
-     * 公開状態を設定する
-     *
-     * @param  {numbet} status 状態
-     */
-  setViewStatus(status) {
+   * 公開状態を設定する
+   *
+   * @param  {numbet} status 状態
+   */
+  setViewStatus(status: number) {
     this.props.setViewStatus(status)
     this.searchTitle(tite)
   }
   /**
-     * 削除確認を取得する
-     */
+   * 削除確認を取得する
+   */
   getDeleteConfirm() {
     return (
       <Modal
@@ -153,8 +154,8 @@ export default class ContributionList extends Component {
   }
 
   /**
-     * 操作を取得する
-     */
+   * 操作を取得する
+   */
   getControl() {
     let disabled = false
     let text = ""
@@ -184,10 +185,10 @@ export default class ContributionList extends Component {
     )
   }
   /**
-     * 描画する
-     *
-     * @return {object} html
-     */
+   * 描画する
+   *
+   * @return {object} html
+   */
   render() {
     let list = this.props.userContributionList.List
     if (!Array.isArray(list)) {

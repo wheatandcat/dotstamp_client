@@ -1,3 +1,4 @@
+// @flow
 import PropTypes from "prop-types"
 import React, { Component } from "react"
 import ContributionShowFrame from "./frame"
@@ -10,7 +11,7 @@ import {
 
 export default class Main extends Component {
   componentWillMount() {
-    if (this.getID() == 0) {
+    if (this.getID() == 0 || this.getID() == undefined) {
       return
     }
 
@@ -28,7 +29,7 @@ export default class Main extends Component {
    *
    * @param  {number} id 投稿ID
    */
-  getDetail(id) {
+  getDetail(id: number) {
     this.props.getDetail(id)
   }
   /**

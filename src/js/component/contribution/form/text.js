@@ -10,7 +10,7 @@ type Props = {
   onChange: Function
 }
 
-export default class Text extends Component<DefaultProps, Props, *> {
+export default class Text extends Component<DefaultProps, Props, void> {
   static defaultProps = { body: "" }
   props: Props
 

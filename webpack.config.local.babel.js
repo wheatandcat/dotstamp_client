@@ -15,15 +15,15 @@ module.exports = {
     "react-hot-loader/patch",
     "webpack-dev-server/client?http://localhost:3000",
     "webpack/hot/only-dev-server",
-    "./js/app"
+    "./js/app",
   ],
   output: {
     filename: "js/bundle.js",
     path: resolve(__dirname, "dist"),
-    publicPath: publicPath
+    publicPath: publicPath,
   },
   resolve: {
-    extensions: [".js", ".jsx"]
+    extensions: [".js", ".jsx"],
   },
   devServer: {
     contentBase: resolve(__dirname, "dist"),
@@ -32,18 +32,18 @@ module.exports = {
     port: 3000,
     historyApiFallback: true,
     stats: {
-      colors: true
+      colors: true,
     },
     proxy: {
       "/api/": {
         target: "http://192.168.33.10:8080/",
-        secure: false
+        secure: false,
       },
       "/static/": {
         target: "http://192.168.33.10:8080/",
-        secure: false
-      }
-    }
+        secure: false,
+      },
+    },
   },
   devtool: "inline-source-map",
   module: {
@@ -51,7 +51,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: ["babel-loader"]
+        use: ["babel-loader"],
       },
       {
         test: /\.css$/,
@@ -60,26 +60,26 @@ module.exports = {
           {
             loader: "style-loader",
             options: {
-              sourceMap: true
-            }
+              sourceMap: true,
+            },
           },
           {
             loader: "css-loader",
             options: {
               modules: true,
               importLoaders: 1,
-              sourceMap: true
-            }
+              sourceMap: true,
+            },
           },
           {
             loader: "postcss-loader",
             options: {
-              sourceMap: true
-            }
-          }
-        ]
-      }
-    ]
+              sourceMap: true,
+            },
+          },
+        ],
+      },
+    ],
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -87,34 +87,34 @@ module.exports = {
       "BASE_URL",
       "IMAGE_PATH",
       "UPLOAD_PATH",
-      "ENV"
+      "ENV",
     ]),
     new webpack.LoaderOptionsPlugin({
       options: {
         postcss: [
           require("autoprefixer")({ browsers: ["last 2 versions"] }),
-          require("postcss-nesting")
+          require("postcss-nesting"),
         ],
         proxy: {
           "/api/": {
             target: "http://192.168.33.10:8080/",
-            secure: false
+            secure: false,
           },
           "/static/": {
             target: "http://192.168.33.10:8080/",
-            secure: false
-          }
-        }
-      }
-    })
+            secure: false,
+          },
+        },
+      },
+    }),
   ],
   watchOptions: {
     aggregateTimeout: 300,
-    poll: 1000
+    poll: 1000,
   },
   node: {
     fs: "empty",
     net: "empty",
-    tls: "empty"
-  }
+    tls: "empty",
+  },
 }

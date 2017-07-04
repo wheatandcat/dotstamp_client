@@ -8,13 +8,15 @@ import * as types from "../constants/ActionTypes"
 const BASE_URL = process.env.BASE_URL
 invariant(BASE_URL)
 
-const host: string = typeof process.env.BASE_URL === "undefined"
-  ? "http://localhost:3000/api/"
-  : `${BASE_URL}api/`
+const host: string =
+  typeof process.env.BASE_URL === "undefined"
+    ? "http://localhost:3000/api/"
+    : `${BASE_URL}api/`
 
-const staticHost: string = typeof process.env.BASE_URL === "undefined"
-  ? "http://localhost:3000"
-  : BASE_URL
+const staticHost: string =
+  typeof process.env.BASE_URL === "undefined"
+    ? "http://localhost:3000"
+    : BASE_URL
 
 // 通信状態リスト
 const fetchStateList: Object = {}
