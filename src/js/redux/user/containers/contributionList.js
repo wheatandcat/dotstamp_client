@@ -9,7 +9,11 @@ import {
   openDeleteConfirm,
   closeDeleteConfirm
 } from "../actions/contributionList"
-import { fetchPostsIfNeeded } from "../../../utils/fetch"
+import {
+  fetchPostsIfNeeded,
+  fetchGetsIfNeeded,
+  fetchDeleteIfNeeded
+} from "../../../utils/fetch"
 import * as types from "../../../constants/ActionTypes"
 function mapStateToProps(state) {
   return state
@@ -29,7 +33,7 @@ function mapDispatchToProps(dispatch) {
     getList: () => {
       dispatch(
         fetchPostsIfNeeded(
-          "user/contributionList/",
+          "/users/contribution/list/",
           types.GET_USER_CONTRBUTION_LIST,
           { order: 1 }
         )
@@ -40,10 +44,7 @@ function mapDispatchToProps(dispatch) {
     },
     getDetail: id => {
       dispatch(
-        fetchPostsIfNeeded(
-          `contribution/show/${id}`,
-          types.GET_CONTRIBUTION_SHOW
-        )
+        fetchGetsIfNeeded(`contributions/${id}`, types.GET_CONTRIBUTION_SHOW)
       )
     },
     setTitleSearch: list => {
@@ -54,14 +55,14 @@ function mapDispatchToProps(dispatch) {
     },
     delete: id => {
       dispatch(
-        fetchPostsIfNeeded(
-          `contribution/delete/${id}`,
+        fetchDeleteIfNeeded(
+          `contributions/${id}`,
           types.DELETE_CONTRIBUTION_SHOW
         )
       ).then(() => {
         dispatch(
           fetchPostsIfNeeded(
-            "user/contributionList/",
+            "/users/contribution/list/",
             types.GET_USER_CONTRBUTION_LIST,
             { order: 1 }
           )

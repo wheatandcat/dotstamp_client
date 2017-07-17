@@ -1,9 +1,8 @@
+// @flow
 import * as types from "../../../constants/ActionTypes"
 
 /**
  * 初期化する
- *
- * @return {object} アクション
  */
 export function init() {
   return { type: types.INIT_USER_CONTRBUTION_LIST }
@@ -11,11 +10,8 @@ export function init() {
 
 /**
  * 投稿IDを設定する
- *
- * @param  {array} contributionId 投稿ID
- * @return {object} アクション
  */
-export function setContribution(contributionId) {
+export function setContribution(contributionId: number) {
   return {
     type: types.SET_USER_CONTRBUTION_LIST,
     contributionId
@@ -23,22 +19,16 @@ export function setContribution(contributionId) {
 }
 
 /**
- * 検索タイトルを設定する
- *
- * @param  {string} list リスト
- * @return {object} アクション
+ * 検索にヒットしたタイトルを設定する
  */
-export function setTitleSearch(list) {
+export function setTitleSearch(list: Array<*>) {
   return { type: types.SET_USER_CONTRBUTION_LIST_SEARCH, list }
 }
 
 /**
  * 表示状態を設定する
- *
- * @param  {number} viewStatus 表示状態
- * @return {object} アクション
  */
-export function setViewStatus(viewStatus) {
+export function setViewStatus(viewStatus: number) {
   return {
     type: types.SET_USER_CONTRBUTION_LIST_VIEW_STATUS,
     viewStatus
@@ -47,8 +37,6 @@ export function setViewStatus(viewStatus) {
 
 /**
  * 削除確認を開く
- *
- * @return {object} アクション
  */
 export function openDeleteConfirm() {
   return { type: types.OPEN_USER_CONTRBUTION_LIST_CONFIRM }
@@ -56,8 +44,6 @@ export function openDeleteConfirm() {
 
 /**
  * 削除確認を閉じる
- *
- * @return {object} アクション
  */
 export function closeDeleteConfirm() {
   return { type: types.CLOSE_USER_CONTRBUTION_LIST_CONFIRM }

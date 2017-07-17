@@ -1,3 +1,4 @@
+// @flow
 import PropTypes from "prop-types"
 import React, { Component } from "react"
 import { PageHeader, Glyphicon } from "react-bootstrap"
@@ -16,7 +17,7 @@ export default class FollowList extends Component {
    * @param {number} page ページ
    * @param {number} order 順番
    */
-  getList(page, order) {
+  getList(page: number, order: number) {
     this.props.getList({
       order,
       page,
@@ -29,7 +30,7 @@ export default class FollowList extends Component {
    * @param {number} page ページ
    * @param {number} order 順番
    */
-  paging(page, order) {
+  paging(page: number, order: number) {
     this.getList(page, order)
     this.props.paging(page, order)
     this.props.history.push(`/user/followList/${order}/${page}`)
@@ -40,7 +41,8 @@ export default class FollowList extends Component {
    * @return {object} html
    */
   render() {
-    let list = this.props.userFollowList.List
+    const { count, limit, order } = this.props.userFollowList
+    let list = this.props.userFollowList.list
     if (!Array.isArray(list)) {
       list = []
     }
@@ -51,11 +53,11 @@ export default class FollowList extends Component {
     } else {
       page = (
         <Pagination
-          count={this.props.userFollowList.Count}
-          limit={this.props.userFollowList.Limit}
+          count={count}
+          limit={limit}
           link="user/followList"
-          order={parseInt(this.props.userFollowList.Order)}
-          activePage={parseInt(this.props.userFollowList.Page)}
+          order={parseInt(order)}
+          activePage={parseInt(this.props.userFollowList.page)}
           paging={this.paging.bind(this)}
         />
       )
@@ -69,7 +71,7 @@ export default class FollowList extends Component {
           </PageHeader>
         </div>
         <div className="container">
-          <List List={list} />
+          <List list={list} />
         </div>
         {page}
         <Footer />

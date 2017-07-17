@@ -9,27 +9,28 @@ export default class Mypage extends Component {
     this.props.getUser()
   }
   handleChangeFile(e: Object) {
-    const fileList = e.target.files
-    this.uploadFile([fileList[0]])
+    const files = e.target.files
+    this.uploadFile([files[0]])
   }
-  uploadFile(fileList: Array<Object>) {
+  uploadFile(files: Array<Object>) {
     const formData = new FormData()
-    formData.append("file", fileList[0])
+    formData.append("file", files[0])
 
     this.props.upload(formData)
   }
   save() {
     this.props.save({
-      name: this.props.userMypage.User.Name
+      name: this.props.userMypage.user.name
     })
   }
   render() {
+    const { name, profileImageID } = this.props.userMypage.user
     return (
       <div>
         <Page
-          name={this.props.userMypage.User.Name}
+          name={name}
           onChangeeName={this.props.changeUserName.bind(this)}
-          imageID={this.props.userMypage.User.ProfileImageID}
+          imageID={profileImageID}
           onChangeImage={this.handleChangeFile.bind(this)}
           onSave={this.save.bind(this)}
         />

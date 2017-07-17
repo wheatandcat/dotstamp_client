@@ -12,7 +12,7 @@ function mapDispatchToProps(dispatch) {
   return {
     getList: action => {
       dispatch(
-        fetchPostsIfNeeded("follow/list/", types.GET_USER_FOLLOW_LIST, action)
+        fetchPostsIfNeeded("/follows/list", types.GET_USER_FOLLOW_LIST, action)
       )
     },
     paging: (page, order) => {

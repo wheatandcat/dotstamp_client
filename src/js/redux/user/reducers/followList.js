@@ -1,24 +1,33 @@
+// @flow
 import * as types from "../../../constants/ActionTypes"
 
-const initialState = {
-  List: [],
-  Order: 1,
-  Page: 1,
-  Count: 0,
-  Limit: 10
+type State = {
+  list: Array<*>,
+  order: number,
+  page: number,
+  count: number,
+  limit: number
 }
 
-export default function FollowList(state = initialState, action) {
+const initialState: State = {
+  list: [],
+  order: 1,
+  page: 1,
+  count: 0,
+  limit: 10
+}
+
+export default function FollowList(state: State = initialState, action: any) {
   switch (action.type) {
     case types.GET_USER_FOLLOW_LIST: {
-      state.List = action.response.List
-      state.Count = action.response.Count
+      state.list = action.response.list
+      state.count = action.response.count
 
       return JSON.parse(JSON.stringify(state))
     }
     case types.PAGING_USER_FOLLOW_LIST: {
-      state.Page = action.page
-      state.Order = action.order
+      state.page = action.page
+      state.order = action.order
 
       return JSON.parse(JSON.stringify(state))
     }

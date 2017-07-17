@@ -1,24 +1,34 @@
+// @flow
 import * as types from "../../../constants/ActionTypes"
 
-const initialState = {
-  User: {
-    ID: 0,
-    Name: "",
-    ProfileImageID: 0
+type State = {
+  user: {
+    id: number,
+    name: string,
+    profileImageID: number
   },
-  Profile: []
+  profile: Array<*>
 }
 
-export default function Mypage(state = initialState, action) {
+const initialState: State = {
+  user: {
+    id: 0,
+    name: "",
+    profileImageID: 0
+  },
+  profile: []
+}
+
+export default function Mypage(state: State = initialState, action: any) {
   switch (action.type) {
     case types.SET_USER: {
       return Object.assign({}, state, {
-        User: action.response.User,
-        Profile: action.response.Profile
+        user: action.response.user,
+        profile: action.response.profile
       })
     }
     case types.CHANGE_USER_NAME: {
-      state.User.Name = action.name
+      state.user.name = action.name
 
       return JSON.parse(JSON.stringify(state))
     }

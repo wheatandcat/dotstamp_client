@@ -31,9 +31,10 @@ export default class ContributionList extends Component {
     this.getList()
   }
   componentWillUpdate() {
-    if (!load && this.props.userContributionList.ContributionId != 0) {
+    const { contributionId } = this.props.userContributionList
+    if (!load && contributionId != 0) {
       load = true
-      this.setContribution(this.props.userContributionList.ContributionId)
+      this.setContribution(contributionId)
     }
   }
   /**
@@ -52,53 +53,54 @@ export default class ContributionList extends Component {
     this.props.getDetail(id)
   }
   /**
-     * 作品を削除する
-     *
-     * @param  {number} id 投稿ID
-     */
+   * 作品を削除する
+   *
+   * @param  {number} id 投稿ID
+   */
   deleteContribution(id: number) {
     this.props.delete(id)
   }
   /**
-     * 編集パスを取得する
-     *
-     * @param  {number} id 投稿ID
-     * @return {string} 編集パス
-     */
+   * 編集パスを取得する
+   *
+   * @param  {number} id 投稿ID
+   * @return {string} 編集パス
+   */
   getEditPath(id: number) {
     return `/contribution/edit/${id}`
   }
   /**
-     * タイトルを変更する
-     *
-     * @param  {string[]} text テキスト
-     */
+   * タイトルを変更する
+   *
+   * @param  {string[]} text テキスト
+   */
   changeTitle(text: Array<string>) {
     this.searchTitle(text[0])
   }
   /**
-     * タイトルを入力する
-     *
-     * @param  {object} text テキスト
-     */
+   * タイトルを入力する
+   *
+   * @param  {object} text テキスト
+   */
   inputTitle(text: Object) {
     this.searchTitle(text.target.value)
   }
   /**
-     * タイトルを検索する
-     *
-     * @param  {string} text テキスト
-     */
+   * タイトルを検索する
+   *
+   * @param  {string} text テキスト
+   */
   searchTitle(text: string) {
+    const { all, viewStatus } = this.props.userContributionList
+
     const list = []
     let count = 0
-    const all = this.props.userContributionList.All
     const length = all.length
     tite = text
 
     all.forEach(item => {
       if (item.Title.indexOf(text) != -1) {
-        if (item.view_status == this.props.userContributionList.ViewStatus) {
+        if (item.view_status == viewStatus) {
           list.push(item)
         }
       }
@@ -122,11 +124,10 @@ export default class ContributionList extends Component {
    * 削除確認を取得する
    */
   getDeleteConfirm() {
+    const { deleteConfirm, contributionId } = this.props.userContributionList
+
     return (
-      <Modal
-        show={this.props.userContributionList.DeleteConfirm}
-        onHide={this.props.closeDeleteConfirm}
-      >
+      <Modal show={deleteConfirm} onHide={this.props.closeDeleteConfirm}>
         <Modal.Header closeButton>
           <Modal.Title>投稿削除</Modal.Title>
         </Modal.Header>
@@ -137,10 +138,7 @@ export default class ContributionList extends Component {
           <ButtonToolbar>
             <Button
               bsStyle="danger"
-              onClick={() =>
-                this.deleteContribution(
-                  this.props.userContributionList.ContributionId
-                )}
+              onClick={() => this.deleteContribution(contributionId)}
             >
               削除する
             </Button>
@@ -157,18 +155,17 @@ export default class ContributionList extends Component {
    * 操作を取得する
    */
   getControl() {
+    const { contributionId } = this.props.userContributionList
     let disabled = false
     let text = ""
-    if (this.props.userContributionList.ContributionId == 0) {
+    if (contributionId == 0) {
       disabled = true
       text = "（※選択されていません）"
     }
 
     return (
       <ButtonToolbar>
-        <Link
-          to={this.getEditPath(this.props.userContributionList.ContributionId)}
-        >
+        <Link to={this.getEditPath(contributionId)}>
           <Button bsStyle="success" disabled={disabled}>
             <Glyphicon glyph="edit" />&nbsp;編集
           </Button>
@@ -186,10 +183,10 @@ export default class ContributionList extends Component {
   }
   /**
    * 描画する
-   *
-   * @return {object} html
    */
   render() {
+    const { contributionId, titles } = this.props.userContributionList
+
     let list = this.props.userContributionList.List
     if (!Array.isArray(list)) {
       list = []
@@ -207,11 +204,11 @@ export default class ContributionList extends Component {
       side = (
         <Nav bsStyle="pills" stacked>
           {list.map(item =>
-            <NavItem key={item.ID} eventKey={item.ID}>
+            <NavItem key={item.id} eventKey={item.id}>
               <p>
-                {item.Title}
+                {item.title}
               </p>
-              {DateTimeFormat(item.CreatedAt)}
+              {DateTimeFormat(item.createdAt)}
             </NavItem>
           )}
         </Nav>
@@ -220,7 +217,7 @@ export default class ContributionList extends Component {
 
     let contribution = ""
 
-    if (this.props.userContributionList.ContributionId != 0) {
+    if (contributionId != 0) {
       contribution = (
         <div
           style={{
@@ -245,7 +242,7 @@ export default class ContributionList extends Component {
         <Tab.Container
           id="left-tabs-example"
           onSelect={this.setContribution.bind(this)}
-          activeKey={this.props.userContributionList.ContributionId}
+          activeKey={contributionId}
         >
           <Row>
             <Col sm={3}>
@@ -259,7 +256,7 @@ export default class ContributionList extends Component {
                 <Tab eventKey={VIEW_STATUS_PUBLIC} title="公開中" />
               </Tabs>
               <Typeahead
-                options={this.props.userContributionList.TitleList}
+                options={titles}
                 maxVisible={2}
                 placeholder="タイトル検索"
                 onChange={this.changeTitle.bind(this)}

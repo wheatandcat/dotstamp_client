@@ -1,69 +1,84 @@
+// @flow
 import * as types from "../../../constants/ActionTypes"
 import { VIEW_STATUS_PRIVATE } from "../../../constants/contribution"
 
-// 初期ステート設定
-const initialState = {
-  ContributionId: 0,
-  All: [],
-  List: [],
-  Count: 0,
-  TitleList: [],
-  SearchTitle: "",
-  Load: false,
-  ViewStatus: VIEW_STATUS_PRIVATE,
-  DeleteConfirm: false
+type State = {
+  contributionId: number,
+  all: Array<*>,
+  list: Array<*>,
+  count: number,
+  titles: Array<*>,
+  searchTitle: string,
+  load: boolean,
+  viewStatus: number,
+  deleteConfirm: boolean
 }
 
-export default function ContributionList(state = initialState, action) {
+const initialState: State = {
+  contributionId: 0,
+  all: [],
+  list: [],
+  count: 0,
+  titles: [],
+  searchTitle: "",
+  load: false,
+  viewStatus: VIEW_STATUS_PRIVATE,
+  deleteConfirm: false
+}
+
+export default function ContributionList(
+  state: State = initialState,
+  action: any
+) {
   switch (action.type) {
     case types.INIT_USER_CONTRBUTION_LIST: {
       return JSON.parse(JSON.stringify(initialState))
     }
     case types.GET_USER_CONTRBUTION_LIST: {
-      if (!state.Load) {
-        state.List = action.response.PrivteList
-        if (Array.isArray(state.List) && state.List.length > 0) {
-          state.ContributionId = state.List[0].ID
+      if (!state.load) {
+        state.list = action.response.privteList
+        if (Array.isArray(state.list) && state.list.length > 0) {
+          state.contributionId = state.list[0].id
         }
       } else {
-        state.List = action.response.List
+        state.list = action.response.list
       }
 
-      state.All = action.response.List
-      state.Count = action.response.Count
-      state.TitleList = action.response.TitleList
+      state.all = action.response.list
+      state.count = action.response.count
+      state.titles = action.response.titles
 
-      state.Load = true
+      state.load = true
       return JSON.parse(JSON.stringify(state))
     }
     case types.SET_USER_CONTRBUTION_LIST: {
-      state.ContributionId = action.contributionId
+      state.contributionId = action.contributionId
 
       return JSON.parse(JSON.stringify(state))
     }
     case types.SET_USER_CONTRBUTION_LIST_SEARCH: {
-      state.List = action.list
+      state.list = action.list
 
       return JSON.parse(JSON.stringify(state))
     }
     case types.SET_USER_CONTRBUTION_LIST_VIEW_STATUS: {
-      state.ViewStatus = action.viewStatus
+      state.viewStatus = action.viewStatus
 
       return JSON.parse(JSON.stringify(state))
     }
     case types.DELETE_CONTRIBUTION_SHOW: {
-      state.ContributionId = 0
-      state.DeleteConfirm = false
+      state.contributionId = 0
+      state.deleteConfirm = false
 
       return JSON.parse(JSON.stringify(state))
     }
     case types.OPEN_USER_CONTRBUTION_LIST_CONFIRM: {
-      state.DeleteConfirm = true
+      state.deleteConfirm = true
 
       return JSON.parse(JSON.stringify(state))
     }
     case types.CLOSE_USER_CONTRBUTION_LIST_CONFIRM: {
-      state.DeleteConfirm = false
+      state.deleteConfirm = false
 
       return JSON.parse(JSON.stringify(state))
     }

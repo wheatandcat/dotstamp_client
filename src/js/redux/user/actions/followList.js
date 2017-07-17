@@ -1,3 +1,4 @@
+// @flow
 import * as types from "../../../constants/ActionTypes"
 
 /**
@@ -5,8 +6,7 @@ import * as types from "../../../constants/ActionTypes"
  *
  * @param  {numbet} page ページ数
  * @param  {numbet} order 順番
- * @return {object} アクション
  */
-export function paging(page, order) {
+export function paging(page: number, order: number) {
   return { type: types.PAGING_USER_FOLLOW_LIST, page, order }
 }
