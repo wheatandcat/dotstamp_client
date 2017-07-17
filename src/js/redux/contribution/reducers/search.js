@@ -1,36 +1,46 @@
+// @flow
 import * as types from "../../../constants/ActionTypes"
 
-// 初期ステート設定
-const initialState = {
-  List: [],
-  Limit: 10,
-  Count: 0,
-  Order: 1,
-  Page: 1,
-  Search: ""
+type State = {
+  list: Array<*>,
+  limit: number,
+  count: number,
+  order: number,
+  page: number,
+  search: string
 }
 
-export default function List(state = initialState, action) {
+// 初期ステート設定
+const initialState: State = {
+  list: [],
+  limit: 10,
+  count: 0,
+  order: 1,
+  page: 1,
+  search: ""
+}
+
+export default function List(state: State = initialState, action: any) {
   switch (action.type) {
     case types.GET_CONTRIBUTION_SEARCH_LIST: {
-      state.List = action.response.List
-      state.Count = action.response.Count
+      state.list = action.response.list
+      state.count = action.response.count
 
-      state.Search = action.receiveParam.search
-      state.Page = action.receiveParam.page
-      state.Order = action.receiveParam.order
+      state.search = action.receiveParam.search
+      state.page = action.receiveParam.page
+      state.order = action.receiveParam.order
 
       return JSON.parse(JSON.stringify(state))
     }
     case types.PAGING_CONTRIBUTION_SEARCH_LIST: {
-      state.Search = action.search
-      state.Page = action.page
-      state.Order = action.order
+      state.search = action.search
+      state.page = action.page
+      state.order = action.order
 
       return JSON.parse(JSON.stringify(state))
     }
     case types.SET_CONTRIBUTION_SEARCH_ORDER: {
-      state.Order = action.order
+      state.order = action.order
 
       return JSON.parse(JSON.stringify(state))
     }

@@ -78,7 +78,6 @@ export default class Thumbnail extends Component {
       id,
       tags
     } = this.props
-    console.log(this.props)
 
     if (viewStatus != VIEW_STATUS_PUBLIC) {
       return <Private title={title} user={user} updatedAt={updatedAt} />

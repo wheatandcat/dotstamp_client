@@ -1,14 +1,10 @@
+// @flow
 import * as types from "../../../constants/ActionTypes"
 
 /**
  * ページングする
- *
- * @param  {string} search 検索
- * @param  {numbet} order 順番
- * @param  {numbet} page ページ数
- * @return {object} アクション
  */
-export function paging(search, order, page) {
+export function paging(search: string, order: number, page: number) {
   return {
     type: types.PAGING_CONTRIBUTION_SEARCH_LIST,
     search,
@@ -19,11 +15,8 @@ export function paging(search, order, page) {
 
 /**
  * 順番を設定する
- *
- * @param  {numbet} order 順番
- * @return {object} アクション
  */
-export function setOrder(order) {
+export function setOrder(order: number) {
   return {
     type: types.SET_CONTRIBUTION_SEARCH_ORDER,
     order

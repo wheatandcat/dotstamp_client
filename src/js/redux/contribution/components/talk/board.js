@@ -1,3 +1,4 @@
+// @flow
 import PropTypes from "prop-types"
 import React, { Component } from "react"
 import HTML5Backend from "react-dnd-html5-backend"
@@ -52,8 +53,8 @@ class Board extends Component {
       <div>
         {this.props.talkList.map(talk =>
           <Item
-            key={talk.Priority}
-            priority={talk.Priority}
+            key={talk.priority}
+            priority={talk.priority}
             talk={talk}
             moveItem={this.handleMoveItem}
           />

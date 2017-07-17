@@ -2,7 +2,11 @@ import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
 import Show from "../components/show/main"
 import { setProblemType, openProblem, closeProblem } from "../actions/show"
-import { fetchPostsIfNeeded } from "../../../utils/fetch"
+import {
+  fetchGetsIfNeeded,
+  fetchPostsIfNeeded,
+  fetchDeleteIfNeeded
+} from "../../../utils/fetch"
 import * as types from "../../../constants/ActionTypes"
 
 function mapStateToProps(state) {
@@ -22,17 +26,14 @@ function mapDispatchToProps(dispatch) {
     },
     getDetail: id => {
       dispatch(
-        fetchPostsIfNeeded(
-          `contribution/show/${id}`,
-          types.GET_CONTRIBUTION_SHOW
-        )
+        fetchGetsIfNeeded(`contributions/${id}`, types.GET_CONTRIBUTION_SHOW)
       )
     },
-    addFollow: action => {
-      dispatch(fetchPostsIfNeeded("follow/add", types.ADD_FOLLOW, action))
+    addFollow: id => {
+      dispatch(fetchPostsIfNeeded(`follows/${id}`, types.ADD_FOLLOW))
     },
-    deleteFollow: action => {
-      dispatch(fetchPostsIfNeeded("follow/delete", types.DELETE_FOLLOW, action))
+    deleteFollow: id => {
+      dispatch(fetchDeleteIfNeeded(`follows/${id}`, types.DELETE_FOLLOW))
     },
     addProblem: action => {
       dispatch(

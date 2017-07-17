@@ -4,26 +4,34 @@ import * as types from "../../../constants/ActionTypes"
 // 初期ステート設定
 let list = []
 
-const initialState = []
+type Item = {
+  body: string,
+  character: Object,
+  directionType: number,
+  talkType: number,
+  priority: number,
+  edit?: boolean
+}
+
+const initialState: Array<Item> = []
 
 /**
  * 本文追加状態を取得する
- *
- * @param  {object} character キャラクター
- * @param  {string} body  本文
- * @param  {number} talkType  会話タイプ
- * @param  {number} directionType  方向タイプ
- * @param  {number} priority  優先順位
- * @return {object} 状態
  */
-function getAddBodyState(character, body, talkType, directionType, priority) {
+function getAddBodyState(
+  character: Object,
+  body: string,
+  talkType: number,
+  directionType: number,
+  priority: number
+): Item {
   return {
-    Body: replaceBody(body),
-    Character: character,
-    DirectionType: directionType,
-    TalkType: talkType,
-    Edit: false,
-    Priority: priority
+    body: replaceBody(body),
+    character: character,
+    directionType: directionType,
+    talkType: talkType,
+    edit: false,
+    priority: priority
   }
 }
 
@@ -31,23 +39,26 @@ function replaceBody(body) {
   return body.replace("%", "％").replace("&", "＆").replace(";", "；")
 }
 
-export default function Talk(state: Array<*> = initialState, action: Object) {
+export default function Talk(
+  state: Array<Item> = initialState,
+  action: Object
+) {
   switch (action.type) {
     case types.EDIT_CONTRIBUTION_FORM_BODY_IMAGE: {
-      const priority = action.receiveParam.Priority
+      const priority = action.receiveParam.priority
 
-      list[priority].Body = action.response.Path
-      list[priority].Character = action.receiveParam.Character
-      list[priority].TalkType = action.receiveParam.TalkType
-      list[priority].DirectionType = action.receiveParam.DirectionType
-      list[priority].Edit = false
+      list[priority].body = action.response.path
+      list[priority].character = action.receiveParam.character
+      list[priority].talkType = action.receiveParam.talkType
+      list[priority].directionType = action.receiveParam.directionType
+      list[priority].edit = false
 
       state = list.concat()
 
       return state
     }
     case types.GET_CONTRIBUTION_EDIT: {
-      list = action.response.Body
+      list = action.response.body
       return list
     }
 
@@ -82,11 +93,11 @@ export default function Talk(state: Array<*> = initialState, action: Object) {
       return state
     }
     case types.EDIT_CONTRIBUTION_FORM_BODY: {
-      list[action.priority].Body = replaceBody(action.body)
-      list[action.priority].Character = action.character
-      list[action.priority].TalkType = action.talkType
-      list[action.priority].DirectionType = action.directionType
-      list[action.priority].Edit = false
+      list[action.priority].body = replaceBody(action.body)
+      list[action.priority].character = action.character
+      list[action.priority].talkType = action.talkType
+      list[action.priority].directionType = action.directionType
+      list[action.priority].edit = false
 
       state = list.concat()
 
@@ -95,7 +106,7 @@ export default function Talk(state: Array<*> = initialState, action: Object) {
     case types.SET_CONTRIBUTION_TALK_EDIT_BODY: {
       const editList = []
       for (const value of list) {
-        value.Edit = value.Priority == action.priority
+        value.edit = value.priority == action.priority
         editList.push(value)
       }
 
@@ -106,8 +117,8 @@ export default function Talk(state: Array<*> = initialState, action: Object) {
     case types.DELETE_CONTRIBUTION_TALK_BODY: {
       list.splice(action.priority, 1)
 
-      list.forEach((obj, key) => (obj.Priority = key))
-      list.forEach(obj => (obj.Edit = false))
+      list.forEach((obj, key) => (obj.priority = key))
+      list.forEach(obj => (obj.edit = false))
       state = list.concat()
 
       return state

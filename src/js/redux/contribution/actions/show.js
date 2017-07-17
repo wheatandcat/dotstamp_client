@@ -1,9 +1,8 @@
+// @flow
 import * as types from "../../../constants/ActionTypes"
 
 /**
  * 通報を開く
- *
- * @return {object} アクション
  */
 export function openProblem() {
   return { type: types.OPEN_CONTRIBUTION_SHOW_PROBLEM }
@@ -11,8 +10,6 @@ export function openProblem() {
 
 /**
  * 通報を閉じる
- *
- * @return {object} アクション
  */
 export function closeProblem() {
   return { type: types.CLOSE_CONTRIBUTION_SHOW_PROBLEM }
@@ -20,11 +17,8 @@ export function closeProblem() {
 
 /**
  * 問題タイプを設定する
- *
- * @param  {numbet} problemType 問題タイプ
- * @return {object} アクション
  */
-export function setProblemType(problemType) {
+export function setProblemType(problemType: number) {
   return {
     type: types.SET_CONTRIBUTION_SHOW_PROBLEM_TYPE,
     problemType

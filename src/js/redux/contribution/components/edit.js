@@ -1,3 +1,4 @@
+// @flow
 import PropTypes from "prop-types"
 import React, { Component } from "react"
 import FormHeader from "../containers/form/header"
@@ -11,7 +12,7 @@ export default class Edit extends Component {
    *
    * @param  {number} id 投稿ID
    */
-  edit(id) {
+  edit(id: number) {
     this.props.getDetail(id)
     this.props.setCharacterImageList()
   }
@@ -21,13 +22,15 @@ export default class Edit extends Component {
    * @return {object} html
    */
   render() {
+    const { title, viewStatus, id, sound } = this.props.contributionEdit
+
     return (
       <FormHeader
-        title={this.props.contributionEdit.title}
-        viewStatus={this.props.contributionEdit.ViewStatus}
-        contributionId={this.props.contributionEdit.id}
+        title={title}
+        viewStatus={viewStatus}
+        contributionId={id}
         contributionTalk={this.props.contributionTalk}
-        sound={this.props.contributionEdit.Sound}
+        sound={sound}
       />
     )
   }

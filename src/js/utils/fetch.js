@@ -22,31 +22,6 @@ const staticHost: string =
 const fetchStateList: Object = {}
 
 /**
- * 必要な場合はPOST通信を行う
- *
- * @param  {string} url URL
- * @param  {string} type タイプ
- * @param  {object} paramas パラメータ
- * @param  {object} receiveParam 返しパラメータ
- * @return {object} アクション
- */
-export function fetchPostsIfNeeded(
-  url: string,
-  type: string,
-  paramas: Object = {},
-  receiveParam: Object = {}
-): Object {
-  return dispatch => {
-    if (shouldFetchPosts(url)) {
-      // thunkからthunkを呼び出せる！
-      return dispatch(fetchPosts(url, type, paramas, receiveParam))
-    }
-    // 下記コードを呼び、wait forには何もないことを知らせる
-    return Promise.resolve()
-  }
-}
-
-/**
  * 通信するか判定する
  *
  * @param  {string} url URL
@@ -112,7 +87,7 @@ function receiveErrorResponse(url: string, response: Object) {
 }
 
 /**
- * 通信する
+ * 通信する(GET)
  *
  * @param  {string} url URL
  * @param  {string} type タイプ
@@ -160,16 +135,71 @@ export function fetchGetsIfNeeded(
 ): Object {
   return dispatch => {
     if (shouldFetchPosts(url)) {
-      // thunkからthunkを呼び出せる！
       return dispatch(fetchGets(url, type, receiveParam))
     }
-    // 下記コードを呼び、wait forには何もないことを知らせる
+
     return Promise.resolve()
   }
 }
 
 /**
- * 通信する
+ * 通信する(DELETE)
+ *
+ * @param  {string} url URL
+ * @param  {string} type タイプ
+ * @param  {object} receiveParam 返しパラメータ
+ * @return {object} レスポンス
+ */
+function fetchDelete(url: string, type: string, receiveParam: Object) {
+  const requestParams = {
+    method: "DELETE",
+    credentials: "same-origin",
+    headers: {
+      "Content-Type": "pplication/json"
+    }
+  }
+
+  return dispatch =>
+    fetch(host + url, requestParams)
+      .then(response =>
+        response.json().then(json => ({
+          status: response.status,
+          json
+        }))
+      )
+      .then(({ status, json }) => {
+        if (status >= 400) {
+          return dispatch(receiveErrorResponse(url, json))
+        }
+
+        dispatch(receiveResponse(url, type, json, receiveParam))
+      })
+}
+
+/**
+ * 必要な場合は通信しテキストを取得する
+ *
+ * @param  {string} url URL
+ * @param  {string} type タイプ
+ * @param  {object} receiveParam 返しパラメータ
+ * @return {object} アクション
+ */
+export function fetchDeleteIfNeeded(
+  url: string,
+  type: string,
+  receiveParam: Object
+): Object {
+  return dispatch => {
+    if (shouldFetchPosts(url)) {
+      return dispatch(fetchDelete(url, type, receiveParam))
+    }
+
+    return Promise.resolve()
+  }
+}
+
+/**
+ * 通信する(POST)
  *
  * @param  {string} url URL
  * @param  {string} type タイプ
@@ -210,7 +240,7 @@ function fetchPosts(
 }
 
 /**
- * 必要な場合はアップロード通信を行う
+ * 必要な場合はPOST通信を行う
  *
  * @param  {string} url URL
  * @param  {string} type タイプ
@@ -218,18 +248,83 @@ function fetchPosts(
  * @param  {object} receiveParam 返しパラメータ
  * @return {object} アクション
  */
-export function fetchUploadIfNeeded(
+export function fetchPostsIfNeeded(
   url: string,
   type: string,
-  paramas: Object,
+  paramas: Object = {},
   receiveParam: Object = {}
 ): Object {
   return dispatch => {
     if (shouldFetchPosts(url)) {
       // thunkからthunkを呼び出せる！
-      return dispatch(fetchUpload(url, type, paramas, receiveParam))
+      return dispatch(fetchPosts(url, type, paramas, receiveParam))
     }
     // 下記コードを呼び、wait forには何もないことを知らせる
+    return Promise.resolve()
+  }
+}
+
+/**
+ * 通信する(PUT)
+ *
+ * @param  {string} url URL
+ * @param  {string} type タイプ
+ * @param  {object} paramas パラメータ
+ * @param  {object} receiveParam 返しパラメータ
+ * @return {object} レスポンス
+ */
+function fetchPuts(
+  url: string,
+  type: string,
+  paramas: Object,
+  receiveParam: Object
+) {
+  const requestParams = {
+    method: "POST",
+    credentials: "same-origin",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body: Object.keys(paramas).map(key => `${key}=${paramas[key]}`).join("&")
+  }
+
+  return dispatch =>
+    fetch(host + url, requestParams)
+      .then(response =>
+        response.json().then(json => ({
+          status: response.status,
+          json
+        }))
+      )
+      .then(({ status, json }) => {
+        if (status >= 400) {
+          return dispatch(receiveErrorResponse(url, json))
+        }
+
+        dispatch(receiveResponse(url, type, json, receiveParam))
+      })
+}
+
+/**
+ * 必要な場合はPOST通信を行う
+ *
+ * @param  {string} url URL
+ * @param  {string} type タイプ
+ * @param  {object} paramas パラメータ
+ * @param  {object} receiveParam 返しパラメータ
+ * @return {object} アクション
+ */
+export function fetchPutsIfNeeded(
+  url: string,
+  type: string,
+  paramas: Object = {},
+  receiveParam: Object = {}
+): Object {
+  return dispatch => {
+    if (shouldFetchPosts(url)) {
+      return dispatch(fetchPuts(url, type, paramas, receiveParam))
+    }
+
     return Promise.resolve()
   }
 }
@@ -275,6 +370,30 @@ function fetchUpload(
 
         dispatch(receiveResponse(url, type, json, receiveParam))
       })
+}
+
+/**
+ * 必要な場合はアップロード通信を行う
+ *
+ * @param  {string} url URL
+ * @param  {string} type タイプ
+ * @param  {object} paramas パラメータ
+ * @param  {object} receiveParam 返しパラメータ
+ * @return {object} アクション
+ */
+export function fetchUploadIfNeeded(
+  url: string,
+  type: string,
+  paramas: Object,
+  receiveParam: Object = {}
+): Object {
+  return dispatch => {
+    if (shouldFetchPosts(url)) {
+      return dispatch(fetchUpload(url, type, paramas, receiveParam))
+    }
+
+    return Promise.resolve()
+  }
 }
 
 /**

@@ -26,7 +26,7 @@ function mapDispatchToProps(dispatch) {
     addItem: id => {
       dispatch(
         fetchGetsIfNeeded(
-          `contribution/show/${id}`,
+          `contributions/${id}`,
           types.ADD_CONTRIBUTION_LIST_ITEM
         )
       )

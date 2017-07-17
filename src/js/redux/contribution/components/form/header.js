@@ -137,7 +137,7 @@ export default class Header extends Component {
    * 保存する
    */
   save() {
-    if (this.props.contributionForm.Experience) {
+    if (this.props.contributionForm.experience) {
       return
     }
 
@@ -222,7 +222,7 @@ export default class Header extends Component {
 
     return (
       <AddForm
-        tagList={this.props.contributionForm.tagList}
+        tags={this.props.contributionForm.tags}
         onAdd={this.addTag.bind(this)}
         onDelete={this.deleteTag.bind(this)}
       />

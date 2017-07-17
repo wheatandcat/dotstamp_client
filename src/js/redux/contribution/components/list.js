@@ -1,3 +1,4 @@
+// @flow
 import PropTypes from "prop-types"
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
@@ -15,9 +16,9 @@ export default class List extends Component {
   /**
    * リストを取得する
    *
-   * @param  {bool} init 初期取得フラグ
+   * @param  {boolean} init 初期取得フラグ
    */
-  getList(init) {
+  getList(init: boolean) {
     const action = {
       order: this.props.contributionList.order
     }
@@ -34,10 +35,10 @@ export default class List extends Component {
    * アイテムリストを取得する
    *
    * @param  {array[]} list リスト
-   * @param  {bool} show 表示フラグ
+   * @param  {boolean} show 表示フラグ
    * @return {object} html
    */
-  getItemList(list, show) {
+  getItemList(list: Array<*>, show: boolean) {
     if (!show) {
       return <div />
     }
@@ -55,9 +56,9 @@ export default class List extends Component {
 
     return (
       <Combination
-        List={list}
-        OpenID={openID}
-        Show={contribution}
+        list={list}
+        openID={openID}
+        show={contribution}
         onAdd={this.props.addItem}
         onDelete={this.props.deleteItem}
       />

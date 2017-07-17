@@ -1,34 +1,49 @@
+// @flow
 import * as types from "../../../constants/ActionTypes"
 import { VIEW_STATUS_PUBLIC } from "../../../constants/contribution"
 
-// 初期ステート設定
-const initialState = {
+type State = {
+  id: ?number,
+  title: string,
+  body: string,
+  tags: Array<*>,
+  viewStatus: number,
+  saveData: {
+    title: string,
+    body: string,
+    viewStatus: number
+  },
+  sound: boolean,
+  soundFile: boolean
+}
+
+const initialState: State = {
   id: null,
   title: "",
   body: "",
-  tagList: [],
+  tags: [],
   viewStatus: VIEW_STATUS_PUBLIC,
   saveData: {
     title: "",
     body: "",
     viewStatus: VIEW_STATUS_PUBLIC
   },
-  Sound: false,
-  SoundFile: false
+  sound: false,
+  soundFile: false
 }
 
-export default function Edit(state = initialState, action) {
+export default function Edit(state: State = initialState, action: any) {
   switch (action.type) {
     case types.GET_CONTRIBUTION_EDIT: {
       state.id = action.response.ID
-      state.title = action.response.Title
-      state.body = action.response.Body
-      state.tagList = action.response.Tag
-      state.viewStatus = action.response.ViewStatus
-      state.saveData.title = action.response.Title
-      state.saveData.body = JSON.stringify(action.response.Body)
-      state.Sound = action.response.Sound
-      state.SoundFile = action.response.SoundFile
+      state.title = action.response.title
+      state.body = action.response.body
+      state.tags = action.response.tags
+      state.viewStatus = action.response.viewStatus
+      state.saveData.title = action.response.title
+      state.saveData.body = JSON.stringify(action.response.body)
+      state.sound = action.response.Sound
+      state.soundFile = action.response.SoundFile
 
       return JSON.parse(JSON.stringify(state))
     }

@@ -1,7 +1,15 @@
+// @flow
 import * as types from "../../../constants/ActionTypes"
 
-// 初期ステート設定
-const initialState = {
+type State = {
+  list: Array<*>,
+  order: number,
+  next: boolean,
+  init: boolean,
+  itemMap: Object
+}
+
+const initialState: State = {
   list: [],
   order: 0,
   next: true,
@@ -9,7 +17,7 @@ const initialState = {
   itemMap: {}
 }
 
-export default function List(state = initialState, action) {
+export default function List(state: State = initialState, action: any) {
   switch (action.type) {
     case types.GET_CONTRIBUTION_LIST: {
       state.list = action.response
@@ -20,7 +28,6 @@ export default function List(state = initialState, action) {
         state.next = true
       }
       state.init = action.receiveParam.init
-      console.log(state)
 
       return JSON.parse(JSON.stringify(state))
     }

@@ -1,3 +1,4 @@
+// @flow
 import PropTypes from "prop-types"
 import React, { Component } from "react"
 import {
@@ -23,6 +24,9 @@ import { List } from "../../../component/contribution/list"
 let tmpSearch = ""
 
 export default class Search extends Component {
+  input: {
+    value: ""
+  }
   componentWillMount() {
     this.search(
       this.props.match.params.search,
@@ -41,7 +45,7 @@ export default class Search extends Component {
    *
    * @param  {object} e エレメント
    */
-  sendCommand(e) {
+  sendCommand(e: Object) {
     const ENTER = 13
     if (e.keyCode == ENTER) {
       this.setSearch()
@@ -54,7 +58,7 @@ export default class Search extends Component {
    * @param {number} order 順番
    * @param {number} page ページ
    */
-  search(search, order, page) {
+  search(search: string, order: number, page: number) {
     this.props.search({
       search,
       order,
@@ -84,7 +88,7 @@ export default class Search extends Component {
    * @param {number} page ページ
    * @param {number} order 順番
    */
-  paging(page, order) {
+  paging(page: number, order: number) {
     this.search(this.props.contributionSearch.Search, order, page)
     this.props.paging(this.props.contributionSearch.Search, order, page)
   }
@@ -93,7 +97,7 @@ export default class Search extends Component {
    *
    * @param {number} order 順番
    */
-  setOrder(order) {
+  setOrder(order: number) {
     this.search(
       this.props.contributionSearch.Search,
       order,
@@ -117,7 +121,7 @@ export default class Search extends Component {
       )
     }
 
-    return <List List={list} onSearch={this.search} />
+    return <List list={list} onSearch={this.search} />
   }
   /**
    * 描画する

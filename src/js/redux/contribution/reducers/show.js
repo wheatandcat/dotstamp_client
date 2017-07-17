@@ -1,102 +1,125 @@
+// @flow
 import * as types from "../../../constants/ActionTypes"
 import { PROBLEM_TYPE_SPAM } from "../../../constants/contribution"
 
-// 初期ステート設定
-const initialState = {
-  ID: 0,
-  Title: "",
-  Body: [],
-  TagList: [],
-  User: {
-    ID: 0,
-    Name: "",
-    ProfileImageID: 0
+type State = {
+  id: number,
+  title: string,
+  body: Array<*>,
+  tags: Array<*>,
+  user: {
+    id: number,
+    name: string,
+    profileImageID: number
   },
-  FollowCount: -1,
-  UpdatedAt: "",
-  CreatedAt: "",
-  Following: false,
-  Load: false,
-  Problem: false,
-  ProblemType: PROBLEM_TYPE_SPAM,
-  AddProblem: false,
-  SoundFile: false,
-  Movie: {}
+  followCount: number,
+  updatedAt: string,
+  createdAt: string,
+  following: boolean,
+  load: boolean,
+  problem: boolean,
+  problemType: number,
+  addProblem: boolean,
+  soundFile: boolean,
+  movie: Object
 }
 
-export default function Show(state = initialState, action) {
+// 初期ステート設定
+const initialState: State = {
+  id: 0,
+  title: "",
+  body: [],
+  tags: [],
+  user: {
+    id: 0,
+    name: "",
+    profileImageID: 0
+  },
+  followCount: -1,
+  updatedAt: "",
+  createdAt: "",
+  following: false,
+  load: false,
+  problem: false,
+  problemType: PROBLEM_TYPE_SPAM,
+  addProblem: false,
+  soundFile: false,
+  movie: {}
+}
+
+export default function Show(state: State = initialState, action: any) {
   switch (action.type) {
     case types.GET_CONTRIBUTION_SHOW: {
-      state.ID = action.response.ID
-      state.Title = action.response.Title
-      state.Body = action.response.Body
-      state.TagList = action.response.Tag
-      state.User = action.response.User
-      state.UpdatedAt = action.response.UpdatedAt
-      state.CreatedAt = action.response.CreatedAt
-      state.FollowCount = action.response.FollowCount
-      state.Following = action.response.Following
-      state.SoundFile = action.response.SoundFile
-      state.Movie = action.response.Movie
+      state.id = action.response.id
+      state.title = action.response.title
+      state.body = action.response.body
+      state.tags = action.response.tags
+      state.user = action.response.user
+      state.updatedAt = action.response.updatedAt
+      state.createdAt = action.response.createdAt
+      state.followCount = action.response.followCount
+      state.following = action.response.following
+      state.soundFile = action.response.soundFile
+      state.movie = action.response.movie
 
-      state.Load = true
+      state.load = true
 
       return JSON.parse(JSON.stringify(state))
     }
     case types.DELETE_FOLLOW: {
-      state.FollowCount = action.response.FollowCount
-      state.Following = false
+      state.followCount = action.response.FollowCount
+      state.following = false
 
       return JSON.parse(JSON.stringify(state))
     }
     case types.ADD_FOLLOW: {
-      state.FollowCount = action.response.FollowCount
-      state.Following = true
+      state.followCount = action.response.FollowCount
+      state.following = true
 
       return JSON.parse(JSON.stringify(state))
     }
     case types.OPEN_CONTRIBUTION_SHOW_PROBLEM: {
-      state.AddProblem = false
-      state.Problem = true
+      state.addProblem = false
+      state.problem = true
 
       return JSON.parse(JSON.stringify(state))
     }
     case types.CLOSE_CONTRIBUTION_SHOW_PROBLEM: {
-      state.Problem = false
+      state.problem = false
 
       return JSON.parse(JSON.stringify(state))
     }
     case types.SET_CONTRIBUTION_SHOW_PROBLEM_TYPE: {
-      state.ProblemType = action.problemType
+      state.problemType = action.problemType
 
       return JSON.parse(JSON.stringify(state))
     }
     case types.ADD_CONTRIBUTION_SHOW_PROBLEM: {
-      state.AddProblem = true
+      state.addProblem = true
 
       return JSON.parse(JSON.stringify(state))
     }
     case types.DELETE_CONTRIBUTION_SHOW: {
       return JSON.parse(
         JSON.stringify({
-          ID: 0,
-          Title: "",
-          Body: [],
-          TagList: [],
-          User: {
-            ID: 0,
-            Name: "",
-            ProfileImageID: 0
+          id: 0,
+          title: "",
+          body: [],
+          tags: [],
+          user: {
+            id: 0,
+            name: "",
+            profileImageID: 0
           },
-          FollowCount: -1,
-          UpdatedAt: "",
-          CreatedAt: "",
-          Following: false,
-          Load: false,
-          Problem: false,
-          ProblemType: PROBLEM_TYPE_SPAM,
-          AddProblem: false,
-          SoundFile: false
+          followCount: -1,
+          updatedAt: "",
+          createdAt: "",
+          following: false,
+          load: false,
+          problem: false,
+          problemType: PROBLEM_TYPE_SPAM,
+          addProblem: false,
+          soundFile: false
         })
       )
     }

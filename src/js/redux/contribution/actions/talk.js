@@ -1,3 +1,4 @@
+// @flow
 import * as types from "../../../constants/ActionTypes"
 
 // 方向タイプ: 左
@@ -12,20 +13,13 @@ export const TALK_TYPE_IMAGE = 2
 
 /**
  * 本文を編集する
- *
- * @param {number} priority 表示順
- * @param {string} body 本文
- * @param {object} character キャラクター
- * @param {number} directionType 方向タイプ
- * @param {number} talkType 会話タイプ
- * @return {[object]}  アクション
  */
 export function setEditBody(
-  priority,
-  body,
-  character,
-  directionType,
-  talkType
+  priority: number,
+  body: string,
+  character: Object,
+  directionType: number,
+  talkType: number
 ) {
   return {
     type: types.SET_CONTRIBUTION_TALK_EDIT_BODY,
@@ -39,20 +33,14 @@ export function setEditBody(
 
 /**
  * 本文を削除する
- *
- * @param {number} priority 表示順
- * @return {[object]}  アクション
  */
-export function deleteBody(priority) {
+export function deleteBody(priority: number) {
   return { type: types.DELETE_CONTRIBUTION_TALK_BODY, priority }
 }
 
 /**
  * 会話リストを設定する
- *
- * @param {array} talkList 会話リスト
- * @return {[object]}  アクション
  */
-export function setTalkList(talkList) {
-  return { type: types.SET_CONTRIBUTION_TALK_LIST, talkList }
+export function setTalkList(tags: Array<*>) {
+  return { type: types.SET_CONTRIBUTION_TALK_LIST, tags }
 }

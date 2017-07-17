@@ -1,3 +1,4 @@
+// @flow
 import PropTypes from "prop-types"
 import React, { Component } from "react"
 import { TALK_TYPE_IMAGE } from "../../actions/talk"
@@ -15,28 +16,28 @@ export default class Talk extends Component {
    *
    * @param  {object} e イベントオブジェクト
    */
-  handleChangeFile(e) {
-    const fileList = e.target.files
+  handleChangeFile(e: Object) {
+    const files = e.target.files
 
-    if (fileList.length == 0) {
+    if (files.length == 0) {
       return
     }
 
-    if (fileList[0].size > UPLOAD_FILE_SIZE_MAX) {
+    if (files[0].size > UPLOAD_FILE_SIZE_MAX) {
       this.props.alertMessage("アップロード失敗！アップロードできる最大容量を超えています！！（画像は600kBまで)")
       return
     }
 
-    this.uploadFile([fileList[0]])
+    this.uploadFile([files[0]])
   }
   /**
    * ファイルをアップロードする
    *
-   * @param  {array} fileList ファイルリスト
+   * @param  {array} files ファイルリスト
    */
-  uploadFile(fileList) {
+  uploadFile(files: Array<*>) {
     const formData = new FormData()
-    formData.append("file", fileList[0])
+    formData.append("file", files[0])
 
     let contributionId = this.props.contributionEdit.id
     if (contributionId == null) {
@@ -54,7 +55,7 @@ export default class Talk extends Component {
    *
    * @param  {number} priority 優先度
    */
-  deleteBody(priority) {
+  deleteBody(priority: number) {
     this.props.deleteBody(priority)
   }
   /**
@@ -62,13 +63,19 @@ export default class Talk extends Component {
    *
    * @param  {object} talk 会話
    */
-  setEditBody(talk) {
+  setEditBody(talk: {
+    priority: number,
+    body: string,
+    character: Object,
+    directionType: number,
+    talkType: number
+  }) {
     this.props.setEditBody(
-      talk.Priority,
-      talk.Body,
-      talk.Character,
-      talk.DirectionType,
-      talk.TalkType
+      talk.priority,
+      talk.body,
+      talk.character,
+      talk.directionType,
+      talk.talkType
     )
   }
   /**
@@ -77,28 +84,29 @@ export default class Talk extends Component {
    * @return {object} html
    */
   render() {
-    //         {this.getDirectionTypeHtml(this.props.talk)}
+    const { character, talkType, body, priority } = this.props.talk
+
     if (!this.props.editMode) {
       return (
         <div>
           <Balloon
-            UserFileName={this.props.talk.Character.FileName}
-            Type={this.props.talk.TalkType}
-            Talk={this.props.talk.Body}
+            userFileName={character.fileName}
+            type={talkType}
+            talk={body}
           />
           <hr className={line} />
         </div>
       )
     }
 
-    if (this.props.talk.TalkType == TALK_TYPE_IMAGE) {
+    if (talkType == TALK_TYPE_IMAGE) {
       return (
         <div>
           <EditImage
-            UserFileName={this.props.talk.Character.FileName}
-            Type={this.props.talk.TalkType}
-            Talk={this.props.talk.Body}
-            Priority={this.props.talk.Priority}
+            userFileName={this.props.talk.character.fileName}
+            type={talkType}
+            talk={body}
+            priority={priority}
             onChangeImage={this.handleChangeFile.bind(this)}
             onDelete={this.deleteBody.bind(this)}
           />
@@ -110,11 +118,11 @@ export default class Talk extends Component {
     return (
       <div>
         <EditText
-          UserFileName={this.props.talk.Character.FileName}
-          Type={this.props.talk.TalkType}
-          Talk={this.props.talk.Body}
-          Item={this.props.talk}
-          Priority={this.props.talk.Priority}
+          userFileName={character.fileName}
+          type={talkType}
+          talk={body}
+          item={this.props.talk}
+          priority={priority}
           onChangeText={this.setEditBody.bind(this)}
           onDelete={this.deleteBody.bind(this)}
         />

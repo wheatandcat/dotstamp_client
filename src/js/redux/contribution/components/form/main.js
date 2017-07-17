@@ -1,3 +1,4 @@
+// @flow
 import PropTypes from "prop-types"
 import React, { Component } from "react"
 import { Well } from "react-bootstrap"
@@ -38,7 +39,7 @@ export default class Main extends Component {
   componentWillMount() {
     self = this
   }
-  changeBody(value) {
+  changeBody(value: string) {
     this.props.changeBody(value)
   }
   /**
@@ -79,13 +80,13 @@ export default class Main extends Component {
   }
   /**
    * 本文追加する
-   *
-   * @param  {strig} body 本文
-   * @param  {object} character キャラクター
-   * @param  {number} directionType 方向タイプ
-   * @param  {number} talkType 会話タイプ
    */
-  addBody(body, character, directionType, talkType) {
+  addBody(
+    body: string,
+    character: Object,
+    directionType: number,
+    talkType: number
+  ) {
     return this.props.addBody(body, character, directionType, talkType)
   }
   /**
@@ -93,7 +94,7 @@ export default class Main extends Component {
    *
    * @param  {object} e イベントオブジェクト
    */
-  handleChangeFile(e) {
+  handleChangeFile(e: Object) {
     const fileList = e.target.files
 
     if (fileList.length == 0) {
@@ -110,19 +111,19 @@ export default class Main extends Component {
   /**
    * 画像ドロップの監視する
    *
-   * @param  {array} fileList ファイルリスト
+   * @param  {array} files ファイルリスト
    */
-  handleDropFile(fileList) {
-    this.uploadFile(fileList)
+  handleDropFile(files: Array<*>) {
+    this.uploadFile(files)
   }
   /**
    * ファイルをアップロードする
    *
-   * @param  {array} fileList ファイルリスト
+   * @param  {array} files ファイルリスト
    */
-  uploadFile(fileList) {
+  uploadFile(files: Array<*>) {
     const formData = new FormData()
-    formData.append("file", fileList[0])
+    formData.append("file", files[0])
 
     let contributionId = this.props.contributionId
     if (contributionId == null) {
@@ -145,7 +146,7 @@ export default class Main extends Component {
       <div>
         <div>
           {(() => {
-            if (this.props.characterList.DefaultIcon) {
+            if (this.props.characterList.defaultIcon) {
               return <div className={defaultIcon}>デフォルトアイコン表示中...</div>
             }
           })()}
@@ -157,7 +158,7 @@ export default class Main extends Component {
           </Well>
         </div>
         <FromAction
-          disabled={this.props.contributionForm.Experience}
+          disabled={this.props.contributionForm.experience}
           onAdd={this.addBodyText.bind(this)}
           onUpload={this.handleChangeFile.bind(this)}
           cancel={this.props.contributionForm.edit}

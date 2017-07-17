@@ -40,7 +40,7 @@ export default class Main extends Component {
       return
     }
 
-    this.props.addFollow({ userContributionId: this.getID() })
+    this.props.addFollow(this.getID())
   }
   /**
    * フォロー削除する
@@ -50,19 +50,19 @@ export default class Main extends Component {
       return
     }
 
-    this.props.deleteFollow({ userContributionId: this.getID() })
+    this.props.deleteFollow(this.getID())
   }
   /**
    * 通報する
    */
   addProblem() {
-    if (this.props.contributionShow.AddProblem) {
+    if (this.props.contributionShow.addProblem) {
       return
     }
 
     this.props.addProblem({
       userContributionId: this.props.contributionShow.ID,
-      type: this.props.contributionShow.ProblemType
+      type: this.props.contributionShow.problemType
     })
   }
   /**
@@ -74,9 +74,9 @@ export default class Main extends Component {
     return (
       <div>
         <Problem
-          problemType={this.props.contributionShow.ProblemType}
-          send={this.props.contributionShow.AddProblem}
-          show={this.props.contributionShow.Problem}
+          problemType={this.props.contributionShow.problemType}
+          send={this.props.contributionShow.addProblem}
+          show={this.props.contributionShow.problem}
           onProblemType={this.props.setProblemType}
           onHide={this.props.closeProblem}
           onAdd={this.addProblem.bind(this)}
@@ -84,22 +84,22 @@ export default class Main extends Component {
         <Header
           followElement={
             <Follow
-              count={this.props.contributionShow.FollowCount}
-              actived={this.props.contributionShow.Following}
-              disabled={!this.props.loginAuth.Login}
+              count={this.props.contributionShow.followCount}
+              actived={this.props.contributionShow.following}
+              disabled={!this.props.loginAuth.login}
               onAdd={this.addFollow.bind(this)}
               onDelete={this.deleteFollow.bind(this)}
             />
           }
-          tagList={this.props.contributionShow.TagList}
-          title={this.props.contributionShow.Title}
-          profileImageID={this.props.contributionShow.User.ProfileImageID}
-          userName={this.props.contributionShow.User.Name}
-          updatedAt={this.props.contributionShow.UpdatedAt}
-          movieID={this.props.contributionShow.Movie.movie_id}
+          tags={this.props.contributionShow.tags}
+          title={this.props.contributionShow.title}
+          profileImageID={this.props.contributionShow.user.profileImageID}
+          userName={this.props.contributionShow.user.name}
+          updatedAt={this.props.contributionShow.updatedAt}
+          movieID={this.props.contributionShow.movie.movie_id}
           openProblem={this.props.openProblem.bind(this)}
         />
-        <ContributionShowFrame list={this.props.contributionShow.Body} />
+        <ContributionShowFrame list={this.props.contributionShow.body} />
         <Footer />
       </div>
     )

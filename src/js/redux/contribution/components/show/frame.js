@@ -10,7 +10,7 @@ export default ({ list }: Props) =>
   <div>
     <div className="container">
       {list.map(item =>
-        <ContributionTalk key={item.Priority} talk={item} editMode={false} />
+        <ContributionTalk key={item.priority} talk={item} editMode={false} />
       )}
     </div>
   </div>
