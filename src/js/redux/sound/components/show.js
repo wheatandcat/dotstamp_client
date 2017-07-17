@@ -43,7 +43,7 @@ export default class Show extends Component {
     this.props.offMovieMakeListener()
 
     setTimeout(() => {
-      this.props.check({ userContributionId: this.props.match.params.id })
+      this.props.check(this.props.match.params.id)
     }, 30000)
   }
   /**
@@ -52,13 +52,13 @@ export default class Show extends Component {
      * @param  {numbet} id 投稿ID
      */
   getDeatil(id) {
-    this.props.getDetail({ userContributionId: id })
+    this.props.getDetail(id)
   }
   /**
-     * 音声本文を変更する
-     *
-     * @param  {object} e エレメント
-     */
+   * 音声本文を変更する
+   *
+   * @param  {object} e エレメント
+   */
   changeBodySound(e) {
     this.props.changeBodySound(
       e.target.id.replace("body_sound-", ""),

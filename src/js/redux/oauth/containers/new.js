@@ -36,12 +36,14 @@ class New extends Component {
     this.props.new({ email, password })
   }
   render() {
+    const { warning, message } = this.props.loginNew
+
     return (
       <Page
         email={decodeURIComponent(this.props.location.search).split("=")[1]}
         onNew={this.new.bind(this)}
-        isAlert={this.props.loginNew.Warning}
-        message={this.props.loginNew.Message}
+        isAlert={warning}
+        message={message}
       />
     )
   }
@@ -54,7 +56,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch: Dispatch) {
   return {
     new: params => {
-      dispatch(fetchPostsIfNeeded("login/new/", types.SET_LOGIN_USER, params))
+      dispatch(fetchPostsIfNeeded("users/new/", types.SET_LOGIN_USER, params))
     },
     alert: message => {
       dispatch(alert(message))

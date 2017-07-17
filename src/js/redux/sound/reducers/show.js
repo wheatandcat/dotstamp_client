@@ -1,3 +1,4 @@
+// @flow
 import * as types from "../../../constants/ActionTypes"
 
 import { getUniqueStr } from "../../../utils/common"
@@ -8,62 +9,74 @@ import {
   STATUS_RUNNING
 } from "../../../constants/contribution"
 
-const initialState = {
-  List: [],
-  Hash: "",
-  MakeMovie: false,
-  MovieStatus: STATUS_PRIVATE,
-  MovieID: "",
-  CheckMake: false,
-  Detail: false,
-  MovieMakeListener: false,
-  VoiceList: false
+type State = {
+  list: Array<*>,
+  hash: string,
+  makeMovie: boolean,
+  movieStatus: number,
+  movieID: string,
+  checkMake: boolean,
+  detail: boolean,
+  movieMakeListener: boolean,
+  voiceList: boolean
 }
 
-export default function Show(state = initialState, action) {
+const initialState: State = {
+  list: [],
+  hash: "",
+  makeMovie: false,
+  movieStatus: STATUS_PRIVATE,
+  movieID: "",
+  checkMake: false,
+  detail: false,
+  movieMakeListener: false,
+  voiceList: false
+}
+
+export default function Show(state: State = initialState, action: any) {
   switch (action.type) {
     case types.GET_CONTRIBUTION_FORM_SOUND_DETAIL: {
-      state.List = action.response.List
-      state.Hash = getUniqueStr()
-      state.MakeMovie = action.response.MovieFile
+      state.list = action.response.list
+      state.hash = getUniqueStr()
+      state.makeMovie = action.response.movieFile
 
-      if (action.response.Movie != 0) {
-        state.MovieStatus = action.response.Movie.movie_status
-        state.MovieID = action.response.Movie.movie_id
+      if (action.response.movie != 0) {
+        state.movieStatus = action.response.movie.movie_status
+        state.movieID = action.response.movie.movie_id
       }
 
       if (state.MovieStatus == STATUS_RUNNING) {
-        state.CheckMake = true
-        state.MovieMakeListener = true
+        state.checkMake = true
+        state.movieMakeListener = true
       }
-      state.Detail = false
+      state.detail = false
 
       return JSON.parse(JSON.stringify(state))
     }
     case types.CHECK_SOUND_SHOW_MOVIE: {
-      state.MovieStatus = action.response.MovieStatus
-      if (state.MovieStatus == STATUS_RUNNING) {
-        state.MovieMakeListener = true
+      state.movieStatus = action.response.movieStatus
+      if (state.movieStatus == STATUS_RUNNING) {
+        state.movieMakeListener = true
       } else {
-        state.MovieMakeListener = false
-        state.MakeMovie = true
-        state.Detail = true
+        state.movieMakeListener = false
+        state.makeMovie = true
+        state.detail = true
       }
 
       return JSON.parse(JSON.stringify(state))
     }
     case types.OFF_SOUND_SHOW_MOVIE_MAKE_LISTENER: {
-      state.MovieMakeListener = false
+      state.movieMakeListener = false
 
       return JSON.parse(JSON.stringify(state))
     }
     case types.CHANGE_SOUND_SHOW_BODY_SOUND: {
-      state.List[action.priority].body_sound = action.bodySound
+      state.list[action.priority].body_sound = action.bodySound
 
       return JSON.parse(JSON.stringify(state))
     }
     case types.CHANGE_SOUND_SHOW_VOICE_TYPE: {
-      state.List[action.priority].voice_type = action.voiceType
+      state.list[action.priority].voice_type = action.voiceType
 
       return JSON.parse(JSON.stringify(state))
     }
@@ -72,38 +85,38 @@ export default function Show(state = initialState, action) {
     }
     case types.SAVE_SOUND_SHOW_VOICE_TYPE:
     case types.SAVE_SOUND_SHOW_BODY_SOUND: {
-      state.List[parseInt(action.receiveParam.priority)].make_status = 1
+      state.list[parseInt(action.receiveParam.priority)].make_status = 1
 
       return JSON.parse(JSON.stringify(state))
     }
     case types.MAKE_SOUND_SHOW_MOVIE: {
-      state.MakeMovie = true
+      state.makeMovie = true
 
-      state.MovieStatus = STATUS_RUNNING
+      state.movieStatus = STATUS_RUNNING
 
-      state.CheckMake = true
-      state.MovieMakeListener = true
+      state.checkMake = true
+      state.movieMakeListener = true
 
       return JSON.parse(JSON.stringify(state))
     }
     case types.UPLOAD_SOUND_YOUTUBE: {
-      state.MovieStatus = STATUS_PUBLIC
+      state.movieStatus = STATUS_PUBLIC
 
       return JSON.parse(JSON.stringify(state))
     }
     case types.UPLOADING_SOUND_MENU_MOVIE: {
-      state.MovieStatus = STATUS_UPLOADING
+      state.movieStatus = STATUS_UPLOADING
 
       return JSON.parse(JSON.stringify(state))
     }
     case types.OPEN_SOUND_SHOW_VOICE_LIST: {
-      state.VoiceList = true
+      state.voiceList = true
 
       return JSON.parse(JSON.stringify(state))
     }
     case types.SAVE_SOUND_SHOW_VOICE_TYPE_LIST:
     case types.CLOSE_SOUND_SHOW_VOICE_LIST: {
-      state.VoiceList = false
+      state.voiceList = false
 
       return JSON.parse(JSON.stringify(state))
     }

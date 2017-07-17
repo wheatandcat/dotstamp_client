@@ -11,14 +11,16 @@ export default class Reset extends Component {
     )
   }
   render() {
+    const { fetch, warning, message } = this.props.passwordReset
+
     return (
       <Form
         email={this.props.match.params.email}
         keyword={this.props.match.params.keyword}
         onSave={this.props.save.bind(this)}
-        success={this.props.passwordReset.fetch}
-        warning={this.props.passwordReset.warning}
-        message={this.props.passwordReset.message}
+        success={fetch}
+        warning={warning}
+        message={message}
       />
     )
   }

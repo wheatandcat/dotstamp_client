@@ -9,7 +9,7 @@ import {
   changeVoiceType,
   offMovieMakeListener
 } from "../action/show"
-import { fetchPostsIfNeeded } from "../../../utils/fetch"
+import { fetchPutsIfNeeded, fetchGetsIfNeeded } from "../../../utils/fetch"
 import * as types from "../../../constants/ActionTypes"
 function mapStateToProps(state) {
   return state
@@ -20,34 +20,31 @@ function mapDispatchToProps(dispatch) {
     message: (val, type) => {
       dispatch(message(val, type))
     },
-    getDetail: action => {
+    getDetail: id => {
       dispatch(
-        fetchPostsIfNeeded(
-          "sound/show/",
-          types.GET_CONTRIBUTION_FORM_SOUND_DETAIL,
-          action
+        fetchGetsIfNeeded(
+          `sounds/${id}/`,
+          types.GET_CONTRIBUTION_FORM_SOUND_DETAIL
         )
       )
     },
     saveBodySound: action => {
       dispatch(
-        fetchPostsIfNeeded(
-          "sound/saveBody/",
+        fetchPutsIfNeeded(
+          "sounds/body/",
           types.SAVE_SOUND_SHOW_BODY_SOUND,
           action,
           action
         )
       )
     },
-    check: action => {
-      dispatch(
-        fetchPostsIfNeeded("movie/check/", types.CHECK_SOUND_SHOW_MOVIE, action)
-      )
+    check: id => {
+      dispatch(fetchGetsIfNeeded(`movies/${id}`, types.CHECK_SOUND_SHOW_MOVIE))
     },
     saveVoiceType: action => {
       dispatch(
-        fetchPostsIfNeeded(
-          "sound/saveVoice/",
+        fetchPutsIfNeeded(
+          "sounds/voice/",
           types.SAVE_SOUND_SHOW_VOICE_TYPE,
           action,
           action
@@ -56,17 +53,16 @@ function mapDispatchToProps(dispatch) {
     },
     saveVoiceTypeList: action => {
       dispatch(
-        fetchPostsIfNeeded(
-          "sound/saveVoiceList/",
+        fetchPutsIfNeeded(
+          "sound/voice/list/",
           types.SAVE_SOUND_SHOW_VOICE_TYPE_LIST,
           action
         )
       ).then(() => {
         dispatch(
-          fetchPostsIfNeeded(
-            "sound/show/",
-            types.GET_CONTRIBUTION_FORM_SOUND_DETAIL,
-            action
+          fetchGetsIfNeeded(
+            `sounds/${action.userContributionId}`,
+            types.GET_CONTRIBUTION_FORM_SOUND_DETAIL
           )
         )
       })

@@ -16,7 +16,7 @@ function mapDispatchToProps(dispatch) {
       dispatch(init())
     },
     add: action => {
-      dispatch(fetchPostsIfNeeded("question/add/", types.ADD_QUESTION, action))
+      dispatch(fetchPostsIfNeeded("question/", types.ADD_QUESTION, action))
     }
   }
 }

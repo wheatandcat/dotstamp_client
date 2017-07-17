@@ -27,7 +27,7 @@ export function DateFormat(date: string): string {
  * @param  {number} myStrong ランダム値
  * @return {string} ランダム文字列
  */
-export function getUniqueStr(myStrong: number): string {
+export function getUniqueStr(myStrong?: number): string {
   let strong = 1000
 
   if (myStrong) {

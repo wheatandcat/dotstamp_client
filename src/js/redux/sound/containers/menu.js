@@ -12,7 +12,7 @@ import {
   open,
   close
 } from "../action/menu"
-import { fetchPostsIfNeeded } from "../../../utils/fetch"
+import { fetchPostsIfNeeded, fetchGetsIfNeeded } from "../../../utils/fetch"
 import * as types from "../../../constants/ActionTypes"
 
 function mapStateToProps(state) {
@@ -48,33 +48,33 @@ function mapDispatchToProps(dispatch) {
     message: (val, type) => {
       dispatch(message(val, type))
     },
-    make: action => {
-      dispatch(
-        fetchPostsIfNeeded("movie/make/", types.MAKE_SOUND_SHOW_MOVIE, action)
-      )
+    make: id => {
+      dispatch(fetchPostsIfNeeded(`movies/${id}`, types.MAKE_SOUND_SHOW_MOVIE))
     },
-    upload: action => {
+    upload: id => {
       dispatch(
-        fetchPostsIfNeeded("movie/upload/", types.UPLOAD_SOUND_YOUTUBE, action)
+        fetchPostsIfNeeded(`movies/${id}/upload/`, types.UPLOAD_SOUND_YOUTUBE)
       ).then(() => {
         dispatch(
-          fetchPostsIfNeeded(
-            "sound/show/",
-            types.GET_CONTRIBUTION_FORM_SOUND_DETAIL,
-            action
+          fetchGetsIfNeeded(
+            `sounds/${id}`,
+            types.GET_CONTRIBUTION_FORM_SOUND_DETAIL
           )
         )
       })
     },
     reflect: action => {
       dispatch(
-        fetchPostsIfNeeded("sound/reflect/", types.REFLECT_SOUND_SHOW, action)
+        fetchPostsIfNeeded(
+          `sounds/${action.userContributionId}/reflect`,
+          types.REFLECT_SOUND_SHOW,
+          action
+        )
       ).then(() => {
         dispatch(
-          fetchPostsIfNeeded(
-            "sound/show/",
-            types.GET_CONTRIBUTION_FORM_SOUND_DETAIL,
-            action
+          fetchGetsIfNeeded(
+            `sounds/${action.userContributionId}`,
+            types.GET_CONTRIBUTION_FORM_SOUND_DETAIL
           )
         )
       })

@@ -53,7 +53,7 @@ export default class Menu extends Component {
   make() {
     this.props.makingMovie()
     this.props.close()
-    this.props.make({ userContributionId: this.props.userContributionId })
+    this.props.make(this.props.userContributionId)
   }
   /**
      * [getReMakeConfirm description]
@@ -224,10 +224,10 @@ export default class Menu extends Component {
     )
   }
   /**
-     * YouTubeにアップロードする
-     */
+   * YouTubeにアップロードする
+   */
   uploadYoutube() {
-    this.props.upload({ userContributionId: this.props.userContributionId })
+    this.props.upload(this.props.userContributionId)
   }
   /**
      * 情報を取得する

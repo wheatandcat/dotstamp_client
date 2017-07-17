@@ -10,12 +10,14 @@ export default class Input extends Component {
     })
   }
   render() {
+    const { fetch, warning, message } = this.props.passwordInput
+
     return (
       <Form
         onAdd={this.add.bind(this)}
-        success={this.props.passwordInput.fetch}
-        warning={this.props.passwordInput.warning}
-        message={this.props.passwordInput.message}
+        success={fetch}
+        warning={warning}
+        message={message}
       />
     )
   }

@@ -12,11 +12,7 @@ function mapDispatchToProps(dispatch) {
   return {
     add: ation => {
       dispatch(
-        fetchPostsIfNeeded(
-          "user/forget_password/add/",
-          types.ADD_PASSWORD,
-          ation
-        )
+        fetchPostsIfNeeded("user/forget_password/", types.ADD_PASSWORD, ation)
       )
     }
   }

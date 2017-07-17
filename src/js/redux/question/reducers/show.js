@@ -1,23 +1,29 @@
+// @flow
 import * as types from "../../../constants/ActionTypes"
 
-// 初期ステート設定
-const initialState = {
-  Warning: false,
-  Message: "",
-  Send: false
+type State = {
+  warning: boolean,
+  message: string,
+  send: boolean
 }
 
-export default function Show(state = initialState, action) {
+const initialState: State = {
+  warning: false,
+  message: "",
+  send: false
+}
+
+export default function Show(state: State = initialState, action: any) {
   switch (action.type) {
     case types.INIT_QUESTION: {
-      state.Send = false
+      state.send = false
 
       return JSON.parse(JSON.stringify(state))
     }
     case types.ADD_QUESTION: {
-      state.Warning = action.response.Warning
-      state.Message = action.response.Message
-      state.Send = true
+      state.warning = action.response.warning
+      state.message = action.response.message
+      state.send = true
 
       return JSON.parse(JSON.stringify(state))
     }

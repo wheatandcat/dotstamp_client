@@ -1,3 +1,4 @@
+// @flow
 import PropTypes from "prop-types"
 import React, { Component } from "react"
 import { Fade, Alert } from "react-bootstrap"
@@ -10,10 +11,8 @@ export default class Show extends Component {
     }, 600)
   }
   /**
-     * 描画する
-     *
-     * @return {object} html
-     */
+   * 描画する
+   */
   render() {
     return (
       <Fade

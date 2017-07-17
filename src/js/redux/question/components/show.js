@@ -1,3 +1,4 @@
+// @flow
 import PropTypes from "prop-types"
 import React, { Component } from "react"
 import {
@@ -14,6 +15,12 @@ import {
 import { Link as Footer } from "../../../component/footer/"
 import { Required } from "../../../../css/common.css"
 export default class Show extends Component {
+  inputEmail: {
+    value: ""
+  }
+  inputBody: {
+    value: ""
+  }
   componentWillMount() {
     this.props.init()
   }
@@ -32,13 +39,11 @@ export default class Show extends Component {
   }
   /**
    * 描画する
-   *
-   * @return {object} html
    */
   render() {
     let send = ""
 
-    if (this.props.questionShow.Send) {
+    if (this.props.questionShow.send) {
       send = <Alert bsStyle="success">問い合わせ内容を送信しました。</Alert>
     }
 
