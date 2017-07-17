@@ -5,7 +5,7 @@ import { Icon } from "./"
 
 function setup(params) {
   const props = {
-    ID: params.ID
+    id: params.id
   }
 
   const enzymeWrapper = shallow(<Icon {...props} />)
@@ -18,10 +18,10 @@ function setup(params) {
 
 describe("component/icon/icon", () => {
   it("表示", () => {
-    setup({ ID: 1 })
+    setup({ id: 1 })
   })
 
   it("デフォルト表示", () => {
-    setup({ ID: 0 })
+    setup({ id: 0 })
   })
 })

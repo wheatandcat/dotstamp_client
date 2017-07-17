@@ -20,6 +20,7 @@ export default function List(state = initialState, action) {
         state.next = true
       }
       state.init = action.receiveParam.init
+      console.log(state)
 
       return JSON.parse(JSON.stringify(state))
     }

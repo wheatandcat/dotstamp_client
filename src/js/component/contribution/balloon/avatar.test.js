@@ -5,7 +5,7 @@ import Avatar from "./avatar"
 
 function setup() {
   const props = {
-    FileName: "0.png"
+    fileName: "0.png"
   }
 
   const enzymeWrapper = shallow(<Avatar {...props} />)

@@ -2,7 +2,7 @@ import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
 import List from "../components/list"
 import { next, deleteItem } from "../actions/list"
-import { fetchPostsIfNeeded } from "../../../utils/fetch"
+import { fetchGetsIfNeeded } from "../../../utils/fetch"
 import * as types from "../../../constants/ActionTypes"
 
 function mapStateToProps(state) {
@@ -13,10 +13,9 @@ function mapDispatchToProps(dispatch) {
   return {
     getList: (action, receiveParam) => {
       dispatch(
-        fetchPostsIfNeeded(
-          "contribution/list/",
+        fetchGetsIfNeeded(
+          `contributions/list/${action.order}`,
           types.GET_CONTRIBUTION_LIST,
-          action,
           receiveParam
         )
       )
@@ -26,7 +25,7 @@ function mapDispatchToProps(dispatch) {
     },
     addItem: id => {
       dispatch(
-        fetchPostsIfNeeded(
+        fetchGetsIfNeeded(
           `contribution/show/${id}`,
           types.ADD_CONTRIBUTION_LIST_ITEM
         )

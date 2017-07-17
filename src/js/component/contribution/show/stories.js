@@ -46,14 +46,14 @@ storiesOf("Contribution show")
           onDelete={action("onDelete")}
         />
       }
-      tagList={[
+      tags={[
         {
-          ID: 1,
-          Name: "abc"
+          id: 1,
+          name: "abc"
         },
         {
-          ID: 2,
-          Name: "def"
+          id: 2,
+          name: "def"
         }
       ]}
       title="abcdef"
@@ -80,14 +80,14 @@ storiesOf("Contribution show")
           onDelete={action("onDelete")}
         />
       }
-      tagList={[
+      tags={[
         {
-          ID: 1,
-          Name: "abc"
+          id: 1,
+          name: "abc"
         },
         {
-          ID: 2,
-          Name: "def"
+          id: 2,
+          name: "def"
         }
       ]}
       title="abcdef"

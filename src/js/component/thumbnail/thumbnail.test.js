@@ -3,33 +3,33 @@ import React from "react"
 import { shallow } from "enzyme"
 import Thumbnail from "./thumbnail"
 
-function setup(search, viewStatus, OnSearch, movieId) {
+function setup(search, viewStatus, onSearch, movieId) {
   const props = {
-    FollowCount: 1,
-    ID: 1,
-    Movie: {
+    followCount: 1,
+    id: 1,
+    movie: {
       movie_id: movieId,
       movie_status: 1
     },
-    Search: search,
-    SearchMatch: "test",
-    SoundStatus: 0,
-    Tag: [
+    search: search,
+    searchMatch: "test",
+    soundStatus: 0,
+    tags: [
       {
-        ID: 1,
-        Name: "tag1",
-        UserContributionID: 2
+        id: 1,
+        name: "tag1",
+        userContributionID: 2
       }
     ],
-    Title: "abc",
-    User: {
-      ID: 1,
-      Name: "name",
-      ProfileImageID: 0
+    title: "abc",
+    user: {
+      id: 1,
+      name: "name",
+      profileImageID: 0
     },
-    UpdatedAt: "2015-01-01T07:12:00+09:00",
-    ViewStatus: viewStatus,
-    OnSearch
+    updatedAt: "2015-01-01T07:12:00+09:00",
+    viewStatus: viewStatus,
+    onSearch
   }
 
   const enzymeWrapper = shallow(<Thumbnail {...props} />)

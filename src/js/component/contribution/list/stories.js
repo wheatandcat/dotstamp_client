@@ -12,7 +12,7 @@ storiesOf("Contribution list")
     </MemoryRouter>
   )
   .add("open", () =>
-    <Open ID={1} Title="abcdef" onDelete={action("onDelete")}>
+    <Open id={1} onDelete={action("onDelete")}>
       <div>
         本文ブロック<br />
         本文ブロック<br />
@@ -24,145 +24,145 @@ storiesOf("Contribution list")
       </div>
     </Open>
   )
-  .add("close", () => <Close ID={1} onAdd={action("onAdd")} />)
+  .add("close", () => <Close id={1} onAdd={action("onAdd")} />)
   .add("list", () =>
     <List
-      List={[
+      list={[
         {
           Content: {
-            FollowCount: 2,
-            ID: 1,
-            Movie: {
+            followCount: 2,
+            id: 1,
+            movie: {
               movie_id: "test",
               movie_status: 1
             },
-            Search: "abctestedfgtuk\njshajkhfkznfklj\njdhjksdhjdklh",
-            OnSearch: action("search"),
-            SearchMatch: "test",
-            SoundStatus: 0,
-            Tag: [
+            search: "abctestedfgtuk\njshajkhfkznfklj\njdhjksdhjdklh",
+            onSearch: action("search"),
+            searchMatch: "test",
+            soundStatus: 0,
+            tags: [
               {
-                ID: 1,
-                Name: "tag1",
-                UserContributionID: 2
+                id: 1,
+                name: "tag1",
+                userContributionID: 2
               },
               {
-                ID: 2,
-                Name: "tag2",
-                UserContributionID: 2
+                id: 2,
+                name: "tag2",
+                userContributionID: 2
               }
             ],
-            Title: "test",
-            UpdatedAt: "2015-01-01T07:12:00+09:00",
-            User: {
-              ID: 1,
-              Name: "name",
-              ProfileImageID: 0
+            title: "test",
+            updatedAt: "2015-01-01T07:12:00+09:00",
+            user: {
+              id: 1,
+              name: "name",
+              profileImageID: 0
             },
-            ViewStatus: 1
+            viewStatus: 1
           },
-          Bottom: <Close ID={1} onAdd={action("onDelete")} />
+          bottom: <Close id={1} onAdd={action("onDelete")} />
         },
         {
           Content: {
-            FollowCount: 2,
-            ID: 2,
-            Movie: {
+            followCount: 2,
+            id: 2,
+            movie: {
               movie_id: "test",
               movie_status: 1
             },
-            Search: "abctestedfgtuk\njshajkhfkznfklj\njdhjksdhjdklh",
-            OnSearch: action("search"),
-            SearchMatch: "test",
-            SoundStatus: 0,
-            Tag: [
+            search: "abctestedfgtuk\njshajkhfkznfklj\njdhjksdhjdklh",
+            onSearch: action("search"),
+            searchMatch: "test",
+            soundStatus: 0,
+            tags: [
               {
-                ID: 1,
-                Name: "tag1",
-                UserContributionID: 2
+                id: 1,
+                name: "tag1",
+                userContributionID: 2
               }
             ],
-            Title: "test",
-            UpdatedAt: "2015-01-01T07:12:00+09:00",
-            User: {
-              ID: 1,
-              Name: "name",
-              ProfileImageID: 0
+            title: "test",
+            updatedAt: "2015-01-01T07:12:00+09:00",
+            user: {
+              id: 1,
+              name: "name",
+              profileImageID: 0
             },
-            ViewStatus: 1
+            viewStatus: 1
           },
-          Bottom: <Close ID={2} onAdd={action("onDelete")} />
+          bottom: <Close id={2} onAdd={action("onDelete")} />
         }
       ]}
-      Content
-      OnSearch={action("search")}
+      content
+      onSearch={action("search")}
     />
   )
   .add("Combination", () =>
     <Combination
-      List={[
+      list={[
         {
-          FollowCount: 2,
-          ID: 1,
-          Movie: {
+          followCount: 2,
+          id: 1,
+          movie: {
             movie_id: "test",
             movie_status: 1
           },
-          Search: "abctestedfgtuk\njshajkhfkznfklj\njdhjksdhjdklh",
-          OnSearch: action("search"),
-          SearchMatch: "test",
-          SoundStatus: 0,
-          Tag: [
+          search: "abctestedfgtuk\njshajkhfkznfklj\njdhjksdhjdklh",
+          onSearch: action("search"),
+          searchMatch: "test",
+          soundStatus: 0,
+          tags: [
             {
-              ID: 1,
-              Name: "tag1",
-              UserContributionID: 2
+              id: 1,
+              name: "tag1",
+              userContributionID: 2
             },
             {
-              ID: 2,
-              Name: "tag2",
-              UserContributionID: 2
+              id: 2,
+              name: "tag2",
+              userContributionID: 2
             }
           ],
-          Title: "test",
-          UpdatedAt: "2015-01-01T07:12:00+09:00",
-          User: {
-            ID: 1,
-            Name: "name",
-            ProfileImageID: 0
+          title: "test",
+          updatedAt: "2015-01-01T07:12:00+09:00",
+          user: {
+            id: 1,
+            name: "name",
+            profileImageID: 0
           },
-          ViewStatus: 1
+          viewStatus: 1
         },
         {
-          FollowCount: 2,
-          ID: 2,
-          Movie: {
+          followCount: 2,
+          id: 2,
+          movie: {
             movie_id: "test",
             movie_status: 1
           },
-          Search: "abctestedfgtuk\njshajkhfkznfklj\njdhjksdhjdklh",
-          OnSearch: action("search"),
-          SearchMatch: "test",
-          SoundStatus: 0,
-          Tag: [
+          search: "abctestedfgtuk\njshajkhfkznfklj\njdhjksdhjdklh",
+          onSearch: action("search"),
+          searchMatch: "test",
+          soundStatus: 0,
+          tags: [
             {
-              ID: 1,
-              Name: "tag1",
-              UserContributionID: 2
+              id: 1,
+              name: "tag1",
+              userContributionID: 2
             }
           ],
-          Title: "test",
-          UpdatedAt: "2015-01-01T07:12:00+09:00",
-          User: {
-            ID: 1,
-            Name: "name",
-            ProfileImageID: 0
+          title: "test",
+          updatedAt: "2015-01-01T07:12:00+09:00",
+          user: {
+            id: 1,
+            name: "name",
+            profileImageID: 0
           },
-          ViewStatus: 1
+          viewStatus: 1
         }
       ]}
-      OpenID={1}
-      Show={
+      openID={1}
+      show={
         <div>
           本文ブロック<br />
           本文ブロック<br />
@@ -173,6 +173,7 @@ storiesOf("Contribution list")
           本文ブロック<br />
         </div>
       }
+      content={false}
       onAdd={action("onAdd")}
       onDelete={action("onDelete")}
     />

@@ -6,7 +6,7 @@ import { Icon } from "./"
 function setup() {
   const props = {
     fileName: "0.png",
-    IconId: 1,
+    iconId: 1,
     onDelete: jest.fn()
   }
 

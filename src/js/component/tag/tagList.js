@@ -10,8 +10,8 @@ type Props = {
 export default ({ list, onSearch }: Props) =>
   <div>
     {list.map(item =>
-      <span key={item.ID}>
-        <Tag label={item.Name} onSearch={onSearch} />
+      <span key={item.id}>
+        <Tag label={item.name} onSearch={onSearch} />
       </span>
     )}
   </div>

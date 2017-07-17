@@ -5,44 +5,44 @@ import List from "./list"
 
 function setup(params: Object) {
   const props = {
-    List: [
+    list: [
       {
         Content: {
-          FollowCount: 2,
-          ID: 1,
-          Movie: {
+          followCount: 2,
+          id: 1,
+          movie: {
             movie_id: "test",
             movie_status: 1
           },
-          Search: "abctestedfgtuk\njshajkhfkznfklj\njdhjksdhjdklh",
-          OnSearch: jest.fn(),
-          SearchMatch: "test",
-          SoundStatus: 0,
-          Tag: [
+          search: "abctestedfgtuk\njshajkhfkznfklj\njdhjksdhjdklh",
+          onSearch: jest.fn(),
+          searchMatch: "test",
+          soundStatus: 0,
+          tags: [
             {
-              ID: 1,
-              Name: "tag1",
-              UserContributionID: 2
+              id: 1,
+              name: "tag1",
+              userContributionID: 2
             },
             {
-              ID: 2,
-              Name: "tag2",
-              UserContributionID: 2
+              id: 2,
+              name: "tag2",
+              userContributionID: 2
             }
           ],
-          Title: "test",
-          UpdatedAt: "2015-01-01T07:12:00+09:00",
-          User: {
-            ID: 1,
-            Name: "name",
-            ProfileImageID: 0
+          title: "test",
+          updatedAt: "2015-01-01T07:12:00+09:00",
+          user: {
+            id: 1,
+            name: "name",
+            profileImageID: 0
           },
-          ViewStatus: 1
+          viewStatus: 1
         },
-        Bottom: <div />
+        bottom: <div />
       }
     ],
-    Content: params.Content
+    content: params.content
   }
 
   const enzymeWrapper = shallow(<List {...props} />)
@@ -56,13 +56,13 @@ function setup(params: Object) {
 describe("components/contribution/list/list", () => {
   it("表示", () => {
     setup({
-      Content: false
+      content: false
     })
   })
 
   it("Content", () => {
     setup({
-      Content: true
+      content: true
     })
   })
 })

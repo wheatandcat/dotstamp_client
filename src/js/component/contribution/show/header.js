@@ -4,7 +4,7 @@ import { Title, About, Youtube } from "./"
 
 export type Props = {
   followElement: React$Element<*>,
-  tagList: Array<Object>,
+  tags: Array<Object>,
   title: string,
   profileImageID: number,
   userName: string,
@@ -15,7 +15,7 @@ export type Props = {
 
 export default ({
   followElement,
-  tagList,
+  tags,
   title,
   profileImageID,
   userName,
@@ -24,7 +24,7 @@ export default ({
   openProblem
 }: Props) =>
   <div>
-    <Title followElement={followElement} tagList={tagList} title={title} />
+    <Title followElement={followElement} tags={tags} title={title} />
     <br />
     <About
       profileImageID={profileImageID}

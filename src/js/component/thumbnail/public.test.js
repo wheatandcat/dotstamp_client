@@ -5,26 +5,26 @@ import Public from "./public"
 
 function setup() {
   const props = {
-    FollowCount: 1,
-    ID: 1,
-    ShowPath: "/test/1",
-    SearchMatch: <span key="SearchMatch">SearchMatch</span>,
-    Sound: <span key="Sound">Sound</span>,
-    Tag: [
+    followCount: 1,
+    id: 1,
+    showPath: "/test/1",
+    searchMatch: <span key="SearchMatch">SearchMatch</span>,
+    sound: <span key="Sound">Sound</span>,
+    tags: [
       {
-        ID: 1,
-        Name: "tag1",
-        UserContributionID: 2
+        id: 1,
+        name: "tag1",
+        userContributionID: 2
       }
     ],
-    Title: "abc",
-    User: {
-      ID: 1,
-      Name: "name",
-      ProfileImageID: 0
+    title: "abc",
+    user: {
+      id: 1,
+      name: "name",
+      profileImageID: 0
     },
-    UpdatedAt: "2015-01-01T07:12:00+09:00",
-    OnSearch: jest.fn()
+    updatedAt: "2015-01-01T07:12:00+09:00",
+    onSearch: jest.fn()
   }
 
   const enzymeWrapper = shallow(<Public {...props} />)

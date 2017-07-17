@@ -16,16 +16,16 @@ storiesOf("Tag")
     <TagList
       list={[
         {
-          ID: 1,
-          Name: "abc"
+          id: 1,
+          name: "abc"
         },
         {
-          ID: 2,
-          Name: "def"
+          id: 2,
+          name: "def"
         },
         {
-          ID: 3,
-          Name: "1234567"
+          id: 3,
+          name: "1234567"
         }
       ]}
       onSearch={action("search")}
@@ -35,10 +35,10 @@ storiesOf("Tag")
   .add("Add Input", () => <AddInput label="foo" onAdd={action("on add")} />)
   .add("Add Form", () =>
     <AddForm
-      tagList={[
-        { ID: 1, Name: "foo" },
-        { ID: 2, Name: "foo" },
-        { ID: 3, Name: "foo" }
+      tags={[
+        { id: 1, name: "foo" },
+        { id: 2, name: "foo" },
+        { id: 3, name: "foo" }
       ]}
       onAdd={action("on add")}
       onDelete={action("on delete")}
@@ -46,17 +46,17 @@ storiesOf("Tag")
   )
   .add("Add Form Max", () =>
     <AddForm
-      tagList={[
-        { ID: 1, Name: "foo" },
-        { ID: 2, Name: "foo" },
-        { ID: 3, Name: "foo" },
-        { ID: 4, Name: "foo" },
-        { ID: 5, Name: "foo" },
-        { ID: 6, Name: "foo" },
-        { ID: 7, Name: "foo" },
-        { ID: 8, Name: "foo" },
-        { ID: 9, Name: "foo" },
-        { ID: 10, Name: "foo" }
+      tags={[
+        { id: 1, name: "foo" },
+        { id: 2, name: "foo" },
+        { id: 3, name: "foo" },
+        { id: 4, name: "foo" },
+        { id: 5, name: "foo" },
+        { id: 6, name: "foo" },
+        { id: 7, name: "foo" },
+        { id: 8, name: "foo" },
+        { id: 9, name: "foo" },
+        { id: 10, name: "foo" }
       ]}
       onAdd={action("on add")}
       onDelete={action("on delete")}

@@ -8,52 +8,52 @@ import { DateFormat } from "../../utils/common"
 import styles from "./styles.css"
 
 type Props = {
-  FollowCount: number,
-  SearchMatch: React$Element<*>,
-  ShowPath: string,
-  Sound: React$Element<*>,
-  Tag: Array<Object>,
-  Title: string,
-  UpdatedAt: string,
-  User: Object,
-  OnSearch?: Function
+  followCount: number,
+  searchMatch: React$Element<*>,
+  showPath: string,
+  sound: React$Element<*>,
+  tags: Array<Object>,
+  title: string,
+  updatedAt: string,
+  user: Object,
+  onSearch?: Function
 }
 
 export default ({
-  FollowCount,
-  SearchMatch,
-  ShowPath,
-  Sound,
-  Tag,
-  Title,
-  UpdatedAt,
-  User,
-  OnSearch
+  followCount,
+  searchMatch,
+  showPath,
+  sound,
+  tags,
+  title,
+  updatedAt,
+  user,
+  onSearch
 }: Props) =>
   <Media>
     <Media.Left className={styles.Image} align="middle">
-      <Icon ID={User.ProfileImageID} />
+      <Icon id={user.profileImageID} />
     </Media.Left>
     <Media.Body className={styles.Body}>
       <p>
-        {User.Name}&nbsp;さんが {DateFormat(UpdatedAt)}に投稿{Sound}
+        {user.name}&nbsp;さんが {DateFormat(updatedAt)}に投稿{sound}
       </p>
       <Media.Heading>
-        <Link to={ShowPath} className={styles.Strong}>
-          {Title}
+        <Link to={showPath} className={styles.Strong}>
+          {title}
         </Link>
         <div className={styles.Gap}>
-          <TagList list={Tag} onSearch={OnSearch} />
+          <TagList list={tags} onSearch={onSearch} />
         </div>
       </Media.Heading>
       <div>
-        {SearchMatch}
+        {searchMatch}
       </div>
     </Media.Body>
     <Media.Right className={styles.Follow}>
       <Glyphicon glyph="thumbs-up" />
       <span className={styles.LittleStrong}>
-        &nbsp;{FollowCount}
+        &nbsp;{followCount}
       </span>
     </Media.Right>
   </Media>

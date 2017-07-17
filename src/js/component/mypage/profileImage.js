@@ -26,7 +26,7 @@ export default class ProfileImage extends Component {
       <Grid>
         <Row>
           <Col sm={2} md={1}>
-            <Icon ID={this.props.imageID} />
+            <Icon id={this.props.imageID} />
           </Col>
           <Col sm={20} md={10}>
             <Button bsStyle="link">

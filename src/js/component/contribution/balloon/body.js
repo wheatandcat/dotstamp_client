@@ -5,19 +5,19 @@ import { TALK_TYPE_IMAGE } from "../../../redux/contribution/actions/talk"
 import { Image, Text } from "./index"
 
 type Props = {
-  TalkType: number,
-  Body: string
+  talkType: number,
+  body: string
 }
 
-function getBody(TalkType: number, Body: string) {
-  if (TalkType == TALK_TYPE_IMAGE) {
-    return <Image FileName={Body} />
+function getBody(talkType: number, body: string) {
+  if (talkType == TALK_TYPE_IMAGE) {
+    return <Image fileName={body} />
   }
 
-  return <Text Label={Body} />
+  return <Text label={body} />
 }
 
-export default ({ TalkType, Body }: Props) =>
+export default ({ talkType, body }: Props) =>
   <Col sm={20} md={8} style={{ top: "15px" }}>
-    {getBody(TalkType, Body)}
+    {getBody(talkType, body)}
   </Col>

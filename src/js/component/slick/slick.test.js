@@ -23,8 +23,8 @@ describe("components/slick/slick", () => {
     setup({
       list: [
         {
-          ID: 1,
-          FileName: "0.jpg",
+          id: 1,
+          fileName: "0.jpg",
           imageType: 2
         }
       ],
@@ -34,8 +34,8 @@ describe("components/slick/slick", () => {
     setup({
       list: [
         {
-          ID: 1,
-          FileName: "0.jpg",
+          id: 1,
+          fileName: "0.jpg",
           imageType: 2
         }
       ],
@@ -47,8 +47,8 @@ describe("components/slick/slick", () => {
     const { enzymeWrapper } = setup({
       list: [
         {
-          ID: 1,
-          FileName: "0.jpg",
+          id: 1,
+          fileName: "0.jpg",
           imageType: 2
         }
       ]
@@ -66,13 +66,13 @@ describe("components/slick/slick", () => {
     const { enzymeWrapper } = setup({
       list: [
         {
-          ID: 1,
-          FileName: "0.jpg",
+          id: 1,
+          fileName: "0.jpg",
           imageType: 2
         },
         {
-          ID: 2,
-          FileName: "0.jpg",
+          id: 2,
+          fileName: "0.jpg",
           imageType: 2
         }
       ]
@@ -86,8 +86,8 @@ describe("components/slick/slick", () => {
     const { enzymeWrapper } = setup({
       list: [
         {
-          ID: 1,
-          FileName: "0.jpg",
+          id: 1,
+          fileName: "0.jpg",
           imageType: 2
         }
       ]

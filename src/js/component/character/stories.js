@@ -28,13 +28,13 @@ storiesOf("Character")
     />
   )
   .add("icon", () =>
-    <Icon fileName="0.png" IconId={1} onDelete={action("onDelete")} />
+    <Icon fileName="0.png" iconId={1} onDelete={action("onDelete")} />
   )
   .add("no icon", () => <NoIcon />)
   .add("menu", () =>
     <Menu
       fileName="0.png"
-      IconId={1}
+      iconId={1}
       voiceList={[
         {
           type: 1,

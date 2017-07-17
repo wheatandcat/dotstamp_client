@@ -17,7 +17,7 @@ export default ({ profileImageID, updatedAt, userName, openProblem }: Props) =>
     <Grid>
       <Row>
         <Col sm={2} md={1} className={styles.paragraph}>
-          <Icon ID={profileImageID} />
+          <Icon id={profileImageID} />
         </Col>
         <Col sm={18} md={10} className={styles.author}>
           <div className={styles.middle}>

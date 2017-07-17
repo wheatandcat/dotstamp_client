@@ -5,14 +5,14 @@ import { CharacterMain } from "../image/"
 
 type Props = {
   fileName: string,
-  IconId: number,
+  iconId: number,
   onDelete: Function
 }
 
-export default ({ fileName, IconId, onDelete }: Props) =>
+export default ({ fileName, iconId, onDelete }: Props) =>
   <CharacterMain fileName={fileName}>
     <div className="center-block">
-      <Button bsStyle="danger" onClick={() => onDelete(IconId)}>
+      <Button bsStyle="danger" onClick={() => onDelete(iconId)}>
         <Glyphicon glyph="trash" />&nbsp;アイコンを削除する
       </Button>
     </div>

@@ -6,7 +6,7 @@ import styles from "./styles.css"
 const TAG_MAX_NUMBER = 10
 
 type Props = {
-  tagList: Array<Object>,
+  tags: Array<Object>,
   onAdd: Function,
   onDelete: Function
 }
@@ -16,7 +16,9 @@ export default class AddForm extends Component {
 
   label: Object
   input() {
-    if (this.props.tagList.length >= TAG_MAX_NUMBER) {
+    const { tags, onAdd } = this.props
+
+    if (tags.length >= TAG_MAX_NUMBER) {
       return (
         <FormGroup>
           <Label bsStyle="danger">タグ登録は10個まで</Label>
@@ -24,24 +26,26 @@ export default class AddForm extends Component {
       )
     }
 
-    return <AddInput onAdd={this.props.onAdd} />
+    return <AddInput onAdd={onAdd} />
   }
 
   render() {
+    const { tags, onDelete } = this.props
+
     return (
       <FormGroup>
         <Form inline>
-          {this.props.tagList.map(tag =>
-            <span key={tag.ID}>
+          {tags.map(tag =>
+            <span key={tag.id}>
               &nbsp;
               <Label bsStyle="info" className={styles.tag}>
                 <Glyphicon
                   glyph="remove"
                   className={styles.close}
-                  onClick={() => this.props.onDelete(tag.ID)}
+                  onClick={() => onDelete(tag.id)}
                 />
                 &nbsp;
-                <span>{tag.Name}</span>
+                <span>{tag.name}</span>
               </Label>
             </span>
           )}

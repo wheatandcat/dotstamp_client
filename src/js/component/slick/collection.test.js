@@ -22,8 +22,8 @@ describe("ccomponents/slick/collection", () => {
     setup({
       list: [
         {
-          ID: 1,
-          FileName: "0.jpg",
+          id: 1,
+          fileName: "0.jpg",
           imageType: 2
         }
       ]
@@ -34,23 +34,23 @@ describe("ccomponents/slick/collection", () => {
     setup({
       list: [
         {
-          ID: 1,
-          FileName: "0.jpg",
+          id: 1,
+          fileName: "0.jpg",
           imageType: 2
         },
         {
-          ID: 2,
-          FileName: "0.jpg",
+          id: 2,
+          fileName: "0.jpg",
           imageType: 2
         },
         {
-          ID: 3,
-          FileName: "0.jpg",
+          id: 3,
+          fileName: "0.jpg",
           imageType: 2
         },
         {
-          ID: 4,
-          FileName: "0.jpg",
+          id: 4,
+          fileName: "0.jpg",
           imageType: 2
         }
       ]

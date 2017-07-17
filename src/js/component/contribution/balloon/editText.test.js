@@ -5,13 +5,13 @@ import EditText from "./editText"
 
 function setup() {
   const props = {
-    UserFileName: "0.png",
-    Type: 1,
-    Talk: "abcdef",
-    Item: {
+    userFileName: "0.png",
+    type: 1,
+    talk: "abcdef",
+    item: {
       body: "text"
     },
-    Priority: 1,
+    priority: 1,
     onChangeText: jest.fn(),
     onDelete: jest.fn()
   }

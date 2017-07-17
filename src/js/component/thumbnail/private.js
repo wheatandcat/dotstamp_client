@@ -6,23 +6,23 @@ import { DateFormat } from "../../utils/common"
 import styles from "./styles.css"
 
 type Props = {
-  Title: string,
-  UpdatedAt: string,
-  User: Object
+  title: string,
+  updatedAt: string,
+  user: Object
 }
 
-export default ({ Title, UpdatedAt, User }: Props) =>
+export default ({ title, updatedAt, user }: Props) =>
   <Media className={styles.Disable}>
     <Media.Left className={styles.Image} align="middle">
-      <Icon ID={User.ProfileImageID} />
+      <Icon id={user.profileImageID} />
     </Media.Left>
     <Media.Body className={styles.Body}>
       <p>
-        {User.Name}&nbsp;さんが {DateFormat(UpdatedAt)}に投稿
+        {user.name}&nbsp;さんが {DateFormat(updatedAt)}に投稿
       </p>
       <Media.Heading>
         <div>
-          {Title}
+          {title}
           <small>
             <span className={styles.Alert}>（※現在非公開の投稿です）</span>
           </small>

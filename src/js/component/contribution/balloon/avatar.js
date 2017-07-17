@@ -4,10 +4,10 @@ import { Col } from "react-bootstrap"
 import { Character } from "../../image/"
 
 type Props = {
-  FileName: string
+  fileName: string
 }
 
-export default ({ FileName }: Props) =>
+export default ({ fileName }: Props) =>
   <Col sm={2} md={2}>
-    <Character fileName={FileName} />
+    <Character fileName={fileName} />
   </Col>

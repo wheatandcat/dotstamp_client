@@ -4,10 +4,10 @@ import { Talk } from "../../image/"
 import styles from "./styles.css"
 
 type Props = {
-  FileName: string
+  fileName: string
 }
 
-export default ({ FileName }: Props) =>
+export default ({ fileName }: Props) =>
   <div className={styles.Balloon}>
-    <Talk fileName={FileName} />
+    <Talk fileName={fileName} />
   </div>

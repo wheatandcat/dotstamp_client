@@ -5,7 +5,7 @@ import Close from "./close"
 
 function setup() {
   const props = {
-    ID: 1,
+    id: 1,
     onAdd: jest.fn()
   }
 

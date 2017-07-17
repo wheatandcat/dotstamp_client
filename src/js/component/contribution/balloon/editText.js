@@ -12,35 +12,35 @@ import {
 import { Avatar, Body } from "./index"
 
 type Props = {
-  UserFileName: string,
-  Type: number,
-  Talk: string,
-  Item: Object,
-  Priority: number,
+  userFileName: string,
+  type: number,
+  talk: string,
+  item: Object,
+  priority: number,
   onChangeText: Function,
   onDelete: Function
 }
 
 export default ({
-  UserFileName,
-  Type,
-  Talk,
-  Item,
-  Priority,
+  userFileName,
+  type,
+  talk,
+  item,
+  priority,
   onChangeText,
   onDelete
 }: Props) =>
   <Grid>
     <Row>
-      <Avatar FileName={UserFileName} />
-      <Body TalkType={Type} Body={Talk} />
+      <Avatar fileName={userFileName} />
+      <Body talkType={type} body={talk} />
       <Col sm={2} md={2} style={{ top: "15px" }}>
         <Well>
           <ButtonToolbar>
-            <Button onClick={() => onChangeText(Item, Priority)}>
+            <Button onClick={() => onChangeText(item, priority)}>
               <Glyphicon glyph="edit" />
             </Button>
-            <Button onClick={() => onDelete(Priority)}>
+            <Button onClick={() => onDelete(priority)}>
               <Glyphicon glyph="trash" />
             </Button>
           </ButtonToolbar>

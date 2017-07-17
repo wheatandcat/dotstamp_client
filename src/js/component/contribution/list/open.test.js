@@ -5,7 +5,7 @@ import Open from "./open"
 
 function setup() {
   const props = {
-    ID: 1,
+    id: 1,
     onDelete: jest.fn()
   }
 

@@ -5,11 +5,11 @@ import { TagList } from "../../tag/"
 
 export type Props = {
   followElement: React$Element<*>,
-  tagList: Array<Object>,
+  tags: Array<Object>,
   title: string
 }
 
-export default ({ followElement, tagList, title }: Props) =>
+export default ({ followElement, tags, title }: Props) =>
   <Grid>
     <Row className="show-grid">
       <Col xs={12} md={8}>
@@ -17,7 +17,7 @@ export default ({ followElement, tagList, title }: Props) =>
           {title}
         </PageHeader>
         <div>
-          <TagList list={tagList} />
+          <TagList list={tags} />
         </div>
       </Col>
       <Col xsHidden md={4}>

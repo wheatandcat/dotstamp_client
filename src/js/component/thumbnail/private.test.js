@@ -5,13 +5,13 @@ import Private from "./private"
 
 function setup() {
   const props = {
-    Title: "abc",
-    User: {
-      ID: 1,
-      Name: "name",
-      ProfileImageID: 0
+    title: "abc",
+    user: {
+      id: 1,
+      name: "name",
+      profileImageID: 0
     },
-    UpdatedAt: "2015-01-01T07:12:00+09:00"
+    updatedAt: "2015-01-01T07:12:00+09:00"
   }
 
   const enzymeWrapper = shallow(<Private {...props} />)

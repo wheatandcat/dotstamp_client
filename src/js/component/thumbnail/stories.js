@@ -14,97 +14,97 @@ storiesOf("Thumbnail")
   .add("Thumbnail on body & sound", () =>
     <div className="container">
       <Thumbnail
-        FollowCount={2}
-        ID={1}
-        Movie={{
+        followCount={2}
+        id={1}
+        movie={{
           movie_id: "test",
           movie_status: 1
         }}
-        Search="abctestedfgtuk\njshajkhfkznfklj\njdhjksdhjdklh"
-        OnSearch={action("search")}
-        SearchMatch="test"
-        SoundStatus={0}
-        Tag={[
+        search="abctestedfgtuk\njshajkhfkznfklj\njdhjksdhjdklh"
+        onSearch={action("search")}
+        searchMatch="test"
+        soundStatus={0}
+        tags={[
           {
-            ID: 1,
-            Name: "tag1",
-            UserContributionID: 2
+            id: 1,
+            name: "tag1",
+            userContributionID: 2
           },
           {
-            ID: 2,
-            Name: "tag2",
-            UserContributionID: 2
+            id: 2,
+            name: "tag2",
+            userContributionID: 2
           }
         ]}
-        Title="test"
-        UpdatedAt="2015-01-01T07:12:00+09:00"
-        User={{
-          ID: 1,
-          Name: "name",
-          ProfileImageID: 0
+        title="test"
+        updatedAt="2015-01-01T07:12:00+09:00"
+        user={{
+          id: 1,
+          name: "name",
+          profileImageID: 0
         }}
-        ViewStatus={1}
+        viewStatus={1}
       />
     </div>
   )
   .add("Thumbnail is not body", () =>
     <div className="container">
       <Thumbnail
-        Body={null}
-        FollowCount={0}
-        ID={1}
-        Movie={{
+        body={null}
+        followCount={0}
+        id={1}
+        movie={{
           movie_id: "",
           movie_status: 0
         }}
-        Search=""
-        OnSearch={action("search")}
-        SearchMatch=""
-        SoundStatus={0}
-        Tag={[
+        search=""
+        onSearch={action("search")}
+        searchMatch=""
+        soundStatus={0}
+        tags={[
           {
-            ID: 1,
-            Name: "tag1",
-            UserContributionID: 2
+            id: 1,
+            name: "tag1",
+            userContributionID: 2
           },
           {
-            ID: 2,
-            Name: "tag2",
-            UserContributionID: 2
+            id: 2,
+            name: "tag2",
+            userContributionID: 2
           }
         ]}
-        Title="test"
-        UpdatedAt="2015-01-01T07:12:00+09:00"
-        User={{
-          ID: 1,
-          Name: "name",
-          ProfileImageID: 0
+        title="test"
+        updatedAt="2015-01-01T07:12:00+09:00"
+        user={{
+          id: 1,
+          name: "name",
+          profileImageID: 0
         }}
-        ViewStatus={1}
+        viewStatus={1}
       />
     </div>
   )
   .add("Public", () =>
     <div className="container">
       <Public
-        FollowCount={1}
-        OnSearch={action("search")}
-        ShowPath="/test/1"
-        SearchMatch={<span key="SearchMatch">SearchMatch</span>}
-        Sound={<span key="Sound">Sound</span>}
-        Tag={[
+        followCount={1}
+        onSearch={action("search")}
+        showPath="/test/1"
+        searchMatch={<span key="SearchMatch">SearchMatch</span>}
+        sound={<span key="Sound">Sound</span>}
+        tags={[
           {
-            ID: 1,
-            Name: "tag1",
-            UserContributionID: 2
+            id: 1,
+            name: "tag1",
+            userContributionID: 2
           }
         ]}
-        Title="test"
-        UpdatedAt="2015-01-01T07:12:00+09:00"
-        User={{
-          ID: 1,
-          Name: "name",
-          ProfileImageID: 0
+        title="test"
+        updatedAt="2015-01-01T07:12:00+09:00"
+        user={{
+          id: 1,
+          name: "name",
+          profileImageID: 0
         }}
       />
     </div>
@@ -112,12 +112,12 @@ storiesOf("Thumbnail")
   .add("Private", () =>
     <div className="container">
       <Private
-        Title="test"
-        UpdatedAt="2015-01-01T07:12:00+09:00"
-        User={{
-          ID: 1,
-          Name: "name",
-          ProfileImageID: 0
+        title="test"
+        updatedAt="2015-01-01T07:12:00+09:00"
+        user={{
+          id: 1,
+          name: "name",
+          profileImageID: 0
         }}
       />
     </div>

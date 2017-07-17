@@ -5,7 +5,7 @@ import Image from "./image"
 
 function setup() {
   const props = {
-    FileName: "0.png"
+    fileName: "0.png"
   }
 
   const enzymeWrapper = shallow(<Image {...props} />)

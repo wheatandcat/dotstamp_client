@@ -5,10 +5,10 @@ import EditImage from "./editImage"
 
 function setup() {
   const props = {
-    UserFileName: "0.png",
-    Type: 2,
-    Talk: "0.png",
-    Priority: 1,
+    userFileName: "0.png",
+    type: 2,
+    talk: "0.png",
+    priority: 1,
     onChangeImage: jest.fn(),
     onDelete: jest.fn()
   }

@@ -5,7 +5,7 @@ import Text from "./text"
 
 function setup() {
   const props = {
-    Label: "abc\ndef"
+    label: "abc\ndef"
   }
 
   const enzymeWrapper = shallow(<Text {...props} />)

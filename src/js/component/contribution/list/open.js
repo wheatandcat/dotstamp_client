@@ -5,12 +5,12 @@ import { Alert, Button, ButtonGroup, Glyphicon } from "react-bootstrap"
 
 type Props = {
   children?: Children,
-  ID?: number,
+  id?: number,
   onDelete: Function
 }
 
-export default ({ children, ID, onDelete }: Props) =>
-  <div onDoubleClick={() => onDelete(ID)}>
+export default ({ children, id, onDelete }: Props) =>
+  <div onDoubleClick={() => onDelete(id)}>
     <hr />
     <Alert bsStyle="success">記事の上でダブルクリックをすると閉じます</Alert>
     {children}
@@ -18,7 +18,7 @@ export default ({ children, ID, onDelete }: Props) =>
     <ButtonGroup vertical block>
       <Button
         bsSize="xsmall"
-        onClick={() => onDelete(ID)}
+        onClick={() => onDelete(id)}
         aria-label="chevron-up"
       >
         <Glyphicon glyph="chevron-up" />

@@ -7,12 +7,12 @@ function setup() {
   const props = {
     list: [
       {
-        ID: 1,
-        Name: "abc"
+        id: 1,
+        name: "abc"
       },
       {
-        ID: 2,
-        Name: "def"
+        id: 2,
+        name: "def"
       }
     ],
     onSearch: jest.fn()

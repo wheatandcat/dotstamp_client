@@ -3,14 +3,14 @@ import React, { Component } from "react"
 import styles from "./styles.css"
 
 type Props = {
-  Label: string
+  label: string
 }
 
 export default class Text extends Component {
   props: Props
   changeBr() {
     const regex = /(\n)/g
-    return this.props.Label.split(regex).map((line, i) => {
+    return this.props.label.split(regex).map((line, i) => {
       if (line.match(regex)) {
         return <br key={i} />
       }

@@ -4,7 +4,7 @@ import { Icon, Voice } from "./"
 
 type Props = {
   fileName: string,
-  IconId: number,
+  iconId: number,
   voiceList: Array<Object>,
   voiceType: number,
   voiceLabel: string,
@@ -15,7 +15,7 @@ type Props = {
 
 export default ({
   fileName,
-  IconId,
+  iconId,
   voiceList,
   voiceType,
   voiceLabel,
@@ -24,7 +24,7 @@ export default ({
   onSave
 }: Props) =>
   <div>
-    <Icon fileName={fileName} IconId={IconId} onDelete={onDelete} />
+    <Icon fileName={fileName} iconId={iconId} onDelete={onDelete} />
     <p />
     <Voice
       voiceList={voiceList}

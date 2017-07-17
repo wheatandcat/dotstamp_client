@@ -1,32 +1,32 @@
 // @flow
 import React from "react"
-import { Thumbnail } from "../../../component/thumbnail/"
+import { Thumbnail } from "../../thumbnail/"
 
 type Props = {
-  List: Array<Object>,
-  Content?: boolean,
+  list: Array<Object>,
+  content?: boolean,
   onSearch?: Function
 }
 
-function getItem(item: Object, Content: ?boolean, onSearch?: Function) {
-  if (Content) {
+function getItem(item: Object, content: ?boolean, onSearch?: Function) {
+  if (content) {
     return (
-      <div key={item.Content.ID}>
+      <div key={item.Content.id}>
         <Thumbnail {...item.Content} />
-        {item.Bottom}
+        {item.bottom}
       </div>
     )
   }
 
   return (
-    <div key={item.ID}>
-      <Thumbnail {...item} OnSearch={onSearch} />
+    <div key={item.id}>
+      <Thumbnail {...item} onSearch={onSearch} />
       <hr />
     </div>
   )
 }
 
-export default ({ List, Content, onSearch }: Props) =>
+export default ({ list, content, onSearch }: Props) =>
   <div>
-    {List.map(item => getItem(item, Content, onSearch))}
+    {list.map(item => getItem(item, content, onSearch))}
   </div>

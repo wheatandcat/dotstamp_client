@@ -7,39 +7,39 @@ import { Image, Text, Balloon, EditImage, EditText } from "./index"
 storiesOf("Contribution ballon")
   .add("text", () =>
     <div className="container">
-      <Text Label="abcdef" />
+      <Text label="abcdef" />
     </div>
   )
   .add("image", () =>
     <div className="container">
-      <Image FileName="0.png" />
+      <Image fileName="0.png" />
     </div>
   )
   .add("bllon", () =>
     <div className="container">
-      <Balloon UserFileName="0.png" Type={1} Talk="abcdef" />
-      <Balloon UserFileName="0.png" Type={2} Talk="0.png" />
+      <Balloon userFileName="0.png" type={1} talk="abcdef" />
+      <Balloon userFileName="0.png" type={2} talk="0.png" />
     </div>
   )
   .add("edit", () =>
     <div className="container">
       <div>
         <EditText
-          UserFileName="0.png"
-          Type={1}
-          Talk="abcdef"
-          Item={{ body: "text" }}
-          Priority={1}
+          userFileName="0.png"
+          type={1}
+          talk="abcdef"
+          item={{ body: "text" }}
+          priority={1}
           onChangeText={action("onChangeBody")}
           onDelete={action("onDelete")}
         />
       </div>
       <div>
         <EditImage
-          UserFileName="0.png"
-          Type={2}
-          Talk="0.png"
-          Priority={2}
+          userFileName="0.png"
+          type={2}
+          talk="0.png"
+          priority={2}
           onChangeImage={action("onChangeImage")}
           onDelete={action("onDelete")}
         />

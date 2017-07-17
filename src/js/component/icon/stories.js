@@ -12,8 +12,8 @@ storiesOf("Icon")
   )
   .add("Icon", () =>
     <div>
-      <Icon ID={1} />
+      <Icon id={1} />
 
-      <Icon ID={0} />
+      <Icon id={0} />
     </div>
   )

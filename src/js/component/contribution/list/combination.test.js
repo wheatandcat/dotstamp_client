@@ -5,64 +5,64 @@ import Combination from "./combination"
 
 function setup() {
   const props = {
-    List: [
+    list: [
       {
-        FollowCount: 2,
-        ID: 1,
-        Movie: {
+        followCount: 2,
+        id: 1,
+        movie: {
           movie_id: "test",
           movie_status: 1
         },
-        Search: "abctestedfgtuk\njshajkhfkznfklj\njdhjksdhjdklh",
-        OnSearch: jest.fn(),
-        SearchMatch: "test",
-        SoundStatus: 0,
-        Tag: [
+        search: "abctestedfgtuk\njshajkhfkznfklj\njdhjksdhjdklh",
+        onSearch: jest.fn(),
+        searchMatch: "test",
+        soundStatus: 0,
+        tags: [
           {
-            ID: 1,
-            Name: "tag1",
-            UserContributionID: 2
+            id: 1,
+            name: "tag1",
+            userContributionID: 2
           }
         ],
-        Title: "test",
-        UpdatedAt: "2015-01-01T07:12:00+09:00",
-        User: {
-          ID: 1,
-          Name: "name",
-          ProfileImageID: 0
+        title: "test",
+        updatedAt: "2015-01-01T07:12:00+09:00",
+        user: {
+          id: 1,
+          name: "name",
+          profileImageID: 0
         },
-        ViewStatus: 1
+        viewStatus: 1
       },
       {
-        FollowCount: 2,
-        ID: 2,
-        Movie: {
+        followCount: 2,
+        id: 2,
+        movie: {
           movie_id: "test2",
           movie_status: 1
         },
-        Search: "abctestedfgtuk\njshajkhfkznfklj\njdhjksdhjdklh",
-        OnSearch: jest.fn(),
-        SearchMatch: "test",
-        SoundStatus: 0,
-        Tag: [
+        search: "abctestedfgtuk\njshajkhfkznfklj\njdhjksdhjdklh",
+        onSearch: jest.fn(),
+        searchMatch: "test",
+        soundStatus: 0,
+        tags: [
           {
-            ID: 1,
-            Name: "tag1",
-            UserContributionID: 2
+            id: 1,
+            name: "tag1",
+            userContributionID: 2
           }
         ],
-        Title: "test",
-        UpdatedAt: "2015-01-01T07:12:00+09:00",
-        User: {
-          ID: 1,
-          Name: "name",
-          ProfileImageID: 0
+        title: "test",
+        updatedAt: "2015-01-01T07:12:00+09:00",
+        user: {
+          id: 1,
+          name: "name",
+          profileImageID: 0
         },
-        ViewStatus: 1
+        viewStatus: 1
       }
     ],
-    OpenID: 1,
-    Show: <div>aaaaa</div>,
+    openID: 1,
+    show: <div>aaaaa</div>,
     onAdd: jest.fn(),
     onDelete: jest.fn()
   }

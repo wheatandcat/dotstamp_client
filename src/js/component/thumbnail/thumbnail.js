@@ -20,13 +20,13 @@ export default class Thumbnail extends Component {
    * 検索一致を取得する
    */
   getSearchMatch() {
-    const search = this.props.Search
+    const { search, searchMatch } = this.props
 
     if (search == "") {
       return <span />
     }
 
-    const index = search.indexOf(this.props.SearchMatch)
+    const index = search.indexOf(searchMatch)
     const len = search.length
 
     const start = index < 11 ? 0 : index - 10
@@ -36,7 +36,7 @@ export default class Thumbnail extends Component {
       <div className={styles.Thin}>
         {this.replaceMatchText(
           `${search.substring(start, end)}...`,
-          this.props.SearchMatch
+          searchMatch
         )}
       </div>
     )
@@ -67,20 +67,25 @@ export default class Thumbnail extends Component {
    * @return {object} html
    */
   render() {
-    if (this.props.ViewStatus != VIEW_STATUS_PUBLIC) {
-      return (
-        <Private
-          Title={this.props.Title}
-          User={this.props.User}
-          UpdatedAt={this.props.UpdatedAt}
-        />
-      )
+    const {
+      viewStatus,
+      title,
+      user,
+      updatedAt,
+      onSearch,
+      movie,
+      followCount,
+      id,
+      tags
+    } = this.props
+    console.log(this.props)
+
+    if (viewStatus != VIEW_STATUS_PUBLIC) {
+      return <Private title={title} user={user} updatedAt={updatedAt} />
     }
 
-    const OnSearch = this.props.OnSearch
-
     let sound = <span />
-    if (this.props.Movie.movie_id != "") {
+    if (movie.movie_id != "") {
       sound = (
         <span>
           &nbsp;&nbsp;&nbsp;&nbsp;<Label bsStyle="warning">読み上げ公開</Label>
@@ -90,32 +95,32 @@ export default class Thumbnail extends Component {
 
     return (
       <Public
-        FollowCount={this.props.FollowCount}
-        ID={this.props.ID}
-        OnSearch={OnSearch}
-        SearchMatch={this.getSearchMatch()}
-        ShowPath={this.getShowPath(this.props.ID)}
-        Sound={sound}
-        Tag={this.props.Tag}
-        Title={this.props.Title}
-        UpdatedAt={this.props.UpdatedAt}
-        User={this.props.User}
+        followCount={followCount}
+        id={id}
+        onSearch={onSearch}
+        searchMatch={this.getSearchMatch()}
+        showPath={this.getShowPath(id)}
+        sound={sound}
+        tags={tags}
+        title={title}
+        updatedAt={updatedAt}
+        user={user}
       />
     )
   }
 }
 
 Thumbnail.propTypes = {
-  FollowCount: PropTypes.number,
-  ID: PropTypes.number,
-  Movie: PropTypes.object,
-  OnSearch: PropTypes.func,
-  Search: PropTypes.string,
-  SearchMatch: PropTypes.string,
-  SoundStatus: PropTypes.number,
-  Tag: PropTypes.array,
-  Title: PropTypes.string,
-  User: PropTypes.object,
-  UpdatedAt: PropTypes.string,
-  ViewStatus: PropTypes.number
+  followCount: PropTypes.number,
+  id: PropTypes.number,
+  movie: PropTypes.object,
+  onSearch: PropTypes.func,
+  search: PropTypes.string,
+  searchMatch: PropTypes.string,
+  soundStatus: PropTypes.number,
+  tags: PropTypes.array,
+  title: PropTypes.string,
+  user: PropTypes.object,
+  updatedAt: PropTypes.string,
+  viewStatus: PropTypes.number
 }

@@ -6,14 +6,14 @@ import { Title } from "./"
 function setup() {
   const props = {
     followElement: <div />,
-    tagList: [
+    tags: [
       {
-        ID: 1,
-        Name: "abc"
+        id: 1,
+        name: "abc"
       },
       {
-        ID: 2,
-        Name: "def"
+        id: 2,
+        name: "def"
       }
     ],
     title: "abc"

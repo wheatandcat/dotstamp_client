@@ -7,8 +7,8 @@ function setup() {
   const props = {
     list: [
       {
-        ID: 1,
-        FileName: "0.jpg",
+        id: 1,
+        fileName: "0.jpg",
         imageType: 2
       }
     ]

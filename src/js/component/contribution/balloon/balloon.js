@@ -4,15 +4,15 @@ import { Grid, Row } from "react-bootstrap"
 import { Avatar, Body } from "./index"
 
 type Props = {
-  UserFileName: string,
-  Type: number,
-  Talk: string
+  userFileName: string,
+  type: number,
+  talk: string
 }
 
-export default ({ UserFileName, Type, Talk }: Props) =>
+export default ({ userFileName, type, talk }: Props) =>
   <Grid>
     <Row>
-      <Avatar FileName={UserFileName} />
-      <Body TalkType={Type} Body={Talk} />
+      <Avatar fileName={userFileName} />
+      <Body talkType={type} body={talk} />
     </Row>
   </Grid>

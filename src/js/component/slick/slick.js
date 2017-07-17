@@ -34,7 +34,7 @@ function action(event) {
     self.setState({
       tip: true,
       balloonImage: {
-        src: `${getUploadUrl()}character/${item.FileName}`
+        src: `${getUploadUrl()}character/${item.fileName}`
       }
     })
   } else if (event.keyCode == 40) {
@@ -99,7 +99,7 @@ export default class Slick extends Component {
     this.setState({
       key,
       balloonImage: {
-        src: `${getUploadUrl()}character/${item.FileName}`
+        src: `${getUploadUrl()}character/${item.fileName}`
       }
     })
   }
@@ -143,9 +143,9 @@ export default class Slick extends Component {
           }}
         >
           {this.props.list.map(data =>
-            <div key={data.ID}>
+            <div key={data.id}>
               <Character
-                fileName={data.FileName}
+                fileName={data.fileName}
                 onClick={this.click.bind(this)}
                 circle
                 size="small"

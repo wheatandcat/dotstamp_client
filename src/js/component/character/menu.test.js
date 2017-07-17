@@ -22,7 +22,7 @@ function setup() {
     voiceType: 1,
     voiceLabel: "voice1",
     fileName: "0.png",
-    IconId: 1,
+    iconId: 1,
     onDelete: jest.fn(),
     onVoiceType: jest.fn(),
     onSave: jest.fn()

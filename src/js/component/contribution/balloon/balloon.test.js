@@ -5,9 +5,9 @@ import Balloon from "./balloon"
 
 function setup(params: Object) {
   const props = {
-    UserFileName: "0.png",
-    Type: params.Type,
-    Talk: params.Talk
+    userFileName: "0.png",
+    type: params.type,
+    talk: params.talk
   }
 
   const enzymeWrapper = shallow(<Balloon {...props} />)
@@ -21,15 +21,15 @@ function setup(params: Object) {
 describe("component/contribution/balloon/balloon", () => {
   it("テキスト表示", () => {
     setup({
-      Type: 1,
-      Talk: "abc"
+      type: 1,
+      talk: "abc"
     })
   })
 
   it("画像表示", () => {
     setup({
-      Type: 2,
-      Talk: "0.png"
+      type: 2,
+      talk: "0.png"
     })
   })
 })
