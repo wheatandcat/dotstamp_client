@@ -280,7 +280,7 @@ function fetchPuts(
   receiveParam: Object
 ) {
   const requestParams = {
-    method: "POST",
+    method: "PUT",
     credentials: "same-origin",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded"

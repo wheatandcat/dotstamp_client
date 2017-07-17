@@ -113,12 +113,12 @@ export default function List(state: State = initialState, action: any) {
     }
     case types.DELETE_CHARACTER_LIST:
     case types.GET_CHARACTER_LIST: {
-      if (!Array.isArray(action.response.Image)) {
-        action.response.Image = []
+      if (!Array.isArray(action.response.images)) {
+        action.response.images = []
       }
 
-      if (action.response.Image.length == 0) {
-        action.response.Image = getDefaultCharacterList()
+      if (action.response.images.length == 0) {
+        action.response.images = getDefaultCharacterList()
         state.defaultIcon = true
       } else {
         state.defaultIcon = false
@@ -126,7 +126,7 @@ export default function List(state: State = initialState, action: any) {
 
       const tmp = []
 
-      for (const value: Object of action.response.Image) {
+      for (const value: Object of action.response.images) {
         value.imageType = action.receiveParam.imageType
         tmp.push(value)
 
@@ -137,8 +137,8 @@ export default function List(state: State = initialState, action: any) {
       state.load = true
 
       // アイコンの初期位置を取得
-      if (action.response.image.length > 0) {
-        state = getSelectIconState(state, action.response.image[0].id)
+      if (action.response.images.length > 0) {
+        state = getSelectIconState(state, action.response.images[0].id)
       }
 
       return JSON.parse(JSON.stringify(state))

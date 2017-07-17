@@ -104,8 +104,8 @@ export default function Form(state: State = initialState, action: any) {
       return JSON.parse(JSON.stringify(state))
     }
     case types.GET_CHARACTER_LIST: {
-      if (action.response.Image.length > 0) {
-        state.character = action.response.Image[0]
+      if (action.response.images.length > 0) {
+        state.character = action.response.images[0]
       } else {
         state.character = {
           characterID: 0,
