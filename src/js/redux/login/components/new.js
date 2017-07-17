@@ -33,6 +33,8 @@ export default class New extends Component {
    * @return {object} html
    */
   render() {
+    const { open, text, warning, message } = this.props.loginNew
+
     return (
       <div>
         <div className="container">
@@ -43,17 +45,14 @@ export default class New extends Component {
           <br />
           <Row className="show-grid">
             <Col md={6}>
-              <Hello
-                open={this.props.loginNew.Open}
-                text={this.props.loginNew.Text}
-              />
+              <Hello open={open} text={text} />
             </Col>
             <Col md={6}>
               {(() => {
-                if (this.props.loginNew.Warning) {
+                if (warning) {
                   return (
                     <Alert bsStyle="danger">
-                      {this.props.loginNew.Message}
+                      {message}
                     </Alert>
                   )
                 }

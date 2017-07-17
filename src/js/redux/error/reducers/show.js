@@ -1,34 +1,43 @@
+// @flow
 import * as types from "../../../constants/ActionTypes"
 
-const initialState = {
-  Message: "",
-  ErrCode: 0,
-  Show: false,
-  BugReport: false,
-  BugReported: false
+type State = {
+  message: string,
+  errCode: number,
+  show: boolean,
+  bugReport: boolean,
+  bugReported: boolean
 }
 
-export default function Show(state = initialState, action) {
+const initialState: State = {
+  message: "",
+  errCode: 0,
+  show: false,
+  bugReport: false,
+  bugReported: false
+}
+
+export default function Show(state: State = initialState, action: any) {
   switch (action.type) {
     case types.SHOW_ERROR_MESSAGE: {
-      state.Message = action.message
-      state.ErrCode = action.errCode
-      state.Show = action.show
+      state.message = action.message
+      state.errCode = action.errCode
+      state.show = action.show
 
       return JSON.parse(JSON.stringify(state))
     }
     case types.CLOSE_ERROR_MESSAGE: {
-      state.Show = action.show
+      state.show = action.show
 
       return JSON.parse(JSON.stringify(state))
     }
     case types.OPEN_ERROR_BUG_REPORT: {
-      state.BugReport = action.bugReport
+      state.bugReport = action.bugReport
 
       return JSON.parse(JSON.stringify(state))
     }
     case types.ADD_ERROR_BUG_REPORT: {
-      state.BugReported = true
+      state.bugReported = true
 
       return JSON.parse(JSON.stringify(state))
     }

@@ -1,21 +1,27 @@
+// @flow
 import * as types from "../../../constants/ActionTypes"
 
-const initialState = {
-  Login: false,
-  Name: ""
+type State = {
+  login: boolean,
+  name: string
 }
 
-export default function Auth(state = initialState, action) {
+const initialState: State = {
+  login: false,
+  name: ""
+}
+
+export default function Auth(state: State = initialState, action: any) {
   switch (action.type) {
     case types.SET_LOGIN_AUTH: {
-      state.Login = action.response.Login
-      state.Name = action.response.Name
+      state.login = action.response.login
+      state.name = action.response.name
 
       return JSON.parse(JSON.stringify(state))
     }
     case types.LOGOUT_LOGIN_AUTH: {
-      state.Login = false
-      state.Name = ""
+      state.login = false
+      state.name = ""
 
       location.hash = "/"
       return JSON.parse(JSON.stringify(state))

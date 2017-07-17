@@ -1,13 +1,12 @@
+// @flow
 import PropTypes from "prop-types"
 import React, { Component } from "react"
 import { Alert, Glyphicon } from "react-bootstrap"
 
 export default class AlertMessage extends Component {
   /**
-     * 警告を取得する
-     *
-     * @return {object} html
-     */
+   * 警告を取得する
+   */
   getAlert() {
     if (!this.props.errorAlertMessage.Warning) {
       return ""
@@ -22,10 +21,8 @@ export default class AlertMessage extends Component {
     )
   }
   /**
-     * 描画する
-     *
-     * @return {object} html
-     */
+   * 描画する
+   */
   render() {
     return (
       <div>

@@ -21,9 +21,7 @@ function mapDispatchToProps(dispatch) {
       dispatch(openBugReport())
     },
     addBugReport: action => {
-      dispatch(
-        fetchPostsIfNeeded("bug/add/", types.ADD_ERROR_BUG_REPORT, action)
-      )
+      dispatch(fetchPostsIfNeeded("bug/", types.ADD_ERROR_BUG_REPORT, action))
     }
   }
 }

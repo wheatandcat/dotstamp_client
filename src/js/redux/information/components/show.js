@@ -1,3 +1,4 @@
+// @flow
 import PropTypes from "prop-types"
 import React, { Component } from "react"
 import {
@@ -17,17 +18,17 @@ export default class Show extends Component {
     this.get(this.props.match.params.file)
   }
   /**
-     * 追加する
-     */
-  get(file) {
+   * 追加する
+   */
+  get(file: string) {
     this.props.get(file)
   }
   /**
-     * 描画する
-     *
-     * @return {object} html
-     */
+   * 描画する
+   */
   render() {
+    const { title, body } = this.props.informationShow
+
     return (
       <div>
         <Grid>
@@ -63,11 +64,11 @@ export default class Show extends Component {
               <PageHeader>
                 <Glyphicon glyph="info-sign" />
                 &nbsp;
-                {this.props.informationShow.Title}
+                {title}
               </PageHeader>
               <Panel header="内容" bsStyle="info">
                 <pre>
-                  {this.props.informationShow.Body}
+                  {body}
                 </pre>
               </Panel>
             </Col>

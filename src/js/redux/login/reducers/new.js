@@ -1,33 +1,41 @@
+// @flow
 import * as types from "../../../constants/ActionTypes"
 
-const initialState = {
-  Warning: false,
-  Message: "",
-  Open: false,
-  Text: ""
+type State = {
+  warning: boolean,
+  message: string,
+  open: boolean,
+  text: string
 }
 
-export default function New(state = initialState, action) {
+const initialState: State = {
+  warning: false,
+  message: "",
+  open: false,
+  text: ""
+}
+
+export default function New(state: State = initialState, action: any) {
   switch (action.type) {
     case types.SET_LOGIN_USER: {
-      state.Warning = action.response.Warning
-      state.Message = action.response.Message
+      state.warning = action.response.warning
+      state.message = action.response.message
 
-      if (!state.Warning) {
+      if (!state.warning) {
         location.pathname = "/"
       }
 
       return JSON.parse(JSON.stringify(action.response))
     }
     case types.SET_LOGIN_USER_ALERT: {
-      state.Warning = true
-      state.Message = action.message
+      state.warning = true
+      state.message = action.message
 
       return JSON.parse(JSON.stringify(state))
     }
     case types.OPEN_LOGIN_TERMS: {
-      state.Open = true
-      state.Text = action.response
+      state.open = true
+      state.text = action.response
 
       return JSON.parse(JSON.stringify(state))
     }

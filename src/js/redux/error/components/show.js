@@ -1,3 +1,4 @@
+// @flow
 import PropTypes from "prop-types"
 import React, { Component } from "react"
 import {
@@ -10,15 +11,18 @@ import {
   FormGroup
 } from "react-bootstrap"
 export default class Show extends Component {
+  input: {
+    value: ""
+  }
   /**
-     * 閉じる
-     */
+   * 閉じる
+   */
   close() {
     this.props.closeError()
   }
   /**
-     * バグ報告を追加する
-     */
+   * バグ報告を追加する
+   */
   addBugReport() {
     const val = this.input.value.trim()
     if (val == "") {
@@ -35,27 +39,27 @@ export default class Show extends Component {
     return <Alert bsStyle="success">不具合報告しました。ご協力ありがとうございます。</Alert>
   }
   /**
-     * 描画する
-     *
-     * @return {object} html
-     */
+   * 描画する
+   */
   render() {
+    const { show, message } = this.props.errorShow
+
     let bugReport = {}
-    if (this.props.errorShow.BugReport) {
+    if (this.props.errorShow.bugReport) {
       bugReport = {
         disabled: true
       }
     }
 
     return (
-      <Modal show={this.props.errorShow.Show} onHide={() => this.close()}>
+      <Modal show={show} onHide={() => this.close()}>
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-lg">Error!!</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Alert bsStyle="danger">
             <strong>
-              {this.props.errorShow.Message}
+              {message}
             </strong>
           </Alert>
         </Modal.Body>
@@ -72,7 +76,7 @@ export default class Show extends Component {
           </Button>
           <br />
           <br />
-          <Collapse in={this.props.errorShow.BugReport}>
+          <Collapse in={this.props.errorShow.bugReport}>
             <Well>
               <FormGroup>
                 <FormControl

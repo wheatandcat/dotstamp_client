@@ -1,8 +1,14 @@
+// @flow
 import * as types from "../../../constants/ActionTypes"
 
-const initialState = {
-  Title: "",
-  Body: ""
+type State = {
+  title: string,
+  body: string
+}
+
+const initialState: State = {
+  title: "",
+  body: ""
 }
 
 const title = {
@@ -12,11 +18,11 @@ const title = {
   ansibleLicense: "infrastructure License"
 }
 
-export default function Show(state = initialState, action) {
+export default function Show(state: State = initialState, action: any) {
   switch (action.type) {
     case types.GET_JSON: {
-      state.Title = title[action.receiveParam.fileName]
-      state.Body = action.response
+      state.title = title[action.receiveParam.fileName]
+      state.body = action.response
 
       return JSON.parse(JSON.stringify(state))
     }

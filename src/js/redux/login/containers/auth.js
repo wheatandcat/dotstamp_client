@@ -14,7 +14,7 @@ function mapDispatchToProps(dispatch) {
       dispatch(fetchPostsIfNeeded("login/auth/", types.SET_LOGIN_AUTH))
     },
     logout: () => {
-      dispatch(fetchPostsIfNeeded("login/logout/", types.LOGOUT_LOGIN_AUTH))
+      dispatch(fetchPostsIfNeeded("logout/", types.LOGOUT_LOGIN_AUTH))
     }
   }
 }

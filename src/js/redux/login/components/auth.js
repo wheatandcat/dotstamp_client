@@ -1,3 +1,4 @@
+// @flow
 import PropTypes from "prop-types"
 import React, { Component } from "react"
 import {
@@ -17,12 +18,10 @@ export default class Auth extends Component {
     this.props.auth()
   }
   /**
-     * メニューを取得する
-     *
-     * @return {object}  html
-     */
+   * メニューを取得する
+   */
   getMenu() {
-    if (!this.props.loginAuth.Login) {
+    if (!this.props.loginAuth.login) {
       return this.noLogin()
     }
 
@@ -48,7 +47,7 @@ export default class Auth extends Component {
         </LinkContainer>
         <NavDropdown
           eventKey={3}
-          title={abridgement(this.props.loginAuth.Name, 12)}
+          title={abridgement(this.props.loginAuth.name, 12)}
           id="basic-nav-dropdown"
         >
           <LinkContainer to="/user/mypage">
@@ -80,10 +79,8 @@ export default class Auth extends Component {
     )
   }
   /**
-     * ログイン無し状態のメニューを取得する
-     *
-     * @return {object} html
-     */
+   * ログイン無し状態のメニューを取得する
+   */
   noLogin() {
     return (
       <Nav pullRight>

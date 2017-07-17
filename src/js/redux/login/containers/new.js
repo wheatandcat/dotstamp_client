@@ -12,7 +12,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     new: params => {
-      dispatch(fetchPostsIfNeeded("login/new/", types.SET_LOGIN_USER, params))
+      dispatch(fetchPostsIfNeeded("users/new/", types.SET_LOGIN_USER, params))
     },
     open: () => {
       dispatch(
