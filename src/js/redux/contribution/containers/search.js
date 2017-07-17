@@ -14,7 +14,7 @@ function mapDispatchToProps(dispatch) {
     search: action => {
       dispatch(
         fetchPostsIfNeeded(
-          "contribution/search/",
+          "contributions/search/",
           types.GET_CONTRIBUTION_SEARCH_LIST,
           action,
           action

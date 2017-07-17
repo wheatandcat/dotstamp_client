@@ -1,7 +1,30 @@
+// @flow
 import * as types from "../../../constants/ActionTypes"
 
+type Character = {
+  characterID: number,
+  fileName: string,
+  id: number,
+  priority: number,
+  voiceType: number
+}
+
+type Icon = {
+  id: number,
+  fileName: string,
+  select: number
+}
+
+type State = {
+  list: Array<Character>,
+  icon: Icon,
+  load: boolean,
+  voiceType: Object,
+  defaultIcon: boolean
+}
+
 // 初期ステート設定
-const initialState = {
+const initialState: State = {
   list: [],
   icon: {
     id: 0,
@@ -9,8 +32,8 @@ const initialState = {
     select: 0
   },
   load: false,
-  VoiceType: {},
-  DefaultIcon: false
+  voiceType: {},
+  defaultIcon: false
 }
 
 /**
@@ -20,13 +43,13 @@ const initialState = {
  * @param  {number} id  ID
  * @return {object} 状態
  */
-function getSelectIconState(state, id) {
+function getSelectIconState(state, id): State {
   let count = 0
   for (const value of state.list) {
-    if (value.ID == id) {
+    if (value.id == id) {
       state.icon = {
-        id: value.ID,
-        fileName: value.FileName,
+        id: value.id,
+        fileName: value.fileName,
         select: count
       }
     }
@@ -55,18 +78,18 @@ function getDefaultCharacterList() {
 
   for (let i = 1; i < max; i++) {
     list.push({
-      CharacterID: 0,
-      FileName: `default${i}.png`,
-      ID: i,
-      Priority: 0,
-      VoiceType: 0
+      characterID: 0,
+      fileName: `default${i}.png`,
+      id: i,
+      priority: 0,
+      voiceType: 0
     })
   }
 
   return list
 }
 
-export default function List(state = initialState, action) {
+export default function List(state: State = initialState, action: any) {
   switch (action.type) {
     case types.INIT_CHARACTER_LIST: {
       return JSON.parse(JSON.stringify(initialState))
@@ -79,10 +102,10 @@ export default function List(state = initialState, action) {
       for (const value of image) {
         tmp.push(value)
 
-        state.VoiceType[value.ID] = value.VoiceType
+        state.voiceType[value.id] = value.voiceType
       }
 
-      state.DefaultIcon = true
+      state.defaultIcon = true
       state.list = tmp
       state.load = true
 
@@ -96,26 +119,26 @@ export default function List(state = initialState, action) {
 
       if (action.response.Image.length == 0) {
         action.response.Image = getDefaultCharacterList()
-        state.DefaultIcon = true
+        state.defaultIcon = true
       } else {
-        state.DefaultIcon = false
+        state.defaultIcon = false
       }
 
       const tmp = []
 
-      for (const value of action.response.Image) {
+      for (const value: Object of action.response.Image) {
         value.imageType = action.receiveParam.imageType
         tmp.push(value)
 
-        state.VoiceType[value.ID] = value.VoiceType
+        state.voiceType[value.ID] = value.voiceType
       }
 
       state.list = tmp
       state.load = true
 
       // アイコンの初期位置を取得
-      if (action.response.Image.length > 0) {
-        state = getSelectIconState(state, action.response.Image[0].ID)
+      if (action.response.image.length > 0) {
+        state = getSelectIconState(state, action.response.image[0].id)
       }
 
       return JSON.parse(JSON.stringify(state))
@@ -126,7 +149,7 @@ export default function List(state = initialState, action) {
       return JSON.parse(JSON.stringify(state))
     }
     case types.SET_CHARACTER_VOICE_TYPE: {
-      state.VoiceType[state.icon.id] = action.voiceType
+      state.voiceType[state.icon.id] = action.voiceType
 
       return JSON.parse(JSON.stringify(state))
     }

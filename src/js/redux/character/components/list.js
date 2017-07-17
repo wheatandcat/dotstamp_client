@@ -1,3 +1,4 @@
+// @flow
 import PropTypes from "prop-types"
 import React, { Component } from "react"
 import Dropzone from "react-dropzone"
@@ -28,23 +29,19 @@ export default class List extends Component {
   }
   /**
    * 画像ドロップの監視する
-   *
-   * @param  {array} fileList ファイルリスト
    */
-  handleDropFile(fileList) {
-    this.uploadFile(fileList)
+  handleDropFile(files: Array<*>) {
+    this.uploadFile(files)
   }
   /**
    * ファイルをアップロードする
-   *
-   * @param  {array} fileList ファイルリスト
    */
-  uploadFile(fileList) {
+  uploadFile(files: Array<*>) {
     const formData = new FormData()
 
-    formData.append("file", fileList[0])
+    formData.append("file", files[0])
 
-    if (fileList[0].size > UPLOAD_FILE_SIZE_MAX) {
+    if (files[0].size > UPLOAD_FILE_SIZE_MAX) {
       this.props.alertMessage("アップロード失敗！アップロードできる最大容量を超えています！！")
       return
     }
@@ -53,21 +50,19 @@ export default class List extends Component {
   }
   /**
    * キャラクターを選択する
-   *
-   * @param  {object} icon アイコン
    */
-  selectmCharacter(icon) {
-    this.props.setIcon(icon.ID)
+  selectmCharacter(icon: { id: number }) {
+    this.props.setIcon(icon.id)
   }
   /**
    * 保存する
    */
   save() {
+    const { icon, voiceType } = this.props.characterList
+
     this.props.save({
-      id: this.props.characterList.icon.id,
-      voiceType: this.props.characterList.VoiceType[
-        this.props.characterList.icon.id
-      ]
+      id: icon.id,
+      voiceType: voiceType[icon.id]
     })
   }
   /**
@@ -76,13 +71,13 @@ export default class List extends Component {
    * @return {object} html
    */
   render() {
-    if (!this.props.characterList.load) {
+    const { load, icon, defaultIcon, list } = this.props.characterList
+
+    if (!load) {
       return <div />
     }
 
-    const voiceType = this.props.characterList.VoiceType[
-      this.props.characterList.icon.id
-    ]
+    const voiceType = this.props.characterList.voiceType[icon.id]
 
     return (
       <div>
@@ -95,13 +90,13 @@ export default class List extends Component {
               <AlertMessage />
               <div>
                 {(() => {
-                  if (this.props.characterList.DefaultIcon) {
+                  if (defaultIcon) {
                     return <NoIcon />
                   }
                   return (
                     <Menu
-                      fileName={this.props.characterList.icon.fileName}
-                      IconId={this.props.characterList.icon.id}
+                      fileName={icon.fileName}
+                      iconId={icon.id}
                       voiceList={VOICE_TYPE}
                       voiceType={voiceType}
                       voiceLabel={VOICE_TYPE_MAP[voiceType]}
@@ -117,7 +112,7 @@ export default class List extends Component {
               <div>
                 <Well bsStyle="info">
                   <Collection
-                    list={this.props.characterList.list}
+                    list={list}
                     onClick={id => this.selectmCharacter(id)}
                   />
                 </Well>

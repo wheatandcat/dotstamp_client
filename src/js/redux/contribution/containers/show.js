@@ -38,7 +38,7 @@ function mapDispatchToProps(dispatch) {
     addProblem: action => {
       dispatch(
         fetchPostsIfNeeded(
-          "problem/add",
+          "problem/",
           types.ADD_CONTRIBUTION_SHOW_PROBLEM,
           action
         )

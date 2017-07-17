@@ -14,7 +14,12 @@ import {
   alertMessageInit
 } from "../../../error/actions/alertMessage"
 import { message } from "../../../message/actions/show"
-import { fetchGetsIfNeeded, fetchPostsIfNeeded } from "../../../../utils/fetch"
+import {
+  fetchGetsIfNeeded,
+  fetchPostsIfNeeded,
+  fetchPutsIfNeeded,
+  fetchDeleteIfNeeded
+} from "../../../../utils/fetch"
 import * as types from "../../../../constants/ActionTypes"
 
 function mapStateToProps(state) {
@@ -50,7 +55,7 @@ function mapDispatchToProps(dispatch) {
     new: action => {
       dispatch(
         fetchPostsIfNeeded(
-          "contribution/new/",
+          "contributions/new/",
           types.NEW_CONTRIBUTION_FORM,
           action
         )
@@ -61,8 +66,8 @@ function mapDispatchToProps(dispatch) {
     },
     save: action => {
       dispatch(
-        fetchPostsIfNeeded(
-          "contribution/save/",
+        fetchPutsIfNeeded(
+          `contributions/${action.userContributionId}`,
           types.SAVE_CONTRIBUTION_FORM,
           action,
           action
@@ -70,19 +75,20 @@ function mapDispatchToProps(dispatch) {
       )
     },
     addTag: action => {
-      dispatch(
-        fetchPostsIfNeeded("tag/add/", types.ADD_CONTRIBUTION_TAG, action)
-      )
+      dispatch(fetchPostsIfNeeded("tags/", types.ADD_CONTRIBUTION_TAG, action))
     },
     deleteTag: action => {
       dispatch(
-        fetchPostsIfNeeded("tag/delete/", types.DELETE_CONTRIBUTION_TAG, action)
+        fetchDeleteIfNeeded(
+          `tags/?id=${action.id}&cid=${action.userContributionId}`,
+          types.DELETE_CONTRIBUTION_TAG
+        )
       )
     },
     addSound: action => {
       dispatch(
         fetchPostsIfNeeded(
-          "sound/add/",
+          `sounds/${action.userContributionId}`,
           types.ADD_CONTRIBUTION_FORM_SOUND,
           action,
           action
@@ -90,7 +96,7 @@ function mapDispatchToProps(dispatch) {
       )
     },
     soundlength: () => {
-      dispatch(fetchGetsIfNeeded("sound/length/", types.GET_SOUND_LENGTH))
+      dispatch(fetchGetsIfNeeded("sounds/length/", types.GET_SOUND_LENGTH))
     }
   }
 }

@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom"
 import New from "../components/new"
 import * as types from "../../../constants/ActionTypes"
 import { setDefaultList } from "../../character/actions/list"
-import { fetchPostsIfNeeded } from "../../../utils/fetch"
+import { fetchGetsIfNeeded } from "../../../utils/fetch"
 import { init } from "../actions/new"
 
 function mapStateToProps(state) {
@@ -19,9 +19,7 @@ function mapDispatchToProps(dispatch) {
       dispatch(setDefaultList())
     },
     setCharacterImageList: () => {
-      dispatch(
-        fetchPostsIfNeeded("characterImage/list/", types.GET_CHARACTER_LIST, {})
-      )
+      dispatch(fetchGetsIfNeeded("characters/", types.GET_CHARACTER_LIST))
     }
   }
 }

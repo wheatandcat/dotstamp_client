@@ -24,7 +24,7 @@ function mapDispatchToProps(dispatch) {
     upload: (urlParam, formData, params) => {
       dispatch(
         fetchUploadIfNeeded(
-          `contribution/upload/${urlParam}`,
+          `contributions/upload/${urlParam}`,
           types.EDIT_CONTRIBUTION_FORM_BODY_IMAGE,
           formData,
           params
