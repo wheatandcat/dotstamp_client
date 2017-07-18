@@ -176,7 +176,7 @@ export default function Form(state: State = initialState, action: any) {
     }
     case types.DELETE_CONTRIBUTION_TAG:
     case types.ADD_CONTRIBUTION_TAG: {
-      state.tags = action.response.Tag
+      state.tags = action.response.tags
 
       return JSON.parse(JSON.stringify(state))
     }

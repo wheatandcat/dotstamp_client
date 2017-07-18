@@ -76,11 +76,12 @@ function receiveResponse(
  */
 function receiveErrorResponse(url: string, response: Object) {
   fetchStateList[url].isFetching = false
+  const { message, errCode } = response
 
   return {
     type: types.SHOW_ERROR_MESSAGE,
-    message: response.Message,
-    errCode: response.ErrCode,
+    message,
+    errCode,
     show: true,
     receivedAt: Date.now()
   }

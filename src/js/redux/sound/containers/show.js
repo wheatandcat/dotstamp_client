@@ -54,7 +54,7 @@ function mapDispatchToProps(dispatch) {
     saveVoiceTypeList: action => {
       dispatch(
         fetchPutsIfNeeded(
-          "sound/voice/list/",
+          `sounds/${action.userContributionId}/voice/all`,
           types.SAVE_SOUND_SHOW_VOICE_TYPE_LIST,
           action
         )

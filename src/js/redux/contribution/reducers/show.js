@@ -50,30 +50,43 @@ const initialState: State = {
 export default function Show(state: State = initialState, action: any) {
   switch (action.type) {
     case types.GET_CONTRIBUTION_SHOW: {
-      state.id = action.response.id
-      state.title = action.response.title
-      state.body = action.response.body
-      state.tags = action.response.tags
-      state.user = action.response.user
-      state.updatedAt = action.response.updatedAt
-      state.createdAt = action.response.createdAt
-      state.followCount = action.response.followCount
-      state.following = action.response.following
-      state.soundFile = action.response.soundFile
-      state.movie = action.response.movie
+      const {
+        id,
+        title,
+        body,
+        tags,
+        user,
+        updatedAt,
+        createdAt,
+        followCount,
+        following,
+        soundFile,
+        movie
+      } = action.response
 
-      state.load = true
-
-      return JSON.parse(JSON.stringify(state))
+      return Object.assign({}, state, {
+        id,
+        title,
+        body,
+        tags,
+        user,
+        updatedAt,
+        createdAt,
+        followCount,
+        following,
+        soundFile,
+        movie,
+        load: true
+      })
     }
     case types.DELETE_FOLLOW: {
-      state.followCount = action.response.FollowCount
+      state.followCount = action.response.followCount
       state.following = false
 
       return JSON.parse(JSON.stringify(state))
     }
     case types.ADD_FOLLOW: {
-      state.followCount = action.response.FollowCount
+      state.followCount = action.response.followCount
       state.following = true
 
       return JSON.parse(JSON.stringify(state))

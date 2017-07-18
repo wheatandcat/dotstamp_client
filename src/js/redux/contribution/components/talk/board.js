@@ -23,10 +23,10 @@ class Board extends Component {
     let beforeTalk, afterTalk
 
     talkList.map(talk => {
-      if (talk.Priority == priority) {
+      if (talk.priority == priority) {
         beforeTalk = talk
       }
-      if (talk.Priority == afterPriority) {
+      if (talk.priority == afterPriority) {
         afterTalk = talk
       }
     })

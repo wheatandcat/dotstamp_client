@@ -1,5 +1,4 @@
 // @flow
-import PropTypes from "prop-types"
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
 import { Typeahead } from "react-bootstrap-typeahead"
@@ -23,8 +22,24 @@ import {
   VIEW_STATUS_PUBLIC,
   VIEW_STATUS_PRIVATE
 } from "../../../constants/contribution"
+
 let load = false
 let tite = ""
+
+type Props = {
+  getList: Function,
+  getDetail: Function,
+  delete: Function,
+  setContribution: Function,
+  contributionShow: Object,
+  userContributionList: Object,
+  setTitleSearch: Function,
+  setViewStatus: Function,
+  init: Function,
+  closeDeleteConfirm: Function,
+  openDeleteConfirm: Function
+}
+
 export default class ContributionList extends Component {
   componentWillMount() {
     this.props.init()
@@ -37,6 +52,7 @@ export default class ContributionList extends Component {
       this.setContribution(contributionId)
     }
   }
+  props: Props
   /**
    * リストを取得する
    */
@@ -99,7 +115,7 @@ export default class ContributionList extends Component {
     tite = text
 
     all.forEach(item => {
-      if (item.Title.indexOf(text) != -1) {
+      if (item.title.indexOf(text) != -1) {
         if (item.view_status == viewStatus) {
           list.push(item)
         }
@@ -187,7 +203,7 @@ export default class ContributionList extends Component {
   render() {
     const { contributionId, titles } = this.props.userContributionList
 
-    let list = this.props.userContributionList.List
+    let list = this.props.userContributionList.list
     if (!Array.isArray(list)) {
       list = []
     }
@@ -198,7 +214,7 @@ export default class ContributionList extends Component {
     }
 
     let side
-    if (list.length == 0) {
+    if (list.length === 0) {
       side = <div>一致する投稿はありませんでした。</div>
     } else {
       side = (
@@ -273,18 +289,4 @@ export default class ContributionList extends Component {
       </div>
     )
   }
-}
-
-ContributionList.propTypes = {
-  getList: PropTypes.func,
-  getDetail: PropTypes.func,
-  delete: PropTypes.func,
-  setContribution: PropTypes.func,
-  contributionShow: PropTypes.object,
-  userContributionList: PropTypes.object,
-  setTitleSearch: PropTypes.func,
-  setViewStatus: PropTypes.func,
-  init: PropTypes.func,
-  closeDeleteConfirm: PropTypes.func,
-  openDeleteConfirm: PropTypes.func
 }

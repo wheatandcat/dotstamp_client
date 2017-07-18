@@ -8,6 +8,6 @@ type Props = {
 }
 
 export default ({ fileName }: Props) =>
-  <div className={styles.Balloon}>
+  <div className={styles.balloon}>
     <Talk fileName={fileName} />
   </div>

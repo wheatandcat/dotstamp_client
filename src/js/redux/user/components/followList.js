@@ -1,5 +1,4 @@
 // @flow
-import PropTypes from "prop-types"
 import React, { Component } from "react"
 import { PageHeader, Glyphicon } from "react-bootstrap"
 import { List } from "../../../component/contribution/list"
@@ -7,10 +6,19 @@ import { Center } from "./../../../../css/common.css"
 import Pagination from "../../../utils/parts/pagination"
 import { Link as Footer } from "../../../component/footer/"
 
+type Props = {
+  match: Object,
+  history: Object,
+  getList: Function,
+  paging: Function,
+  userFollowList: Object
+}
+
 export default class FollowList extends Component {
   componentWillMount() {
     this.getList(this.props.match.params.page, this.props.match.params.order)
   }
+  props: Props
   /**
    * リストを取得する
    *
@@ -18,10 +26,11 @@ export default class FollowList extends Component {
    * @param {number} order 順番
    */
   getList(page: number, order: number) {
+    const { limit } = this.props.userFollowList
     this.props.getList({
       order,
       page,
-      limit: this.props.userFollowList.Limit
+      limit
     })
   }
   /**
@@ -78,12 +87,4 @@ export default class FollowList extends Component {
       </div>
     )
   }
-}
-
-FollowList.propTypes = {
-  match: PropTypes.object,
-  history: PropTypes.object,
-  getList: PropTypes.func,
-  paging: PropTypes.func,
-  userFollowList: PropTypes.object
 }

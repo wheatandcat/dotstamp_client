@@ -19,7 +19,7 @@ export default class Text extends Component {
   }
   render() {
     return (
-      <div className={styles.Balloon}>
+      <div className={styles.balloon}>
         {this.changeBr()}
       </div>
     )

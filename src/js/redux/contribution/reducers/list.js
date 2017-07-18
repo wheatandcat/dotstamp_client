@@ -37,18 +37,21 @@ export default function List(state: State = initialState, action: any) {
       return JSON.parse(JSON.stringify(state))
     }
     case types.ADD_CONTRIBUTION_LIST_ITEM: {
-      const response = action.response
-      state.itemMap[response.ID] = {
-        title: response.Title,
-        body: response.Body,
-        tagList: response.Tag
+      const { id, title, body, tags } = action.response
+      state.itemMap = {}
+      state.itemMap[id] = {
+        title,
+        body,
+        tags
       }
 
       return JSON.parse(JSON.stringify(state))
     }
     case types.DELETE_CONTRIBUTION_LIST_ITEM: {
-      if (state.itemMap[action.id] != undefined) {
-        delete state.itemMap[action.id]
+      const { id } = action
+
+      if (state.itemMap[id] != undefined) {
+        delete state.itemMap[id]
       }
 
       return JSON.parse(JSON.stringify(state))

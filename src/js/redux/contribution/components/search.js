@@ -1,5 +1,4 @@
 // @flow
-import PropTypes from "prop-types"
 import React, { Component } from "react"
 import {
   FormGroup,
@@ -21,6 +20,14 @@ import { Center } from "./../../../../css/common.css"
 import { Link as Footer } from "../../../component/footer/"
 import { List } from "../../../component/contribution/list"
 
+type Props = {
+  match: Object,
+  contributionSearch: Object,
+  search: Function,
+  paging: Function,
+  setOrder: Function
+}
+
 let tmpSearch = ""
 
 export default class Search extends Component {
@@ -28,18 +35,12 @@ export default class Search extends Component {
     value: ""
   }
   componentWillMount() {
-    this.search(
-      this.props.match.params.search,
-      this.props.match.params.order,
-      this.props.match.params.page
-    )
+    const { search, order, page } = this.props.match.params
 
-    this.props.paging(
-      this.props.match.params.search,
-      this.props.match.params.order,
-      this.props.match.params.page
-    )
+    this.search(search, order, page)
+    this.props.paging(search, order, page)
   }
+  props: Props
   /**
    * コマンドを送信する
    *
@@ -59,17 +60,20 @@ export default class Search extends Component {
    * @param {number} page ページ
    */
   search(search: string, order: number, page: number) {
+    const { limit } = this.props.contributionSearch
+
     this.props.search({
       search,
       order,
       page,
-      limit: this.props.contributionSearch.Limit
+      limit
     })
   }
   /**
    * 検索を設定する
    */
   setSearch() {
+    const { order } = this.props.contributionSearch
     const val = this.input.value.trim()
     if (val == "") {
       return
@@ -78,7 +82,7 @@ export default class Search extends Component {
       return
     }
 
-    this.search(val, this.props.contributionSearch.Order, 1)
+    this.search(val, order, 1)
 
     tmpSearch = val
   }
@@ -89,8 +93,9 @@ export default class Search extends Component {
    * @param {number} order 順番
    */
   paging(page: number, order: number) {
-    this.search(this.props.contributionSearch.Search, order, page)
-    this.props.paging(this.props.contributionSearch.Search, order, page)
+    const { search } = this.props.contributionSearch
+    this.search(search, order, page)
+    this.props.paging(search, order, page)
   }
   /**
    * 順番を設定する
@@ -98,17 +103,16 @@ export default class Search extends Component {
    * @param {number} order 順番
    */
   setOrder(order: number) {
-    this.search(
-      this.props.contributionSearch.Search,
-      order,
-      this.props.contributionSearch.Page
-    )
+    const { search, page } = this.props.contributionSearch
+    this.search(search, order, page)
   }
   /**
    * リストを取得する
    */
   getList() {
-    let list = this.props.contributionSearch.List
+    const { search } = this.props.contributionSearch
+
+    let list = this.props.contributionSearch.list
     if (!Array.isArray(list)) {
       list = []
     }
@@ -116,7 +120,7 @@ export default class Search extends Component {
     if (list.length == 0) {
       return (
         <div className={Center}>
-          「{this.props.contributionSearch.Search}」に一致する記事は見つかりませんでした。
+          「{search}」に一致する記事は見つかりませんでした。
         </div>
       )
     }
@@ -125,11 +129,11 @@ export default class Search extends Component {
   }
   /**
    * 描画する
-   *
-   * @return {object} html
    */
   render() {
-    let list = this.props.contributionSearch.List
+    let list = this.props.contributionSearch.list
+    const { count, limit, order, page, search } = this.props.contributionSearch
+
     if (!Array.isArray(list)) {
       list = []
     }
@@ -138,19 +142,14 @@ export default class Search extends Component {
     if (list.length > 0) {
       pagination = (
         <Pagination
-          count={this.props.contributionSearch.Count}
-          limit={this.props.contributionSearch.Limit}
+          count={count}
+          limit={limit}
           link="user/followList"
-          order={parseInt(this.props.contributionSearch.Order)}
-          activePage={parseInt(this.props.contributionSearch.Page)}
+          order={parseInt(order)}
+          activePage={parseInt(page)}
           paging={this.paging.bind(this)}
         />
       )
-    }
-
-    let order = "　新着順　"
-    if (this.props.contributionSearch.Order == ORDER_TYPE_FOLLOW_COUNT) {
-      order = "フォロー順"
     }
 
     return (
@@ -181,22 +180,20 @@ export default class Search extends Component {
                 <Col sm={10} />
                 <Col sm={2}>
                   <DropdownButton
-                    title={order}
+                    title={
+                      order === ORDER_TYPE_FOLLOW_COUNT ? "フォロー順" : "　新着順　"
+                    }
                     id="search-order-dropdown"
                     pullRight
                     onSelect={this.setOrder.bind(this)}
                   >
                     <LinkContainer
-                      to={`/contribution/search/${this.props.contributionSearch
-                        .Search}/${ORDER_TYPE_NEW}/${this.props
-                        .contributionSearch.Page}`}
+                      to={`/contribution/search/${search}/${ORDER_TYPE_NEW}/${page}`}
                     >
                       <MenuItem eventKey={ORDER_TYPE_NEW}>新規順</MenuItem>
                     </LinkContainer>
                     <LinkContainer
-                      to={`/contribution/search/${this.props.contributionSearch
-                        .Search}/${ORDER_TYPE_FOLLOW_COUNT}/${this.props
-                        .contributionSearch.Page}`}
+                      to={`/contribution/search/${search}/${ORDER_TYPE_FOLLOW_COUNT}/${page}`}
                     >
                       <MenuItem eventKey={ORDER_TYPE_FOLLOW_COUNT}>
                         フォロー順
@@ -214,12 +211,4 @@ export default class Search extends Component {
       </div>
     )
   }
-}
-
-Search.propTypes = {
-  match: PropTypes.object,
-  contributionSearch: PropTypes.object,
-  search: PropTypes.func,
-  paging: PropTypes.func,
-  setOrder: PropTypes.func
 }

@@ -35,7 +35,7 @@ const initialState: State = {
 export default function Edit(state: State = initialState, action: any) {
   switch (action.type) {
     case types.GET_CONTRIBUTION_EDIT: {
-      state.id = action.response.ID
+      state.id = action.response.id
       state.title = action.response.title
       state.body = action.response.body
       state.tags = action.response.tags

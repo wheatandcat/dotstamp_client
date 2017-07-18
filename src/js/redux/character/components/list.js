@@ -37,7 +37,7 @@ export default class List extends Component {
    * ファイルをアップロードする
    */
   uploadFile(files: Array<*>) {
-    const formData = new FormData()
+    const formData: FormData = new FormData()
 
     formData.append("file", files[0])
 

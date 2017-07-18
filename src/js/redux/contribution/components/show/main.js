@@ -61,7 +61,7 @@ export default class Main extends Component {
     }
 
     this.props.addProblem({
-      userContributionId: this.props.contributionShow.ID,
+      userContributionId: this.props.contributionShow.id,
       type: this.props.contributionShow.problemType
     })
   }

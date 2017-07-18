@@ -1,5 +1,4 @@
 // @flow
-import PropTypes from "prop-types"
 import React, { Component } from "react"
 import { Button, ListGroup, ListGroupItem, Glyphicon } from "react-bootstrap"
 import FormMain from "../../containers/form/main"
@@ -99,6 +98,30 @@ window.onbeforeunload = function() {
   }
 }
 
+type Props = {
+  changeTitle: Function,
+  changeHeight: Function,
+  changeTag: Function,
+  setViewStatus: Function,
+  contributionForm: Object,
+  contributionEdit: Object,
+  contributionId: number,
+  contributionTalk: Array<*>,
+  title: string,
+  new: Function,
+  save: Function,
+  addTag: Function,
+  deleteTag: Function,
+  alertMessage: Function,
+  alertMessageInit: Function,
+  addSound: Function,
+  openHelp: Function,
+  closeHelp: Function,
+  message: Function,
+  sound: Object,
+  soundlength: Function
+}
+
 export default class Header extends Component {
   preview: Object
   componentWillMount() {
@@ -124,6 +147,7 @@ export default class Header extends Component {
       this.setScroll()
     }
   }
+  props: Props
   /**
    * スクロール設定する
    */
@@ -137,22 +161,19 @@ export default class Header extends Component {
    * 保存する
    */
   save() {
-    if (this.props.contributionForm.experience) {
+    const { title, tag, viewStatus, experience } = this.props.contributionForm
+    if (experience) {
       return
     }
 
     const contributionId = this.props.contributionId
-    const title = this.props.contributionForm.title.trim()
-    const tag =
-      contributionId == null ? this.props.contributionForm.tag.trim() : ""
     const body = this.props.contributionTalk
-
     const action = {
       userContributionId: contributionId,
-      title,
-      tag,
+      title: title.trim(),
+      tag: contributionId == null ? tag.trim() : "",
       body: JSON.stringify(body),
-      viewStatus: this.props.contributionForm.viewStatus
+      viewStatus
     }
 
     if (action.title == "") {
@@ -171,10 +192,7 @@ export default class Header extends Component {
 
     this.props.message("保存しました", "success")
 
-    if (
-      this.props.contributionEdit.saveData.viewStatus ==
-      this.props.contributionForm.viewStatus
-    ) {
+    if (this.props.contributionEdit.saveData.viewStatus == viewStatus) {
       if (!checkDiff()) {
         return
       }
@@ -248,46 +266,44 @@ export default class Header extends Component {
   }
   /**
    * 描画する
-   *
-   * @return {object} html
    */
   render() {
+    const { help, title, viewStatus, experience } = this.props.contributionForm
+
     const length = this.props.contributionTalk.map(function(item) {
-      if (item.TalkType == TALK_TYPE_IMAGE) {
+      const { body, talkType } = item
+      if (talkType == TALK_TYPE_IMAGE) {
         return 0
       }
-      return item.Body.length
+      return body.length
     })
     const sum = length.reduce((a, x) => (a += x), 0)
 
     return (
       <div>
         <MessageSow />
-        <Guide
-          open={this.props.contributionForm.help}
-          onHide={this.props.closeHelp}
-        />
+        <Guide open={help} onHide={this.props.closeHelp} />
         <ListGroup className={group}>
           <ListGroupItem>
             <AlertMessage />
             <NewTitleInput
-              defaultValue={this.props.contributionForm.title}
+              defaultValue={title}
               onTitle={this.props.changeTitle.bind(this)}
             />
             {this.getTag()}
             <div>
               <Status
-                viewStatus={this.props.contributionForm.viewStatus}
-                disabled={this.props.contributionForm.Experience}
+                viewStatus={viewStatus}
+                disabled={experience}
                 onChageStatus={this.props.setViewStatus.bind(this)}
                 onPublic={this.save.bind(this)}
                 onPrivate={this.save.bind(this)}
               />
               <Sound
                 contributionId={this.props.contributionId}
-                created={this.props.contributionEdit.Sound}
+                created={this.props.contributionEdit.sound}
                 addSound={this.addSound.bind(this)}
-                experience={this.props.contributionForm.Experience}
+                experience={experience}
               />
               <Timer
                 className={timer}
@@ -323,28 +339,4 @@ export default class Header extends Component {
       </div>
     )
   }
-}
-
-Header.propTypes = {
-  changeTitle: PropTypes.func,
-  changeHeight: PropTypes.func,
-  changeTag: PropTypes.func,
-  setViewStatus: PropTypes.func,
-  contributionForm: PropTypes.object,
-  contributionEdit: PropTypes.object,
-  contributionId: PropTypes.number,
-  contributionTalk: PropTypes.array,
-  title: PropTypes.string,
-  new: PropTypes.func,
-  save: PropTypes.func,
-  addTag: PropTypes.func,
-  deleteTag: PropTypes.func,
-  alertMessage: PropTypes.func,
-  alertMessageInit: PropTypes.func,
-  addSound: PropTypes.func,
-  openHelp: PropTypes.func,
-  closeHelp: PropTypes.func,
-  message: PropTypes.func,
-  sound: PropTypes.object,
-  soundlength: PropTypes.func
 }

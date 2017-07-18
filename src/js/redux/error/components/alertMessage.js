@@ -1,14 +1,21 @@
 // @flow
-import PropTypes from "prop-types"
 import React, { Component } from "react"
 import { Alert, Glyphicon } from "react-bootstrap"
 
+type Props = {
+  closeAlert: Function,
+  errorAlertMessage: Object
+}
+
 export default class AlertMessage extends Component {
+  props: Props
   /**
    * 警告を取得する
    */
   getAlert() {
-    if (!this.props.errorAlertMessage.Warning) {
+    const { warning, message } = this.props.errorAlertMessage
+
+    if (!warning) {
       return ""
     }
 
@@ -16,7 +23,7 @@ export default class AlertMessage extends Component {
       <Alert bsStyle="danger">
         <Glyphicon glyph="remove" onClick={() => this.props.closeAlert()} />
         &nbsp;
-        {this.props.errorAlertMessage.Message}
+        {message}
       </Alert>
     )
   }
@@ -30,9 +37,4 @@ export default class AlertMessage extends Component {
       </div>
     )
   }
-}
-
-AlertMessage.propTypes = {
-  closeAlert: PropTypes.func,
-  errorAlertMessage: PropTypes.object
 }

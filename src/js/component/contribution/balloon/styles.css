@@ -1,4 +1,4 @@
-.Balloon {
+.balloon {
   position: relative;
   z-index: 0;
   display: inline-block;
@@ -12,7 +12,7 @@
   font-size: 18px;
 }
 
-.Balloon::before {
+.balloon::before {
   position: absolute;
   top: 15px;
   left: -8px;
@@ -27,7 +27,7 @@
   border-width: 9px 9px 9px 0;
 }
 
-.Balloon::after {
+.balloon::after {
   position: absolute;
   top: 15px;
   left: -12px;

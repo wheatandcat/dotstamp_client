@@ -130,7 +130,7 @@ export default function List(state: State = initialState, action: any) {
         value.imageType = action.receiveParam.imageType
         tmp.push(value)
 
-        state.voiceType[value.ID] = value.voiceType
+        state.voiceType[value.id] = value.voiceType
       }
 
       state.list = tmp

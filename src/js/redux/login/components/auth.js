@@ -1,5 +1,4 @@
 // @flow
-import PropTypes from "prop-types"
 import React, { Component } from "react"
 import {
   Label,
@@ -12,11 +11,19 @@ import {
 } from "react-bootstrap"
 import { LinkContainer } from "react-router-bootstrap"
 import { abridgement } from "../../../utils/common"
+
+type Props = {
+  auth: Function,
+  logout: Function,
+  loginAuth: Object
+}
+
 export default class Auth extends Component {
   componentWillMount() {
     // 認証する
     this.props.auth()
   }
+  props: Props
   /**
    * メニューを取得する
    */
@@ -29,8 +36,6 @@ export default class Auth extends Component {
   }
   /**
    * ログイン状態のメニューを取得する
-   *
-   * @return {object} html
    */
   login() {
     return (
@@ -118,10 +123,4 @@ export default class Auth extends Component {
       </span>
     )
   }
-}
-
-Auth.propTypes = {
-  auth: PropTypes.func,
-  logout: PropTypes.func,
-  loginAuth: PropTypes.object
 }

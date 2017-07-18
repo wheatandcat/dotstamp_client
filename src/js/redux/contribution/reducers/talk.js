@@ -45,12 +45,17 @@ export default function Talk(
 ) {
   switch (action.type) {
     case types.EDIT_CONTRIBUTION_FORM_BODY_IMAGE: {
-      const priority = action.receiveParam.priority
+      const {
+        priority,
+        character,
+        talkType,
+        directionType
+      } = action.receiveParam
 
       list[priority].body = action.response.path
-      list[priority].character = action.receiveParam.character
-      list[priority].talkType = action.receiveParam.talkType
-      list[priority].directionType = action.receiveParam.directionType
+      list[priority].character = character
+      list[priority].talkType = talkType
+      list[priority].directionType = directionType
       list[priority].edit = false
 
       state = list.concat()
@@ -63,12 +68,13 @@ export default function Talk(
     }
 
     case types.UPLOAD_CONTRIBUTION_FORM: {
+      const { character, talkType, directionType } = action.receiveParam
       list.push(
         getAddBodyState(
-          action.receiveParam.character,
-          action.response.Path,
-          action.receiveParam.talkType,
-          action.receiveParam.directionType,
+          character,
+          action.response.path,
+          talkType,
+          directionType,
           list.length
         )
       )
@@ -78,14 +84,9 @@ export default function Talk(
       return state
     }
     case types.ADD_CONTRIBUTION_FORM_BODY: {
+      const { character, body, talkType, directionType } = action
       list.push(
-        getAddBodyState(
-          action.character,
-          action.body,
-          action.talkType,
-          action.directionType,
-          list.length
-        )
+        getAddBodyState(character, body, talkType, directionType, list.length)
       )
 
       state = list.concat()
@@ -93,11 +94,13 @@ export default function Talk(
       return state
     }
     case types.EDIT_CONTRIBUTION_FORM_BODY: {
-      list[action.priority].body = replaceBody(action.body)
-      list[action.priority].character = action.character
-      list[action.priority].talkType = action.talkType
-      list[action.priority].directionType = action.directionType
-      list[action.priority].edit = false
+      const { priority, character, body, talkType, directionType } = action
+
+      list[priority].body = replaceBody(body)
+      list[priority].character = character
+      list[priority].talkType = talkType
+      list[priority].directionType = directionType
+      list[priority].edit = false
 
       state = list.concat()
 

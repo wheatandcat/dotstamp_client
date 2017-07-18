@@ -16,11 +16,13 @@ const initialState: State = {
 export default function Input(state: State = initialState, action: any) {
   switch (action.type) {
     case types.ADD_PASSWORD: {
-      state.fetch = true
-      state.warning = action.response.Warning
-      state.message = action.response.Message
+      const { warning, message } = action.response
 
-      return JSON.parse(JSON.stringify(state))
+      return Object.assign({}, state, {
+        fetch: true,
+        warning,
+        message
+      })
     }
     default:
       return state

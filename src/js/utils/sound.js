@@ -19,7 +19,7 @@ export default class SoundWrapper extends Component {
   play() {
     this.setState({
       playStatus: Sound.status.PLAYING,
-      finished: falseΩΩß
+      finished: false
     })
   }
   finished() {

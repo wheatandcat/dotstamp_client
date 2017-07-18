@@ -39,12 +39,13 @@ class Header extends Component {
     if (search == "") {
       return
     }
+    const { limit } = this.props.contributionSearch
 
     this.props.search({
       search,
       order: 1,
       page: 1,
-      limit: this.props.contributionSearch.Limit
+      limit
     })
 
     this.props.history.push(`/contribution/search/${search}/1/1`)

@@ -1,4 +1,4 @@
-import PropTypes from "prop-types"
+// @flow
 import React, { Component } from "react"
 import {
   Alert,
@@ -27,31 +27,62 @@ import { Middle } from "../../../../css/common.css"
 import Sound from "../../../utils/sound"
 import MessageSow from "../../message/containers/show"
 
+type Item = {
+  user_contribution_id: number,
+  priority: number,
+  body_sound: string,
+  body: string,
+  id: number,
+  make_status: number
+}
+
+type Props = {
+  match: Object,
+  getDetail: Function,
+  soundShow: Object,
+  changeBodySound: Function,
+  changeVoiceType: Function,
+  saveBodySound: Function,
+  saveVoiceType: Function,
+  offMovieMakeListener: Function,
+  openVoiceList: Function,
+  closeVoiceList: Function,
+  saveVoiceTypeList: Function,
+  check: Function,
+  message: Function
+}
+
 export default class Show extends Component {
   componentWillMount() {
     this.getDeatil(this.props.match.params.id)
   }
   componentDidUpdate() {
-    if (this.props.soundShow.Detail) {
-      this.getDeatil(this.props.match.params.id)
+    const { detail, movieMakeListener } = this.props.soundShow
+    const { id } = this.props.match.params
+    if (detail) {
+      this.getDeatil(id)
     }
 
-    if (!this.props.soundShow.MovieMakeListener) {
+    if (!movieMakeListener) {
       return
     }
 
     this.props.offMovieMakeListener()
 
     setTimeout(() => {
-      this.props.check(this.props.match.params.id)
+      this.props.check(id)
     }, 30000)
   }
+  props: Props
+  selectVoice: {
+    value: ""
+  }
   /**
-     * 詳細を取得する
-     *
-     * @param  {numbet} id 投稿ID
-     */
-  getDeatil(id) {
+   * 詳細を取得する
+   *
+   * @param  {number} id 投稿ID
+   */
+  getDeatil(id: number) {
     this.props.getDetail(id)
   }
   /**
@@ -59,18 +90,18 @@ export default class Show extends Component {
    *
    * @param  {object} e エレメント
    */
-  changeBodySound(e) {
+  changeBodySound(e: Object) {
     this.props.changeBodySound(
       e.target.id.replace("body_sound-", ""),
       e.target.value
     )
   }
   /**
-     * ボイスタイプを設定する
-     *
-     * @param  {string} voiceType ボイスタイプ
-     */
-  setVoiceType(voiceType) {
+   * ボイスタイプを設定する
+   *
+   * @param  {string} voiceType ボイスタイプ
+   */
+  setVoiceType(voiceType: string) {
     const tmp = voiceType.split("_")
     this.props.changeVoiceType(tmp[0], tmp[1])
     this.props.saveVoiceType({
@@ -82,12 +113,11 @@ export default class Show extends Component {
     this.props.message("保存しました", "success")
   }
   /**
-     * ボイスタイプを取得する
-     *
-     * @param  {object} item アイテム
-     * @return {object} html
-     */
-  getVoiceType(item) {
+   * ボイスタイプを取得する
+   *
+   * @param  {object} item アイテム
+   */
+  getVoiceType(item: Item) {
     let voiceType = ""
     if (item.voice_type != undefined) {
       voiceType = VOICE_TYPE_MAP[item.voice_type]
@@ -109,8 +139,8 @@ export default class Show extends Component {
 
             return (
               <MenuItem
-                key={`${item.Priority}_${voive.type}`}
-                eventKey={`${item.Priority}_${voive.type}_${item.ID}`}
+                key={`${item.priority}_${voive.type}`}
+                eventKey={`${item.priority}_${voive.type}_${item.id}`}
                 {...option}
               >
                 &nbsp;&nbsp;&nbsp;{voive.name}&nbsp;&nbsp;
@@ -122,12 +152,11 @@ export default class Show extends Component {
     )
   }
   /**
-     * 改行を変換する
-     *
-     * @param  {string} text テキスト
-     * @return {string} 改行変換後テキスト
-     */
-  changeBr(text) {
+   * 改行を変換する
+   *
+   * @param  {string} text テキスト
+   */
+  changeBr(text: string) {
     const regex = /(\n)/g
     return text.split(regex).map((line, i) => {
       if (line.match(regex)) {
@@ -137,46 +166,47 @@ export default class Show extends Component {
     })
   }
   /**
-     * 本文詳細を取得する
-     *
-     * @param  {object} item 会話
-     * @return {object} 本文html
-     */
-  getBodyDetail(item) {
+   * 本文詳細を取得する
+   *
+   * @param  {object} item 会話
+   */
+  getBodyDetail(item: Item) {
     let html
     if (item.talk_type == TALK_TYPE_IMAGE) {
-      html = <Talk fileName={item.Body} />
+      html = <Talk fileName={item.body} />
     } else {
-      html = this.changeBr(item.Body)
+      html = this.changeBr(item.body)
     }
 
     return html
   }
   /**
-     * 音声本文を保存する
-     *
-     * @param  {number} priority 優先度
-     * @param  {number} id       ID
-     */
-  saveBodySound(priority, id) {
+   * 音声本文を保存する
+   *
+   * @param  {number} priority 優先度
+   * @param  {number} id       ID
+   */
+  saveBodySound(priority: number, id: number) {
+    const { list } = this.props.soundShow
+
     this.props.saveBodySound({
       id,
-      body: this.props.soundShow.List[priority].body_sound,
+      body: list[priority].body_sound,
       priority
     })
 
     this.props.message("保存しました", "success")
   }
   /**
-     * アイテムを取得する
-     *
-     * @param  {object} item アイテム
-     * @return {object} html
-     */
-  getItem(item) {
+   * アイテムを取得する
+   *
+   * @param  {object} item アイテム
+   */
+  getItem(item: Item) {
+    const { user_contribution_id, priority, body_sound, id, make_status } = item
     let make = ""
-    if (item.make_status == MAKE_STATUS_MADE) {
-      const name = `${item.user_contribution_id}_${item.Priority}`
+    if (make_status == MAKE_STATUS_MADE) {
+      const name = `${user_contribution_id}_${priority}`
       make = (
         <Sound
           url={`${getTopUrl()}static/files/tmp/sound/${name}.wav?=${new Date().getTime()}`}
@@ -188,9 +218,9 @@ export default class Show extends Component {
     }
 
     return (
-      <tr key={item.Priority}>
+      <tr key={priority}>
         <td>
-          {item.Priority + 1}
+          {priority + 1}
         </td>
         <td className={InputTextBox}>
           {this.getBodyDetail(item)}
@@ -199,16 +229,14 @@ export default class Show extends Component {
           <FormControl
             componentClass="textarea"
             placeholder="読み上げ本文。空の場合は、読み上げをスルーします"
-            value={item.body_sound}
+            value={body_sound}
             onChange={this.changeBodySound.bind(this)}
-            id={`body_sound-${item.Priority}`}
+            id={`body_sound-${priority}`}
             className={InputText}
           />
         </td>
         <td className={Middle}>
-          <Button onClick={() => this.saveBodySound(item.Priority, item.ID)}>
-            保存
-          </Button>
+          <Button onClick={() => this.saveBodySound(priority, id)}>保存</Button>
         </td>
         <td>
           {this.getVoiceType(item)}
@@ -220,8 +248,8 @@ export default class Show extends Component {
     )
   }
   /**
-     * ボイスタイプリストを保存する
-     */
+   * ボイスタイプリストを保存する
+   */
   saveVoiceTypeList() {
     this.props.saveVoiceTypeList({
       userContributionId: this.props.match.params.id,
@@ -231,12 +259,12 @@ export default class Show extends Component {
     this.props.message("音声タイプの一括変更を実行", "success")
   }
   /**
-     * ボイスタイプリストを取得する
-     */
+   * ボイスタイプリストを取得する
+   */
   getVoiceTypeList() {
     return (
       <Modal
-        show={this.props.soundShow.VoiceList}
+        show={this.props.soundShow.voiceList}
         onHide={this.props.closeVoiceList}
         bsSize="large"
       >
@@ -280,11 +308,11 @@ export default class Show extends Component {
     )
   }
   /**
-     * 描画する
-     *
-     * @return {object} html
-     */
+   * 描画する
+   */
   render() {
+    const { list } = this.props.soundShow
+
     return (
       <div>
         {this.getVoiceTypeList()}
@@ -327,7 +355,7 @@ export default class Show extends Component {
               </tr>
             </thead>
             <tbody>
-              {this.props.soundShow.List.map(item => this.getItem(item))}
+              {list.map(item => this.getItem(item))}
             </tbody>
           </Table>
         </div>
@@ -335,20 +363,4 @@ export default class Show extends Component {
       </div>
     )
   }
-}
-
-Show.propTypes = {
-  match: PropTypes.object,
-  getDetail: PropTypes.func,
-  soundShow: PropTypes.object,
-  changeBodySound: PropTypes.func,
-  changeVoiceType: PropTypes.func,
-  saveBodySound: PropTypes.func,
-  saveVoiceType: PropTypes.func,
-  offMovieMakeListener: PropTypes.func,
-  openVoiceList: PropTypes.func,
-  closeVoiceList: PropTypes.func,
-  saveVoiceTypeList: PropTypes.func,
-  check: PropTypes.func,
-  message: PropTypes.func
 }

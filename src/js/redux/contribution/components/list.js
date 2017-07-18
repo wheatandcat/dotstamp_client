@@ -45,12 +45,13 @@ export default class List extends Component {
 
     let contribution = <div />
     let openID = -1
+    const { itemMap } = this.props.contributionList
 
     list.forEach(item => {
-      if (this.props.contributionList.itemMap[item.ID] != undefined) {
-        const tmp = this.props.contributionList.itemMap[item.ID]
+      if (itemMap[item.id] != undefined) {
+        const tmp = itemMap[item.id]
         contribution = <ContributionShowFrame list={tmp.body} />
-        openID = item.ID
+        openID = item.id
       }
     })
 
@@ -80,10 +81,12 @@ export default class List extends Component {
       order = 0
     }
 
+    const { init, next } = this.props.contributionList
+
     const newLine = list.length - order * VIEW_PAGE_LIMIT
     let oldList = list.slice(0, list.length - newLine)
     let newList = list.slice(list.length - newLine, list.length)
-    if (this.props.contributionList.init) {
+    if (init) {
       oldList = list
       newList = []
     }
@@ -104,7 +107,7 @@ export default class List extends Component {
     }
 
     const self = this
-    if (!this.props.contributionList.next) {
+    if (!next) {
       setTimeout(() => {
         self.props.next()
       }, 200)
@@ -123,8 +126,8 @@ export default class List extends Component {
         <div className="container">
           {this.getItemList(oldList, true)}
 
-          <Collapse in={this.props.contributionList.next} timeout={3000}>
-            {this.getItemList(newList, this.props.contributionList.next)}
+          <Collapse in={next} timeout={3000}>
+            {this.getItemList(newList, next)}
           </Collapse>
           <br />
           <br />
