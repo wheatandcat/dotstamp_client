@@ -7,13 +7,15 @@ import { PASSWORD_LENGTH_MIN } from "../../../constants/common"
 import { alert } from "../modules/new"
 import { Page } from "../../../component/oauth/"
 import * as types from "../../../constants/ActionTypes"
+import type { State as LoginNew } from "../../login/reducers/new"
 
 type Props = {
-  location: Object,
-  match: Object,
+  location: {
+    search: string
+  },
   alert: Function,
   new: Function,
-  loginNew: Object
+  loginNew: LoginNew
 }
 
 class New extends Component {

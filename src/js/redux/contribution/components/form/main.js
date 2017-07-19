@@ -1,5 +1,4 @@
 // @flow
-import PropTypes from "prop-types"
 import React, { Component } from "react"
 import { Well } from "react-bootstrap"
 import { TALK_TYPE_TEXT, TALK_TYPE_IMAGE } from "../../actions/talk"
@@ -9,6 +8,8 @@ import {
   Text
 } from "../../../../component/contribution/form/"
 import { Collection } from "../../../../component/slick/"
+import type { State as CharacterList } from "../../../character/reducers/list"
+import type { State as ContributionForm } from "../../reducers/form"
 import { defaultIcon, talk } from "./styles.css"
 
 let self
@@ -35,6 +36,19 @@ window.addEventListener("keydown", event => {
   }
 })
 
+type Props = {
+  changeBody: Function,
+  addBody: Function,
+  changeCharacter: Function,
+  contributionForm: ContributionForm,
+  characterList: CharacterList,
+  editBody: Function,
+  upload: Function,
+  contributionId: number,
+  alertMessage: Function,
+  cancelEdit: Function
+}
+
 export default class Main extends Component {
   componentWillMount() {
     self = this
@@ -42,6 +56,7 @@ export default class Main extends Component {
   changeBody(value: string) {
     this.props.changeBody(value)
   }
+  props: Props
   /**
    * テキスト本文を追加する
    */
@@ -172,17 +187,4 @@ export default class Main extends Component {
       </div>
     )
   }
-}
-
-Main.propTypes = {
-  changeBody: PropTypes.func,
-  addBody: PropTypes.func,
-  changeCharacter: PropTypes.func,
-  contributionForm: PropTypes.object,
-  characterList: PropTypes.object,
-  editBody: PropTypes.func,
-  upload: PropTypes.func,
-  contributionId: PropTypes.number,
-  alertMessage: PropTypes.func,
-  cancelEdit: PropTypes.func
 }

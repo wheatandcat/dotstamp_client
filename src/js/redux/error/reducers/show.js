@@ -1,7 +1,7 @@
 // @flow
 import * as types from "../../../constants/ActionTypes"
 
-type State = {
+export type State = {
   message: string,
   errCode: number,
   show: boolean,

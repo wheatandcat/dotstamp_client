@@ -38,11 +38,7 @@ export default ({ store, history }: Props) =>
           <Route exact path="/" component={ContributionList} />
           <Route exact path="/index.html" component={ContributionList} />
           <Route path="/contribution/new" component={ContributionNew} />
-          <Route
-            name="/contribution/edit"
-            path="/contribution/edit/:id"
-            component={ContributionEdit}
-          />
+          <Route path="/contribution/edit/:id" component={ContributionEdit} />
           <Route path="/contribution/list" component={ContributionList} />
           <Route path="/contribution/show/:id" component={ContributionShow} />
           <Route

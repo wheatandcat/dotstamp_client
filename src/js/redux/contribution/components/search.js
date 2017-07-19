@@ -19,10 +19,11 @@ import {
 import { Center } from "./../../../../css/common.css"
 import { Link as Footer } from "../../../component/footer/"
 import { List } from "../../../component/contribution/list"
+import type { State as ContributionSearch } from "../reducers/search"
 
 type Props = {
   match: Object,
-  contributionSearch: Object,
+  contributionSearch: ContributionSearch,
   search: Function,
   paging: Function,
   setOrder: Function

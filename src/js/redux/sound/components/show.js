@@ -26,6 +26,7 @@ import { Input, InputText, InputTextBox } from "../../../../css/sound.css"
 import { Middle } from "../../../../css/common.css"
 import Sound from "../../../utils/sound"
 import MessageSow from "../../message/containers/show"
+import type { State as SoundShow } from "../reducers/show"
 
 type Item = {
   user_contribution_id: number,
@@ -37,9 +38,13 @@ type Item = {
 }
 
 type Props = {
-  match: Object,
+  match: {
+    params: {
+      id: number
+    }
+  },
   getDetail: Function,
-  soundShow: Object,
+  soundShow: SoundShow,
   changeBodySound: Function,
   changeVoiceType: Function,
   saveBodySound: Function,

@@ -1,10 +1,11 @@
 // @flow
 import React, { Component } from "react"
 import { Alert, Glyphicon } from "react-bootstrap"
+import type { State as ErrorAlertMessage } from "../reducers/alertMessage"
 
 type Props = {
   closeAlert: Function,
-  errorAlertMessage: Object
+  errorAlertMessage: ErrorAlertMessage
 }
 
 export default class AlertMessage extends Component {

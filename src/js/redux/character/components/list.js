@@ -1,5 +1,4 @@
 // @flow
-import PropTypes from "prop-types"
 import React, { Component } from "react"
 import Dropzone from "react-dropzone"
 import {
@@ -19,6 +18,20 @@ import {
 import { Link as Footer } from "../../../component/footer/"
 import { ImageUpload } from "../../../../css/character.css"
 import { NoIcon, Menu } from "../../../component/character/"
+import type { State as CharacterList } from "../reducers/list"
+
+type Props = {
+  characterList: CharacterList,
+  setIcon: Function,
+  getList: Function,
+  delete: Function,
+  upload: Function,
+  save: Function,
+  init: Function,
+  alertMessage: Function,
+  alertMessageInit: Function,
+  setVoiceType: Function
+}
 
 export default class List extends Component {
   componentWillMount() {
@@ -27,6 +40,7 @@ export default class List extends Component {
     this.props.alertMessageInit()
     this.props.getList()
   }
+  props: Props
   /**
    * 画像ドロップの監視する
    */
@@ -139,17 +153,4 @@ export default class List extends Component {
       </div>
     )
   }
-}
-
-List.propTypes = {
-  characterList: PropTypes.object,
-  setIcon: PropTypes.func,
-  getList: PropTypes.func,
-  delete: PropTypes.func,
-  upload: PropTypes.func,
-  save: PropTypes.func,
-  init: PropTypes.func,
-  alertMessage: PropTypes.func,
-  alertMessageInit: PropTypes.func,
-  setVoiceType: PropTypes.func
 }

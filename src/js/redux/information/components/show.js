@@ -1,5 +1,4 @@
 // @flow
-import PropTypes from "prop-types"
 import React, { Component } from "react"
 import {
   Grid,
@@ -13,10 +12,23 @@ import {
 } from "react-bootstrap"
 import { Link as Footer } from "../../../component/footer/"
 import { LinkContainer } from "react-router-bootstrap"
+import type { State as InformationShow } from "../reducers/show"
+
+type Props = {
+  get: Function,
+  match: {
+    params: {
+      file: string
+    }
+  },
+  informationShow: InformationShow
+}
+
 export default class Show extends Component {
   componentWillMount() {
     this.get(this.props.match.params.file)
   }
+  props: Props
   /**
    * 追加する
    */
@@ -78,10 +90,4 @@ export default class Show extends Component {
       </div>
     )
   }
-}
-
-Show.propTypes = {
-  get: PropTypes.func,
-  match: PropTypes.object,
-  informationShow: PropTypes.object
 }

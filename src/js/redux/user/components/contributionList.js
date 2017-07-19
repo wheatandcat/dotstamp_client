@@ -17,11 +17,12 @@ import {
 } from "react-bootstrap"
 import ContributionShow from "../../contribution/containers/show"
 import { DateTimeFormat } from "../../../utils/common"
-
 import {
   VIEW_STATUS_PUBLIC,
   VIEW_STATUS_PRIVATE
 } from "../../../constants/contribution"
+import type { State as contributionShow } from "../../contribution/reducers/show"
+import type { State as UserContributionList } from "../reducers/contributionList"
 
 let load = false
 let tite = ""
@@ -31,8 +32,8 @@ type Props = {
   getDetail: Function,
   delete: Function,
   setContribution: Function,
-  contributionShow: Object,
-  userContributionList: Object,
+  contributionShow: contributionShow,
+  userContributionList: UserContributionList,
   setTitleSearch: Function,
   setViewStatus: Function,
   init: Function,

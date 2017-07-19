@@ -1,18 +1,27 @@
 // @flow
-import PropTypes from "prop-types"
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
 import { Button, ButtonGroup, Well, Glyphicon, Collapse } from "react-bootstrap"
 import { Link as Footer } from "../../../component/footer/"
 import ContributionShowFrame from "../components/show/frame"
 import { Combination } from "../../../component/contribution/list/"
+import type { State as ContributionList } from "../reducers/list"
 
 const VIEW_PAGE_LIMIT = 10
+
+type Props = {
+  contributionList: ContributionList,
+  getList: Function,
+  next: Function,
+  addItem: Function,
+  deleteItem: Function
+}
 
 export default class List extends Component {
   componentWillMount() {
     this.getList(true)
   }
+  props: Props
   /**
    * リストを取得する
    *
@@ -139,12 +148,4 @@ export default class List extends Component {
       </div>
     )
   }
-}
-
-List.propTypes = {
-  contributionList: PropTypes.object,
-  getList: PropTypes.func,
-  next: PropTypes.func,
-  addItem: PropTypes.func,
-  deleteItem: PropTypes.func
 }

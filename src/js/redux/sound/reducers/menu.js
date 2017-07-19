@@ -2,7 +2,7 @@
 import * as types from "../../../constants/ActionTypes"
 import { STATUS_RUNNING } from "../../../constants/contribution"
 
-type State = {
+export type State = {
   open: boolean,
   openUpload: boolean,
   making: boolean,

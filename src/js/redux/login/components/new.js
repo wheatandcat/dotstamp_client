@@ -1,12 +1,19 @@
 // @flow
-import PropTypes from "prop-types"
 import React, { Component } from "react"
 import { PageHeader, Alert, Col, Grid, Row } from "react-bootstrap"
 import { PASSWORD_LENGTH_MIN } from "../../../constants/common"
 import { Hello, NewInput } from "../../../component/login/"
+import type { State as LoginNew } from "../reducers/new"
+
+type Props = {
+  new: Function,
+  open: Function,
+  loginNew: LoginNew,
+  alert: Function
+}
 
 export default class New extends Component {
-  componentWillMount() {}
+  props: Props
   /**
    * 新規登録する
    */
@@ -67,11 +74,4 @@ export default class New extends Component {
       </div>
     )
   }
-}
-
-New.propTypes = {
-  new: PropTypes.func,
-  open: PropTypes.func,
-  loginNew: PropTypes.object,
-  alert: PropTypes.func
 }

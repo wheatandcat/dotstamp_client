@@ -1,5 +1,4 @@
 // @flow
-import PropTypes from "prop-types"
 import React, { Component } from "react"
 import {
   Glyphicon,
@@ -14,6 +13,14 @@ import {
 } from "react-bootstrap"
 import { Link as Footer } from "../../../component/footer/"
 import { Required } from "../../../../css/common.css"
+import type { State as QuestionShow } from "../reducers/show"
+
+type Props = {
+  add: Function,
+  init: Function,
+  questionShow: QuestionShow
+}
+
 export default class Show extends Component {
   inputEmail: {
     value: ""
@@ -24,6 +31,7 @@ export default class Show extends Component {
   componentWillMount() {
     this.props.init()
   }
+  props: Props
   /**
    * 追加する
    */
@@ -101,10 +109,4 @@ export default class Show extends Component {
       </div>
     )
   }
-}
-
-Show.propTypes = {
-  add: PropTypes.func,
-  init: PropTypes.func,
-  questionShow: PropTypes.object
 }

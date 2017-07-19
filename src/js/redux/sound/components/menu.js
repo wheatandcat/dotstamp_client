@@ -21,6 +21,8 @@ import { NoSpace } from "../../../../css/common.css"
 import { getTopUrl } from "../../../utils/common"
 import { Form } from "../../../component/youtube/"
 import { Link } from "react-router-dom"
+import type { State as SoundShow } from "../reducers/show"
+import type { State as SoundMenu } from "../reducers/menu"
 
 let self
 window.document.getElementById("uploadToken").onchange = function() {
@@ -33,8 +35,8 @@ window.document.getElementById("uploadToken").onchange = function() {
 }
 
 type Props = {
-  soundShow: Object,
-  soundMenu: Object,
+  soundShow: SoundShow,
+  soundMenu: SoundMenu,
   userContributionId: string,
   make: Function,
   makingMovie: Function,

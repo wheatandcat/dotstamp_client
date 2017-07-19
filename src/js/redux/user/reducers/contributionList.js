@@ -2,7 +2,7 @@
 import * as types from "../../../constants/ActionTypes"
 import { VIEW_STATUS_PRIVATE } from "../../../constants/contribution"
 
-type State = {
+export type State = {
   contributionId: number,
   all: Array<*>,
   list: Array<*>,

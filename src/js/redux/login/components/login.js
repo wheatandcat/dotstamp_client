@@ -1,10 +1,14 @@
 // @flow
-import PropTypes from "prop-types"
 import React, { Component } from "react"
 import { Glyphicon, PageHeader, Col, Grid, Row } from "react-bootstrap"
 import { Hello, LoginInput } from "../../../component/login/"
 
+type Props = {
+  loginCheck: Function
+}
+
 export default class Login extends Component {
+  props: Props
   /**
    * ログインする
    */
@@ -37,8 +41,4 @@ export default class Login extends Component {
       </div>
     )
   }
-}
-
-Login.propTypes = {
-  loginCheck: PropTypes.func
 }

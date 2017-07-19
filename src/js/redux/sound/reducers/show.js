@@ -9,7 +9,7 @@ import {
   STATUS_RUNNING
 } from "../../../constants/contribution"
 
-type State = {
+export type State = {
   list: Array<*>,
   hash: string,
   makeMovie: boolean,

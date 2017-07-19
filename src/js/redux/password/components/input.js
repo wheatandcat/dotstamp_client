@@ -1,9 +1,15 @@
 // @flow
-import PropTypes from "prop-types"
 import React, { Component } from "react"
 import { Input as Form } from "../../../component/password/"
+import type { State as PasswordInput } from "../reducers/input"
+
+type Props = {
+  add: Function,
+  passwordInput: PasswordInput
+}
 
 export default class Input extends Component {
+  props: Props
   add(email: string) {
     this.props.add({
       email
@@ -21,9 +27,4 @@ export default class Input extends Component {
       />
     )
   }
-}
-
-Input.propTypes = {
-  add: PropTypes.func,
-  passwordInput: PropTypes.object
 }

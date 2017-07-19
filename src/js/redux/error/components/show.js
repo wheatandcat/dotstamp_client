@@ -1,5 +1,4 @@
 // @flow
-import PropTypes from "prop-types"
 import React, { Component } from "react"
 import {
   Collapse,
@@ -10,10 +9,20 @@ import {
   FormControl,
   FormGroup
 } from "react-bootstrap"
+import type { State as ErrorShow } from "../reducers/show"
+
+type Props = {
+  errorShow: ErrorShow,
+  closeError: Function,
+  openBugReport: Function,
+  addBugReport: Function
+}
+
 export default class Show extends Component {
   input: {
     value: ""
   }
+  props: Props
   /**
    * 閉じる
    */
@@ -97,11 +106,4 @@ export default class Show extends Component {
       </Modal>
     )
   }
-}
-
-Show.propTypes = {
-  errorShow: PropTypes.object,
-  closeError: PropTypes.func,
-  openBugReport: PropTypes.func,
-  addBugReport: PropTypes.func
 }

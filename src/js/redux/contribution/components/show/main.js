@@ -1,5 +1,4 @@
 // @flow
-import PropTypes from "prop-types"
 import React, { Component } from "react"
 import ContributionShowFrame from "./frame"
 import { Link as Footer } from "../../../../component/footer/"
@@ -8,6 +7,26 @@ import {
   Follow,
   Problem
 } from "../../../../component/contribution/show/"
+import type { State as ContributionShow } from "../../reducers/show"
+import type { State as LoginAuth } from "../../../login/reducers/auth"
+
+type Props = {
+  match: {
+    params: {
+      id: number
+    }
+  },
+  params: Object,
+  getDetail: Function,
+  contributionShow: ContributionShow,
+  addFollow: Function,
+  deleteFollow: Function,
+  openProblem: Function,
+  closeProblem: Function,
+  setProblemType: Function,
+  addProblem: Function,
+  loginAuth: LoginAuth
+}
 
 export default class Main extends Component {
   componentWillMount() {
@@ -17,6 +36,7 @@ export default class Main extends Component {
 
     this.getDetail(this.getID())
   }
+  props: Props
   getID() {
     if (this.props.match == undefined) {
       return this.props.params.id
@@ -104,18 +124,4 @@ export default class Main extends Component {
       </div>
     )
   }
-}
-
-Main.propTypes = {
-  match: PropTypes.object,
-  params: PropTypes.object,
-  getDetail: PropTypes.func,
-  contributionShow: PropTypes.object,
-  addFollow: PropTypes.func,
-  deleteFollow: PropTypes.func,
-  openProblem: PropTypes.func,
-  closeProblem: PropTypes.func,
-  setProblemType: PropTypes.func,
-  addProblem: PropTypes.func,
-  loginAuth: PropTypes.object
 }

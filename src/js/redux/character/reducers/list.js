@@ -15,7 +15,7 @@ type Icon = {
   select: number
 }
 
-type State = {
+export type State = {
   list: Array<Character>,
   icon: Icon,
   load: boolean,

@@ -1,12 +1,27 @@
 // @flow
-import PropTypes from "prop-types"
 import React, { Component } from "react"
 import FormHeader from "../containers/form/header"
+import type { State as ContributionEdit } from "../reducers/edit"
+import type { State as ContributionTalk } from "../reducers/talk"
+
+type Props = {
+  match: {
+    params: {
+      id: number
+    }
+  },
+  contributionEdit: ContributionEdit,
+  contributionTalk: ContributionTalk,
+  getDetail: Function,
+  setCharacterImageList: Function,
+  changeCharacter: Function
+}
 
 export default class Edit extends Component {
   componentWillMount() {
     this.edit(this.props.match.params.id)
   }
+  props: Props
   /**
    * 編集する
    *
@@ -34,13 +49,4 @@ export default class Edit extends Component {
       />
     )
   }
-}
-
-Edit.propTypes = {
-  match: PropTypes.object,
-  contributionEdit: PropTypes.object,
-  contributionTalk: PropTypes.array,
-  getDetail: PropTypes.func,
-  setCharacterImageList: PropTypes.func,
-  changeCharacter: PropTypes.func
 }

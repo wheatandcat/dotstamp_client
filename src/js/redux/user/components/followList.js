@@ -5,13 +5,19 @@ import { List } from "../../../component/contribution/list"
 import { Center } from "./../../../../css/common.css"
 import Pagination from "../../../utils/parts/pagination"
 import { Link as Footer } from "../../../component/footer/"
+import type { State as UserFollowList } from "../reducers/followList"
 
 type Props = {
-  match: Object,
+  match: {
+    params: {
+      page: number,
+      order: number
+    }
+  },
   history: Object,
   getList: Function,
   paging: Function,
-  userFollowList: Object
+  userFollowList: UserFollowList
 }
 
 export default class FollowList extends Component {

@@ -11,11 +11,12 @@ import {
 } from "react-bootstrap"
 import { LinkContainer } from "react-router-bootstrap"
 import { abridgement } from "../../../utils/common"
+import type { State as LoginAuth } from "../reducers/auth"
 
 type Props = {
   auth: Function,
   logout: Function,
-  loginAuth: Object
+  loginAuth: LoginAuth
 }
 
 export default class Auth extends Component {

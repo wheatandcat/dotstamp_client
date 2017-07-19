@@ -1,13 +1,21 @@
 // @flow
-import PropTypes from "prop-types"
 import React, { Component } from "react"
 import { Link as Footer } from "../../../component/footer/"
 import { Page } from "../../../component/mypage/"
+import type { State as UserMypage } from "../reducers/mypage"
 
+type Props = {
+  getUser: Function,
+  upload: Function,
+  changeUserName: Function,
+  userMypage: UserMypage,
+  save: Function
+}
 export default class Mypage extends Component {
   componentWillMount() {
     this.props.getUser()
   }
+  props: Props
   handleChangeFile(e: Object) {
     const files = e.target.files
     this.uploadFile([files[0]])
@@ -38,12 +46,4 @@ export default class Mypage extends Component {
       </div>
     )
   }
-}
-
-Mypage.propTypes = {
-  getUser: PropTypes.func,
-  upload: PropTypes.func,
-  changeUserName: PropTypes.func,
-  userMypage: PropTypes.object,
-  save: PropTypes.func
 }

@@ -3,7 +3,7 @@ import { DIRECTION_LEFT } from "../actions/talk"
 import * as types from "../../../constants/ActionTypes"
 import { VIEW_STATUS_PUBLIC } from "../../../constants/contribution"
 
-type State = {
+export type State = {
   edit: boolean,
   tag: string,
   tags: Array<*>,

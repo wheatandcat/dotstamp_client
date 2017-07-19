@@ -2,9 +2,10 @@
 import React, { Component } from "react"
 import { Fade, Alert } from "react-bootstrap"
 import { Absolute, FadeMessage } from "./../../../../css/common.css"
+import type { State as MessageShow } from "./../reducers/show"
 
 type Props = {
-  messageShow: Object,
+  messageShow: MessageShow,
   close: Function
 }
 

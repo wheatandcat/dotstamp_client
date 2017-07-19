@@ -1,7 +1,19 @@
 // @flow
-import PropTypes from "prop-types"
 import React, { Component } from "react"
 import { Reset as Form } from "../../../component/password/"
+import type { State as PasswordReset } from "../reducers/reset"
+
+type Props = {
+  match: {
+    params: {
+      email: string,
+      keyword: string
+    }
+  },
+  check: Function,
+  save: Function,
+  passwordReset: PasswordReset
+}
 
 export default class Reset extends Component {
   componentWillMount() {
@@ -10,6 +22,7 @@ export default class Reset extends Component {
       this.props.match.params.keyword
     )
   }
+  props: Props
   render() {
     const { fetch, warning, message } = this.props.passwordReset
 
@@ -24,11 +37,4 @@ export default class Reset extends Component {
       />
     )
   }
-}
-
-Reset.propTypes = {
-  match: PropTypes.object,
-  check: PropTypes.func,
-  save: PropTypes.func,
-  passwordReset: PropTypes.object
 }

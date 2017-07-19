@@ -1,6 +1,6 @@
 // @flow
 import React from "react"
-import ContributionTalk from "../talk/main"
+import ContributionTalk from "../../containers/talk/main"
 
 type Props = {
   list: Array<Object>

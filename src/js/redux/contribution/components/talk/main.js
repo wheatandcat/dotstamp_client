@@ -1,5 +1,4 @@
 // @flow
-import PropTypes from "prop-types"
 import React, { Component } from "react"
 import { TALK_TYPE_IMAGE } from "../../actions/talk"
 import { UPLOAD_FILE_SIZE_MAX } from "../../../../constants/common"
@@ -9,8 +8,20 @@ import {
   EditImage,
   EditText
 } from "./../../../../component/contribution/balloon/"
+import type { State as ContributionEdit } from "./../../reducers/edit"
+
+type Props = {
+  talk: Object,
+  editMode: boolean,
+  deleteBody: Function,
+  setEditBody: Function,
+  contributionEdit: ContributionEdit,
+  alertMessage: Function,
+  upload: Function
+}
 
 export default class Talk extends Component {
+  props: Props
   /**
    * 画像指定を変更の監視する
    *
@@ -130,14 +141,4 @@ export default class Talk extends Component {
       </div>
     )
   }
-}
-
-Talk.propTypes = {
-  talk: PropTypes.object,
-  editMode: PropTypes.bool,
-  deleteBody: PropTypes.func,
-  setEditBody: PropTypes.func,
-  contributionEdit: PropTypes.object,
-  alertMessage: PropTypes.func,
-  upload: PropTypes.func
 }

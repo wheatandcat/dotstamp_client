@@ -1,7 +1,15 @@
 // @flow
-import PropTypes from "prop-types"
 import React, { Component } from "react"
 import FormHeader from "../containers/form/header"
+import type { State as ContributionTalk } from "../reducers/talk"
+
+type Props = {
+  init: Function,
+  contributionTalk: ContributionTalk,
+  setCharacterImageList: Function,
+  changeCharacter: Function,
+  setDefaultList: Function
+}
 
 export default class New extends Component {
   componentWillMount() {
@@ -15,6 +23,7 @@ export default class New extends Component {
       this.props.setDefaultList()
     }
   }
+  props: Props
   /**
    * リストを取得する
    */
@@ -35,12 +44,4 @@ export default class New extends Component {
       />
     )
   }
-}
-
-New.propTypes = {
-  init: PropTypes.func,
-  contributionTalk: PropTypes.array,
-  setCharacterImageList: PropTypes.func,
-  changeCharacter: PropTypes.func,
-  setDefaultList: PropTypes.func
 }

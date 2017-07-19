@@ -2,7 +2,7 @@
 import * as types from "../../../constants/ActionTypes"
 import { VIEW_STATUS_PUBLIC } from "../../../constants/contribution"
 
-type State = {
+export type State = {
   id: ?number,
   title: string,
   body: string,

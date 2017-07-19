@@ -12,6 +12,9 @@ import { Timer } from "../../../../component/contribution/timer"
 import { NewInput as NewTitleInput } from "../../../../component/contribution/title"
 import { formatTime } from "../../../../utils/common"
 import { TALK_TYPE_IMAGE } from "../../actions/talk"
+import type { State as ContributionForm } from "../../reducers/form"
+import type { State as ContributionEdit } from "../../reducers/edit"
+import type { State as ContributionTalk } from "../../reducers/talk"
 import { group, item, tip, timer, preview } from "./styles.css"
 
 let self: Object
@@ -103,10 +106,10 @@ type Props = {
   changeHeight: Function,
   changeTag: Function,
   setViewStatus: Function,
-  contributionForm: Object,
-  contributionEdit: Object,
+  contributionForm: ContributionForm,
+  contributionEdit: ContributionEdit,
   contributionId: number,
-  contributionTalk: Array<*>,
+  contributionTalk: ContributionTalk,
   title: string,
   new: Function,
   save: Function,
@@ -123,7 +126,6 @@ type Props = {
 }
 
 export default class Header extends Component {
-  preview: Object
   componentWillMount() {
     this.props.alertMessageInit()
 
@@ -148,6 +150,7 @@ export default class Header extends Component {
     }
   }
   props: Props
+  preview: Object
   /**
    * スクロール設定する
    */

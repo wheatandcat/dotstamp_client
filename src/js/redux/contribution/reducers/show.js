@@ -2,7 +2,7 @@
 import * as types from "../../../constants/ActionTypes"
 import { PROBLEM_TYPE_SPAM } from "../../../constants/contribution"
 
-type State = {
+export type State = {
   id: number,
   title: string,
   body: Array<*>,

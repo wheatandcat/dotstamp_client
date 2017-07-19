@@ -13,7 +13,9 @@ type Item = {
   edit?: boolean
 }
 
-const initialState: Array<Item> = []
+export type State = Array<Item>
+
+const initialState: State = []
 
 /**
  * 本文追加状態を取得する
