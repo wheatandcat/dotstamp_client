@@ -16,6 +16,6 @@ export default ({ label, onSearch }: Props) =>
     onClick={() => onSearch && onSearch(label, 1, ORDER_TYPE_NEW)}
   >
     <Label bsStyle="info" className={styles.tag}>
-      {label}ああああ
+      {label}
     </Label>
   </Link>
