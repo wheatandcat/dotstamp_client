@@ -36,8 +36,13 @@
       "UPLOAD_PATH": "http://",
       "ENV": "test"
     },
-    "setupFiles": ["./jest-setup.js"],
-    "coveragePathIgnorePatterns": ["/node_modules/", "/jest-setup.js"]
+    "setupFiles": [
+      "./jest-setup.js"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/jest-setup.js"
+    ]
   },
   "repository": {
     "type": "git",
@@ -94,12 +99,12 @@
   "devDependencies": {
     "@kadira/storybook-deployer": "^1.2.0",
     "@personare/react-storybook-decorator-github-corner": "^0.1.5",
-    "@storybook/addon-actions": "^3.1.6",
-    "@storybook/addon-comments": "^3.1.6",
-    "@storybook/addon-knobs": "^3.1.6",
+    "@storybook/addon-actions": "^3.1.9",
+    "@storybook/addon-comments": "^3.1.9",
+    "@storybook/addon-knobs": "^3.1.9",
     "@storybook/addon-options": "^3.1.6",
-    "@storybook/cli": "^3.1.6",
-    "@storybook/react": "^3.1.7",
+    "@storybook/cli": "^3.1.9",
+    "@storybook/react": "^3.1.9",
     "autoprefixer": "^7.1.1",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
@@ -158,7 +163,7 @@
     "precss": "^2.0.0",
     "prettier": "^1.5.2",
     "prettier-eslint": "^6.4.1",
-    "storybook-addon-a11y": "^3.0.0",
+    "storybook-addon-a11y": "^3.1.9",
     "style-loader": "^0.18.2",
     "stylelint": "^7.12.0",
     "stylelint-config-primer": "^1.4.0",
