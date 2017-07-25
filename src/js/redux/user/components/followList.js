@@ -10,8 +10,8 @@ import type { State as UserFollowList } from "../reducers/followList"
 type Props = {
   match: {
     params: {
-      page: number,
-      order: number
+      page: string,
+      order: string
     }
   },
   history: Array<string>,
@@ -22,7 +22,8 @@ type Props = {
 
 export default class FollowList extends Component {
   componentWillMount() {
-    this.getList(this.props.match.params.page, this.props.match.params.order)
+    const { page, order } = this.props.match.params
+    this.getList(Number(page), Number(order))
   }
   props: Props
   /**
