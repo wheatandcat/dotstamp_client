@@ -5,11 +5,11 @@ import { Page } from "../../../component/mypage/"
 import type { State as UserMypage } from "../reducers/mypage"
 
 type Props = {
-  getUser: Function,
-  upload: Function,
-  changeUserName: Function,
+  getUser: () => void,
+  upload: (formData: any) => void,
+  changeUserName: () => void,
   userMypage: UserMypage,
-  save: Function
+  save: ({ name: string }) => void
 }
 export default class Mypage extends Component {
   componentWillMount() {

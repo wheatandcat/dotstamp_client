@@ -1,5 +1,4 @@
 // @flow
-import PropTypes from "prop-types"
 import React, { Component } from "react"
 import HTML5Backend from "react-dnd-html5-backend"
 import { DragDropContext } from "react-dnd"
@@ -7,11 +6,16 @@ import Item from "./item"
 
 let self
 
+type Props = {
+  setTalkList: (talks: Object) => void,
+  talkList: Object
+}
+
 class Board extends Component {
   componentWillMount() {
     self = this
   }
-
+  props: Props
   /**
    * アイテムを移動した
    *
@@ -62,10 +66,6 @@ class Board extends Component {
       </div>
     )
   }
-}
-
-Board.propTypes = {
-  talkList: PropTypes.array
 }
 
 // Appコンポーネントをドラッグ＆ドロップのコンテキストとする

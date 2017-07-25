@@ -4,7 +4,7 @@ import { Input as Form } from "../../../component/password/"
 import type { State as PasswordInput } from "../reducers/input"
 
 type Props = {
-  add: Function,
+  add: ({ email: string }) => void,
   passwordInput: PasswordInput
 }
 

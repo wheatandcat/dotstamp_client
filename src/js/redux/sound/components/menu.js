@@ -37,19 +37,19 @@ window.document.getElementById("uploadToken").onchange = function() {
 type Props = {
   soundShow: SoundShow,
   soundMenu: SoundMenu,
-  userContributionId: string,
-  make: Function,
-  makingMovie: Function,
-  message: Function,
-  reflect: Function,
-  open: Function,
-  close: Function,
-  uploading: Function,
-  openUpload: Function,
-  closeUpload: Function,
-  upload: Function,
-  openInformation: Function,
-  closeInformation: Function
+  userContributionId: number,
+  make: (id: number) => void,
+  makingMovie: () => void,
+  message: (message: string, type: string) => void,
+  reflect: ({ userContributionId: number, overwrite: boolean }) => void,
+  open: () => void,
+  close: () => void,
+  uploading: () => void,
+  openUpload: () => void,
+  closeUpload: () => void,
+  upload: (id: number) => void,
+  openInformation: () => void,
+  closeInformation: () => void
 }
 
 export default class Menu extends Component {
@@ -72,8 +72,8 @@ export default class Menu extends Component {
     this.props.message("記事の内容を反映中です", "success")
   }
   /**
-     * 作成する
-     */
+   * 作成する
+   */
   make() {
     this.props.makingMovie()
     this.props.close()

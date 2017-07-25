@@ -37,16 +37,26 @@ window.addEventListener("keydown", event => {
 })
 
 type Props = {
-  changeBody: Function,
-  addBody: Function,
-  changeCharacter: Function,
+  changeBody: (vol: string) => void,
+  addBody: (
+    body: string,
+    character: Object,
+    directionType: number,
+    talkType: number
+  ) => void,
+  changeCharacter: (id: number) => void,
   contributionForm: ContributionForm,
   characterList: CharacterList,
-  editBody: Function,
-  upload: Function,
+  editBody: (
+    body: string,
+    character: Object,
+    directionType: number,
+    priority: number
+  ) => void,
+  upload: (urlParam: string, formData: any, params: any) => void,
   contributionId: number,
-  alertMessage: Function,
-  cancelEdit: Function
+  alertMessage: (message: string) => void,
+  cancelEdit: () => void
 }
 
 export default class Main extends Component {
@@ -82,7 +92,7 @@ export default class Main extends Component {
         body,
         this.props.contributionForm.character,
         this.props.contributionForm.directionType,
-        this.props.contributionForm.priority
+        Number(this.props.contributionForm.priority)
       )
     }
 
@@ -145,7 +155,7 @@ export default class Main extends Component {
       contributionId = 0
     }
 
-    this.props.upload(`?userContributionId=${contributionId}`, formData, {
+    this.props.upload(`?id=${contributionId}`, formData, {
       character: this.props.contributionForm.character,
       directionType: this.props.contributionForm.directionType,
       talkType: TALK_TYPE_IMAGE

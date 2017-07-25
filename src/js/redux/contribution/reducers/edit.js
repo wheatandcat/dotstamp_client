@@ -42,8 +42,8 @@ export default function Edit(state: State = initialState, action: any) {
       state.viewStatus = action.response.viewStatus
       state.saveData.title = action.response.title
       state.saveData.body = JSON.stringify(action.response.body)
-      state.sound = action.response.Sound
-      state.soundFile = action.response.SoundFile
+      state.sound = action.response.sound
+      state.soundFile = action.response.soundFile
 
       return JSON.parse(JSON.stringify(state))
     }

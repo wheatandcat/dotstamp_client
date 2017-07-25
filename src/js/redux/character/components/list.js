@@ -22,15 +22,15 @@ import type { State as CharacterList } from "../reducers/list"
 
 type Props = {
   characterList: CharacterList,
-  setIcon: Function,
-  getList: Function,
-  delete: Function,
-  upload: Function,
-  save: Function,
-  init: Function,
-  alertMessage: Function,
-  alertMessageInit: Function,
-  setVoiceType: Function
+  setIcon: (iconId: number) => void,
+  getList: () => void,
+  delete: () => void,
+  upload: (formData: any) => void,
+  save: ({ id: number, voiceType: number }) => void,
+  init: () => void,
+  alertMessage: (msg: string) => void,
+  alertMessageInit: () => void,
+  setVoiceType: () => void
 }
 
 export default class List extends Component {

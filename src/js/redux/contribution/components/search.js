@@ -22,11 +22,22 @@ import { List } from "../../../component/contribution/list"
 import type { State as ContributionSearch } from "../reducers/search"
 
 type Props = {
-  match: Object,
+  match: {
+    params: {
+      search: string,
+      order: string,
+      page: string
+    }
+  },
   contributionSearch: ContributionSearch,
-  search: Function,
-  paging: Function,
-  setOrder: Function
+  search: ({
+    search: string,
+    order: number,
+    page: number,
+    limit: number
+  }) => void,
+  paging: (search: string, order: number, page: number) => void,
+  setOrder: () => void
 }
 
 let tmpSearch = ""
@@ -38,8 +49,8 @@ export default class Search extends Component {
   componentWillMount() {
     const { search, order, page } = this.props.match.params
 
-    this.search(search, order, page)
-    this.props.paging(search, order, page)
+    this.search(search, Number(order), Number(page))
+    this.props.paging(search, Number(order), Number(page))
   }
   props: Props
   /**

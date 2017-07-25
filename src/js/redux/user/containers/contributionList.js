@@ -33,7 +33,7 @@ function mapDispatchToProps(dispatch) {
     getList: () => {
       dispatch(
         fetchPostsIfNeeded(
-          "/users/contribution/list/",
+          "users/contribution/list/",
           types.GET_USER_CONTRBUTION_LIST,
           { order: 1 }
         )

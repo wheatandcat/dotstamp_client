@@ -101,28 +101,38 @@ window.onbeforeunload = function() {
   }
 }
 
+type Data = {
+  userContributionId: number,
+  title: string,
+  tag: string,
+  body: string,
+  viewStatus: number
+}
+
 type Props = {
-  changeTitle: Function,
-  changeHeight: Function,
-  changeTag: Function,
-  setViewStatus: Function,
+  changeTitle: (title: string) => void,
+  changeHeight: (innerHeight: number) => void,
+  changeTag: () => void,
+  setViewStatus: () => void,
   contributionForm: ContributionForm,
   contributionEdit: ContributionEdit,
   contributionId: number,
   contributionTalk: ContributionTalk,
   title: string,
-  new: Function,
-  save: Function,
-  addTag: Function,
-  deleteTag: Function,
-  alertMessage: Function,
-  alertMessageInit: Function,
-  addSound: Function,
-  openHelp: Function,
-  closeHelp: Function,
-  message: Function,
-  sound: Object,
-  soundlength: Function
+  new: Data => void,
+  save: (val1: Data, val2: Data) => void,
+  addTag: ({ userContributionId: number, name: string }) => void,
+  deleteTag: ({ userContributionId: number, id: number }) => void,
+  alertMessage: (mes: string) => void,
+  alertMessageInit: () => void,
+  addSound: ({ userContributionId: number }) => void,
+  openHelp: () => void,
+  closeHelp: () => void,
+  message: (message: string, type: string) => void,
+  sound: {
+    character: number
+  },
+  soundlength: () => void
 }
 
 export default class Header extends Component {

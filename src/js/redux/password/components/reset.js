@@ -10,8 +10,8 @@ type Props = {
       keyword: string
     }
   },
-  check: Function,
-  save: Function,
+  check: (email: string, keyword: string) => void,
+  save: () => void,
   passwordReset: PasswordReset
 }
 

@@ -36,7 +36,7 @@ export default function ContributionList(
     }
     case types.GET_USER_CONTRBUTION_LIST: {
       if (!state.load) {
-        state.list = action.response.privteList
+        state.list = action.response.privtes
         if (Array.isArray(state.list) && state.list.length > 0) {
           state.contributionId = state.list[0].id
         }

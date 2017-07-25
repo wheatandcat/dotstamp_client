@@ -16,8 +16,8 @@ import { Required } from "../../../../css/common.css"
 import type { State as QuestionShow } from "../reducers/show"
 
 type Props = {
-  add: Function,
-  init: Function,
+  add: ({ email: string, body: string }) => void,
+  init: () => void,
   questionShow: QuestionShow
 }
 

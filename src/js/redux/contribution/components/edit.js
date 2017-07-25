@@ -12,9 +12,8 @@ type Props = {
   },
   contributionEdit: ContributionEdit,
   contributionTalk: ContributionTalk,
-  getDetail: Function,
-  setCharacterImageList: Function,
-  changeCharacter: Function
+  getDetail: (id: number) => void,
+  setCharacterImageList: () => void
 }
 
 export default class Edit extends Component {

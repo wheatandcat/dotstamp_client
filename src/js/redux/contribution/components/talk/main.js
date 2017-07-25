@@ -11,13 +11,25 @@ import {
 import type { State as ContributionEdit } from "./../../reducers/edit"
 
 type Props = {
-  talk: Object,
+  talk: {
+    priority: number,
+    body: string,
+    character: Object,
+    directionType: number,
+    talkType: number
+  },
   editMode: boolean,
-  deleteBody: Function,
-  setEditBody: Function,
+  deleteBody: (priority: number) => void,
+  setEditBody: (
+    priority: number,
+    body: string,
+    character: Object,
+    directionType: number,
+    talkType: number
+  ) => void,
   contributionEdit: ContributionEdit,
-  alertMessage: Function,
-  upload: Function
+  alertMessage: (message: string) => void,
+  upload: (urlParam: string, formData: any, params: any) => void
 }
 
 export default class Talk extends Component {
@@ -55,11 +67,7 @@ export default class Talk extends Component {
       contributionId = 0
     }
 
-    this.props.upload(
-      `?userContributionId=${contributionId}`,
-      formData,
-      this.props.talk
-    )
+    this.props.upload(`?id=${contributionId}`, formData, this.props.talk)
   }
   /**
    * 本文を削除する

@@ -28,17 +28,17 @@ let load = false
 let tite = ""
 
 type Props = {
-  getList: Function,
-  getDetail: Function,
-  delete: Function,
-  setContribution: Function,
+  getList: () => void,
+  getDetail: (id: number) => void,
+  delete: (id: number) => void,
+  setContribution: (id: number) => void,
   contributionShow: contributionShow,
   userContributionList: UserContributionList,
-  setTitleSearch: Function,
-  setViewStatus: Function,
-  init: Function,
-  closeDeleteConfirm: Function,
-  openDeleteConfirm: Function
+  setTitleSearch: (list: Array<*>) => void,
+  setViewStatus: (status: number) => void,
+  init: () => void,
+  closeDeleteConfirm: () => void,
+  openDeleteConfirm: () => void
 }
 
 export default class ContributionList extends Component {

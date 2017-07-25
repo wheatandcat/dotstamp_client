@@ -6,7 +6,7 @@ import type { State as MessageShow } from "./../reducers/show"
 
 type Props = {
   messageShow: MessageShow,
-  close: Function
+  close: () => void
 }
 
 export default class Show extends Component {

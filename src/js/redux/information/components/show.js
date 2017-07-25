@@ -15,7 +15,7 @@ import { LinkContainer } from "react-router-bootstrap"
 import type { State as InformationShow } from "../reducers/show"
 
 type Props = {
-  get: Function,
+  get: (file: string) => void,
   match: {
     params: {
       file: string

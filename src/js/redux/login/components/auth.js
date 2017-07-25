@@ -14,8 +14,8 @@ import { abridgement } from "../../../utils/common"
 import type { State as LoginAuth } from "../reducers/auth"
 
 type Props = {
-  auth: Function,
-  logout: Function,
+  auth: () => void,
+  logout: () => void,
   loginAuth: LoginAuth
 }
 

@@ -11,10 +11,10 @@ const VIEW_PAGE_LIMIT = 10
 
 type Props = {
   contributionList: ContributionList,
-  getList: Function,
-  next: Function,
-  addItem: Function,
-  deleteItem: Function
+  getList: ({ order: number }, { init: boolean }) => void,
+  next: () => void,
+  addItem: () => void,
+  deleteItem: () => void
 }
 
 export default class List extends Component {

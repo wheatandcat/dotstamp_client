@@ -6,10 +6,10 @@ import { Hello, NewInput } from "../../../component/login/"
 import type { State as LoginNew } from "../reducers/new"
 
 type Props = {
-  new: Function,
-  open: Function,
+  new: ({ email: string, password: string }) => void,
+  open: () => void,
   loginNew: LoginNew,
-  alert: Function
+  alert: (mag: string) => void
 }
 
 export default class New extends Component {

@@ -16,15 +16,17 @@ type Props = {
       id: number
     }
   },
-  params: Object,
-  getDetail: Function,
+  params: {
+    id: number
+  },
+  getDetail: (id: number) => void,
   contributionShow: ContributionShow,
-  addFollow: Function,
-  deleteFollow: Function,
-  openProblem: Function,
-  closeProblem: Function,
-  setProblemType: Function,
-  addProblem: Function,
+  addFollow: (id: number) => void,
+  deleteFollow: (id: number) => void,
+  openProblem: () => void,
+  closeProblem: () => void,
+  setProblemType: () => void,
+  addProblem: ({ userContributionId: number, type: number }) => void,
   loginAuth: LoginAuth
 }
 

@@ -90,7 +90,7 @@ function mapDispatchToProps(dispatch) {
         fetchPostsIfNeeded(
           `sounds/${action.userContributionId}`,
           types.ADD_CONTRIBUTION_FORM_SOUND,
-          action,
+          null,
           action
         )
       )

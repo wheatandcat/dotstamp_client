@@ -14,9 +14,9 @@ type Props = {
       order: number
     }
   },
-  history: Object,
-  getList: Function,
-  paging: Function,
+  history: Array<string>,
+  getList: ({ page: number, order: number, limit: number }) => void,
+  paging: (page: number, order: number) => void,
   userFollowList: UserFollowList
 }
 

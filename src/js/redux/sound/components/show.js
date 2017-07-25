@@ -43,18 +43,21 @@ type Props = {
       id: number
     }
   },
-  getDetail: Function,
+  getDetail: (id: number) => void,
   soundShow: SoundShow,
-  changeBodySound: Function,
-  changeVoiceType: Function,
-  saveBodySound: Function,
-  saveVoiceType: Function,
-  offMovieMakeListener: Function,
-  openVoiceList: Function,
-  closeVoiceList: Function,
-  saveVoiceTypeList: Function,
-  check: Function,
-  message: Function
+  changeBodySound: (priority: number, bodySound: string) => void,
+  changeVoiceType: (priority: number, voiceType: number) => void,
+  saveBodySound: ({ id: number, body: string, priority: number }) => void,
+  saveVoiceType: ({ id: number, voiceType: number, priority: number }) => void,
+  offMovieMakeListener: () => void,
+  openVoiceList: () => void,
+  closeVoiceList: () => void,
+  saveVoiceTypeList: ({
+    userContributionId: number,
+    voiceType: number
+  }) => void,
+  check: (id: number) => void,
+  message: (val: string, type: string) => void
 }
 
 export default class Show extends Component {
@@ -97,7 +100,7 @@ export default class Show extends Component {
    */
   changeBodySound(e: Object) {
     this.props.changeBodySound(
-      e.target.id.replace("body_sound-", ""),
+      Number(e.target.id.replace("body_sound-", "")),
       e.target.value
     )
   }
@@ -108,11 +111,11 @@ export default class Show extends Component {
    */
   setVoiceType(voiceType: string) {
     const tmp = voiceType.split("_")
-    this.props.changeVoiceType(tmp[0], tmp[1])
+    this.props.changeVoiceType(Number(tmp[0]), Number(tmp[1]))
     this.props.saveVoiceType({
-      id: tmp[2],
-      voice_type: tmp[1],
-      priority: tmp[0]
+      id: Number(tmp[2]),
+      voiceType: Number(tmp[1]),
+      priority: Number(tmp[0])
     })
 
     this.props.message("保存しました", "success")
@@ -257,8 +260,8 @@ export default class Show extends Component {
    */
   saveVoiceTypeList() {
     this.props.saveVoiceTypeList({
-      userContributionId: this.props.match.params.id,
-      voiceType: this.selectVoice.value
+      userContributionId: Number(this.props.match.params.id),
+      voiceType: Number(this.selectVoice.value)
     })
 
     this.props.message("音声タイプの一括変更を実行", "success")

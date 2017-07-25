@@ -4,11 +4,10 @@ import FormHeader from "../containers/form/header"
 import type { State as ContributionTalk } from "../reducers/talk"
 
 type Props = {
-  init: Function,
+  init: (init: boolean) => void,
   contributionTalk: ContributionTalk,
-  setCharacterImageList: Function,
-  changeCharacter: Function,
-  setDefaultList: Function
+  setCharacterImageList: () => void,
+  setDefaultList: () => void
 }
 
 export default class New extends Component {

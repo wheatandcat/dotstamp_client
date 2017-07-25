@@ -13,9 +13,9 @@ import type { State as ErrorShow } from "../reducers/show"
 
 type Props = {
   errorShow: ErrorShow,
-  closeError: Function,
-  openBugReport: Function,
-  addBugReport: Function
+  closeError: () => void,
+  openBugReport: () => void,
+  addBugReport: ({ body: string }) => void
 }
 
 export default class Show extends Component {

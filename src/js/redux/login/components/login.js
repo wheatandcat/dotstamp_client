@@ -4,7 +4,7 @@ import { Glyphicon, PageHeader, Col, Grid, Row } from "react-bootstrap"
 import { Hello, LoginInput } from "../../../component/login/"
 
 type Props = {
-  loginCheck: Function
+  loginCheck: ({ email: string, password: string }) => void
 }
 
 export default class Login extends Component {

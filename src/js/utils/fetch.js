@@ -100,7 +100,8 @@ function fetchGets(url: string, type: string, receiveParam: Object) {
     method: "GET",
     credentials: "same-origin",
     headers: {
-      "Content-Type": "pplication/json"
+      Accept: "application/json",
+      "Content-Type": "application/json"
     }
   }
 
@@ -156,7 +157,8 @@ function fetchDelete(url: string, type: string, receiveParam: Object) {
     method: "DELETE",
     credentials: "same-origin",
     headers: {
-      "Content-Type": "pplication/json"
+      Accept: "application/json",
+      "Content-Type": "application/json"
     }
   }
 
@@ -218,9 +220,10 @@ function fetchPosts(
     method: "POST",
     credentials: "same-origin",
     headers: {
-      "Content-Type": "application/x-www-form-urlencoded"
+      Accept: "application/json",
+      "Content-Type": "application/json"
     },
-    body: Object.keys(paramas).map(key => `${key}=${paramas[key]}`).join("&")
+    body: JSON.stringify(paramas)
   }
 
   return dispatch =>
@@ -284,9 +287,10 @@ function fetchPuts(
     method: "PUT",
     credentials: "same-origin",
     headers: {
-      "Content-Type": "application/x-www-form-urlencoded"
+      Accept: "application/json",
+      "Content-Type": "application/json"
     },
-    body: Object.keys(paramas).map(key => `${key}=${paramas[key]}`).join("&")
+    body: JSON.stringify(paramas)
   }
 
   return dispatch =>
