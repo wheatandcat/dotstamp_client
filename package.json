@@ -36,8 +36,13 @@
       "UPLOAD_PATH": "http://",
       "ENV": "test"
     },
-    "setupFiles": ["./jest-setup.js"],
-    "coveragePathIgnorePatterns": ["/node_modules/", "/jest-setup.js"]
+    "setupFiles": [
+      "./jest-setup.js"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/jest-setup.js"
+    ]
   },
   "repository": {
     "type": "git",
@@ -165,7 +170,7 @@
     "stylelint-config-standard": "^17.0.0",
     "stylelint-webpack-plugin": "^0.9.0",
     "watchify": "^3.7.0",
-    "webpack": "^2.6.1",
+    "webpack": "^3.4.0",
     "webpack-babel-jest": "^1.0.4",
     "webpack-dev-server": "^2.6.1",
     "webpack-hot-middleware": "^2.18.2"
