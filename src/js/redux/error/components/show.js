@@ -24,12 +24,6 @@ export default class Show extends Component {
   }
   props: Props
   /**
-   * 閉じる
-   */
-  close() {
-    this.props.closeError()
-  }
-  /**
    * バグ報告を追加する
    */
   addBugReport() {
@@ -39,13 +33,6 @@ export default class Show extends Component {
     }
 
     this.props.addBugReport({ body: val })
-  }
-  getBugReported() {
-    if (!this.props.errorShow.BugReported) {
-      return ""
-    }
-
-    return <Alert bsStyle="success">不具合報告しました。ご協力ありがとうございます。</Alert>
   }
   /**
    * 描画する
@@ -61,7 +48,7 @@ export default class Show extends Component {
     }
 
     return (
-      <Modal show={show} onHide={() => this.close()}>
+      <Modal show={show} onHide={() => this.props.closeError()}>
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-lg">Error!!</Modal.Title>
         </Modal.Header>
@@ -73,7 +60,7 @@ export default class Show extends Component {
           </Alert>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={() => this.close()}>Close</Button>
+          <Button onClick={() => this.props.closeError()}>Close</Button>
           <br />
           <br />
           <Button
@@ -101,7 +88,12 @@ export default class Show extends Component {
               </Button>
             </Well>
           </Collapse>
-          <br /> {this.getBugReported()}
+          <br />
+          {(() => {
+            const val = this.input.value.trim()
+            if (val != "")
+              return <Alert bsStyle="success">不具合報告しました。ご協力ありがとうございます。</Alert>
+          })()}
         </Modal.Footer>
       </Modal>
     )

@@ -6,9 +6,9 @@ import TalkBoard from "../../containers/talk/board"
 import AlertMessage from "../../../error/containers/alertMessage"
 import MessageSow from "../../../message/containers/show"
 import { Guide } from "../../../../component/contribution/help"
-import { NewInput, AddForm } from "../../../../component/tag"
 import { Status, Sound } from "../../../../component/contribution/viewStatus"
 import { Timer } from "../../../../component/contribution/timer"
+import { Tags } from "../../../../component/contribution/header"
 import { NewInput as NewTitleInput } from "../../../../component/contribution/title"
 import { formatTime } from "../../../../utils/common"
 import { TALK_TYPE_IMAGE } from "../../actions/talk"
@@ -242,24 +242,6 @@ export default class Header extends Component {
     })
   }
   /**
-   * タグを取得する
-   *
-   * @return {object} html
-   */
-  getTag() {
-    if (this.props.contributionId == null) {
-      return <NewInput onTag={this.props.changeTag.bind(this)} />
-    }
-
-    return (
-      <AddForm
-        tags={this.props.contributionForm.tags}
-        onAdd={this.addTag.bind(this)}
-        onDelete={this.deleteTag.bind(this)}
-      />
-    )
-  }
-  /**
    * ボードスタイルを取得する
    *
    * @return {object} スタイル
@@ -303,7 +285,13 @@ export default class Header extends Component {
               defaultValue={title}
               onTitle={this.props.changeTitle.bind(this)}
             />
-            {this.getTag()}
+            <Tags
+              contributionId={this.props.contributionId}
+              tags={this.props.contributionForm.tags}
+              add={this.addTag.bind(this)}
+              remove={this.deleteTag.bind(this)}
+              change={this.props.changeTag.bind(this)}
+            />
             <div>
               <Status
                 viewStatus={viewStatus}
