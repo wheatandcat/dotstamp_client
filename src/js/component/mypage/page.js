@@ -15,10 +15,10 @@ import styles from "./styles.css"
 
 type Props = {
   imageID: number,
-  onChangeImage: Function,
+  onChangeImage: (e: Object) => void,
   name: string,
-  onChangeeName: Function,
-  onSave: Function
+  onChangeeName: () => void,
+  onSave: () => void
 }
 
 export default ({

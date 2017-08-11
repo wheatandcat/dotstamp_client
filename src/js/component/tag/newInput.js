@@ -3,13 +3,15 @@ import React, { Component } from "react"
 import { FormGroup, FormControl } from "react-bootstrap"
 
 type Props = {
-  onTag: Function
+  onTag: (label: string) => void
 }
 
 export default class NewInput extends Component {
   props: Props
 
-  label: Object
+  label: {
+    value: string
+  }
 
   tag() {
     this.props.onTag(this.label.value)

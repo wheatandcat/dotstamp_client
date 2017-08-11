@@ -4,7 +4,7 @@ import { Modal, Panel, Table, Button } from "react-bootstrap"
 
 type Props = {
   open: boolean,
-  onHide: Function
+  onHide: () => void
 }
 
 export default ({ open, onHide }: Props) =>

@@ -13,7 +13,7 @@ import styles from "./styles.css"
 
 type Props = {
   imageID: number,
-  onChange: Function
+  onChange: (e: Object) => void
 }
 
 export default class ProfileImage extends Component {

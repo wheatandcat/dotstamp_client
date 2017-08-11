@@ -11,7 +11,7 @@ import {
 import { Link } from "react-router-dom"
 
 type Props = {
-  onSave: Function,
+  onSave: ({ email: string, keyword: string, password: string }) => void,
   email: string,
   keyword: string,
   success: boolean,
@@ -22,7 +22,9 @@ type Props = {
 export default class Reset extends Component {
   props: Props
 
-  password: Object
+  password: {
+    value: string
+  }
   save() {
     this.props.onSave({
       email: this.props.email,

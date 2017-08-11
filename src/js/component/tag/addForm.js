@@ -5,16 +5,23 @@ import { AddInput } from "./"
 import styles from "./styles.css"
 const TAG_MAX_NUMBER = 10
 
+type Tag = {
+  id: number,
+  name: string
+}
+
 type Props = {
-  tags: Array<Object>,
-  onAdd: Function,
-  onDelete: Function
+  tags: Array<Tag>,
+  onAdd: () => void,
+  onDelete: (id: number) => void
 }
 
 export default class AddForm extends Component {
   props: Props
 
-  label: Object
+  label: {
+    value: string
+  }
   input() {
     const { tags, onAdd } = this.props
 

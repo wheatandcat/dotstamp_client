@@ -11,7 +11,7 @@ import {
 } from "react-bootstrap"
 
 type Props = {
-  onAdd: Function,
+  onAdd: (email: string) => void,
   success: boolean,
   warning: boolean,
   message: string
@@ -38,7 +38,9 @@ const reports = (success: boolean, warning: boolean, message: string) => {
 export default class Input extends Component {
   props: Props
 
-  email: Object
+  email: {
+    value: string
+  }
 
   render() {
     return (

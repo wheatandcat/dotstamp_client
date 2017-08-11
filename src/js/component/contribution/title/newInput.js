@@ -4,7 +4,7 @@ import { FormGroup, FormControl } from "react-bootstrap"
 
 type Props = {
   defaultValue?: string,
-  onTitle: Function
+  onTitle: (lable: string) => void
 }
 
 export default class NewInput extends Component {

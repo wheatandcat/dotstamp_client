@@ -6,7 +6,7 @@ type DefaultProps = { name: string }
 
 type Props = {
   name: string,
-  onChange: Function
+  onChange: (name: string) => void
 }
 
 type State = {
@@ -18,7 +18,10 @@ export default class UserName extends Component<DefaultProps, Props, State> {
   state = { name: "" }
   props: Props
 
-  name: Object
+  name: {
+    value: string
+  }
+
   change() {
     this.props.onChange(this.name.value)
     this.setState({ name: this.name.value })

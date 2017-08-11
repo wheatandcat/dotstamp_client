@@ -36,13 +36,12 @@
       "UPLOAD_PATH": "http://",
       "ENV": "test"
     },
-    "setupFiles": [
-      "./jest-setup.js"
+    "setupFiles": ["./jest-setup.js"],
+    "collectCoverageFrom": [
+      "src/js/{component}/**/*.js",
+      "!src/js/**/{index,stories}.js"
     ],
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "/jest-setup.js"
-    ]
+    "coveragePathIgnorePatterns": ["/node_modules/", "/jest-setup.js"]
   },
   "repository": {
     "type": "git",

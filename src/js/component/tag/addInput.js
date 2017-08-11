@@ -4,13 +4,15 @@ import { FormControl, Button, InputGroup } from "react-bootstrap"
 import styles from "./styles.css"
 
 type Props = {
-  onAdd: Function
+  onAdd: (label: string) => void
 }
 
 export default class AddInput extends Component {
   props: Props
 
-  label: Object
+  label: {
+    value: string
+  }
 
   addTag() {
     this.props.onAdd(this.label.value)
