@@ -90,7 +90,7 @@ export default class Show extends Component {
           </Collapse>
           <br />
           {(() => {
-            const val = this.input.value.trim()
+            const val = this.input ? this.input.value.trim() : ""
             if (val != "")
               return <Alert bsStyle="success">不具合報告しました。ご協力ありがとうございます。</Alert>
           })()}
