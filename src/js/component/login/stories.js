@@ -7,7 +7,7 @@ import { MemoryRouter } from "react-router"
 import { Col, Grid, Row } from "react-bootstrap"
 import { Hello, LoginInput, NewInput, Platform } from "./index"
 
-storiesOf("Login")
+storiesOf("login")
   .addDecorator(withKnobs)
   .addDecorator(story =>
     <MemoryRouter initialEntries={["/"]}>

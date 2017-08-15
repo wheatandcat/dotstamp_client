@@ -4,7 +4,7 @@ import { storiesOf } from "@storybook/react"
 import { action } from "@storybook/addon-actions"
 import { Icon, NoIcon, Menu, Voice } from "./index"
 
-storiesOf("Character")
+storiesOf("character")
   .add("voice", () =>
     <Voice
       voiceList={[

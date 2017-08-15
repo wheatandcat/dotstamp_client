@@ -5,7 +5,7 @@ import { action } from "@storybook/addon-actions"
 import { withKnobs, boolean } from "@storybook/addon-knobs"
 import { Input, Reset } from "./"
 
-storiesOf("Password")
+storiesOf("password")
   .addDecorator(withKnobs)
   .add("Input", () =>
     <Input

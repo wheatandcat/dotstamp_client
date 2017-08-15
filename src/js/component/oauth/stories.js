@@ -6,7 +6,7 @@ import { withKnobs } from "@storybook/addon-knobs"
 import { MemoryRouter } from "react-router"
 import { New, Page } from "./"
 
-storiesOf("Oauth")
+storiesOf("oauth")
   .addDecorator(withKnobs)
   .addDecorator(story =>
     <MemoryRouter initialEntries={["/"]}>

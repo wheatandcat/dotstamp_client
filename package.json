@@ -36,12 +36,17 @@
       "UPLOAD_PATH": "http://",
       "ENV": "test"
     },
-    "setupFiles": ["./jest-setup.js"],
+    "setupFiles": [
+      "./jest-setup.js"
+    ],
     "collectCoverageFrom": [
       "src/js/{component}/**/*.js",
       "!src/js/**/{index,stories}.js"
     ],
-    "coveragePathIgnorePatterns": ["/node_modules/", "/jest-setup.js"]
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/jest-setup.js"
+    ]
   },
   "repository": {
     "type": "git",
@@ -68,8 +73,8 @@
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-addons-test-utils": "^15.6.0",
-    "react-bootstrap": "^0.31.1",
-    "react-bootstrap-typeahead": "^2.0.0-alpha.2",
+    "react-bootstrap": "^0.31.2",
+    "react-bootstrap-typeahead": "^2.0.0-alpha.3",
     "react-dnd": "^2.4.0",
     "react-dnd-html5-backend": "^2.4.1",
     "react-dom": "^15.6.1",
@@ -98,12 +103,12 @@
   "devDependencies": {
     "@kadira/storybook-deployer": "^1.2.0",
     "@personare/react-storybook-decorator-github-corner": "^0.1.5",
-    "@storybook/addon-actions": "^3.1.9",
-    "@storybook/addon-comments": "^3.1.9",
-    "@storybook/addon-knobs": "^3.1.9",
-    "@storybook/addon-options": "^3.1.6",
-    "@storybook/cli": "^3.1.9",
-    "@storybook/react": "^3.1.9",
+    "@storybook/addon-actions": "^3.2.0",
+    "@storybook/addon-comments": "^3.2.0",
+    "@storybook/addon-knobs": "^3.2.0",
+    "@storybook/addon-options": "^3.2.4",
+    "@storybook/cli": "^3.2.4",
+    "@storybook/react": "^3.2.4",
     "autoprefixer": "^7.1.2",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",

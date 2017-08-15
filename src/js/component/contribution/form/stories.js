@@ -5,7 +5,7 @@ import { action } from "@storybook/addon-actions"
 import { withKnobs, boolean } from "@storybook/addon-knobs"
 import { Action, Upload, Text } from "./index"
 
-storiesOf("Contribution form")
+storiesOf("contribution/form")
   .addDecorator(withKnobs)
   .add("action", () =>
     <Action

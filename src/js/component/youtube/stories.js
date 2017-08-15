@@ -7,7 +7,7 @@ import { MemoryRouter } from "react-router"
 import { Player, ScreenButton, Video, Form } from "./"
 import { PLAY, PAUSE, FINISHED } from "./player"
 
-storiesOf("Youtube")
+storiesOf("youtube")
   .addDecorator(withKnobs)
   .addDecorator(story =>
     <MemoryRouter initialEntries={["/"]}>

@@ -4,7 +4,7 @@ import { storiesOf } from "@storybook/react"
 import { action } from "@storybook/addon-actions"
 import { Character, CharacterMain, Icon, Talk } from "./index"
 
-storiesOf("Image")
+storiesOf("image")
   .add("character", () =>
     <Character
       fileName="0.jpg"

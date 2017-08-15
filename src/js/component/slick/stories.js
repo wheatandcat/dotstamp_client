@@ -9,7 +9,7 @@ const style = {
   padding: "20em 5em"
 }
 
-storiesOf("Slick")
+storiesOf("slick")
   .addDecorator(story =>
     <MemoryRouter initialEntries={["/"]}>
       {story()}

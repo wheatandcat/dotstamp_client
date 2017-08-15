@@ -4,7 +4,7 @@ import { storiesOf } from "@storybook/react"
 import { action } from "@storybook/addon-actions"
 import { Image, Text, Balloon, EditImage, EditText } from "./index"
 
-storiesOf("Contribution ballon")
+storiesOf("contribution/ballon")
   .add("text", () =>
     <div className="container">
       <Text label="abcdef" />

@@ -5,7 +5,7 @@ import { action } from "@storybook/addon-actions"
 import { withKnobs, boolean, number } from "@storybook/addon-knobs"
 import { Status, Sound, Public, Private } from "./index"
 
-storiesOf("Contribution viewStatus")
+storiesOf("contribution/viewStatus")
   .addDecorator(withKnobs)
   .add("Public", () =>
     <Public

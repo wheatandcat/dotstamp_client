@@ -5,7 +5,7 @@ import { action } from "@storybook/addon-actions"
 import { withKnobs, boolean, number } from "@storybook/addon-knobs"
 import { About, Follow, Title, Problem, Youtube, Header } from "./index"
 
-storiesOf("Contribution show")
+storiesOf("contribution/show")
   .addDecorator(withKnobs)
   .add("Follow", () =>
     <div>

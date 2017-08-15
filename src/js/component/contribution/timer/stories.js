@@ -8,7 +8,7 @@ const style = {
   top: "10rem"
 }
 
-storiesOf("Contribution timer").addDecorator(withKnobs).add("timer", () =>
+storiesOf("contribution/timer").addDecorator(withKnobs).add("timer", () =>
   <div style={style}>
     <Timer timer="10分28秒くらい" />
   </div>

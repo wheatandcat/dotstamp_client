@@ -5,7 +5,7 @@ import { action } from "@storybook/addon-actions"
 import { withKnobs } from "@storybook/addon-knobs"
 import { Tags } from "./index"
 
-storiesOf("Contribution header")
+storiesOf("contribution/header")
   .addDecorator(withKnobs)
   .add("tags new", () =>
     <Tags

@@ -5,7 +5,7 @@ import { action } from "@storybook/addon-actions"
 import { MemoryRouter } from "react-router"
 import { Thumbnail, Private, Public } from "./index"
 
-storiesOf("Thumbnail")
+storiesOf("thumbnail")
   .addDecorator(story =>
     <MemoryRouter initialEntries={["/"]}>
       {story()}

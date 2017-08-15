@@ -5,7 +5,7 @@ import { action } from "@storybook/addon-actions"
 import { MemoryRouter } from "react-router"
 import { Close, Combination, List, Open } from "./index"
 
-storiesOf("Contribution list")
+storiesOf("contribution/list")
   .addDecorator(story =>
     <MemoryRouter initialEntries={["/"]}>
       {story()}

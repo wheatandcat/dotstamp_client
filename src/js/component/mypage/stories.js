@@ -4,7 +4,7 @@ import { storiesOf } from "@storybook/react"
 import { action } from "@storybook/addon-actions"
 import { Menu, ProfileImage, UserName, Page } from "./"
 
-storiesOf("Mypage")
+storiesOf("mypage")
   .add("Menu", () => <Menu />)
   .add("ProfileImage", () =>
     <ProfileImage imageID={1} onChange={action("on Change")} />

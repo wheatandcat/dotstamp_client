@@ -4,7 +4,7 @@ import { storiesOf } from "@storybook/react"
 import { MemoryRouter } from "react-router"
 import { Icon } from "./index"
 
-storiesOf("Icon")
+storiesOf("icon")
   .addDecorator(story =>
     <MemoryRouter initialEntries={["/"]}>
       {story()}

@@ -3,7 +3,7 @@ import React from "react"
 import { storiesOf } from "@storybook/react"
 import { Title, Guide, Link, Page } from "./"
 
-storiesOf("About")
+storiesOf("about")
   .add("title", () => <Title>foo</Title>)
   .add("guide", () => <Guide />)
   .add("link", () => <Link />)
