@@ -14,6 +14,7 @@ after_success:
   - yarn stylelint
   - yarn flow
   - yarn test -- --coverage
+  - yarn snapshots
   - npm install -g codeclimate-test-reporter
   - codeclimate-test-reporter < coverage/lcov.info
   - yarn build

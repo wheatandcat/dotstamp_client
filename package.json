@@ -10,8 +10,10 @@
     "start": "webpack-dev-server --config ./webpack.config.local.babel.js",
     "development": "webpack --config ./webpack.config.dev.babel.js",
     "build": "NODE_ENV=production webpack --config ./webpack.config.prod.babel.js",
-    "test": "jest --silent",
-    "testWatch": "jest --watch --silent",
+    "test": "jest --silent --env=jsdom --testPathIgnorePatterns=Storyshots.test",
+    "testWatch": "jest --watch --silent --env=jsdom --testPathIgnorePatterns=Storyshots.test",
+    "snapshots": "jest --silent --env=jsdom --testPathPattern=Storyshots.test",
+    "jest-html": "jest-html --css-patterns dist/css/bootstrap.css",
     "storybook": "start-storybook -p 9009 -s ./dist -c .storybook",
     "build-storybook": "build-storybook -s ./dist -c .storybook",
     "deploy-storybook": "storybook-to-ghpages",
@@ -36,18 +38,14 @@
       "UPLOAD_PATH": "http://",
       "ENV": "test"
     },
-    "setupFiles": [
-      "./jest-setup.js"
-    ],
+    "setupFiles": ["./jest-setup.js"],
     "collectCoverageFrom": [
       "src/js/{component}/**/*.js",
       "!src/js/**/{index,stories}.js"
     ],
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "/jest-setup.js"
-    ]
+    "coveragePathIgnorePatterns": ["/node_modules/", "/jest-setup.js"]
   },
+  "snapshotSerializers": ["<rootDir>/node_modules/jest-html"],
   "repository": {
     "type": "git",
     "url": "git+ssh://git@bitbucket.org:pandemo/dotstamp_client.git"
@@ -96,7 +94,7 @@
     "redux-logger": "^3.0.6",
     "redux-router": "^2.1.2",
     "redux-thunk": "^2.2.0",
-    "slick-carousel": "^1.6.0",
+    "slick-carousel": "^1.7.1",
     "stack-source-map": "^1.0.7",
     "superagent": "^3.5.2"
   },
@@ -107,6 +105,7 @@
     "@storybook/addon-comments": "^3.2.0",
     "@storybook/addon-knobs": "^3.2.0",
     "@storybook/addon-options": "^3.2.4",
+    "@storybook/addon-storyshots": "^3.2.4",
     "@storybook/cli": "^3.2.4",
     "@storybook/react": "^3.2.4",
     "autoprefixer": "^7.1.2",
@@ -131,6 +130,7 @@
     "css-loader": "^0.28.4",
     "cssnano": "^3.10.0",
     "cssnext": "^1.8.4",
+    "date-with-offset": "^1.0.1",
     "enzyme": "^2.9.1",
     "esformatter": "^0.10.0",
     "esformatter-jsx": "^8.0.1",
@@ -151,6 +151,7 @@
     "file-loader": "^0.11.2",
     "flow-bin": "^0.52.0",
     "jest": "^20.0.4",
+    "jest-html": "^1.3.4",
     "lodash": "^4.17.2",
     "node-env-file": "^0.1.8",
     "npm-run-all": "^4.0.2",
@@ -167,6 +168,7 @@
     "precss": "^2.0.0",
     "prettier": "^1.5.3",
     "prettier-eslint": "^6.4.2",
+    "react-test-renderer": "^15.6.1",
     "storybook-addon-a11y": "^3.1.9",
     "style-loader": "^0.18.2",
     "stylelint": "^8.0.0",
