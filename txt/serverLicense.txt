@@ -1,0 +1,84 @@
+# server license
+
+## golang
+
+Copyright (c) 2009 The Go Authors. All rights reserved.
+BSD License
+https://golang.org/LICENSE
+
+## beego
+
+Copyright 2014 astaxie
+icensed under the Apache License, Version 2.0 (the "License");
+https://github.com/astaxie/beego/blob/master/LICENSE
+
+## mapstructure
+
+Copyright (c) 2013 Mitchell Hashimoto
+The MIT License (MIT)
+https://github.com/mitchellh/mapstructure/blob/master/LICENSE
+
+## resize
+
+Copyright (c) 2012 Jan Schlicht janschlicht@gmail.com
+Resize is released under a MIT style license.
+https://github.com/nfnt/resize/blob/master/LICENSE
+
+## golang.org/x/oauth2
+
+Copyright (c) 2009 The oauth2 Authors. All rights reserved.
+https://github.com/golang/oauth2/blob/master/LICENSE
+
+## google.golang.org/appengine
+
+Apache License Version 2.0, January 2004
+https://github.com/golang/appengine/blob/master/LICENSE
+
+## gopkg.in/check.v1
+
+Copyright (c) 2010-2013 Gustavo Niemeyer <gustavo@niemeyer.net>
+https://github.com/go-check/check/blob/v1/LICENSE
+
+## gopkg.in/go-playground/validator.v9
+
+Copyright (c) 2015 Dean Karn
+The MIT License (MIT)
+https://github.com/go-playground/validator/blob/v9.3.5/LICENSE
+
+## gopkg.in/yaml.v2
+
+Copyright 2011-2016 Canonical Ltd.
+Licensed under the Apache License, Version 2.0 (the "License");
+https://github.com/go-yaml/yaml/blob/v2/LICENSE
+
+## gorm
+
+Copyright (c) 2013-NOW  Jinzhu <wosmvp@gmail.com>
+The MIT License (MIT)
+https://github.com/jinzhu/gorm/blob/master/License
+
+## goconvey
+
+Copyright (c) 2016 SmartyStreets, LLC
+https://github.com/smartystreets/goconvey/blob/master/LICENSE.md
+
+## Glide
+
+Copyright (C) 2014-2016, Matt Butcher and Matt Farina
+Copyright (C) 2016, Hewlett Packard Enterprise Development LP
+Copyright (C) 2015, Google
+This package is made available under an MIT-style
+https://github.com/Masterminds/glide/blob/master/LICENSE
+
+## goose
+
+Original work Copyright (c) 2012 Liam Staskawicz
+Modified work Copyright (c) 2016 Vojtech Vitek
+MIT License
+https://github.com/pressly/goose/blob/master/LICENSE
+
+## go-xorm/dbweb
+
+Copyright (c) 2013 - 2015 The Xorm Authors
+BSD License
+https://github.com/go-xorm/xorm/blob/master/LICENSE

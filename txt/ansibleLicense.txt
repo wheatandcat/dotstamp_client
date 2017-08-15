@@ -1,0 +1,101 @@
+# infrastructure license
+
+## MariaDB
+
+MariaDB License - MariaDB Knowledge Base
+GNU GENERAL PUBLIC LICENSE
+https://mariadb.com/kb/en/mariadb/mariadb-license/
+
+## redis
+
+BSD license.
+https://redis.io/topics/license
+
+## nginx
+
+Copyright (C) 2002-2017 Igor Sysoev
+http://nginx.org/LICENSE
+
+## Open Jtalk
+
+This software is released under the Modified BSD license.
+http://open-jtalk.sourceforge.net/
+
+## hts_engine API
+
+Copyright (c) 2001-2015  Nagoya Institute of Technology
+https://sourceforge.net/projects/hts-engine/files/hts_engine%20API/hts_engine_API-1.10/
+
+## HTS Voice "Mei"
+
+Copyright (c) 2001-2015  Nagoya Institute of Technology
+https://sourceforge.net/projects/mmdagent/files/MMDAgent_Example/MMDAgent_Example-1.7/
+
+# AquesTalk
+
+http://www.a-quest.com/licence_free.html
+※開発ライセンスを受けて取得して使用しています
+
+# AqKanji2Koe 
+
+http://www.a-quest.com/licence_free.html
+※開発ライセンスを受けて取得して使用しています
+
+## sox
+
+Copyright (C) 1991, 1999 Free Software Foundation, Inc.
+GNU LESSER GENERAL PUBLIC LICENSE Version 2.1, February 1999
+https://sourceforge.net/p/sox/code/ci/master/tree/LICENSE.GPL
+
+## lame
+
+GNU LGPL
+http://lame.sourceforge.net/license.txt
+
+## node
+
+Copyright Node.js contributors. All rights reserved.
+https://github.com/nodejs/node/blob/master/LICENSE
+
+## ansible
+
+Copyright (C) 2007 Free Software Foundation, Inc. <http://fsf.org/>
+GNU General Public License
+https://github.com/ansible/ansible/blob/devel/COPYING
+
+## ansible-role-git
+
+MIT / BSD
+https://github.com/geerlingguy/ansible-role-git/blob/master/README.md
+
+## ansible-role-ntp
+
+MIT / BSD
+https://github.com/geerlingguy/ansible-role-ntp/blob/master/README.md
+
+## ansible-role-mysql
+
+MIT / BSD
+https://github.com/geerlingguy/ansible-role-mysql/blob/master/README.md
+
+## geerlingguy.redis
+
+MIT / BSD
+https://github.com/geerlingguy/ansible-role-redis/blob/master/README.md
+
+## ansible-role-nodejs
+
+MIT / BSD
+https://github.com/geerlingguy/ansible-role-nodejs/blob/master/README.md
+
+## ansible-role-nginx
+
+MIT / BSD
+https://github.com/geerlingguy/ansible-role-nginx/blob/master/README.md
+
+## ansible-logrotate
+
+Copyright (c) 2016-14, Nick Hammond
+All rights reserved.
+BSD
+https://github.com/nickhammond/ansible-logrotate/blob/master/LICENSE

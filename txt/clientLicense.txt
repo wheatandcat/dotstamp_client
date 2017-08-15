@@ -1,0 +1,99 @@
+# client license
+
+## bootstrap
+
+Copyright 2011-2016 Twitter, Inc.
+The MIT License (MIT)
+https://github.com/twbs/bootstrap/blob/master/LICENSE
+
+## react
+
+Copyright (c) 2013-present, Facebook, Inc. All rights reserved.
+BSD License
+https://github.com/facebook/react/blob/master/LICENSE
+
+## redux
+
+Copyright (c) 2015-present Dan Abramov
+The MIT License (MIT)
+https://github.com/reactjs/redux/blob/master/LICENSE.md
+
+## react-bootstrap
+
+Copyright (c) 2014-present Stephen J. Collings, Matthew Honnibal, Pieter Vanderwerff
+The MIT License (MIT)
+https://github.com/react-bootstrap/react-bootstrap/blob/master/LICENSE
+
+## react-router
+
+Copyright (c) 2015-present, Ryan Florence, Michael Jackson
+The MIT License (MIT)
+https://github.com/ReactTraining/react-router/blob/master/LICENSE.md
+
+## react-slick
+
+Copyright (c) 2014 Kiran Abburi
+The MIT License (MIT)
+https://github.com/akiran/react-slick/blob/master/LICENSE
+
+## redux-localstorage
+
+Copyright (c) 2015 Elger Lambert
+The MIT License (MIT)
+https://github.com/elgerlambert/redux-localstorage/blob/master/LICENSE.md
+
+## redux-thunk
+
+Copyright (c) 2015 Dan Abramov
+The MIT License (MIT)
+https://github.com/gaearon/redux-thunk/blob/master/LICENSE.md
+
+## react-dnd
+
+React DnD is licensed as MIT. Use it as you will.
+http://react-dnd.github.io/react-dnd/
+
+## redux-logger
+
+Copyright (c) 2016 Eugene Rodionov
+The MIT License (MIT)
+https://github.com/evgenyrodionov/redux-logger/blob/master/LICENSE
+
+
+## react-dropzone
+
+Copyright (c) 2014 Param Aggarwal
+The MIT License (MIT)
+https://github.com/okonet/react-dropzone/blob/master/LICENSE
+
+## react-sound
+
+Copyright (c) 2015, Leonardo Andres Garcia Crespo <leoasis@gmail.com>
+https://github.com/leoasis/react-sound/blob/master/LICENSE.txt
+
+## react-router-bootstrap
+
+Apache License  Version 2.0, January 2004
+https://github.com/react-bootstrap/react-router-bootstrap/blob/master/LICENSE
+
+## jest
+
+Apache License  Version 2.0, January 2004
+https://github.com/searchbox-io/Jest/blob/master/LICENSE
+
+## webpack
+
+Copyright JS Foundation and other contributors
+https://github.com/webpack/webpack/blob/master/LICENSE
+
+## postcss
+
+Copyright 2013 Andrey Sitnik <andrey@sitnik.ru>
+The MIT License (MIT)
+https://github.com/postcss/postcss/blob/master/LICENSE
+
+#babel
+
+Copyright (c) 2014-2017 Sebastian McKenzie <sebmck@gmail.com>
+MIT License
+https://github.com/babel/babel/blob/7.0/LICENSE
