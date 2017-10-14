@@ -9,6 +9,7 @@ type Props = {
   onDelete: Function
 }
 
+// TODO: foo bar
 export default ({ fileName, iconId, onDelete }: Props) =>
   <CharacterMain fileName={fileName}>
     <div className="center-block">
