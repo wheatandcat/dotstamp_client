@@ -38,21 +38,14 @@
       "UPLOAD_PATH": "http://",
       "ENV": "test"
     },
-    "setupFiles": [
-      "./jest-setup.js"
-    ],
+    "setupFiles": ["./jest-setup.js"],
     "collectCoverageFrom": [
       "src/js/{component}/**/*.js",
       "!src/js/**/{index,stories}.js"
     ],
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "/jest-setup.js"
-    ]
+    "coveragePathIgnorePatterns": ["/node_modules/", "/jest-setup.js"]
   },
-  "snapshotSerializers": [
-    "<rootDir>/node_modules/jest-html"
-  ],
+  "snapshotSerializers": ["<rootDir>/node_modules/jest-html"],
   "repository": {
     "type": "git",
     "url": "git+ssh://git@bitbucket.org:pandemo/dotstamp_client.git"
@@ -63,7 +56,7 @@
     "commitMessage": ".stamp Storybook to GitHub Pages"
   },
   "author": "wheatandcat",
-  "license": "BSD",
+  "license": "MIT",
   "homepage": "https://github.com/wheatandcat/dotstamp_client",
   "dependencies": {
     "assert": "^1.4.1",
