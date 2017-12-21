@@ -6,7 +6,7 @@
 [![Issue Count](https://codeclimate.com/github/wheatandcat/dotstamp_client/badges/issue_count.svg)](https://codeclimate.com/github/wheatandcat/dotstamp_client)
 [![react storybook](https://img.shields.io/badge/react--storybook-public-green.svg)](https://wheatandcat.github.io/dotstamp_client/?selectedKind=Bllon&selectedStory=text)
 [![Dependency Status](https://gemnasium.com/badges/github.com/wheatandcat/dotstamp_client.svg)](https://gemnasium.com/github.com/wheatandcat/dotstamp_client)
-[![BSD License](http://img.shields.io/badge/license-BSD-blue.svg?style=flat)](LICENSE)
+[![MIT License](http://img.shields.io/badge/license-MIT-green.svg?style=flat)](LICENSE)
 
 <img src="https://raw.githubusercontent.com/wheatandcat/dotstamp_client/master/dist/images/common/about.png" data-canonical-src="https://raw.githubusercontent.com/wheatandcat/dotstamp_client/master/dist/images/common/about.png" width="200" />
 
